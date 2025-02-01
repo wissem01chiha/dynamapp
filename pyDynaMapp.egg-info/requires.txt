@@ -1,8 +1,0 @@
-numpy==1.26.4
-numba==0.59.0
-pinocchio==2.7.1
-scipy==1.14.0
-setuptools==68.1.2
-nlopt==2.7.1
-pandas==2.2.2
-matplotlib==3.8.4

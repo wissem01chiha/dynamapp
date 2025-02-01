@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="python" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>model_state module &mdash; DynaMapp 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=40be6288"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="trajectory module" href="dynamapp.trajectory.html" />
+    <link rel="prev" title="state_space module" href="dynamapp.state_space.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            DynaMapp
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="README.html">DynaMapp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TUTORIAL.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="INSTALL.html">Installation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="REFERENCES.html">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CHANGELOG.html">Changelog</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Modules</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">dynamapp</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="dynamapp.html">dynamapp package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="dynamapp.html#submodules">Submodules</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="dynamapp.identification.html">identification module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dynamapp.harmonic_drive.html">harmonic_drive module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dynamapp.kalman.html">kalman module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dynamapp.math_utils.html">math_utils module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dynamapp.moesp.html">moesp module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dynamapp.nfoursid.html">nfoursid module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dynamapp.regressors.html">regressors module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dynamapp.model.html">model module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dynamapp.data_utils.html">data_utils module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dynamapp.solvers.html">solvers module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dynamapp.state_space.html">state_space module</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">model_state module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dynamapp.trajectory.html">trajectory module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dynamapp.utils.html">utils module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dynamapp.viscoelastic.html">viscoelastic module</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="dynamapp.html#module-contents">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="CONTRIBUTING.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TODO.html">Todo list</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">DynaMapp</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">dynamapp</a></li>
+          <li class="breadcrumb-item"><a href="dynamapp.html">dynamapp package</a></li>
+      <li class="breadcrumb-item active">model_state module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/dynamapp.model_state.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-model_state">
+<span id="model-state-module"></span><h1>model_state module<a class="headerlink" href="#module-model_state" title="Link to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="model_state.ModelState">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">model_state.</span></span><span class="sig-name descname"><span class="pre">ModelState</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_init</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/model_state.html#ModelState"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#model_state.ModelState" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Base class for state space mutijoint models, these model are typically complex
+because, the base matrices A, B, C and D is a function of the state vector x.
+which is not the case for the classical state space model, these model are called
+state depend state space models, these property makes all derived equations (eg Riccati,
+observer, etc) to be state dependant as the following equation:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{cases}
+    x_{k+1} &amp;= A(x_k) x_k + B(x_k) u_k + K e_k \\
+    y_k &amp;= C(x_k) x_k + D(x_k) u_k + e_k
+\end{cases}\end{split}\]</div>
+<dl>
+<dt>Args:</dt><dd><ul class="simple">
+<li><p>model             - multijoint base model</p></li>
+<li><p>model_state_space - state space representation of the model</p></li>
+</ul>
+</dd>
+<dt>Examples:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">model</span> <span class="o">=</span> <span class="n">ModelState</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">x_init</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">output</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">u</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="model_state.ModelState.compute_ctlb_matrix">
+<span class="sig-name descname"><span class="pre">compute_ctlb_matrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/model_state.html#ModelState.compute_ctlb_matrix"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#model_state.ModelState.compute_ctlb_matrix" title="Link to this definition"></a></dt>
+<dd><p>Compute the controllability matrix of the system
+The controllability matrix is given by the following equation:</p>
+<div class="math notranslate nohighlight">
+\[C = [B , AB , A^2B , ... A^{n-1}B]\]</div>
+<dl class="simple">
+<dt>Args:</dt><dd><ul class="simple">
+<li><p>x : state vector (2.ndof * 1)</p></li>
+</ul>
+</dd>
+<dt>Returns:</dt><dd><ul class="simple">
+<li><p>ctlb_matrix : numpy-ndarry (2.ndof * 2.ndof)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="model_state.ModelState.compute_eigvals">
+<span class="sig-name descname"><span class="pre">compute_eigvals</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">numpy.ndarray</span></span></span><a class="reference internal" href="_modules/model_state.html#ModelState.compute_eigvals"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#model_state.ModelState.compute_eigvals" title="Link to this definition"></a></dt>
+<dd><p>Computes the system eigvalues at time t given the state vector x and the input vector u</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="model_state.ModelState.compute_obs_matrix">
+<span class="sig-name descname"><span class="pre">compute_obs_matrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">numpy.ndarray</span></span></span><a class="reference internal" href="_modules/model_state.html#ModelState.compute_obs_matrix"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#model_state.ModelState.compute_obs_matrix" title="Link to this definition"></a></dt>
+<dd><p>Compute the observaliblite matrix of the system at time t given the state vector x
+The observability matrix is given by the following equation:</p>
+<div class="math notranslate nohighlight">
+\[O =[ C , CA,  CA^2, ..., CA^{n-1}]\]</div>
+<dl class="simple">
+<dt>Args:</dt><dd><ul class="simple">
+<li><p>x : state vector (2.ndof * 1)</p></li>
+</ul>
+</dd>
+<dt>Returns:</dt><dd><ul class="simple">
+<li><p>obs_matrix : numpy-ndarry (2.ndof * 2.ndof)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="model_state.ModelState.lsim">
+<span class="sig-name descname"><span class="pre">lsim</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">u</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">numpy.ndarray</span></span></span><a class="reference internal" href="_modules/model_state.html#ModelState.lsim"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#model_state.ModelState.lsim" title="Link to this definition"></a></dt>
+<dd><p>Simulate the system response with a given input u subject to the noise e
+Args:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>u : input vector (ndof * NSamples)</p></li>
+<li><p>e : noise vector (ndof * NSamples)</p></li>
+</ul>
+</div></blockquote>
+<dl class="simple">
+<dt>Return:</dt><dd><ul class="simple">
+<li><p>xs : numpy-ndarry stroing iteration states vectors. ( 2.ndof * NSamples)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="model_state.ModelState.output">
+<span class="sig-name descname"><span class="pre">output</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">u</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">numpy.ndarray</span></span></span><a class="reference internal" href="_modules/model_state.html#ModelState.output"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#model_state.ModelState.output" title="Link to this definition"></a></dt>
+<dd><p>Compute the system output vector given the state vector x and the input vector u
+with repect to the equation :</p>
+<div class="math notranslate nohighlight">
+\[y_k = C x_k + D u_k + e_k\]</div>
+<dl class="simple">
+<dt>Returns:</dt><dd><ul class="simple">
+<li><p>y_k - np.ndarray (2.ndof * 1) the output vector of the system at time t</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="model_state.ModelState.set_x_init">
+<span class="sig-name descname"><span class="pre">set_x_init</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x_init</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/model_state.html#ModelState.set_x_init"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#model_state.ModelState.set_x_init" title="Link to this definition"></a></dt>
+<dd><p>Set the initial state, if it is given.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="model_state.ModelState.setp">
+<span class="sig-name descname"><span class="pre">setp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">u</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">numpy.ndarray</span></span></span><a class="reference internal" href="_modules/model_state.html#ModelState.setp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#model_state.ModelState.setp" title="Link to this definition"></a></dt>
+<dd><p>Compute the output of the state-space model and returns it at time t+1
+Updates the internal state of the model as well.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="dynamapp.state_space.html" class="btn btn-neutral float-left" title="state_space module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="dynamapp.trajectory.html" class="btn btn-neutral float-right" title="trajectory module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Wissem CHIHA.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

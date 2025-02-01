@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Welcome to DynaMapp&#39;s documentation! &mdash; DynaMapp 0.1.0 documentation</title>
+  <title>DynaMapp documentation &mdash; DynaMapp 1.0.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
 
@@ -15,7 +15,7 @@
   
         <script src="_static/jquery.js?v=5d32c60e"></script>
         <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="_static/documentation_options.js?v=2d80085d"></script>
+        <script src="_static/documentation_options.js?v=40be6288"></script>
         <script src="_static/doctools.js?v=9a2dae69"></script>
         <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
         <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
@@ -45,13 +45,25 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <ul>
+              <p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="README.html">DynaMapp</a></li>
-<li class="toctree-l1"><a class="reference internal" href="CONTRIBUTING.html">CONTRIBUTING</a></li>
-<li class="toctree-l1"><a class="reference internal" href="INSTALL.html">INSTALLATION</a></li>
-<li class="toctree-l1"><a class="reference internal" href="CHANGELOG.html">CHANGELOG</a></li>
-<li class="toctree-l1"><a class="reference internal" href="docs/source/modules.html">pyDynaMapp</a></li>
-<li class="toctree-l1"><a class="reference internal" href="docs/source/todo.html">TODO List</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TUTORIAL.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="INSTALL.html">Installation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="REFERENCES.html">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CHANGELOG.html">Changelog</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">dynamapp</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="CONTRIBUTING.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TODO.html">Todo list</a></li>
 </ul>
 
         </div>
@@ -68,7 +80,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="#" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Welcome to DynaMapp's documentation!</li>
+      <li class="breadcrumb-item active">DynaMapp documentation</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -78,53 +90,104 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="welcome-to-dynamapp-s-documentation">
-<h1>Welcome to DynaMapp's documentation!<a class="headerlink" href="#welcome-to-dynamapp-s-documentation" title="Link to this heading"></a></h1>
-<section id="contents">
-<h2>Contents:<a class="headerlink" href="#contents" title="Link to this heading"></a></h2>
+  <section id="dynamapp-documentation">
+<h1>DynaMapp documentation<a class="headerlink" href="#dynamapp-documentation" title="Link to this heading"></a></h1>
 <div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="README.html">DynaMapp</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="README.html#table-of-contents">Table of Contents</a></li>
 <li class="toctree-l2"><a class="reference internal" href="README.html#prerequisites">Prerequisites</a></li>
 <li class="toctree-l2"><a class="reference internal" href="README.html#package-structure">Package Structure</a></li>
-<li class="toctree-l2"><a class="reference internal" href="README.html#installation">Installation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="README.html#exemples">Exemples</a></li>
-<li class="toctree-l2"><a class="reference internal" href="README.html#documentation">Documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="README.html#installation">Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="README.html#supported-platform">Supported Platform</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="README.html#exemples">Exemples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="README.html#create-multiple-robot-model-representations">Create Multiple Robot Model Representations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="README.html#analyze-robot-stability-and-control-design-using-common-tools">Analyze Robot Stability and Control Design Using Common Tools</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="README.html#model-identification-routines">Model Identification Routines</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="README.html#visualizing-different-models">Visualizing Different Models</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="README.html#documentation">Documentation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="README.html#build">Build</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="README.html#recent-releases">Recent Releases</a></li>
-<li class="toctree-l2"><a class="reference internal" href="README.html#references">References</a></li>
 <li class="toctree-l2"><a class="reference internal" href="README.html#contributing">Contributing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="README.html#license">License</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="CONTRIBUTING.html">CONTRIBUTING</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="CONTRIBUTING.html#useful-materials">Useful Materials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TUTORIAL.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="INSTALL.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="INSTALL.html#windows">Windows</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="INSTALL.html#using-git">Using Git:</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="INSTALL.html">INSTALLATION</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="INSTALL.html#windows">Windows</a></li>
 <li class="toctree-l2"><a class="reference internal" href="INSTALL.html#unix">Unix</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="CHANGELOG.html">CHANGELOG</a><ul>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="REFERENCES.html">References</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="REFERENCES.html#useful-materials">Useful Materials</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="CHANGELOG.html">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="CHANGELOG.html#release-1-0-0">Release : 1.0.0</a></li>
 <li class="toctree-l2"><a class="reference internal" href="CHANGELOG.html#release-0-1-0">Release : 0.1.0</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="docs/source/modules.html">pyDynaMapp</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="docs/source/pyDynaMapp.html">pyDynaMapp package</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="docs/source/todo.html">TODO List</a></li>
 </ul>
 </div>
-</section>
-</section>
-<section id="indices-and-tables">
-<h1>Indices and tables:<a class="headerlink" href="#indices-and-tables" title="Link to this heading"></a></h1>
-<ul class="simple">
-<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
-<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">dynamapp</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="dynamapp.html">dynamapp package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dynamapp.html#submodules">Submodules</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dynamapp.identification.html">identification module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dynamapp.harmonic_drive.html">harmonic_drive module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dynamapp.kalman.html">kalman module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dynamapp.math_utils.html">math_utils module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dynamapp.moesp.html">moesp module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dynamapp.nfoursid.html">nfoursid module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dynamapp.regressors.html">regressors module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dynamapp.model.html">model module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dynamapp.data_utils.html">data_utils module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dynamapp.solvers.html">solvers module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dynamapp.state_space.html">state_space module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dynamapp.model_state.html">model_state module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dynamapp.trajectory.html">trajectory module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dynamapp.utils.html">utils module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dynamapp.viscoelastic.html">viscoelastic module</a></li>
 </ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="dynamapp.html#module-contents">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="CONTRIBUTING.html">Contributing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="CONTRIBUTING.html#coding-style">Coding Style</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="TODO.html">Todo list</a></li>
+</ul>
+</div>
 </section>
 
 
@@ -137,7 +200,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2024, Wissem CHIHA.</p>
+    <p>&#169; Copyright 2025, Wissem CHIHA.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

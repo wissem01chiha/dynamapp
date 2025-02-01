@@ -1,6 +1,4 @@
-# This file may be used to create an environment using:
-# $ conda create --name <env> --file <this file>
-# platform: win-64
+
 anaconda-client=1.12.3=pyhd8ed1ab_1
 archspec=0.2.3=pyhd8ed1ab_0
 assimp=5.3.1=h0dbab56_3

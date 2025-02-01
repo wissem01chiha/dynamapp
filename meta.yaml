@@ -1,10 +1,10 @@
 package:
-  name: pydynamapp
-  version: "0.1.0"
+  name: dynamapp
+  version: "1.0.0"
 
 source:
-  path: dist/pydynamapp-0.1.0.tar.gz
-
+  path: dist/dynamapp-1.0.0.tar.gz
+  
 build:   
   number: 1
   script: "{{ PYTHON }} -m pip install . -vv"
@@ -30,6 +30,6 @@ channels:
   - conda-forge
   - defaults
 about:
-  summary: "0.1.0"
-  home: https://github.com/wissem01chiha/dynamic-identification
-  license: MIT
+  summary: "1.0.0"
+  home: https://github.com/wissem01chiha/DynaMapp
+  license: CC0-1.0 

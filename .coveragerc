@@ -2,4 +2,4 @@
 exclude_lines =
     if __name__ == '__main__':
 [run]
-omit = dynamic-identification/_version.py
+    omit = dynamapp/__version__.py

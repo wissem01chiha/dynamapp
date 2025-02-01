@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="python" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>viscoelastic &mdash; DynaMapp 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=40be6288"></script>
+        <script src="../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            DynaMapp
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../README.html">DynaMapp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../TUTORIAL.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../INSTALL.html">Installation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../REFERENCES.html">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CHANGELOG.html">Changelog</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../modules.html">dynamapp</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../CONTRIBUTING.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../TODO.html">Todo list</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">DynaMapp</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Module code</a></li>
+      <li class="breadcrumb-item active">viscoelastic</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for viscoelastic</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">jax.numpy</span> <span class="k">as</span> <span class="nn">jnp</span>
+
+<div class="viewcode-block" id="compute_viscous_friction_force">
+<a class="viewcode-back" href="../dynamapp.viscoelastic.html#viscoelastic.compute_viscous_friction_force">[docs]</a>
+<span class="k">def</span> <span class="nf">compute_viscous_friction_force</span><span class="p">(</span><span class="n">V</span><span class="p">,</span> <span class="n">Fc</span><span class="p">,</span> <span class="n">Fs</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Compute the Coulomb and viscous friction model.</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters:</span>
+<span class="sd">    V  (numpy array): Velocity array.</span>
+<span class="sd">    Fc (float or numpy array): Coulomb friction coefficient.</span>
+<span class="sd">    Fs (float or numpy array): Viscous friction coefficient.</span>
+<span class="sd">    </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        numpy-array: Friction force array.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">Fc</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sign</span><span class="p">(</span><span class="n">V</span><span class="p">)</span> <span class="o">+</span> <span class="n">Fs</span> <span class="o">*</span> <span class="n">V</span></div>
+
+
+<div class="viewcode-block" id="LuGre">
+<a class="viewcode-back" href="../dynamapp.viscoelastic.html#viscoelastic.LuGre">[docs]</a>
+<span class="k">class</span> <span class="nc">LuGre</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Class to compute LuGre Friction Model </span>
+<span class="sd">    </span>
+<span class="sd">    Params:</span>
+<span class="sd">        - Fc (float): Coulomb friction coefficient.</span>
+<span class="sd">        - Fs (float): Stribeck friction coefficient.</span>
+<span class="sd">        - v (float): Joint velocity.</span>
+<span class="sd">        - vs (float): Kinetic velocity transition.</span>
+<span class="sd">        - sigma0 (float): Model parameter sigma0.</span>
+<span class="sd">        - sigma1 (float): Model parameter sigma1.</span>
+<span class="sd">        - sigma2 (float): Model parameter sigma2.</span>
+<span class="sd">        - tinit (float): Initial simulation time.</span>
+<span class="sd">        - ts (float): Step time simulation.</span>
+<span class="sd">        - tspan (float): Final simulation time.</span>
+<span class="sd">        - z0 (float): Initial value of internal state z.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Fc</span><span class="p">,</span> <span class="n">Fs</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">sigma0</span><span class="p">,</span> <span class="n">sigma1</span><span class="p">,</span> <span class="n">sigma2</span><span class="p">,</span> <span class="n">tspan</span><span class="p">,</span> <span class="n">ts</span><span class="o">=</span><span class="mf">0.001</span><span class="p">,</span> <span class="n">tinit</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">z0</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">vs</span><span class="o">=</span><span class="mf">0.1235</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Fc</span> <span class="o">=</span> <span class="n">Fc</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Fs</span> <span class="o">=</span> <span class="n">Fs</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">v</span> <span class="o">=</span> <span class="n">v</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">vs</span> <span class="o">=</span> <span class="n">vs</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sigma0</span> <span class="o">=</span> <span class="n">sigma0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sigma1</span> <span class="o">=</span> <span class="n">sigma1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sigma2</span> <span class="o">=</span> <span class="n">sigma2</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tinit</span> <span class="o">=</span> <span class="n">tinit</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ts</span> <span class="o">=</span> <span class="n">ts</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tspan</span> <span class="o">=</span> <span class="n">tspan</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">z0</span> <span class="o">=</span> <span class="n">z0</span>
+
+<div class="viewcode-block" id="LuGre.computeFrictionForce">
+<a class="viewcode-back" href="../dynamapp.viscoelastic.html#viscoelastic.LuGre.computeFrictionForce">[docs]</a>
+    <span class="k">def</span> <span class="nf">computeFrictionForce</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Compute friction force over the simulation time span.</span>
+
+<span class="sd">        &gt; Returns:</span>
+<span class="sd">            - F (numpy.ndarray): Friction force for the given velocity.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tinit</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">tspan</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">ts</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ts</span><span class="p">)</span>
+        <span class="n">N</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+        
+        <span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+        <span class="n">F</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+        <span class="n">z</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">z0</span>
+
+        <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">N</span><span class="p">):</span>
+            <span class="n">v_safe</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">vs</span><span class="p">),</span> <span class="mf">1e-3</span><span class="p">)</span>
+            <span class="n">sigma0_safe</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sigma0</span><span class="p">),</span> <span class="mf">1e-6</span><span class="p">)</span>
+            <span class="n">exp_input</span> <span class="o">=</span> <span class="o">-</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">v</span> <span class="o">/</span> <span class="n">v_safe</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span>
+            <span class="n">exp_input_clipped</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">exp_input</span><span class="p">,</span> <span class="o">-</span><span class="mf">1e6</span><span class="p">,</span> <span class="mf">1e6</span><span class="p">)</span>
+            <span class="n">gv</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Fc</span> <span class="o">+</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Fs</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">Fc</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">exp_input_clipped</span><span class="p">))</span> <span class="o">/</span> <span class="n">sigma0_safe</span>
+            <span class="n">gv</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">gv</span><span class="p">,</span> <span class="mf">1e-4</span><span class="p">)</span>  <span class="c1"># Ensure gv does not become too small</span>
+            
+            <span class="n">z_dot</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">v</span> <span class="o">-</span> <span class="nb">abs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="p">)</span> <span class="o">*</span> <span class="n">z</span><span class="p">[</span><span class="n">idx</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="n">gv</span>
+            <span class="n">z</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">z</span><span class="p">[</span><span class="n">idx</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">z_dot</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">ts</span>
+            <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">z</span><span class="p">[</span><span class="n">idx</span><span class="p">])</span> <span class="ow">or</span> <span class="n">np</span><span class="o">.</span><span class="n">isinf</span><span class="p">(</span><span class="n">z</span><span class="p">[</span><span class="n">idx</span><span class="p">]):</span>
+                <span class="n">z</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+            
+            <span class="n">F</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sigma0</span> <span class="o">*</span> <span class="n">z</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">sigma1</span> <span class="o">*</span> <span class="n">z_dot</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">sigma2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">v</span>
+            <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">F</span><span class="p">[</span><span class="n">idx</span><span class="p">])</span> <span class="ow">or</span> <span class="n">np</span><span class="o">.</span><span class="n">isinf</span><span class="p">(</span><span class="n">F</span><span class="p">[</span><span class="n">idx</span><span class="p">]):</span>
+                <span class="n">F</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="k">return</span> <span class="n">F</span></div>
+
+
+<div class="viewcode-block" id="LuGre.computeSteadyForce">
+<a class="viewcode-back" href="../dynamapp.viscoelastic.html#viscoelastic.LuGre.computeSteadyForce">[docs]</a>
+    <span class="k">def</span> <span class="nf">computeSteadyForce</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Compute the LuGre steady state friction force</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            - Fss (float): Steady state friction force.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">v_safe</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">vs</span><span class="p">),</span> <span class="mf">1e-6</span><span class="p">)</span>
+        <span class="n">exp_input</span> <span class="o">=</span> <span class="o">-</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">v</span> <span class="o">/</span> <span class="n">v_safe</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span>
+        <span class="n">exp_input_clipped</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">exp_input</span><span class="p">,</span> <span class="o">-</span><span class="mf">1e6</span><span class="p">,</span> <span class="mf">1e6</span><span class="p">)</span>
+        <span class="n">Fss</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Fc</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sign</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Fs</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">Fc</span><span class="p">)</span> <span class="o">*</span> \
+              <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">exp_input_clipped</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sign</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">sigma2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">v</span>
+        <span class="k">return</span> <span class="n">Fss</span></div>
+</div>
+
+<div class="viewcode-block" id="Dahl">
+<a class="viewcode-back" href="../dynamapp.viscoelastic.html#viscoelastic.Dahl">[docs]</a>
+<span class="k">class</span> <span class="nc">Dahl</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Dahl friction Model class base definition.</span>
+<span class="sd">    The friction force is a hysteresis function, without memory of the x</span>
+<span class="sd">    Args:</span>
+<span class="sd">        - sigma0: Constant coefficient</span>
+<span class="sd">        - Fs    : Stribeck force coefficient</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sigma0</span><span class="p">,</span> <span class="n">Fs</span><span class="p">,</span> <span class="n">time_step</span><span class="o">=</span><span class="mf">0.001</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">assert</span> <span class="n">sigma0</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">sigma0</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">,</span> \
+            <span class="s2">&quot;Viscoelastic Engine: coefficient sigma must be non-null float.&quot;</span>
+        <span class="k">assert</span> <span class="n">Fs</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">Fs</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">,</span> \
+            <span class="s2">&quot;Viscoelastic Engine: coefficient Fs must be non-null float.&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sigma0</span>    <span class="o">=</span> <span class="n">sigma0</span> 
+        <span class="bp">self</span><span class="o">.</span><span class="n">Fs</span>        <span class="o">=</span> <span class="n">Fs</span>     
+        <span class="bp">self</span><span class="o">.</span><span class="n">time_step</span> <span class="o">=</span> <span class="n">time_step</span> 
+
+<div class="viewcode-block" id="Dahl.computeFrictionForce">
+<a class="viewcode-back" href="../dynamapp.viscoelastic.html#viscoelastic.Dahl.computeFrictionForce">[docs]</a>
+    <span class="k">def</span> <span class="nf">computeFrictionForce</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">velocity</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Compute the friction force based on the Dahl model.</span>
+<span class="sd">        </span>
+<span class="sd">        Args:</span>
+<span class="sd">            - velocity (np.ndarray): velocity values.</span>
+<span class="sd">            </span>
+<span class="sd">        Returns:</span>
+<span class="sd">            np.ndarray: computed friction forces.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">time_span</span> <span class="o">=</span> <span class="p">(</span><span class="n">velocity</span><span class="o">.</span><span class="n">size</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">time_step</span>
+        <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">time_span</span><span class="p">,</span> <span class="n">velocity</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+        <span class="n">F</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">velocity</span><span class="p">)</span>
+        <span class="n">dFdt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">F</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">velocity</span><span class="o">.</span><span class="n">size</span><span class="p">):</span>
+            <span class="n">dFdt</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dahl</span><span class="p">(</span><span class="n">F</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span><span class="n">velocity</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+            <span class="n">F</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">dFdt</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">time_step</span> <span class="o">+</span> <span class="n">F</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">F</span></div>
+
+    
+<div class="viewcode-block" id="Dahl.dahl">
+<a class="viewcode-back" href="../dynamapp.viscoelastic.html#viscoelastic.Dahl.dahl">[docs]</a>
+    <span class="k">def</span> <span class="nf">dahl</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">F</span><span class="p">,</span><span class="n">v</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">v</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">dFdt</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">Fs</span> <span class="o">!=</span> <span class="mi">0</span> <span class="p">:</span> 
+                <span class="n">dFdt</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sigma0</span> <span class="o">/</span><span class="n">v</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">dFdt</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sigma0</span> <span class="o">/</span><span class="n">v</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span> <span class="n">F</span><span class="o">/</span><span class="bp">self</span><span class="o">.</span><span class="n">Fs</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sign</span><span class="p">(</span><span class="n">v</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">dFdt</span></div>
+</div>
+
+<div class="viewcode-block" id="Maxwell">
+<a class="viewcode-back" href="../dynamapp.viscoelastic.html#viscoelastic.Maxwell">[docs]</a>
+<span class="k">class</span> <span class="nc">Maxwell</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Maxwell-Voight contact model class.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        sigma0 (float): Initial stress value.</span>
+<span class="sd">        eta (float): Viscosity parameter.</span>
+<span class="sd">        E (float): Elastic modulus.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sigma0</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">eta</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">E</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Initialize the Maxwell-Voight model parameters.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sigma0</span> <span class="o">=</span> <span class="n">sigma0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">eta</span> <span class="o">=</span> <span class="n">eta</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">E</span> <span class="o">=</span> <span class="n">E</span>
+
+<div class="viewcode-block" id="Maxwell.stress">
+<a class="viewcode-back" href="../dynamapp.viscoelastic.html#viscoelastic.Maxwell.stress">[docs]</a>
+    <span class="k">def</span> <span class="nf">stress</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">strain</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">strain_rate</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Calculate the stress based on strain and strain rate using the Maxwell-Voight model.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            strain (np.ndarray): Strain values.</span>
+<span class="sd">            strain_rate (np.ndarray): Strain rate values.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            np.ndarray: Calculated stress values.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">sigma0</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">E</span> <span class="o">*</span> <span class="n">strain</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">eta</span> <span class="o">*</span> <span class="n">strain_rate</span></div>
+
+
+<div class="viewcode-block" id="Maxwell.simulate">
+<a class="viewcode-back" href="../dynamapp.viscoelastic.html#viscoelastic.Maxwell.simulate">[docs]</a>
+    <span class="k">def</span> <span class="nf">simulate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">strain</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Simulate the stress response over time for a given strain history.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            time (np.ndarray): Time values.</span>
+<span class="sd">            strain (np.ndarray): Strain values over time.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            np.ndarray: Stress values over time.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">strain_rate</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">gradient</span><span class="p">(</span><span class="n">strain</span><span class="p">,</span> <span class="n">time</span><span class="p">)</span>
+        <span class="n">stress</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">stress</span><span class="p">(</span><span class="n">strain</span><span class="p">,</span> <span class="n">strain_rate</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">stress</span></div>
+</div>
+
+
+<div class="viewcode-block" id="MaxwellSlip">
+<a class="viewcode-back" href="../dynamapp.viscoelastic.html#viscoelastic.MaxwellSlip">[docs]</a>
+<span class="k">class</span> <span class="nc">MaxwellSlip</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    MaxwellSlip - Compute Maxwell Slip Friction Model.</span>
+
+<span class="sd">    Inputs:</span>
+<span class="sd">      n           - Number of Maxwell elements.</span>
+<span class="sd">      velocity    - Velocity (m/s)</span>
+<span class="sd">      k           - Stiffness of Maxwell elements (N/m)</span>
+<span class="sd">      c           - Damping coefficients of Maxwell elements (Ns/m)</span>
+<span class="sd">      sigma0      - Static friction force (N)</span>
+<span class="sd">      samplingRate- Sampling rate (Hz)</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">      t           - Simulation time vector.</span>
+<span class="sd">      F           - Friction Force for the given velocity</span>
+<span class="sd">    Note:</span>
+<span class="sd">    </span>
+<span class="sd">    Ref:</span>
+<span class="sd">      Fundamentals Of Friction Modeling - Farid Al-Bender - 2010.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">velocity</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">sigma0</span><span class="p">,</span> <span class="n">samplingRate</span><span class="o">=</span><span class="mi">1000</span><span class="p">):</span>
+      <span class="k">assert</span> <span class="n">samplingRate</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">,</span><span class="s2">&quot;Sampling frequency should not be null.&quot;</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">n</span> <span class="o">=</span> <span class="n">n</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">velocity</span> <span class="o">=</span> <span class="n">velocity</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">k</span> <span class="o">=</span> <span class="n">k</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">c</span> <span class="o">=</span> <span class="n">c</span>
+      <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">k</span><span class="p">)</span> <span class="o">==</span> <span class="n">n</span><span class="p">,</span>\
+        <span class="s2">&quot;Length of stiffness coefficients (k) should be equal to the number of Maxwell elements.&quot;</span>
+      <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">c</span><span class="p">)</span> <span class="o">==</span> <span class="n">n</span><span class="p">,</span>\
+        <span class="s2">&quot;Length of damping coefficients (c) should be equal to the number of Maxwell elements.&quot;</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">sigma0</span> <span class="o">=</span> <span class="n">sigma0</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">samplingRate</span> <span class="o">=</span> <span class="n">samplingRate</span>
+      
+<div class="viewcode-block" id="MaxwellSlip.maxwell">
+<a class="viewcode-back" href="../dynamapp.viscoelastic.html#viscoelastic.MaxwellSlip.maxwell">[docs]</a>
+    <span class="k">def</span> <span class="nf">maxwell</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
+        <span class="n">dydt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">n</span><span class="p">)</span>   
+        <span class="n">F</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">n</span><span class="p">:]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n</span><span class="p">):</span>
+            <span class="n">dxdt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">velocity</span><span class="p">)</span> <span class="o">-</span> <span class="n">F</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">c</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+            <span class="n">dFdt</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">k</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">dxdt</span>
+            <span class="n">dydt</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">dxdt</span>
+            <span class="n">dydt</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">n</span> <span class="o">+</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">dFdt</span>
+        <span class="n">F_total</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">F</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">F_total</span><span class="p">)</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">sigma0</span><span class="p">:</span>
+            <span class="n">dydt</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">n</span><span class="p">:]</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">return</span> <span class="n">dydt</span></div>
+
+
+<div class="viewcode-block" id="MaxwellSlip.computeFrictionForce">
+<a class="viewcode-back" href="../dynamapp.viscoelastic.html#viscoelastic.MaxwellSlip.computeFrictionForce">[docs]</a>
+    <span class="k">def</span> <span class="nf">computeFrictionForce</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">timeSpan</span> <span class="o">=</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">velocity</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">samplingRate</span>
+        <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">timeSpan</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">velocity</span><span class="p">))</span>
+        <span class="n">initial_conditions</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">n</span><span class="p">)</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">odeint</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">maxwell</span><span class="p">,</span> <span class="n">initial_conditions</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
+        <span class="n">F</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">y</span><span class="p">[:,</span> <span class="bp">self</span><span class="o">.</span><span class="n">n</span><span class="p">:],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">F</span></div>
+
+
+<div class="viewcode-block" id="MaxwellSlip.compute_friction_torques">
+<a class="viewcode-back" href="../dynamapp.viscoelastic.html#viscoelastic.MaxwellSlip.compute_friction_torques">[docs]</a>
+    <span class="k">def</span> <span class="nf">compute_friction_torques</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">qp</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">q</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Estimates the friction torque vector in robot joints given a </span>
+<span class="sd">        constant joint velocity vector.</span>
+<span class="sd"> </span>
+<span class="sd">        Args:</span>
+<span class="sd">            - qp       : Joints velocity vector  ( numSamples  * ndof )</span>
+<span class="sd">            - q        : Joints position vector  ( numSamples * ndof )</span>
+<span class="sd">            - tspan    : Simulation time duration (seconds)</span>
+<span class="sd">            - sampling : Sampling frequency        (Hz)</span>
+<span class="sd">            </span>
+<span class="sd">        Returns:</span>
+<span class="sd">            tau_f      : Joints friction torques   ( numSamples * ndof )</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">sampling</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;simulation&#39;</span><span class="p">][</span><span class="s1">&#39;sampling_frequency&#39;</span><span class="p">]</span>
+        <span class="n">frictionModel</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;robot_params&#39;</span><span class="p">][</span><span class="s1">&#39;friction&#39;</span><span class="p">]</span> 
+        
+        <span class="n">NSamples</span><span class="p">,</span> <span class="n">ndof</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">qp</span><span class="p">)</span>
+        <span class="n">tspan</span> <span class="o">=</span> <span class="p">(</span> <span class="n">NSamples</span> <span class="o">-</span><span class="mi">1</span> <span class="p">)</span><span class="o">/</span><span class="n">sampling</span>
+        <span class="n">tau_f</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">qp</span><span class="p">)</span>
+    
+        <span class="k">assert</span> <span class="n">ndof</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">nq</span><span class="p">,</span><span class="s1">&#39;Joints velocity data input msiamtch with model degree of freedom&#39;</span>
+                
+        <span class="k">if</span> <span class="n">frictionModel</span> <span class="o">==</span> <span class="s1">&#39;lugre&#39;</span><span class="p">:</span>
+            <span class="n">Fc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;friction_params&#39;</span><span class="p">][</span><span class="s1">&#39;lugre&#39;</span><span class="p">][</span><span class="s1">&#39;Fc&#39;</span><span class="p">]</span>
+            <span class="n">Fs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;friction_params&#39;</span><span class="p">][</span><span class="s1">&#39;lugre&#39;</span><span class="p">][</span><span class="s1">&#39;Fs&#39;</span><span class="p">]</span>
+            <span class="n">sigma0</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;friction_params&#39;</span><span class="p">][</span><span class="s1">&#39;lugre&#39;</span><span class="p">][</span><span class="s1">&#39;sigma0&#39;</span><span class="p">]</span>
+            <span class="n">sigma1</span><span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;friction_params&#39;</span><span class="p">][</span><span class="s1">&#39;lugre&#39;</span><span class="p">][</span><span class="s1">&#39;sigma1&#39;</span><span class="p">]</span>
+            <span class="n">sigma2</span><span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;friction_params&#39;</span><span class="p">][</span><span class="s1">&#39;lugre&#39;</span><span class="p">][</span><span class="s1">&#39;sigma2&#39;</span><span class="p">]</span>
+            <span class="n">qp_m</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">qp</span><span class="p">)</span>
+            <span class="n">window_size</span> <span class="o">=</span> <span class="mi">10</span>
+            <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ndof</span><span class="p">):</span>
+                <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">qp</span><span class="p">),</span> <span class="n">window_size</span><span class="p">):</span>
+                    <span class="n">model</span> <span class="o">=</span> <span class="n">LuGre</span><span class="p">(</span><span class="n">Fc</span><span class="p">[</span><span class="n">k</span><span class="p">],</span> <span class="n">Fs</span><span class="p">[</span><span class="n">k</span><span class="p">],</span> <span class="n">qp</span><span class="p">[</span><span class="n">t</span><span class="p">,</span><span class="n">k</span><span class="p">],</span><span class="n">sigma0</span><span class="p">[</span><span class="n">k</span><span class="p">],</span> <span class="n">sigma1</span><span class="p">[</span><span class="n">k</span><span class="p">],</span> <span class="n">sigma2</span><span class="p">[</span><span class="n">k</span><span class="p">],</span>\
+                        <span class="n">t</span><span class="p">,</span><span class="n">t</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">window_size</span><span class="p">),</span><span class="nb">max</span><span class="p">(</span><span class="n">t</span><span class="o">-</span><span class="n">window_size</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span>
+                    <span class="n">F</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">computeFrictionForce</span><span class="p">()</span> 
+                    <span class="n">tau_f</span><span class="p">[</span><span class="n">t</span><span class="p">:</span><span class="nb">min</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">qp</span><span class="p">),</span><span class="n">t</span><span class="o">+</span><span class="n">window_size</span><span class="p">),</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">F</span><span class="p">)</span>
+                    
+                
+        <span class="k">elif</span> <span class="n">frictionModel</span> <span class="o">==</span> <span class="s1">&#39;maxwellSlip&#39;</span><span class="p">:</span>
+  
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">q</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])):</span> 
+                <span class="n">n</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;friction_params&#39;</span><span class="p">][</span><span class="s1">&#39;maxwellSlip&#39;</span><span class="p">][</span><span class="s1">&#39;n&#39;</span><span class="p">]</span>
+                <span class="n">k</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;friction_params&#39;</span><span class="p">][</span><span class="s1">&#39;maxwellSlip&#39;</span><span class="p">][</span><span class="s1">&#39;k&#39;</span><span class="p">]</span>
+                <span class="n">c</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;friction_params&#39;</span><span class="p">][</span><span class="s1">&#39;maxwellSlip&#39;</span><span class="p">][</span><span class="s1">&#39;c&#39;</span><span class="p">]</span>
+                <span class="n">sigma0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;friction_params&#39;</span><span class="p">][</span><span class="s1">&#39;maxwellSlip&#39;</span><span class="p">][</span><span class="s1">&#39;sigma0&#39;</span><span class="p">])</span>
+                <span class="n">model</span> <span class="o">=</span> <span class="n">MaxwellSlip</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">q</span><span class="p">[:,</span><span class="n">j</span><span class="p">],</span> <span class="n">k</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">sigma0</span><span class="p">[</span><span class="n">j</span><span class="p">],</span><span class="n">sampling</span><span class="p">)</span>
+                <span class="n">tau_f</span><span class="p">[:,</span><span class="n">j</span><span class="p">]</span><span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">computeFrictionForce</span><span class="p">()</span>
+                
+        <span class="k">elif</span> <span class="n">frictionModel</span> <span class="o">==</span> <span class="s1">&#39;dahl&#39;</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ndof</span><span class="p">):</span>
+                <span class="n">sigma0</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;friction_params&#39;</span><span class="p">][</span><span class="s1">&#39;dahl&#39;</span><span class="p">][</span><span class="s1">&#39;sigma0&#39;</span><span class="p">]</span>
+                <span class="n">Fs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;friction_params&#39;</span><span class="p">][</span><span class="s1">&#39;dahl&#39;</span><span class="p">][</span><span class="s1">&#39;Fs&#39;</span><span class="p">]</span>
+                <span class="n">model</span> <span class="o">=</span> <span class="n">Dahl</span><span class="p">(</span><span class="n">sigma0</span><span class="p">[</span><span class="n">k</span><span class="p">],</span> <span class="n">Fs</span><span class="p">[</span><span class="n">k</span><span class="p">])</span>
+                <span class="n">tau_f</span><span class="p">[:,</span><span class="n">k</span><span class="p">]</span>  <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">computeFrictionForce</span><span class="p">(</span><span class="n">qp</span><span class="p">[:,</span><span class="n">k</span><span class="p">])</span>
+                
+        <span class="k">elif</span> <span class="n">frictionModel</span> <span class="o">==</span> <span class="s1">&#39;viscous&#39;</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ndof</span><span class="p">):</span>
+                <span class="n">Fc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;friction_params&#39;</span><span class="p">][</span><span class="s1">&#39;viscous&#39;</span><span class="p">][</span><span class="s1">&#39;Fc&#39;</span><span class="p">]</span>
+                <span class="n">Fs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;friction_params&#39;</span><span class="p">][</span><span class="s1">&#39;viscous&#39;</span><span class="p">][</span><span class="s1">&#39;Fs&#39;</span><span class="p">]</span>
+                <span class="n">tau_f</span><span class="p">[:,</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">computeViscousFrictionForce</span><span class="p">(</span><span class="n">qp</span><span class="p">[:,</span><span class="n">k</span><span class="p">],</span><span class="n">Fc</span><span class="p">[</span><span class="n">k</span><span class="p">],</span><span class="n">Fs</span><span class="p">[</span><span class="n">k</span><span class="p">])</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Friction Model Not Supported Yet!&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">tau_f</span> </div>
+</div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Wissem CHIHA.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

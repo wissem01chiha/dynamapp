@@ -16,7 +16,6 @@ The project aims to explore subspace identification methods for manipulators. Gi
 
 Table of Contents
 ---
-
 - [DynaMapp](#dynamapp)
   - [Table of Contents](#table-of-contents)
   - [Prerequisites](#prerequisites)
@@ -213,11 +212,11 @@ Documentation
 We use [Sphinx](https://www.sphinx-doc.org/en/master/) to generate the software documentation. Assuming that Sphinx is installed, you can generate and build the documentation using the following steps:
 
 
-to generate and build the documentation:
+to generate and build the documentation, run from the root of the project: 
 
 ```shell
-sphinx-apidoc -o docs/source/ pyDynaMapp/
-sphinx-build -b html . docs/build/html
+sphinx-build -b html docs/source docs/build/html
+
 ```
 
 The official documentation is hosted on this [link](https://wissem01chiha.github.io/dynamic-identification/).
