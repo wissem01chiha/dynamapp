@@ -1,3 +1,7 @@
+"""
+NNFourSID Module
+====================
+"""
 from typing import List, Tuple
 
 import matplotlib.pyplot as plt

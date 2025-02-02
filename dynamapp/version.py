@@ -1,7 +1,6 @@
 """
-Version Information
--------------------
-This file defines the version informations of the package.
+Version Module
+====================
 """
 _MAJOR = "0"
 _MINOR = "1"

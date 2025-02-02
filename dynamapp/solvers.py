@@ -1,18 +1,16 @@
 """
 Solvers Module
-===============
-solve general control problems such as LQR, LQG, etc,
-for the system dynamics.
-solve non linear optimisation functions for the system.
+====================
 """
 import numpy as np 
-import jaxlib as jx
+import jax 
 from scipy.linalg import solve_discrete_are
 from scipy.signal import place_poles
 
 def solve_riccati_equation(A, B, Q, R):
     """
     Solve the discrete time algebric riccati equation given by :
+    ..::math:
     
     Args: 
         - A, B  : System Matrices 
@@ -38,6 +36,7 @@ def solve_discrete_state_depend_are(A, B, Q, R):
     Ref:
     
     """
+    P =1
     return P
 
 def luenberger_observer(A, B, C, desired_poles):

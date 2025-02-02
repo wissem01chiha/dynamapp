@@ -1,8 +1,14 @@
-import numpy as np 
-import matplotlib.pyplot as plt
+"""
+MOESP Module
+====================
+"""
+import jax
+import jax.numpy as jnp
+from .state_space import *
 
 class MOESP:
-    """ 
+    r""" 
+    Perform subspace identification using MOESP
     
     """
     def __init__(self) -> None:

@@ -1,3 +1,7 @@
+"""
+Model Module
+====================
+"""
 import logging
 import jax
 from jax import jit

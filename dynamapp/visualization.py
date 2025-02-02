@@ -1,7 +1,6 @@
 """
 Visualization Module
 ====================
-Provides visualization utilities.
 """
 import os
 import logging
