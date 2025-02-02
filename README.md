@@ -2,7 +2,8 @@ DynaMapp
 ======  
 
 DynaMapp is a Python software package designed for the modeling, identification, and calibration of dynamic models of serial robotic manipulators.  
-
+[![PyLint](https://github.com/wissem01chiha/dynamapp/actions/workflows/pylint.yml/badge.svg)](https://github.com/wissem01chiha/dynamapp/actions/workflows/pylint.yml)
+[![Deploy static content to Pages](https://github.com/wissem01chiha/dynamapp/actions/workflows/static.yml/badge.svg)](https://github.com/wissem01chiha/dynamapp/actions/workflows/static.yml)
 [![Version](https://anaconda.org/chiha/pydynamapp/badges/version.svg)](https://anaconda.org/chiha/pydynamapp)
 [![Release Date](https://anaconda.org/chiha/pydynamapp/badges/latest_release_date.svg)](https://anaconda.org/chiha/pydynamapp)
 [![Platforms](https://anaconda.org/chiha/pydynamapp/badges/platforms.svg)](https://anaconda.org/chiha/pydynamapp)

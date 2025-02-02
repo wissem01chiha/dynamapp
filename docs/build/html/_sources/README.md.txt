@@ -242,4 +242,4 @@ If you have any questions or need assistance, feel free to reach out via [email]
 License
 ----
 This project is currently licensed under the **CC0 1.0 Universal License**.  
-For more details, see the [LICENSE](LICENSE.txt) file. 
+For more details, see the [LICENSE](/LICENSE) file. 

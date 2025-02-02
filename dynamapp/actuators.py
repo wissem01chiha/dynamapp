@@ -1,11 +1,3 @@
-"""
-Actuators  Module
-=====================
-Provides
-    1- Transmission Drive Models for System Joint Actuators
-    2- Actuators Motors general models
-
-"""
 import numpy as np
 from scipy.integrate import odeint
 

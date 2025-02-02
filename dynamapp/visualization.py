@@ -1,7 +1,3 @@
-"""
-Visualization Module
-====================
-"""
 import os
 import logging
 import numpy as np

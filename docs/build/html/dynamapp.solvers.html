@@ -21,7 +21,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="state_space module" href="dynamapp.state_space.html" />
+    <link rel="next" title="reductions module" href="dynamapp.reductions.html" />
     <link rel="prev" title="data_utils module" href="dynamapp.data_utils.html" /> 
 </head>
 
@@ -55,29 +55,31 @@
 <li class="toctree-l1"><a class="reference internal" href="REFERENCES.html">References</a></li>
 <li class="toctree-l1"><a class="reference internal" href="CHANGELOG.html">Changelog</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Modules</span></p>
+<p class="caption" role="heading"><span class="caption-text">Packages documentation</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="modules.html">dynamapp</a><ul class="current">
-<li class="toctree-l2 current"><a class="reference internal" href="dynamapp.html">dynamapp package</a><ul class="current">
-<li class="toctree-l3 current"><a class="reference internal" href="dynamapp.html#submodules">Submodules</a><ul class="current">
-<li class="toctree-l4"><a class="reference internal" href="dynamapp.identification.html">identification module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="dynamapp.harmonic_drive.html">harmonic_drive module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="dynamapp.kalman.html">kalman module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="dynamapp.math_utils.html">math_utils module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="dynamapp.moesp.html">moesp module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="dynamapp.nfoursid.html">nfoursid module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="dynamapp.regressors.html">regressors module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="dynamapp.model.html">model module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="dynamapp.data_utils.html">data_utils module</a></li>
-<li class="toctree-l4 current"><a class="current reference internal" href="#">solvers module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="dynamapp.state_space.html">state_space module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="dynamapp.model_state.html">model_state module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="dynamapp.trajectory.html">trajectory module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="dynamapp.utils.html">utils module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="dynamapp.viscoelastic.html">viscoelastic module</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="dynamapp.html">dynamapp</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="dynamapp.html#submodules">Submodules</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="dynamapp.kalman.html">kalman module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamapp.math_utils.html">math_utils module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamapp.moesp.html">moesp module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamapp.nfoursid.html">nfoursid module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamapp.regressors.html">regressors module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamapp.model.html">model module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamapp.actuators.html">actuators module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamapp.data_utils.html">data_utils module</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">solvers module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#dynamapp.solvers.solve_riccati_equation"><code class="docutils literal notranslate"><span class="pre">solve_riccati_equation()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dynamapp.solvers.solve_discrete_state_depend_are"><code class="docutils literal notranslate"><span class="pre">solve_discrete_state_depend_are()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dynamapp.solvers.luenberger_observer"><code class="docutils literal notranslate"><span class="pre">luenberger_observer()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="dynamapp.html#module-contents">Module contents</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamapp.reductions.html">reductions module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamapp.state_space.html">state_space module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamapp.model_state.html">model_state module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamapp.trajectory.html">trajectory module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamapp.utils.html">utils module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamapp.viscoelastic.html">viscoelastic module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamapp.identification.html">identification module</a></li>
 </ul>
 </li>
 </ul>
@@ -103,8 +105,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="modules.html">dynamapp</a></li>
-          <li class="breadcrumb-item"><a href="dynamapp.html">dynamapp package</a></li>
+          <li class="breadcrumb-item"><a href="dynamapp.html">dynamapp</a></li>
       <li class="breadcrumb-item active">solvers module</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/dynamapp.solvers.rst.txt" rel="nofollow"> View page source</a>
@@ -115,8 +116,70 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="solvers-module">
-<h1>solvers module<a class="headerlink" href="#solvers-module" title="Link to this heading"></a></h1>
+  <section id="module-dynamapp.solvers">
+<span id="solvers-module"></span><h1>solvers module<a class="headerlink" href="#module-dynamapp.solvers" title="Link to this heading"></a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="dynamapp.solvers.solve_riccati_equation">
+<span class="sig-prename descclassname"><span class="pre">dynamapp.solvers.</span></span><span class="sig-name descname"><span class="pre">solve_riccati_equation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">A</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">B</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Q</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">R</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dynamapp/solvers.html#solve_riccati_equation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dynamapp.solvers.solve_riccati_equation" title="Link to this definition"></a></dt>
+<dd><p>Solve the discrete time algebric riccati equation given by :
+..::math:</p>
+<dl class="simple">
+<dt>Args: </dt><dd><ul class="simple">
+<li><p>A, B  : System Matrices</p></li>
+</ul>
+</dd>
+<dt>Returns:</dt><dd><ul class="simple">
+<li><p>P ARE solution.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="dynamapp.solvers.solve_discrete_state_depend_are">
+<span class="sig-prename descclassname"><span class="pre">dynamapp.solvers.</span></span><span class="sig-name descname"><span class="pre">solve_discrete_state_depend_are</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">A</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">B</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Q</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">R</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dynamapp/solvers.html#solve_discrete_state_depend_are"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dynamapp.solvers.solve_discrete_state_depend_are" title="Link to this definition"></a></dt>
+<dd><p>Solve the discrete state depend Riccati equation given by:
+.. math:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">R</span><span class="o">^</span><span class="p">{</span><span class="n">T</span><span class="p">}</span><span class="n">A</span> <span class="o">=</span> <span class="n">Q</span>
+</pre></div>
+</div>
+<dl class="simple">
+<dt>Args:</dt><dd><ul class="simple">
+<li><p>A, B, Q, R</p></li>
+</ul>
+</dd>
+</dl>
+<p>Ref:</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="dynamapp.solvers.luenberger_observer">
+<span class="sig-prename descclassname"><span class="pre">dynamapp.solvers.</span></span><span class="sig-name descname"><span class="pre">luenberger_observer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">A</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">B</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">C</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">desired_poles</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dynamapp/solvers.html#luenberger_observer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dynamapp.solvers.luenberger_observer" title="Link to this definition"></a></dt>
+<dd><p>Computes the Luenberger Observer gain matrix L.
+The gain matrix L is computed by placing the poles of the observer at the desired_poles.
+it should be noted that the observer is given by the following equation:
+.. math:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>\<span class="n">dot</span><span class="p">{</span>\<span class="n">hat</span><span class="p">{</span><span class="n">x</span><span class="p">}}</span> <span class="o">=</span> <span class="n">A</span>\<span class="n">hat</span><span class="p">{</span><span class="n">x</span><span class="p">}</span> <span class="o">+</span> <span class="n">Bu</span> <span class="o">+</span> <span class="n">L</span><span class="p">(</span><span class="n">y</span> <span class="o">-</span> <span class="n">C</span>\<span class="n">hat</span><span class="p">{</span><span class="n">x</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>where:
+- A is the system matrix.
+- B is the input matrix.
+- C is the output matrix.
+- L is the observer gain matrix.
+Args:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span> <span class="n">System</span> <span class="n">matrix</span><span class="o">.</span>
+<span class="n">B</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span> <span class="n">Input</span> <span class="n">matrix</span><span class="o">.</span>
+<span class="n">C</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span> <span class="n">Output</span> <span class="n">matrix</span><span class="o">.</span>
+<span class="n">desired_poles</span> <span class="p">(</span><span class="nb">list</span><span class="p">):</span> <span class="n">Desired</span> <span class="n">poles</span> <span class="k">for</span> <span class="n">the</span> <span class="n">observer</span><span class="o">.</span>
+</pre></div>
+</div>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>L (np.ndarray): Observer gain matrix.</p>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
 
 
@@ -124,7 +187,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="dynamapp.data_utils.html" class="btn btn-neutral float-left" title="data_utils module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="dynamapp.state_space.html" class="btn btn-neutral float-right" title="state_space module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="dynamapp.reductions.html" class="btn btn-neutral float-right" title="reductions module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

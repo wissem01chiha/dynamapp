@@ -52,9 +52,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../REFERENCES.html">References</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../CHANGELOG.html">Changelog</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Modules</span></p>
+<p class="caption" role="heading"><span class="caption-text">Packages documentation</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../modules.html">dynamapp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dynamapp.html">dynamapp</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Development</span></p>
 <ul>
@@ -87,14 +87,10 @@
            <div itemprop="articleBody">
              
   <h1>Source code for model</h1><div class="highlight"><pre>
-<span></span><span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">logging</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">overload</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">pinocchio</span> <span class="k">as</span> <span class="nn">pin</span>
+<span></span><span class="kn">import</span> <span class="nn">logging</span>
 <span class="kn">import</span> <span class="nn">jax</span>
+<span class="kn">from</span> <span class="nn">jax</span> <span class="kn">import</span> <span class="n">jit</span>
 <span class="kn">import</span> <span class="nn">jax.numpy</span> <span class="k">as</span> <span class="nn">jnp</span>
-<span class="kn">from</span> <span class="nn">math_utils</span> <span class="kn">import</span> <span class="n">safe_condition_number</span>
 
 <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
 
@@ -102,118 +98,263 @@
 <a class="viewcode-back" href="../dynamapp.model.html#model.Model">[docs]</a>
 <span class="k">class</span> <span class="nc">Model</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Base class for multijoint models.</span>
+<span class="sd">    Base class definition for multijoint models.</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        - urdf_file_path (str): Manipulator description file path.</span>
-<span class="sd">        - model (Pinocchio.Model): Pinocchio multibody model of the system.</span>
-<span class="sd">        - params (dict): Model static parameters.</span>
-<span class="sd">        - data (Pinocchio.Data): Pinocchio multibody data model.</span>
+<span class="sd">        - dhparams : model DH parameters.</span>
+<span class="sd">        - Imats : links inertia tensors, list of JAX arrys</span>
 <span class="sd">        - q (np.ndarray): Joints position vector.</span>
 <span class="sd">        - v (np.ndarray): Joints velocity vector.</span>
 <span class="sd">        - a (np.ndarray): Joints acceleration vector.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">urdf_file_path</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">v</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="kc">None</span><span class="p">,)</span><span class="o">-&gt;</span><span class="kc">None</span><span class="p">:</span>
-        
-        <span class="k">if</span> <span class="n">urdf_file_path</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;description file path not set in configuration file.&quot;</span><span class="p">)</span>        
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">urdf_file_path</span><span class="p">):</span>
-            <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;description file does not exist at the provided path: </span><span class="si">{</span><span class="n">urdf_file_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">pin</span><span class="o">.</span><span class="n">buildModelFromUrdf</span><span class="p">(</span><span class="n">urdf_file_path</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span>  <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">createData</span><span class="p">()</span>
-        <span class="n">fext</span> <span class="o">=</span> <span class="n">pin</span><span class="o">.</span><span class="n">StdVec_Force</span><span class="p">()</span>
-        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">njoints</span><span class="p">):</span>
-            <span class="n">fext</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pin</span><span class="o">.</span><span class="n">Force</span><span class="o">.</span><span class="n">Zero</span><span class="p">())</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">q</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">nq</span><span class="p">)</span> <span class="k">if</span> <span class="n">q</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">q</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">nv</span><span class="p">)</span> <span class="k">if</span> <span class="n">v</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">v</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">nv</span><span class="p">)</span> <span class="k">if</span> <span class="n">a</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">a</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">fext</span> <span class="o">=</span> <span class="n">fext</span>
-  
-<div class="viewcode-block" id="Model.compute_mass_matrix">
-<a class="viewcode-back" href="../dynamapp.model.html#model.Model.compute_mass_matrix">[docs]</a>
-    <span class="k">def</span> <span class="nf">compute_mass_matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">scaling</span><span class="o">=</span><span class="mf">1e-4</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Compute the mass matrix of the system.</span>
-<span class="sd">        the matrix is computed by getting the inverse of it using pinncyoi </span>
+<span class="sd">        - dampings : joints damping coefficents list</span>
+<span class="sd">        - gravity : gravity vector applied to the system</span>
 <span class="sd">        </span>
-<span class="sd">        Args:</span>
-<span class="sd">            - q : Joints position vector.</span>
-<span class="sd">            - scaling : float used in scaling the mass matrix to prevent singulaty</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="n">q</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">q</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">q</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">q</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">q</span><span class="o">.</span><span class="n">size</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">nq</span><span class="p">:</span>
-                <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;configuation vector size should be equal to model varibles&quot;</span><span class="p">)</span>
-            <span class="k">elif</span> <span class="n">q</span><span class="o">.</span><span class="n">size</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">nq</span><span class="p">:</span>
-                <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Position input vector maximum size is&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">nq</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">q</span><span class="p">)</span><span class="o">.</span><span class="n">any</span><span class="p">()</span> <span class="ow">or</span> <span class="n">np</span><span class="o">.</span><span class="n">isinf</span><span class="p">(</span><span class="n">q</span><span class="p">)</span><span class="o">.</span><span class="n">any</span><span class="p">():</span>
-            <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;configuration array q has NAN or INF values.&quot;</span><span class="p">)</span>
-            <span class="n">q</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan_to_num</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">nan</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">posinf</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">neginf</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
-        <span class="n">M</span> <span class="o">=</span> <span class="n">pin</span><span class="o">.</span><span class="n">computeMinverse</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">q</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">M</span><span class="p">)</span><span class="o">.</span><span class="n">any</span><span class="p">()</span> <span class="ow">or</span> <span class="n">np</span><span class="o">.</span><span class="n">isinf</span><span class="p">(</span><span class="n">M</span><span class="p">)</span><span class="o">.</span><span class="n">any</span><span class="p">():</span>
-            <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;mass matrix contain NAN or INF values.&quot;</span><span class="p">)</span>
-            <span class="n">M</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan_to_num</span><span class="p">(</span><span class="n">M</span><span class="p">,</span> <span class="n">nan</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">posinf</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">neginf</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">safe_condition_number</span><span class="p">(</span><span class="n">M</span><span class="p">,</span><span class="mf">1e-5</span><span class="p">):</span>
-            <span class="n">M</span> <span class="o">=</span> <span class="n">M</span> <span class="o">+</span> <span class="n">scaling</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">M</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
-        <span class="k">return</span>  <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">M</span><span class="p">)</span> </div>
-
+<span class="sd">     Examples:</span>
+<span class="sd">        &gt;&gt;&gt; model = Model(Imats, dhparams, -9.80, dampings)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Imats</span><span class="p">:</span><span class="nb">list</span><span class="p">,</span> 
+                <span class="n">dhparams</span><span class="p">:</span><span class="nb">list</span><span class="p">,</span> 
+                <span class="n">gravity</span> <span class="o">=</span> <span class="o">-</span><span class="mf">9.81</span><span class="p">,</span> 
+                <span class="n">dampings</span><span class="p">:</span><span class="nb">list</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span><span class="o">-&gt;</span><span class="kc">None</span><span class="p">:</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">Imats</span> <span class="o">=</span> <span class="n">Imats</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dampings</span> <span class="o">=</span> <span class="n">dampings</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dhparams</span> <span class="o">=</span> <span class="n">dhparams</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">gravity</span> <span class="o">=</span> <span class="n">gravity</span>   
+        <span class="bp">self</span><span class="o">.</span><span class="n">ndof</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">Imats</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">q</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ndof</span><span class="p">)</span> 
+        <span class="bp">self</span><span class="o">.</span><span class="n">v</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ndof</span><span class="p">)</span> 
+        <span class="bp">self</span><span class="o">.</span><span class="n">a</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ndof</span><span class="p">)</span>
     
-    <span class="nd">@overload</span>
-    <span class="k">def</span> <span class="nf">compute_generalized_torques</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">qp</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">qpp</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">fext</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">_rnea</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">q</span><span class="p">:</span><span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> 
+            <span class="n">qp</span><span class="p">:</span><span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+            <span class="n">qpp</span><span class="p">:</span><span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="o">=</span><span class="kc">None</span>
+            <span class="p">)</span><span class="o">-&gt;</span><span class="nb">tuple</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Compute the genralized torques using the recursive netwon euler alogrithm.</span>
+<span class="sd">        Recursive Newton-Euler Algorithm (RNEA) implementation For the inverse Dynamic Model in JAX. </span>
 <span class="sd">         </span>
 <span class="sd">        Args:</span>
-<span class="sd">            - q    : Joints position vector. ( nq * 1 )</span>
-<span class="sd">            - qp   : Joints velocity vector. ( nq * 1 )</span>
-<span class="sd">            - qpp  : Joints acceleration vector. ( nq * 1 )</span>
-<span class="sd">            - fext : Joints external forces vector. ( nq * 1 )</span>
+<span class="sd">            - q : joints position vector</span>
+<span class="sd">            - qp : joints velocity vector</span>
+<span class="sd">            - qpp : joints acceleration vector</span>
+<span class="sd">        Retruns:</span>
+<span class="sd">            - c: coriolis terms and other forces potentially be applied to the system. </span>
+<span class="sd">            - v: velocity of each joint in world base coordinates.</span>
+<span class="sd">            - a: acceleration of each joint in world base coordinates.</span>
+<span class="sd">            - f: forces that joints must apply to produce trajectory</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">q</span> <span class="o">=</span> <span class="n">q</span> <span class="k">if</span> <span class="n">q</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">q</span>
-        <span class="n">qp</span> <span class="o">=</span> <span class="n">qp</span> <span class="k">if</span> <span class="n">qp</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">v</span>
-        <span class="n">qpp</span> <span class="o">=</span> <span class="n">qpp</span> <span class="k">if</span> <span class="n">qpp</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">v</span>
-        <span class="n">fext</span> <span class="o">=</span> <span class="n">fext</span> <span class="k">if</span> <span class="n">fext</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">fext</span>
-        <span class="k">try</span><span class="p">:</span>
-            <span class="n">tau</span> <span class="o">=</span> <span class="n">pin</span><span class="o">.</span><span class="n">rnea</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">q</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">fext</span><span class="p">)</span>
-        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-            <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s1">&#39;error occured when computing generalized torques.&#39;</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">tau</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">qp</span><span class="p">)</span>
+        <span class="n">v</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">6</span><span class="p">,</span><span class="n">n</span><span class="p">))</span>
+        <span class="n">a</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">6</span><span class="p">,</span><span class="n">n</span><span class="p">))</span>
+        <span class="n">f</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">6</span><span class="p">,</span><span class="n">n</span><span class="p">))</span>
+        <span class="n">c</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+        <span class="n">gravity_vec</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">6</span><span class="p">))</span>
+        <span class="n">gravity_vec</span> <span class="o">=</span> <span class="n">gravity_vec</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">gravity</span><span class="p">)</span>
+        <span class="n">parent_ids</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">n</span>
+        
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+            <span class="n">parent_i</span> <span class="o">=</span> <span class="n">parent_ids</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+            <span class="n">Xmat</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_transform</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">q</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+            <span class="n">S</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_screw</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+            
+            <span class="k">if</span> <span class="n">parent_i</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+                <span class="n">a</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">at</span><span class="p">[:,</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">jnp</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">Xmat</span><span class="p">,</span> <span class="n">gravity_vec</span><span class="p">))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">v</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">at</span><span class="p">[:,</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">jnp</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">Xmat</span><span class="p">,</span><span class="n">v</span><span class="p">[:,</span><span class="n">parent_i</span><span class="p">]))</span>
+                <span class="n">a</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">at</span><span class="p">[:,</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">jnp</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">Xmat</span><span class="p">,</span><span class="n">a</span><span class="p">[:,</span><span class="n">parent_i</span><span class="p">]))</span>
+                
+            <span class="k">if</span> <span class="n">qpp</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">v_</span> <span class="o">=</span> <span class="n">S</span><span class="o">*</span><span class="n">qpp</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> 
+                <span class="n">v_up</span> <span class="o">=</span> <span class="n">v</span><span class="p">[:,</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">v_</span>
+                <span class="n">v</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">at</span><span class="p">[:,</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">v_up</span><span class="p">)</span>
+               
+            <span class="n">a_up</span> <span class="o">=</span> <span class="n">a</span><span class="p">[:,</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mxS</span><span class="p">(</span><span class="n">S</span><span class="p">,</span> <span class="n">v</span><span class="p">[:,</span><span class="n">i</span><span class="p">],</span> <span class="n">qp</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>    
+            <span class="n">a</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">at</span><span class="p">[:,</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">a_up</span><span class="p">)</span> 
+            
+            <span class="k">if</span> <span class="n">qpp</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">a_upp</span> <span class="o">=</span> <span class="n">a</span><span class="p">[:,</span><span class="n">i</span><span class="p">]</span><span class="o">+</span> <span class="n">S</span><span class="o">*</span><span class="n">qpp</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+                <span class="n">a</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">at</span><span class="p">[:,</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">a_upp</span><span class="p">)</span>
+            <span class="n">f</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">at</span><span class="p">[:,</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">jnp</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Imats</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">a</span><span class="p">[:,</span><span class="n">i</span><span class="p">])</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_vxIv</span><span class="p">(</span><span class="n">v</span><span class="p">[:,</span><span class="n">i</span><span class="p">],</span><span class="bp">self</span><span class="o">.</span><span class="n">Imats</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+        
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+            <span class="n">S</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_screw</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+            <span class="n">c</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">jnp</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">jnp</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">S</span><span class="p">),</span> <span class="n">f</span><span class="p">[:,</span><span class="n">i</span><span class="p">]))</span>
+            <span class="n">parent_i</span> <span class="o">=</span> <span class="n">parent_ids</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">parent_i</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+                <span class="n">Xmat</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_transform</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">q</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+                <span class="n">temp</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">jnp</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">Xmat</span><span class="p">),</span><span class="n">f</span><span class="p">[:,</span><span class="n">i</span><span class="p">])</span>
+                <span class="n">f_up</span> <span class="o">=</span> <span class="n">f</span><span class="p">[:,</span><span class="n">parent_i</span><span class="p">]</span> <span class="o">+</span> <span class="n">temp</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+                <span class="n">f</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">at</span><span class="p">[:,</span><span class="n">parent_i</span><span class="p">]</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">f_up</span><span class="p">)</span>
 
-<div class="viewcode-block" id="Model.compute_corlolis_matrix">
-<a class="viewcode-back" href="../dynamapp.model.html#model.Model.compute_corlolis_matrix">[docs]</a>
-    <span class="k">def</span> <span class="nf">compute_corlolis_matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">qp</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">q</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">dampings</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+                <span class="n">c_up</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">dampings</span><span class="p">(</span><span class="n">k</span><span class="p">)</span> <span class="o">*</span> <span class="n">qp</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
+                <span class="n">c</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">c_up</span><span class="p">)</span> 
+        
+        <span class="k">return</span> <span class="n">c</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">f</span>
+    
+<div class="viewcode-block" id="Model.damping_tensor">
+<a class="viewcode-back" href="../dynamapp.model.html#model.Model.damping_tensor">[docs]</a>
+    <span class="k">def</span> <span class="nf">damping_tensor</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Compute the Coriolis matrix using automatic differentiation with JAX.</span>
+<span class="sd">        Get the diagonal velocity damping matrix of size (ndof, ndof).</span>
+<span class="sd">        </span>
+<span class="sd">        Returns:</span>
+<span class="sd">            jnp.ndarray: A diagonal matrix with damping values.</span>
+<span class="sd">                        If no damping values are given, returns a zero matrix.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">dampings</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dampings</span><span class="p">)</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">dampings</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">jnp</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dampings</span><span class="o">.</span><span class="n">length</span><span class="p">())</span>
+        
+        <span class="k">return</span> <span class="n">jnp</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">dampings</span><span class="p">)</span></div>
+
+    
+    
+    <span class="nd">@staticmethod</span> 
+    <span class="nd">@jit</span>
+    <span class="k">def</span> <span class="nf">_vxIv</span><span class="p">(</span><span class="n">vec</span><span class="p">:</span><span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">Imat</span><span class="p">:</span><span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Computes the cross-product of a spatial velocity vector with the </span>
+<span class="sd">        inertia matrix product (I * v).</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            vec: (6,) Spatial velocity vector.</span>
+<span class="sd">            Imat: (6,6) Inertia matrix.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            vecXIvec: (6,) Resultant vector after cross-product.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">temp</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">Imat</span><span class="p">,</span> <span class="n">vec</span><span class="p">)</span> 
+        <span class="n">vecXIvec</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+        <span class="n">vecXIvec</span> <span class="o">=</span> <span class="n">vecXIvec</span><span class="o">.</span><span class="n">at</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">jnp</span><span class="o">.</span><span class="n">cross</span><span class="p">(</span><span class="n">vec</span><span class="p">[:</span><span class="mi">3</span><span class="p">],</span> <span class="n">temp</span><span class="p">[:</span><span class="mi">3</span><span class="p">])</span> <span class="o">+</span> <span class="n">jnp</span><span class="o">.</span><span class="n">cross</span><span class="p">(</span><span class="n">vec</span><span class="p">[</span><span class="mi">3</span><span class="p">:],</span> <span class="n">temp</span><span class="p">[</span><span class="mi">3</span><span class="p">:]))</span>
+        <span class="n">vecXIvec</span> <span class="o">=</span> <span class="n">vecXIvec</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="mi">3</span><span class="p">:]</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">jnp</span><span class="o">.</span><span class="n">cross</span><span class="p">(</span><span class="n">vec</span><span class="p">[:</span><span class="mi">3</span><span class="p">],</span> <span class="n">temp</span><span class="p">[</span><span class="mi">3</span><span class="p">:]))</span>
+
+        <span class="k">return</span> <span class="n">vecXIvec</span>
+    
+    <span class="nd">@staticmethod</span>
+    <span class="nd">@jit</span>
+    <span class="k">def</span> <span class="nf">_mxS</span><span class="p">(</span><span class="n">S</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">vec</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">alpha</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Computes the motion cross-product operation based on the screw axis S.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            - S: (6,) Screw axis vector (indicating motion type).</span>
+<span class="sd">            - vec: (6,) Spatial vector.</span>
+<span class="sd">            - alpha: Scaling factor (default = 1.0).</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            - vecX: (6,) Resultant motion cross-product vector.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">vecX</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+
+        <span class="n">vecX</span> <span class="o">=</span> <span class="n">vecX</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">jnp</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">S</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="n">vec</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">jnp</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">S</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">,</span> <span class="n">vec</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">alpha</span><span class="p">,</span> <span class="mi">0</span><span class="p">)))</span>
+        <span class="n">vecX</span> <span class="o">=</span> <span class="n">vecX</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">jnp</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">S</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">,</span> <span class="n">vec</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">jnp</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">S</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="n">vec</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">alpha</span><span class="p">,</span> <span class="mi">0</span><span class="p">)))</span>
+        <span class="n">vecX</span> <span class="o">=</span> <span class="n">vecX</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">jnp</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">S</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="n">vec</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">jnp</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">S</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">,</span> <span class="n">vec</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">alpha</span><span class="p">,</span> <span class="mi">0</span><span class="p">)))</span>
+
+        <span class="n">vecX</span> <span class="o">=</span> <span class="n">vecX</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">jnp</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">S</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="n">vec</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">*</span> <span class="n">alpha</span><span class="p">,</span> 
+                            <span class="n">jnp</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">S</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">,</span> <span class="n">vec</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">*</span> <span class="n">alpha</span><span class="p">,</span> 
+                            <span class="n">jnp</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">S</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="n">vec</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="n">alpha</span><span class="p">,</span> 
+                            <span class="n">jnp</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">S</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">,</span> <span class="n">vec</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">alpha</span><span class="p">,</span> <span class="mi">0</span><span class="p">)))))</span>
+        
+        <span class="n">vecX</span> <span class="o">=</span> <span class="n">vecX</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">jnp</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">S</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">,</span> <span class="n">vec</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">*</span> <span class="n">alpha</span><span class="p">,</span> 
+                            <span class="n">jnp</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">S</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="n">vec</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">*</span> <span class="n">alpha</span><span class="p">,</span> 
+                            <span class="n">jnp</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">S</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">,</span> <span class="n">vec</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="n">alpha</span><span class="p">,</span> 
+                            <span class="n">jnp</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">S</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="n">vec</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">alpha</span><span class="p">,</span> <span class="mi">0</span><span class="p">)))))</span>
+
+        <span class="n">vecX</span> <span class="o">=</span> <span class="n">vecX</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">jnp</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">S</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="n">vec</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">*</span> <span class="n">alpha</span><span class="p">,</span> 
+                            <span class="n">jnp</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">S</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">,</span> <span class="n">vec</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">*</span> <span class="n">alpha</span><span class="p">,</span> 
+                            <span class="n">jnp</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">S</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="n">vec</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">alpha</span><span class="p">,</span> 
+                            <span class="n">jnp</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">S</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">,</span> <span class="n">vec</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">alpha</span><span class="p">,</span> <span class="mi">0</span><span class="p">)))))</span>
+
+        <span class="k">return</span> <span class="n">vecX</span>
+    
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_screw</span><span class="p">(</span><span class="n">i</span><span class="p">:</span><span class="nb">int</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieves the screw axis S for joint i.&quot;&quot;&quot;</span>
+        <span class="n">axes</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="mi">0</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]),</span>  
+            <span class="mi">1</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]),</span>  
+            <span class="mi">2</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]),</span>  
+            <span class="mi">3</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]),</span>   
+            <span class="mi">4</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]),</span>  
+            <span class="mi">5</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]),</span> 
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="n">axes</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">jnp</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">6</span><span class="p">))</span>
+    
+    <span class="k">def</span> <span class="nf">_transform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">qi</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Computes the transformation matrix X for joint i at configuration q_i&quot;&quot;&quot;</span>
+        
+        <span class="n">theta</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dhparams</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="n">theta</span> <span class="o">+=</span> <span class="n">qi</span>
+        <span class="n">T</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+            <span class="p">[</span><span class="n">jnp</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">),</span> <span class="o">-</span><span class="n">jnp</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span> <span class="o">*</span> <span class="n">jnp</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">alpha</span><span class="p">),</span>  <span class="n">jnp</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span> <span class="o">*</span> <span class="n">jnp</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">alpha</span><span class="p">),</span> <span class="n">a</span> <span class="o">*</span> <span class="n">jnp</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">)],</span>
+            <span class="p">[</span><span class="n">jnp</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">),</span>  <span class="n">jnp</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span> <span class="o">*</span> <span class="n">jnp</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">alpha</span><span class="p">),</span> <span class="o">-</span><span class="n">jnp</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span> <span class="o">*</span> <span class="n">jnp</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">alpha</span><span class="p">),</span> <span class="n">a</span> <span class="o">*</span> <span class="n">jnp</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)],</span>
+            <span class="p">[</span><span class="mi">0</span><span class="p">,</span>              <span class="n">jnp</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">alpha</span><span class="p">),</span>                  <span class="n">jnp</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">alpha</span><span class="p">),</span>                  <span class="n">d</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">0</span><span class="p">,</span>              <span class="mi">0</span><span class="p">,</span>                               <span class="mi">0</span><span class="p">,</span>                               <span class="mi">1</span><span class="p">]</span>
+        <span class="p">])</span>
+        <span class="n">R</span> <span class="o">=</span> <span class="n">T</span><span class="p">[:</span><span class="mi">3</span><span class="p">,</span> <span class="p">:</span><span class="mi">3</span><span class="p">]</span>  
+        <span class="n">p</span> <span class="o">=</span> <span class="n">T</span><span class="p">[:</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+        <span class="n">p_hat</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+            <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="n">p</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span>
+            <span class="p">[</span><span class="n">p</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span>
+            <span class="p">[</span><span class="o">-</span><span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">0</span><span class="p">]</span>
+        <span class="p">])</span>
+        <span class="n">mat</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">block</span><span class="p">([</span>
+            <span class="p">[</span><span class="n">R</span><span class="p">,</span> <span class="n">jnp</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">))],</span>
+            <span class="p">[</span><span class="n">p_hat</span> <span class="o">@</span> <span class="n">R</span><span class="p">,</span> <span class="n">R</span><span class="p">]</span>
+        <span class="p">])</span> 
+        <span class="k">return</span> <span class="n">mat</span>
+    
+<div class="viewcode-block" id="Model.inertia_tensor">
+<a class="viewcode-back" href="../dynamapp.model.html#model.Model.inertia_tensor">[docs]</a>
+    <span class="k">def</span> <span class="nf">inertia_tensor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">q</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Computes the mass matrix M(q) using RNEA.</span>
 <span class="sd">        </span>
 <span class="sd">        Args:</span>
-<span class="sd">            - qp: Joints Velocity vector.</span>
-<span class="sd">            - q : Joints Position vector.</span>
-<span class="sd">        Returns: </span>
-<span class="sd">            - C : JAX numpy array (jnp.ndarray)     </span>
+<span class="sd">            q (jnp.ndarray): Joint positions (ndof,)</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            jnp.ndarray: Mass matrix (ndof, ndof)</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="n">q</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">q</span> <span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">q</span>
-        <span class="k">if</span> <span class="n">qp</span> <span class="ow">is</span>  <span class="kc">None</span><span class="p">:</span>
-            <span class="n">qp</span><span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">v</span>
-        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">qp</span><span class="p">)</span><span class="o">.</span><span class="n">any</span><span class="p">()</span> <span class="ow">or</span> <span class="n">np</span><span class="o">.</span><span class="n">isinf</span><span class="p">(</span><span class="n">qp</span><span class="p">)</span><span class="o">.</span><span class="n">any</span><span class="p">():</span>
-            <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;qp array contain NAN or INF values.&quot;</span><span class="p">)</span>
-            <span class="n">qp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan_to_num</span><span class="p">(</span><span class="n">qp</span><span class="p">,</span> <span class="n">nan</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">posinf</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">neginf</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
-        <span class="n">dM_dq</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">jacfwd</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">compute_mass_matrix</span><span class="p">)(</span><span class="n">q</span><span class="p">)</span> 
-        <span class="n">C</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">dM_dq</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">7</span><span class="p">):</span>
-            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">7</span><span class="p">):</span>
-                <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">7</span><span class="p">):</span>
-                    <span class="n">christoffel</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">dM_dq</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">k</span><span class="p">]</span> <span class="o">+</span> <span class="n">dM_dq</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">-</span> <span class="n">dM_dq</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">i</span><span class="p">])</span>
-                    <span class="n">C</span> <span class="o">=</span> <span class="n">C</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">christoffel</span> <span class="o">*</span> <span class="n">qp</span><span class="p">[</span><span class="n">k</span><span class="p">])</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
+        <span class="n">M</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">))</span>
+
+        <span class="k">def</span> <span class="nf">column_rnea</span><span class="p">(</span><span class="n">i</span><span class="p">):</span>
+            <span class="n">e_i</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span>   
+            <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">f</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rnea</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">jnp</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">),</span> <span class="n">e_i</span><span class="p">)</span>  
+            <span class="k">return</span> <span class="n">f</span>  
+
+        <span class="n">M</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">vmap</span><span class="p">(</span><span class="n">column_rnea</span><span class="p">)(</span><span class="n">jnp</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>  
+        
+        <span class="k">return</span> <span class="n">M</span></div>
+
+      
+<div class="viewcode-block" id="Model.coriolis_tensor">
+<a class="viewcode-back" href="../dynamapp.model.html#model.Model.coriolis_tensor">[docs]</a>
+    <span class="k">def</span> <span class="nf">coriolis_tensor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">qp</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Computes the Coriolis matrix C(q, qp) using automatic differentiation in JAX.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            q (jnp.ndarray): Joint positions (ndof,)</span>
+<span class="sd">            qp (jnp.ndarray): Joint velocities (ndof,)</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            jnp.ndarray: Coriolis matrix C(q, qp) of shape (ndof, ndof)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
+        
+        <span class="k">def</span> <span class="nf">rnea_coriolis</span><span class="p">(</span><span class="n">qp_var</span><span class="p">):</span>
+            <span class="n">c</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rnea</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">qp_var</span><span class="p">,</span> <span class="n">jnp</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>  
+            <span class="k">return</span> <span class="n">c</span>  
+        <span class="n">C</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">jacfwd</span><span class="p">(</span><span class="n">rnea_coriolis</span><span class="p">)(</span><span class="n">qp</span><span class="p">)</span>
+
         <span class="k">return</span> <span class="n">C</span></div>
 
     
-<div class="viewcode-block" id="Model.compute_gravity_torques">
-<a class="viewcode-back" href="../dynamapp.model.html#model.Model.compute_gravity_torques">[docs]</a>
-    <span class="k">def</span> <span class="nf">compute_gravity_torques</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="Model.gravity_torques">
+<a class="viewcode-back" href="../dynamapp.model.html#model.Model.gravity_torques">[docs]</a>
+    <span class="k">def</span> <span class="nf">gravity_torques</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">q</span><span class="p">:</span><span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot; </span>
 <span class="sd">        Computes the joints gravity torques given a configuration vector.</span>
 <span class="sd">        </span>
@@ -224,49 +365,38 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">q</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">q</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">q</span>
-        <span class="k">elif</span> <span class="n">q</span><span class="o">.</span><span class="n">dim</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
-            <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;q should be a 1D array&quot;</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">pin</span><span class="o">.</span><span class="n">computeGeneralizedGravity</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">q</span><span class="p">)</span></div>
+        <span class="n">qp</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
+        <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">f</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rnea</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">qp</span><span class="p">,</span> <span class="n">qpp</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+        <span class="n">tau_g</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">q</span><span class="p">)):</span>
+            <span class="n">S</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_screw</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+            <span class="n">tau_g</span> <span class="o">=</span> <span class="n">tau_g</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">jnp</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">jnp</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">S</span><span class="p">),</span> <span class="n">f</span><span class="p">[:,</span> <span class="n">i</span><span class="p">]))</span> 
+            
+        <span class="k">return</span> <span class="n">tau_g</span></div>
 
     
-<div class="viewcode-block" id="Model.compute_stiffness_torques">
-<a class="viewcode-back" href="../dynamapp.model.html#model.Model.compute_stiffness_torques">[docs]</a>
-    <span class="k">def</span> <span class="nf">compute_stiffness_torques</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">coeffs</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="Model.generalized_torques">
+<a class="viewcode-back" href="../dynamapp.model.html#model.Model.generalized_torques">[docs]</a>
+    <span class="k">def</span> <span class="nf">generalized_torques</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">qp</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">qpp</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Compute the torques resulting from joints torsional stiffness</span>
-
+<span class="sd">        Compute the genralized torques using the recursive netwon euler alogrithm.</span>
+<span class="sd">         </span>
 <span class="sd">        Args:</span>
-<span class="sd">            q (numpy.ndarray): Configuration vector.</span>
-<span class="sd">        Returns:</span>
-<span class="sd">            numpy.ndarray: Joints stiffness torques.</span>
+<span class="sd">            - q    : Joints position vector. ( nq * 1 )</span>
+<span class="sd">            - qp   : Joints velocity vector. ( nq * 1 )</span>
+<span class="sd">            - qpp  : Joints acceleration vector. ( nq * 1 )</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="n">q</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">q</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">q</span>
-        <span class="k">return</span> <span class="n">jnp</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="n">coeffs</span><span class="p">,</span> <span class="n">q</span><span class="p">)</span></div>
-
-    
-    <span class="nd">@overload</span>
-    <span class="k">def</span> <span class="nf">compute_generalized_torques</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">qp</span><span class="p">,</span> <span class="n">qpp</span><span class="p">,</span> <span class="n">fext</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Compute the joint torques given the trajectory data: position, velocity,</span>
-<span class="sd">        and accelerations with fext = 0 (no external forces) and no friction.</span>
-<span class="sd">        </span>
-<span class="sd">        Args:</span>
-<span class="sd">            q  - (numpy ndarray)  joint positions (NSamples, ndof)</span>
-<span class="sd">            qp - (numpy ndarray)  joint velocities (NSamples, ndof)</span>
-<span class="sd">            qpp - (numpy ndarray) joint accelerations (NSamples, ndof)</span>
-<span class="sd">            fext - (numpy ndarray) joints external angular torques applied (Nsamples * ndof)</span>
-<span class="sd">        Returns: </span>
-<span class="sd">            tau - numpy ndarray joint torques  (NSamples, ndof, 6)  (3D force + 3D torque)</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="n">fext</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">fext</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>   
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">fext</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">fext</span><span class="p">)</span>
-        <span class="k">assert</span> <span class="n">q</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="n">qp</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="n">qpp</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="n">fext</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="s2">&quot;input dimensions must match!&quot;</span>
-        <span class="n">compute_tau</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">vmap</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">compute_generalized_torques</span><span class="p">,</span> <span class="n">in_axes</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
-         
-        <span class="k">return</span> <span class="n">compute_tau</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">qp</span><span class="p">,</span> <span class="n">qpp</span><span class="p">,</span> <span class="n">fext</span><span class="p">)</span></div>
+        <span class="n">q</span> <span class="o">=</span> <span class="n">q</span> <span class="k">if</span> <span class="n">q</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">q</span>
+        <span class="n">qp</span> <span class="o">=</span> <span class="n">qp</span> <span class="k">if</span> <span class="n">qp</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">v</span>
+        <span class="n">qpp</span> <span class="o">=</span> <span class="n">qpp</span> <span class="k">if</span> <span class="n">qpp</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">v</span>
+        <span class="n">f</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ndof</span><span class="p">)</span> 
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">f</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rnea</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">qp</span><span class="p">,</span> <span class="n">qpp</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s1">&#39;error occured when computing generalized torques.&#39;</span><span class="p">)</span>
+        
+        <span class="k">return</span> <span class="n">f</span></div>
+</div>
 
 </pre></div>
 

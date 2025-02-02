@@ -1,7 +1,7 @@
 regressors module
 =========================
 
-.. automodule:: regressors
+.. automodule:: dynamapp.regressors
    :members:
    :undoc-members:
    :show-inheritance:

@@ -1,9 +1,5 @@
-"""
-Solvers Module
-====================
-"""
 import numpy as np 
-import jax 
+from jax import jit 
 from scipy.linalg import solve_discrete_are
 from scipy.signal import place_poles
 

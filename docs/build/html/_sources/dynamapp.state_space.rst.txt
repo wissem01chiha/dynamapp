@@ -1,7 +1,7 @@
 state\_space module
 ============================
 
-.. automodule:: state_space
+.. automodule:: dynamapp.state_space
    :members:
    :undoc-members:
    :show-inheritance:

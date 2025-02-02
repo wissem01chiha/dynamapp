@@ -21,7 +21,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Contributing" href="CONTRIBUTING.html" />
+    <link rel="next" title="identification module" href="dynamapp.identification.html" />
     <link rel="prev" title="utils module" href="dynamapp.utils.html" /> 
 </head>
 
@@ -55,29 +55,30 @@
 <li class="toctree-l1"><a class="reference internal" href="REFERENCES.html">References</a></li>
 <li class="toctree-l1"><a class="reference internal" href="CHANGELOG.html">Changelog</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Modules</span></p>
+<p class="caption" role="heading"><span class="caption-text">Packages documentation</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="modules.html">dynamapp</a><ul class="current">
-<li class="toctree-l2 current"><a class="reference internal" href="dynamapp.html">dynamapp package</a><ul class="current">
-<li class="toctree-l3 current"><a class="reference internal" href="dynamapp.html#submodules">Submodules</a><ul class="current">
-<li class="toctree-l4"><a class="reference internal" href="dynamapp.identification.html">identification module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="dynamapp.harmonic_drive.html">harmonic_drive module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="dynamapp.kalman.html">kalman module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="dynamapp.math_utils.html">math_utils module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="dynamapp.moesp.html">moesp module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="dynamapp.nfoursid.html">nfoursid module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="dynamapp.regressors.html">regressors module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="dynamapp.model.html">model module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="dynamapp.data_utils.html">data_utils module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="dynamapp.solvers.html">solvers module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="dynamapp.state_space.html">state_space module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="dynamapp.model_state.html">model_state module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="dynamapp.trajectory.html">trajectory module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="dynamapp.utils.html">utils module</a></li>
-<li class="toctree-l4 current"><a class="current reference internal" href="#">viscoelastic module</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="dynamapp.html">dynamapp</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="dynamapp.html#submodules">Submodules</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="dynamapp.kalman.html">kalman module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamapp.math_utils.html">math_utils module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamapp.moesp.html">moesp module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamapp.nfoursid.html">nfoursid module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamapp.regressors.html">regressors module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamapp.model.html">model module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamapp.actuators.html">actuators module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamapp.data_utils.html">data_utils module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamapp.solvers.html">solvers module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamapp.reductions.html">reductions module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamapp.state_space.html">state_space module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamapp.model_state.html">model_state module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamapp.trajectory.html">trajectory module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamapp.utils.html">utils module</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">viscoelastic module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#dynamapp.viscoelastic.compute_coulomb_friction_force"><code class="docutils literal notranslate"><span class="pre">compute_coulomb_friction_force()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dynamapp.viscoelastic.compute_friction_force"><code class="docutils literal notranslate"><span class="pre">compute_friction_force()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="dynamapp.html#module-contents">Module contents</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamapp.identification.html">identification module</a></li>
 </ul>
 </li>
 </ul>
@@ -103,8 +104,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="modules.html">dynamapp</a></li>
-          <li class="breadcrumb-item"><a href="dynamapp.html">dynamapp package</a></li>
+          <li class="breadcrumb-item"><a href="dynamapp.html">dynamapp</a></li>
       <li class="breadcrumb-item active">viscoelastic module</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/dynamapp.viscoelastic.rst.txt" rel="nofollow"> View page source</a>
@@ -115,190 +115,42 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="module-viscoelastic">
-<span id="viscoelastic-module"></span><h1>viscoelastic module<a class="headerlink" href="#module-viscoelastic" title="Link to this heading"></a></h1>
-<dl class="py class">
-<dt class="sig sig-object py" id="viscoelastic.Dahl">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">viscoelastic.</span></span><span class="sig-name descname"><span class="pre">Dahl</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sigma0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Fs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.001</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/viscoelastic.html#Dahl"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#viscoelastic.Dahl" title="Link to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Dahl friction Model class base definition.
-The friction force is a hysteresis function, without memory of the x
-Args:</p>
-<blockquote>
-<div><ul class="simple">
-<li><p>sigma0: Constant coefficient</p></li>
-<li><p>Fs    : Stribeck force coefficient</p></li>
-</ul>
-</div></blockquote>
-<dl class="py method">
-<dt class="sig sig-object py" id="viscoelastic.Dahl.computeFrictionForce">
-<span class="sig-name descname"><span class="pre">computeFrictionForce</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">velocity</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">numpy.ndarray</span></span></span><a class="reference internal" href="_modules/viscoelastic.html#Dahl.computeFrictionForce"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#viscoelastic.Dahl.computeFrictionForce" title="Link to this definition"></a></dt>
-<dd><p>Compute the friction force based on the Dahl model.</p>
+  <section id="module-dynamapp.viscoelastic">
+<span id="viscoelastic-module"></span><h1>viscoelastic module<a class="headerlink" href="#module-dynamapp.viscoelastic" title="Link to this heading"></a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="dynamapp.viscoelastic.compute_coulomb_friction_force">
+<span class="sig-prename descclassname"><span class="pre">dynamapp.viscoelastic.</span></span><span class="sig-name descname"><span class="pre">compute_coulomb_friction_force</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">jax.numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fc</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">jax.numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">jax.numpy.ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">jax.numpy.ndarray</span></span></span><a class="headerlink" href="#dynamapp.viscoelastic.compute_coulomb_friction_force" title="Link to this definition"></a></dt>
+<dd><p>Compute the Coulomb  friction model.</p>
 <dl class="simple">
 <dt>Args:</dt><dd><ul class="simple">
-<li><p>velocity (np.ndarray): velocity values.</p></li>
+<li><p>v  (jnp.ndarray): Velocity array.</p></li>
+<li><p>fc (jnp.ndarray): Coulomb friction coefficient.</p></li>
+<li><p>fs (jnp.ndarray): Viscous friction coefficient.</p></li>
 </ul>
 </dd>
-<dt>Returns:</dt><dd><p>np.ndarray: computed friction forces.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="viscoelastic.Dahl.dahl">
-<span class="sig-name descname"><span class="pre">dahl</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">F</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/viscoelastic.html#Dahl.dahl"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#viscoelastic.Dahl.dahl" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="viscoelastic.LuGre">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">viscoelastic.</span></span><span class="sig-name descname"><span class="pre">LuGre</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Fc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Fs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tspan</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ts</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.001</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tinit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.01</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1235</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/viscoelastic.html#LuGre"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#viscoelastic.LuGre" title="Link to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Class to compute LuGre Friction Model</p>
-<dl class="simple">
-<dt>Params:</dt><dd><ul class="simple">
-<li><p>Fc (float): Coulomb friction coefficient.</p></li>
-<li><p>Fs (float): Stribeck friction coefficient.</p></li>
-<li><p>v (float): Joint velocity.</p></li>
-<li><p>vs (float): Kinetic velocity transition.</p></li>
-<li><p>sigma0 (float): Model parameter sigma0.</p></li>
-<li><p>sigma1 (float): Model parameter sigma1.</p></li>
-<li><p>sigma2 (float): Model parameter sigma2.</p></li>
-<li><p>tinit (float): Initial simulation time.</p></li>
-<li><p>ts (float): Step time simulation.</p></li>
-<li><p>tspan (float): Final simulation time.</p></li>
-<li><p>z0 (float): Initial value of internal state z.</p></li>
-</ul>
-</dd>
-</dl>
-<dl class="py method">
-<dt class="sig sig-object py" id="viscoelastic.LuGre.computeFrictionForce">
-<span class="sig-name descname"><span class="pre">computeFrictionForce</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/viscoelastic.html#LuGre.computeFrictionForce"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#viscoelastic.LuGre.computeFrictionForce" title="Link to this definition"></a></dt>
-<dd><p>Compute friction force over the simulation time span.</p>
-<dl class="simple">
-<dt>&gt; Returns:</dt><dd><ul class="simple">
-<li><p>F (numpy.ndarray): Friction force for the given velocity.</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="viscoelastic.LuGre.computeSteadyForce">
-<span class="sig-name descname"><span class="pre">computeSteadyForce</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/viscoelastic.html#LuGre.computeSteadyForce"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#viscoelastic.LuGre.computeSteadyForce" title="Link to this definition"></a></dt>
-<dd><p>Compute the LuGre steady state friction force</p>
-<dl class="simple">
 <dt>Returns:</dt><dd><ul class="simple">
-<li><p>Fss (float): Steady state friction force.</p></li>
+<li><p>jnp.ndarray: friction force array.</p></li>
 </ul>
 </dd>
 </dl>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="viscoelastic.Maxwell">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">viscoelastic.</span></span><span class="sig-name descname"><span class="pre">Maxwell</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sigma0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eta</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">E</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/viscoelastic.html#Maxwell"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#viscoelastic.Maxwell" title="Link to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Maxwell-Voight contact model class.</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>sigma0 (float): Initial stress value.
-eta (float): Viscosity parameter.
-E (float): Elastic modulus.</p>
-</dd>
-</dl>
-<dl class="py method">
-<dt class="sig sig-object py" id="viscoelastic.Maxwell.simulate">
-<span class="sig-name descname"><span class="pre">simulate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strain</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">numpy.ndarray</span></span></span><a class="reference internal" href="_modules/viscoelastic.html#Maxwell.simulate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#viscoelastic.Maxwell.simulate" title="Link to this definition"></a></dt>
-<dd><p>Simulate the stress response over time for a given strain history.</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>time (np.ndarray): Time values.
-strain (np.ndarray): Strain values over time.</p>
-</dd>
-<dt>Returns:</dt><dd><p>np.ndarray: Stress values over time.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="viscoelastic.Maxwell.stress">
-<span class="sig-name descname"><span class="pre">stress</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">strain</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strain_rate</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">numpy.ndarray</span></span></span><a class="reference internal" href="_modules/viscoelastic.html#Maxwell.stress"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#viscoelastic.Maxwell.stress" title="Link to this definition"></a></dt>
-<dd><p>Calculate the stress based on strain and strain rate using the Maxwell-Voight model.</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>strain (np.ndarray): Strain values.
-strain_rate (np.ndarray): Strain rate values.</p>
-</dd>
-<dt>Returns:</dt><dd><p>np.ndarray: Calculated stress values.</p>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="viscoelastic.MaxwellSlip">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">viscoelastic.</span></span><span class="sig-name descname"><span class="pre">MaxwellSlip</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">velocity</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">c</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">samplingRate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/viscoelastic.html#MaxwellSlip"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#viscoelastic.MaxwellSlip" title="Link to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>MaxwellSlip - Compute Maxwell Slip Friction Model.</p>
-<dl class="simple">
-<dt>Inputs:</dt><dd><p>n           - Number of Maxwell elements.
-velocity    - Velocity (m/s)
-k           - Stiffness of Maxwell elements (N/m)
-c           - Damping coefficients of Maxwell elements (Ns/m)
-sigma0      - Static friction force (N)
-samplingRate- Sampling rate (Hz)</p>
-</dd>
-<dt>Returns:</dt><dd><p>t           - Simulation time vector.
-F           - Friction Force for the given velocity</p>
-</dd>
-</dl>
-<p>Note:</p>
-<dl class="simple">
-<dt>Ref:</dt><dd><p>Fundamentals Of Friction Modeling - Farid Al-Bender - 2010.</p>
-</dd>
-</dl>
-<dl class="py method">
-<dt class="sig sig-object py" id="viscoelastic.MaxwellSlip.computeFrictionForce">
-<span class="sig-name descname"><span class="pre">computeFrictionForce</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/viscoelastic.html#MaxwellSlip.computeFrictionForce"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#viscoelastic.MaxwellSlip.computeFrictionForce" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="viscoelastic.MaxwellSlip.compute_friction_torques">
-<span class="sig-name descname"><span class="pre">compute_friction_torques</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qp</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">q</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/viscoelastic.html#MaxwellSlip.compute_friction_torques"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#viscoelastic.MaxwellSlip.compute_friction_torques" title="Link to this definition"></a></dt>
-<dd><p>Estimates the friction torque vector in robot joints given a 
-constant joint velocity vector.</p>
-<dl class="simple">
-<dt>Args:</dt><dd><ul class="simple">
-<li><p>qp       : Joints velocity vector  ( numSamples  * ndof )</p></li>
-<li><p>q        : Joints position vector  ( numSamples * ndof )</p></li>
-<li><p>tspan    : Simulation time duration (seconds)</p></li>
-<li><p>sampling : Sampling frequency        (Hz)</p></li>
-</ul>
-</dd>
-<dt>Returns:</dt><dd><p>tau_f      : Joints friction torques   ( numSamples * ndof )</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="viscoelastic.MaxwellSlip.maxwell">
-<span class="sig-name descname"><span class="pre">maxwell</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/viscoelastic.html#MaxwellSlip.maxwell"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#viscoelastic.MaxwellSlip.maxwell" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="viscoelastic.compute_viscous_friction_force">
-<span class="sig-prename descclassname"><span class="pre">viscoelastic.</span></span><span class="sig-name descname"><span class="pre">compute_viscous_friction_force</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">V</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Fc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Fs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/viscoelastic.html#compute_viscous_friction_force"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#viscoelastic.compute_viscous_friction_force" title="Link to this definition"></a></dt>
-<dd><p>Compute the Coulomb and viscous friction model.</p>
-<p>Parameters:
-V  (numpy array): Velocity array.
-Fc (float or numpy array): Coulomb friction coefficient.
-Fs (float or numpy array): Viscous friction coefficient.</p>
+<dt class="sig sig-object py" id="dynamapp.viscoelastic.compute_friction_force">
+<span class="sig-prename descclassname"><span class="pre">dynamapp.viscoelastic.</span></span><span class="sig-name descname"><span class="pre">compute_friction_force</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">jax.numpy.array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beta</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">jax.numpy.array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gamma</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">jax.numpy.array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">q</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dynamapp.viscoelastic.compute_friction_force" title="Link to this definition"></a></dt>
+<dd><p>Computes the frictional force for a joint using a simple 
+generalized friction model.</p>
 <dl class="simple">
-<dt>Returns:</dt><dd><p>numpy-array: Friction force array.</p>
+<dt>Args:</dt><dd><ul class="simple">
+<li><p>alpha (jax-array): Coefficients for the position-related terms.</p></li>
+<li><p>beta (jax-array): Coefficients for the velocity-related terms.</p></li>
+<li><p>gamma (jax-array): Coefficients for the acceleration-related terms.</p></li>
+<li><p>q (float): The position of the joint.</p></li>
+<li><p>v (float): The velocity of the joint.</p></li>
+<li><p>a (float): The acceleration of the joint.</p></li>
+</ul>
+</dd>
+<dt>Returns:</dt><dd><p>float: The computed frictional force.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -310,7 +162,7 @@ Fs (float or numpy array): Viscous friction coefficient.</p>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="dynamapp.utils.html" class="btn btn-neutral float-left" title="utils module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="CONTRIBUTING.html" class="btn btn-neutral float-right" title="Contributing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="dynamapp.identification.html" class="btn btn-neutral float-right" title="identification module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

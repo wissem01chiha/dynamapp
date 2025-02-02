@@ -1,58 +1,29 @@
 from setup_tests import *
-from dynamapp.viscoelastic import Dahl
+from dynamapp.viscoelastic import *
 
-class TestDahl(unittest.TestCase):
-    def test_force_not_none(self):
-        model = Dahl(0.1,1)
-        F= model.computeFrictionForce(np.random.rand(1001))
-        self.assertIsNotNone(F)
-        
-    def test_force_size(self):
-        model = Dahl(1.2,1)
-        velocity = np.random.rand(1001)
-        F= model.computeFrictionForce(velocity)
-        self.assertEqual(np.size(F),np.size(velocity))
-    
-    def test_force_dim(self):
-        model =Dahl(1.2,1)
-        velocity = np.random.rand(1001)
-        F= model.computeFrictionForce(velocity)
-        self.assertEqual(np.ndim(F),np.ndim(velocity))
-        
-    def test_froce_not_null(self):
-        model = Dahl(100,15)
-        velocity =  np.linspace(0,10,100)
-        F = model.computeFrictionForce(velocity)
-        self.assertNotEqual(np.all(F==0),True)
-        
-def plot_force(sigma0,Fs):
-    model = Dahl(sigma0, Fs)
-    velocity = np.linspace(0, 10, 100)
-    F = model.computeFrictionForce(velocity)
-    plt.figure(figsize=(10, 6))
-    sns.lineplot(x=np.arange(velocity.size), y=velocity, linewidth=0.5, color='blue', label='Velocity')
-    sns.lineplot(x=np.arange(velocity.size), y=F, linewidth=0.5, color='red', label='Friction Force')
-    plt.xlabel('Index')
-    plt.ylabel('Value')
-    plt.title('Velocity and Friction Force')
-    plt.legend()
-    plt.show()
-        
-from dynamapp.viscoelastic import MaxwellSlip
+class TestFrictionModels(unittest.TestCase):
 
-class TestRobot(unittest.TestCase):
-    def test_friction_force_not_null(self):
-        model = MaxwellSlip(3,np.ones(10),[1,2,3],[0.1,0.2,0.3],1)
-        F = model.computeFrictionForce()
-        self.assertIsNotNone(F)
+    def test_compute_coulomb_friction_force(self):
+        v = jnp.array([1.0, -1.0, 0.5, -0.5])  
+        fc = jnp.array([0.5, 0.5, 0.5, 0.5])   
+        fs = jnp.array([0.1, 0.1, 0.1, 0.1])  
         
-    def test_friction_force_shape(self):
-        v= np.ones(10)
-        model = MaxwellSlip(3,v,[1,2,3],[0.1,0.2,0.3],1)
-        F = model.computeFrictionForce()
-        self.assertEqual(F.shape,v.shape)
-        
-    
-if __name__ == "__main__":
-    unittest.main(exit=False)     
-    plot_force(100,15)  
+        expected_output = fc * jnp.sign(v) + fs * v
+
+        result = compute_coulomb_friction_force(v, fc, fs)
+        np.testing.assert_allclose(result, expected_output, atol=1e-6)
+
+    def test_compute_friction_force(self):
+         
+        alpha = jnp.array([1.0, 2.0, 3.0])  
+        beta = jnp.array([0.5, -0.3])  
+        gamma = jnp.array([0.1, 0.2])   
+        q = 1.0   
+        v = 0.5   
+        a = -0.2   
+        expected_output = jnp.polyval(alpha, q) + jnp.polyval(beta, v) + jnp.polyval(gamma, a)
+        result = compute_friction_force(alpha, beta, gamma, q, v, a)
+        np.testing.assert_allclose(result, expected_output, atol=1e-6)
+
+if __name__ == '__main__':
+    unittest.main()

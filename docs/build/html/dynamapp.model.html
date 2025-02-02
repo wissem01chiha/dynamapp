@@ -21,7 +21,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="data_utils module" href="dynamapp.data_utils.html" />
+    <link rel="next" title="actuators module" href="dynamapp.actuators.html" />
     <link rel="prev" title="regressors module" href="dynamapp.regressors.html" /> 
 </head>
 
@@ -55,29 +55,29 @@
 <li class="toctree-l1"><a class="reference internal" href="REFERENCES.html">References</a></li>
 <li class="toctree-l1"><a class="reference internal" href="CHANGELOG.html">Changelog</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Modules</span></p>
+<p class="caption" role="heading"><span class="caption-text">Packages documentation</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="modules.html">dynamapp</a><ul class="current">
-<li class="toctree-l2 current"><a class="reference internal" href="dynamapp.html">dynamapp package</a><ul class="current">
-<li class="toctree-l3 current"><a class="reference internal" href="dynamapp.html#submodules">Submodules</a><ul class="current">
-<li class="toctree-l4"><a class="reference internal" href="dynamapp.identification.html">identification module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="dynamapp.harmonic_drive.html">harmonic_drive module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="dynamapp.kalman.html">kalman module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="dynamapp.math_utils.html">math_utils module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="dynamapp.moesp.html">moesp module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="dynamapp.nfoursid.html">nfoursid module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="dynamapp.regressors.html">regressors module</a></li>
-<li class="toctree-l4 current"><a class="current reference internal" href="#">model module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="dynamapp.data_utils.html">data_utils module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="dynamapp.solvers.html">solvers module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="dynamapp.state_space.html">state_space module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="dynamapp.model_state.html">model_state module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="dynamapp.trajectory.html">trajectory module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="dynamapp.utils.html">utils module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="dynamapp.viscoelastic.html">viscoelastic module</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="dynamapp.html">dynamapp</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="dynamapp.html#submodules">Submodules</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="dynamapp.kalman.html">kalman module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamapp.math_utils.html">math_utils module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamapp.moesp.html">moesp module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamapp.nfoursid.html">nfoursid module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamapp.regressors.html">regressors module</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">model module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#dynamapp.model.Model"><code class="docutils literal notranslate"><span class="pre">Model</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="dynamapp.html#module-contents">Module contents</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamapp.actuators.html">actuators module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamapp.data_utils.html">data_utils module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamapp.solvers.html">solvers module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamapp.reductions.html">reductions module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamapp.state_space.html">state_space module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamapp.model_state.html">model_state module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamapp.trajectory.html">trajectory module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamapp.utils.html">utils module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamapp.viscoelastic.html">viscoelastic module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamapp.identification.html">identification module</a></li>
 </ul>
 </li>
 </ul>
@@ -103,8 +103,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="modules.html">dynamapp</a></li>
-          <li class="breadcrumb-item"><a href="dynamapp.html">dynamapp package</a></li>
+          <li class="breadcrumb-item"><a href="dynamapp.html">dynamapp</a></li>
       <li class="breadcrumb-item active">model module</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/dynamapp.model.rst.txt" rel="nofollow"> View page source</a>
@@ -115,53 +114,74 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="module-model">
-<span id="model-module"></span><h1>model module<a class="headerlink" href="#module-model" title="Link to this heading"></a></h1>
+  <section id="module-dynamapp.model">
+<span id="model-module"></span><h1>model module<a class="headerlink" href="#module-dynamapp.model" title="Link to this heading"></a></h1>
 <dl class="py class">
-<dt class="sig sig-object py" id="model.Model">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">model.</span></span><span class="sig-name descname"><span class="pre">Model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">urdf_file_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">q</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/model.html#Model"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#model.Model" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="dynamapp.model.Model">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dynamapp.model.</span></span><span class="sig-name descname"><span class="pre">Model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Imats</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dhparams</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gravity</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-9.81</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dampings</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dynamapp/model.html#Model"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dynamapp.model.Model" title="Link to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Base class for multijoint models.</p>
-<dl class="simple">
-<dt>Args:</dt><dd><ul class="simple">
-<li><p>urdf_file_path (str): Manipulator description file path.</p></li>
-<li><p>model (Pinocchio.Model): Pinocchio multibody model of the system.</p></li>
-<li><p>params (dict): Model static parameters.</p></li>
-<li><p>data (Pinocchio.Data): Pinocchio multibody data model.</p></li>
+<p>Base class definition for multijoint models.</p>
+<dl>
+<dt>Args:</dt><dd><blockquote>
+<div><ul class="simple">
+<li><p>dhparams : model DH parameters.</p></li>
+<li><p>Imats : links inertia tensors, list of JAX arrys</p></li>
 <li><p>q (np.ndarray): Joints position vector.</p></li>
 <li><p>v (np.ndarray): Joints velocity vector.</p></li>
 <li><p>a (np.ndarray): Joints acceleration vector.</p></li>
+<li><p>dampings : joints damping coefficents list</p></li>
+<li><p>gravity : gravity vector applied to the system</p></li>
 </ul>
+</div></blockquote>
+<dl>
+<dt>Examples:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">model</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="n">Imats</span><span class="p">,</span> <span class="n">dhparams</span><span class="p">,</span> <span class="o">-</span><span class="mf">9.80</span><span class="p">,</span> <span class="n">dampings</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
 </dd>
 </dl>
 <dl class="py method">
-<dt class="sig sig-object py" id="model.Model.compute_corlolis_matrix">
-<span class="sig-name descname"><span class="pre">compute_corlolis_matrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">q</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/model.html#Model.compute_corlolis_matrix"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#model.Model.compute_corlolis_matrix" title="Link to this definition"></a></dt>
-<dd><p>Compute the Coriolis matrix using automatic differentiation with JAX.</p>
+<dt class="sig sig-object py" id="dynamapp.model.Model.damping_tensor">
+<span class="sig-name descname"><span class="pre">damping_tensor</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">jax.numpy.ndarray</span></span></span><a class="reference internal" href="_modules/dynamapp/model.html#Model.damping_tensor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dynamapp.model.Model.damping_tensor" title="Link to this definition"></a></dt>
+<dd><p>Get the diagonal velocity damping matrix of size (ndof, ndof).</p>
 <dl class="simple">
-<dt>Args:</dt><dd><ul class="simple">
-<li><p>qp: Joints Velocity vector.</p></li>
-<li><p>q : Joints Position vector.</p></li>
-</ul>
+<dt>Returns:</dt><dd><dl class="simple">
+<dt>jnp.ndarray: A diagonal matrix with damping values.</dt><dd><p>If no damping values are given, returns a zero matrix.</p>
 </dd>
-<dt>Returns: </dt><dd><ul class="simple">
-<li><p>C : JAX numpy array (jnp.ndarray)</p></li>
-</ul>
+</dl>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="model.Model.compute_generalized_torques">
-<span class="sig-name descname"><span class="pre">compute_generalized_torques</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">q</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qpp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fext</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#model.Model.compute_generalized_torques" title="Link to this definition"></a></dt>
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">compute_generalized_torques</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">q</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qp</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qpp</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fext</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span></dt>
-<dd><p>Helper for &#64;overload to raise when called.</p>
+<dt class="sig sig-object py" id="dynamapp.model.Model.inertia_tensor">
+<span class="sig-name descname"><span class="pre">inertia_tensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">q</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dynamapp/model.html#Model.inertia_tensor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dynamapp.model.Model.inertia_tensor" title="Link to this definition"></a></dt>
+<dd><p>Computes the mass matrix M(q) using RNEA.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>q (jnp.ndarray): Joint positions (ndof,)</p>
+</dd>
+<dt>Returns:</dt><dd><p>jnp.ndarray: Mass matrix (ndof, ndof)</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="model.Model.compute_gravity_torques">
-<span class="sig-name descname"><span class="pre">compute_gravity_torques</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">q</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/model.html#Model.compute_gravity_torques"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#model.Model.compute_gravity_torques" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="dynamapp.model.Model.coriolis_tensor">
+<span class="sig-name descname"><span class="pre">coriolis_tensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">q</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qp</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dynamapp/model.html#Model.coriolis_tensor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dynamapp.model.Model.coriolis_tensor" title="Link to this definition"></a></dt>
+<dd><p>Computes the Coriolis matrix C(q, qp) using automatic differentiation in JAX.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>q (jnp.ndarray): Joint positions (ndof,)
+qp (jnp.ndarray): Joint velocities (ndof,)</p>
+</dd>
+<dt>Returns:</dt><dd><p>jnp.ndarray: Coriolis matrix C(q, qp) of shape (ndof, ndof)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dynamapp.model.Model.gravity_torques">
+<span class="sig-name descname"><span class="pre">gravity_torques</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">q</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">jax.numpy.ndarray</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dynamapp/model.html#Model.gravity_torques"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dynamapp.model.Model.gravity_torques" title="Link to this definition"></a></dt>
 <dd><p>Computes the joints gravity torques given a configuration vector.</p>
 <dl class="simple">
 <dt>Args:</dt><dd><ul class="simple">
@@ -176,27 +196,15 @@
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="model.Model.compute_mass_matrix">
-<span class="sig-name descname"><span class="pre">compute_mass_matrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">q</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scaling</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0001</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/model.html#Model.compute_mass_matrix"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#model.Model.compute_mass_matrix" title="Link to this definition"></a></dt>
-<dd><p>Compute the mass matrix of the system.
-the matrix is computed by getting the inverse of it using pinncyoi</p>
+<dt class="sig sig-object py" id="dynamapp.model.Model.generalized_torques">
+<span class="sig-name descname"><span class="pre">generalized_torques</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">q</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qpp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dynamapp/model.html#Model.generalized_torques"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dynamapp.model.Model.generalized_torques" title="Link to this definition"></a></dt>
+<dd><p>Compute the genralized torques using the recursive netwon euler alogrithm.</p>
 <dl class="simple">
 <dt>Args:</dt><dd><ul class="simple">
-<li><p>q : Joints position vector.</p></li>
-<li><p>scaling : float used in scaling the mass matrix to prevent singulaty</p></li>
+<li><p>q    : Joints position vector. ( nq * 1 )</p></li>
+<li><p>qp   : Joints velocity vector. ( nq * 1 )</p></li>
+<li><p>qpp  : Joints acceleration vector. ( nq * 1 )</p></li>
 </ul>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="model.Model.compute_stiffness_torques">
-<span class="sig-name descname"><span class="pre">compute_stiffness_torques</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">coeffs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">q</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/model.html#Model.compute_stiffness_torques"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#model.Model.compute_stiffness_torques" title="Link to this definition"></a></dt>
-<dd><p>Compute the torques resulting from joints torsional stiffness</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>q (numpy.ndarray): Configuration vector.</p>
-</dd>
-<dt>Returns:</dt><dd><p>numpy.ndarray: Joints stiffness torques.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -210,7 +218,7 @@ the matrix is computed by getting the inverse of it using pinncyoi</p>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="dynamapp.regressors.html" class="btn btn-neutral float-left" title="regressors module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="dynamapp.data_utils.html" class="btn btn-neutral float-right" title="data_utils module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="dynamapp.actuators.html" class="btn btn-neutral float-right" title="actuators module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

@@ -1,7 +1,7 @@
 viscoelastic module
 =======================
 
-.. automodule:: viscoelastic
+.. automodule:: dynamapp.viscoelastic
    :members:
    :undoc-members:
    :show-inheritance:

@@ -1,7 +1,3 @@
-"""
-Reduction Module
-================
-"""
 import pandas as pd
 import jax.numpy as jnp
 import jax

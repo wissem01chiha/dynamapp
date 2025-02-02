@@ -18,6 +18,8 @@
         <script src="_static/documentation_options.js?v=40be6288"></script>
         <script src="_static/doctools.js?v=9a2dae69"></script>
         <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -55,29 +57,29 @@
 <li class="toctree-l1"><a class="reference internal" href="REFERENCES.html">References</a></li>
 <li class="toctree-l1"><a class="reference internal" href="CHANGELOG.html">Changelog</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Modules</span></p>
+<p class="caption" role="heading"><span class="caption-text">Packages documentation</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="modules.html">dynamapp</a><ul class="current">
-<li class="toctree-l2 current"><a class="reference internal" href="dynamapp.html">dynamapp package</a><ul class="current">
-<li class="toctree-l3 current"><a class="reference internal" href="dynamapp.html#submodules">Submodules</a><ul class="current">
-<li class="toctree-l4"><a class="reference internal" href="dynamapp.identification.html">identification module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="dynamapp.harmonic_drive.html">harmonic_drive module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="dynamapp.kalman.html">kalman module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="dynamapp.math_utils.html">math_utils module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="dynamapp.moesp.html">moesp module</a></li>
-<li class="toctree-l4 current"><a class="current reference internal" href="#">nfoursid module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="dynamapp.regressors.html">regressors module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="dynamapp.model.html">model module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="dynamapp.data_utils.html">data_utils module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="dynamapp.solvers.html">solvers module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="dynamapp.state_space.html">state_space module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="dynamapp.model_state.html">model_state module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="dynamapp.trajectory.html">trajectory module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="dynamapp.utils.html">utils module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="dynamapp.viscoelastic.html">viscoelastic module</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="dynamapp.html">dynamapp</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="dynamapp.html#submodules">Submodules</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="dynamapp.kalman.html">kalman module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamapp.math_utils.html">math_utils module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamapp.moesp.html">moesp module</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">nfoursid module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#dynamapp.nfoursid.NFourSID"><code class="docutils literal notranslate"><span class="pre">NFourSID</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="dynamapp.html#module-contents">Module contents</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamapp.regressors.html">regressors module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamapp.model.html">model module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamapp.actuators.html">actuators module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamapp.data_utils.html">data_utils module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamapp.solvers.html">solvers module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamapp.reductions.html">reductions module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamapp.state_space.html">state_space module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamapp.model_state.html">model_state module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamapp.trajectory.html">trajectory module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamapp.utils.html">utils module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamapp.viscoelastic.html">viscoelastic module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamapp.identification.html">identification module</a></li>
 </ul>
 </li>
 </ul>
@@ -103,8 +105,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="modules.html">dynamapp</a></li>
-          <li class="breadcrumb-item"><a href="dynamapp.html">dynamapp package</a></li>
+          <li class="breadcrumb-item"><a href="dynamapp.html">dynamapp</a></li>
       <li class="breadcrumb-item active">nfoursid module</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/dynamapp.nfoursid.rst.txt" rel="nofollow"> View page source</a>
@@ -115,8 +116,73 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="nfoursid-module">
-<h1>nfoursid module<a class="headerlink" href="#nfoursid-module" title="Link to this heading"></a></h1>
+  <section id="module-dynamapp.nfoursid">
+<span id="nfoursid-module"></span><h1>nfoursid module<a class="headerlink" href="#module-dynamapp.nfoursid" title="Link to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="dynamapp.nfoursid.NFourSID">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dynamapp.nfoursid.</span></span><span class="sig-name descname"><span class="pre">NFourSID</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataframe</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pandas.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_columns</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_columns</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_block_rows</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">2</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dynamapp/nfoursid.html#NFourSID"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dynamapp.nfoursid.NFourSID" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Perform subspace identification using N4SID [1].
+The state-space model under consideration, is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{cases}
+    x_{k+1} &amp;= A x_k + B u_k + K e_k \\
+    y_k &amp;= C x_k + D u_k + e_k
+\end{cases}\end{split}\]</div>
+<p>Data is provided as a dataframe <code class="docutils literal notranslate"><span class="pre">dataframe</span></code> where every row is a measurement.
+The output columns are given by <code class="docutils literal notranslate"><span class="pre">output_columns</span></code>.
+The input columns are given by <code class="docutils literal notranslate"><span class="pre">input_columns</span></code>.</p>
+<p>The number of block rows to use in the block Hankel matrices is given by <code class="docutils literal notranslate"><span class="pre">num_block_rows</span></code>.
+If <code class="docutils literal notranslate"><span class="pre">num_block_rows</span></code> is chosen to be too big, the computational complexity will increase.
+If <code class="docutils literal notranslate"><span class="pre">num_block_rows</span></code> is chosen to be too small, the order of the system might not be possible to determine
+in the eigenvalue diagram. Moreover, if <code class="docutils literal notranslate"><span class="pre">num_block_rows</span></code> is chosen to be too small,
+the assumptions of [2] might not hold.</p>
+<p>[1] Van Overschee, Peter, and Bart De Moor. &quot;N4SID: Subspace algorithms for the identification of combined
+deterministic-stochastic systems.&quot; Automatica 30.1 (1994): 75-93.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="dynamapp.nfoursid.NFourSID.subspace_identification">
+<span class="sig-name descname"><span class="pre">subspace_identification</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/dynamapp/nfoursid.html#NFourSID.subspace_identification"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dynamapp.nfoursid.NFourSID.subspace_identification" title="Link to this definition"></a></dt>
+<dd><p>Perform subspace identification based on the PO-MOESP method.
+The instrumental variable contains past outputs and past inputs.
+The implementation uses a QR-decomposition for numerical efficiency and is based on page 329 of [1].</p>
+<p>A key result of this function is the eigenvalue decomposition of the <span class="math notranslate nohighlight">\(R_{32}\)</span> matrix
+<code class="docutils literal notranslate"><span class="pre">self.R32_decomposition</span></code>, based on which the order of the system should be determined.</p>
+<p>[1] Verhaegen, Michel, and Vincent Verdult. <em>Filtering and system identification: a least squares approach.</em>
+Cambridge university press, 2007.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dynamapp.nfoursid.NFourSID.system_identification">
+<span class="sig-name descname"><span class="pre">system_identification</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rank</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">StateSpace</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/dynamapp/nfoursid.html#NFourSID.system_identification"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dynamapp.nfoursid.NFourSID.system_identification" title="Link to this definition"></a></dt>
+<dd><p>Identify the system matrices of the state-space model given in the description of <code class="docutils literal notranslate"><span class="pre">NFourSID</span></code>.
+Moreover, the covariance of the measurement-noise and process-noise will be estimated.
+The order of the returned state-space model has rank <code class="docutils literal notranslate"><span class="pre">rank</span></code> by reducing the eigenvalue decomposition.
+The implementation is based on page 333 of [1].</p>
+<p>The return value consists of a tuple containing</p>
+<ul class="simple">
+<li><p>The identified state-space model containing the estimated matrices <span class="math notranslate nohighlight">\((A, B, C, D)\)</span>,</p></li>
+<li><p>and an estimate of the covariance matrix of the measurement-noise <span class="math notranslate nohighlight">\(w\)</span>
+and process-noise <span class="math notranslate nohighlight">\(v\)</span>.
+The structure of the covariance matrix corresponds to the parameter <code class="docutils literal notranslate"><span class="pre">noise_covariance</span></code> of
+<code class="docutils literal notranslate"><span class="pre">subspace_identification.kalman.Kalman</span></code>.
+See its documentation for more information.</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">self.system_identification</span></code> needs the QR-decomposition result of subspace identification
+<code class="docutils literal notranslate"><span class="pre">self.R32</span></code>, and therefore can only be ran after <code class="docutils literal notranslate"><span class="pre">self.subspace_identification</span></code>.</p>
+<p>[1] Verhaegen, Michel, and Vincent Verdult. <em>Filtering and system identification: a least squares approach.</em>
+Cambridge university press, 2007.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dynamapp.nfoursid.NFourSID.plot_eigenvalues">
+<span class="sig-name descname"><span class="pre">plot_eigenvalues</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">matplotlib.pyplot.axes</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dynamapp/nfoursid.html#NFourSID.plot_eigenvalues"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dynamapp.nfoursid.NFourSID.plot_eigenvalues" title="Link to this definition"></a></dt>
+<dd><p>Plot the eigenvalues of the <span class="math notranslate nohighlight">\(R_{32}\)</span> matrix, so that the order of the state-space model can be determined.
+Since the <span class="math notranslate nohighlight">\(R_{32}\)</span> matrix should have been calculated, this function can only be used after
+performing <code class="docutils literal notranslate"><span class="pre">self.subspace_identification</span></code>.</p>
+</dd></dl>
+
+</dd></dl>
+
 </section>
 
 

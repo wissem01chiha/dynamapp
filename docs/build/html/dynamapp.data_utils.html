@@ -22,7 +22,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="solvers module" href="dynamapp.solvers.html" />
-    <link rel="prev" title="model module" href="dynamapp.model.html" /> 
+    <link rel="prev" title="actuators module" href="dynamapp.actuators.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -55,29 +55,30 @@
 <li class="toctree-l1"><a class="reference internal" href="REFERENCES.html">References</a></li>
 <li class="toctree-l1"><a class="reference internal" href="CHANGELOG.html">Changelog</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Modules</span></p>
+<p class="caption" role="heading"><span class="caption-text">Packages documentation</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="modules.html">dynamapp</a><ul class="current">
-<li class="toctree-l2 current"><a class="reference internal" href="dynamapp.html">dynamapp package</a><ul class="current">
-<li class="toctree-l3 current"><a class="reference internal" href="dynamapp.html#submodules">Submodules</a><ul class="current">
-<li class="toctree-l4"><a class="reference internal" href="dynamapp.identification.html">identification module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="dynamapp.harmonic_drive.html">harmonic_drive module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="dynamapp.kalman.html">kalman module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="dynamapp.math_utils.html">math_utils module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="dynamapp.moesp.html">moesp module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="dynamapp.nfoursid.html">nfoursid module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="dynamapp.regressors.html">regressors module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="dynamapp.model.html">model module</a></li>
-<li class="toctree-l4 current"><a class="current reference internal" href="#">data_utils module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="dynamapp.solvers.html">solvers module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="dynamapp.state_space.html">state_space module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="dynamapp.model_state.html">model_state module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="dynamapp.trajectory.html">trajectory module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="dynamapp.utils.html">utils module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="dynamapp.viscoelastic.html">viscoelastic module</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="dynamapp.html">dynamapp</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="dynamapp.html#submodules">Submodules</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="dynamapp.kalman.html">kalman module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamapp.math_utils.html">math_utils module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamapp.moesp.html">moesp module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamapp.nfoursid.html">nfoursid module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamapp.regressors.html">regressors module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamapp.model.html">model module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamapp.actuators.html">actuators module</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">data_utils module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#dynamapp.data_utils.RobotData"><code class="docutils literal notranslate"><span class="pre">RobotData</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dynamapp.data_utils.smooth_columns"><code class="docutils literal notranslate"><span class="pre">smooth_columns()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="dynamapp.html#module-contents">Module contents</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamapp.solvers.html">solvers module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamapp.reductions.html">reductions module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamapp.state_space.html">state_space module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamapp.model_state.html">model_state module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamapp.trajectory.html">trajectory module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamapp.utils.html">utils module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamapp.viscoelastic.html">viscoelastic module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamapp.identification.html">identification module</a></li>
 </ul>
 </li>
 </ul>
@@ -103,8 +104,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="modules.html">dynamapp</a></li>
-          <li class="breadcrumb-item"><a href="dynamapp.html">dynamapp package</a></li>
+          <li class="breadcrumb-item"><a href="dynamapp.html">dynamapp</a></li>
       <li class="breadcrumb-item active">data_utils module</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/dynamapp.data_utils.rst.txt" rel="nofollow"> View page source</a>
@@ -115,15 +115,106 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="data-utils-module">
-<h1>data_utils module<a class="headerlink" href="#data-utils-module" title="Link to this heading"></a></h1>
+  <section id="module-dynamapp.data_utils">
+<span id="data-utils-module"></span><h1>data_utils module<a class="headerlink" href="#module-dynamapp.data_utils" title="Link to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="dynamapp.data_utils.RobotData">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dynamapp.data_utils.</span></span><span class="sig-name descname"><span class="pre">RobotData</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_file_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ndof</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">7</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.001</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">intIndex</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stepIndex</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fnlIndex</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dynamapp/data_utils.html#RobotData"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dynamapp.data_utils.RobotData" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Initialize the RobotData object by loading and processing data from a CSV fcle.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><ul class="simple">
+<li><p>data_file_path str): Path to the CSV data file.</p></li>
+<li><p>ndof (int) : number of freedom degree of the manipulator.</p></li>
+<li><p>time_step (float) : step time beteewn tow conscutive sample of data</p></li>
+<li><p>intIndex (int): Initial index for data slicing.</p></li>
+<li><p>stepIndex (int): Step index for periodic data selection.</p></li>
+<li><p>fnlIndex (int): Final index for data slicing.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="dynamapp.data_utils.RobotData.updateSamplingRate">
+<span class="sig-name descname"><span class="pre">updateSamplingRate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_sampling_rate</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dynamapp/data_utils.html#RobotData.updateSamplingRate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dynamapp.data_utils.RobotData.updateSamplingRate" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dynamapp.data_utils.RobotData.lowPassfilter">
+<span class="sig-name descname"><span class="pre">lowPassfilter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cutoff_frequency</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dynamapp/data_utils.html#RobotData.lowPassfilter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dynamapp.data_utils.RobotData.lowPassfilter" title="Link to this definition"></a></dt>
+<dd><p>Filtring robot data using a butter low pass filter</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dynamapp.data_utils.RobotData.computeTorqueNoise">
+<span class="sig-name descname"><span class="pre">computeTorqueNoise</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">variable</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'torque'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'std'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="reference internal" href="_modules/dynamapp/data_utils.html#RobotData.computeTorqueNoise"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dynamapp.data_utils.RobotData.computeTorqueNoise" title="Link to this definition"></a></dt>
+<dd><p>Estimates the Noise level in torque sensor mesurements.
+The noise model is assumed to be a white gaussian noise.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dynamapp.data_utils.RobotData.computePositionNoise">
+<span class="sig-name descname"><span class="pre">computePositionNoise</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'std'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span></span></span><a class="reference internal" href="_modules/dynamapp/data_utils.html#RobotData.computePositionNoise"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dynamapp.data_utils.RobotData.computePositionNoise" title="Link to this definition"></a></dt>
+<dd><p>Estimates the Noise level in torque sensor mesurements.
+The noise model is assumed to be a white gaussian noise.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dynamapp.data_utils.RobotData.visualizeCorrelation">
+<span class="sig-name descname"><span class="pre">visualizeCorrelation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">variable</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'torque'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dynamapp/data_utils.html#RobotData.visualizeCorrelation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dynamapp.data_utils.RobotData.visualizeCorrelation" title="Link to this definition"></a></dt>
+<dd><p>Plot the correlation graph between joints variable data given by 
+variable parameter</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dynamapp.data_utils.RobotData.visualizeVelocity">
+<span class="sig-name descname"><span class="pre">visualizeVelocity</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/dynamapp/data_utils.html#RobotData.visualizeVelocity"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dynamapp.data_utils.RobotData.visualizeVelocity" title="Link to this definition"></a></dt>
+<dd><p>Plot the joints velocity recorded by the sensors.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dynamapp.data_utils.RobotData.visualizePosition">
+<span class="sig-name descname"><span class="pre">visualizePosition</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/dynamapp/data_utils.html#RobotData.visualizePosition"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dynamapp.data_utils.RobotData.visualizePosition" title="Link to this definition"></a></dt>
+<dd><p>Plot the joints position recorded by the sensors.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dynamapp.data_utils.RobotData.visualizeTorque">
+<span class="sig-name descname"><span class="pre">visualizeTorque</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/dynamapp/data_utils.html#RobotData.visualizeTorque"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dynamapp.data_utils.RobotData.visualizeTorque" title="Link to this definition"></a></dt>
+<dd><p>Plot the joints torque</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dynamapp.data_utils.RobotData.visualizeCurrent">
+<span class="sig-name descname"><span class="pre">visualizeCurrent</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/dynamapp/data_utils.html#RobotData.visualizeCurrent"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dynamapp.data_utils.RobotData.visualizeCurrent" title="Link to this definition"></a></dt>
+<dd><p>Plot the joints current</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dynamapp.data_utils.RobotData.visualizeAcceleration">
+<span class="sig-name descname"><span class="pre">visualizeAcceleration</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/dynamapp/data_utils.html#RobotData.visualizeAcceleration"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dynamapp.data_utils.RobotData.visualizeAcceleration" title="Link to this definition"></a></dt>
+<dd><p>Plot the joints desired accleration</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="dynamapp.data_utils.smooth_columns">
+<span class="sig-prename descclassname"><span class="pre">dynamapp.data_utils.</span></span><span class="sig-name descname"><span class="pre">smooth_columns</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">window_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">5</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">numpy.ndarray</span></span></span><a class="reference internal" href="_modules/dynamapp/data_utils.html#smooth_columns"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dynamapp.data_utils.smooth_columns" title="Link to this definition"></a></dt>
+<dd><p>Smooth each column of the input data matrix using a moving average.</p>
+<p>Parameters:
+- data: np.ndarray, the input data matrix of size N x 7
+- window_size: int, the window size for the moving average</p>
+<p>Returns:
+- smoothed_data: np.ndarray, the smoothed data matrix of the same size as input</p>
+</dd></dl>
+
 </section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="dynamapp.model.html" class="btn btn-neutral float-left" title="model module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="dynamapp.actuators.html" class="btn btn-neutral float-left" title="actuators module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="dynamapp.solvers.html" class="btn btn-neutral float-right" title="solvers module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

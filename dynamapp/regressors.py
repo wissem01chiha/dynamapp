@@ -1,7 +1,3 @@
-"""
-Regressors module
-=================
-"""
 import logging
 import jax
 from jax import jit

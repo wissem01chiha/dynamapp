@@ -1,7 +1,3 @@
-"""
-Trajectory Module
-====================
-"""
 import jax.numpy as jnp
 import logging
 

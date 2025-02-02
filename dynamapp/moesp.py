@@ -1,7 +1,3 @@
-"""
-MOESP Module
-====================
-"""
 import jax
 import jax.numpy as jnp
 from .state_space import *

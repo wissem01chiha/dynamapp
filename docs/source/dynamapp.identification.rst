@@ -1,7 +1,7 @@
 identification module
-====================
+======================
 
-.. automodule:: identification
+.. automodule:: dynamapp.identification
    :members:
    :undoc-members:
    :show-inheritance:

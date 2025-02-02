@@ -1,7 +1,7 @@
 solvers module
 ======================
 
-.. automodule:: solvers
+.. automodule:: dynamapp.solvers
    :members:
    :undoc-members:
    :show-inheritance:

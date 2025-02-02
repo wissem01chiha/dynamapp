@@ -18,10 +18,12 @@
         <script src="_static/documentation_options.js?v=40be6288"></script>
         <script src="_static/doctools.js?v=9a2dae69"></script>
         <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="dynamapp" href="modules.html" />
+    <link rel="next" title="dynamapp" href="dynamapp.html" />
     <link rel="prev" title="References" href="REFERENCES.html" /> 
 </head>
 
@@ -54,14 +56,14 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="REFERENCES.html">References</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Changelog</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#release-1-0-0">Release : 1.0.0</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#release-0-1-0">Release : 0.1.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#release-1-0-0">Release 1.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#release-0-1-0">Release 0.1.0</a></li>
 </ul>
 </li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Modules</span></p>
+<p class="caption" role="heading"><span class="caption-text">Packages documentation</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="modules.html">dynamapp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dynamapp.html">dynamapp</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Development</span></p>
 <ul>
@@ -96,21 +98,22 @@
   <section class="tex2jax_ignore mathjax_ignore" id="changelog">
 <h1>Changelog<a class="headerlink" href="#changelog" title="Link to this heading"></a></h1>
 <section id="release-1-0-0">
-<h2>Release : 1.0.0<a class="headerlink" href="#release-1-0-0" title="Link to this heading"></a></h2>
-<ul class="simple">
-<li><p>Add automatic differentifc=ation though JAX</p></li>
-<li><p>Change structure , one pythin package with multipe module sinside</p></li>
-<li><p>Add support for pybullet simulation/ data genration</p></li>
+<h2>Release 1.0.0<a class="headerlink" href="#release-1-0-0" title="Link to this heading"></a></h2>
+<ul>
+<li><p>Refactor to use automatic differentiation through JAX, removing the dependency on the numpy package.</p></li>
+<li><p>Remove dependency on pnnchio library. The model will now be defined by explicit dh-parameters, inertial matrices, simple damping, and a generalized friction unified model.</p></li>
+<li><p>Restructure into one Python package with multiple modules inside.</p></li>
+<li><p>Remove all complex and non-linear friction models (such as Lugure, Maxwell, and others requiring solving partial differential equations at each step). Adopt a simpler general friction model where the force related to joint position, velocity, and acceleration is described by the relation for a single joint (i):</p>
+<div class="math notranslate nohighlight">
+\[f_i = \alpha_{1i} q_i + \alpha_{2i} q_i^2 + \ldots + \alpha_{ni} q_i^n + \beta_{1i} v_i + \beta_{2i} v_i^2 + \ldots + \beta_{ki} v_i^k + \gamma_{1i} a_i + \gamma_{2i} a_i^2 + \ldots + \gamma_{pi} a_i^p \]</div>
+<p>Here, the values of <span class="math notranslate nohighlight">\(n\)</span>, <span class="math notranslate nohighlight">\(k\)</span> , and <span class="math notranslate nohighlight">\(p\)</span> are dynamically chosen and are generally not equal. Non-linear transformations on <span class="math notranslate nohighlight">\(q_i\)</span>, <span class="math notranslate nohighlight">\(v_i\)</span>, and <span class="math notranslate nohighlight">\(a_i\)</span> are allowed, while not incorporating any specific parameters (e.g., <span class="math notranslate nohighlight">\( \beta_{1i} \cos(v_i) \)</span>).</p>
+</li>
 </ul>
 </section>
 <section id="release-0-1-0">
-<h2>Release : 0.1.0<a class="headerlink" href="#release-0-1-0" title="Link to this heading"></a></h2>
+<h2>Release 0.1.0<a class="headerlink" href="#release-0-1-0" title="Link to this heading"></a></h2>
 <ul class="simple">
-<li><p>Trajectory data processing</p></li>
-<li><p>Compute manipulator state space model</p></li>
-<li><p>State space identification based methods</p></li>
-<li><p>Dynamic modeling with effects of frictions, actuator inertia, joint stiffness, and torque offset.</p></li>
-<li><p>Generation of optimal exciting trajectories.</p></li>
+<li><p>First experimental package.</p></li>
 </ul>
 </section>
 </section>
@@ -120,7 +123,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="REFERENCES.html" class="btn btn-neutral float-left" title="References" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="modules.html" class="btn btn-neutral float-right" title="dynamapp" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="dynamapp.html" class="btn btn-neutral float-right" title="dynamapp" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

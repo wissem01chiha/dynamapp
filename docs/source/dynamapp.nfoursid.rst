@@ -1,7 +1,7 @@
 nfoursid module
 ========================
 
-.. automodule:: nfoursid
+.. automodule:: dynamapp.nfoursid
    :members:
    :undoc-members:
    :show-inheritance:

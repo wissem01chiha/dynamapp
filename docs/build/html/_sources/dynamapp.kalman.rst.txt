@@ -1,7 +1,7 @@
 kalman module
 ======================
 
-.. automodule:: kalman
+.. automodule:: dynamapp.kalman
    :members:
    :undoc-members:
    :show-inheritance:

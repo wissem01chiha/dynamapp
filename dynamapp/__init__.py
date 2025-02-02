@@ -1,6 +1,6 @@
 """
 DynaMapp
-=======
+====================
 Usage:
 ------
 >>> import dynamapp as dymp

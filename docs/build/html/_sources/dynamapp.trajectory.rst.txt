@@ -1,7 +1,7 @@
 trajectory module
 ==========================
 
-.. automodule:: trajectory
+.. automodule:: dynamapp.trajectory
    :members:
    :undoc-members:
    :show-inheritance:

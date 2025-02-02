@@ -1,16 +1,11 @@
-"""
-NNFourSID Module
-====================
-"""
 from typing import List, Tuple
 
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
-from state_space import StateSpace
-from utils import Utils, Decomposition
-
+from .state_space import StateSpace
+from .math_utils import Decomposition
 
 class NFourSID:
     r"""

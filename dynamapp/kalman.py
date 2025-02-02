@@ -1,5 +1,4 @@
 from typing import List, Optional
-
 from matplotlib import figure as matplotlib_figure
 import numpy as np
 import pandas as pd

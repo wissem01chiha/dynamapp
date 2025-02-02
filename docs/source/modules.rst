@@ -1,7 +1,0 @@
-dynamapp
-========
-
-.. toctree::
-   :maxdepth: 4
-
-   dynamapp

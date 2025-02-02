@@ -19,9 +19,9 @@ DynaMapp documentation
 
 .. toctree::
    :maxdepth: 4
-   :caption: Modules 
+   :caption: Packages documentation
 
-   modules
+   dynamapp
 
 .. toctree::
    :maxdepth: 2

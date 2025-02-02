@@ -1,7 +1,7 @@
 import os
 import sys
 
-sys.path.insert(0, os.path.abspath('../../dynamapp'))
+sys.path.insert(0, os.path.abspath('../../'))
 
 project   = 'DynaMapp'
 copyright = '2025, Wissem CHIHA'
@@ -22,7 +22,9 @@ myst_enable_extensions = [
     "dollarmath",  
     "deflist",     
 ]
-autodoc_mock_imports = ['jax', 'jax.numpy','seaborn', 'pinocchio', 'seaborn', 'numpy', 'matplotlib', 'pandas', 'scipy']
+autodoc_mock_imports = ['jax', 'jax.numpy','seaborn', 'seaborn', 'numpy', 'matplotlib', 'pandas', 'scipy']
+autodoc_default_flags = ['members', 'private-members']
+autodoc_member_order = 'bysource'
 templates_path = ['build/html/_templates']
 exclude_patterns = ['Thumbs.db', '.DS_Store']
 language = 'python'

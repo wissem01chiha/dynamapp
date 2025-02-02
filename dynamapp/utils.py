@@ -1,13 +1,7 @@
-"""
-Utils Module
-==============
-"""
 import logging
 import math
-import json
 import numpy as np
-import yaml
-
+ 
 logger = logging.getLogger(__name__)
 
 def wrap_deg(angle):
@@ -42,34 +36,3 @@ def clamp_array(array:np.ndarray, lower_bound, upper_bound):
     """Clamp the values of an array to the given lower and upper bound """
     clamped_array = np.clip(array, lower_bound, upper_bound)
     return clamped_array
-
-def dict_to_json(structData, filename):
-    """Saves a Python dictionary to a JSON file."""
-    if not isinstance(structData, dict):
-        logger.error('The first input argument must be a Python dictionary')
-    if not isinstance(filename, str) or filename == '':
-        logger.error('The second input argument must ba non-empty string representing the filename')
-    try:
-        with open(filename, 'w') as file:
-            json.dump(structData, file, indent=4)
-    except IOError:
-        logger.error(f'Could not create or open the file "{filename}" for writing')
-
-def yaml_to_dict(yamlFilePath) -> dict:
-    """
-    Get parameters from the config YAML file and return them as a 
-    dictionary.
-    
-    Args:
-        yamlFilePath (str): Path to the YAML file.
-    """
-    try:
-        with open(yamlFilePath, 'r') as file:
-            dic = yaml.safe_load(file)
-        return dic
-    except FileNotFoundError:
-        logger.error(f"Error: File '{yamlFilePath}' not found.")
-        return {}
-    except yaml.YAMLError as e:
-        logger.error(f"Error parsing YAML file '{yamlFilePath}': {e}")
-        return {}

@@ -1,7 +1,7 @@
 model module
 =====================
 
-.. automodule:: model
+.. automodule:: dynamapp.model
    :members:
    :undoc-members:
    :show-inheritance:

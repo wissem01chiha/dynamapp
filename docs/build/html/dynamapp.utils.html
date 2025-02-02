@@ -55,29 +55,35 @@
 <li class="toctree-l1"><a class="reference internal" href="REFERENCES.html">References</a></li>
 <li class="toctree-l1"><a class="reference internal" href="CHANGELOG.html">Changelog</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Modules</span></p>
+<p class="caption" role="heading"><span class="caption-text">Packages documentation</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="modules.html">dynamapp</a><ul class="current">
-<li class="toctree-l2 current"><a class="reference internal" href="dynamapp.html">dynamapp package</a><ul class="current">
-<li class="toctree-l3 current"><a class="reference internal" href="dynamapp.html#submodules">Submodules</a><ul class="current">
-<li class="toctree-l4"><a class="reference internal" href="dynamapp.identification.html">identification module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="dynamapp.harmonic_drive.html">harmonic_drive module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="dynamapp.kalman.html">kalman module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="dynamapp.math_utils.html">math_utils module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="dynamapp.moesp.html">moesp module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="dynamapp.nfoursid.html">nfoursid module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="dynamapp.regressors.html">regressors module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="dynamapp.model.html">model module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="dynamapp.data_utils.html">data_utils module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="dynamapp.solvers.html">solvers module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="dynamapp.state_space.html">state_space module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="dynamapp.model_state.html">model_state module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="dynamapp.trajectory.html">trajectory module</a></li>
-<li class="toctree-l4 current"><a class="current reference internal" href="#">utils module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="dynamapp.viscoelastic.html">viscoelastic module</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="dynamapp.html">dynamapp</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="dynamapp.html#submodules">Submodules</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="dynamapp.kalman.html">kalman module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamapp.math_utils.html">math_utils module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamapp.moesp.html">moesp module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamapp.nfoursid.html">nfoursid module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamapp.regressors.html">regressors module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamapp.model.html">model module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamapp.actuators.html">actuators module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamapp.data_utils.html">data_utils module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamapp.solvers.html">solvers module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamapp.reductions.html">reductions module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamapp.state_space.html">state_space module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamapp.model_state.html">model_state module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamapp.trajectory.html">trajectory module</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">utils module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#dynamapp.utils.wrap_deg"><code class="docutils literal notranslate"><span class="pre">wrap_deg()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dynamapp.utils.rad_deg"><code class="docutils literal notranslate"><span class="pre">rad_deg()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dynamapp.utils.wrap_xpi"><code class="docutils literal notranslate"><span class="pre">wrap_xpi()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dynamapp.utils.deg_to_rad"><code class="docutils literal notranslate"><span class="pre">deg_to_rad()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dynamapp.utils.wrap_array"><code class="docutils literal notranslate"><span class="pre">wrap_array()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dynamapp.utils.scale_array"><code class="docutils literal notranslate"><span class="pre">scale_array()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dynamapp.utils.clamp_array"><code class="docutils literal notranslate"><span class="pre">clamp_array()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="dynamapp.html#module-contents">Module contents</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamapp.viscoelastic.html">viscoelastic module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamapp.identification.html">identification module</a></li>
 </ul>
 </li>
 </ul>
@@ -103,8 +109,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="modules.html">dynamapp</a></li>
-          <li class="breadcrumb-item"><a href="dynamapp.html">dynamapp package</a></li>
+          <li class="breadcrumb-item"><a href="dynamapp.html">dynamapp</a></li>
       <li class="breadcrumb-item active">utils module</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/dynamapp.utils.rst.txt" rel="nofollow"> View page source</a>
@@ -115,65 +120,48 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="module-utils">
-<span id="utils-module"></span><h1>utils module<a class="headerlink" href="#module-utils" title="Link to this heading"></a></h1>
+  <section id="module-dynamapp.utils">
+<span id="utils-module"></span><h1>utils module<a class="headerlink" href="#module-dynamapp.utils" title="Link to this heading"></a></h1>
 <dl class="py function">
-<dt class="sig sig-object py" id="utils.clamp_array">
-<span class="sig-prename descclassname"><span class="pre">utils.</span></span><span class="sig-name descname"><span class="pre">clamp_array</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">array</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lower_bound</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">upper_bound</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/utils.html#clamp_array"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utils.clamp_array" title="Link to this definition"></a></dt>
-<dd><p>Clamp the values of an array to the given lower and upper bound</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="utils.deg_to_rad">
-<span class="sig-prename descclassname"><span class="pre">utils.</span></span><span class="sig-name descname"><span class="pre">deg_to_rad</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">angle_degrees</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/utils.html#deg_to_rad"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utils.deg_to_rad" title="Link to this definition"></a></dt>
-<dd><p>Converts an angle given in degrees to radians.</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="utils.dict_to_json">
-<span class="sig-prename descclassname"><span class="pre">utils.</span></span><span class="sig-name descname"><span class="pre">dict_to_json</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">structData</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/utils.html#dict_to_json"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utils.dict_to_json" title="Link to this definition"></a></dt>
-<dd><p>Saves a Python dictionary to a JSON file.</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="utils.rad_deg">
-<span class="sig-prename descclassname"><span class="pre">utils.</span></span><span class="sig-name descname"><span class="pre">rad_deg</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">angle_radians</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/utils.html#rad_deg"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utils.rad_deg" title="Link to this definition"></a></dt>
-<dd><p>Converts an angle given in radians to degrees.</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="utils.scale_array">
-<span class="sig-prename descclassname"><span class="pre">utils.</span></span><span class="sig-name descname"><span class="pre">scale_array</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">array</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lower_bound</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">upper_bound</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/utils.html#scale_array"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utils.scale_array" title="Link to this definition"></a></dt>
-<dd><p>Scale the values of an array to the given lower and upper bound</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="utils.wrap_array">
-<span class="sig-prename descclassname"><span class="pre">utils.</span></span><span class="sig-name descname"><span class="pre">wrap_array</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">array</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lower_bound</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">upper_bound</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/utils.html#wrap_array"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utils.wrap_array" title="Link to this definition"></a></dt>
-<dd><p>wrap the values of an array to the given lower and upper bound</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="utils.wrap_deg">
-<span class="sig-prename descclassname"><span class="pre">utils.</span></span><span class="sig-name descname"><span class="pre">wrap_deg</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">angle</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/utils.html#wrap_deg"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utils.wrap_deg" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="dynamapp.utils.wrap_deg">
+<span class="sig-prename descclassname"><span class="pre">dynamapp.utils.</span></span><span class="sig-name descname"><span class="pre">wrap_deg</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">angle</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dynamapp/utils.html#wrap_deg"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dynamapp.utils.wrap_deg" title="Link to this definition"></a></dt>
 <dd><p>Wrap angle to the interval [-180, 180].</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="utils.wrap_xpi">
-<span class="sig-prename descclassname"><span class="pre">utils.</span></span><span class="sig-name descname"><span class="pre">wrap_xpi</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">angle</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/utils.html#wrap_xpi"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utils.wrap_xpi" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="dynamapp.utils.rad_deg">
+<span class="sig-prename descclassname"><span class="pre">dynamapp.utils.</span></span><span class="sig-name descname"><span class="pre">rad_deg</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">angle_radians</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dynamapp/utils.html#rad_deg"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dynamapp.utils.rad_deg" title="Link to this definition"></a></dt>
+<dd><p>Converts an angle given in radians to degrees.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="dynamapp.utils.wrap_xpi">
+<span class="sig-prename descclassname"><span class="pre">dynamapp.utils.</span></span><span class="sig-name descname"><span class="pre">wrap_xpi</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">angle</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dynamapp/utils.html#wrap_xpi"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dynamapp.utils.wrap_xpi" title="Link to this definition"></a></dt>
 <dd><p>Wrap angle to the interval [-X*pi, X*pi].</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="utils.yaml_to_dict">
-<span class="sig-prename descclassname"><span class="pre">utils.</span></span><span class="sig-name descname"><span class="pre">yaml_to_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">yamlFilePath</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="reference internal" href="_modules/utils.html#yaml_to_dict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utils.yaml_to_dict" title="Link to this definition"></a></dt>
-<dd><p>Get parameters from the config YAML file and return them as a 
-dictionary.</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>yamlFilePath (str): Path to the YAML file.</p>
-</dd>
-</dl>
+<dt class="sig sig-object py" id="dynamapp.utils.deg_to_rad">
+<span class="sig-prename descclassname"><span class="pre">dynamapp.utils.</span></span><span class="sig-name descname"><span class="pre">deg_to_rad</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">angle_degrees</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dynamapp/utils.html#deg_to_rad"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dynamapp.utils.deg_to_rad" title="Link to this definition"></a></dt>
+<dd><p>Converts an angle given in degrees to radians.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="dynamapp.utils.wrap_array">
+<span class="sig-prename descclassname"><span class="pre">dynamapp.utils.</span></span><span class="sig-name descname"><span class="pre">wrap_array</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">array</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lower_bound</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">upper_bound</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dynamapp/utils.html#wrap_array"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dynamapp.utils.wrap_array" title="Link to this definition"></a></dt>
+<dd><p>wrap the values of an array to the given lower and upper bound</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="dynamapp.utils.scale_array">
+<span class="sig-prename descclassname"><span class="pre">dynamapp.utils.</span></span><span class="sig-name descname"><span class="pre">scale_array</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">array</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lower_bound</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">upper_bound</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dynamapp/utils.html#scale_array"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dynamapp.utils.scale_array" title="Link to this definition"></a></dt>
+<dd><p>Scale the values of an array to the given lower and upper bound</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="dynamapp.utils.clamp_array">
+<span class="sig-prename descclassname"><span class="pre">dynamapp.utils.</span></span><span class="sig-name descname"><span class="pre">clamp_array</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">array</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lower_bound</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">upper_bound</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dynamapp/utils.html#clamp_array"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dynamapp.utils.clamp_array" title="Link to this definition"></a></dt>
+<dd><p>Clamp the values of an array to the given lower and upper bound</p>
 </dd></dl>
 
 </section>

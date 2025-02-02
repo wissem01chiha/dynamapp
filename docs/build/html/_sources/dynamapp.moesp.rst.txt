@@ -1,7 +1,7 @@
 moesp module
 =====================
 
-.. automodule:: moesp
+.. automodule:: dynamapp.moesp
    :members:
    :undoc-members:
    :show-inheritance:
