@@ -2,6 +2,7 @@ import logging
 import jax
 from jax import jit
 import jax.numpy as jnp
+from .viscoelastic import *
 
 logger = logging.getLogger(__name__)
 
@@ -29,7 +30,10 @@ class Model():
         self.Imats = Imats
         self.dampings = dampings
         self.dhparams = dhparams
-        self.gravity = gravity   
+        self.gravity = gravity  
+        assert len(Imats) == len(dhparams)
+        if dampings is not None:
+            assert len(dampings) == len(Imats)
         self.ndof = len(Imats)
         self.q = jnp.zeros(self.ndof) 
         self.v = jnp.zeros(self.ndof) 
@@ -114,7 +118,6 @@ class Model():
         
         return jnp.diag(dampings)
     
-    
     @staticmethod 
     @jit
     def _vxIv(vec:jnp.ndarray, Imat:jnp.ndarray) -> jnp.ndarray:
@@ -129,6 +132,8 @@ class Model():
         Returns:
             vecXIvec: (6,) Resultant vector after cross-product.
         """
+        assert vec.shape == (6,), f"Expected vector shape (6,), but got {vec.shape}"
+        assert Imat.shape == (6, 6), f"Expected Inertia Matrix shape (6, 6), but got {Imat.shape}"
         temp = jnp.matmul(Imat, vec) 
         vecXIvec = jnp.zeros(6)
         vecXIvec = vecXIvec.at[:3].set(jnp.cross(vec[:3], temp[:3]) + jnp.cross(vec[3:], temp[3:]))
@@ -272,22 +277,48 @@ class Model():
             
         return tau_g
     
-    def generalized_torques(self, q=None, qp=None, qpp=None):
+    def generalized_forces(self, q=None, qp=None, qpp=None)->jnp.ndarray:
         """
-        Compute the genralized torques using the recursive netwon euler alogrithm.
+        Compute the genralized forces for each link using the 
+        recursive netwon euler alogrithm.
          
         Args:
             - q    : Joints position vector. ( nq * 1 )
             - qp   : Joints velocity vector. ( nq * 1 )
             - qpp  : Joints acceleration vector. ( nq * 1 )
+        Returns:
+            - f  : (rotation + translation) compennat forces 
         """
         q = q if q is not None else self.q
         qp = qp if qp is not None else self.v
         qpp = qpp if qpp is not None else self.v
-        f = jnp.zeros(self.ndof) 
-        try:
-            _, _, _, f = self._rnea(q, qp, qpp)
-        except Exception as e:
-            logger.error('error occured when computing generalized torques.')
-        
+        f = jnp.zeros((6, self.ndof))
+        _, _, _, f = self._rnea(q, qp, qpp)
+      
         return f
+    
+    def generalized_torques(self, q=None, qp=None, qpp=None)->jnp.ndarray:
+        """
+        Return the genralized torques compennat using the recursive
+        netwon euler alogrithm.
+        """
+        f = self.generalized_forces(q, qp, qpp)
+        return f[-3:,:]
+    
+    def full_forces(self, alpha:jnp.array, beta:jnp.array, gamma:jnp.array,
+        q=None, qp=None, qpp=None)->jnp.ndarray:
+        """ 
+        Compute the joint torques given the friction effects and damping 
+        
+        """
+        
+        return jnp.ndarray()
+    
+    def full_torques(self, alpha:jnp.array, beta:jnp.array, gamma:jnp.array,
+        q=None, qp=None, qpp=None)->jnp.ndarray:
+        """ 
+        Compute the joint torques given the friction effects and damping (if not given)
+        
+        """
+        
+        return jnp.ndarray()

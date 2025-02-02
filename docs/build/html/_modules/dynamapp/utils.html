@@ -89,7 +89,7 @@
   <h1>Source code for dynamapp.utils</h1><div class="highlight"><pre>
 <span></span><span class="kn">import</span> <span class="nn">logging</span>
 <span class="kn">import</span> <span class="nn">math</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">jax.numpy</span> <span class="k">as</span> <span class="nn">jnp</span>
  
 <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
 
@@ -97,7 +97,7 @@
 <a class="viewcode-back" href="../../dynamapp.utils.html#dynamapp.utils.wrap_deg">[docs]</a>
 <span class="k">def</span> <span class="nf">wrap_deg</span><span class="p">(</span><span class="n">angle</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Wrap angle to the interval [-180, 180].&quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="n">angle</span> <span class="o">-</span> <span class="mi">360</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">floor</span><span class="p">((</span><span class="n">angle</span> <span class="o">+</span> <span class="mi">180</span><span class="p">)</span> <span class="o">/</span> <span class="mi">360</span><span class="p">)</span></div>
+    <span class="k">return</span> <span class="n">angle</span> <span class="o">-</span> <span class="mi">360</span> <span class="o">*</span> <span class="n">jnp</span><span class="o">.</span><span class="n">floor</span><span class="p">((</span><span class="n">angle</span> <span class="o">+</span> <span class="mi">180</span><span class="p">)</span> <span class="o">/</span> <span class="mi">360</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="rad_deg">
@@ -111,7 +111,7 @@
 <a class="viewcode-back" href="../../dynamapp.utils.html#dynamapp.utils.wrap_xpi">[docs]</a>
 <span class="k">def</span> <span class="nf">wrap_xpi</span><span class="p">(</span><span class="n">angle</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Wrap angle to the interval [-X*pi, X*pi].&quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="n">angle</span> <span class="o">-</span> <span class="n">X</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">floor</span><span class="p">((</span><span class="n">angle</span> <span class="o">+</span> <span class="n">X</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">X</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="p">))</span></div>
+    <span class="k">return</span> <span class="n">angle</span> <span class="o">-</span> <span class="n">X</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">jnp</span><span class="o">.</span><span class="n">floor</span><span class="p">((</span><span class="n">angle</span> <span class="o">+</span> <span class="n">X</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">X</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="p">))</span></div>
 
 
 <div class="viewcode-block" id="deg_to_rad">
@@ -124,26 +124,26 @@
 
 <div class="viewcode-block" id="wrap_array">
 <a class="viewcode-back" href="../../dynamapp.utils.html#dynamapp.utils.wrap_array">[docs]</a>
-<span class="k">def</span> <span class="nf">wrap_array</span><span class="p">(</span><span class="n">array</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">lower_bound</span><span class="p">,</span> <span class="n">upper_bound</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">wrap_array</span><span class="p">(</span><span class="n">array</span><span class="p">:</span><span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">lower_bound</span><span class="p">,</span> <span class="n">upper_bound</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;wrap the values of an array to the given lower and upper bound &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">lower_bound</span> <span class="o">+</span> <span class="p">(</span><span class="n">array</span> <span class="o">-</span> <span class="n">lower_bound</span><span class="p">)</span></div>
 
     
 <div class="viewcode-block" id="scale_array">
 <a class="viewcode-back" href="../../dynamapp.utils.html#dynamapp.utils.scale_array">[docs]</a>
-<span class="k">def</span> <span class="nf">scale_array</span><span class="p">(</span><span class="n">array</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">lower_bound</span><span class="p">,</span><span class="n">upper_bound</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">scale_array</span><span class="p">(</span><span class="n">array</span><span class="p">:</span><span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">lower_bound</span><span class="p">,</span><span class="n">upper_bound</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Scale the values of an array to the given lower and upper bound &quot;&quot;&quot;</span>
-    <span class="n">min_val</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">array</span><span class="p">)</span>
-    <span class="n">max_val</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">array</span><span class="p">)</span>
+    <span class="n">min_val</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">array</span><span class="p">)</span>
+    <span class="n">max_val</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">array</span><span class="p">)</span>
     <span class="n">scaled_array</span> <span class="o">=</span> <span class="p">(</span><span class="n">upper_bound</span> <span class="o">-</span> <span class="n">lower_bound</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">array</span> <span class="o">-</span> <span class="n">min_val</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">max_val</span> <span class="o">-</span> <span class="n">min_val</span><span class="p">)</span> <span class="o">+</span> <span class="n">lower_bound</span>
     <span class="k">return</span> <span class="n">scaled_array</span></div>
 
 
 <div class="viewcode-block" id="clamp_array">
 <a class="viewcode-back" href="../../dynamapp.utils.html#dynamapp.utils.clamp_array">[docs]</a>
-<span class="k">def</span> <span class="nf">clamp_array</span><span class="p">(</span><span class="n">array</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">lower_bound</span><span class="p">,</span> <span class="n">upper_bound</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">clamp_array</span><span class="p">(</span><span class="n">array</span><span class="p">:</span><span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">lower_bound</span><span class="p">,</span> <span class="n">upper_bound</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Clamp the values of an array to the given lower and upper bound &quot;&quot;&quot;</span>
-    <span class="n">clamped_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="n">lower_bound</span><span class="p">,</span> <span class="n">upper_bound</span><span class="p">)</span>
+    <span class="n">clamped_array</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="n">lower_bound</span><span class="p">,</span> <span class="n">upper_bound</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">clamped_array</span></div>
 
 </pre></div>

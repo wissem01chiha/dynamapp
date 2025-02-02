@@ -1,7 +1,7 @@
 DynaMapp 
 ======  
 
-DynaMapp is a Python software package designed for the modeling, identification, and calibration of dynamic models of serial robotic manipulators.  
+ 
 [![PyLint](https://github.com/wissem01chiha/dynamapp/actions/workflows/pylint.yml/badge.svg)](https://github.com/wissem01chiha/dynamapp/actions/workflows/pylint.yml)
 [![Deploy static content to Pages](https://github.com/wissem01chiha/dynamapp/actions/workflows/static.yml/badge.svg)](https://github.com/wissem01chiha/dynamapp/actions/workflows/static.yml)
 [![Version](https://anaconda.org/chiha/pydynamapp/badges/version.svg)](https://anaconda.org/chiha/pydynamapp)
@@ -10,7 +10,7 @@ DynaMapp is a Python software package designed for the modeling, identification,
 [![License](https://anaconda.org/chiha/pydynamapp/badges/license.svg)](https://anaconda.org/chiha/pydynamapp)
 [![Downloads](https://anaconda.org/chiha/pydynamapp/badges/downloads.svg)](https://anaconda.org/chiha/pydynamapp)
 
-
+DynaMapp is a Python software package designed for the modeling, identification, and calibration of dynamic models of serial robotic manipulators. 
 The primary goal of this project is to offer a flexible framework for modeling and identifying serial manipulators, including the incorporation of nonlinear effects such as friction, stiffness, and backlash in robot joints. Additionally, a predictive feedback control mechanism is being developed to compensate these effects, making the framework suitable for collaborative robotics applications.
 
 The project aims to explore subspace identification methods for manipulators. Given the nonlinear nature of the problem, the state-space representation parameters are state-dependent, requiring more advanced mathematical tools to analyze such systems effectively.  

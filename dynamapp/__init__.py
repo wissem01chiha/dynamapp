@@ -15,7 +15,7 @@ from .trajectory import (
 )
 from .regressors import *
 from .reductions import *
-from .data_utils import *
+from .generators import *
 from .actuators import *
 from .model import *
 from .identification import *

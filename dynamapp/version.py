@@ -1,7 +1,3 @@
-"""
-Version Module
-====================
-"""
 _MAJOR = "0"
 _MINOR = "1"
 _PATCH = "0"

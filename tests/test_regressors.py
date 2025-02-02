@@ -1,38 +1,35 @@
 from setup_tests import *
-from dynamapp.regressors import Regressor
+from dynamapp.regressors import *
+from dynamapp.model import Model
 
 class TestRegressor(unittest.TestCase):
+    def setUp(self):
+        
+        Imats = [jnp.full((6, 6), fill_value=5.0) for _ in range(3)]
+        dhparams = [
+            [1, 5.47, 0.5, np.pi / 3],  
+            [0.5, 1, 0.47, np.pi / 6],
+            [1, 4, 0.0, np.pi / 7]
+        ]
+        self.m = Model(Imats, dhparams)
+        self.q = jnp.array([0.1, 0.2, 0.3])
+        self.v = jnp.array([0.4, 0.5, 0.6])
+        self.a = jnp.array([0.7, 0.8, 0.9])
+        self.tensor = jnp.ones((6, 6, self.m.ndof))  
     
-    def test_full_regressor_not_none(self):
-        reg = Regressor()
-        q = np.random.rand(100,7)
-        v = np.random.rand(100,7)
-        a = np.random.rand(100,7)
-        W = reg.computeFullRegressor(q,v,a)
-        self.assertIsNotNone(W)
+    def test_generalized_torques_wrt_inertia(self):
+         
+        W = generalized_torques_wrt_inertia(self.m, self.q, self.v, self.a)
+        self.assertEqual(W.size, (self.m.ndof * self.m.ndof * self.m.ndof * 36 ))  
+        self.assertTrue(jnp.all(jnp.isfinite(W)))
+        print(W)  
         
-    def test_basic_regressor_not_none(self):
-        reg = Regressor()
-        q = np.random.rand(7)
-        v = np.random.rand(7)
-        a = np.random.rand(7)
-        W = reg.computeBasicRegressor(q,v,a)
-        self.assertIsNotNone(W)
+    def test_inertia_tensor_wrt_inertia(self):
+        W = inertia_tensor_wrt_inertia(self.m,self.q)
         
-    def test_reduced_regressor(self):
-        reg = Regressor()
-        q = np.random.rand(100,7)
-        v = np.random.rand(100,7)
-        a = np.random.rand(100,7)
-        Wred = reg.computeReducedRegressor(q,v,a,1e-6)
-        self.assertIsNotNone(Wred)
+        self.assertEqual(W.size, (self.m.ndof * self.m.ndof * self.m.ndof * 36*6 ))  
+        self.assertTrue(jnp.all(jnp.isfinite(W))) 
         
-        
-        
-        
-        
-        
-        
-        
+
 if __name__ == "__main__":
-    unittest.main() 
+    unittest.main()

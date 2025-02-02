@@ -72,6 +72,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#recent-releases">Recent Releases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#references">References</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#contributing">Contributing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#license">License</a></li>
 </ul>
@@ -120,13 +121,15 @@
              
   <section class="tex2jax_ignore mathjax_ignore" id="dynamapp">
 <h1>DynaMapp<a class="headerlink" href="#dynamapp" title="Link to this heading"></a></h1>
-<p>DynaMapp is a Python software package designed for the modeling, identification, and calibration of dynamic models of serial robotic manipulators.</p>
-<p><a class="reference external" href="https://anaconda.org/chiha/pydynamapp"><img alt="Version" src="https://anaconda.org/chiha/pydynamapp/badges/version.svg" /></a>
+<p><a class="reference external" href="https://github.com/wissem01chiha/dynamapp/actions/workflows/pylint.yml"><img alt="PyLint" src="https://github.com/wissem01chiha/dynamapp/actions/workflows/pylint.yml/badge.svg" /></a>
+<a class="reference external" href="https://github.com/wissem01chiha/dynamapp/actions/workflows/static.yml"><img alt="Deploy static content to Pages" src="https://github.com/wissem01chiha/dynamapp/actions/workflows/static.yml/badge.svg" /></a>
+<a class="reference external" href="https://anaconda.org/chiha/pydynamapp"><img alt="Version" src="https://anaconda.org/chiha/pydynamapp/badges/version.svg" /></a>
 <a class="reference external" href="https://anaconda.org/chiha/pydynamapp"><img alt="Release Date" src="https://anaconda.org/chiha/pydynamapp/badges/latest_release_date.svg" /></a>
 <a class="reference external" href="https://anaconda.org/chiha/pydynamapp"><img alt="Platforms" src="https://anaconda.org/chiha/pydynamapp/badges/platforms.svg" /></a>
 <a class="reference external" href="https://anaconda.org/chiha/pydynamapp"><img alt="License" src="https://anaconda.org/chiha/pydynamapp/badges/license.svg" /></a>
 <a class="reference external" href="https://anaconda.org/chiha/pydynamapp"><img alt="Downloads" src="https://anaconda.org/chiha/pydynamapp/badges/downloads.svg" /></a></p>
-<p>The primary goal of this project is to offer a flexible framework for modeling and identifying serial manipulators, including the incorporation of nonlinear effects such as friction, stiffness, and backlash in robot joints. Additionally, a predictive feedback control mechanism is being developed to compensate these effects, making the framework suitable for collaborative robotics applications.</p>
+<p>DynaMapp is a Python software package designed for the modeling, identification, and calibration of dynamic models of serial robotic manipulators.
+The primary goal of this project is to offer a flexible framework for modeling and identifying serial manipulators, including the incorporation of nonlinear effects such as friction, stiffness, and backlash in robot joints. Additionally, a predictive feedback control mechanism is being developed to compensate these effects, making the framework suitable for collaborative robotics applications.</p>
 <p>The project aims to explore subspace identification methods for manipulators. Given the nonlinear nature of the problem, the state-space representation parameters are state-dependent, requiring more advanced mathematical tools to analyze such systems effectively.</p>
 <section id="table-of-contents">
 <h2>Table of Contents<a class="headerlink" href="#table-of-contents" title="Link to this heading"></a></h2>
@@ -161,6 +164,7 @@
 </ul>
 </li>
 <li><p><a class="reference internal" href="#recent-releases"><span class="xref myst">Recent Releases</span></a></p></li>
+<li><p><a class="reference internal" href="#references"><span class="xref myst">References</span></a></p></li>
 <li><p><a class="reference internal" href="#contributing"><span class="xref myst">Contributing</span></a></p></li>
 <li><p><a class="reference internal" href="#license"><span class="xref myst">License</span></a></p></li>
 </ul>
@@ -365,6 +369,27 @@ for detailed reports and figures visit <a class="reference external" href="https
 <li><p><strong><a class="reference external" href="https://github.com/wissem01chiha/dynamic-identification/releases/tag/v0.1.0">pyDynaMapp-v0.1.0</a></strong> — August 2024: First release</p></li>
 </ul>
 </section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong>A three-loop physical parameter identification method of robot manipulators considering physical feasibility and nonlinear friction mode</strong>, <em>Tangzhong Song, Lijin Fang,Guanghui Liu, Hanyu Pang</em>, 2024</p></li>
+<li><p><strong>Comprehensive modeling and identification of nonlinear joint dynamics for collaborative industrial robot manipulators</strong>, <em>Emil Madsen, Oluf Skov Rosenlund, David Brandt, Xuping Zhang</em>, 2020</p></li>
+<li><p><strong>Robotics Modelling Planning and Control</strong>, <em>Bruno Siciliano, Lorenzo Sciavicco Luigi Villani,Giuseppe Oriolo</em>,</p></li>
+<li><p><strong>Global Identification of Joint Drive Gains and Dynamic Parameters of Robots</strong> , <em>Maxime Gautier</em>, <em>Sebastien Brio</em>, 2014</p></li>
+<li><p><strong>Direct Calculation of Minimum Set of Inertial Parameters of Serial Robots</strong>, <em>Maxime Gautier, Wisama khalil</em>, 1990</p></li>
+<li><p><strong>Efficient Dynamic Computer Simulation of Robotic Mechanisms</strong>, <em>M.W.Walker</em>, <em>D. E. Orin</em>, 1982</p></li>
+<li><p><strong>Inertial Parameter Identification in Robotics: A Survey</strong>, <em>Quentin Leboutet, Julien Roux, Alexandre Janot, Julio Rogelio, Gordon
+Cheng</em>, 2021</p></li>
+<li><p><strong>Practical Modeling and Comprehensive System Identification of a BLDC Motor</strong>, <em>Changle Xiang, Xiaoliang Wang, Yue Ma, and Bin Xu</em>, 2015</p></li>
+<li><p><strong>Identiable Parameters and Optimum Congurations for Robots Calibration</strong>, <em>W. Khalil, M. Gautier and Ch. Enguehard</em>, 2009, <em>Robotica</em></p></li>
+<li><p><strong>Recursive identification of certain structured time varying state-space models</strong>, <em>M.H. Moazzam T. Hesketh, D.J.Clements</em>, 1997</p></li>
+<li><p><strong>Comparison Between the CLOE Method and the DIDIM Method for Robots Identification</strong>, <em>Alexandre Janot, Maxime Gautier, Anthony Jubien, and Pierre Olivier Vandanjon</em>, 2014</p></li>
+<li><p><strong>Robot Joint Modeling and Parameter Identification Using the Clamping Method</strong>, <em>Christian Lehmann ∗ Bjorn Olofsson, Klas Nilsson, Marcel Halbauer, Mathias Haage, Anders Robertsson, Olof Sornmo, Ulrich Berger</em>, 2013</p></li>
+<li><p><strong>Fundamentals of friction modeling</strong>, <em>Farid Al-Bender</em>, 2015</p></li>
+<li><p><strong>Constrained State Estimation - A Review</strong>, <em>Nesrine Amor, Ghualm Rasool, and Nidhal C. Bouaynaya</em>, arXiv, 2022</p></li>
+<li><p><strong>The Pinocchio C++ library</strong>,<em>J.Carpentier, G.Saurel, G.Buondonno, J.Mirabel, F.Lamiraux, O.Stasse, N.Mansard</em>, 2019</p></li>
+</ul>
+</section>
 <section id="contributing">
 <h2>Contributing<a class="headerlink" href="#contributing" title="Link to this heading"></a></h2>
 <p>Before contributing, please take a moment to review the following:</p>
@@ -378,7 +403,7 @@ for detailed reports and figures visit <a class="reference external" href="https
 <section id="license">
 <h2>License<a class="headerlink" href="#license" title="Link to this heading"></a></h2>
 <p>This project is currently licensed under the <strong>CC0 1.0 Universal License</strong>.<br />
-For more details, see the <a class="reference internal" href="#/LICENSE"><span class="xref myst">LICENSE</span></a> file.</p>
+For more details, see the <a class="reference internal" href="#LICENSE.txt"><span class="xref myst">LICENSE</span></a> file.</p>
 </section>
 </section>
 

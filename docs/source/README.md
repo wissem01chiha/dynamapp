@@ -1,22 +1,22 @@
 DynaMapp 
 ======  
 
-DynaMapp is a Python software package designed for the modeling, identification, and calibration of dynamic models of serial robotic manipulators.  
-
+ 
+[![PyLint](https://github.com/wissem01chiha/dynamapp/actions/workflows/pylint.yml/badge.svg)](https://github.com/wissem01chiha/dynamapp/actions/workflows/pylint.yml)
+[![Deploy static content to Pages](https://github.com/wissem01chiha/dynamapp/actions/workflows/static.yml/badge.svg)](https://github.com/wissem01chiha/dynamapp/actions/workflows/static.yml)
 [![Version](https://anaconda.org/chiha/pydynamapp/badges/version.svg)](https://anaconda.org/chiha/pydynamapp)
 [![Release Date](https://anaconda.org/chiha/pydynamapp/badges/latest_release_date.svg)](https://anaconda.org/chiha/pydynamapp)
 [![Platforms](https://anaconda.org/chiha/pydynamapp/badges/platforms.svg)](https://anaconda.org/chiha/pydynamapp)
 [![License](https://anaconda.org/chiha/pydynamapp/badges/license.svg)](https://anaconda.org/chiha/pydynamapp)
 [![Downloads](https://anaconda.org/chiha/pydynamapp/badges/downloads.svg)](https://anaconda.org/chiha/pydynamapp)
 
-
+DynaMapp is a Python software package designed for the modeling, identification, and calibration of dynamic models of serial robotic manipulators. 
 The primary goal of this project is to offer a flexible framework for modeling and identifying serial manipulators, including the incorporation of nonlinear effects such as friction, stiffness, and backlash in robot joints. Additionally, a predictive feedback control mechanism is being developed to compensate these effects, making the framework suitable for collaborative robotics applications.
 
 The project aims to explore subspace identification methods for manipulators. Given the nonlinear nature of the problem, the state-space representation parameters are state-dependent, requiring more advanced mathematical tools to analyze such systems effectively.  
 
 Table of Contents
 ---
-
 - [DynaMapp](#dynamapp)
   - [Table of Contents](#table-of-contents)
   - [Prerequisites](#prerequisites)
@@ -31,6 +31,7 @@ Table of Contents
   - [Documentation](#documentation)
       - [Build](#build)
   - [Recent Releases](#recent-releases)
+  - [References](#references)
   - [Contributing](#contributing)
   - [License](#license)
 
@@ -228,6 +229,25 @@ Recent Releases
 ---
 - **[pyDynaMapp-v0.1.0](https://github.com/wissem01chiha/dynamic-identification/releases/tag/v0.1.0)** — August 2024: First release
 
+References
+----
+
+- **A three-loop physical parameter identification method of robot manipulators considering physical feasibility and nonlinear friction mode**, *Tangzhong Song, Lijin Fang,Guanghui Liu, Hanyu Pang*, 2024
+- **Comprehensive modeling and identification of nonlinear joint dynamics for collaborative industrial robot manipulators**, *Emil Madsen, Oluf Skov Rosenlund, David Brandt, Xuping Zhang*, 2020
+- **Robotics Modelling Planning and Control**, *Bruno Siciliano, Lorenzo Sciavicco Luigi Villani,Giuseppe Oriolo*, 
+- **Global Identification of Joint Drive Gains and Dynamic Parameters of Robots** , *Maxime Gautier*, *Sebastien Brio*, 2014
+- **Direct Calculation of Minimum Set of Inertial Parameters of Serial Robots**, *Maxime Gautier, Wisama khalil*, 1990
+- **Efficient Dynamic Computer Simulation of Robotic Mechanisms**, *M.W.Walker*, *D. E. Orin*, 1982  
+- **Inertial Parameter Identification in Robotics: A Survey**, *Quentin Leboutet, Julien Roux, Alexandre Janot, Julio Rogelio, Gordon
+Cheng*, 2021
+- **Practical Modeling and Comprehensive System Identification of a BLDC Motor**, *Changle Xiang, Xiaoliang Wang, Yue Ma, and Bin Xu*, 2015
+- **Identiable Parameters and Optimum Congurations for Robots Calibration**, *W. Khalil, M. Gautier and Ch. Enguehard*, 2009, *Robotica*
+- **Recursive identification of certain structured time varying state-space models**, *M.H. Moazzam T. Hesketh, D.J.Clements*, 1997 
+- **Comparison Between the CLOE Method and the DIDIM Method for Robots Identification**, *Alexandre Janot, Maxime Gautier, Anthony Jubien, and Pierre Olivier Vandanjon*, 2014
+- **Robot Joint Modeling and Parameter Identification Using the Clamping Method**, *Christian Lehmann ∗ Bjorn Olofsson, Klas Nilsson, Marcel Halbauer, Mathias Haage, Anders Robertsson, Olof Sornmo, Ulrich Berger*, 2013
+- **Fundamentals of friction modeling**, *Farid Al-Bender*, 2015
+- **Constrained State Estimation - A Review**, *Nesrine Amor, Ghualm Rasool, and Nidhal C. Bouaynaya*, arXiv, 2022
+- **The Pinocchio C++ library**,*J.Carpentier, G.Saurel, G.Buondonno, J.Mirabel, F.Lamiraux, O.Stasse, N.Mansard*, 2019
 
 Contributing
 ----
@@ -242,4 +262,4 @@ If you have any questions or need assistance, feel free to reach out via [email]
 License
 ----
 This project is currently licensed under the **CC0 1.0 Universal License**.  
-For more details, see the [LICENSE](/LICENSE) file. 
+For more details, see the [LICENSE](LICENSE.txt) file. 

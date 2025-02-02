@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 from .trajectory import *
 from .model_state import *
 from .model import *
-from .data_utils import *
+from .generators import *
 
 
     

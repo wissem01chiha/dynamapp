@@ -48,13 +48,13 @@ def luenberger_observer(A, B, C, desired_poles):
     - C is the output matrix.
     - L is the observer gain matrix.
     Args::
-        A (np.ndarray): System matrix.
-        B (np.ndarray): Input matrix.
-        C (np.ndarray): Output matrix.
-        desired_poles (list): Desired poles for the observer.
+        A (ndarray): System matrix.
+        B (ndarray): Input matrix.
+        C (ndarray): Output matrix.
+        desired_poles (list): desired poles for the observer.
 
     Returns:
-        L (np.ndarray): Observer gain matrix.
+        L (ndarray): Observer gain matrix.
     """
     A = np.array(A)
     B = np.array(B)

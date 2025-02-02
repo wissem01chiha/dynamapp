@@ -13,7 +13,7 @@ def compute_coulomb_friction_force(v: jnp.ndarray, fc: jnp.ndarray,
         - fs (jnp.ndarray): Viscous friction coefficient.
 
     Returns:
-       - jax - array: friction force array.
+       - jax-array: friction force array.
     """
     return fc * jnp.sign(v) + fs * v
 

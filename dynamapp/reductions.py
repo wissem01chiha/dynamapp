@@ -3,7 +3,7 @@ import jax.numpy as jnp
 import jax
 
 from .regressors import *
-from .data_utils import *
+from .generators import *
 
 
 class PCA:

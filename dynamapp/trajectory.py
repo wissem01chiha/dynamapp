@@ -1,9 +1,10 @@
 import jax.numpy as jnp
 import logging
+import abc
 
 logger = logging.getLogger(__name__)
 
-class Trajectory:
+class Trajectory(abc.ABC):
     """
     Base class for trajectory motion generation.
     """
@@ -13,15 +14,18 @@ class Trajectory:
         self.ti = ti
         self.tf = tf
         self.time = jnp.linspace(ti, tf, sampling)
-
+        
+    @abc.abstractmethod
     def get_value(self, t: float):
-        raise NotImplementedError("This method should be implemented in subclasses.")
+        pass
     
+    @abc.abstractmethod
     def compute_with_constraints(self, qmin, qmax, qpmin, qpmax, qppmin, qppmax):
-        raise NotImplementedError("This method should be implemented in subclasses.")
+        pass
     
+    @abc.abstractmethod
     def compute_full_trajectory(self):
-        raise NotImplementedError("This method should be implemented in subclasses.")
+        pass
 
 class SplineTrajectory(Trajectory):
     """

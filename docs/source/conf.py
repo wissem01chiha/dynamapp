@@ -24,6 +24,9 @@ myst_enable_extensions = [
 ]
 autodoc_mock_imports = ['jax', 'jax.numpy','seaborn', 'seaborn', 'numpy', 'matplotlib', 'pandas', 'scipy']
 autodoc_default_flags = ['members', 'private-members']
+autodoc_default_options = {
+    'undoc-members': True,
+}
 autodoc_member_order = 'bysource'
 templates_path = ['build/html/_templates']
 exclude_patterns = ['Thumbs.db', '.DS_Store']

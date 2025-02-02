@@ -4,7 +4,7 @@ from .state_space import *
 
 class MOESP:
     r""" 
-    Perform subspace identification using MOESP
+    Perform subspace identification using MOESP[1]
     
     """
     def __init__(self) -> None:
