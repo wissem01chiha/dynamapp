@@ -1,7 +1,5 @@
 from jax import jit 
 import jax.numpy as jnp
-from scipy.linalg import solve_discrete_are
-from scipy.signal import place_poles
 
 @jit
 def solve_least_square(W: jnp.ndarray, Y: jnp.ndarray) -> jnp.ndarray:
@@ -9,81 +7,76 @@ def solve_least_square(W: jnp.ndarray, Y: jnp.ndarray) -> jnp.ndarray:
     Solves the least squares problem: WX = Y for X.
     
     Args:
-        W: (m, n) matrix (design matrix).
-        Y: (m, k) matrix (target values).
-    
+        - W: (m, n) matrix (design matrix).
+        - Y: (m, k) matrix (target values).
     Returns:
-        X: (n, k) matrix (solution to WX = Y).
+        - X: (n, k) matrix (solution to WX = Y).
     """
     X = jnp.linalg.pinv(W) @ Y  
     return X
 
+@jit
 def solve_riccati_equation(A, B, Q, R):
     """
-    Solve the discrete time algebric riccati equation given by :
-    ..::math:
+    Solve the discrete-time Algebraic Riccati Equation (ARE):
     
-    Args: 
-        - A, B  : System Matrices 
-    Returns:
-        - P ARE solution. 
-    """
-    assert A.shape[0] == A.shape[1],"Matrix A must be square."
-    assert B.shape[0] == A.shape[0],"Matrix B must have the same number of rows as A."
-    assert Q.shape[0] == Q.shape[1] == A.shape[0],"Matrix Q must be square and match the dimensions of A."
-    assert R.shape[0] == R.shape[1] == B.shape[1],"Matrix R must be square and match the number of columns of B."
-    
-    P  =  solve_discrete_are(A, B, R, Q)
-    return P
-
-def solve_discrete_state_depend_are(A, B, Q, R):
-    """ 
-    Solve the discrete state depend Riccati equation given by:
     .. math::
-        R^{T}A = Q
-
-    Args:
-        - A, B, Q, R
-    Ref:
+        P = A.T @ P @ A - (A.T @ P @ B) @ jnp.linalg.inv(R + B.T @ P @ B) @ (B.T @ P @ A) + Q
     
+    Args:
+        - A: State matrix (n, n)
+        - B: Control matrix (n, m)
+        - Q: State cost matrix (n, n)
+        - R: Control cost matrix (m, m)
+
+    Returns:
+        - P: Solution to the Riccati equation (n, n)
     """
-    P =1
+    assert A.shape[0] == A.shape[1], "Matrix A must be square."
+    assert B.shape[0] == A.shape[0], "Matrix B must have the same number of rows as A."
+    assert Q.shape[0] == Q.shape[1] == A.shape[0], "Matrix Q must be square and match the dimensions of A."
+    assert R.shape[0] == R.shape[1] == B.shape[1], "Matrix R must be square and match the number of columns of B."
+    
+    n = A.shape[0]
+    P = jnp.eye(n)  
+    
+    for _ in range(100): 
+        P_new = A.T @ P @ A - (A.T @ P @ B) @ jnp.linalg.inv(R + B.T @ P @ B) @ (B.T @ P @ A) + Q
+        if jnp.allclose(P_new, P, atol=1e-6):
+            break
+        P = P_new
     return P
 
+@jit
 def luenberger_observer(A, B, C, desired_poles):
     """
-    Computes the Luenberger Observer gain matrix L.
-    The gain matrix L is computed by placing the poles of the observer at the desired_poles.
-    it should be noted that the observer is given by the following equation:
+    Computes the Luenberger Observer gain matrix L by placing the poles of the observer at the desired_poles.
     
-    .. math::
-        \dot{\hat{x}} = A\hat{x} + Bu + L(y - C\hat{x})
-        
-    where:
-    - A is the system matrix.
-    - B is the input matrix.
-    - C is the output matrix.
-    - L is the observer gain matrix.
     Args:
-        - A (ndarray): System matrix.
-        - B (ndarray): Input matrix.
-        - C (ndarray): Output matrix.
-        - desired_poles (list): desired poles for the observer.
-
+        A (ndarray): System matrix.
+        B (ndarray): Input matrix.
+        C (ndarray): Output matrix.
+        desired_poles (list): Desired poles for the observer.
+        
     Returns:
-        - L (ndarray): Observer gain matrix.
+        L (ndarray): Observer gain matrix.
+    TODO :we need to solve the pole placement problem using a custom algorithm 
+        the acctual version return a null gain matrix, 
     """
     A = jnp.array(A)
     B = jnp.array(B)
     C = jnp.array(C)
+    
     assert A.shape[0] == A.shape[1], "Matrix A must be square."
     assert B.shape[0] == A.shape[0], "The number of rows in B must match the number of rows in A."
     assert C.shape[1] == A.shape[0], "The number of columns in C must match the number of rows in A."
-    At = A.T
-    Ct = C.T
-    placed_poles = place_poles(At, Ct, desired_poles)
-    Lt = placed_poles.gain_matrix
-    L = Lt.T
     
+    n = A.shape[0]
+    Q = B
+    for i in range(1, n):
+        Q = jnp.hstack((Q, jnp.linalg.matrix_power(A, i) @ B))
+    
+    desired_poles_matrix = jnp.poly(desired_poles)  
+    L = jnp.zeros((n, n)) 
     return L
 

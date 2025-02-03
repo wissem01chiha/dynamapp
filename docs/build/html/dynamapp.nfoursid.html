@@ -24,7 +24,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="regressors module" href="dynamapp.regressors.html" />
-    <link rel="prev" title="moesp module" href="dynamapp.moesp.html" /> 
+    <link rel="prev" title="math_utils module" href="dynamapp.math_utils.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -63,21 +63,18 @@
 <li class="toctree-l2 current"><a class="reference internal" href="dynamapp.html#submodules">Submodules</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.kalman.html">kalman module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.math_utils.html">math_utils module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="dynamapp.moesp.html">moesp module</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">nfoursid module</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#dynamapp.nfoursid.NFourSID"><code class="docutils literal notranslate"><span class="pre">NFourSID</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.regressors.html">regressors module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.model.html">model module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="dynamapp.actuators.html">actuators module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.data_utils.html">data_utils module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.solvers.html">solvers module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.reductions.html">reductions module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.state_space.html">state_space module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.model_state.html">model_state module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.trajectory.html">trajectory module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="dynamapp.utils.html">utils module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.viscoelastic.html">viscoelastic module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.identification.html">identification module</a></li>
 </ul>
@@ -153,7 +150,7 @@ Cambridge university press, 2007.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="dynamapp.nfoursid.NFourSID.system_identification">
-<span class="sig-name descname"><span class="pre">system_identification</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rank</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="dynamapp.state_space.html#dynamapp.state_space.StateSpace" title="dynamapp.state_space.StateSpace"><span class="pre">StateSpace</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/dynamapp/nfoursid.html#NFourSID.system_identification"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dynamapp.nfoursid.NFourSID.system_identification" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">system_identification</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rank</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="dynamapp.state_space.html#dynamapp.state_space.StateSpace" title="dynamapp.state_space.StateSpace"><span class="pre">StateSpace</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">jax.numpy.ndarray</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/dynamapp/nfoursid.html#NFourSID.system_identification"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dynamapp.nfoursid.NFourSID.system_identification" title="Link to this definition"></a></dt>
 <dd><p>Identify the system matrices of the state-space model given in the description of <code class="docutils literal notranslate"><span class="pre">NFourSID</span></code>.
 Moreover, the covariance of the measurement-noise and process-noise will be estimated.
 The order of the returned state-space model has rank <code class="docutils literal notranslate"><span class="pre">rank</span></code> by reducing the eigenvalue decomposition.
@@ -173,14 +170,6 @@ See its documentation for more information.</p></li>
 Cambridge university press, 2007.</p>
 </dd></dl>
 
-<dl class="py method">
-<dt class="sig sig-object py" id="dynamapp.nfoursid.NFourSID.plot_eigenvalues">
-<span class="sig-name descname"><span class="pre">plot_eigenvalues</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">matplotlib.pyplot.axes</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dynamapp/nfoursid.html#NFourSID.plot_eigenvalues"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dynamapp.nfoursid.NFourSID.plot_eigenvalues" title="Link to this definition"></a></dt>
-<dd><p>Plot the eigenvalues of the <span class="math notranslate nohighlight">\(R_{32}\)</span> matrix, so that the order of the state-space model can be determined.
-Since the <span class="math notranslate nohighlight">\(R_{32}\)</span> matrix should have been calculated, this function can only be used after
-performing <code class="docutils literal notranslate"><span class="pre">self.subspace_identification</span></code>.</p>
-</dd></dl>
-
 </dd></dl>
 
 </section>
@@ -189,7 +178,7 @@ performing <code class="docutils literal notranslate"><span class="pre">self.sub
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="dynamapp.moesp.html" class="btn btn-neutral float-left" title="moesp module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="dynamapp.math_utils.html" class="btn btn-neutral float-left" title="math_utils module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="dynamapp.regressors.html" class="btn btn-neutral float-right" title="regressors module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

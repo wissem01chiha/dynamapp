@@ -21,7 +21,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="utils module" href="dynamapp.utils.html" />
+    <link rel="next" title="viscoelastic module" href="dynamapp.viscoelastic.html" />
     <link rel="prev" title="model_state module" href="dynamapp.model_state.html" /> 
 </head>
 
@@ -61,11 +61,9 @@
 <li class="toctree-l2 current"><a class="reference internal" href="dynamapp.html#submodules">Submodules</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.kalman.html">kalman module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.math_utils.html">math_utils module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="dynamapp.moesp.html">moesp module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.nfoursid.html">nfoursid module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.regressors.html">regressors module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.model.html">model module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="dynamapp.actuators.html">actuators module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.data_utils.html">data_utils module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.solvers.html">solvers module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.reductions.html">reductions module</a></li>
@@ -79,7 +77,6 @@
 <li class="toctree-l4"><a class="reference internal" href="#dynamapp.trajectory.StepTrajectory"><code class="docutils literal notranslate"><span class="pre">StepTrajectory</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="dynamapp.utils.html">utils module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.viscoelastic.html">viscoelastic module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.identification.html">identification module</a></li>
 </ul>
@@ -123,21 +120,21 @@
 <dl class="py class">
 <dt class="sig sig-object py" id="dynamapp.trajectory.Trajectory">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dynamapp.trajectory.</span></span><span class="sig-name descname"><span class="pre">Trajectory</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sampling</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ti</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tf</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dynamapp/trajectory.html#Trajectory"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dynamapp.trajectory.Trajectory" title="Link to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></p>
 <p>Base class for trajectory motion generation.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="dynamapp.trajectory.Trajectory.get_value">
-<span class="sig-name descname"><span class="pre">get_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dynamapp/trajectory.html#Trajectory.get_value"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dynamapp.trajectory.Trajectory.get_value" title="Link to this definition"></a></dt>
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dynamapp/trajectory.html#Trajectory.get_value"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dynamapp.trajectory.Trajectory.get_value" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="dynamapp.trajectory.Trajectory.compute_with_constraints">
-<span class="sig-name descname"><span class="pre">compute_with_constraints</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qmin</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qmax</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qpmin</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qpmax</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qppmin</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qppmax</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dynamapp/trajectory.html#Trajectory.compute_with_constraints"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dynamapp.trajectory.Trajectory.compute_with_constraints" title="Link to this definition"></a></dt>
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">compute_with_constraints</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qmin</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qmax</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qpmin</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qpmax</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qppmin</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qppmax</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dynamapp/trajectory.html#Trajectory.compute_with_constraints"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dynamapp.trajectory.Trajectory.compute_with_constraints" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="dynamapp.trajectory.Trajectory.compute_full_trajectory">
-<span class="sig-name descname"><span class="pre">compute_full_trajectory</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/dynamapp/trajectory.html#Trajectory.compute_full_trajectory"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dynamapp.trajectory.Trajectory.compute_full_trajectory" title="Link to this definition"></a></dt>
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">compute_full_trajectory</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/dynamapp/trajectory.html#Trajectory.compute_full_trajectory"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dynamapp.trajectory.Trajectory.compute_full_trajectory" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -182,8 +179,8 @@
 <dd><p>Bases: <a class="reference internal" href="#dynamapp.trajectory.Trajectory" title="dynamapp.trajectory.Trajectory"><code class="xref py py-class docutils literal notranslate"><span class="pre">Trajectory</span></code></a></p>
 <p>Periodic trajectory based on Fourier series.[1]</p>
 <dl class="simple">
-<dt>Ref:</dt><dd><p>[1] Fourier-based optimal excitation trajectories for the dynamic identification of robots
-Kyung.Jo Park - Robotica - 2006.</p>
+<dt>Ref:</dt><dd><p>[1] Fourier-based optimal excitation trajectories for the dynamic 
+identification of robots, Kyung.Jo Park - Robotica - 2006.</p>
 </dd>
 </dl>
 <dl class="py method">
@@ -222,7 +219,7 @@ Kyung.Jo Park - Robotica - 2006.</p>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="dynamapp.model_state.html" class="btn btn-neutral float-left" title="model_state module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="dynamapp.utils.html" class="btn btn-neutral float-right" title="utils module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="dynamapp.viscoelastic.html" class="btn btn-neutral float-right" title="viscoelastic module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

@@ -18,8 +18,6 @@
         <script src="_static/documentation_options.js?v=40be6288"></script>
         <script src="_static/doctools.js?v=9a2dae69"></script>
         <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-        <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -63,29 +61,30 @@
 <li class="toctree-l2 current"><a class="reference internal" href="dynamapp.html#submodules">Submodules</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.kalman.html">kalman module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.math_utils.html">math_utils module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="dynamapp.moesp.html">moesp module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.nfoursid.html">nfoursid module</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">regressors module</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#dynamapp.regressors.generalized_torques_wrt_inertia"><code class="docutils literal notranslate"><span class="pre">generalized_torques_wrt_inertia()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#dynamapp.regressors.inertia_tensor_wrt_inertia"><code class="docutils literal notranslate"><span class="pre">inertia_tensor_wrt_inertia()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#dynamapp.regressors.generalized_torques_wrt_dhparams"><code class="docutils literal notranslate"><span class="pre">generalized_torques_wrt_dhparams()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#dynamapp.regressors.generalized_torques_wrt_damping"><code class="docutils literal notranslate"><span class="pre">generalized_torques_wrt_damping()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dynamapp.regressors.full_torques_wrt_inerial"><code class="docutils literal notranslate"><span class="pre">full_torques_wrt_inerial()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dynamapp.regressors.full_torques_wrt_friction"><code class="docutils literal notranslate"><span class="pre">full_torques_wrt_friction()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#dynamapp.regressors.eigvals_wrt_inertia"><code class="docutils literal notranslate"><span class="pre">eigvals_wrt_inertia()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#dynamapp.regressors.eigvals_wrt_dhparams"><code class="docutils literal notranslate"><span class="pre">eigvals_wrt_dhparams()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#dynamapp.regressors.eigvals_wrt_damping"><code class="docutils literal notranslate"><span class="pre">eigvals_wrt_damping()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dynamapp.regressors.state_matrix_a_wrt_inertia"><code class="docutils literal notranslate"><span class="pre">state_matrix_a_wrt_inertia()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dynamapp.regressors.state_matrix_a_wrt_state"><code class="docutils literal notranslate"><span class="pre">state_matrix_a_wrt_state()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.model.html">model module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="dynamapp.actuators.html">actuators module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="dynamapp.data_utils.html">data_utils module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.solvers.html">solvers module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.reductions.html">reductions module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.state_space.html">state_space module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.model_state.html">model_state module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.trajectory.html">trajectory module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="dynamapp.utils.html">utils module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.viscoelastic.html">viscoelastic module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.identification.html">identification module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamapp.generators.html">generators module</a></li>
 </ul>
 </li>
 </ul>
@@ -127,38 +126,85 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="dynamapp.regressors.generalized_torques_wrt_inertia">
 <span class="sig-prename descclassname"><span class="pre">dynamapp.regressors.</span></span><span class="sig-name descname"><span class="pre">generalized_torques_wrt_inertia</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">m</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="dynamapp.model.html#dynamapp.model.Model" title="dynamapp.model.Model"><span class="pre">Model</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">q</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">jax.numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">jax.numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">jax.numpy.ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">jax.numpy.ndarray</span></span></span><a class="reference internal" href="_modules/dynamapp/regressors.html#generalized_torques_wrt_inertia"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dynamapp.regressors.generalized_torques_wrt_inertia" title="Link to this definition"></a></dt>
-<dd><p>Computes the regressor tensor of the genrlized torques with respect to
-the inertia links vector evaluated at (q,v,a)</p>
+<dd><p>Computes the regressor tensor of the generalized torques with respect to
+the inertia links vector evaluated at (q, v, a)</p>
 <dl class="simple">
 <dt>Args:</dt><dd><ul class="simple">
-<li><p>q, v, a position , velcoty, accelation vectors</p></li>
+<li><p>m: Model instance containing necessary methods and parameters</p></li>
+<li><p>q: Position vector</p></li>
+<li><p>v: Velocity vector</p></li>
+<li><p>a: Acceleration vector</p></li>
+</ul>
+</dd>
+<dt>Returns:</dt><dd><ul class="simple">
+<li><p>W: Regressor tensor (m.ndof, m.ndof, m.ndof, 6, 6)</p></li>
 </ul>
 </dd>
 </dl>
-<div class="math notranslate nohighlight">
-\[ \begin{align}\begin{aligned}        au = W(q,v,a) X\\X = [m, mz, my, mx, Izz, Iyz, Iyy, Ixz, Ixy, Ixx ]^{T}\end{aligned}\end{align} \]</div>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="dynamapp.regressors.inertia_tensor_wrt_inertia">
 <span class="sig-prename descclassname"><span class="pre">dynamapp.regressors.</span></span><span class="sig-name descname"><span class="pre">inertia_tensor_wrt_inertia</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">m</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="dynamapp.model.html#dynamapp.model.Model" title="dynamapp.model.Model"><span class="pre">Model</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">q</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">jax.numpy.ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">jax.numpy.ndarray</span></span></span><a class="reference internal" href="_modules/dynamapp/regressors.html#inertia_tensor_wrt_inertia"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dynamapp.regressors.inertia_tensor_wrt_inertia" title="Link to this definition"></a></dt>
-<dd><p>Compute the regressor</p>
+<dd><p>Compute the regressor of the inertia matrix with respect to inertia 
+tensor values, derive the mass matrix wrt links inertial compennats</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><ul class="simple">
+<li><p>W Jax tensor (m.ndof, m.ndof, 6, 6, m.ndof, 6)</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="dynamapp.regressors.generalized_torques_wrt_dhparams">
 <span class="sig-prename descclassname"><span class="pre">dynamapp.regressors.</span></span><span class="sig-name descname"><span class="pre">generalized_torques_wrt_dhparams</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">m</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="dynamapp.model.html#dynamapp.model.Model" title="dynamapp.model.Model"><span class="pre">Model</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">q</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">jax.numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">jax.numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">jax.numpy.ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">jax.numpy.ndarray</span></span></span><a class="reference internal" href="_modules/dynamapp/regressors.html#generalized_torques_wrt_dhparams"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dynamapp.regressors.generalized_torques_wrt_dhparams" title="Link to this definition"></a></dt>
-<dd><p>Computes the regressor tensor of the genrlized torques with respect to the 
-dh params</p>
+<dd><p>Computes the regressor tensor of the generlized torques with respect to the 
+dh-params</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><ul class="simple">
+<li><p>W Jax tensor (m.ndof * m.ndof * 4 *  m.ndof)</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="dynamapp.regressors.generalized_torques_wrt_damping">
 <span class="sig-prename descclassname"><span class="pre">dynamapp.regressors.</span></span><span class="sig-name descname"><span class="pre">generalized_torques_wrt_damping</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">m</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="dynamapp.model.html#dynamapp.model.Model" title="dynamapp.model.Model"><span class="pre">Model</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">q</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">jax.numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">jax.numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">jax.numpy.ndarray</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dynamapp/regressors.html#generalized_torques_wrt_damping"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dynamapp.regressors.generalized_torques_wrt_damping" title="Link to this definition"></a></dt>
 <dd><p>Computes the regressor tensor of the genrlized torques with respect to the 
-joints damping vector</p>
+joints damping vector.
+NOTE: this function require that dampings are not None</p>
 <dl class="simple">
-<dt>..::math:</dt><dd><p>au = W X_d</p>
+<dt>Returns:</dt><dd><ul class="simple">
+<li><p>jax tensor (m.ndof * m.ndof * m.nodf)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="dynamapp.regressors.full_torques_wrt_inerial">
+<span class="sig-prename descclassname"><span class="pre">dynamapp.regressors.</span></span><span class="sig-name descname"><span class="pre">full_torques_wrt_inerial</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">m</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="dynamapp.model.html#dynamapp.model.Model" title="dynamapp.model.Model"><span class="pre">Model</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">q</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">jax.numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">jax.numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">jax.numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">jax.numpy.array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beta</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">jax.numpy.array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gamma</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">jax.numpy.array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dampings</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dynamapp/regressors.html#full_torques_wrt_inerial"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dynamapp.regressors.full_torques_wrt_inerial" title="Link to this definition"></a></dt>
+<dd><p>Compute the regressor tensor of the full torques with respect to the
+links inertial paramters</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><ul class="simple">
+<li></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="dynamapp.regressors.full_torques_wrt_friction">
+<span class="sig-prename descclassname"><span class="pre">dynamapp.regressors.</span></span><span class="sig-name descname"><span class="pre">full_torques_wrt_friction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">m</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="dynamapp.model.html#dynamapp.model.Model" title="dynamapp.model.Model"><span class="pre">Model</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">q</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">jax.numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">jax.numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">jax.numpy.ndarray</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dynamapp/regressors.html#full_torques_wrt_friction"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dynamapp.regressors.full_torques_wrt_friction" title="Link to this definition"></a></dt>
+<dd><p>Compute the rgressor tensor of the full torques with respect to the links 
+friction coefficents</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><ul class="simple">
+<li><p>jax tensor (m.ndof * )</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -166,17 +212,64 @@ joints damping vector</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="dynamapp.regressors.eigvals_wrt_inertia">
 <span class="sig-prename descclassname"><span class="pre">dynamapp.regressors.</span></span><span class="sig-name descname"><span class="pre">eigvals_wrt_inertia</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ms</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="dynamapp.model_state.html#dynamapp.model_state.ModelState" title="dynamapp.model_state.ModelState"><span class="pre">ModelState</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">q</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">jax.numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">jax.numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">jax.numpy.ndarray</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dynamapp/regressors.html#eigvals_wrt_inertia"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dynamapp.regressors.eigvals_wrt_inertia" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Compute the eigvalues jacobian with respect to inertial paramters</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><ul class="simple">
+<li><p>jax tensor (m.ndof  * )</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="dynamapp.regressors.eigvals_wrt_dhparams">
 <span class="sig-prename descclassname"><span class="pre">dynamapp.regressors.</span></span><span class="sig-name descname"><span class="pre">eigvals_wrt_dhparams</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ms</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="dynamapp.model_state.html#dynamapp.model_state.ModelState" title="dynamapp.model_state.ModelState"><span class="pre">ModelState</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">q</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">jax.numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">jax.numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">jax.numpy.ndarray</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dynamapp/regressors.html#eigvals_wrt_dhparams"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dynamapp.regressors.eigvals_wrt_dhparams" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Compute the eigvalues jacobian wit respect to dhparams coefficents</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><ul class="simple">
+<li><p>jax tensor (m.ndof * )</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="dynamapp.regressors.eigvals_wrt_damping">
 <span class="sig-prename descclassname"><span class="pre">dynamapp.regressors.</span></span><span class="sig-name descname"><span class="pre">eigvals_wrt_damping</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ms</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="dynamapp.model_state.html#dynamapp.model_state.ModelState" title="dynamapp.model_state.ModelState"><span class="pre">ModelState</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">q</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">jax.numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">jax.numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">jax.numpy.ndarray</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dynamapp/regressors.html#eigvals_wrt_damping"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dynamapp.regressors.eigvals_wrt_damping" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Compute the eigvalues jacobian with respect to joints damping coefficents</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><ul class="simple">
+<li><p>jax tensor ( m.ndof * )</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="dynamapp.regressors.state_matrix_a_wrt_inertia">
+<span class="sig-prename descclassname"><span class="pre">dynamapp.regressors.</span></span><span class="sig-name descname"><span class="pre">state_matrix_a_wrt_inertia</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ms</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="dynamapp.model_state.html#dynamapp.model_state.ModelState" title="dynamapp.model_state.ModelState"><span class="pre">ModelState</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">q</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">jax.numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">jax.numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">jax.numpy.ndarray</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dynamapp/regressors.html#state_matrix_a_wrt_inertia"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dynamapp.regressors.state_matrix_a_wrt_inertia" title="Link to this definition"></a></dt>
+<dd><p>Compute the jacobian tensor of the state matrix A with respect to the links
+inertial coefficents</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><ul class="simple">
+<li><p>jax tensor (m.ndof * )</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="dynamapp.regressors.state_matrix_a_wrt_state">
+<span class="sig-prename descclassname"><span class="pre">dynamapp.regressors.</span></span><span class="sig-name descname"><span class="pre">state_matrix_a_wrt_state</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ms</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="dynamapp.model_state.html#dynamapp.model_state.ModelState" title="dynamapp.model_state.ModelState"><span class="pre">ModelState</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">q</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">jax.numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">jax.numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">jax.numpy.ndarray</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dynamapp/regressors.html#state_matrix_a_wrt_state"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dynamapp.regressors.state_matrix_a_wrt_state" title="Link to this definition"></a></dt>
+<dd><p>Compute the rgressor tensor of the state matrix A with repect to the state 
+(position, velocity) of the system.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><ul class="simple">
+<li><p>Jax tensor (m.ndof * )</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 </section>
 

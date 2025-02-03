@@ -88,13 +88,11 @@
              
   <h1>Source code for dynamapp.trajectory</h1><div class="highlight"><pre>
 <span></span><span class="kn">import</span> <span class="nn">jax.numpy</span> <span class="k">as</span> <span class="nn">jnp</span>
-<span class="kn">import</span> <span class="nn">logging</span>
-
-<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+<span class="kn">import</span> <span class="nn">abc</span>
 
 <div class="viewcode-block" id="Trajectory">
 <a class="viewcode-back" href="../../dynamapp.trajectory.html#dynamapp.trajectory.Trajectory">[docs]</a>
-<span class="k">class</span> <span class="nc">Trajectory</span><span class="p">:</span>
+<span class="k">class</span> <span class="nc">Trajectory</span><span class="p">(</span><span class="n">abc</span><span class="o">.</span><span class="n">ABC</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Base class for trajectory motion generation.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -104,23 +102,26 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">ti</span> <span class="o">=</span> <span class="n">ti</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">tf</span> <span class="o">=</span> <span class="n">tf</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">time</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">ti</span><span class="p">,</span> <span class="n">tf</span><span class="p">,</span> <span class="n">sampling</span><span class="p">)</span>
-
+        
 <div class="viewcode-block" id="Trajectory.get_value">
 <a class="viewcode-back" href="../../dynamapp.trajectory.html#dynamapp.trajectory.Trajectory.get_value">[docs]</a>
+    <span class="nd">@abc</span><span class="o">.</span><span class="n">abstractmethod</span>
     <span class="k">def</span> <span class="nf">get_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;This method should be implemented in subclasses.&quot;</span><span class="p">)</span></div>
+        <span class="k">pass</span></div>
 
     
 <div class="viewcode-block" id="Trajectory.compute_with_constraints">
 <a class="viewcode-back" href="../../dynamapp.trajectory.html#dynamapp.trajectory.Trajectory.compute_with_constraints">[docs]</a>
+    <span class="nd">@abc</span><span class="o">.</span><span class="n">abstractmethod</span>
     <span class="k">def</span> <span class="nf">compute_with_constraints</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">qmin</span><span class="p">,</span> <span class="n">qmax</span><span class="p">,</span> <span class="n">qpmin</span><span class="p">,</span> <span class="n">qpmax</span><span class="p">,</span> <span class="n">qppmin</span><span class="p">,</span> <span class="n">qppmax</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;This method should be implemented in subclasses.&quot;</span><span class="p">)</span></div>
+        <span class="k">pass</span></div>
 
     
 <div class="viewcode-block" id="Trajectory.compute_full_trajectory">
 <a class="viewcode-back" href="../../dynamapp.trajectory.html#dynamapp.trajectory.Trajectory.compute_full_trajectory">[docs]</a>
+    <span class="nd">@abc</span><span class="o">.</span><span class="n">abstractmethod</span>
     <span class="k">def</span> <span class="nf">compute_full_trajectory</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;This method should be implemented in subclasses.&quot;</span><span class="p">)</span></div>
+        <span class="k">pass</span></div>
 </div>
 
 
@@ -180,8 +181,8 @@
 <span class="sd">    Periodic trajectory based on Fourier series.[1]</span>
 <span class="sd">    </span>
 <span class="sd">    Ref:</span>
-<span class="sd">        [1] Fourier-based optimal excitation trajectories for the dynamic identification of robots</span>
-<span class="sd">        Kyung.Jo Park - Robotica - 2006. </span>
+<span class="sd">        [1] Fourier-based optimal excitation trajectories for the dynamic </span>
+<span class="sd">        identification of robots, Kyung.Jo Park - Robotica - 2006. </span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">sampling</span><span class="p">,</span> <span class="n">ti</span><span class="p">,</span> <span class="n">tf</span><span class="p">,</span> <span class="n">frequency</span><span class="p">,</span> <span class="n">Aij</span><span class="p">,</span> <span class="n">Bij</span><span class="p">,</span> <span class="n">nb_terms</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">sampling</span><span class="p">,</span> <span class="n">ti</span><span class="p">,</span> <span class="n">tf</span><span class="p">)</span>

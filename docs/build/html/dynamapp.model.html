@@ -21,7 +21,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="actuators module" href="dynamapp.actuators.html" />
+    <link rel="next" title="data_utils module" href="dynamapp.data_utils.html" />
     <link rel="prev" title="regressors module" href="dynamapp.regressors.html" /> 
 </head>
 
@@ -61,21 +61,18 @@
 <li class="toctree-l2 current"><a class="reference internal" href="dynamapp.html#submodules">Submodules</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.kalman.html">kalman module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.math_utils.html">math_utils module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="dynamapp.moesp.html">moesp module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.nfoursid.html">nfoursid module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.regressors.html">regressors module</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">model module</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#dynamapp.model.Model"><code class="docutils literal notranslate"><span class="pre">Model</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="dynamapp.actuators.html">actuators module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.data_utils.html">data_utils module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.solvers.html">solvers module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.reductions.html">reductions module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.state_space.html">state_space module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.model_state.html">model_state module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.trajectory.html">trajectory module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="dynamapp.utils.html">utils module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.viscoelastic.html">viscoelastic module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.identification.html">identification module</a></li>
 </ul>
@@ -196,9 +193,41 @@ qp (jnp.ndarray): Joint velocities (ndof,)</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="dynamapp.model.Model.generalized_forces">
+<span class="sig-name descname"><span class="pre">generalized_forces</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">q</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qpp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">jax.numpy.ndarray</span></span></span><a class="reference internal" href="_modules/dynamapp/model.html#Model.generalized_forces"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dynamapp.model.Model.generalized_forces" title="Link to this definition"></a></dt>
+<dd><p>Compute the genralized forces for each link using the 
+recursive netwon euler alogrithm.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><ul class="simple">
+<li><p>q    : Joints position vector. ( nq * 1 )</p></li>
+<li><p>qp   : Joints velocity vector. ( nq * 1 )</p></li>
+<li><p>qpp  : Joints acceleration vector. ( nq * 1 )</p></li>
+</ul>
+</dd>
+<dt>Returns:</dt><dd><ul class="simple">
+<li><p>f  : (rotation + translation) compennat forces</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="dynamapp.model.Model.generalized_torques">
-<span class="sig-name descname"><span class="pre">generalized_torques</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">jnp.array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beta</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">jnp.array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gamma</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">jnp.array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">q</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qpp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">jnp.ndarray</span></span></span><a class="headerlink" href="#dynamapp.model.Model.generalized_torques" title="Link to this definition"></a></dt>
-<dd><p>Helper for &#64;overload to raise when called.</p>
+<span class="sig-name descname"><span class="pre">generalized_torques</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">q</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qpp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">jax.numpy.ndarray</span></span></span><a class="reference internal" href="_modules/dynamapp/model.html#Model.generalized_torques"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dynamapp.model.Model.generalized_torques" title="Link to this definition"></a></dt>
+<dd><p>Return the genralized torques compennat using the recursive
+netwon euler alogrithm.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dynamapp.model.Model.full_forces">
+<span class="sig-name descname"><span class="pre">full_forces</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">jax.numpy.array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beta</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">jax.numpy.array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gamma</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">jax.numpy.array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dampings</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">q</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qpp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">jax.numpy.ndarray</span></span></span><a class="reference internal" href="_modules/dynamapp/model.html#Model.full_forces"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dynamapp.model.Model.full_forces" title="Link to this definition"></a></dt>
+<dd><p>Compute the joint torques given the friction effects and damping</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dynamapp.model.Model.full_torques">
+<span class="sig-name descname"><span class="pre">full_torques</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">jax.numpy.array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beta</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">jax.numpy.array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gamma</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">jax.numpy.array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dampings</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">q</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qpp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">jax.numpy.ndarray</span></span></span><a class="reference internal" href="_modules/dynamapp/model.html#Model.full_torques"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dynamapp.model.Model.full_torques" title="Link to this definition"></a></dt>
+<dd><p>Compute the joint torques given the friction effects and damping</p>
 </dd></dl>
 
 </dd></dl>
@@ -210,7 +239,7 @@ qp (jnp.ndarray): Joint velocities (ndof,)</p>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="dynamapp.regressors.html" class="btn btn-neutral float-left" title="regressors module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="dynamapp.actuators.html" class="btn btn-neutral float-right" title="actuators module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="dynamapp.data_utils.html" class="btn btn-neutral float-right" title="data_utils module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

@@ -1,7 +1,7 @@
 from typing import List, Optional
 from matplotlib import figure as matplotlib_figure
-import numpy as np
 import pandas as pd
+import jax.numpy as jnp
 from matplotlib import pyplot as plt
 
 from .state_space import StateSpace
@@ -60,7 +60,7 @@ class Kalman:
     def __init__(
             self,
             state_space: StateSpace,
-            noise_covariance: np.ndarray
+            noise_covariance: jnp.ndarray
     ):
         self.state_space = state_space
 
@@ -85,8 +85,8 @@ class Kalman:
 
     def step(
             self,
-            y: Optional[np.ndarray],
-            u: np.ndarray
+            y: Optional[jnp.ndarray],
+            u: jnp.ndarray
     ):
         """
         Given an observed input ``u`` and output ``y``, update the filtered and predicted states of the Kalman filter.
@@ -102,10 +102,10 @@ class Kalman:
             validate_matrix_shape(y, (self.state_space.y_dim, 1), 'y')
         validate_matrix_shape(u, (self.state_space.u_dim, 1), 'u')
 
-        x_pred = self.x_predicteds[-1] if self.x_predicteds else np.zeros((self.state_space.x_dim, 1))
-        p_pred = self.p_predicteds[-1] if self.p_predicteds else np.eye(self.state_space.x_dim)
+        x_pred = self.x_predicteds[-1] if self.x_predicteds else jnp.zeros((self.state_space.x_dim, 1))
+        p_pred = self.p_predicteds[-1] if self.p_predicteds else jnp.eye(self.state_space.x_dim)
 
-        k_filtered = p_pred @ self.state_space.c.T @ np.linalg.pinv(
+        k_filtered = p_pred @ self.state_space.c.T @ jnp.linalg.pinv(
             self.r + self.state_space.c @ p_pred @ self.state_space.c.T
         )
 
@@ -118,7 +118,7 @@ class Kalman:
             if y is not None else x_pred
         )
 
-        k_pred = (self.s + self.state_space.a @ p_pred @ self.state_space.c.T) @ np.linalg.pinv(
+        k_pred = (self.s + self.state_space.a @ p_pred @ self.state_space.c.T) @ jnp.linalg.pinv(
             self.r + self.state_space.c @ p_pred @ self.state_space.c.T
         )
 
@@ -136,7 +136,7 @@ class Kalman:
         )
 
         self.us.append(u)
-        self.ys.append(y if y is not None else np.full((self.state_space.y_dim, 1), np.nan))
+        self.ys.append(y if y is not None else jnp.full((self.state_space.y_dim, 1), jnp.nan))
         self.y_filtereds.append(self.state_space.output(self.x_filtereds[-1], self.us[-1]))
         self.y_predicteds.append(self.state_space.output(self.x_predicteds[-1]))
         self.kalman_gains.append(k_pred)
@@ -173,8 +173,8 @@ class Kalman:
 
     def _measurement_and_state_standard_deviation(
             self,
-            state_covariance_matrices: List[np.ndarray]
-    ) -> List[np.ndarray]:
+            state_covariance_matrices: List[jnp.ndarray]
+    ) -> List[jnp.ndarray]:
         """
         Calculates the expected standard deviations on the output, assuming independence (!) in the noise of the state
         estimate and the process noise.
@@ -185,15 +185,15 @@ class Kalman:
         ]
 
         var_process_ys = [
-            np.maximum(
-                np.diagonal(p), 0
+            jnp.maximum(
+                jnp.diagonal(p), 0
             )
             for p in covars_process_y
         ]
-        var_measurement_y = np.maximum(np.diagonal(self.r), 0)
+        var_measurement_y = jnp.maximum(jnp.diagonal(self.r), 0)
 
         return [
-            np.sqrt(
+            jnp.sqrt(
                 var_process_y + var_measurement_y
             ).reshape(
                 (self.state_space.y_dim, 1)
@@ -203,9 +203,9 @@ class Kalman:
 
     @staticmethod
     def _list_of_states_to_array(
-            list_of_states: List[np.ndarray]
-    ) -> np.ndarray:
-        return np.array(list_of_states).squeeze(axis=2)
+            list_of_states: List[jnp.ndarray]
+    ) -> jnp.ndarray:
+        return jnp.array(list_of_states).squeeze(axis=2)
 
     def to_dataframe(self) -> pd.DataFrame:
         """
@@ -230,7 +230,7 @@ class Kalman:
             output + self.state_space.d @ input_state
             for input_state, output
             in zip(self.us[1:], self.y_predicteds[:-1])
-        ] + [np.empty((self.state_space.y_dim, 1)) * np.nan]
+        ] + [jnp.empty((self.state_space.y_dim, 1)) * jnp.nan]
 
         output_frames = [
             pd.DataFrame({

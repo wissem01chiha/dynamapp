@@ -17,9 +17,10 @@ from .trajectory import (
     StepTrajectory
 )
 from .regressors import *
-from .reductions import *
+from .reductions import (
+    PCA, LDA
+)
 from .generators import *
-from .actuators import *
 from .model import *
 from .identification import *
 from .viscoelastic import *

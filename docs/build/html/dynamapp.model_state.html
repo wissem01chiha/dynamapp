@@ -63,11 +63,9 @@
 <li class="toctree-l2 current"><a class="reference internal" href="dynamapp.html#submodules">Submodules</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.kalman.html">kalman module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.math_utils.html">math_utils module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="dynamapp.moesp.html">moesp module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.nfoursid.html">nfoursid module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.regressors.html">regressors module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.model.html">model module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="dynamapp.actuators.html">actuators module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.data_utils.html">data_utils module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.solvers.html">solvers module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.reductions.html">reductions module</a></li>
@@ -77,7 +75,6 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.trajectory.html">trajectory module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="dynamapp.utils.html">utils module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.viscoelastic.html">viscoelastic module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.identification.html">identification module</a></li>
 </ul>
@@ -160,10 +157,17 @@ with repect to the equation :</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="dynamapp.model_state.ModelState.setp">
-<span class="sig-name descname"><span class="pre">setp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">u</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">jax.numpy.ndarray</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">jax.numpy.ndarray</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">jax.numpy.ndarray</span></span></span><a class="reference internal" href="_modules/dynamapp/model_state.html#ModelState.setp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dynamapp.model_state.ModelState.setp" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="dynamapp.model_state.ModelState.step">
+<span class="sig-name descname"><span class="pre">step</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">u</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">jax.numpy.ndarray</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">jax.numpy.ndarray</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">jax.numpy.ndarray</span></span></span><a class="reference internal" href="_modules/dynamapp/model_state.html#ModelState.step"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dynamapp.model_state.ModelState.step" title="Link to this definition"></a></dt>
 <dd><p>Compute the output of the state-space model and returns it at time t+1
 Updates the internal state of the model as well.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><ul class="simple">
+<li><p>u input vector</p></li>
+<li><p>e : noise vector</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -191,7 +195,7 @@ Args:</p>
 </div></blockquote>
 <dl class="simple">
 <dt>Return:</dt><dd><ul class="simple">
-<li><p>xs : numpy-ndarry stroing iteration states vectors. ( 2.ndof * NSamples)</p></li>
+<li><p>xs : numpy-ndarry store iteration states vectors. ( 2.ndof * NSamples)</p></li>
 </ul>
 </dd>
 </dl>
@@ -233,6 +237,12 @@ The controllability matrix is given by the following equation:</p>
 </ul>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dynamapp.model_state.ModelState.get_state_matrix_a">
+<span class="sig-name descname"><span class="pre">get_state_matrix_a</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">jax.numpy.ndarray</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dynamapp/model_state.html#ModelState.get_state_matrix_a"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dynamapp.model_state.ModelState.get_state_matrix_a" title="Link to this definition"></a></dt>
+<dd><p>Compute the state matrix A given an input state vector x at time date t</p>
 </dd></dl>
 
 </dd></dl>

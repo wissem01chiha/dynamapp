@@ -1,7 +1,7 @@
-data\_utils module
+generators module
 ===========================
 
-.. automodule:: dynamapp.data_utils
+.. automodule:: dynamapp.generators
    :members:
    :undoc-members:
    :show-inheritance:

@@ -91,25 +91,166 @@
 <span class="kn">import</span> <span class="nn">jax.numpy</span> <span class="k">as</span> <span class="nn">jnp</span>
 <span class="kn">import</span> <span class="nn">jax</span>
 
-<span class="kn">from</span> <span class="nn">.regressors</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.data_utils</span> <span class="kn">import</span> <span class="o">*</span>
-
-
 <div class="viewcode-block" id="PCA">
 <a class="viewcode-back" href="../../dynamapp.reductions.html#dynamapp.reductions.PCA">[docs]</a>
 <span class="k">class</span> <span class="nc">PCA</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Principal Component Analysis (PCA) for dimensionality reduction.</span>
 <span class="sd">    </span>
+<span class="sd">    PCA projects the data into a lower-dimensional space while retaining as much variance as possible.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">pass</span></div>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n_components</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Args:</span>
+<span class="sd">            n_components (int): Number of principal components to keep after the transformation.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n_components</span> <span class="o">=</span> <span class="n">n_components</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mean</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">components</span> <span class="o">=</span> <span class="kc">None</span>
+    
+<div class="viewcode-block" id="PCA.fit">
+<a class="viewcode-back" href="../../dynamapp.reductions.html#dynamapp.reductions.PCA.fit">[docs]</a>
+    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Fit the PCA model to the data.</span>
+<span class="sd">        </span>
+<span class="sd">        Args:</span>
+<span class="sd">            X (jnp.ndarray): The input data of shape (n_samples, n_features).</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mean</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">X_centered</span> <span class="o">=</span> <span class="n">X</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">mean</span>
+        <span class="n">cov_matrix</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">cov</span><span class="p">(</span><span class="n">X_centered</span><span class="p">,</span> <span class="n">rowvar</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        
+        <span class="n">eigvals</span><span class="p">,</span> <span class="n">eigvecs</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eigh</span><span class="p">(</span><span class="n">cov_matrix</span><span class="p">)</span>
+        
+        <span class="n">sorted_indices</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">eigvals</span><span class="p">)[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">eigvals_sorted</span> <span class="o">=</span> <span class="n">eigvals</span><span class="p">[</span><span class="n">sorted_indices</span><span class="p">]</span>
+        <span class="n">eigvecs_sorted</span> <span class="o">=</span> <span class="n">eigvecs</span><span class="p">[:,</span> <span class="n">sorted_indices</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">components</span> <span class="o">=</span> <span class="n">eigvecs_sorted</span><span class="p">[:,</span> <span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">n_components</span><span class="p">]</span></div>
+
+    
+<div class="viewcode-block" id="PCA.transform">
+<a class="viewcode-back" href="../../dynamapp.reductions.html#dynamapp.reductions.PCA.transform">[docs]</a>
+    <span class="k">def</span> <span class="nf">transform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Apply dimensionality reduction to the data using the fitted PCA model.</span>
+<span class="sd">        </span>
+<span class="sd">        Args:</span>
+<span class="sd">            X (jnp.ndarray): The input data of shape (n_samples, n_features).</span>
+<span class="sd">        </span>
+<span class="sd">        Returns:</span>
+<span class="sd">            jnp.ndarray: The transformed data of shape (n_samples, n_components).</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">X_centered</span> <span class="o">=</span> <span class="n">X</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">mean</span>
+        <span class="k">return</span> <span class="n">jnp</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">X_centered</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">components</span><span class="p">)</span></div>
+
+    
+<div class="viewcode-block" id="PCA.fit_transform">
+<a class="viewcode-back" href="../../dynamapp.reductions.html#dynamapp.reductions.PCA.fit_transform">[docs]</a>
+    <span class="k">def</span> <span class="nf">fit_transform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Fit the PCA model and apply dimensionality reduction in one step.</span>
+<span class="sd">        </span>
+<span class="sd">        Args:</span>
+<span class="sd">            X (jnp.ndarray): The input data of shape (n_samples, n_features).</span>
+<span class="sd">        </span>
+<span class="sd">        Returns:</span>
+<span class="sd">            jnp.ndarray: The transformed data of shape (n_samples, n_components).</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span></div>
+</div>
 
 
 <div class="viewcode-block" id="LDA">
 <a class="viewcode-back" href="../../dynamapp.reductions.html#dynamapp.reductions.LDA">[docs]</a>
 <span class="k">class</span> <span class="nc">LDA</span><span class="p">:</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">pass</span></div>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Linear Discriminant Analysis (LDA) for dimensionality reduction.</span>
+<span class="sd">    </span>
+<span class="sd">    LDA is supervised and finds a linear combination of features that </span>
+<span class="sd">    best separates the classes.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n_components</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Args:</span>
+<span class="sd">            n_components (int): Number of discriminants to keep after the transformation.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n_components</span> <span class="o">=</span> <span class="n">n_components</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mean</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">components</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">class_means</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">class_cov</span> <span class="o">=</span> <span class="kc">None</span>
+    
+<div class="viewcode-block" id="LDA.fit">
+<a class="viewcode-back" href="../../dynamapp.reductions.html#dynamapp.reductions.LDA.fit">[docs]</a>
+    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Fit the LDA model to the data.</span>
+<span class="sd">        </span>
+<span class="sd">        Args:</span>
+<span class="sd">            X (jnp.ndarray): The input data of shape (n_samples, n_features).</span>
+<span class="sd">            y (jnp.ndarray): The labels for the data of shape (n_samples,).</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">classes</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+        <span class="n">n_features</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">n_samples</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">class_means</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">jnp</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">y</span> <span class="o">==</span> <span class="n">c</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">classes</span><span class="p">])</span>
+        
+        <span class="n">Sw</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n_features</span><span class="p">,</span> <span class="n">n_features</span><span class="p">))</span>
+        <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">classes</span><span class="p">:</span>
+            <span class="n">X_c</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">y</span> <span class="o">==</span> <span class="n">c</span><span class="p">]</span>
+            <span class="n">mean_c</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">class_means</span><span class="p">[</span><span class="n">c</span><span class="p">]</span>
+            <span class="n">Sw</span> <span class="o">+=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">dot</span><span class="p">((</span><span class="n">X_c</span> <span class="o">-</span> <span class="n">mean_c</span><span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="p">(</span><span class="n">X_c</span> <span class="o">-</span> <span class="n">mean_c</span><span class="p">))</span>
+        
+        <span class="n">overall_mean</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">Sb</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n_features</span><span class="p">,</span> <span class="n">n_features</span><span class="p">))</span>
+        <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">classes</span><span class="p">:</span>
+            <span class="n">n_c</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">y</span> <span class="o">==</span> <span class="n">c</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">mean_c</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">class_means</span><span class="p">[</span><span class="n">c</span><span class="p">]</span>
+            <span class="n">Sb</span> <span class="o">+=</span> <span class="n">n_c</span> <span class="o">*</span> <span class="n">jnp</span><span class="o">.</span><span class="n">outer</span><span class="p">(</span><span class="n">mean_c</span> <span class="o">-</span> <span class="n">overall_mean</span><span class="p">,</span> <span class="n">mean_c</span> <span class="o">-</span> <span class="n">overall_mean</span><span class="p">)</span>
+        
+        <span class="n">eigvals</span><span class="p">,</span> <span class="n">eigvecs</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eigh</span><span class="p">(</span><span class="n">jnp</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">Sw</span><span class="p">)</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">Sb</span><span class="p">))</span>
+        
+        <span class="n">sorted_indices</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">eigvals</span><span class="p">)[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">eigvals_sorted</span> <span class="o">=</span> <span class="n">eigvals</span><span class="p">[</span><span class="n">sorted_indices</span><span class="p">]</span>
+        <span class="n">eigvecs_sorted</span> <span class="o">=</span> <span class="n">eigvecs</span><span class="p">[:,</span> <span class="n">sorted_indices</span><span class="p">]</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">components</span> <span class="o">=</span> <span class="n">eigvecs_sorted</span><span class="p">[:,</span> <span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">n_components</span><span class="p">]</span></div>
+
+    
+<div class="viewcode-block" id="LDA.transform">
+<a class="viewcode-back" href="../../dynamapp.reductions.html#dynamapp.reductions.LDA.transform">[docs]</a>
+    <span class="k">def</span> <span class="nf">transform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Apply dimensionality reduction to the data using the fitted LDA model.</span>
+<span class="sd">        </span>
+<span class="sd">        Args:</span>
+<span class="sd">            X (jnp.ndarray): The input data of shape (n_samples, n_features).</span>
+<span class="sd">        </span>
+<span class="sd">        Returns:</span>
+<span class="sd">            jnp.ndarray: The transformed data of shape (n_samples, n_components).</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">jnp</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">X</span> <span class="o">-</span> <span class="n">jnp</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">components</span><span class="p">)</span></div>
+
+    
+<div class="viewcode-block" id="LDA.fit_transform">
+<a class="viewcode-back" href="../../dynamapp.reductions.html#dynamapp.reductions.LDA.fit_transform">[docs]</a>
+    <span class="k">def</span> <span class="nf">fit_transform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Fit the LDA model and apply dimensionality reduction in one step.</span>
+<span class="sd">        </span>
+<span class="sd">        Args:</span>
+<span class="sd">            X (jnp.ndarray): The input data of shape (n_samples, n_features).</span>
+<span class="sd">            y (jnp.ndarray): The labels for the data of shape (n_samples,).</span>
+<span class="sd">        </span>
+<span class="sd">        Returns:</span>
+<span class="sd">            jnp.ndarray: The transformed data of shape (n_samples, n_components).</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span></div>
+</div>
 
 </pre></div>
 

@@ -67,6 +67,7 @@ def generalized_torques_wrt_damping(m:Model,q:jnp.ndarray,
     Computes the regressor tensor of the genrlized torques with respect to the 
     joints damping vector.
     NOTE: this function require that dampings are not None
+    
     Returns:
         - jax tensor (m.ndof * m.ndof * m.nodf)
     """
@@ -84,6 +85,9 @@ def full_torques_wrt_inerial(m:Model,q:jnp.ndarray,v:jnp.ndarray,a:jnp.ndarray,
     """ 
     Compute the regressor tensor of the full torques with respect to the
     links inertial paramters
+    
+    Returns:
+        -
     """
     @jit 
     def regressor(tensor:jnp.ndarray)-> jnp.ndarray:
@@ -97,6 +101,7 @@ def full_torques_wrt_friction(m:Model,q:jnp.ndarray,v:jnp.ndarray,a:jnp.ndarray)
     """
     Compute the rgressor tensor of the full torques with respect to the links 
     friction coefficents
+    
     Returns:
         - jax tensor (m.ndof * )
     """
@@ -110,6 +115,7 @@ def full_torques_wrt_friction(m:Model,q:jnp.ndarray,v:jnp.ndarray,a:jnp.ndarray)
 def eigvals_wrt_inertia(ms:ModelState,q:jnp.ndarray,v:jnp.ndarray,a:jnp.ndarray):
     """
     Compute the eigvalues jacobian with respect to inertial paramters
+    
     Returns:
         - jax tensor (m.ndof  * )
     """
@@ -125,6 +131,7 @@ def eigvals_wrt_inertia(ms:ModelState,q:jnp.ndarray,v:jnp.ndarray,a:jnp.ndarray)
 def eigvals_wrt_dhparams(ms:ModelState,q:jnp.ndarray,v:jnp.ndarray,a:jnp.ndarray):
     """
     Compute the eigvalues jacobian wit respect to dhparams coefficents
+    
     Returns:
         - jax tensor (m.ndof * )
     """
@@ -141,6 +148,7 @@ def eigvals_wrt_dhparams(ms:ModelState,q:jnp.ndarray,v:jnp.ndarray,a:jnp.ndarray
 def eigvals_wrt_damping(ms:ModelState,q:jnp.ndarray,v:jnp.ndarray,a:jnp.ndarray):
     """
     Compute the eigvalues jacobian with respect to joints damping coefficents
+    
     Returns:
         - jax tensor ( m.ndof * )
     """
@@ -156,6 +164,7 @@ def state_matrix_a_wrt_inertia(ms:ModelState,q:jnp.ndarray,v:jnp.ndarray,a:jnp.n
     """
     Compute the jacobian tensor of the state matrix A with respect to the links
     inertial coefficents 
+    
     Returns:
         - jax tensor (m.ndof * )
     """
@@ -166,4 +175,21 @@ def state_matrix_a_wrt_inertia(ms:ModelState,q:jnp.ndarray,v:jnp.ndarray,a:jnp.n
         return ms.get_state_matrix_a(x)
          
     regressor_jacobian = jax.jacobian(regressor)(jnp.stack(ms.model.Imats, axis=-1))
+    return regressor_jacobian
+
+def state_matrix_a_wrt_state(ms:ModelState,q:jnp.ndarray,v:jnp.ndarray,a:jnp.ndarray):
+    """
+    Compute the rgressor tensor of the state matrix A with repect to the state 
+    (position, velocity) of the system.
+    
+    Returns:
+        - Jax tensor (m.ndof * )
+    """
+    x = jnp.concatenate([q, v])
+    
+    @jit 
+    def regressor(tensor):
+        return ms.get_state_matrix_a(tensor)
+    
+    regressor_jacobian = jax.jacobian(regressor)(x)
     return regressor_jacobian

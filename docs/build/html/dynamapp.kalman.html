@@ -66,18 +66,15 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.math_utils.html">math_utils module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="dynamapp.moesp.html">moesp module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.nfoursid.html">nfoursid module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.regressors.html">regressors module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.model.html">model module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="dynamapp.actuators.html">actuators module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.data_utils.html">data_utils module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.solvers.html">solvers module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.reductions.html">reductions module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.state_space.html">state_space module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.model_state.html">model_state module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.trajectory.html">trajectory module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="dynamapp.utils.html">utils module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.viscoelastic.html">viscoelastic module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.identification.html">identification module</a></li>
 </ul>
@@ -120,7 +117,7 @@
 <span id="kalman-module"></span><h1>kalman module<a class="headerlink" href="#module-dynamapp.kalman" title="Link to this heading"></a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="dynamapp.kalman.Kalman">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dynamapp.kalman.</span></span><span class="sig-name descname"><span class="pre">Kalman</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state_space</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="dynamapp.state_space.html#dynamapp.state_space.StateSpace" title="dynamapp.state_space.StateSpace"><span class="pre">StateSpace</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise_covariance</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dynamapp/kalman.html#Kalman"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dynamapp.kalman.Kalman" title="Link to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dynamapp.kalman.</span></span><span class="sig-name descname"><span class="pre">Kalman</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state_space</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="dynamapp.state_space.html#dynamapp.state_space.StateSpace" title="dynamapp.state_space.StateSpace"><span class="pre">StateSpace</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise_covariance</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">jax.numpy.ndarray</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dynamapp/kalman.html#Kalman"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dynamapp.kalman.Kalman" title="Link to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Implementation [1] of a Kalman filter for a state-space model <code class="docutils literal notranslate"><span class="pre">state_space</span></code>:</p>
 <div class="math notranslate nohighlight">
@@ -185,7 +182,7 @@ by the matrix <span class="math notranslate nohighlight">\(D\)</span> is removed
 
 <dl class="py method">
 <dt class="sig sig-object py" id="dynamapp.kalman.Kalman.step">
-<span class="sig-name descname"><span class="pre">step</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">u</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dynamapp/kalman.html#Kalman.step"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dynamapp.kalman.Kalman.step" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">step</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">jax.numpy.ndarray</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">u</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">jax.numpy.ndarray</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dynamapp/kalman.html#Kalman.step"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dynamapp.kalman.Kalman.step" title="Link to this definition"></a></dt>
 <dd><p>Given an observed input <code class="docutils literal notranslate"><span class="pre">u</span></code> and output <code class="docutils literal notranslate"><span class="pre">y</span></code>, update the filtered and predicted states of the Kalman filter.
 Follows the implementation of the conventional Kalman filter in [1] on page 140.</p>
 <p>The output <code class="docutils literal notranslate"><span class="pre">y</span></code> can be missing by setting <code class="docutils literal notranslate"><span class="pre">y=None</span></code>.

@@ -18,6 +18,8 @@
         <script src="_static/documentation_options.js?v=40be6288"></script>
         <script src="_static/doctools.js?v=9a2dae69"></script>
         <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -61,15 +63,13 @@
 <li class="toctree-l2 current"><a class="reference internal" href="dynamapp.html#submodules">Submodules</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.kalman.html">kalman module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.math_utils.html">math_utils module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="dynamapp.moesp.html">moesp module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.nfoursid.html">nfoursid module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.regressors.html">regressors module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.model.html">model module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="dynamapp.actuators.html">actuators module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.data_utils.html">data_utils module</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">solvers module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#dynamapp.solvers.solve_least_square"><code class="docutils literal notranslate"><span class="pre">solve_least_square()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#dynamapp.solvers.solve_riccati_equation"><code class="docutils literal notranslate"><span class="pre">solve_riccati_equation()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#dynamapp.solvers.solve_discrete_state_depend_are"><code class="docutils literal notranslate"><span class="pre">solve_discrete_state_depend_are()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#dynamapp.solvers.luenberger_observer"><code class="docutils literal notranslate"><span class="pre">luenberger_observer()</span></code></a></li>
 </ul>
 </li>
@@ -77,7 +77,6 @@
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.state_space.html">state_space module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.model_state.html">model_state module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.trajectory.html">trajectory module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="dynamapp.utils.html">utils module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.viscoelastic.html">viscoelastic module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.identification.html">identification module</a></li>
 </ul>
@@ -119,63 +118,56 @@
   <section id="module-dynamapp.solvers">
 <span id="solvers-module"></span><h1>solvers module<a class="headerlink" href="#module-dynamapp.solvers" title="Link to this heading"></a></h1>
 <dl class="py function">
-<dt class="sig sig-object py" id="dynamapp.solvers.solve_riccati_equation">
-<span class="sig-prename descclassname"><span class="pre">dynamapp.solvers.</span></span><span class="sig-name descname"><span class="pre">solve_riccati_equation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">A</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">B</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Q</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">R</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dynamapp/solvers.html#solve_riccati_equation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dynamapp.solvers.solve_riccati_equation" title="Link to this definition"></a></dt>
-<dd><p>Solve the discrete time algebric riccati equation given by :
-..::math:</p>
+<dt class="sig sig-object py" id="dynamapp.solvers.solve_least_square">
+<span class="sig-prename descclassname"><span class="pre">dynamapp.solvers.</span></span><span class="sig-name descname"><span class="pre">solve_least_square</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">W</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">jax.numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">jax.numpy.ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">jax.numpy.ndarray</span></span></span><a class="headerlink" href="#dynamapp.solvers.solve_least_square" title="Link to this definition"></a></dt>
+<dd><p>Solves the least squares problem: WX = Y for X.</p>
 <dl class="simple">
-<dt>Args: </dt><dd><ul class="simple">
-<li><p>A, B  : System Matrices</p></li>
+<dt>Args:</dt><dd><ul class="simple">
+<li><p>W: (m, n) matrix (design matrix).</p></li>
+<li><p>Y: (m, k) matrix (target values).</p></li>
 </ul>
 </dd>
 <dt>Returns:</dt><dd><ul class="simple">
-<li><p>P ARE solution.</p></li>
+<li><p>X: (n, k) matrix (solution to WX = Y).</p></li>
 </ul>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="dynamapp.solvers.solve_discrete_state_depend_are">
-<span class="sig-prename descclassname"><span class="pre">dynamapp.solvers.</span></span><span class="sig-name descname"><span class="pre">solve_discrete_state_depend_are</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">A</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">B</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Q</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">R</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dynamapp/solvers.html#solve_discrete_state_depend_are"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dynamapp.solvers.solve_discrete_state_depend_are" title="Link to this definition"></a></dt>
-<dd><p>Solve the discrete state depend Riccati equation given by:
-.. math:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">R</span><span class="o">^</span><span class="p">{</span><span class="n">T</span><span class="p">}</span><span class="n">A</span> <span class="o">=</span> <span class="n">Q</span>
-</pre></div>
-</div>
+<dt class="sig sig-object py" id="dynamapp.solvers.solve_riccati_equation">
+<span class="sig-prename descclassname"><span class="pre">dynamapp.solvers.</span></span><span class="sig-name descname"><span class="pre">solve_riccati_equation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">A</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">B</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Q</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">R</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dynamapp.solvers.solve_riccati_equation" title="Link to this definition"></a></dt>
+<dd><p>Solve the discrete-time Algebraic Riccati Equation (ARE):</p>
+<div class="math notranslate nohighlight">
+\[P = A.T &#64; P &#64; A - (A.T &#64; P &#64; B) &#64; jnp.linalg.inv(R + B.T &#64; P &#64; B) &#64; (B.T &#64; P &#64; A) + Q\]</div>
 <dl class="simple">
 <dt>Args:</dt><dd><ul class="simple">
-<li><p>A, B, Q, R</p></li>
+<li><p>A: State matrix (n, n)</p></li>
+<li><p>B: Control matrix (n, m)</p></li>
+<li><p>Q: State cost matrix (n, n)</p></li>
+<li><p>R: Control cost matrix (m, m)</p></li>
+</ul>
+</dd>
+<dt>Returns:</dt><dd><ul class="simple">
+<li><p>P: Solution to the Riccati equation (n, n)</p></li>
 </ul>
 </dd>
 </dl>
-<p>Ref:</p>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="dynamapp.solvers.luenberger_observer">
-<span class="sig-prename descclassname"><span class="pre">dynamapp.solvers.</span></span><span class="sig-name descname"><span class="pre">luenberger_observer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">A</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">B</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">C</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">desired_poles</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dynamapp/solvers.html#luenberger_observer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dynamapp.solvers.luenberger_observer" title="Link to this definition"></a></dt>
-<dd><p>Computes the Luenberger Observer gain matrix L.
-The gain matrix L is computed by placing the poles of the observer at the desired_poles.
-it should be noted that the observer is given by the following equation:
-.. math:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>\<span class="n">dot</span><span class="p">{</span>\<span class="n">hat</span><span class="p">{</span><span class="n">x</span><span class="p">}}</span> <span class="o">=</span> <span class="n">A</span>\<span class="n">hat</span><span class="p">{</span><span class="n">x</span><span class="p">}</span> <span class="o">+</span> <span class="n">Bu</span> <span class="o">+</span> <span class="n">L</span><span class="p">(</span><span class="n">y</span> <span class="o">-</span> <span class="n">C</span>\<span class="n">hat</span><span class="p">{</span><span class="n">x</span><span class="p">})</span>
-</pre></div>
-</div>
-<p>where:
-- A is the system matrix.
-- B is the input matrix.
-- C is the output matrix.
-- L is the observer gain matrix.
-Args:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span> <span class="n">System</span> <span class="n">matrix</span><span class="o">.</span>
-<span class="n">B</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span> <span class="n">Input</span> <span class="n">matrix</span><span class="o">.</span>
-<span class="n">C</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span> <span class="n">Output</span> <span class="n">matrix</span><span class="o">.</span>
-<span class="n">desired_poles</span> <span class="p">(</span><span class="nb">list</span><span class="p">):</span> <span class="n">Desired</span> <span class="n">poles</span> <span class="k">for</span> <span class="n">the</span> <span class="n">observer</span><span class="o">.</span>
-</pre></div>
-</div>
+<span class="sig-prename descclassname"><span class="pre">dynamapp.solvers.</span></span><span class="sig-name descname"><span class="pre">luenberger_observer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">A</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">B</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">C</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">desired_poles</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dynamapp.solvers.luenberger_observer" title="Link to this definition"></a></dt>
+<dd><p>Computes the Luenberger Observer gain matrix L by placing the poles of the observer at the desired_poles.</p>
 <dl class="simple">
-<dt>Returns:</dt><dd><p>L (np.ndarray): Observer gain matrix.</p>
+<dt>Args:</dt><dd><p>A (ndarray): System matrix.
+B (ndarray): Input matrix.
+C (ndarray): Output matrix.
+desired_poles (list): Desired poles for the observer.</p>
+</dd>
+<dt>Returns:</dt><dd><p>L (ndarray): Observer gain matrix.</p>
+</dd>
+<dt>TODO :we need to solve the pole placement problem using a custom algorithm </dt><dd><p>the acctual version return a null gain matrix,</p>
 </dd>
 </dl>
 </dd></dl>
