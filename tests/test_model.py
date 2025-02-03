@@ -25,33 +25,38 @@ class TestModel(unittest.TestCase):
         self.model_ = Model(Imats, dhparams)
 
     def test_inertia_tensor_is_not_none(self):
+        
         q = jnp.array([1.0, -8.5, -0.3, 87.0, 8.2, -10.4, 8.8])
         M = self.model_.inertia_tensor(q) 
-        print(M)
-        print(jnp.shape(M))
+        self.assertEqual(M.shape, (7,7))
         self.assertIsNotNone(M, "The computed inertia matrix is None")
         
     def test_coriolis_matrix_not_none(self):
+        
         q = jnp.zeros(7)  
         qp = jnp.zeros(7)  
         C = self.model_.coriolis_tensor(q, qp)
         self.assertIsNotNone(C, "The computed Coriolis matrix is None")
         
     def test_gravity_torque_not_none(self):
+        
         q = jnp.zeros(7)  
         tau_g = self.model_.gravity_torques(q)
         self.assertIsNotNone(tau_g, "Gravity torques should not be None")
         
     def test_gravity_torque_shape(self):
+        
         q = jnp.ones(7)  
         tau_g = self.model_.gravity_torques(q)
         self.assertEqual(tau_g.shape, q.shape, "Gravity torques shape mismatch")
         
     def test_gravity_torque_with_default_q(self):
+        
         tau_g = self.model_.gravity_torques()
         self.assertIsNotNone(tau_g, "Gravity torques should not be None")
         
     def test_generalized_torques(self):
+        
         q = np.ones(7)
         qp = np.ones(7)
         qpp = np.ones(7)

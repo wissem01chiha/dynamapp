@@ -1,8 +1,5 @@
 import jax.numpy as jnp
-import logging
 import abc
-
-logger = logging.getLogger(__name__)
 
 class Trajectory(abc.ABC):
     """
@@ -63,8 +60,8 @@ class PeriodicTrajectory(Trajectory):
     Periodic trajectory based on Fourier series.[1]
     
     Ref:
-        [1] Fourier-based optimal excitation trajectories for the dynamic identification of robots
-        Kyung.Jo Park - Robotica - 2006. 
+        [1] Fourier-based optimal excitation trajectories for the dynamic 
+        identification of robots, Kyung.Jo Park - Robotica - 2006. 
     """
     def __init__(self, n, sampling, ti, tf, frequency, Aij, Bij, nb_terms):
         super().__init__(n, sampling, ti, tf)

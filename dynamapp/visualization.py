@@ -1,4 +1,3 @@
-import os
 import logging
 import numpy as np
 import seaborn as sns
@@ -8,8 +7,48 @@ from .trajectory import *
 from .model_state import *
 from .model import *
 from .generators import *
+from matplotlib import pyplot as plt
+from matplotlib import figure as matplotlib_figure
 
 
+def plot_eigenvalues(self, ax: plt.axes):   
+    """
+    Plot the eigenvalues of the :math:`R_{32}` matrix, so that the order of the state-space model can be determined.
+    Since the :math:`R_{32}` matrix should have been calculated, this function can only be used after
+    performing ``self.subspace_identification``.
+    """
+    if self.R32_decomposition is None:
+        raise Exception('Perform subspace identification first.')
+
+    ax.semilogy(jnp.diagonal(self.R32_decomposition.eigenvalues), 'x')
+    ax.set_title('Estimated observability matrix decomposition')
+    ax.set_xlabel('Index')
+    ax.set_ylabel('Eigenvalue')
+    ax.grid()
+
+
+def plot_input_output(self, fig: matplotlib_figure.Figure):   
+    """
+    Given a matplotlib figure ``fig``, plot the inputs and outputs of the state-space model.
+    """
+    ax1 = fig.add_subplot(2, 1, 1)
+    ax2 = fig.add_subplot(2, 1, 2, sharex=ax1)
+
+    for output_name, outputs in zip(self.y_column_names, np.array(self.ys).squeeze(axis=2).T):
+        ax1.plot(outputs, label=output_name, alpha=.6)
+    ax1.legend(loc='upper right')
+    ax1.set_ylabel('Output $y$ (a.u.)')
+    ax1.grid()
+
+    for input_name, inputs in zip(self.u_column_names, np.array(self.us).squeeze(axis=2).T):
+        ax2.plot(inputs, label=input_name, alpha=.6)
+    ax2.legend(loc='upper right')
+    ax2.set_ylabel('Input $u$ (a.u.)')
+    ax2.set_xlabel('Index')
+    ax2.grid()
+
+    ax1.set_title('Inputs and outputs of state-space model')
+    plt.setp(ax1.get_xticklabels(), visible=False)
     
 
 # def plot(self)->None:

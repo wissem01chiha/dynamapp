@@ -1,11 +1,10 @@
 from typing import List, Tuple
-
-import matplotlib.pyplot as plt
-import numpy as np
+import jax.numpy as jnp
 import pandas as pd
 
 from .state_space import StateSpace
-from .math_utils import Decomposition
+from .math_utils import Decomposition, block_hankel_matrix, \
+    eigenvalue_decomposition, reduce_decomposition
 
 class NFourSID:
     r"""
@@ -79,24 +78,24 @@ class NFourSID:
         [1] Verhaegen, Michel, and Vincent Verdult. *Filtering and system identification: a least squares approach.*
         Cambridge university press, 2007.
         """
-        u_hankel = Utils.block_hankel_matrix(self.u_array, self.num_block_rows)
-        y_hankel = Utils.block_hankel_matrix(self.y_array, self.num_block_rows)
+        u_hankel = block_hankel_matrix(self.u_array, self.num_block_rows)
+        y_hankel = block_hankel_matrix(self.y_array, self.num_block_rows)
 
         u_past, u_future = u_hankel[:, :-self.num_block_rows], u_hankel[:, self.num_block_rows:]
         y_past, y_future = y_hankel[:, :-self.num_block_rows], y_hankel[:, self.num_block_rows:]
-        u_instrumental_y = np.concatenate([u_future, u_past, y_past, y_future])
+        u_instrumental_y = jnp.concatenate([u_future, u_past, y_past, y_future])
 
-        q, r = map(lambda matrix: matrix.T, np.linalg.qr(u_instrumental_y.T, mode='reduced'))
+        q, r = map(lambda matrix: matrix.T, jnp.linalg.qr(u_instrumental_y.T, mode='reduced'))
 
         y_rows, u_rows = self.y_dim * self.num_block_rows, self.u_dim * self.num_block_rows
         self.R32 = r[-y_rows:, u_rows:-y_rows]
         self.R22 = r[u_rows:-y_rows, u_rows:-y_rows]
-        self.R32_decomposition = Utils.eigenvalue_decomposition(self.R32)
+        self.R32_decomposition = eigenvalue_decomposition(self.R32)
 
     def system_identification(
             self,
             rank: int = None
-    ) -> Tuple[StateSpace, np.ndarray]:
+    ) -> Tuple[StateSpace, jnp.ndarray]:
         """
         Identify the system matrices of the state-space model given in the description of ``NFourSID``.
         Moreover, the covariance of the measurement-noise and process-noise will be estimated.
@@ -131,29 +130,29 @@ class NFourSID:
     def _identify_state_space(
             self,
             observability_decomposition: Decomposition
-    ) -> Tuple[StateSpace, np.ndarray]:
+    ) -> Tuple[StateSpace, jnp.ndarray]:
         """
         Approximate the row space of the state sequence of a Kalman filter as per the N4SID scheme.
         Then, solve a least squares problem to identify the system matrices.
         Finally, use the residuals to estimate the noise covariance matrix.
         """
-        x = (np.power(observability_decomposition.eigenvalues, .5)
+        x = (jnp.power(observability_decomposition.eigenvalues, .5)
              @ observability_decomposition.right_orthogonal)[:, :-1]
         last_y, last_u = self.y_array[self.num_block_rows:, :].T, self.u_array[self.num_block_rows:, :].T
-        x_and_y = np.concatenate([x[:, 1:],
+        x_and_y = jnp.concatenate([x[:, 1:],
                                   last_y[:, :-1]])
-        x_and_u = np.concatenate([x[:, :-1],
+        x_and_u = jnp.concatenate([x[:, :-1],
                                   last_u[:, :-1]])
-        abcd = (np.linalg.pinv(x_and_u @ x_and_u.T) @ x_and_u @ x_and_y.T).T
+        abcd = (jnp.linalg.pinv(x_and_u @ x_and_u.T) @ x_and_u @ x_and_y.T).T
         residuals = x_and_y - abcd @ x_and_u
         covariance_matrix = residuals @ residuals.T / residuals.shape[1]
         q = covariance_matrix[:self.x_dim, :self.x_dim]
         r = covariance_matrix[self.x_dim:, self.x_dim:]
         s = covariance_matrix[:self.x_dim, self.x_dim:]
-        state_space_covariance_matrix = np.concatenate(
+        state_space_covariance_matrix = jnp.concatenate(
             [
-                np.concatenate([r, s.T], axis=1),
-                np.concatenate([s, q], axis=1)
+                jnp.concatenate([r, s.T], axis=1),
+                jnp.concatenate([s, q], axis=1)
             ],
             axis=0
         )
@@ -171,27 +170,12 @@ class NFourSID:
         """
         Calculate the eigenvalue decomposition of the estimate of the observability matrix as per N4SID.
         """
-        u_hankel = Utils.block_hankel_matrix(self.u_array, self.num_block_rows)
-        y_hankel = Utils.block_hankel_matrix(self.y_array, self.num_block_rows)
-        u_and_y = np.concatenate([u_hankel, y_hankel])
-        observability = self.R32 @ np.linalg.pinv(self.R22) @ u_and_y
-        observability_decomposition = Utils.reduce_decomposition(
-            Utils.eigenvalue_decomposition(observability),
+        u_hankel = block_hankel_matrix(self.u_array, self.num_block_rows)
+        y_hankel = block_hankel_matrix(self.y_array, self.num_block_rows)
+        u_and_y = jnp.concatenate([u_hankel, y_hankel])
+        observability = self.R32 @ jnp.linalg.pinv(self.R22) @ u_and_y
+        observability_decomposition = reduce_decomposition(
+            eigenvalue_decomposition(observability),
             self.x_dim
         )
         return observability_decomposition
-
-    def plot_eigenvalues(self, ax: plt.axes):  # pragma: no cover
-        """
-        Plot the eigenvalues of the :math:`R_{32}` matrix, so that the order of the state-space model can be determined.
-        Since the :math:`R_{32}` matrix should have been calculated, this function can only be used after
-        performing ``self.subspace_identification``.
-        """
-        if self.R32_decomposition is None:
-            raise Exception('Perform subspace identification first.')
-
-        ax.semilogy(np.diagonal(self.R32_decomposition.eigenvalues), 'x')
-        ax.set_title('Estimated observability matrix decomposition')
-        ax.set_xlabel('Index')
-        ax.set_ylabel('Eigenvalue')
-        ax.grid()

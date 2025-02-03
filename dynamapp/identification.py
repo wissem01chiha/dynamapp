@@ -4,6 +4,7 @@ from .generators import *
 from .regressors import *
 from .reductions import *
 from .kalman import *
+from .solvers import *
 from .math_utils import *
 
 # class IDIM:
@@ -74,12 +75,7 @@ from .math_utils import *
 # # inverse dynamics identification using neural network :
 # # use the xeights saved from ghali training model and simulate them 
 
-# import logging
-# import numpy as np
-# from typing import Callable
-# import matplotlib.pyplot as plt
-# import seaborn as sns 
-# from scipy.optimize import least_squares, curve_fit 
+
 
 # from utils import  clampArray, plotArray, plot2Arrays
 # from dynamapp.math_utils import RMSE, computeCorrelation

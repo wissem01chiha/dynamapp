@@ -1,6 +1,9 @@
 """
 DynaMapp
 ====================
+A differentiable package for representation and 
+identification of multibody dynamics.
+
 Usage:
 ------
 >>> import dynamapp as dymp

@@ -101,7 +101,7 @@ class Model():
 
         if self.dampings is not None:
             for k in range(n):
-                c_up = c.at[k] + self.dampings(k) * qp[k]
+                c_up = c[k] + self.dampings[k] * qp[k]
                 c = c.at[k].set(c_up) 
         
         return c, v, a, f
@@ -114,9 +114,10 @@ class Model():
             jnp.ndarray: A diagonal matrix with damping values.
                         If no damping values are given, returns a zero matrix.
         """
-        dampings = jnp.array(self.dampings) if self.dampings is not None else jnp.zeros(self.dampings.length())
+        if self.dampings is None:
+            return jnp.zeros((self.ndof,self.ndof))
         
-        return jnp.diag(dampings)
+        return jnp.array(self.dampings)
     
     @staticmethod 
     @jit
@@ -192,15 +193,14 @@ class Model():
         return axes.get(i, jnp.zeros(6))
     
     def _transform(self, i, qi)->jnp.ndarray:
-        """Computes the transformation matrix X for joint i at configuration q_i"""
-        
+        """Computes the homogenus transformation matrix X for joint i at configuration q_i"""
         theta, d, a, alpha = self.dhparams[i]
         theta += qi
         T = jnp.array([
-            [jnp.cos(theta), -jnp.sin(theta) * jnp.cos(alpha),  jnp.sin(theta) * jnp.sin(alpha), a * jnp.cos(theta)],
-            [jnp.sin(theta),  jnp.cos(theta) * jnp.cos(alpha), -jnp.cos(theta) * jnp.sin(alpha), a * jnp.sin(theta)],
-            [0,              jnp.sin(alpha),                  jnp.cos(alpha),                  d],
-            [0,              0,                               0,                               1]
+            [jnp.cos(theta),-jnp.sin(theta)*jnp.cos(alpha),  jnp.sin(theta)*jnp.sin(alpha), a*jnp.cos(theta)],
+            [jnp.sin(theta), jnp.cos(theta)*jnp.cos(alpha), -jnp.cos(theta)*jnp.sin(alpha), a*jnp.sin(theta)],
+            [0,             jnp.sin(alpha),                  jnp.cos(alpha),                 d],
+            [0,             0,                               0,                              1]
         ])
         R = T[:3, :3]  
         p = T[:3, 3]
@@ -215,6 +215,51 @@ class Model():
         ]) 
         return mat
     
+    def _fk(self, q):
+        T = jnp.eye(4)   
+        for i, (theta, d, a, alpha) in enumerate(self.dhparams):
+                theta_i = theta + q[i]   
+                T_i = jnp.array([
+                    [jnp.cos(theta_i), -jnp.sin(theta_i) * jnp.cos(alpha), jnp.sin(theta_i)*jnp.sin(alpha), a*jnp.cos(theta_i)],
+                    [jnp.sin(theta_i), jnp.cos(theta_i) * jnp.cos(alpha), -jnp.cos(theta_i)*jnp.sin(alpha), a*jnp.sin(theta_i)],
+                    [0, jnp.sin(alpha), jnp.cos(alpha), d],
+                    [0, 0, 0, 1]
+                ])
+                T = jnp.dot(T, T_i) 
+        position = T[:3, 3]
+        rotation = T[:3, :3]  
+        return  position, rotation
+    
+    def _jacobian(self, q: jnp.ndarray) -> jnp.ndarray:
+        """
+        Compute the Jacobian transformation matrix for the system 
+        Returns:
+            - J : jax array (6, n)
+        """
+        def position_fn(q):
+            pose, _ = self._fk(q)   
+            return pose 
+        n =len(q)
+        T = jnp.eye(4) 
+        z_axes = jnp.zeros((3, n)) 
+        for i in range(n):
+            theta, d, a, alpha = self.dhparams[i]   
+            theta_i = theta + q[i]   
+            z_axes = z_axes.at[:, i].set(T[:3, 2])  
+
+            T_i = jnp.array([
+                [jnp.cos(theta_i), -jnp.sin(theta_i) * jnp.cos(alpha), jnp.sin(theta_i) * jnp.sin(alpha), a * jnp.cos(theta_i)],
+                [jnp.sin(theta_i), jnp.cos(theta_i) * jnp.cos(alpha), -jnp.cos(theta_i) * jnp.sin(alpha), a * jnp.sin(theta_i)],
+                [0, jnp.sin(alpha), jnp.cos(alpha), d],
+                [0, 0, 0, 1]
+            ])
+            T = jnp.dot(T, T_i)   
+
+        Jw = z_axes 
+        Jv = jax.jacfwd(position_fn)(q) 
+        J = jnp.vstack((Jv, Jw))
+        return  J
+    
     def inertia_tensor(self, q):
         """
         Computes the mass matrix M(q) using RNEA.
@@ -226,15 +271,14 @@ class Model():
             jnp.ndarray: Mass matrix (ndof, ndof)
         """
         n = len(q)
-        M = jnp.zeros((n, n))
-
-        def column_rnea(i):
-            e_i = jnp.zeros(n).at[i].set(1.0)   
-            _, _, _, f = self._rnea(q, jnp.zeros(n), e_i)  
-            return f  
-
-        M = jax.vmap(column_rnea)(jnp.arange(n))  
-        
+        M = jnp.zeros((n, n))  
+        J = self._jacobian(q)
+        for i in range(n):
+            e_i = jnp.zeros(n)
+            e_i = e_i.at[i].set(1.0)   
+            _, _, _, f = self._rnea(q, jnp.zeros(n), e_i)
+            M = M.at[i, :].set(jnp.matmul(J[:, i].T, f[:, i]))   
+    
         return M
       
     def coriolis_tensor(self, q, qp):
@@ -249,12 +293,10 @@ class Model():
             jnp.ndarray: Coriolis matrix C(q, qp) of shape (ndof, ndof)
         """
         n = len(q)
-        
         def rnea_coriolis(qp_var):
             c, _, _, _ = self._rnea(q, qp_var, jnp.zeros(n))  
             return c  
         C = jax.jacfwd(rnea_coriolis)(qp)
-
         return C
     
     def gravity_torques(self, q:jnp.ndarray=None):
@@ -306,19 +348,20 @@ class Model():
         return f[-3:,:]
     
     def full_forces(self, alpha:jnp.array, beta:jnp.array, gamma:jnp.array,
-        q=None, qp=None, qpp=None)->jnp.ndarray:
+            dampings, q=None, qp=None, qpp=None)->jnp.ndarray:
         """ 
         Compute the joint torques given the friction effects and damping 
-        
         """
+        self.dampings = dampings
+        _, _, _, f= self._rnea(q, qp, qpp)
+        ff = compute_friction_force(alpha, beta, gamma, q, qp, qpp)
         
-        return jnp.ndarray()
+        return jnp.add(f, ff)
     
     def full_torques(self, alpha:jnp.array, beta:jnp.array, gamma:jnp.array,
-        q=None, qp=None, qpp=None)->jnp.ndarray:
+            dampings, q=None, qp=None, qpp=None)->jnp.ndarray:
         """ 
-        Compute the joint torques given the friction effects and damping (if not given)
-        
+        Compute the joint torques given the friction effects and damping
         """
-        
-        return jnp.ndarray()
+        f = self.full_forces(alpha, beta, gamma, dampings, q, qp, qpp)
+        return f[-3:,:]

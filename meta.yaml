@@ -20,7 +20,6 @@ requirements:
     - numba=0.59.0
     - matplotlib
     - seaborn
-    - pyyaml
     - sympy
     - nlopt
     - scipy
@@ -31,5 +30,5 @@ channels:
   - defaults
 about:
   summary: "1.0.0"
-  home: https://github.com/wissem01chiha/DynaMapp
+  home: https://github.com/wissem01chiha/dynamapp
   license: CC0-1.0 

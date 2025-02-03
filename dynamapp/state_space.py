@@ -1,8 +1,6 @@
 from typing import List
-import numpy as np
 import pandas as pd
-from matplotlib import pyplot as plt
-from matplotlib import figure as matplotlib_figure
+import jax.numpy as jnp
 
 from .math_utils import validate_matrix_shape
 
@@ -17,7 +15,7 @@ class StateSpace:
         \end{cases}
 
     The shapes of the matrices are checked for consistency and will raise if inconsistent.
-    If a matrix does not exist in the model representation, the corresponding ``np.ndarray`` should have dimension
+    If a matrix does not exist in the model representation, the corresponding ``jnp.ndarray`` should have dimension
     zero along that axis. See the example below.
 
     Example
@@ -26,10 +24,10 @@ class StateSpace:
     An autonomous model with a one-dimensional internal state and output, can be represented as follows:
 
     >>> model = StateSpace(
-    >>>     np.ones((1, 1)),
-    >>>     np.ones((1, 0)),
-    >>>     np.ones((1, 1)),
-    >>>     np.ones((1, 0))
+    >>>     jnp.ones((1, 1)),
+    >>>     jnp.ones((1, 0)),
+    >>>     jnp.ones((1, 1)),
+    >>>     jnp.ones((1, 0))
     >>> )
 
     :param a: matrix :math:`A`
@@ -43,12 +41,12 @@ class StateSpace:
     """
     def __init__(
             self,
-            a: np.ndarray,
-            b: np.ndarray,
-            c: np.ndarray,
-            d: np.ndarray,
-            k: np.ndarray = None,
-            x_init: np.ndarray = None,
+            a: jnp.ndarray,
+            b: jnp.ndarray,
+            c: jnp.ndarray,
+            d: jnp.ndarray,
+            k: jnp.ndarray = None,
+            x_init: jnp.ndarray = None,
             y_column_names: List[str] = None,
             u_column_names: List[str] = None
     ):
@@ -59,9 +57,9 @@ class StateSpace:
 
     def _set_dimensions(
             self,
-            a: np.ndarray,
-            b: np.ndarray,
-            c: np.ndarray
+            a: jnp.ndarray,
+            b: jnp.ndarray,
+            c: jnp.ndarray
     ):
         """ Determine the dimensions of the internal states, outputs and inputs, based on the matrix shapes. """
         self.x_dim = a.shape[0]
@@ -73,15 +71,15 @@ class StateSpace:
 
     def set_matrices(
             self,
-            a: np.ndarray,
-            b: np.ndarray,
-            c: np.ndarray,
-            d: np.ndarray,
-            k: np.ndarray = None
+            a: jnp.ndarray,
+            b: jnp.ndarray,
+            c: jnp.ndarray,
+            d: jnp.ndarray,
+            k: jnp.ndarray = None
     ):
         """ Validate if the shapes make sense and set the system matrices. """
         if k is None:
-            k = np.zeros((self.x_dim, self.y_dim))
+            k = jnp.zeros((self.x_dim, self.y_dim))
         validate_matrix_shape(a, (self.x_dim, self.x_dim), 'a')
         validate_matrix_shape(b, (self.x_dim, self.u_dim), 'b')
         validate_matrix_shape(c, (self.y_dim, self.x_dim), 'c')
@@ -113,28 +111,28 @@ class StateSpace:
         self.y_column_names = y_column_names
         self.u_column_names = u_column_names
 
-    def set_x_init(self, x_init: np.ndarray):
+    def set_x_init(self, x_init: jnp.ndarray):
         """ Set the initial state, if it is given. """
         if x_init is None:
-            x_init = np.zeros((self.x_dim, 1))
+            x_init = jnp.zeros((self.x_dim, 1))
         validate_matrix_shape(x_init, (self.x_dim, 1), 'x_dim')
         self._x_init = x_init
 
     def step(
             self,
-            u: np.ndarray = None,
-            e: np.ndarray = None
-    ) -> np.ndarray:
+            u: jnp.ndarray = None,
+            e: jnp.ndarray = None
+    ) -> jnp.ndarray:
         """
         Calculates the output of the state-space model and returns it.
         Updates the internal state of the model as well.
         The input ``u`` is optional, as is the noise ``e``.
         """
         if u is None:
-            u = np.zeros((self.u_dim, 1))
+            u = jnp.zeros((self.u_dim, 1))
         if e is None:
-            e = np.zeros((self.y_dim, 1))
-
+            e = jnp.zeros((self.y_dim, 1))
+            
         validate_matrix_shape(u, (self.u_dim, 1), 'u')
         validate_matrix_shape(e, (self.y_dim, 1), 'e')
 
@@ -150,9 +148,9 @@ class StateSpace:
 
     def output(
             self,
-            x: np.ndarray,
-            u: np.ndarray = None,
-            e: np.ndarray = None):
+            x: jnp.ndarray,
+            u: jnp.ndarray = None,
+            e: jnp.ndarray = None):
         """
         Calculate the output of the state-space model.
         This function calculates the updated :math:`y_k` of the state-space model in the class description.
@@ -161,9 +159,9 @@ class StateSpace:
         Providing a noise term ``e`` to be added is optional as well.
         """
         if u is None:
-            u = np.zeros((self.u_dim, 1))
+            u = jnp.zeros((self.u_dim, 1))
         if e is None:
-            e = np.zeros((self.y_dim, 1))
+            e = jnp.zeros((self.y_dim, 1))
 
         validate_matrix_shape(x, (self.x_dim, 1), 'x')
         validate_matrix_shape(u, (self.u_dim, 1), 'u')
@@ -171,35 +169,12 @@ class StateSpace:
 
         return self.c @ x + self.d @ u + e
 
-    def plot_input_output(self, fig: matplotlib_figure.Figure):   
-        """
-        Given a matplotlib figure ``fig``, plot the inputs and outputs of the state-space model.
-        """
-        ax1 = fig.add_subplot(2, 1, 1)
-        ax2 = fig.add_subplot(2, 1, 2, sharex=ax1)
-
-        for output_name, outputs in zip(self.y_column_names, np.array(self.ys).squeeze(axis=2).T):
-            ax1.plot(outputs, label=output_name, alpha=.6)
-        ax1.legend(loc='upper right')
-        ax1.set_ylabel('Output $y$ (a.u.)')
-        ax1.grid()
-
-        for input_name, inputs in zip(self.u_column_names, np.array(self.us).squeeze(axis=2).T):
-            ax2.plot(inputs, label=input_name, alpha=.6)
-        ax2.legend(loc='upper right')
-        ax2.set_ylabel('Input $u$ (a.u.)')
-        ax2.set_xlabel('Index')
-        ax2.grid()
-
-        ax1.set_title('Inputs and outputs of state-space model')
-        plt.setp(ax1.get_xticklabels(), visible=False)
-
     def to_dataframe(self) -> pd.DataFrame:
         """
         Return the inputs and outputs of the state-space model as a dataframe, where the columns are the input-
         and output-columns.
         """
-        inputs_df = pd.DataFrame(np.array(self.us).squeeze(axis=2), columns=self.u_column_names)
-        outputs_df = pd.DataFrame(np.array(self.ys).squeeze(axis=2), columns=self.y_column_names)
+        inputs_df = pd.DataFrame(jnp.array(self.us).squeeze(axis=2), columns=self.u_column_names)
+        outputs_df = pd.DataFrame(jnp.array(self.ys).squeeze(axis=2), columns=self.y_column_names)
         return pd.concat([inputs_df, outputs_df], axis=1)
 

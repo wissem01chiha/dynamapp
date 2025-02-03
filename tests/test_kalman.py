@@ -1,4 +1,3 @@
-
 from setup_tests import *
 from dynamapp.kalman import Kalman
 from dynamapp.state_space import StateSpace
@@ -42,7 +41,7 @@ class TestKalman(unittest.TestCase):
 
             y = self.model.step(u, np.random.standard_normal((1, 1)))
             if i == 3:
-                y = None  # illustrate a missing output
+                y = None  
             kalman.step(y, u)
 
         self.assertEqual(
@@ -147,3 +146,6 @@ class TestKalman(unittest.TestCase):
 
 def is_slightly_close(matrix, number):
     return np.isclose(matrix, number, rtol=0, atol=1e-3)
+
+if __name__ == "__main__":
+    unittest.main() 
