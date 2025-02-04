@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="python" data-content_root="../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>dynamapp.nfoursid &mdash; DynaMapp 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=40be6288"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            DynaMapp
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../README.html">DynaMapp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../TUTORIAL.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../INSTALL.html">Installation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../REFERENCES.html">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CHANGELOG.html">Changelog</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Packages documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../dynamapp.html">dynamapp</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../CONTRIBUTING.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../TODO.html">Todo list</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">DynaMapp</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">dynamapp.nfoursid</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for dynamapp.nfoursid</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Tuple</span>
+<span class="kn">import</span> <span class="nn">jax.numpy</span> <span class="k">as</span> <span class="nn">jnp</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="kn">from</span> <span class="nn">.state_space</span> <span class="kn">import</span> <span class="n">StateSpace</span>
+<span class="kn">from</span> <span class="nn">.math_utils</span> <span class="kn">import</span> <span class="n">Decomposition</span><span class="p">,</span> <span class="n">block_hankel_matrix</span><span class="p">,</span> \
+    <span class="n">eigenvalue_decomposition</span><span class="p">,</span> <span class="n">reduce_decomposition</span>
+
+<div class="viewcode-block" id="NFourSID">
+<a class="viewcode-back" href="../../dynamapp.nfoursid.html#dynamapp.nfoursid.NFourSID">[docs]</a>
+<span class="k">class</span> <span class="nc">NFourSID</span><span class="p">:</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Perform subspace identification using N4SID [1].</span>
+<span class="sd">    The state-space model under consideration, is:</span>
+
+<span class="sd">    .. math::</span>
+<span class="sd">        \begin{cases}</span>
+<span class="sd">            x_{k+1} &amp;= A x_k + B u_k + K e_k \\</span>
+<span class="sd">            y_k &amp;= C x_k + D u_k + e_k</span>
+<span class="sd">        \end{cases}</span>
+
+<span class="sd">    Data is provided as a dataframe ``dataframe`` where every row is a measurement.</span>
+<span class="sd">    The output columns are given by ``output_columns``.</span>
+<span class="sd">    The input columns are given by ``input_columns``.</span>
+
+<span class="sd">    The number of block rows to use in the block Hankel matrices is given by ``num_block_rows``.</span>
+<span class="sd">    If ``num_block_rows`` is chosen to be too big, the computational complexity will increase.</span>
+<span class="sd">    If ``num_block_rows`` is chosen to be too small, the order of the system might not be possible to determine</span>
+<span class="sd">    in the eigenvalue diagram. Moreover, if ``num_block_rows`` is chosen to be too small,</span>
+<span class="sd">    the assumptions of [2] might not hold.</span>
+
+<span class="sd">    [1] Van Overschee, Peter, and Bart De Moor. &quot;N4SID: Subspace algorithms for the identification of combined</span>
+<span class="sd">    deterministic-stochastic systems.&quot; Automatica 30.1 (1994): 75-93.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">,</span>
+            <span class="n">dataframe</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
+            <span class="n">output_columns</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+            <span class="n">input_columns</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+            <span class="n">num_block_rows</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">u_columns</span> <span class="o">=</span> <span class="n">input_columns</span> <span class="ow">or</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y_columns</span> <span class="o">=</span> <span class="n">output_columns</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">num_block_rows</span> <span class="o">=</span> <span class="n">num_block_rows</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_set_input_output_data</span><span class="p">(</span><span class="n">dataframe</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_initialize_instance_variables</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">_initialize_instance_variables</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Initialize variables. &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">R22</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">R32</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">R32_decomposition</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">x_dim</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">def</span> <span class="nf">_set_input_output_data</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">,</span>
+            <span class="n">dataframe</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Perform data consistency checks and set timeseries data arrays. &quot;&quot;&quot;</span>
+        <span class="n">u_frame</span> <span class="o">=</span> <span class="n">dataframe</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">u_columns</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">u_frame</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">any</span><span class="p">()</span><span class="o">.</span><span class="n">any</span><span class="p">():</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Input data cannot contain nulls&#39;</span><span class="p">)</span>
+        <span class="n">y_frame</span> <span class="o">=</span> <span class="n">dataframe</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">y_columns</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">y_frame</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">any</span><span class="p">()</span><span class="o">.</span><span class="n">any</span><span class="p">():</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Output data cannot contain nulls&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">u_array</span> <span class="o">=</span> <span class="n">u_frame</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y_array</span> <span class="o">=</span> <span class="n">y_frame</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">u_dim</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">u_array</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y_dim</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">y_array</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+<div class="viewcode-block" id="NFourSID.subspace_identification">
+<a class="viewcode-back" href="../../dynamapp.nfoursid.html#dynamapp.nfoursid.NFourSID.subspace_identification">[docs]</a>
+    <span class="k">def</span> <span class="nf">subspace_identification</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Perform subspace identification based on the PO-MOESP method.</span>
+<span class="sd">        The instrumental variable contains past outputs and past inputs.</span>
+<span class="sd">        The implementation uses a QR-decomposition for numerical efficiency and is based on page 329 of [1].</span>
+
+<span class="sd">        A key result of this function is the eigenvalue decomposition of the :math:`R_{32}` matrix</span>
+<span class="sd">        ``self.R32_decomposition``, based on which the order of the system should be determined.</span>
+
+<span class="sd">        [1] Verhaegen, Michel, and Vincent Verdult. *Filtering and system identification: a least squares approach.*</span>
+<span class="sd">        Cambridge university press, 2007.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">u_hankel</span> <span class="o">=</span> <span class="n">block_hankel_matrix</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">u_array</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_block_rows</span><span class="p">)</span>
+        <span class="n">y_hankel</span> <span class="o">=</span> <span class="n">block_hankel_matrix</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">y_array</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_block_rows</span><span class="p">)</span>
+
+        <span class="n">u_past</span><span class="p">,</span> <span class="n">u_future</span> <span class="o">=</span> <span class="n">u_hankel</span><span class="p">[:,</span> <span class="p">:</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">num_block_rows</span><span class="p">],</span> <span class="n">u_hankel</span><span class="p">[:,</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_block_rows</span><span class="p">:]</span>
+        <span class="n">y_past</span><span class="p">,</span> <span class="n">y_future</span> <span class="o">=</span> <span class="n">y_hankel</span><span class="p">[:,</span> <span class="p">:</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">num_block_rows</span><span class="p">],</span> <span class="n">y_hankel</span><span class="p">[:,</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_block_rows</span><span class="p">:]</span>
+        <span class="n">u_instrumental_y</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">u_future</span><span class="p">,</span> <span class="n">u_past</span><span class="p">,</span> <span class="n">y_past</span><span class="p">,</span> <span class="n">y_future</span><span class="p">])</span>
+
+        <span class="n">q</span><span class="p">,</span> <span class="n">r</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">matrix</span><span class="p">:</span> <span class="n">matrix</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">jnp</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">qr</span><span class="p">(</span><span class="n">u_instrumental_y</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;reduced&#39;</span><span class="p">))</span>
+
+        <span class="n">y_rows</span><span class="p">,</span> <span class="n">u_rows</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">y_dim</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_block_rows</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">u_dim</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_block_rows</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">R32</span> <span class="o">=</span> <span class="n">r</span><span class="p">[</span><span class="o">-</span><span class="n">y_rows</span><span class="p">:,</span> <span class="n">u_rows</span><span class="p">:</span><span class="o">-</span><span class="n">y_rows</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">R22</span> <span class="o">=</span> <span class="n">r</span><span class="p">[</span><span class="n">u_rows</span><span class="p">:</span><span class="o">-</span><span class="n">y_rows</span><span class="p">,</span> <span class="n">u_rows</span><span class="p">:</span><span class="o">-</span><span class="n">y_rows</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">R32_decomposition</span> <span class="o">=</span> <span class="n">eigenvalue_decomposition</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">R32</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="NFourSID.system_identification">
+<a class="viewcode-back" href="../../dynamapp.nfoursid.html#dynamapp.nfoursid.NFourSID.system_identification">[docs]</a>
+    <span class="k">def</span> <span class="nf">system_identification</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">,</span>
+            <span class="n">rank</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">StateSpace</span><span class="p">,</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Identify the system matrices of the state-space model given in the description of ``NFourSID``.</span>
+<span class="sd">        Moreover, the covariance of the measurement-noise and process-noise will be estimated.</span>
+<span class="sd">        The order of the returned state-space model has rank ``rank`` by reducing the eigenvalue decomposition.</span>
+<span class="sd">        The implementation is based on page 333 of [1].</span>
+
+<span class="sd">        The return value consists of a tuple containing</span>
+
+<span class="sd">        - The identified state-space model containing the estimated matrices :math:`(A, B, C, D)`,</span>
+<span class="sd">        - and an estimate of the covariance matrix of the measurement-noise :math:`w`</span>
+<span class="sd">          and process-noise :math:`v`.</span>
+<span class="sd">          The structure of the covariance matrix corresponds to the parameter ``noise_covariance`` of</span>
+<span class="sd">          ``subspace_identification.kalman.Kalman``.</span>
+<span class="sd">          See its documentation for more information.</span>
+
+<span class="sd">        ``self.system_identification`` needs the QR-decomposition result of subspace identification</span>
+<span class="sd">        ``self.R32``, and therefore can only be ran after ``self.subspace_identification``.</span>
+
+<span class="sd">        [1] Verhaegen, Michel, and Vincent Verdult. *Filtering and system identification: a least squares approach.*</span>
+<span class="sd">        Cambridge university press, 2007.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">R32_decomposition</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Perform subspace identification first.&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">rank</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">rank</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">y_dim</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_block_rows</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">x_dim</span> <span class="o">=</span> <span class="n">rank</span>
+
+        <span class="n">observability_decomposition</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_observability_matrix_decomposition</span><span class="p">()</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_identify_state_space</span><span class="p">(</span><span class="n">observability_decomposition</span><span class="p">)</span></div>
+
+
+    <span class="k">def</span> <span class="nf">_identify_state_space</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">,</span>
+            <span class="n">observability_decomposition</span><span class="p">:</span> <span class="n">Decomposition</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">StateSpace</span><span class="p">,</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Approximate the row space of the state sequence of a Kalman filter as per the N4SID scheme.</span>
+<span class="sd">        Then, solve a least squares problem to identify the system matrices.</span>
+<span class="sd">        Finally, use the residuals to estimate the noise covariance matrix.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="p">(</span><span class="n">jnp</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">observability_decomposition</span><span class="o">.</span><span class="n">eigenvalues</span><span class="p">,</span> <span class="mf">.5</span><span class="p">)</span>
+             <span class="o">@</span> <span class="n">observability_decomposition</span><span class="o">.</span><span class="n">right_orthogonal</span><span class="p">)[:,</span> <span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">last_y</span><span class="p">,</span> <span class="n">last_u</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">y_array</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">num_block_rows</span><span class="p">:,</span> <span class="p">:]</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">u_array</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">num_block_rows</span><span class="p">:,</span> <span class="p">:]</span><span class="o">.</span><span class="n">T</span>
+        <span class="n">x_and_y</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">x</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:],</span>
+                                  <span class="n">last_y</span><span class="p">[:,</span> <span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]])</span>
+        <span class="n">x_and_u</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">x</span><span class="p">[:,</span> <span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span>
+                                  <span class="n">last_u</span><span class="p">[:,</span> <span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]])</span>
+        <span class="n">abcd</span> <span class="o">=</span> <span class="p">(</span><span class="n">jnp</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">pinv</span><span class="p">(</span><span class="n">x_and_u</span> <span class="o">@</span> <span class="n">x_and_u</span><span class="o">.</span><span class="n">T</span><span class="p">)</span> <span class="o">@</span> <span class="n">x_and_u</span> <span class="o">@</span> <span class="n">x_and_y</span><span class="o">.</span><span class="n">T</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+        <span class="n">residuals</span> <span class="o">=</span> <span class="n">x_and_y</span> <span class="o">-</span> <span class="n">abcd</span> <span class="o">@</span> <span class="n">x_and_u</span>
+        <span class="n">covariance_matrix</span> <span class="o">=</span> <span class="n">residuals</span> <span class="o">@</span> <span class="n">residuals</span><span class="o">.</span><span class="n">T</span> <span class="o">/</span> <span class="n">residuals</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">q</span> <span class="o">=</span> <span class="n">covariance_matrix</span><span class="p">[:</span><span class="bp">self</span><span class="o">.</span><span class="n">x_dim</span><span class="p">,</span> <span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">x_dim</span><span class="p">]</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">covariance_matrix</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">x_dim</span><span class="p">:,</span> <span class="bp">self</span><span class="o">.</span><span class="n">x_dim</span><span class="p">:]</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="n">covariance_matrix</span><span class="p">[:</span><span class="bp">self</span><span class="o">.</span><span class="n">x_dim</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">x_dim</span><span class="p">:]</span>
+        <span class="n">state_space_covariance_matrix</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span>
+            <span class="p">[</span>
+                <span class="n">jnp</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">r</span><span class="p">,</span> <span class="n">s</span><span class="o">.</span><span class="n">T</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
+                <span class="n">jnp</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">s</span><span class="p">,</span> <span class="n">q</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+            <span class="p">],</span>
+            <span class="n">axis</span><span class="o">=</span><span class="mi">0</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="p">(</span>
+            <span class="n">StateSpace</span><span class="p">(</span>
+                <span class="n">abcd</span><span class="p">[:</span><span class="bp">self</span><span class="o">.</span><span class="n">x_dim</span><span class="p">,</span> <span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">x_dim</span><span class="p">],</span>
+                <span class="n">abcd</span><span class="p">[:</span><span class="bp">self</span><span class="o">.</span><span class="n">x_dim</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">x_dim</span><span class="p">:],</span>
+                <span class="n">abcd</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">x_dim</span><span class="p">:,</span> <span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">x_dim</span><span class="p">],</span>
+                <span class="n">abcd</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">x_dim</span><span class="p">:,</span> <span class="bp">self</span><span class="o">.</span><span class="n">x_dim</span><span class="p">:],</span>
+            <span class="p">),</span>
+            <span class="p">(</span><span class="n">state_space_covariance_matrix</span> <span class="o">+</span> <span class="n">state_space_covariance_matrix</span><span class="o">.</span><span class="n">T</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_get_observability_matrix_decomposition</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Decomposition</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Calculate the eigenvalue decomposition of the estimate of the observability matrix as per N4SID.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">u_hankel</span> <span class="o">=</span> <span class="n">block_hankel_matrix</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">u_array</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_block_rows</span><span class="p">)</span>
+        <span class="n">y_hankel</span> <span class="o">=</span> <span class="n">block_hankel_matrix</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">y_array</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_block_rows</span><span class="p">)</span>
+        <span class="n">u_and_y</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">u_hankel</span><span class="p">,</span> <span class="n">y_hankel</span><span class="p">])</span>
+        <span class="n">observability</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">R32</span> <span class="o">@</span> <span class="n">jnp</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">pinv</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">R22</span><span class="p">)</span> <span class="o">@</span> <span class="n">u_and_y</span>
+        <span class="n">observability_decomposition</span> <span class="o">=</span> <span class="n">reduce_decomposition</span><span class="p">(</span>
+            <span class="n">eigenvalue_decomposition</span><span class="p">(</span><span class="n">observability</span><span class="p">),</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">x_dim</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">observability_decomposition</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Wissem CHIHA.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

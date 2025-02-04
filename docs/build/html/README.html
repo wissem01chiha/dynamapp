@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DynaMapp &mdash; DynaMapp 0.1.0 documentation</title>
+  <title>DynaMapp &mdash; DynaMapp 1.0.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
 
@@ -15,7 +15,7 @@
   
         <script src="_static/jquery.js?v=5d32c60e"></script>
         <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="_static/documentation_options.js?v=2d80085d"></script>
+        <script src="_static/documentation_options.js?v=40be6288"></script>
         <script src="_static/doctools.js?v=9a2dae69"></script>
         <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
         <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
@@ -23,8 +23,8 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="CONTRIBUTING" href="CONTRIBUTING.html" />
-    <link rel="prev" title="Welcome to DynaMapp&#39;s documentation!" href="index.html" /> 
+    <link rel="next" title="Tutorial" href="TUTORIAL.html" />
+    <link rel="prev" title="DynaMapp documentation" href="index.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -46,7 +46,8 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <ul class="current">
+              <p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">DynaMapp</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#table-of-contents">Table of Contents</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
@@ -76,11 +77,22 @@
 <li class="toctree-l2"><a class="reference internal" href="#license">License</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="CONTRIBUTING.html">CONTRIBUTING</a></li>
-<li class="toctree-l1"><a class="reference internal" href="INSTALL.html">INSTALLATION</a></li>
-<li class="toctree-l1"><a class="reference internal" href="CHANGELOG.html">CHANGELOG</a></li>
-<li class="toctree-l1"><a class="reference internal" href="docs/source/modules.html">pyDynaMapp</a></li>
-<li class="toctree-l1"><a class="reference internal" href="docs/source/todo.html">TODO List</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TUTORIAL.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="INSTALL.html">Installation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="REFERENCES.html">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CHANGELOG.html">Changelog</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Packages documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="dynamapp.html">dynamapp</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="CONTRIBUTING.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TODO.html">Todo list</a></li>
 </ul>
 
         </div>
@@ -109,18 +121,20 @@
              
   <section class="tex2jax_ignore mathjax_ignore" id="dynamapp">
 <h1>DynaMapp<a class="headerlink" href="#dynamapp" title="Link to this heading"></a></h1>
-<p>DynaMapp is a Python software package designed for the modeling, identification, and calibration of dynamic models of serial robotic manipulators.</p>
-<p><a class="reference external" href="https://anaconda.org/chiha/pydynamapp"><img alt="Version" src="https://anaconda.org/chiha/pydynamapp/badges/version.svg" /></a>
+<p><a class="reference external" href="https://github.com/wissem01chiha/dynamapp/actions/workflows/pylint.yml"><img alt="PyLint" src="https://github.com/wissem01chiha/dynamapp/actions/workflows/pylint.yml/badge.svg" /></a>
+<a class="reference external" href="https://github.com/wissem01chiha/dynamapp/actions/workflows/static.yml"><img alt="Deploy static content to Pages" src="https://github.com/wissem01chiha/dynamapp/actions/workflows/static.yml/badge.svg" /></a>
+<a class="reference external" href="https://anaconda.org/chiha/pydynamapp"><img alt="Version" src="https://anaconda.org/chiha/pydynamapp/badges/version.svg" /></a>
 <a class="reference external" href="https://anaconda.org/chiha/pydynamapp"><img alt="Release Date" src="https://anaconda.org/chiha/pydynamapp/badges/latest_release_date.svg" /></a>
 <a class="reference external" href="https://anaconda.org/chiha/pydynamapp"><img alt="Platforms" src="https://anaconda.org/chiha/pydynamapp/badges/platforms.svg" /></a>
 <a class="reference external" href="https://anaconda.org/chiha/pydynamapp"><img alt="License" src="https://anaconda.org/chiha/pydynamapp/badges/license.svg" /></a>
 <a class="reference external" href="https://anaconda.org/chiha/pydynamapp"><img alt="Downloads" src="https://anaconda.org/chiha/pydynamapp/badges/downloads.svg" /></a></p>
-<p>The primary goal of this project is to offer a flexible framework for modeling and identifying serial manipulators, including the incorporation of nonlinear effects such as friction, stiffness, and backlash in robot joints. Additionally, a predictive feedback control mechanism is being developed to compensate these effects, making the framework suitable for collaborative robotics applications.</p>
+<p>DynaMapp is a Python software package designed for the modeling, identification, and calibration of dynamic models of serial robotic manipulators.
+The primary goal of this project is to offer a flexible framework for modeling and identifying serial manipulators, including the incorporation of nonlinear effects such as friction, stiffness, and backlash in robot joints. Additionally, a predictive feedback control mechanism is being developed to compensate these effects, making the framework suitable for collaborative robotics applications.</p>
 <p>The project aims to explore subspace identification methods for manipulators. Given the nonlinear nature of the problem, the state-space representation parameters are state-dependent, requiring more advanced mathematical tools to analyze such systems effectively.</p>
 <section id="table-of-contents">
 <h2>Table of Contents<a class="headerlink" href="#table-of-contents" title="Link to this heading"></a></h2>
 <ul class="simple">
-<li><p><a class="reference internal" href="#dynamapp"><span class="xref myst">DynaMapp</span></a></p>
+<li><p><a class="reference internal" href="dynamapp.html"><span class="doc std std-doc">DynaMapp</span></a></p>
 <ul>
 <li><p><a class="reference internal" href="#table-of-contents"><span class="xref myst">Table of Contents</span></a></p></li>
 <li><p><a class="reference internal" href="#prerequisites"><span class="xref myst">Prerequisites</span></a></p></li>
@@ -163,7 +177,7 @@
 <ul class="simple">
 <li><p><a class="reference external" href="https://gepettoweb.laas.fr/doc/stack-of-tasks/pinocchio/master/doxygen-html/">Pinocchio Documentation</a></p></li>
 <li><p><a class="reference external" href="https://github.com/stack-of-tasks/pinocchio">Pinocchio's GitHub Page</a></p></li>
-<li><p><a class="reference download internal" download="" href="_downloads/344b3b5b7b2598646716d2f4fdb070a4/pinocchio_sheet.pdf"><span class="xref download myst">Pinocchio Cheat Sheet</span></a></p></li>
+<li><p><a class="reference internal" href="#docs/pinocchio_sheet.pdf"><span class="xref myst">Pinocchio Cheat Sheet</span></a></p></li>
 </ul>
 <p>also it uses, as an entry point  to represent the rigid body tree of the robot reprsenttaion <a class="reference external" href="https://wiki.ros.org/urdf">URDF</a>,</p>
 </section>
@@ -317,7 +331,7 @@ filter optimizers are supported.</p>
 <span class="w"> </span>python3<span class="w"> </span>nlopt_identification<span class="w"> </span>
 </pre></div>
 </div>
-<p>This uses the last computed parameters and starts the optimizer. All problem settings can be adjusted in the <a class="reference download internal" download="" href="_downloads/dd98a77ba60e6dae16acdaa5ee7bb25d/identification_utils.py"><span class="xref download myst">utils</span></a> script.</p>
+<p>This uses the last computed parameters and starts the optimizer. All problem settings can be adjusted in the <a class="reference internal" href="#pyDynaMapp/script/identification_utils.py"><span class="xref myst">utils</span></a> script.</p>
 <section id="visualizing-different-models">
 <h4>Visualizing Different Models<a class="headerlink" href="#visualizing-different-models" title="Link to this heading"></a></h4>
 <ul class="simple">
@@ -340,9 +354,8 @@ filter optimizers are supported.</p>
 <section id="build">
 <h3>Build<a class="headerlink" href="#build" title="Link to this heading"></a></h3>
 <p>We use <a class="reference external" href="https://www.sphinx-doc.org/en/master/">Sphinx</a> to generate the software documentation. Assuming that Sphinx is installed, you can generate and build the documentation using the following steps:</p>
-<p>to generate and build the documentation:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>sphinx-apidoc<span class="w"> </span>-o<span class="w"> </span>docs/source/<span class="w"> </span>pyDynaMapp/
-sphinx-build<span class="w"> </span>-b<span class="w"> </span>html<span class="w"> </span>.<span class="w"> </span>docs/build/html
+<p>to generate and build the documentation, run from the root of the project:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>sphinx-build<span class="w"> </span>-b<span class="w"> </span>html<span class="w"> </span>docs/source<span class="w"> </span>docs/build/html
 </pre></div>
 </div>
 <p>The official documentation is hosted on this <a class="reference external" href="https://wissem01chiha.github.io/dynamic-identification/">link</a>.</p>
@@ -390,7 +403,7 @@ Cheng</em>, 2021</p></li>
 <section id="license">
 <h2>License<a class="headerlink" href="#license" title="Link to this heading"></a></h2>
 <p>This project is currently licensed under the <strong>CC0 1.0 Universal License</strong>.<br />
-For more details, see the <a class="reference download internal" download="" href="_downloads/61e0bdf7e1b43c5c93d9488b22e04170/LICENSE.txt"><span class="xref download myst">LICENSE</span></a> file.</p>
+For more details, see the <a class="reference internal" href="#LICENSE.txt"><span class="xref myst">LICENSE</span></a> file.</p>
 </section>
 </section>
 
@@ -398,14 +411,14 @@ For more details, see the <a class="reference download internal" download="" hre
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="index.html" class="btn btn-neutral float-left" title="Welcome to DynaMapp&#39;s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="CONTRIBUTING.html" class="btn btn-neutral float-right" title="CONTRIBUTING" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="index.html" class="btn btn-neutral float-left" title="DynaMapp documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="TUTORIAL.html" class="btn btn-neutral float-right" title="Tutorial" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2024, Wissem CHIHA.</p>
+    <p>&#169; Copyright 2025, Wissem CHIHA.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

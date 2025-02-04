@@ -1,10 +1,10 @@
 package:
-  name: pydynamapp
-  version: "0.1.0"
+  name: dynamapp
+  version: "1.0.0"
 
 source:
-  path: dist/pydynamapp-0.1.0.tar.gz
-
+  path: dist/dynamapp-1.0.0.tar.gz
+  
 build:   
   number: 1
   script: "{{ PYTHON }} -m pip install . -vv"
@@ -20,7 +20,6 @@ requirements:
     - numba=0.59.0
     - matplotlib
     - seaborn
-    - pyyaml
     - sympy
     - nlopt
     - scipy
@@ -30,6 +29,6 @@ channels:
   - conda-forge
   - defaults
 about:
-  summary: "0.1.0"
-  home: https://github.com/wissem01chiha/dynamic-identification
-  license: MIT
+  summary: "1.0.0"
+  home: https://github.com/wissem01chiha/dynamapp
+  license: CC0-1.0 

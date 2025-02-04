@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Index &mdash; DynaMapp 0.1.0 documentation</title>
+  <title>Index &mdash; DynaMapp 1.0.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
 
@@ -14,7 +14,7 @@
   
         <script src="_static/jquery.js?v=5d32c60e"></script>
         <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="_static/documentation_options.js?v=2d80085d"></script>
+        <script src="_static/documentation_options.js?v=40be6288"></script>
         <script src="_static/doctools.js?v=9a2dae69"></script>
         <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
@@ -41,13 +41,25 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <ul>
+              <p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="README.html">DynaMapp</a></li>
-<li class="toctree-l1"><a class="reference internal" href="CONTRIBUTING.html">CONTRIBUTING</a></li>
-<li class="toctree-l1"><a class="reference internal" href="INSTALL.html">INSTALLATION</a></li>
-<li class="toctree-l1"><a class="reference internal" href="CHANGELOG.html">CHANGELOG</a></li>
-<li class="toctree-l1"><a class="reference internal" href="docs/source/modules.html">pyDynaMapp</a></li>
-<li class="toctree-l1"><a class="reference internal" href="docs/source/todo.html">TODO List</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TUTORIAL.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="INSTALL.html">Installation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="REFERENCES.html">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CHANGELOG.html">Changelog</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Packages documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="dynamapp.html">dynamapp</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="CONTRIBUTING.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TODO.html">Todo list</a></li>
 </ul>
 
         </div>
@@ -84,7 +96,6 @@
  | <a href="#E"><strong>E</strong></a>
  | <a href="#F"><strong>F</strong></a>
  | <a href="#G"><strong>G</strong></a>
- | <a href="#H"><strong>H</strong></a>
  | <a href="#I"><strong>I</strong></a>
  | <a href="#K"><strong>K</strong></a>
  | <a href="#L"><strong>L</strong></a>
@@ -97,22 +108,12 @@
  | <a href="#T"><strong>T</strong></a>
  | <a href="#U"><strong>U</strong></a>
  | <a href="#V"><strong>V</strong></a>
- | <a href="#W"><strong>W</strong></a>
- | <a href="#Y"><strong>Y</strong></a>
  
 </div>
 <h2 id="A">A</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="docs/source/pyDynaMapp.identification.html#pyDynaMapp.identification.Kalman.Kalman.adaptNoiseCovariance">adaptNoiseCovariance() (pyDynaMapp.identification.Kalman.Kalman method)</a>
-</li>
-      <li><a href="docs/source/pyDynaMapp.dynamics.html#pyDynaMapp.dynamics.regressor.Regressor.addActuatorInertia">addActuatorInertia() (pyDynaMapp.dynamics.regressor.Regressor method)</a>
-</li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="docs/source/pyDynaMapp.dynamics.html#pyDynaMapp.dynamics.regressor.Regressor.addFriction">addFriction() (pyDynaMapp.dynamics.regressor.Regressor method)</a>
-</li>
-      <li><a href="docs/source/pyDynaMapp.dynamics.html#pyDynaMapp.dynamics.regressor.Regressor.addJointOffset">addJointOffset() (pyDynaMapp.dynamics.regressor.Regressor method)</a>
+      <li><a href="dynamapp.kalman.html#dynamapp.kalman.Kalman.actual_label">actual_label (dynamapp.kalman.Kalman attribute)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -120,15 +121,7 @@
 <h2 id="B">B</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="docs/source/pyDynaMapp.viscoelastic.html#pyDynaMapp.viscoelastic.Backlash">Backlash (class in pyDynaMapp.viscoelastic)</a>
-
-      <ul>
-        <li><a href="docs/source/pyDynaMapp.viscoelastic.html#pyDynaMapp.viscoelastic.backlash.Backlash">(class in pyDynaMapp.viscoelastic.backlash)</a>
-</li>
-      </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="docs/source/pyDynaMapp.models.html#pyDynaMapp.models.BLDC.BLDC">BLDC (class in pyDynaMapp.models.BLDC)</a>
+      <li><a href="dynamapp.math_utils.html#dynamapp.math_utils.block_hankel_matrix">block_hankel_matrix() (in module dynamapp.math_utils)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -136,155 +129,43 @@
 <h2 id="C">C</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="docs/source/pyDynaMapp.models.html#pyDynaMapp.models.BLDC.BLDC.checkCurrent">checkCurrent() (pyDynaMapp.models.BLDC.BLDC method)</a>
+      <li><a href="dynamapp.generators.html#dynamapp.generators.ModelDataGenerator.compute_accelerations">compute_accelerations() (dynamapp.generators.ModelDataGenerator method)</a>
 </li>
-      <li><a href="docs/source/pyDynaMapp.utils.html#pyDynaMapp.utils.tools.checkSkewSymmetric">checkSkewSymmetric() (in module pyDynaMapp.utils.tools)</a>
+      <li><a href="dynamapp.viscoelastic.html#dynamapp.viscoelastic.compute_coulomb_friction_force">compute_coulomb_friction_force() (in module dynamapp.viscoelastic)</a>
 </li>
-      <li><a href="docs/source/pyDynaMapp.models.html#pyDynaMapp.models.BLDC.BLDC.checkTorque">checkTorque() (pyDynaMapp.models.BLDC.BLDC method)</a>
+      <li><a href="dynamapp.model_state.html#dynamapp.model_state.ModelState.compute_ctlb_matrix">compute_ctlb_matrix() (dynamapp.model_state.ModelState method)</a>
 </li>
-      <li><a href="docs/source/pyDynaMapp.utils.html#pyDynaMapp.utils.tools.clampArray">clampArray() (in module pyDynaMapp.utils.tools)</a>
+      <li><a href="dynamapp.generators.html#dynamapp.generators.ModelStateDataGenerator.compute_data_statistics">compute_data_statistics() (dynamapp.generators.ModelStateDataGenerator method)</a>
 </li>
-      <li><a href="docs/source/pyDynaMapp.utils.html#pyDynaMapp.utils.tools.columnVector">columnVector() (in module pyDynaMapp.utils.tools)</a>
+      <li><a href="dynamapp.model_state.html#dynamapp.model_state.ModelState.compute_eigvals">compute_eigvals() (dynamapp.model_state.ModelState method)</a>
 </li>
-      <li><a href="docs/source/pyDynaMapp.dynamics.html#pyDynaMapp.dynamics.robot.Robot.computeActuatorTorques">computeActuatorTorques() (pyDynaMapp.dynamics.robot.Robot method)</a>
+      <li><a href="dynamapp.viscoelastic.html#dynamapp.viscoelastic.compute_friction_force">compute_friction_force() (in module dynamapp.viscoelastic)</a>
 </li>
-      <li><a href="docs/source/pyDynaMapp.models.html#pyDynaMapp.models.BLDC.BLDC.computeArmatureCurrent">computeArmatureCurrent() (pyDynaMapp.models.BLDC.BLDC method)</a>
-</li>
-      <li><a href="docs/source/pyDynaMapp.dynamics.html#pyDynaMapp.dynamics.state_space.StateSpace.computeAugmentedStateMatrices">computeAugmentedStateMatrices() (pyDynaMapp.dynamics.state_space.StateSpace method)</a>
-</li>
-      <li><a href="docs/source/pyDynaMapp.dynamics.html#pyDynaMapp.dynamics.robot.Robot.computeBaseInertiasParams">computeBaseInertiasParams() (pyDynaMapp.dynamics.robot.Robot method)</a>
-</li>
-      <li><a href="docs/source/pyDynaMapp.dynamics.html#pyDynaMapp.dynamics.regressor.Regressor.computeBasicRegressor">computeBasicRegressor() (pyDynaMapp.dynamics.regressor.Regressor method)</a>
-</li>
-      <li><a href="docs/source/pyDynaMapp.dynamics.html#pyDynaMapp.dynamics.regressor.Regressor.computeBasicSparseRegressor">computeBasicSparseRegressor() (pyDynaMapp.dynamics.regressor.Regressor method)</a>
-</li>
-      <li><a href="docs/source/pyDynaMapp.models.html#pyDynaMapp.models.harmonic_drive.HarmonicDrive.computeCompliance">computeCompliance() (pyDynaMapp.models.harmonic_drive.HarmonicDrive method)</a>
-</li>
-      <li><a href="docs/source/pyDynaMapp.trajectory.html#pyDynaMapp.trajectory.fourier.FourierGenerator.computeConstraintedDifferentiationError">computeConstraintedDifferentiationError() (pyDynaMapp.trajectory.fourier.FourierGenerator method)</a>
-</li>
-      <li><a href="docs/source/pyDynaMapp.dynamics.html#pyDynaMapp.dynamics.robot.Robot.computeCorlolisMatrix">computeCorlolisMatrix() (pyDynaMapp.dynamics.robot.Robot method)</a>
-</li>
-      <li><a href="docs/source/pyDynaMapp.utils.html#pyDynaMapp.utils.math.computeCorrelation">computeCorrelation() (in module pyDynaMapp.utils.math)</a>
-</li>
-      <li><a href="docs/source/pyDynaMapp.dynamics.html#pyDynaMapp.dynamics.state_space.StateSpace.computeCtlbMatrix">computeCtlbMatrix() (pyDynaMapp.dynamics.state_space.StateSpace method)</a>
-</li>
-      <li><a href="docs/source/pyDynaMapp.utils.html#pyDynaMapp.utils.math.computeCumulativeCorrelation">computeCumulativeCorrelation() (in module pyDynaMapp.utils.math)</a>
-</li>
-      <li><a href="docs/source/pyDynaMapp.dynamics.html#pyDynaMapp.dynamics.robot.Robot.computeDifferentialModel">computeDifferentialModel() (pyDynaMapp.dynamics.robot.Robot method)</a>
-</li>
-      <li><a href="docs/source/pyDynaMapp.dynamics.html#pyDynaMapp.dynamics.regressor.Regressor.computeDifferentialRegressor">computeDifferentialRegressor() (pyDynaMapp.dynamics.regressor.Regressor method)</a>
-</li>
-      <li><a href="docs/source/pyDynaMapp.dynamics.html#pyDynaMapp.dynamics.regressor.Regressor.computeDifferentiationError">computeDifferentiationError() (pyDynaMapp.dynamics.regressor.Regressor method)</a>
+      <li><a href="dynamapp.trajectory.html#dynamapp.trajectory.PeriodicTrajectory.compute_full_trajectory">compute_full_trajectory() (dynamapp.trajectory.PeriodicTrajectory method)</a>
 
       <ul>
-        <li><a href="docs/source/pyDynaMapp.trajectory.html#pyDynaMapp.trajectory.fourier.FourierGenerator.computeDifferentiationError">(pyDynaMapp.trajectory.fourier.FourierGenerator method)</a>
+        <li><a href="dynamapp.trajectory.html#dynamapp.trajectory.SplineTrajectory.compute_full_trajectory">(dynamapp.trajectory.SplineTrajectory method)</a>
+</li>
+        <li><a href="dynamapp.trajectory.html#dynamapp.trajectory.StepTrajectory.compute_full_trajectory">(dynamapp.trajectory.StepTrajectory method)</a>
+</li>
+        <li><a href="dynamapp.trajectory.html#dynamapp.trajectory.Trajectory.compute_full_trajectory">(dynamapp.trajectory.Trajectory method)</a>
+</li>
+        <li><a href="dynamapp.trajectory.html#dynamapp.trajectory.TrapezoidalTrajectory.compute_full_trajectory">(dynamapp.trajectory.TrapezoidalTrajectory method)</a>
 </li>
       </ul></li>
-      <li><a href="docs/source/pyDynaMapp.viscoelastic.html#pyDynaMapp.viscoelastic.Dahl.computeFrictionForce">computeFrictionForce() (pyDynaMapp.viscoelastic.Dahl method)</a>
-
-      <ul>
-        <li><a href="docs/source/pyDynaMapp.viscoelastic.html#pyDynaMapp.viscoelastic.dahl.Dahl.computeFrictionForce">(pyDynaMapp.viscoelastic.dahl.Dahl method)</a>
-</li>
-        <li><a href="docs/source/pyDynaMapp.viscoelastic.html#pyDynaMapp.viscoelastic.LuGre.computeFrictionForce">(pyDynaMapp.viscoelastic.LuGre method)</a>
-</li>
-        <li><a href="docs/source/pyDynaMapp.viscoelastic.html#pyDynaMapp.viscoelastic.lugre.LuGre.computeFrictionForce">(pyDynaMapp.viscoelastic.lugre.LuGre method)</a>
-</li>
-        <li><a href="docs/source/pyDynaMapp.viscoelastic.html#pyDynaMapp.viscoelastic.maxwell_slip.MaxwellSlip.computeFrictionForce">(pyDynaMapp.viscoelastic.maxwell_slip.MaxwellSlip method)</a>
-</li>
-        <li><a href="docs/source/pyDynaMapp.viscoelastic.html#pyDynaMapp.viscoelastic.MaxwellSlip.computeFrictionForce">(pyDynaMapp.viscoelastic.MaxwellSlip method)</a>
-</li>
-      </ul></li>
-      <li><a href="docs/source/pyDynaMapp.dynamics.html#pyDynaMapp.dynamics.robot.Robot.computeFrictionTorques">computeFrictionTorques() (pyDynaMapp.dynamics.robot.Robot method)</a>
-</li>
-      <li><a href="docs/source/pyDynaMapp.dynamics.html#pyDynaMapp.dynamics.regressor.Regressor.computeFullRegressor">computeFullRegressor() (pyDynaMapp.dynamics.regressor.Regressor method)</a>
-</li>
-      <li><a href="docs/source/pyDynaMapp.trajectory.html#pyDynaMapp.trajectory.fourier.FourierGenerator.computeFullTrajectory">computeFullTrajectory() (pyDynaMapp.trajectory.fourier.FourierGenerator method)</a>
-
-      <ul>
-        <li><a href="docs/source/pyDynaMapp.trajectory.html#pyDynaMapp.trajectory.spline.SplineGenerator.computeFullTrajectory">(pyDynaMapp.trajectory.spline.SplineGenerator method)</a>
-</li>
-      </ul></li>
-      <li><a href="docs/source/pyDynaMapp.dynamics.html#pyDynaMapp.dynamics.state_space.StateSpace.computeGaussianNoise">computeGaussianNoise() (pyDynaMapp.dynamics.state_space.StateSpace method)</a>
-</li>
-      <li><a href="docs/source/pyDynaMapp.dynamics.html#pyDynaMapp.dynamics.robot.Robot.computeGeneralizedTorques">computeGeneralizedTorques() (pyDynaMapp.dynamics.robot.Robot method)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="docs/source/pyDynaMapp.dynamics.html#pyDynaMapp.dynamics.robot.Robot.computeGravityTorques">computeGravityTorques() (pyDynaMapp.dynamics.robot.Robot method)</a>
+      <li><a href="dynamapp.model_state.html#dynamapp.model_state.ModelState.compute_obs_matrix">compute_obs_matrix() (dynamapp.model_state.ModelState method)</a>
 </li>
-      <li><a href="docs/source/pyDynaMapp.dynamics.html#pyDynaMapp.dynamics.robot.Robot.computeIdentificationModel">computeIdentificationModel() (pyDynaMapp.dynamics.robot.Robot method)</a>
+      <li><a href="dynamapp.generators.html#dynamapp.generators.ModelDataGenerator.compute_torques">compute_torques() (dynamapp.generators.ModelDataGenerator method)</a>
 </li>
-      <li><a href="docs/source/pyDynaMapp.identification.html#pyDynaMapp.identification.IDIM.IDIMNLS.computeLsCostFunction">computeLsCostFunction() (pyDynaMapp.identification.IDIM.IDIMNLS method)</a>
-
-      <ul>
-        <li><a href="docs/source/pyDynaMapp.identification.html#pyDynaMapp.identification.IDIM.IDIMOLS.computeLsCostFunction">(pyDynaMapp.identification.IDIM.IDIMOLS method)</a>
+      <li><a href="dynamapp.generators.html#dynamapp.generators.ModelDataGenerator.compute_velocities">compute_velocities() (dynamapp.generators.ModelDataGenerator method)</a>
 </li>
-      </ul></li>
-      <li><a href="docs/source/pyDynaMapp.dynamics.html#pyDynaMapp.dynamics.robot.Robot.computeMassMatrix">computeMassMatrix() (pyDynaMapp.dynamics.robot.Robot method)</a>
+      <li><a href="dynamapp.trajectory.html#dynamapp.trajectory.Trajectory.compute_with_constraints">compute_with_constraints() (dynamapp.trajectory.Trajectory method)</a>
 </li>
-      <li><a href="docs/source/pyDynaMapp.dynamics.html#pyDynaMapp.dynamics.state_space.StateSpace.computeObsMatrix">computeObsMatrix() (pyDynaMapp.dynamics.state_space.StateSpace method)</a>
+      <li><a href="dynamapp.math_utils.html#dynamapp.math_utils.condition_number">condition_number() (in module dynamapp.math_utils)</a>
 </li>
-      <li><a href="docs/source/pyDynaMapp.models.html#pyDynaMapp.models.BLDC.BLDC.computeOutputTorque">computeOutputTorque() (pyDynaMapp.models.BLDC.BLDC method)</a>
-</li>
-      <li><a href="docs/source/pyDynaMapp.dynamics.html#pyDynaMapp.dynamics.state_space.StateSpace.computePoissonNoise">computePoissonNoise() (pyDynaMapp.dynamics.state_space.StateSpace method)</a>
-</li>
-      <li><a href="docs/source/pyDynaMapp.utils.html#pyDynaMapp.utils.robot_data.RobotData.computePositionNoise">computePositionNoise() (pyDynaMapp.utils.robot_data.RobotData method)</a>
-</li>
-      <li><a href="docs/source/pyDynaMapp.trajectory.html#pyDynaMapp.trajectory.fourier.FourierGenerator.computeProba">computeProba() (pyDynaMapp.trajectory.fourier.FourierGenerator method)</a>
-</li>
-      <li><a href="docs/source/pyDynaMapp.dynamics.html#pyDynaMapp.dynamics.regressor.Regressor.computeReducedRegressor">computeReducedRegressor() (pyDynaMapp.dynamics.regressor.Regressor method)</a>
-</li>
-      <li><a href="docs/source/pyDynaMapp.dynamics.html#pyDynaMapp.dynamics.state_space.StateSpace.computeReducedStateMatrices">computeReducedStateMatrices() (pyDynaMapp.dynamics.state_space.StateSpace method)</a>
-</li>
-      <li><a href="docs/source/pyDynaMapp.dynamics.html#pyDynaMapp.dynamics.regressor.Regressor.computeRegressionCriterion">computeRegressionCriterion() (pyDynaMapp.dynamics.regressor.Regressor method)</a>
-</li>
-      <li><a href="docs/source/pyDynaMapp.identification.html#pyDynaMapp.identification.IDIM.IDIMNLS.computeRelativeError">computeRelativeError() (pyDynaMapp.identification.IDIM.IDIMNLS method)</a>
-</li>
-      <li><a href="docs/source/pyDynaMapp.dynamics.html#pyDynaMapp.dynamics.state_space.StateSpace.computeStateEigvals">computeStateEigvals() (pyDynaMapp.dynamics.state_space.StateSpace method)</a>
-</li>
-      <li><a href="docs/source/pyDynaMapp.dynamics.html#pyDynaMapp.dynamics.state_space.StateSpace.computeStateInputVector">computeStateInputVector() (pyDynaMapp.dynamics.state_space.StateSpace method)</a>
-</li>
-      <li><a href="docs/source/pyDynaMapp.dynamics.html#pyDynaMapp.dynamics.state_space.StateSpace.computeStateMatrices">computeStateMatrices() (pyDynaMapp.dynamics.state_space.StateSpace method)</a>
-</li>
-      <li><a href="docs/source/pyDynaMapp.dynamics.html#pyDynaMapp.dynamics.state_space.StateSpace.computeStateTransitionMatrix">computeStateTransitionMatrix() (pyDynaMapp.dynamics.state_space.StateSpace method)</a>
-</li>
-      <li><a href="docs/source/pyDynaMapp.viscoelastic.html#pyDynaMapp.viscoelastic.LuGre.computeSteadyForce">computeSteadyForce() (pyDynaMapp.viscoelastic.LuGre method)</a>
-
-      <ul>
-        <li><a href="docs/source/pyDynaMapp.viscoelastic.html#pyDynaMapp.viscoelastic.lugre.LuGre.computeSteadyForce">(pyDynaMapp.viscoelastic.lugre.LuGre method)</a>
-</li>
-      </ul></li>
-      <li><a href="docs/source/pyDynaMapp.dynamics.html#pyDynaMapp.dynamics.robot.Robot.computeStiffnessTorques">computeStiffnessTorques() (pyDynaMapp.dynamics.robot.Robot method)</a>
-</li>
-      <li><a href="docs/source/pyDynaMapp.utils.html#pyDynaMapp.utils.robot_data.RobotData.computeTorqueNoise">computeTorqueNoise() (pyDynaMapp.utils.robot_data.RobotData method)</a>
-</li>
-      <li><a href="docs/source/pyDynaMapp.trajectory.html#pyDynaMapp.trajectory.spline.SplineGenerator.computeTrajectoryConstraints">computeTrajectoryConstraints() (pyDynaMapp.trajectory.spline.SplineGenerator method)</a>
-</li>
-      <li><a href="docs/source/pyDynaMapp.trajectory.html#pyDynaMapp.trajectory.fourier.FourierGenerator.computeTrajectoryCriterion">computeTrajectoryCriterion() (pyDynaMapp.trajectory.fourier.FourierGenerator method)</a>
-</li>
-      <li><a href="docs/source/pyDynaMapp.trajectory.html#pyDynaMapp.trajectory.fourier.FourierGenerator.computeTrajectoryError">computeTrajectoryError() (pyDynaMapp.trajectory.fourier.FourierGenerator method)</a>
-</li>
-      <li><a href="docs/source/pyDynaMapp.trajectory.html#pyDynaMapp.trajectory.fourier.FourierGenerator.computeTrajectoryIdentifiability">computeTrajectoryIdentifiability() (pyDynaMapp.trajectory.fourier.FourierGenerator method)</a>
-
-      <ul>
-        <li><a href="docs/source/pyDynaMapp.trajectory.html#pyDynaMapp.trajectory.spline.SplineGenerator.computeTrajectoryIdentifiability">(pyDynaMapp.trajectory.spline.SplineGenerator method)</a>
-</li>
-      </ul></li>
-      <li><a href="docs/source/pyDynaMapp.trajectory.html#pyDynaMapp.trajectory.fourier.FourierGenerator.computeTrajectoryState">computeTrajectoryState() (pyDynaMapp.trajectory.fourier.FourierGenerator method)</a>
-
-      <ul>
-        <li><a href="docs/source/pyDynaMapp.trajectory.html#pyDynaMapp.trajectory.spline.SplineGenerator.computeTrajectoryState">(pyDynaMapp.trajectory.spline.SplineGenerator method)</a>
-</li>
-      </ul></li>
-      <li><a href="docs/source/pyDynaMapp.dynamics.html#pyDynaMapp.dynamics.robot.Robot.computeTrajectoryTorques">computeTrajectoryTorques() (pyDynaMapp.dynamics.robot.Robot method)</a>
-</li>
-      <li><a href="docs/source/pyDynaMapp.viscoelastic.html#pyDynaMapp.viscoelastic.viscous.computeViscousFrictionForce">computeViscousFrictionForce() (in module pyDynaMapp.viscoelastic.viscous)</a>
-</li>
-      <li><a href="docs/source/pyDynaMapp.utils.html#pyDynaMapp.utils.math.conditionNumber">conditionNumber() (in module pyDynaMapp.utils.math)</a>
-</li>
-      <li><a href="docs/source/pyDynaMapp.utils.html#pyDynaMapp.utils.math.cumulativeRMSE">cumulativeRMSE() (in module pyDynaMapp.utils.math)</a>
-</li>
-      <li><a href="docs/source/pyDynaMapp.identification.html#pyDynaMapp.identification.CVA.CVA">CVA (class in pyDynaMapp.identification.CVA)</a>
+      <li><a href="dynamapp.model.html#dynamapp.model.Model.coriolis_tensor">coriolis_tensor() (dynamapp.model.Model method)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -292,49 +173,159 @@
 <h2 id="D">D</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="docs/source/pyDynaMapp.viscoelastic.html#pyDynaMapp.viscoelastic.Dahl">Dahl (class in pyDynaMapp.viscoelastic)</a>
+      <li><a href="dynamapp.model.html#dynamapp.model.Model.damping_tensor">damping_tensor() (dynamapp.model.Model method)</a>
+</li>
+      <li><a href="dynamapp.math_utils.html#dynamapp.math_utils.Decomposition">Decomposition (class in dynamapp.math_utils)</a>
+</li>
+      <li>
+    dynamapp.generators
 
       <ul>
-        <li><a href="docs/source/pyDynaMapp.viscoelastic.html#pyDynaMapp.viscoelastic.dahl.Dahl">(class in pyDynaMapp.viscoelastic.dahl)</a>
+        <li><a href="dynamapp.generators.html#module-dynamapp.generators">module</a>
 </li>
       </ul></li>
-      <li><a href="docs/source/pyDynaMapp.viscoelastic.html#pyDynaMapp.viscoelastic.Dahl.dahl">dahl() (pyDynaMapp.viscoelastic.Dahl method)</a>
+      <li>
+    dynamapp.identification
 
       <ul>
-        <li><a href="docs/source/pyDynaMapp.viscoelastic.html#pyDynaMapp.viscoelastic.dahl.Dahl.dahl">(pyDynaMapp.viscoelastic.dahl.Dahl method)</a>
+        <li><a href="dynamapp.identification.html#module-dynamapp.identification">module</a>
+</li>
+      </ul></li>
+      <li>
+    dynamapp.kalman
+
+      <ul>
+        <li><a href="dynamapp.kalman.html#module-dynamapp.kalman">module</a>
+</li>
+      </ul></li>
+      <li>
+    dynamapp.math_utils
+
+      <ul>
+        <li><a href="dynamapp.math_utils.html#module-dynamapp.math_utils">module</a>
+</li>
+      </ul></li>
+      <li>
+    dynamapp.model
+
+      <ul>
+        <li><a href="dynamapp.model.html#module-dynamapp.model">module</a>
+</li>
+      </ul></li>
+      <li>
+    dynamapp.model_state
+
+      <ul>
+        <li><a href="dynamapp.model_state.html#module-dynamapp.model_state">module</a>
+</li>
+      </ul></li>
+      <li>
+    dynamapp.nfoursid
+
+      <ul>
+        <li><a href="dynamapp.nfoursid.html#module-dynamapp.nfoursid">module</a>
 </li>
       </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="docs/source/pyDynaMapp.utils.html#pyDynaMapp.utils.tools.deg2rad">deg2rad() (in module pyDynaMapp.utils.tools)</a>
+      <li>
+    dynamapp.reductions
+
+      <ul>
+        <li><a href="dynamapp.reductions.html#module-dynamapp.reductions">module</a>
 </li>
-      <li><a href="docs/source/pyDynaMapp.utils.html#pyDynaMapp.utils.math.discreteTimeIntegral">discreteTimeIntegral() (in module pyDynaMapp.utils.math)</a>
+      </ul></li>
+      <li>
+    dynamapp.regressors
+
+      <ul>
+        <li><a href="dynamapp.regressors.html#module-dynamapp.regressors">module</a>
 </li>
+      </ul></li>
+      <li>
+    dynamapp.solvers
+
+      <ul>
+        <li><a href="dynamapp.solvers.html#module-dynamapp.solvers">module</a>
+</li>
+      </ul></li>
+      <li>
+    dynamapp.state_space
+
+      <ul>
+        <li><a href="dynamapp.state_space.html#module-dynamapp.state_space">module</a>
+</li>
+      </ul></li>
+      <li>
+    dynamapp.trajectory
+
+      <ul>
+        <li><a href="dynamapp.trajectory.html#module-dynamapp.trajectory">module</a>
+</li>
+      </ul></li>
+      <li>
+    dynamapp.viscoelastic
+
+      <ul>
+        <li><a href="dynamapp.viscoelastic.html#module-dynamapp.viscoelastic">module</a>
+</li>
+      </ul></li>
+      <li>
+    dynamapp.visualization
+
+      <ul>
+        <li><a href="dynamapp.visualization.html#module-dynamapp.visualization">module</a>
+</li>
+      </ul></li>
   </ul></td>
 </tr></table>
 
 <h2 id="E">E</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="docs/source/pyDynaMapp.identification.html#pyDynaMapp.identification.IDIM.IDIMNLS.evaluate">evaluate() (pyDynaMapp.identification.IDIM.IDIMNLS method)</a>
-
-      <ul>
-        <li><a href="docs/source/pyDynaMapp.identification.html#pyDynaMapp.identification.Kalman.Kalman.evaluate">(pyDynaMapp.identification.Kalman.Kalman method)</a>
+      <li><a href="dynamapp.math_utils.html#dynamapp.math_utils.eigenvalue_decomposition">eigenvalue_decomposition() (in module dynamapp.math_utils)</a>
 </li>
-      </ul></li>
+      <li><a href="dynamapp.math_utils.html#dynamapp.math_utils.Decomposition.eigenvalues">eigenvalues (dynamapp.math_utils.Decomposition attribute)</a>
+</li>
+      <li><a href="dynamapp.regressors.html#dynamapp.regressors.eigvals_wrt_damping">eigvals_wrt_damping() (in module dynamapp.regressors)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="dynamapp.regressors.html#dynamapp.regressors.eigvals_wrt_dhparams">eigvals_wrt_dhparams() (in module dynamapp.regressors)</a>
+</li>
+      <li><a href="dynamapp.regressors.html#dynamapp.regressors.eigvals_wrt_inertia">eigvals_wrt_inertia() (in module dynamapp.regressors)</a>
+</li>
+      <li><a href="dynamapp.kalman.html#dynamapp.kalman.Kalman.extrapolate">extrapolate() (dynamapp.kalman.Kalman method)</a>
+</li>
   </ul></td>
 </tr></table>
 
 <h2 id="F">F</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="docs/source/pyDynaMapp.identification.html#pyDynaMapp.identification.Kalman.Kalman.filter">filter() (pyDynaMapp.identification.Kalman.Kalman method)</a>
+      <li><a href="dynamapp.kalman.html#dynamapp.kalman.Kalman.filtered_label">filtered_label (dynamapp.kalman.Kalman attribute)</a>
 </li>
+      <li><a href="dynamapp.reductions.html#dynamapp.reductions.LDA.fit">fit() (dynamapp.reductions.LDA method)</a>
+
+      <ul>
+        <li><a href="dynamapp.reductions.html#dynamapp.reductions.PCA.fit">(dynamapp.reductions.PCA method)</a>
+</li>
+      </ul></li>
+      <li><a href="dynamapp.reductions.html#dynamapp.reductions.LDA.fit_transform">fit_transform() (dynamapp.reductions.LDA method)</a>
+
+      <ul>
+        <li><a href="dynamapp.reductions.html#dynamapp.reductions.PCA.fit_transform">(dynamapp.reductions.PCA method)</a>
+</li>
+      </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="docs/source/pyDynaMapp.identification.html#pyDynaMapp.identification.CVA.CVA.fit">fit() (pyDynaMapp.identification.CVA.CVA method)</a>
+      <li><a href="dynamapp.model.html#dynamapp.model.Model.full_forces">full_forces() (dynamapp.model.Model method)</a>
 </li>
-      <li><a href="docs/source/pyDynaMapp.trajectory.html#pyDynaMapp.trajectory.fourier.FourierGenerator">FourierGenerator (class in pyDynaMapp.trajectory.fourier)</a>
+      <li><a href="dynamapp.model.html#dynamapp.model.Model.full_torques">full_torques() (dynamapp.model.Model method)</a>
+</li>
+      <li><a href="dynamapp.regressors.html#dynamapp.regressors.full_torques_wrt_friction">full_torques_wrt_friction() (in module dynamapp.regressors)</a>
+</li>
+      <li><a href="dynamapp.regressors.html#dynamapp.regressors.full_torques_wrt_inertia">full_torques_wrt_inertia() (in module dynamapp.regressors)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -342,29 +333,37 @@
 <h2 id="G">G</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="docs/source/pyDynaMapp.dynamics.html#pyDynaMapp.dynamics.robot.Robot.genralizedInertiasParams">genralizedInertiasParams() (pyDynaMapp.dynamics.robot.Robot method)</a>
+      <li><a href="dynamapp.model.html#dynamapp.model.Model.generalized_forces">generalized_forces() (dynamapp.model.Model method)</a>
 </li>
-      <li><a href="docs/source/pyDynaMapp.dynamics.html#pyDynaMapp.dynamics.robot.Robot.getActuatorInertiasMatrix">getActuatorInertiasMatrix() (pyDynaMapp.dynamics.robot.Robot method)</a>
+      <li><a href="dynamapp.model.html#dynamapp.model.Model.generalized_torques">generalized_torques() (dynamapp.model.Model method)</a>
 </li>
-      <li><a href="docs/source/pyDynaMapp.dynamics.html#pyDynaMapp.dynamics.state_space.StateSpace.getAugmentedStateVector">getAugmentedStateVector() (pyDynaMapp.dynamics.state_space.StateSpace method)</a>
+      <li><a href="dynamapp.regressors.html#dynamapp.regressors.generalized_torques_wrt_damping">generalized_torques_wrt_damping() (in module dynamapp.regressors)</a>
+</li>
+      <li><a href="dynamapp.regressors.html#dynamapp.regressors.generalized_torques_wrt_dhparams">generalized_torques_wrt_dhparams() (in module dynamapp.regressors)</a>
+</li>
+      <li><a href="dynamapp.regressors.html#dynamapp.regressors.generalized_torques_wrt_inertia">generalized_torques_wrt_inertia() (in module dynamapp.regressors)</a>
+</li>
+      <li><a href="dynamapp.generators.html#dynamapp.generators.ModelStateDataGenerator.generate_data">generate_data() (dynamapp.generators.ModelStateDataGenerator method)</a>
+</li>
+      <li><a href="dynamapp.generators.html#dynamapp.generators.ModelDataGenerator.generate_trajectory_data">generate_trajectory_data() (dynamapp.generators.ModelDataGenerator method)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="docs/source/pyDynaMapp.models.html#pyDynaMapp.models.harmonic_drive.HarmonicDrive.getOutputTorque">getOutputTorque() (pyDynaMapp.models.harmonic_drive.HarmonicDrive method)</a>
+      <li><a href="dynamapp.model_state.html#dynamapp.model_state.ModelState.get_state_matrix_a">get_state_matrix_a() (dynamapp.model_state.ModelState method)</a>
 </li>
-      <li><a href="docs/source/pyDynaMapp.models.html#pyDynaMapp.models.harmonic_drive.HarmonicDrive.getOutputVelocity">getOutputVelocity() (pyDynaMapp.models.harmonic_drive.HarmonicDrive method)</a>
-</li>
-      <li><a href="docs/source/pyDynaMapp.dynamics.html#pyDynaMapp.dynamics.state_space.StateSpace.getStateVector">getStateVector() (pyDynaMapp.dynamics.state_space.StateSpace method)</a>
-</li>
-      <li><a href="docs/source/pyDynaMapp.dynamics.html#pyDynaMapp.dynamics.robot.Robot.getStiffnessMatrix">getStiffnessMatrix() (pyDynaMapp.dynamics.robot.Robot method)</a>
-</li>
-  </ul></td>
-</tr></table>
+      <li><a href="dynamapp.trajectory.html#dynamapp.trajectory.PeriodicTrajectory.get_value">get_value() (dynamapp.trajectory.PeriodicTrajectory method)</a>
 
-<h2 id="H">H</h2>
-<table style="width: 100%" class="indextable genindextable"><tr>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="docs/source/pyDynaMapp.models.html#pyDynaMapp.models.harmonic_drive.HarmonicDrive">HarmonicDrive (class in pyDynaMapp.models.harmonic_drive)</a>
+      <ul>
+        <li><a href="dynamapp.trajectory.html#dynamapp.trajectory.SplineTrajectory.get_value">(dynamapp.trajectory.SplineTrajectory method)</a>
+</li>
+        <li><a href="dynamapp.trajectory.html#dynamapp.trajectory.StepTrajectory.get_value">(dynamapp.trajectory.StepTrajectory method)</a>
+</li>
+        <li><a href="dynamapp.trajectory.html#dynamapp.trajectory.Trajectory.get_value">(dynamapp.trajectory.Trajectory method)</a>
+</li>
+        <li><a href="dynamapp.trajectory.html#dynamapp.trajectory.TrapezoidalTrajectory.get_value">(dynamapp.trajectory.TrapezoidalTrajectory method)</a>
+</li>
+      </ul></li>
+      <li><a href="dynamapp.model.html#dynamapp.model.Model.gravity_torques">gravity_torques() (dynamapp.model.Model method)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -372,19 +371,13 @@
 <h2 id="I">I</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="docs/source/pyDynaMapp.identification.html#pyDynaMapp.identification.IDIM.IDIM">IDIM (class in pyDynaMapp.identification.IDIM)</a>
-</li>
-      <li><a href="docs/source/pyDynaMapp.identification.html#pyDynaMapp.identification.IDIM.IDIMMLE">IDIMMLE (class in pyDynaMapp.identification.IDIM)</a>
-</li>
-      <li><a href="docs/source/pyDynaMapp.identification.html#pyDynaMapp.identification.IDIM.IDIMNLS">IDIMNLS (class in pyDynaMapp.identification.IDIM)</a>
+      <li><a href="dynamapp.model.html#dynamapp.model.Model.inertia_tensor">inertia_tensor() (dynamapp.model.Model method)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="docs/source/pyDynaMapp.identification.html#pyDynaMapp.identification.IDIM.IDIMOLS">IDIMOLS (class in pyDynaMapp.identification.IDIM)</a>
+      <li><a href="dynamapp.regressors.html#dynamapp.regressors.inertia_tensor_wrt_inertia">inertia_tensor_wrt_inertia() (in module dynamapp.regressors)</a>
 </li>
-      <li><a href="docs/source/pyDynaMapp.identification.html#pyDynaMapp.identification.IDIM.IDIMWLS">IDIMWLS (class in pyDynaMapp.identification.IDIM)</a>
-</li>
-      <li><a href="docs/source/pyDynaMapp.trajectory.html#pyDynaMapp.trajectory.trapezoidal.TrapezoidalGenerator.initConfig">initConfig() (pyDynaMapp.trajectory.trapezoidal.TrapezoidalGenerator method)</a>
+      <li><a href="dynamapp.math_utils.html#dynamapp.math_utils.is_skew_symmetric">is_skew_symmetric() (in module dynamapp.math_utils)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -392,7 +385,7 @@
 <h2 id="K">K</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="docs/source/pyDynaMapp.identification.html#pyDynaMapp.identification.Kalman.Kalman">Kalman (class in pyDynaMapp.identification.Kalman)</a>
+      <li><a href="dynamapp.kalman.html#dynamapp.kalman.Kalman">Kalman (class in dynamapp.kalman)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -400,134 +393,78 @@
 <h2 id="L">L</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="docs/source/pyDynaMapp.dynamics.html#pyDynaMapp.dynamics.state_space.StateSpace.linearize">linearize() (pyDynaMapp.dynamics.state_space.StateSpace method)</a>
+      <li><a href="dynamapp.reductions.html#dynamapp.reductions.LDA">LDA (class in dynamapp.reductions)</a>
 </li>
-      <li><a href="docs/source/pyDynaMapp.utils.html#pyDynaMapp.utils.robot_data.RobotData.lowPassfilter">lowPassfilter() (pyDynaMapp.utils.robot_data.RobotData method)</a>
-</li>
-      <li><a href="docs/source/pyDynaMapp.dynamics.html#pyDynaMapp.dynamics.state_space.StateSpace.lsim">lsim() (pyDynaMapp.dynamics.state_space.StateSpace method)</a>
+      <li><a href="dynamapp.math_utils.html#dynamapp.math_utils.Decomposition.left_orthogonal">left_orthogonal (dynamapp.math_utils.Decomposition attribute)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="docs/source/pyDynaMapp.utils.html#pyDynaMapp.utils.solver.luenbergerObserver">luenbergerObserver() (in module pyDynaMapp.utils.solver)</a>
+      <li><a href="dynamapp.math_utils.html#dynamapp.math_utils.logger">logger (in module dynamapp.math_utils)</a>
 </li>
-      <li><a href="docs/source/pyDynaMapp.viscoelastic.html#pyDynaMapp.viscoelastic.LuGre">LuGre (class in pyDynaMapp.viscoelastic)</a>
-
-      <ul>
-        <li><a href="docs/source/pyDynaMapp.viscoelastic.html#pyDynaMapp.viscoelastic.lugre.LuGre">(class in pyDynaMapp.viscoelastic.lugre)</a>
+      <li><a href="dynamapp.model_state.html#dynamapp.model_state.ModelState.lsim">lsim() (dynamapp.model_state.ModelState method)</a>
 </li>
-      </ul></li>
+      <li><a href="dynamapp.solvers.html#dynamapp.solvers.luenberger_observer">luenberger_observer() (in module dynamapp.solvers)</a>
+</li>
   </ul></td>
 </tr></table>
 
 <h2 id="M">M</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="docs/source/pyDynaMapp.utils.html#pyDynaMapp.utils.math.MAE">MAE() (in module pyDynaMapp.utils.math)</a>
+      <li><a href="dynamapp.model.html#dynamapp.model.Model">Model (class in dynamapp.model)</a>
 </li>
-      <li><a href="docs/source/pyDynaMapp.utils.html#pyDynaMapp.utils.tools.matrix2Text">matrix2Text() (in module pyDynaMapp.utils.tools)</a>
+      <li><a href="dynamapp.generators.html#dynamapp.generators.ModelDataGenerator">ModelDataGenerator (class in dynamapp.generators)</a>
 </li>
-      <li><a href="docs/source/pyDynaMapp.viscoelastic.html#pyDynaMapp.viscoelastic.maxwell.Maxwell">Maxwell (class in pyDynaMapp.viscoelastic.maxwell)</a>
+      <li><a href="dynamapp.model_state.html#dynamapp.model_state.ModelState">ModelState (class in dynamapp.model_state)</a>
 </li>
-      <li><a href="docs/source/pyDynaMapp.viscoelastic.html#pyDynaMapp.viscoelastic.maxwell_slip.MaxwellSlip.maxwell">maxwell() (pyDynaMapp.viscoelastic.maxwell_slip.MaxwellSlip method)</a>
-
-      <ul>
-        <li><a href="docs/source/pyDynaMapp.viscoelastic.html#pyDynaMapp.viscoelastic.MaxwellSlip.maxwell">(pyDynaMapp.viscoelastic.MaxwellSlip method)</a>
+      <li><a href="dynamapp.generators.html#dynamapp.generators.ModelStateDataGenerator">ModelStateDataGenerator (class in dynamapp.generators)</a>
 </li>
-      </ul></li>
-      <li><a href="docs/source/pyDynaMapp.viscoelastic.html#pyDynaMapp.viscoelastic.MaxwellSlip">MaxwellSlip (class in pyDynaMapp.viscoelastic)</a>
-
-      <ul>
-        <li><a href="docs/source/pyDynaMapp.viscoelastic.html#pyDynaMapp.viscoelastic.maxwell_slip.MaxwellSlip">(class in pyDynaMapp.viscoelastic.maxwell_slip)</a>
-</li>
-      </ul></li>
       <li>
     module
 
       <ul>
-        <li><a href="docs/source/pyDynaMapp.html#module-pyDynaMapp">pyDynaMapp</a>
+        <li><a href="dynamapp.generators.html#module-dynamapp.generators">dynamapp.generators</a>
 </li>
-        <li><a href="docs/source/pyDynaMapp.dynamics.html#module-pyDynaMapp.dynamics">pyDynaMapp.dynamics</a>
+        <li><a href="dynamapp.identification.html#module-dynamapp.identification">dynamapp.identification</a>
 </li>
-        <li><a href="docs/source/pyDynaMapp.dynamics.html#module-pyDynaMapp.dynamics.regressor">pyDynaMapp.dynamics.regressor</a>
+        <li><a href="dynamapp.kalman.html#module-dynamapp.kalman">dynamapp.kalman</a>
 </li>
-        <li><a href="docs/source/pyDynaMapp.dynamics.html#module-pyDynaMapp.dynamics.robot">pyDynaMapp.dynamics.robot</a>
+        <li><a href="dynamapp.math_utils.html#module-dynamapp.math_utils">dynamapp.math_utils</a>
 </li>
-        <li><a href="docs/source/pyDynaMapp.dynamics.html#module-pyDynaMapp.dynamics.state_space">pyDynaMapp.dynamics.state_space</a>
+        <li><a href="dynamapp.model.html#module-dynamapp.model">dynamapp.model</a>
 </li>
-        <li><a href="docs/source/pyDynaMapp.extern.html#module-pyDynaMapp.extern">pyDynaMapp.extern</a>
+        <li><a href="dynamapp.model_state.html#module-dynamapp.model_state">dynamapp.model_state</a>
 </li>
-        <li><a href="docs/source/pyDynaMapp.identification.html#module-pyDynaMapp.identification">pyDynaMapp.identification</a>
+        <li><a href="dynamapp.nfoursid.html#module-dynamapp.nfoursid">dynamapp.nfoursid</a>
 </li>
-        <li><a href="docs/source/pyDynaMapp.identification.html#module-pyDynaMapp.identification.CVA">pyDynaMapp.identification.CVA</a>
+        <li><a href="dynamapp.reductions.html#module-dynamapp.reductions">dynamapp.reductions</a>
 </li>
-        <li><a href="docs/source/pyDynaMapp.identification.html#module-pyDynaMapp.identification.IDIM">pyDynaMapp.identification.IDIM</a>
+        <li><a href="dynamapp.regressors.html#module-dynamapp.regressors">dynamapp.regressors</a>
 </li>
-        <li><a href="docs/source/pyDynaMapp.identification.html#module-pyDynaMapp.identification.Kalman">pyDynaMapp.identification.Kalman</a>
+        <li><a href="dynamapp.solvers.html#module-dynamapp.solvers">dynamapp.solvers</a>
 </li>
-        <li><a href="docs/source/pyDynaMapp.identification.html#module-pyDynaMapp.identification.LMI">pyDynaMapp.identification.LMI</a>
+        <li><a href="dynamapp.state_space.html#module-dynamapp.state_space">dynamapp.state_space</a>
 </li>
-        <li><a href="docs/source/pyDynaMapp.identification.html#module-pyDynaMapp.identification.MOESP_VAR">pyDynaMapp.identification.MOESP_VAR</a>
+        <li><a href="dynamapp.trajectory.html#module-dynamapp.trajectory">dynamapp.trajectory</a>
 </li>
-        <li><a href="docs/source/pyDynaMapp.identification.html#module-pyDynaMapp.identification.N4SID_VAR">pyDynaMapp.identification.N4SID_VAR</a>
+        <li><a href="dynamapp.viscoelastic.html#module-dynamapp.viscoelastic">dynamapp.viscoelastic</a>
 </li>
-        <li><a href="docs/source/pyDynaMapp.identification.html#module-pyDynaMapp.identification.ORT">pyDynaMapp.identification.ORT</a>
-</li>
-        <li><a href="docs/source/pyDynaMapp.identification.html#module-pyDynaMapp.identification.PF">pyDynaMapp.identification.PF</a>
-</li>
-        <li><a href="docs/source/pyDynaMapp.models.html#module-pyDynaMapp.models">pyDynaMapp.models</a>
-</li>
-        <li><a href="docs/source/pyDynaMapp.models.html#module-pyDynaMapp.models.BLDC">pyDynaMapp.models.BLDC</a>
-</li>
-        <li><a href="docs/source/pyDynaMapp.models.html#module-pyDynaMapp.models.harmonic_drive">pyDynaMapp.models.harmonic_drive</a>
-</li>
-        <li><a href="docs/source/pyDynaMapp.trajectory.html#module-pyDynaMapp.trajectory">pyDynaMapp.trajectory</a>
-</li>
-        <li><a href="docs/source/pyDynaMapp.trajectory.html#module-pyDynaMapp.trajectory.fourier">pyDynaMapp.trajectory.fourier</a>
-</li>
-        <li><a href="docs/source/pyDynaMapp.trajectory.html#module-pyDynaMapp.trajectory.spline">pyDynaMapp.trajectory.spline</a>
-</li>
-        <li><a href="docs/source/pyDynaMapp.trajectory.html#module-pyDynaMapp.trajectory.trajectory">pyDynaMapp.trajectory.trajectory</a>
-</li>
-        <li><a href="docs/source/pyDynaMapp.trajectory.html#module-pyDynaMapp.trajectory.trapezoidal">pyDynaMapp.trajectory.trapezoidal</a>
-</li>
-        <li><a href="docs/source/pyDynaMapp.utils.html#module-pyDynaMapp.utils">pyDynaMapp.utils</a>
-</li>
-        <li><a href="docs/source/pyDynaMapp.utils.html#module-pyDynaMapp.utils.math">pyDynaMapp.utils.math</a>
-</li>
-        <li><a href="docs/source/pyDynaMapp.utils.html#module-pyDynaMapp.utils.robot_data">pyDynaMapp.utils.robot_data</a>
-</li>
-        <li><a href="docs/source/pyDynaMapp.utils.html#module-pyDynaMapp.utils.solver">pyDynaMapp.utils.solver</a>
-</li>
-        <li><a href="docs/source/pyDynaMapp.utils.html#module-pyDynaMapp.utils.tools">pyDynaMapp.utils.tools</a>
-</li>
-        <li><a href="docs/source/pyDynaMapp.viscoelastic.html#module-pyDynaMapp.viscoelastic">pyDynaMapp.viscoelastic</a>
-</li>
-        <li><a href="docs/source/pyDynaMapp.viscoelastic.html#module-pyDynaMapp.viscoelastic.backlash">pyDynaMapp.viscoelastic.backlash</a>
-</li>
-        <li><a href="docs/source/pyDynaMapp.viscoelastic.html#module-pyDynaMapp.viscoelastic.cuLugre">pyDynaMapp.viscoelastic.cuLugre</a>
-</li>
-        <li><a href="docs/source/pyDynaMapp.viscoelastic.html#module-pyDynaMapp.viscoelastic.dahl">pyDynaMapp.viscoelastic.dahl</a>
-</li>
-        <li><a href="docs/source/pyDynaMapp.viscoelastic.html#module-pyDynaMapp.viscoelastic.lugre">pyDynaMapp.viscoelastic.lugre</a>
-</li>
-        <li><a href="docs/source/pyDynaMapp.viscoelastic.html#module-pyDynaMapp.viscoelastic.maxwell">pyDynaMapp.viscoelastic.maxwell</a>
-</li>
-        <li><a href="docs/source/pyDynaMapp.viscoelastic.html#module-pyDynaMapp.viscoelastic.maxwell_slip">pyDynaMapp.viscoelastic.maxwell_slip</a>
-</li>
-        <li><a href="docs/source/pyDynaMapp.viscoelastic.html#module-pyDynaMapp.viscoelastic.viscous">pyDynaMapp.viscoelastic.viscous</a>
+        <li><a href="dynamapp.visualization.html#module-dynamapp.visualization">dynamapp.visualization</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="docs/source/pyDynaMapp.identification.html#pyDynaMapp.identification.MOESP_VAR.MOESP">MOESP (class in pyDynaMapp.identification.MOESP_VAR)</a>
-</li>
   </ul></td>
 </tr></table>
 
 <h2 id="N">N</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="docs/source/pyDynaMapp.identification.html#pyDynaMapp.identification.N4SID_VAR.N4SID">N4SID (class in pyDynaMapp.identification.N4SID_VAR)</a>
+      <li><a href="dynamapp.kalman.html#dynamapp.kalman.Kalman.next_predicted_corrected_label">next_predicted_corrected_label (dynamapp.kalman.Kalman attribute)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="dynamapp.kalman.html#dynamapp.kalman.Kalman.next_predicted_label">next_predicted_label (dynamapp.kalman.Kalman attribute)</a>
+</li>
+      <li><a href="dynamapp.nfoursid.html#dynamapp.nfoursid.NFourSID">NFourSID (class in dynamapp.nfoursid)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -535,311 +472,47 @@
 <h2 id="O">O</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="docs/source/pyDynaMapp.identification.html#pyDynaMapp.identification.IDIM.IDIM.opt">opt() (pyDynaMapp.identification.IDIM.IDIM method)</a>
-</li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="docs/source/pyDynaMapp.identification.html#pyDynaMapp.identification.IDIM.IDIM.optimize">optimize() (pyDynaMapp.identification.IDIM.IDIM method)</a>
+      <li><a href="dynamapp.model_state.html#dynamapp.model_state.ModelState.output">output() (dynamapp.model_state.ModelState method)</a>
 
       <ul>
-        <li><a href="docs/source/pyDynaMapp.identification.html#pyDynaMapp.identification.IDIM.IDIMNLS.optimize">(pyDynaMapp.identification.IDIM.IDIMNLS method)</a>
+        <li><a href="dynamapp.state_space.html#dynamapp.state_space.StateSpace.output">(dynamapp.state_space.StateSpace method)</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="dynamapp.kalman.html#dynamapp.kalman.Kalman.output_label">output_label (dynamapp.kalman.Kalman attribute)</a>
+</li>
   </ul></td>
 </tr></table>
 
 <h2 id="P">P</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="docs/source/pyDynaMapp.utils.html#pyDynaMapp.utils.tools.plot2Arrays">plot2Arrays() (in module pyDynaMapp.utils.tools)</a>
+      <li><a href="dynamapp.reductions.html#dynamapp.reductions.PCA">PCA (class in dynamapp.reductions)</a>
 </li>
-      <li><a href="docs/source/pyDynaMapp.utils.html#pyDynaMapp.utils.tools.plot3Arrays">plot3Arrays() (in module pyDynaMapp.utils.tools)</a>
+      <li><a href="dynamapp.trajectory.html#dynamapp.trajectory.PeriodicTrajectory">PeriodicTrajectory (class in dynamapp.trajectory)</a>
 </li>
-      <li><a href="docs/source/pyDynaMapp.utils.html#pyDynaMapp.utils.tools.plotArray">plotArray() (in module pyDynaMapp.utils.tools)</a>
+      <li><a href="dynamapp.visualization.html#dynamapp.visualization.plot_eigenvalues">plot_eigenvalues() (in module dynamapp.visualization)</a>
 </li>
-      <li><a href="docs/source/pyDynaMapp.utils.html#pyDynaMapp.utils.tools.plotElementWiseArray">plotElementWiseArray() (in module pyDynaMapp.utils.tools)</a>
-</li>
-      <li><a href="docs/source/pyDynaMapp.trajectory.html#pyDynaMapp.trajectory.trajectory.TrajectoryGenerator.plotTrajectory">plotTrajectory() (pyDynaMapp.trajectory.trajectory.TrajectoryGenerator method)</a>
-</li>
-      <li><a href="docs/source/pyDynaMapp.identification.html#pyDynaMapp.identification.Kalman.Kalman.predict">predict() (pyDynaMapp.identification.Kalman.Kalman method)</a>
-
-      <ul>
-        <li><a href="docs/source/pyDynaMapp.identification.html#pyDynaMapp.identification.Kalman.RobustKalman.predict">(pyDynaMapp.identification.Kalman.RobustKalman method)</a>
-</li>
-      </ul></li>
-      <li>
-    pyDynaMapp
-
-      <ul>
-        <li><a href="docs/source/pyDynaMapp.html#module-pyDynaMapp">module</a>
-</li>
-      </ul></li>
-      <li>
-    pyDynaMapp.dynamics
-
-      <ul>
-        <li><a href="docs/source/pyDynaMapp.dynamics.html#module-pyDynaMapp.dynamics">module</a>
-</li>
-      </ul></li>
-      <li>
-    pyDynaMapp.dynamics.regressor
-
-      <ul>
-        <li><a href="docs/source/pyDynaMapp.dynamics.html#module-pyDynaMapp.dynamics.regressor">module</a>
-</li>
-      </ul></li>
-      <li>
-    pyDynaMapp.dynamics.robot
-
-      <ul>
-        <li><a href="docs/source/pyDynaMapp.dynamics.html#module-pyDynaMapp.dynamics.robot">module</a>
-</li>
-      </ul></li>
-      <li>
-    pyDynaMapp.dynamics.state_space
-
-      <ul>
-        <li><a href="docs/source/pyDynaMapp.dynamics.html#module-pyDynaMapp.dynamics.state_space">module</a>
-</li>
-      </ul></li>
-      <li>
-    pyDynaMapp.extern
-
-      <ul>
-        <li><a href="docs/source/pyDynaMapp.extern.html#module-pyDynaMapp.extern">module</a>
-</li>
-      </ul></li>
-      <li>
-    pyDynaMapp.identification
-
-      <ul>
-        <li><a href="docs/source/pyDynaMapp.identification.html#module-pyDynaMapp.identification">module</a>
-</li>
-      </ul></li>
-      <li>
-    pyDynaMapp.identification.CVA
-
-      <ul>
-        <li><a href="docs/source/pyDynaMapp.identification.html#module-pyDynaMapp.identification.CVA">module</a>
-</li>
-      </ul></li>
-      <li>
-    pyDynaMapp.identification.IDIM
-
-      <ul>
-        <li><a href="docs/source/pyDynaMapp.identification.html#module-pyDynaMapp.identification.IDIM">module</a>
-</li>
-      </ul></li>
-      <li>
-    pyDynaMapp.identification.Kalman
-
-      <ul>
-        <li><a href="docs/source/pyDynaMapp.identification.html#module-pyDynaMapp.identification.Kalman">module</a>
-</li>
-      </ul></li>
-      <li>
-    pyDynaMapp.identification.LMI
-
-      <ul>
-        <li><a href="docs/source/pyDynaMapp.identification.html#module-pyDynaMapp.identification.LMI">module</a>
-</li>
-      </ul></li>
-      <li>
-    pyDynaMapp.identification.MOESP_VAR
-
-      <ul>
-        <li><a href="docs/source/pyDynaMapp.identification.html#module-pyDynaMapp.identification.MOESP_VAR">module</a>
-</li>
-      </ul></li>
-      <li>
-    pyDynaMapp.identification.N4SID_VAR
-
-      <ul>
-        <li><a href="docs/source/pyDynaMapp.identification.html#module-pyDynaMapp.identification.N4SID_VAR">module</a>
-</li>
-      </ul></li>
-      <li>
-    pyDynaMapp.identification.ORT
-
-      <ul>
-        <li><a href="docs/source/pyDynaMapp.identification.html#module-pyDynaMapp.identification.ORT">module</a>
-</li>
-      </ul></li>
-      <li>
-    pyDynaMapp.identification.PF
-
-      <ul>
-        <li><a href="docs/source/pyDynaMapp.identification.html#module-pyDynaMapp.identification.PF">module</a>
-</li>
-      </ul></li>
-      <li>
-    pyDynaMapp.models
-
-      <ul>
-        <li><a href="docs/source/pyDynaMapp.models.html#module-pyDynaMapp.models">module</a>
-</li>
-      </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li>
-    pyDynaMapp.models.BLDC
-
-      <ul>
-        <li><a href="docs/source/pyDynaMapp.models.html#module-pyDynaMapp.models.BLDC">module</a>
+      <li><a href="dynamapp.visualization.html#dynamapp.visualization.plot_filtered">plot_filtered() (in module dynamapp.visualization)</a>
 </li>
-      </ul></li>
-      <li>
-    pyDynaMapp.models.harmonic_drive
-
-      <ul>
-        <li><a href="docs/source/pyDynaMapp.models.html#module-pyDynaMapp.models.harmonic_drive">module</a>
+      <li><a href="dynamapp.visualization.html#dynamapp.visualization.plot_input_output">plot_input_output() (in module dynamapp.visualization)</a>
 </li>
-      </ul></li>
-      <li>
-    pyDynaMapp.trajectory
-
-      <ul>
-        <li><a href="docs/source/pyDynaMapp.trajectory.html#module-pyDynaMapp.trajectory">module</a>
+      <li><a href="dynamapp.visualization.html#dynamapp.visualization.plot_predicted">plot_predicted() (in module dynamapp.visualization)</a>
 </li>
-      </ul></li>
-      <li>
-    pyDynaMapp.trajectory.fourier
-
-      <ul>
-        <li><a href="docs/source/pyDynaMapp.trajectory.html#module-pyDynaMapp.trajectory.fourier">module</a>
-</li>
-      </ul></li>
-      <li>
-    pyDynaMapp.trajectory.spline
-
-      <ul>
-        <li><a href="docs/source/pyDynaMapp.trajectory.html#module-pyDynaMapp.trajectory.spline">module</a>
-</li>
-      </ul></li>
-      <li>
-    pyDynaMapp.trajectory.trajectory
-
-      <ul>
-        <li><a href="docs/source/pyDynaMapp.trajectory.html#module-pyDynaMapp.trajectory.trajectory">module</a>
-</li>
-      </ul></li>
-      <li>
-    pyDynaMapp.trajectory.trapezoidal
-
-      <ul>
-        <li><a href="docs/source/pyDynaMapp.trajectory.html#module-pyDynaMapp.trajectory.trapezoidal">module</a>
-</li>
-      </ul></li>
-      <li>
-    pyDynaMapp.utils
-
-      <ul>
-        <li><a href="docs/source/pyDynaMapp.utils.html#module-pyDynaMapp.utils">module</a>
-</li>
-      </ul></li>
-      <li>
-    pyDynaMapp.utils.math
-
-      <ul>
-        <li><a href="docs/source/pyDynaMapp.utils.html#module-pyDynaMapp.utils.math">module</a>
-</li>
-      </ul></li>
-      <li>
-    pyDynaMapp.utils.robot_data
-
-      <ul>
-        <li><a href="docs/source/pyDynaMapp.utils.html#module-pyDynaMapp.utils.robot_data">module</a>
-</li>
-      </ul></li>
-      <li>
-    pyDynaMapp.utils.solver
-
-      <ul>
-        <li><a href="docs/source/pyDynaMapp.utils.html#module-pyDynaMapp.utils.solver">module</a>
-</li>
-      </ul></li>
-      <li>
-    pyDynaMapp.utils.tools
-
-      <ul>
-        <li><a href="docs/source/pyDynaMapp.utils.html#module-pyDynaMapp.utils.tools">module</a>
-</li>
-      </ul></li>
-      <li>
-    pyDynaMapp.viscoelastic
-
-      <ul>
-        <li><a href="docs/source/pyDynaMapp.viscoelastic.html#module-pyDynaMapp.viscoelastic">module</a>
-</li>
-      </ul></li>
-      <li>
-    pyDynaMapp.viscoelastic.backlash
-
-      <ul>
-        <li><a href="docs/source/pyDynaMapp.viscoelastic.html#module-pyDynaMapp.viscoelastic.backlash">module</a>
-</li>
-      </ul></li>
-      <li>
-    pyDynaMapp.viscoelastic.cuLugre
-
-      <ul>
-        <li><a href="docs/source/pyDynaMapp.viscoelastic.html#module-pyDynaMapp.viscoelastic.cuLugre">module</a>
-</li>
-      </ul></li>
-      <li>
-    pyDynaMapp.viscoelastic.dahl
-
-      <ul>
-        <li><a href="docs/source/pyDynaMapp.viscoelastic.html#module-pyDynaMapp.viscoelastic.dahl">module</a>
-</li>
-      </ul></li>
-      <li>
-    pyDynaMapp.viscoelastic.lugre
-
-      <ul>
-        <li><a href="docs/source/pyDynaMapp.viscoelastic.html#module-pyDynaMapp.viscoelastic.lugre">module</a>
-</li>
-      </ul></li>
-      <li>
-    pyDynaMapp.viscoelastic.maxwell
-
-      <ul>
-        <li><a href="docs/source/pyDynaMapp.viscoelastic.html#module-pyDynaMapp.viscoelastic.maxwell">module</a>
-</li>
-      </ul></li>
-      <li>
-    pyDynaMapp.viscoelastic.maxwell_slip
-
-      <ul>
-        <li><a href="docs/source/pyDynaMapp.viscoelastic.html#module-pyDynaMapp.viscoelastic.maxwell_slip">module</a>
-</li>
-      </ul></li>
-      <li>
-    pyDynaMapp.viscoelastic.viscous
-
-      <ul>
-        <li><a href="docs/source/pyDynaMapp.viscoelastic.html#module-pyDynaMapp.viscoelastic.viscous">module</a>
-</li>
-      </ul></li>
   </ul></td>
 </tr></table>
 
 <h2 id="R">R</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="docs/source/pyDynaMapp.utils.html#pyDynaMapp.utils.tools.rad2deg">rad2deg() (in module pyDynaMapp.utils.tools)</a>
-</li>
-      <li><a href="docs/source/pyDynaMapp.dynamics.html#pyDynaMapp.dynamics.regressor.Regressor">Regressor (class in pyDynaMapp.dynamics.regressor)</a>
-</li>
-      <li><a href="docs/source/pyDynaMapp.utils.html#pyDynaMapp.utils.math.RMSE">RMSE() (in module pyDynaMapp.utils.math)</a>
+      <li><a href="dynamapp.math_utils.html#dynamapp.math_utils.reduce_decomposition">reduce_decomposition() (in module dynamapp.math_utils)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="docs/source/pyDynaMapp.dynamics.html#pyDynaMapp.dynamics.robot.Robot">Robot (class in pyDynaMapp.dynamics.robot)</a>
-</li>
-      <li><a href="docs/source/pyDynaMapp.utils.html#pyDynaMapp.utils.robot_data.RobotData">RobotData (class in pyDynaMapp.utils.robot_data)</a>
-</li>
-      <li><a href="docs/source/pyDynaMapp.identification.html#pyDynaMapp.identification.Kalman.RobustKalman">RobustKalman (class in pyDynaMapp.identification.Kalman)</a>
+      <li><a href="dynamapp.math_utils.html#dynamapp.math_utils.Decomposition.right_orthogonal">right_orthogonal (dynamapp.math_utils.Decomposition attribute)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -847,67 +520,43 @@
 <h2 id="S">S</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="docs/source/pyDynaMapp.identification.html#pyDynaMapp.identification.IDIM.IDIM.save">save() (pyDynaMapp.identification.IDIM.IDIM method)</a>
+      <li><a href="dynamapp.state_space.html#dynamapp.state_space.StateSpace.set_matrices">set_matrices() (dynamapp.state_space.StateSpace method)</a>
 </li>
-      <li><a href="docs/source/pyDynaMapp.trajectory.html#pyDynaMapp.trajectory.fourier.FourierGenerator.save2csv">save2csv() (pyDynaMapp.trajectory.fourier.FourierGenerator method)</a>
-</li>
-      <li><a href="docs/source/pyDynaMapp.trajectory.html#pyDynaMapp.trajectory.spline.SplineGenerator.saveTrajectory2file">saveTrajectory2file() (pyDynaMapp.trajectory.spline.SplineGenerator method)</a>
-</li>
-      <li><a href="docs/source/pyDynaMapp.utils.html#pyDynaMapp.utils.tools.scaleArray">scaleArray() (in module pyDynaMapp.utils.tools)</a>
-</li>
-      <li><a href="docs/source/pyDynaMapp.identification.html#pyDynaMapp.identification.IDIM.IDIM.set_lower_bounds">set_lower_bounds() (pyDynaMapp.identification.IDIM.IDIM method)</a>
+      <li><a href="dynamapp.model_state.html#dynamapp.model_state.ModelState.set_x_init">set_x_init() (dynamapp.model_state.ModelState method)</a>
 
       <ul>
-        <li><a href="docs/source/pyDynaMapp.identification.html#pyDynaMapp.identification.IDIM.IDIMMLE.set_lower_bounds">(pyDynaMapp.identification.IDIM.IDIMMLE method)</a>
+        <li><a href="dynamapp.state_space.html#dynamapp.state_space.StateSpace.set_x_init">(dynamapp.state_space.StateSpace method)</a>
 </li>
       </ul></li>
-      <li><a href="docs/source/pyDynaMapp.identification.html#pyDynaMapp.identification.IDIM.IDIM.set_maxeval">set_maxeval() (pyDynaMapp.identification.IDIM.IDIM method)</a>
-
-      <ul>
-        <li><a href="docs/source/pyDynaMapp.identification.html#pyDynaMapp.identification.IDIM.IDIMMLE.set_maxeval">(pyDynaMapp.identification.IDIM.IDIMMLE method)</a>
+      <li><a href="dynamapp.solvers.html#dynamapp.solvers.solve_least_square">solve_least_square() (in module dynamapp.solvers)</a>
 </li>
-      </ul></li>
-      <li><a href="docs/source/pyDynaMapp.identification.html#pyDynaMapp.identification.IDIM.IDIM.set_set_min_objective">set_set_min_objective() (pyDynaMapp.identification.IDIM.IDIM method)</a>
-
-      <ul>
-        <li><a href="docs/source/pyDynaMapp.identification.html#pyDynaMapp.identification.IDIM.IDIMMLE.set_set_min_objective">(pyDynaMapp.identification.IDIM.IDIMMLE method)</a>
+      <li><a href="dynamapp.solvers.html#dynamapp.solvers.solve_riccati_equation">solve_riccati_equation() (in module dynamapp.solvers)</a>
 </li>
-      </ul></li>
-      <li><a href="docs/source/pyDynaMapp.identification.html#pyDynaMapp.identification.IDIM.IDIM.set_upper_bounds">set_upper_bounds() (pyDynaMapp.identification.IDIM.IDIM method)</a>
-
-      <ul>
-        <li><a href="docs/source/pyDynaMapp.identification.html#pyDynaMapp.identification.IDIM.IDIMMLE.set_upper_bounds">(pyDynaMapp.identification.IDIM.IDIMMLE method)</a>
+      <li><a href="dynamapp.trajectory.html#dynamapp.trajectory.SplineTrajectory">SplineTrajectory (class in dynamapp.trajectory)</a>
 </li>
-      </ul></li>
-      <li><a href="docs/source/pyDynaMapp.dynamics.html#pyDynaMapp.dynamics.robot.Robot.setIdentificationModelData">setIdentificationModelData() (pyDynaMapp.dynamics.robot.Robot method)</a>
+      <li><a href="dynamapp.kalman.html#dynamapp.kalman.Kalman.standard_deviation_label">standard_deviation_label (dynamapp.kalman.Kalman attribute)</a>
+</li>
+      <li><a href="dynamapp.regressors.html#dynamapp.regressors.state_matrix_a_wrt_inertia">state_matrix_a_wrt_inertia() (in module dynamapp.regressors)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="docs/source/pyDynaMapp.dynamics.html#pyDynaMapp.dynamics.robot.Robot.setRandomInertiaParams">setRandomInertiaParams() (pyDynaMapp.dynamics.robot.Robot method)</a>
+      <li><a href="dynamapp.regressors.html#dynamapp.regressors.state_matrix_a_wrt_state">state_matrix_a_wrt_state() (in module dynamapp.regressors)</a>
 </li>
-      <li><a href="docs/source/pyDynaMapp.trajectory.html#pyDynaMapp.trajectory.trajectory.TrajectoryGenerator.setTrajectoryData">setTrajectoryData() (pyDynaMapp.trajectory.trajectory.TrajectoryGenerator method)</a>
+      <li><a href="dynamapp.state_space.html#dynamapp.state_space.StateSpace">StateSpace (class in dynamapp.state_space)</a>
 </li>
-      <li><a href="docs/source/pyDynaMapp.viscoelastic.html#pyDynaMapp.viscoelastic.maxwell.Maxwell.simulate">simulate() (pyDynaMapp.viscoelastic.maxwell.Maxwell method)</a>
+      <li><a href="dynamapp.kalman.html#dynamapp.kalman.Kalman.step">step() (dynamapp.kalman.Kalman method)</a>
+
+      <ul>
+        <li><a href="dynamapp.model_state.html#dynamapp.model_state.ModelState.step">(dynamapp.model_state.ModelState method)</a>
 </li>
-      <li><a href="docs/source/pyDynaMapp.utils.html#pyDynaMapp.utils.tools.smooth_columns">smooth_columns() (in module pyDynaMapp.utils.tools)</a>
+        <li><a href="dynamapp.state_space.html#dynamapp.state_space.StateSpace.step">(dynamapp.state_space.StateSpace method)</a>
 </li>
-      <li><a href="docs/source/pyDynaMapp.utils.html#pyDynaMapp.utils.solver.solve_discrete_state_depend_are">solve_discrete_state_depend_are() (in module pyDynaMapp.utils.solver)</a>
+      </ul></li>
+      <li><a href="dynamapp.trajectory.html#dynamapp.trajectory.StepTrajectory">StepTrajectory (class in dynamapp.trajectory)</a>
 </li>
-      <li><a href="docs/source/pyDynaMapp.utils.html#pyDynaMapp.utils.solver.solveAlgebraicRiccatiEquation">solveAlgebraicRiccatiEquation() (in module pyDynaMapp.utils.solver)</a>
+      <li><a href="dynamapp.nfoursid.html#dynamapp.nfoursid.NFourSID.subspace_identification">subspace_identification() (dynamapp.nfoursid.NFourSID method)</a>
 </li>
-      <li><a href="docs/source/pyDynaMapp.trajectory.html#pyDynaMapp.trajectory.spline.SplineGenerator">SplineGenerator (class in pyDynaMapp.trajectory.spline)</a>
-</li>
-      <li><a href="docs/source/pyDynaMapp.dynamics.html#pyDynaMapp.dynamics.state_space.StateSpace.stabilize">stabilize() (pyDynaMapp.dynamics.state_space.StateSpace method)</a>
-</li>
-      <li><a href="docs/source/pyDynaMapp.dynamics.html#pyDynaMapp.dynamics.state_space.StateSpace.state_place_poles">state_place_poles() (pyDynaMapp.dynamics.state_space.StateSpace method)</a>
-</li>
-      <li><a href="docs/source/pyDynaMapp.dynamics.html#pyDynaMapp.dynamics.state_space.StateSpace">StateSpace (class in pyDynaMapp.dynamics.state_space)</a>
-</li>
-      <li><a href="docs/source/pyDynaMapp.identification.html#pyDynaMapp.identification.Kalman.RobustKalman.step">step() (pyDynaMapp.identification.Kalman.RobustKalman method)</a>
-</li>
-      <li><a href="docs/source/pyDynaMapp.viscoelastic.html#pyDynaMapp.viscoelastic.maxwell.Maxwell.stress">stress() (pyDynaMapp.viscoelastic.maxwell.Maxwell method)</a>
-</li>
-      <li><a href="docs/source/pyDynaMapp.utils.html#pyDynaMapp.utils.tools.struct2json">struct2json() (in module pyDynaMapp.utils.tools)</a>
+      <li><a href="dynamapp.nfoursid.html#dynamapp.nfoursid.NFourSID.system_identification">system_identification() (dynamapp.nfoursid.NFourSID method)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -915,17 +564,23 @@
 <h2 id="T">T</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="docs/source/pyDynaMapp.trajectory.html#pyDynaMapp.trajectory.trajectory.TrajectoryGenerator">TrajectoryGenerator (class in pyDynaMapp.trajectory.trajectory)</a>
+      <li><a href="dynamapp.kalman.html#dynamapp.kalman.Kalman.to_dataframe">to_dataframe() (dynamapp.kalman.Kalman method)</a>
+
+      <ul>
+        <li><a href="dynamapp.state_space.html#dynamapp.state_space.StateSpace.to_dataframe">(dynamapp.state_space.StateSpace method)</a>
 </li>
-      <li><a href="docs/source/pyDynaMapp.identification.html#pyDynaMapp.identification.CVA.CVA.transform">transform() (pyDynaMapp.identification.CVA.CVA method)</a>
+      </ul></li>
+      <li><a href="dynamapp.trajectory.html#dynamapp.trajectory.Trajectory">Trajectory (class in dynamapp.trajectory)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="docs/source/pyDynaMapp.trajectory.html#pyDynaMapp.trajectory.trapezoidal.TrapezoidalGenerator">TrapezoidalGenerator (class in pyDynaMapp.trajectory.trapezoidal)</a>
+      <li><a href="dynamapp.reductions.html#dynamapp.reductions.LDA.transform">transform() (dynamapp.reductions.LDA method)</a>
+
+      <ul>
+        <li><a href="dynamapp.reductions.html#dynamapp.reductions.PCA.transform">(dynamapp.reductions.PCA method)</a>
 </li>
-      <li><a href="docs/source/pyDynaMapp.trajectory.html#pyDynaMapp.trajectory.trapezoidal.TrapezoidalGenerator.TrapezoidalGenerator">TrapezoidalGenerator() (pyDynaMapp.trajectory.trapezoidal.TrapezoidalGenerator method)</a>
-</li>
-      <li><a href="docs/source/pyDynaMapp.trajectory.html#pyDynaMapp.trajectory.trapezoidal.TrapezoidalGenerator.trapTraj_PTP">trapTraj_PTP() (pyDynaMapp.trajectory.trapezoidal.TrapezoidalGenerator method)</a>
+      </ul></li>
+      <li><a href="dynamapp.trajectory.html#dynamapp.trajectory.TrapezoidalTrajectory">TrapezoidalTrajectory (class in dynamapp.trajectory)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -933,27 +588,7 @@
 <h2 id="U">U</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="docs/source/pyDynaMapp.identification.html#pyDynaMapp.identification.Kalman.Kalman.update">update() (pyDynaMapp.identification.Kalman.Kalman method)</a>
-
-      <ul>
-        <li><a href="docs/source/pyDynaMapp.identification.html#pyDynaMapp.identification.Kalman.RobustKalman.update">(pyDynaMapp.identification.Kalman.RobustKalman method)</a>
-</li>
-      </ul></li>
-      <li><a href="docs/source/pyDynaMapp.dynamics.html#pyDynaMapp.dynamics.robot.Robot.updateActuatorParams">updateActuatorParams() (pyDynaMapp.dynamics.robot.Robot method)</a>
-</li>
-      <li><a href="docs/source/pyDynaMapp.dynamics.html#pyDynaMapp.dynamics.robot.Robot.updateExternalForces">updateExternalForces() (pyDynaMapp.dynamics.robot.Robot method)</a>
-</li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="docs/source/pyDynaMapp.dynamics.html#pyDynaMapp.dynamics.robot.Robot.updateFrictionParams">updateFrictionParams() (pyDynaMapp.dynamics.robot.Robot method)</a>
-</li>
-      <li><a href="docs/source/pyDynaMapp.dynamics.html#pyDynaMapp.dynamics.robot.Robot.updateInertiaParams">updateInertiaParams() (pyDynaMapp.dynamics.robot.Robot method)</a>
-</li>
-      <li><a href="docs/source/pyDynaMapp.utils.html#pyDynaMapp.utils.robot_data.RobotData.updateSamplingRate">updateSamplingRate() (pyDynaMapp.utils.robot_data.RobotData method)</a>
-</li>
-      <li><a href="docs/source/pyDynaMapp.dynamics.html#pyDynaMapp.dynamics.state_space.StateSpace.updateStateVector">updateStateVector() (pyDynaMapp.dynamics.state_space.StateSpace method)</a>
-</li>
-      <li><a href="docs/source/pyDynaMapp.dynamics.html#pyDynaMapp.dynamics.robot.Robot.updateStiffnessParams">updateStiffnessParams() (pyDynaMapp.dynamics.robot.Robot method)</a>
+      <li><a href="dynamapp.math_utils.html#dynamapp.math_utils.unvectorize">unvectorize() (in module dynamapp.math_utils)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -961,67 +596,11 @@
 <h2 id="V">V</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="docs/source/pyDynaMapp.utils.html#pyDynaMapp.utils.robot_data.RobotData.visualizeAcceleration">visualizeAcceleration() (pyDynaMapp.utils.robot_data.RobotData method)</a>
-</li>
-      <li><a href="docs/source/pyDynaMapp.utils.html#pyDynaMapp.utils.robot_data.RobotData.visualizeCorrelation">visualizeCorrelation() (pyDynaMapp.utils.robot_data.RobotData method)</a>
-</li>
-      <li><a href="docs/source/pyDynaMapp.identification.html#pyDynaMapp.identification.IDIM.IDIMNLS.visualizeCostFunction">visualizeCostFunction() (pyDynaMapp.identification.IDIM.IDIMNLS method)</a>
-</li>
-      <li><a href="docs/source/pyDynaMapp.utils.html#pyDynaMapp.utils.robot_data.RobotData.visualizeCurrent">visualizeCurrent() (pyDynaMapp.utils.robot_data.RobotData method)</a>
-</li>
-      <li><a href="docs/source/pyDynaMapp.identification.html#pyDynaMapp.identification.IDIM.IDIMNLS.visualizeError">visualizeError() (pyDynaMapp.identification.IDIM.IDIMNLS method)</a>
-</li>
-      <li><a href="docs/source/pyDynaMapp.identification.html#pyDynaMapp.identification.Kalman.Kalman.visualizeEstimates">visualizeEstimates() (pyDynaMapp.identification.Kalman.Kalman method)</a>
-</li>
-      <li><a href="docs/source/pyDynaMapp.utils.html#pyDynaMapp.utils.robot_data.RobotData.visualizePosition">visualizePosition() (pyDynaMapp.utils.robot_data.RobotData method)</a>
-</li>
-      <li><a href="docs/source/pyDynaMapp.identification.html#pyDynaMapp.identification.IDIM.IDIMNLS.visualizeRelativeError">visualizeRelativeError() (pyDynaMapp.identification.IDIM.IDIMNLS method)</a>
-</li>
-      <li><a href="docs/source/pyDynaMapp.identification.html#pyDynaMapp.identification.IDIM.IDIMNLS.visualizeResults">visualizeResults() (pyDynaMapp.identification.IDIM.IDIMNLS method)</a>
+      <li><a href="dynamapp.math_utils.html#dynamapp.math_utils.validate_matrix_shape">validate_matrix_shape() (in module dynamapp.math_utils)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="docs/source/pyDynaMapp.dynamics.html#pyDynaMapp.dynamics.state_space.StateSpace.visualizeRootLocus">visualizeRootLocus() (pyDynaMapp.dynamics.state_space.StateSpace method)</a>
-</li>
-      <li><a href="docs/source/pyDynaMapp.dynamics.html#pyDynaMapp.dynamics.state_space.StateSpace.visualizeStatePoles">visualizeStatePoles() (pyDynaMapp.dynamics.state_space.StateSpace method)</a>
-</li>
-      <li><a href="docs/source/pyDynaMapp.utils.html#pyDynaMapp.utils.robot_data.RobotData.visualizeTorque">visualizeTorque() (pyDynaMapp.utils.robot_data.RobotData method)</a>
-</li>
-      <li><a href="docs/source/pyDynaMapp.trajectory.html#pyDynaMapp.trajectory.fourier.FourierGenerator.visualizeTrajectory">visualizeTrajectory() (pyDynaMapp.trajectory.fourier.FourierGenerator method)</a>
-
-      <ul>
-        <li><a href="docs/source/pyDynaMapp.trajectory.html#pyDynaMapp.trajectory.spline.SplineGenerator.visualizeTrajectory">(pyDynaMapp.trajectory.spline.SplineGenerator method)</a>
-</li>
-        <li><a href="docs/source/pyDynaMapp.trajectory.html#pyDynaMapp.trajectory.trapezoidal.TrapezoidalGenerator.visualizeTrajectory">(pyDynaMapp.trajectory.trapezoidal.TrapezoidalGenerator method)</a>
-</li>
-      </ul></li>
-      <li><a href="docs/source/pyDynaMapp.trajectory.html#pyDynaMapp.trajectory.fourier.FourierGenerator.visualizeTrajectoryIdentifiability">visualizeTrajectoryIdentifiability() (pyDynaMapp.trajectory.fourier.FourierGenerator method)</a>
-</li>
-      <li><a href="docs/source/pyDynaMapp.utils.html#pyDynaMapp.utils.robot_data.RobotData.visualizeVelocity">visualizeVelocity() (pyDynaMapp.utils.robot_data.RobotData method)</a>
-</li>
-      <li><a href="docs/source/pyDynaMapp.identification.html#pyDynaMapp.identification.IDIM.IDIM.vizulizeOuput">vizulizeOuput() (pyDynaMapp.identification.IDIM.IDIM method)</a>
-</li>
-  </ul></td>
-</tr></table>
-
-<h2 id="W">W</h2>
-<table style="width: 100%" class="indextable genindextable"><tr>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="docs/source/pyDynaMapp.utils.html#pyDynaMapp.utils.tools.wrap2deg">wrap2deg() (in module pyDynaMapp.utils.tools)</a>
-</li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="docs/source/pyDynaMapp.utils.html#pyDynaMapp.utils.tools.wrapArray">wrapArray() (in module pyDynaMapp.utils.tools)</a>
-</li>
-      <li><a href="docs/source/pyDynaMapp.utils.html#pyDynaMapp.utils.tools.wrapXpi">wrapXpi() (in module pyDynaMapp.utils.tools)</a>
-</li>
-  </ul></td>
-</tr></table>
-
-<h2 id="Y">Y</h2>
-<table style="width: 100%" class="indextable genindextable"><tr>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="docs/source/pyDynaMapp.utils.html#pyDynaMapp.utils.tools.yaml2dict">yaml2dict() (in module pyDynaMapp.utils.tools)</a>
+      <li><a href="dynamapp.math_utils.html#dynamapp.math_utils.vectorize">vectorize() (in module dynamapp.math_utils)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -1035,7 +614,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2024, Wissem CHIHA.</p>
+    <p>&#169; Copyright 2025, Wissem CHIHA.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

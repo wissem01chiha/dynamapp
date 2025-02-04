@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="python" data-content_root="../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>dynamapp.kalman &mdash; DynaMapp 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=40be6288"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            DynaMapp
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../README.html">DynaMapp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../TUTORIAL.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../INSTALL.html">Installation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../REFERENCES.html">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CHANGELOG.html">Changelog</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Packages documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../dynamapp.html">dynamapp</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../CONTRIBUTING.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../TODO.html">Todo list</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">DynaMapp</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">dynamapp.kalman</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for dynamapp.kalman</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">jax.numpy</span> <span class="k">as</span> <span class="nn">jnp</span>
+
+<span class="kn">from</span> <span class="nn">.state_space</span> <span class="kn">import</span> <span class="n">StateSpace</span>
+<span class="kn">from</span> <span class="nn">.math_utils</span>  <span class="kn">import</span> <span class="n">validate_matrix_shape</span>
+
+<div class="viewcode-block" id="Kalman">
+<a class="viewcode-back" href="../../dynamapp.kalman.html#dynamapp.kalman.Kalman">[docs]</a>
+<span class="k">class</span> <span class="nc">Kalman</span><span class="p">:</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Implementation [1] of a Kalman filter for a state-space model ``state_space``:</span>
+
+<span class="sd">    .. math::</span>
+<span class="sd">        \begin{cases}</span>
+<span class="sd">            x_{k+1} &amp;= A x_k + B u_k + w_k \\</span>
+<span class="sd">            y_k &amp;= C x_k + D u_k + v_k</span>
+<span class="sd">        \end{cases}</span>
+
+<span class="sd">    The matrices :math:`(A, B, C, D)` are taken from the state-space model ``state_space``.</span>
+<span class="sd">    The measurement-noise :math:`v_k` and process-noise :math:`w_k` have a covariance matrix</span>
+<span class="sd">    ``noise_covariance`` defined as</span>
+
+<span class="sd">    .. math::</span>
+<span class="sd">        \texttt{noise\_covariance} := \mathbb{E} \bigg (</span>
+<span class="sd">        \begin{bmatrix}</span>
+<span class="sd">            v \\ w</span>
+<span class="sd">        \end{bmatrix}</span>
+<span class="sd">        \begin{bmatrix}</span>
+<span class="sd">            v \\ w</span>
+<span class="sd">        \end{bmatrix}^\mathrm{T}</span>
+<span class="sd">        \bigg )</span>
+
+<span class="sd">    [1] Verhaegen, Michel, and Vincent Verdult. *Filtering and system identification: a least squares approach.*</span>
+<span class="sd">    Cambridge university press, 2007.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">output_label</span> <span class="o">=</span> <span class="s1">&#39;output&#39;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Label given to an output column in ``self.to_dataframe``. &quot;&quot;&quot;</span>
+    <span class="n">standard_deviation_label</span> <span class="o">=</span> <span class="s1">&#39;standard deviation&#39;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Label given to a standard deviation column in ``self.to_dataframe``. &quot;&quot;&quot;</span>
+    <span class="n">actual_label</span> <span class="o">=</span> <span class="s1">&#39;actual&#39;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Label given to a column in ``self.to_dataframe``, indicating measured values. &quot;&quot;&quot;</span>
+    <span class="n">filtered_label</span> <span class="o">=</span> <span class="s1">&#39;filtered&#39;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Label given to a column in ``self.to_dataframe``, indicating the filtered state of the Kalman filter. &quot;&quot;&quot;</span>
+    <span class="n">next_predicted_label</span> <span class="o">=</span> <span class="s1">&#39;next predicted (no input)&#39;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Label given to a column in ``self.to_dataframe``, indicating the predicted state of the Kalman filter under the</span>
+<span class="sd">    absence of further inputs.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">next_predicted_corrected_label</span> <span class="o">=</span> <span class="s1">&#39;next predicted (input corrected)&#39;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Label given to a column in ``self.to_dataframe``, indicating the predicted state of the Kalman filter corrected</span>
+<span class="sd">    by previous inputs. The inputs to the state-space model are known, but not at the time that the prediction was</span>
+<span class="sd">    made. In order to make a fair comparison for prediction performance, the direct effect of the input on the output</span>
+<span class="sd">    by the matrix :math:`D` is removed in this column.</span>
+<span class="sd">    </span>
+<span class="sd">    The latest prediction will have ``np.nan`` in this column, since the input is not yet known.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">,</span>
+            <span class="n">state_space</span><span class="p">:</span> <span class="n">StateSpace</span><span class="p">,</span>
+            <span class="n">noise_covariance</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span>
+    <span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">state_space</span> <span class="o">=</span> <span class="n">state_space</span>
+
+        <span class="n">validate_matrix_shape</span><span class="p">(</span>
+            <span class="n">noise_covariance</span><span class="p">,</span>
+            <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">state_space</span><span class="o">.</span><span class="n">y_dim</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">state_space</span><span class="o">.</span><span class="n">x_dim</span><span class="p">,</span>
+             <span class="bp">self</span><span class="o">.</span><span class="n">state_space</span><span class="o">.</span><span class="n">y_dim</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">state_space</span><span class="o">.</span><span class="n">x_dim</span><span class="p">),</span>
+            <span class="s1">&#39;noise_covariance&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">r</span> <span class="o">=</span> <span class="n">noise_covariance</span><span class="p">[:</span><span class="bp">self</span><span class="o">.</span><span class="n">state_space</span><span class="o">.</span><span class="n">y_dim</span><span class="p">,</span> <span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">state_space</span><span class="o">.</span><span class="n">y_dim</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">s</span> <span class="o">=</span> <span class="n">noise_covariance</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">state_space</span><span class="o">.</span><span class="n">y_dim</span><span class="p">:,</span> <span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">state_space</span><span class="o">.</span><span class="n">y_dim</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">q</span> <span class="o">=</span> <span class="n">noise_covariance</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">state_space</span><span class="o">.</span><span class="n">y_dim</span><span class="p">:,</span> <span class="bp">self</span><span class="o">.</span><span class="n">state_space</span><span class="o">.</span><span class="n">y_dim</span><span class="p">:]</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">x_filtereds</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">x_predicteds</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">p_filtereds</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">p_predicteds</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">us</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ys</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y_filtereds</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y_predicteds</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">kalman_gains</span> <span class="o">=</span> <span class="p">[]</span>
+
+<div class="viewcode-block" id="Kalman.step">
+<a class="viewcode-back" href="../../dynamapp.kalman.html#dynamapp.kalman.Kalman.step">[docs]</a>
+    <span class="k">def</span> <span class="nf">step</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">,</span>
+            <span class="n">y</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">],</span>
+            <span class="n">u</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Given an observed input ``u`` and output ``y``, update the filtered and predicted states of the Kalman filter.</span>
+<span class="sd">        Follows the implementation of the conventional Kalman filter in [1] on page 140.</span>
+
+<span class="sd">        The output ``y`` can be missing by setting ``y=None``.</span>
+<span class="sd">        In that case, the Kalman filter will obtain the next internal state by stepping the state space model.</span>
+
+<span class="sd">        [1] Verhaegen, Michel, and Vincent Verdult. *Filtering and system identification: a least squares approach.*</span>
+<span class="sd">        Cambridge university press, 2007.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">y</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">validate_matrix_shape</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">state_space</span><span class="o">.</span><span class="n">y_dim</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="s1">&#39;y&#39;</span><span class="p">)</span>
+        <span class="n">validate_matrix_shape</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">state_space</span><span class="o">.</span><span class="n">u_dim</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="s1">&#39;u&#39;</span><span class="p">)</span>
+
+        <span class="n">x_pred</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">x_predicteds</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">x_predicteds</span> <span class="k">else</span> <span class="n">jnp</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">state_space</span><span class="o">.</span><span class="n">x_dim</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+        <span class="n">p_pred</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">p_predicteds</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">p_predicteds</span> <span class="k">else</span> <span class="n">jnp</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">state_space</span><span class="o">.</span><span class="n">x_dim</span><span class="p">)</span>
+
+        <span class="n">k_filtered</span> <span class="o">=</span> <span class="n">p_pred</span> <span class="o">@</span> <span class="bp">self</span><span class="o">.</span><span class="n">state_space</span><span class="o">.</span><span class="n">c</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">jnp</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">pinv</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">r</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">state_space</span><span class="o">.</span><span class="n">c</span> <span class="o">@</span> <span class="n">p_pred</span> <span class="o">@</span> <span class="bp">self</span><span class="o">.</span><span class="n">state_space</span><span class="o">.</span><span class="n">c</span><span class="o">.</span><span class="n">T</span>
+        <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">p_filtereds</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+            <span class="n">p_pred</span> <span class="o">-</span> <span class="n">k_filtered</span> <span class="o">@</span> <span class="bp">self</span><span class="o">.</span><span class="n">state_space</span><span class="o">.</span><span class="n">c</span> <span class="o">@</span> <span class="n">p_pred</span>
+        <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">x_filtereds</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+            <span class="n">x_pred</span> <span class="o">+</span> <span class="n">k_filtered</span> <span class="o">@</span> <span class="p">(</span><span class="n">y</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">state_space</span><span class="o">.</span><span class="n">d</span> <span class="o">@</span> <span class="n">u</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">state_space</span><span class="o">.</span><span class="n">c</span> <span class="o">@</span> <span class="n">x_pred</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">y</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">x_pred</span>
+        <span class="p">)</span>
+
+        <span class="n">k_pred</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">s</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">state_space</span><span class="o">.</span><span class="n">a</span> <span class="o">@</span> <span class="n">p_pred</span> <span class="o">@</span> <span class="bp">self</span><span class="o">.</span><span class="n">state_space</span><span class="o">.</span><span class="n">c</span><span class="o">.</span><span class="n">T</span><span class="p">)</span> <span class="o">@</span> <span class="n">jnp</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">pinv</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">r</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">state_space</span><span class="o">.</span><span class="n">c</span> <span class="o">@</span> <span class="n">p_pred</span> <span class="o">@</span> <span class="bp">self</span><span class="o">.</span><span class="n">state_space</span><span class="o">.</span><span class="n">c</span><span class="o">.</span><span class="n">T</span>
+        <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">p_predicteds</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">state_space</span><span class="o">.</span><span class="n">a</span> <span class="o">@</span> <span class="n">p_pred</span> <span class="o">@</span> <span class="bp">self</span><span class="o">.</span><span class="n">state_space</span><span class="o">.</span><span class="n">a</span><span class="o">.</span><span class="n">T</span>
+            <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">q</span>
+            <span class="o">-</span> <span class="n">k_pred</span> <span class="o">@</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">s</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">state_space</span><span class="o">.</span><span class="n">a</span> <span class="o">@</span> <span class="n">p_pred</span> <span class="o">@</span> <span class="bp">self</span><span class="o">.</span><span class="n">state_space</span><span class="o">.</span><span class="n">c</span><span class="o">.</span><span class="n">T</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+        <span class="p">)</span>
+
+        <span class="n">x_predicted</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">state_space</span><span class="o">.</span><span class="n">a</span> <span class="o">@</span> <span class="n">x_pred</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">state_space</span><span class="o">.</span><span class="n">b</span> <span class="o">@</span> <span class="n">u</span>
+        <span class="k">if</span> <span class="n">y</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">x_predicted</span> <span class="o">+=</span> <span class="n">k_pred</span> <span class="o">@</span> <span class="p">(</span><span class="n">y</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">state_space</span><span class="o">.</span><span class="n">d</span> <span class="o">@</span> <span class="n">u</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">state_space</span><span class="o">.</span><span class="n">c</span> <span class="o">@</span> <span class="n">x_pred</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">x_predicteds</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+            <span class="n">x_predicted</span>
+        <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">us</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ys</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">y</span> <span class="k">if</span> <span class="n">y</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">jnp</span><span class="o">.</span><span class="n">full</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">state_space</span><span class="o">.</span><span class="n">y_dim</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">jnp</span><span class="o">.</span><span class="n">nan</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y_filtereds</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">state_space</span><span class="o">.</span><span class="n">output</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x_filtereds</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">us</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y_predicteds</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">state_space</span><span class="o">.</span><span class="n">output</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x_predicteds</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">kalman_gains</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">k_pred</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">y_filtereds</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">y_predicteds</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span></div>
+
+
+<div class="viewcode-block" id="Kalman.extrapolate">
+<a class="viewcode-back" href="../../dynamapp.kalman.html#dynamapp.kalman.Kalman.extrapolate">[docs]</a>
+    <span class="k">def</span> <span class="nf">extrapolate</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">,</span>
+            <span class="n">timesteps</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Make a ``timesteps`` number of steps ahead prediction about the output of the state-space model</span>
+<span class="sd">        ``self.state_space`` given no further inputs.</span>
+<span class="sd">        The result is a ``pd.DataFrame`` where the columns are ``self.state_space.y_column_names``:</span>
+<span class="sd">        the output columns of the state-space model ``self.state_space``.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">x_predicteds</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Prediction is only possible once Kalman estimation has been performed.&#39;</span><span class="p">)</span>
+
+        <span class="n">state_space</span> <span class="o">=</span> <span class="n">StateSpace</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">state_space</span><span class="o">.</span><span class="n">a</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">state_space</span><span class="o">.</span><span class="n">b</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">state_space</span><span class="o">.</span><span class="n">c</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">state_space</span><span class="o">.</span><span class="n">d</span><span class="p">,</span>
+            <span class="n">x_init</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">x_predicteds</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span>
+            <span class="n">y_column_names</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">state_space</span><span class="o">.</span><span class="n">y_column_names</span><span class="p">,</span>
+            <span class="n">u_column_names</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">state_space</span><span class="o">.</span><span class="n">u_column_names</span>
+        <span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">timesteps</span><span class="p">):</span>
+            <span class="n">state_space</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+
+        <span class="k">return</span> <span class="n">state_space</span><span class="o">.</span><span class="n">to_dataframe</span><span class="p">()[</span><span class="n">state_space</span><span class="o">.</span><span class="n">y_column_names</span><span class="p">]</span></div>
+
+
+    <span class="k">def</span> <span class="nf">_measurement_and_state_standard_deviation</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">,</span>
+            <span class="n">state_covariance_matrices</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Calculates the expected standard deviations on the output, assuming independence (!) in the noise of the state</span>
+<span class="sd">        estimate and the process noise.</span>
+<span class="sd">        Returns a list of row-vectors containing the standard deviations for the outputs.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">covars_process_y</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">state_space</span><span class="o">.</span><span class="n">c</span> <span class="o">@</span> <span class="n">p</span> <span class="o">@</span> <span class="bp">self</span><span class="o">.</span><span class="n">state_space</span><span class="o">.</span><span class="n">c</span><span class="o">.</span><span class="n">T</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">state_covariance_matrices</span>
+        <span class="p">]</span>
+
+        <span class="n">var_process_ys</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="n">jnp</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span>
+                <span class="n">jnp</span><span class="o">.</span><span class="n">diagonal</span><span class="p">(</span><span class="n">p</span><span class="p">),</span> <span class="mi">0</span>
+            <span class="p">)</span>
+            <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">covars_process_y</span>
+        <span class="p">]</span>
+        <span class="n">var_measurement_y</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="n">jnp</span><span class="o">.</span><span class="n">diagonal</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">r</span><span class="p">),</span> <span class="mi">0</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="p">[</span>
+            <span class="n">jnp</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span>
+                <span class="n">var_process_y</span> <span class="o">+</span> <span class="n">var_measurement_y</span>
+            <span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span>
+                <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">state_space</span><span class="o">.</span><span class="n">y_dim</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="p">)</span>
+            <span class="k">for</span> <span class="n">var_process_y</span> <span class="ow">in</span> <span class="n">var_process_ys</span>
+        <span class="p">]</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_list_of_states_to_array</span><span class="p">(</span>
+            <span class="n">list_of_states</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">jnp</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">list_of_states</span><span class="p">)</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Kalman.to_dataframe">
+<a class="viewcode-back" href="../../dynamapp.kalman.html#dynamapp.kalman.Kalman.to_dataframe">[docs]</a>
+    <span class="k">def</span> <span class="nf">to_dataframe</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns the output of the Kalman filter as a ``pd.DataFrame``. The returned value contains information about</span>
+<span class="sd">        filtered and predicted states of the Kalman filter at different timesteps.</span>
+<span class="sd">        The expected standard deviation of the output is given, assuming independence (!) of the state estimation error</span>
+<span class="sd">        and measurement noise.</span>
+
+<span class="sd">        The rows of the returned dataframe correspond to timesteps.</span>
+<span class="sd">        The columns of the returned dataframe are a 3-dimensional multi-index with the following levels:</span>
+
+<span class="sd">        1. The output name, in the list ``self.state_space.y_column_names``.</span>
+<span class="sd">        2. An indication of whether the value is</span>
+<span class="sd">            - a value that was actually measured, these values were given to `self.step` as the `y` parameter,</span>
+<span class="sd">            - a filtered state,</span>
+<span class="sd">            - a predicted state given no further input or</span>
+<span class="sd">            - a predicted state where the effect of the next input has been corrected for.</span>
+<span class="sd">              This column is useful for comparing prediction performance.</span>
+<span class="sd">        3. Whether the column is a value or the corresponding expected standard deviation.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">input_corrected_predictions</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="n">output</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">state_space</span><span class="o">.</span><span class="n">d</span> <span class="o">@</span> <span class="n">input_state</span>
+            <span class="k">for</span> <span class="n">input_state</span><span class="p">,</span> <span class="n">output</span>
+            <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">us</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="bp">self</span><span class="o">.</span><span class="n">y_predicteds</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+        <span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="n">jnp</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">state_space</span><span class="o">.</span><span class="n">y_dim</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span> <span class="o">*</span> <span class="n">jnp</span><span class="o">.</span><span class="n">nan</span><span class="p">]</span>
+
+        <span class="n">output_frames</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+                <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">actual_label</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_label</span><span class="p">):</span> <span class="n">outputs</span><span class="p">,</span>
+                <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">filtered_label</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_label</span><span class="p">):</span> <span class="n">filtereds</span><span class="p">,</span>
+                <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">filtered_label</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">standard_deviation_label</span><span class="p">):</span> <span class="n">filtered_stds</span><span class="p">,</span>
+                <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">next_predicted_label</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_label</span><span class="p">):</span> <span class="n">predicteds</span><span class="p">,</span>
+                <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">next_predicted_label</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">standard_deviation_label</span><span class="p">):</span> <span class="n">predicted_stds</span><span class="p">,</span>
+                <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">next_predicted_corrected_label</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_label</span><span class="p">):</span> <span class="n">input_corrected_prediction</span><span class="p">,</span>
+                <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">next_predicted_corrected_label</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">standard_deviation_label</span><span class="p">):</span> <span class="n">predicted_stds</span>
+            <span class="p">})</span><span class="o">.</span><span class="n">applymap</span><span class="p">(</span><span class="k">lambda</span> <span class="n">array</span><span class="p">:</span> <span class="n">array</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+            <span class="k">for</span> <span class="p">(</span>
+                <span class="n">outputs</span><span class="p">,</span>
+                <span class="n">filtereds</span><span class="p">,</span>
+                <span class="n">predicteds</span><span class="p">,</span>
+                <span class="n">filtered_stds</span><span class="p">,</span>
+                <span class="n">predicted_stds</span><span class="p">,</span>
+                <span class="n">input_corrected_prediction</span>
+            <span class="p">)</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span>
+                <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">ys</span><span class="p">),</span>
+                <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">y_filtereds</span><span class="p">),</span>
+                <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">y_predicteds</span><span class="p">),</span>
+                <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">_measurement_and_state_standard_deviation</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">p_filtereds</span><span class="p">)),</span>
+                <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">_measurement_and_state_standard_deviation</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">p_predicteds</span><span class="p">)),</span>
+                <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">input_corrected_predictions</span><span class="p">)</span>
+            <span class="p">)</span>
+        <span class="p">]</span>
+        <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">output_frames</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">keys</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">state_space</span><span class="o">.</span><span class="n">y_column_names</span><span class="p">)</span></div>
+</div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Wissem CHIHA.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

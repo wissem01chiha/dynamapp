@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="python" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>math_utils &mdash; DynaMapp 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=40be6288"></script>
+        <script src="../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            DynaMapp
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../README.html">DynaMapp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../TUTORIAL.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../INSTALL.html">Installation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../REFERENCES.html">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CHANGELOG.html">Changelog</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Packages documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../dynamapp.html">dynamapp</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../CONTRIBUTING.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../TODO.html">Todo list</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">DynaMapp</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Module code</a></li>
+      <li class="breadcrumb-item active">math_utils</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for math_utils</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">logging</span> 
+<span class="kn">import</span> <span class="nn">jax.numpy</span> <span class="k">as</span> <span class="nn">jnp</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">namedtuple</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Tuple</span>
+
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Eigenvalue decomposition of a matrix ``matrix`` such that ``left_orthogonal @ eigenvalues @ right_orthogonal``</span>
+<span class="sd">equals ``matrix``.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="n">Decomposition</span> <span class="o">=</span> <span class="n">namedtuple</span><span class="p">(</span><span class="s1">&#39;Decomposition&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;left_orthogonal&#39;</span><span class="p">,</span> <span class="s1">&#39;eigenvalues&#39;</span><span class="p">,</span> <span class="s1">&#39;right_orthogonal&#39;</span><span class="p">])</span>
+
+<div class="viewcode-block" id="condition_number">
+<a class="viewcode-back" href="../dynamapp.math_utils.html#math_utils.condition_number">[docs]</a>
+<span class="k">def</span> <span class="nf">condition_number</span><span class="p">(</span><span class="n">M</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mf">1e-5</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Computes the condition number of a matrix with a check for SVD convergence.</span>
+<span class="sd">    The condition number of a matrix is given by the equation:</span>
+<span class="sd">    </span>
+<span class="sd">    .. math::</span>
+<span class="sd">        \kappa = \sigma_{max} / \sigma_{min}</span>
+<span class="sd">    </span>
+<span class="sd">    - :math:`\sigma_{max}` is the maximum singular value.</span>
+<span class="sd">    - :math:`\sigma_{min}` is the minimum singular value.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        M (np.ndarray): Input matrix.</span>
+<span class="sd">        threshold (float): Threshold for the condition number.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">cond_number</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">cond</span><span class="p">(</span><span class="n">M</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">cond_number</span> <span class="o">&lt;</span> <span class="n">threshold</span>
+    <span class="k">except</span> <span class="n">jnp</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">LinAlgError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Linear Algebra error: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">False</span></div>
+
+
+<div class="viewcode-block" id="validate_matrix_shape">
+<a class="viewcode-back" href="../dynamapp.math_utils.html#math_utils.validate_matrix_shape">[docs]</a>
+<span class="k">def</span> <span class="nf">validate_matrix_shape</span><span class="p">(</span>
+        <span class="n">matrix</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+        <span class="n">shape</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span>
+        <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Raises if ``matrix`` does not have shape ``shape``. The error message will contain ``name``.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">matrix</span><span class="o">.</span><span class="n">shape</span> <span class="o">!=</span> <span class="n">shape</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Dimensions of `</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1">` </span><span class="si">{</span><span class="n">matrix</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s1"> are inconsistent. Expected </span><span class="si">{</span><span class="n">shape</span><span class="si">}</span><span class="s1">.&#39;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="eigenvalue_decomposition">
+<a class="viewcode-back" href="../dynamapp.math_utils.html#math_utils.eigenvalue_decomposition">[docs]</a>
+<span class="k">def</span> <span class="nf">eigenvalue_decomposition</span><span class="p">(</span>
+        <span class="n">matrix</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Decomposition</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculate eigenvalue decomposition of ``matrix`` as a ``Decomposition``.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">u</span><span class="p">,</span> <span class="n">eigenvalues</span><span class="p">,</span> <span class="n">vh</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">svd</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
+    <span class="n">eigenvalues_mat</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">u</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">vh</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+    <span class="n">jnp</span><span class="o">.</span><span class="n">fill_diagonal</span><span class="p">(</span><span class="n">eigenvalues_mat</span><span class="p">,</span> <span class="n">eigenvalues</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">Decomposition</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">eigenvalues_mat</span><span class="p">,</span> <span class="n">vh</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="reduce_decomposition">
+<a class="viewcode-back" href="../dynamapp.math_utils.html#math_utils.reduce_decomposition">[docs]</a>
+<span class="k">def</span> <span class="nf">reduce_decomposition</span><span class="p">(</span>
+        <span class="n">decomposition</span><span class="p">:</span> <span class="n">Decomposition</span><span class="p">,</span>
+        <span class="n">rank</span><span class="p">:</span> <span class="nb">int</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Decomposition</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Reduce an eigenvalue decomposition ``decomposition`` such that only ``rank`` number of biggest eigenvalues</span>
+<span class="sd">    remain. Returns another ``Decomposition``.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">u</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">vh</span> <span class="o">=</span> <span class="n">decomposition</span>
+    <span class="k">return</span> <span class="n">Decomposition</span><span class="p">(</span>
+        <span class="n">u</span><span class="p">[:,</span> <span class="p">:</span><span class="n">rank</span><span class="p">],</span>
+        <span class="n">s</span><span class="p">[:</span><span class="n">rank</span><span class="p">,</span> <span class="p">:</span><span class="n">rank</span><span class="p">],</span>
+        <span class="n">vh</span><span class="p">[:</span><span class="n">rank</span><span class="p">,</span> <span class="p">:]</span>
+    <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="block_hankel_matrix">
+<a class="viewcode-back" href="../dynamapp.math_utils.html#math_utils.block_hankel_matrix">[docs]</a>
+<span class="k">def</span> <span class="nf">block_hankel_matrix</span><span class="p">(</span>
+        <span class="n">matrix</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+        <span class="n">num_block_rows</span><span class="p">:</span> <span class="nb">int</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculate a block Hankel matrix based on input matrix ``matrix`` with ``num_block_rows`` block rows.</span>
+<span class="sd">    The shape of ``matrix`` is interpreted in row-order, like the structure of a ``pd.DataFrame``:</span>
+<span class="sd">    the rows are measurements and the columns are data sources.</span>
+
+<span class="sd">    The returned block Hankel matrix has a columnar structure. Every column of the returned matrix consists</span>
+<span class="sd">    of ``num_block_rows`` block rows (measurements). See the examples for details.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    Suppose that the input matrix contains 4 measurements of 2-dimensional data:</span>
+
+<span class="sd">    &gt;&gt;&gt; matrix = np.array([</span>
+<span class="sd">    &gt;&gt;&gt;     [0, 1],</span>
+<span class="sd">    &gt;&gt;&gt;     [2, 3],</span>
+<span class="sd">    &gt;&gt;&gt;     [4, 5],</span>
+<span class="sd">    &gt;&gt;&gt;     [6, 7]</span>
+<span class="sd">    &gt;&gt;&gt; ])</span>
+
+<span class="sd">    If the number of block rows is set to ``num_block_rows=2``, then the block Hankel matrix will be</span>
+
+<span class="sd">    &gt;&gt;&gt; np.array([</span>
+<span class="sd">    &gt;&gt;&gt;     [0, 2, 4],</span>
+<span class="sd">    &gt;&gt;&gt;     [1, 3, 5],</span>
+<span class="sd">    &gt;&gt;&gt;     [2, 4, 6],</span>
+<span class="sd">    &gt;&gt;&gt;     [3, 5, 7]</span>
+<span class="sd">    &gt;&gt;&gt; ])</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">hankel_rows_dim</span> <span class="o">=</span> <span class="n">num_block_rows</span> <span class="o">*</span> <span class="n">matrix</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">hankel_cols_dim</span> <span class="o">=</span> <span class="n">matrix</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">num_block_rows</span> <span class="o">+</span> <span class="mi">1</span>
+
+    <span class="n">hankel</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">hankel_rows_dim</span><span class="p">,</span> <span class="n">hankel_cols_dim</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">block_row_index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">hankel_cols_dim</span><span class="p">):</span>
+        <span class="n">flattened_block_rows</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">[</span><span class="n">block_row_index</span><span class="p">:</span><span class="n">block_row_index</span><span class="o">+</span><span class="n">num_block_rows</span><span class="p">,</span>
+                                        <span class="p">:]</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+        <span class="n">hankel</span><span class="p">[:,</span> <span class="n">block_row_index</span><span class="p">]</span> <span class="o">=</span> <span class="n">flattened_block_rows</span>
+    <span class="k">return</span> <span class="n">hankel</span></div>
+
+
+<div class="viewcode-block" id="vectorize">
+<a class="viewcode-back" href="../dynamapp.math_utils.html#math_utils.vectorize">[docs]</a>
+<span class="k">def</span> <span class="nf">vectorize</span><span class="p">(</span>
+        <span class="n">matrix</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Given a matrix ``matrix`` of shape ``(a, b)``, return a vector of shape ``(a*b, 1)`` with all columns of</span>
+<span class="sd">    ``matrix`` stacked on top of eachother.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">jnp</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">matrix</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="s1">&#39;F&#39;</span><span class="p">),</span> <span class="p">(</span><span class="n">matrix</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">matrix</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">1</span><span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="unvectorize">
+<a class="viewcode-back" href="../dynamapp.math_utils.html#math_utils.unvectorize">[docs]</a>
+<span class="k">def</span> <span class="nf">unvectorize</span><span class="p">(</span>
+        <span class="n">vector</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+        <span class="n">num_rows</span><span class="p">:</span> <span class="nb">int</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Given a vector ``vector`` of shape ``(num_rows*b, 1)``, return a matrix of shape ``(num_rows, b)`` such that</span>
+<span class="sd">    the stacked columns of the returned matrix equal ``vector``.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">vector</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">%</span> <span class="n">num_rows</span> <span class="o">!=</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">vector</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Vector shape </span><span class="si">{</span><span class="n">vector</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s1"> and `num_rows`=</span><span class="si">{</span><span class="n">num_rows</span><span class="si">}</span><span class="s1"> are incompatible&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">vector</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="n">num_rows</span><span class="p">,</span> <span class="n">vector</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">//</span> <span class="n">num_rows</span><span class="p">),</span> <span class="n">order</span><span class="o">=</span><span class="s1">&#39;F&#39;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="is_skew_symmetric">
+<a class="viewcode-back" href="../dynamapp.math_utils.html#math_utils.is_skew_symmetric">[docs]</a>
+<span class="k">def</span> <span class="nf">is_skew_symmetric</span><span class="p">(</span><span class="n">matrix</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Check if the input matrix is skew-symmetric.&quot;&quot;&quot;</span>
+    <span class="n">matrix_transpose</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
+    <span class="n">status</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">array_equal</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="o">-</span><span class="n">matrix_transpose</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">status</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Wissem CHIHA.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

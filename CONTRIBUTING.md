@@ -1,4 +1,5 @@
-# CONTRIBUTING
+Contributing
+======  
 
 Hi, the work is in progress, and any contributions to the project are welcome. See the following guidelines for areas where help is needed:
 
@@ -14,12 +15,3 @@ Hi, the work is in progress, and any contributions to the project are welcome. S
 - [ ] Fix the inertial matrix symmetry issue (add a custom verification function or similar).
 - [ ] Add more test scripts in the `/test` folder to detect software bugs.
 
----
-
-## Useful Materials
-
-For system identification, refer to the following resources:
-
-- [Verhaegen IJC 1992a](https://people.duke.edu/~hpgavin/SystemID/References/Verhaegen-IJC-1992a.pdf)
-- [Batti's paper on Subspace Identification](http://www.diag.uniroma1.it/~batti/papers_ifsd/8.pdf)
-- [DeCock Subspace ID EOLLS 2003](https://people.duke.edu/~hpgavin/SystemID/References/DeCock-SubspaceID-EOLLS-2003.pdf)

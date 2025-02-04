@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CONTRIBUTING &mdash; DynaMapp 0.1.0 documentation</title>
+  <title>Contributing &mdash; DynaMapp 1.0.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
 
@@ -15,14 +15,14 @@
   
         <script src="_static/jquery.js?v=5d32c60e"></script>
         <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="_static/documentation_options.js?v=2d80085d"></script>
+        <script src="_static/documentation_options.js?v=40be6288"></script>
         <script src="_static/doctools.js?v=9a2dae69"></script>
         <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="INSTALLATION" href="INSTALL.html" />
-    <link rel="prev" title="DynaMapp" href="README.html" /> 
+    <link rel="next" title="Todo list" href="TODO.html" />
+    <link rel="prev" title="identification module" href="dynamapp.identification.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -44,16 +44,28 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <ul class="current">
+              <p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="README.html">DynaMapp</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">CONTRIBUTING</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#useful-materials">Useful Materials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TUTORIAL.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="INSTALL.html">Installation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="REFERENCES.html">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CHANGELOG.html">Changelog</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Packages documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="dynamapp.html">dynamapp</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Development</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Contributing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#coding-style">Coding Style</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="INSTALL.html">INSTALLATION</a></li>
-<li class="toctree-l1"><a class="reference internal" href="CHANGELOG.html">CHANGELOG</a></li>
-<li class="toctree-l1"><a class="reference internal" href="docs/source/modules.html">pyDynaMapp</a></li>
-<li class="toctree-l1"><a class="reference internal" href="docs/source/todo.html">TODO List</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TODO.html">Todo list</a></li>
 </ul>
 
         </div>
@@ -70,7 +82,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">CONTRIBUTING</li>
+      <li class="breadcrumb-item active">Contributing</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/CONTRIBUTING.md.txt" rel="nofollow"> View page source</a>
       </li>
@@ -81,11 +93,11 @@
            <div itemprop="articleBody">
              
   <section class="tex2jax_ignore mathjax_ignore" id="contributing">
-<h1>CONTRIBUTING<a class="headerlink" href="#contributing" title="Link to this heading"></a></h1>
+<h1>Contributing<a class="headerlink" href="#contributing" title="Link to this heading"></a></h1>
 <p>Hi, the work is in progress, and any contributions to the project are welcome. See the following guidelines for areas where help is needed:</p>
 <ul class="simple">
 <li><p>[ ] Complete the development of the <a class="reference internal" href="#pyDynaMapp/trajectory/"><span class="xref myst">Trajectory</span></a> Engine generation.</p></li>
-<li><p>[ ] Fix the friction <a class="reference download internal" download="" href="_downloads/872580f21879ab0f2c6e8d6a609165c1/lugre.py"><span class="xref download myst">Lugre</span></a> model base class.</p></li>
+<li><p>[ ] Fix the friction <a class="reference internal" href="#pyDynaMapp/friction/../viscoelastic/lugre.py"><span class="xref myst">Lugre</span></a> model base class.</p></li>
 <li><p>[ ] Add more friction and/or rigid body contact models in the viscoelastic engine.</p></li>
 <li><p>[ ] Add exception handlers for zero division and/or NaN/Inf value assertions in friction scripts.</p></li>
 <li><p>[ ] Complete the N4SID integration method.</p></li>
@@ -96,15 +108,16 @@
 <li><p>[ ] Fix the inertial matrix symmetry issue (add a custom verification function or similar).</p></li>
 <li><p>[ ] Add more test scripts in the <code class="docutils literal notranslate"><span class="pre">/test</span></code> folder to detect software bugs.</p></li>
 </ul>
-<hr class="docutils" />
-<section id="useful-materials">
-<h2>Useful Materials<a class="headerlink" href="#useful-materials" title="Link to this heading"></a></h2>
-<p>For system identification, refer to the following resources:</p>
-<ul class="simple">
-<li><p><a class="reference external" href="https://people.duke.edu/~hpgavin/SystemID/References/Verhaegen-IJC-1992a.pdf">Verhaegen IJC 1992a</a></p></li>
-<li><p><a class="reference external" href="http://www.diag.uniroma1.it/~batti/papers_ifsd/8.pdf">Batti's paper on Subspace Identification</a></p></li>
-<li><p><a class="reference external" href="https://people.duke.edu/~hpgavin/SystemID/References/DeCock-SubspaceID-EOLLS-2003.pdf">DeCock Subspace ID EOLLS 2003</a></p></li>
-</ul>
+<p>Principal Component Analysis (PCA)
+Linear Discriminant Analysis (LDA)
+Generalized Discriminant Analysis (GDA)
+singular value decomposition (SVD)</p>
+<section id="coding-style">
+<h2>Coding Style<a class="headerlink" href="#coding-style" title="Link to this heading"></a></h2>
+<p>we use
+the project structure is inspired from
+https://github.com/pyscaffold/pyscaffold
+https://github.com/microsoft/python-package-template</p>
 </section>
 </section>
 
@@ -112,14 +125,14 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="README.html" class="btn btn-neutral float-left" title="DynaMapp" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="INSTALL.html" class="btn btn-neutral float-right" title="INSTALLATION" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="dynamapp.identification.html" class="btn btn-neutral float-left" title="identification module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="TODO.html" class="btn btn-neutral float-right" title="Todo list" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2024, Wissem CHIHA.</p>
+    <p>&#169; Copyright 2025, Wissem CHIHA.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

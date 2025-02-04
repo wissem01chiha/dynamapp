@@ -1,22 +1,22 @@
 DynaMapp 
 ======  
 
-DynaMapp is a Python software package designed for the modeling, identification, and calibration of dynamic models of serial robotic manipulators.  
-
+ 
+[![PyLint](https://github.com/wissem01chiha/dynamapp/actions/workflows/pylint.yml/badge.svg)](https://github.com/wissem01chiha/dynamapp/actions/workflows/pylint.yml)
+[![Deploy static content to Pages](https://github.com/wissem01chiha/dynamapp/actions/workflows/static.yml/badge.svg)](https://github.com/wissem01chiha/dynamapp/actions/workflows/static.yml)
 [![Version](https://anaconda.org/chiha/pydynamapp/badges/version.svg)](https://anaconda.org/chiha/pydynamapp)
 [![Release Date](https://anaconda.org/chiha/pydynamapp/badges/latest_release_date.svg)](https://anaconda.org/chiha/pydynamapp)
 [![Platforms](https://anaconda.org/chiha/pydynamapp/badges/platforms.svg)](https://anaconda.org/chiha/pydynamapp)
 [![License](https://anaconda.org/chiha/pydynamapp/badges/license.svg)](https://anaconda.org/chiha/pydynamapp)
 [![Downloads](https://anaconda.org/chiha/pydynamapp/badges/downloads.svg)](https://anaconda.org/chiha/pydynamapp)
 
-
+DynaMapp is a Python software package designed for the modeling, identification, and calibration of dynamic models of serial robotic manipulators. 
 The primary goal of this project is to offer a flexible framework for modeling and identifying serial manipulators, including the incorporation of nonlinear effects such as friction, stiffness, and backlash in robot joints. Additionally, a predictive feedback control mechanism is being developed to compensate these effects, making the framework suitable for collaborative robotics applications.
 
 The project aims to explore subspace identification methods for manipulators. Given the nonlinear nature of the problem, the state-space representation parameters are state-dependent, requiring more advanced mathematical tools to analyze such systems effectively.  
 
 Table of Contents
 ---
-
 - [DynaMapp](#dynamapp)
   - [Table of Contents](#table-of-contents)
   - [Prerequisites](#prerequisites)
@@ -213,11 +213,11 @@ Documentation
 We use [Sphinx](https://www.sphinx-doc.org/en/master/) to generate the software documentation. Assuming that Sphinx is installed, you can generate and build the documentation using the following steps:
 
 
-to generate and build the documentation:
+to generate and build the documentation, run from the root of the project: 
 
 ```shell
-sphinx-apidoc -o docs/source/ pyDynaMapp/
-sphinx-build -b html . docs/build/html
+sphinx-build -b html docs/source docs/build/html
+
 ```
 
 The official documentation is hosted on this [link](https://wissem01chiha.github.io/dynamic-identification/).
