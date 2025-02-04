@@ -59,7 +59,6 @@
 <p class="caption" role="heading"><span class="caption-text">Development</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="CONTRIBUTING.html">Contributing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="TODO.html">Todo list</a></li>
 </ul>
 
         </div>
@@ -161,8 +160,18 @@
 </li>
       <li><a href="dynamapp.generators.html#dynamapp.generators.ModelDataGenerator.compute_velocities">compute_velocities() (dynamapp.generators.ModelDataGenerator method)</a>
 </li>
-      <li><a href="dynamapp.trajectory.html#dynamapp.trajectory.Trajectory.compute_with_constraints">compute_with_constraints() (dynamapp.trajectory.Trajectory method)</a>
+      <li><a href="dynamapp.trajectory.html#dynamapp.trajectory.PeriodicTrajectory.compute_with_constraints">compute_with_constraints() (dynamapp.trajectory.PeriodicTrajectory method)</a>
+
+      <ul>
+        <li><a href="dynamapp.trajectory.html#dynamapp.trajectory.SplineTrajectory.compute_with_constraints">(dynamapp.trajectory.SplineTrajectory method)</a>
 </li>
+        <li><a href="dynamapp.trajectory.html#dynamapp.trajectory.StepTrajectory.compute_with_constraints">(dynamapp.trajectory.StepTrajectory method)</a>
+</li>
+        <li><a href="dynamapp.trajectory.html#dynamapp.trajectory.Trajectory.compute_with_constraints">(dynamapp.trajectory.Trajectory method)</a>
+</li>
+        <li><a href="dynamapp.trajectory.html#dynamapp.trajectory.TrapezoidalTrajectory.compute_with_constraints">(dynamapp.trajectory.TrapezoidalTrajectory method)</a>
+</li>
+      </ul></li>
       <li><a href="dynamapp.math_utils.html#dynamapp.math_utils.condition_number">condition_number() (in module dynamapp.math_utils)</a>
 </li>
       <li><a href="dynamapp.model.html#dynamapp.model.Model.coriolis_tensor">coriolis_tensor() (dynamapp.model.Model method)</a>
@@ -335,6 +344,8 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="dynamapp.model.html#dynamapp.model.Model.generalized_forces">generalized_forces() (dynamapp.model.Model method)</a>
 </li>
+      <li><a href="dynamapp.model.html#dynamapp.model.Model.generalized_torque">generalized_torque() (dynamapp.model.Model method)</a>
+</li>
       <li><a href="dynamapp.model.html#dynamapp.model.Model.generalized_torques">generalized_torques() (dynamapp.model.Model method)</a>
 </li>
       <li><a href="dynamapp.regressors.html#dynamapp.regressors.generalized_torques_wrt_damping">generalized_torques_wrt_damping() (in module dynamapp.regressors)</a>
@@ -345,10 +356,10 @@
 </li>
       <li><a href="dynamapp.generators.html#dynamapp.generators.ModelStateDataGenerator.generate_data">generate_data() (dynamapp.generators.ModelStateDataGenerator method)</a>
 </li>
-      <li><a href="dynamapp.generators.html#dynamapp.generators.ModelDataGenerator.generate_trajectory_data">generate_trajectory_data() (dynamapp.generators.ModelDataGenerator method)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="dynamapp.generators.html#dynamapp.generators.ModelDataGenerator.generate_trajectory_data">generate_trajectory_data() (dynamapp.generators.ModelDataGenerator method)</a>
+</li>
       <li><a href="dynamapp.model_state.html#dynamapp.model_state.ModelState.get_state_matrix_a">get_state_matrix_a() (dynamapp.model_state.ModelState method)</a>
 </li>
       <li><a href="dynamapp.trajectory.html#dynamapp.trajectory.PeriodicTrajectory.get_value">get_value() (dynamapp.trajectory.PeriodicTrajectory method)</a>
@@ -490,17 +501,9 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="dynamapp.reductions.html#dynamapp.reductions.PCA">PCA (class in dynamapp.reductions)</a>
 </li>
-      <li><a href="dynamapp.trajectory.html#dynamapp.trajectory.PeriodicTrajectory">PeriodicTrajectory (class in dynamapp.trajectory)</a>
-</li>
-      <li><a href="dynamapp.visualization.html#dynamapp.visualization.plot_eigenvalues">plot_eigenvalues() (in module dynamapp.visualization)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="dynamapp.visualization.html#dynamapp.visualization.plot_filtered">plot_filtered() (in module dynamapp.visualization)</a>
-</li>
-      <li><a href="dynamapp.visualization.html#dynamapp.visualization.plot_input_output">plot_input_output() (in module dynamapp.visualization)</a>
-</li>
-      <li><a href="dynamapp.visualization.html#dynamapp.visualization.plot_predicted">plot_predicted() (in module dynamapp.visualization)</a>
+      <li><a href="dynamapp.trajectory.html#dynamapp.trajectory.PeriodicTrajectory">PeriodicTrajectory (class in dynamapp.trajectory)</a>
 </li>
   </ul></td>
 </tr></table>

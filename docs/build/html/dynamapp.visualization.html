@@ -18,8 +18,6 @@
         <script src="_static/documentation_options.js?v=40be6288"></script>
         <script src="_static/doctools.js?v=9a2dae69"></script>
         <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-        <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -66,13 +64,7 @@
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.nfoursid.html">nfoursid module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.regressors.html">regressors module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.model.html">model module</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">visualization module</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#dynamapp.visualization.plot_filtered"><code class="docutils literal notranslate"><span class="pre">plot_filtered()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#dynamapp.visualization.plot_predicted"><code class="docutils literal notranslate"><span class="pre">plot_predicted()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#dynamapp.visualization.plot_eigenvalues"><code class="docutils literal notranslate"><span class="pre">plot_eigenvalues()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#dynamapp.visualization.plot_input_output"><code class="docutils literal notranslate"><span class="pre">plot_input_output()</span></code></a></li>
-</ul>
-</li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">visualization module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.solvers.html">solvers module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.reductions.html">reductions module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.state_space.html">state_space module</a></li>
@@ -89,7 +81,6 @@
 <p class="caption" role="heading"><span class="caption-text">Development</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="CONTRIBUTING.html">Contributing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="TODO.html">Todo list</a></li>
 </ul>
 
         </div>
@@ -119,39 +110,6 @@
              
   <section id="module-dynamapp.visualization">
 <span id="visualization-module"></span><h1>visualization module<a class="headerlink" href="#module-dynamapp.visualization" title="Link to this heading"></a></h1>
-<dl class="py function">
-<dt class="sig sig-object py" id="dynamapp.visualization.plot_filtered">
-<span class="sig-prename descclassname"><span class="pre">dynamapp.visualization.</span></span><span class="sig-name descname"><span class="pre">plot_filtered</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fig</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">matplotlib.figure.Figure</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dynamapp/visualization.html#plot_filtered"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dynamapp.visualization.plot_filtered" title="Link to this definition"></a></dt>
-<dd><p>The top graph plots the filtered output states of the Kalman filter and compares with the measured values.
-The error bars correspond to the expected standard deviations.
-The bottom graph zooms in on the errors between the filtered states and the measured values, compared with
-the expected standard deviations.</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="dynamapp.visualization.plot_predicted">
-<span class="sig-prename descclassname"><span class="pre">dynamapp.visualization.</span></span><span class="sig-name descname"><span class="pre">plot_predicted</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fig</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">matplotlib.figure.Figure</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">steps_to_extrapolate</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dynamapp/visualization.html#plot_predicted"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dynamapp.visualization.plot_predicted" title="Link to this definition"></a></dt>
-<dd><p>The top graph plots the predicted output states of the Kalman filter and compares with the measured values.
-The error bars correspond to the expected standard deviations.</p>
-<p>The stars on the top right represent the <code class="docutils literal notranslate"><span class="pre">steps_to_extrapolate</span></code>-steps ahead extrapolation under no further
-inputs. The bottom graph zooms in on the errors between the predicted states and the measured values, compared
-with the expected standard deviations.</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="dynamapp.visualization.plot_eigenvalues">
-<span class="sig-prename descclassname"><span class="pre">dynamapp.visualization.</span></span><span class="sig-name descname"><span class="pre">plot_eigenvalues</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">matplotlib.pyplot.axes</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dynamapp/visualization.html#plot_eigenvalues"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dynamapp.visualization.plot_eigenvalues" title="Link to this definition"></a></dt>
-<dd><p>Plot the eigenvalues of the <span class="math notranslate nohighlight">\(R_{32}\)</span> matrix, so that the order of the state-space model can be determined.
-Since the <span class="math notranslate nohighlight">\(R_{32}\)</span> matrix should have been calculated, this function can only be used after
-performing <code class="docutils literal notranslate"><span class="pre">self.subspace_identification</span></code>.</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="dynamapp.visualization.plot_input_output">
-<span class="sig-prename descclassname"><span class="pre">dynamapp.visualization.</span></span><span class="sig-name descname"><span class="pre">plot_input_output</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fig</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">matplotlib.figure.Figure</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dynamapp/visualization.html#plot_input_output"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dynamapp.visualization.plot_input_output" title="Link to this definition"></a></dt>
-<dd><p>Given a matplotlib figure <code class="docutils literal notranslate"><span class="pre">fig</span></code>, plot the inputs and outputs of the state-space model.</p>
-</dd></dl>
-
 </section>
 
 

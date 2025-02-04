@@ -88,7 +88,6 @@
 <p class="caption" role="heading"><span class="caption-text">Development</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="CONTRIBUTING.html">Contributing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="TODO.html">Todo list</a></li>
 </ul>
 
         </div>
@@ -145,6 +144,10 @@
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dynamapp.trajectory.</span></span><span class="sig-name descname"><span class="pre">SplineTrajectory</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ndof</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sampling</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ti</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tf</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">control_points</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dynamapp/trajectory.html#SplineTrajectory"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dynamapp.trajectory.SplineTrajectory" title="Link to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#dynamapp.trajectory.Trajectory" title="dynamapp.trajectory.Trajectory"><code class="xref py py-class docutils literal notranslate"><span class="pre">Trajectory</span></code></a></p>
 <p>Spline-based trajectory.</p>
+<div class="admonition-todo admonition" id="id1">
+<p class="admonition-title">Todo</p>
+<p>Implement the compute_with_constraints function</p>
+</div>
 <dl class="py method">
 <dt class="sig sig-object py" id="dynamapp.trajectory.SplineTrajectory.get_value">
 <span class="sig-name descname"><span class="pre">get_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dynamapp/trajectory.html#SplineTrajectory.get_value"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dynamapp.trajectory.SplineTrajectory.get_value" title="Link to this definition"></a></dt>
@@ -155,6 +158,11 @@
 <span class="sig-name descname"><span class="pre">compute_full_trajectory</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/dynamapp/trajectory.html#SplineTrajectory.compute_full_trajectory"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dynamapp.trajectory.SplineTrajectory.compute_full_trajectory" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
+<dl class="py method">
+<dt class="sig sig-object py" id="dynamapp.trajectory.SplineTrajectory.compute_with_constraints">
+<span class="sig-name descname"><span class="pre">compute_with_constraints</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qmin</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qmax</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qpmin</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qpmax</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qppmin</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qppmax</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dynamapp/trajectory.html#SplineTrajectory.compute_with_constraints"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dynamapp.trajectory.SplineTrajectory.compute_with_constraints" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
 </dd></dl>
 
 <dl class="py class">
@@ -162,6 +170,10 @@
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dynamapp.trajectory.</span></span><span class="sig-name descname"><span class="pre">TrapezoidalTrajectory</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sampling</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ti</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tf</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">q0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qf</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">acc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vel</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dynamapp/trajectory.html#TrapezoidalTrajectory"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dynamapp.trajectory.TrapezoidalTrajectory" title="Link to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#dynamapp.trajectory.Trajectory" title="dynamapp.trajectory.Trajectory"><code class="xref py py-class docutils literal notranslate"><span class="pre">Trajectory</span></code></a></p>
 <p>Trapezoidal velocity profile trajectory.</p>
+<div class="admonition-todo admonition" id="id2">
+<p class="admonition-title">Todo</p>
+<p>Implment the compute_with_constraints function</p>
+</div>
 <dl class="py method">
 <dt class="sig sig-object py" id="dynamapp.trajectory.TrapezoidalTrajectory.get_value">
 <span class="sig-name descname"><span class="pre">get_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dynamapp/trajectory.html#TrapezoidalTrajectory.get_value"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dynamapp.trajectory.TrapezoidalTrajectory.get_value" title="Link to this definition"></a></dt>
@@ -172,6 +184,11 @@
 <span class="sig-name descname"><span class="pre">compute_full_trajectory</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/dynamapp/trajectory.html#TrapezoidalTrajectory.compute_full_trajectory"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dynamapp.trajectory.TrapezoidalTrajectory.compute_full_trajectory" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
+<dl class="py method">
+<dt class="sig sig-object py" id="dynamapp.trajectory.TrapezoidalTrajectory.compute_with_constraints">
+<span class="sig-name descname"><span class="pre">compute_with_constraints</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qmin</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qmax</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qpmin</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qpmax</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qppmin</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qppmax</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dynamapp/trajectory.html#TrapezoidalTrajectory.compute_with_constraints"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dynamapp.trajectory.TrapezoidalTrajectory.compute_with_constraints" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
 </dd></dl>
 
 <dl class="py class">
@@ -179,6 +196,10 @@
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dynamapp.trajectory.</span></span><span class="sig-name descname"><span class="pre">PeriodicTrajectory</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sampling</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ti</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tf</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frequency</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Aij</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Bij</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nb_terms</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dynamapp/trajectory.html#PeriodicTrajectory"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dynamapp.trajectory.PeriodicTrajectory" title="Link to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#dynamapp.trajectory.Trajectory" title="dynamapp.trajectory.Trajectory"><code class="xref py py-class docutils literal notranslate"><span class="pre">Trajectory</span></code></a></p>
 <p>Periodic trajectory based on Fourier series.[1]</p>
+<div class="admonition-todo admonition" id="id3">
+<p class="admonition-title">Todo</p>
+<p>Implment the compute_with_constraints function</p>
+</div>
 <dl>
 <dt>Ref:</dt><dd><ul class="simple">
 <li><p>[1] Fourier-based optimal excitation trajectories for the dynamic</p></li>
@@ -196,6 +217,11 @@
 <span class="sig-name descname"><span class="pre">compute_full_trajectory</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/dynamapp/trajectory.html#PeriodicTrajectory.compute_full_trajectory"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dynamapp.trajectory.PeriodicTrajectory.compute_full_trajectory" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
+<dl class="py method">
+<dt class="sig sig-object py" id="dynamapp.trajectory.PeriodicTrajectory.compute_with_constraints">
+<span class="sig-name descname"><span class="pre">compute_with_constraints</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qmin</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qmax</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qpmin</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qpmax</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qppmin</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qppmax</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dynamapp/trajectory.html#PeriodicTrajectory.compute_with_constraints"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dynamapp.trajectory.PeriodicTrajectory.compute_with_constraints" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
 </dd></dl>
 
 <dl class="py class">
@@ -203,6 +229,10 @@
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dynamapp.trajectory.</span></span><span class="sig-name descname"><span class="pre">StepTrajectory</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ndof</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sampling</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ti</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tf</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epsilon</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">amplitude</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dynamapp/trajectory.html#StepTrajectory"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dynamapp.trajectory.StepTrajectory" title="Link to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#dynamapp.trajectory.Trajectory" title="dynamapp.trajectory.Trajectory"><code class="xref py py-class docutils literal notranslate"><span class="pre">Trajectory</span></code></a></p>
 <p>Step trajectory with fixed small duration epsilon and given amplitude.</p>
+<div class="admonition-todo admonition" id="id4">
+<p class="admonition-title">Todo</p>
+<p>Implment the compute_with_constraints function</p>
+</div>
 <dl class="py method">
 <dt class="sig sig-object py" id="dynamapp.trajectory.StepTrajectory.get_value">
 <span class="sig-name descname"><span class="pre">get_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dynamapp/trajectory.html#StepTrajectory.get_value"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dynamapp.trajectory.StepTrajectory.get_value" title="Link to this definition"></a></dt>
@@ -211,6 +241,11 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="dynamapp.trajectory.StepTrajectory.compute_full_trajectory">
 <span class="sig-name descname"><span class="pre">compute_full_trajectory</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">jax.numpy.array</span></span></span><a class="reference internal" href="_modules/dynamapp/trajectory.html#StepTrajectory.compute_full_trajectory"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dynamapp.trajectory.StepTrajectory.compute_full_trajectory" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dynamapp.trajectory.StepTrajectory.compute_with_constraints">
+<span class="sig-name descname"><span class="pre">compute_with_constraints</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qmin</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qmax</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qpmin</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qpmax</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qppmin</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qppmax</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dynamapp/trajectory.html#StepTrajectory.compute_with_constraints"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dynamapp.trajectory.StepTrajectory.compute_with_constraints" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>

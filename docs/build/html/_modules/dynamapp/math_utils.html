@@ -59,7 +59,6 @@
 <p class="caption" role="heading"><span class="caption-text">Development</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../CONTRIBUTING.html">Contributing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../TODO.html">Todo list</a></li>
 </ul>
 
         </div>
@@ -149,7 +148,7 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">u</span><span class="p">,</span> <span class="n">eigenvalues</span><span class="p">,</span> <span class="n">vh</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">svd</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
     <span class="n">eigenvalues_mat</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">u</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">vh</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
-    <span class="n">jnp</span><span class="o">.</span><span class="n">fill_diagonal</span><span class="p">(</span><span class="n">eigenvalues_mat</span><span class="p">,</span> <span class="n">eigenvalues</span><span class="p">)</span>
+    <span class="n">eigenvalues_mat</span> <span class="o">=</span> <span class="n">eigenvalues_mat</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">jnp</span><span class="o">.</span><span class="n">diag_indices</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])]</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">eigenvalues</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">Decomposition</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">eigenvalues_mat</span><span class="p">,</span> <span class="n">vh</span><span class="p">)</span></div>
 
 
@@ -212,7 +211,7 @@
     <span class="k">for</span> <span class="n">block_row_index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">hankel_cols_dim</span><span class="p">):</span>
         <span class="n">flattened_block_rows</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">[</span><span class="n">block_row_index</span><span class="p">:</span><span class="n">block_row_index</span><span class="o">+</span><span class="n">num_block_rows</span><span class="p">,</span>
                                         <span class="p">:]</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
-        <span class="n">hankel</span><span class="p">[:,</span> <span class="n">block_row_index</span><span class="p">]</span> <span class="o">=</span> <span class="n">flattened_block_rows</span>
+        <span class="n">hankel</span> <span class="o">=</span>  <span class="n">hankel</span><span class="o">.</span><span class="n">at</span><span class="p">[:,</span> <span class="n">block_row_index</span><span class="p">]</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">flattened_block_rows</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">hankel</span></div>
 
 

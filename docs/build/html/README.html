@@ -50,31 +50,23 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">DynaMapp</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#table-of-contents">Table of Contents</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#package-structure">Package Structure</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#supported-platform">Supported Platform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#about">🚀 About</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#installation">📝 Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#examples">💻 Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#example-1-creating-a-model-instance">Example 1: Creating a Model Instance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example-2-computing-the-generalized-torques-and-inertia-matrix">Example 2: Computing the Generalized Torques and Inertia Matrix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example-3-computing-state-matrices-a-b-c-d">Example 3: Computing State Matrices (A, B, C, D)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example-2-advanced-analysis-stability-controllability-and-observability">Example 2: Advanced Analysis — Stability, Controllability, and Observability</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example-3-advanced-analysis-stability-controllability-and-observability">Example 3: Advanced Analysis — Stability, Controllability, and Observability</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example-4-torques-derivatives-with-respect-to-inertia">Example 4: Torques Derivatives with Respect to Inertia</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example-5-torques-derivatives-with-respect-to-dh-parameters">Example 5: Torques Derivatives with Respect to DH Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example-6-torques-derivatives-with-respect-to-damping">Example 6: Torques Derivatives with Respect to Damping</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#exemples">Exemples</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#create-multiple-robot-model-representations">Create Multiple Robot Model Representations</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#analyze-robot-stability-and-control-design-using-common-tools">Analyze Robot Stability and Control Design Using Common Tools</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#model-identification-routines">Model Identification Routines</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#visualizing-different-models">Visualizing Different Models</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#documentation">Documentation</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#build">Build</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#recent-releases">Recent Releases</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#references">References</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#contributing">Contributing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#license">License</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#documentation">📚 Documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#releases">📦 Releases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#contributing">🤝 Contributing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#license">📃 License</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="TUTORIAL.html">Tutorial</a></li>
@@ -92,7 +84,6 @@
 <p class="caption" role="heading"><span class="caption-text">Development</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="CONTRIBUTING.html">Contributing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="TODO.html">Todo list</a></li>
 </ul>
 
         </div>
@@ -119,147 +110,104 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section class="tex2jax_ignore mathjax_ignore" id="dynamapp">
+  <!-- omit in toc -->
+<section class="tex2jax_ignore mathjax_ignore" id="dynamapp">
 <h1>DynaMapp<a class="headerlink" href="#dynamapp" title="Link to this heading"></a></h1>
-<p><a class="reference external" href="https://github.com/wissem01chiha/dynamapp/actions/workflows/pylint.yml"><img alt="PyLint" src="https://github.com/wissem01chiha/dynamapp/actions/workflows/pylint.yml/badge.svg" /></a>
-<a class="reference external" href="https://github.com/wissem01chiha/dynamapp/actions/workflows/static.yml"><img alt="Deploy static content to Pages" src="https://github.com/wissem01chiha/dynamapp/actions/workflows/static.yml/badge.svg" /></a>
-<a class="reference external" href="https://anaconda.org/chiha/pydynamapp"><img alt="Version" src="https://anaconda.org/chiha/pydynamapp/badges/version.svg" /></a>
-<a class="reference external" href="https://anaconda.org/chiha/pydynamapp"><img alt="Release Date" src="https://anaconda.org/chiha/pydynamapp/badges/latest_release_date.svg" /></a>
-<a class="reference external" href="https://anaconda.org/chiha/pydynamapp"><img alt="Platforms" src="https://anaconda.org/chiha/pydynamapp/badges/platforms.svg" /></a>
-<a class="reference external" href="https://anaconda.org/chiha/pydynamapp"><img alt="License" src="https://anaconda.org/chiha/pydynamapp/badges/license.svg" /></a>
-<a class="reference external" href="https://anaconda.org/chiha/pydynamapp"><img alt="Downloads" src="https://anaconda.org/chiha/pydynamapp/badges/downloads.svg" /></a></p>
-<p>DynaMapp is a Python software package designed for the modeling, identification, and calibration of dynamic models of serial robotic manipulators.
-The primary goal of this project is to offer a flexible framework for modeling and identifying serial manipulators, including the incorporation of nonlinear effects such as friction, stiffness, and backlash in robot joints. Additionally, a predictive feedback control mechanism is being developed to compensate these effects, making the framework suitable for collaborative robotics applications.</p>
-<p>The project aims to explore subspace identification methods for manipulators. Given the nonlinear nature of the problem, the state-space representation parameters are state-dependent, requiring more advanced mathematical tools to analyze such systems effectively.</p>
+<p><a class="reference external" href="https://github.com/wissem01chiha/dynamapp/actions/workflows/tests.yml"><img alt="Tests" src="https://github.com/wissem01chiha/dynamapp/actions/workflows/tests.yml/badge.svg" /></a>
+<a class="reference external" href="https://github.com/wissem01chiha/dynamapp/actions/workflows/pylint.yml"><img alt="PyLint" src="https://github.com/wissem01chiha/dynamapp/actions/workflows/pylint.yml/badge.svg" /></a>
+<a class="reference external" href="https://github.com/wissem01chiha/dynamapp/actions/workflows/build-docs.yml"><img alt="build-docs" src="https://github.com/wissem01chiha/dynamapp/actions/workflows/build-docs.yml/badge.svg" /></a>
+<img alt="GitHub License" src="https://img.shields.io/github/license/wissem01chiha/dynamapp" />
+<img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/wissem01chiha/dynamapp" />
+<img alt="GitHub commit activity (branch)" src="https://img.shields.io/github/commit-activity/t/wissem01chiha/dynamapp/main" /></p>
+<p>DynaMapp is a lightweight Python software package designed for the representation and identification of multibody systems. It is optimized for efficient computation and visualization of how static input parameters (such as inertial, geometric, and electromechanical) affect the behavior of these systems.</p>
+<!-- omit in toc -->
 <section id="table-of-contents">
 <h2>Table of Contents<a class="headerlink" href="#table-of-contents" title="Link to this heading"></a></h2>
 <ul class="simple">
-<li><p><a class="reference internal" href="dynamapp.html"><span class="doc std std-doc">DynaMapp</span></a></p>
-<ul>
-<li><p><a class="reference internal" href="#table-of-contents"><span class="xref myst">Table of Contents</span></a></p></li>
-<li><p><a class="reference internal" href="#prerequisites"><span class="xref myst">Prerequisites</span></a></p></li>
-<li><p><a class="reference internal" href="#package-structure"><span class="xref myst">Package Structure</span></a></p></li>
-<li><p><a class="reference internal" href="#installation"><span class="xref myst">Installation</span></a></p>
-<ul>
-<li><p><a class="reference internal" href="#supported-platform"><span class="xref myst">Supported Platform</span></a></p></li>
-</ul>
-</li>
-<li><p><a class="reference internal" href="#exemples"><span class="xref myst">Exemples</span></a></p>
-<ul>
-<li><p><a class="reference internal" href="#create-multiple-robot-model-representations"><span class="xref myst">Create Multiple Robot Model Representations</span></a></p>
-<ul>
-<li><p><a class="reference internal" href="#analyze-robot-stability-and-control-design-using-common-tools"><span class="xref myst">Analyze Robot Stability and Control Design Using Common Tools</span></a></p></li>
-</ul>
-</li>
-<li><p><a class="reference internal" href="#model-identification-routines"><span class="xref myst">Model Identification Routines</span></a></p>
-<ul>
-<li><p><a class="reference internal" href="#visualizing-different-models"><span class="xref myst">Visualizing Different Models</span></a></p></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><a class="reference internal" href="#documentation"><span class="xref myst">Documentation</span></a></p>
-<ul>
-<li><p><a class="reference internal" href="#build"><span class="xref myst">Build</span></a></p></li>
-</ul>
-</li>
-<li><p><a class="reference internal" href="#recent-releases"><span class="xref myst">Recent Releases</span></a></p></li>
-<li><p><a class="reference internal" href="#references"><span class="xref myst">References</span></a></p></li>
-<li><p><a class="reference internal" href="#contributing"><span class="xref myst">Contributing</span></a></p></li>
-<li><p><a class="reference internal" href="#license"><span class="xref myst">License</span></a></p></li>
-</ul>
-</li>
+<li><p><a class="reference internal" href="#-about"><span class="xref myst">🚀 About</span></a></p></li>
+<li><p><a class="reference internal" href="#-installation"><span class="xref myst">📝 Installation</span></a></p></li>
+<li><p><a class="reference internal" href="#-examples"><span class="xref myst">💻 Examples</span></a></p></li>
+<li><p><a class="reference internal" href="#-documentation"><span class="xref myst">📚 Documentation</span></a></p></li>
+<li><p><a class="reference internal" href="#-releases"><span class="xref myst">📦 Releases</span></a></p></li>
+<li><p><a class="reference internal" href="#-contributing"><span class="xref myst">🤝 Contributing</span></a></p></li>
+<li><p><a class="reference internal" href="#-license"><span class="xref myst">📃 License</span></a></p></li>
 </ul>
 </section>
-<section id="prerequisites">
-<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading"></a></h2>
-<p>DynaMapp relies heavilly for it's internal rigid body computation on Pinocchio python bindings, for more information, refer to:</p>
+<section id="about">
+<h2>🚀 About<a class="headerlink" href="#about" title="Link to this heading"></a></h2>
+<p>The primary goal of <strong>DynaMapp</strong> is to offer an implementation of common rigid body dynamics algorithms and their derivatives using <a class="reference external" href="https://jax.readthedocs.io/en/latest/quickstart.html">JAX</a>.</p>
+<p>It provides tools for computing the <a class="reference external" href="https://en.wikipedia.org/wiki/State-space_representation">state-space</a> representation of these systems.</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://gepettoweb.laas.fr/doc/stack-of-tasks/pinocchio/master/doxygen-html/">Pinocchio Documentation</a></p></li>
-<li><p><a class="reference external" href="https://github.com/stack-of-tasks/pinocchio">Pinocchio's GitHub Page</a></p></li>
-<li><p><a class="reference internal" href="#docs/pinocchio_sheet.pdf"><span class="xref myst">Pinocchio Cheat Sheet</span></a></p></li>
+<li><p>Compute the Jacobian tensors of the joint torque vector as a function of the system parameters vector using <a class="reference external" href="https://jax.readthedocs.io/en/latest/automatic-differentiation.html">automatic differentiation</a>.</p></li>
+<li><p>Compute the Jacobian of other quantities (such as the global inertia matrix and Coriolis matrix) with respect to the input parameters.</p></li>
+<li><p>Implement common identification algorithms for optimizing the multibody system parameters.</p></li>
 </ul>
-<p>also it uses, as an entry point  to represent the rigid body tree of the robot reprsenttaion <a class="reference external" href="https://wiki.ros.org/urdf">URDF</a>,</p>
-</section>
-<section id="package-structure">
-<h2>Package Structure<a class="headerlink" href="#package-structure" title="Link to this heading"></a></h2>
-<ul class="simple">
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">script</span></code></strong> folder contains executable identification scripts. Settings for each algorithm are passed through command-line arguments.</p></li>
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">dynamics</span></code></strong> folder contains all direct and inverse dynamics model computations, state-space representation, and regressor formulation.</p></li>
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">viscoelastic</span></code></strong> folder contains all base classes for contact models.</p></li>
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">models</span></code></strong> folder contains all electromechanical joint component models implementations.</p></li>
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">optimisation</span></code></strong> folder contains general optimisation routines tailored for the identification problem.</p></li>
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">robot</span></code></strong> folder contains common robot description files.</p></li>
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">identification</span></code></strong> folder contains custom identification base classes and helper functions.</p></li>
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">extern</span></code></strong> folder contains third-party software used by DynaMapp. This folder has other license terms than the project, so please review them individually.</p></li>
-</ul>
+<p>The package does not rely on any rigid body dynamics libraries.</p>
+<blockquote>
+<div><p><strong>Note</strong>:<br />
+This is an early-stage research software, and many  parts still require focus and further implementation.</p>
+</div></blockquote>
 </section>
 <section id="installation">
-<h2>Installation<a class="headerlink" href="#installation" title="Link to this heading"></a></h2>
-<p>The code has been tested successfully on the following platform:</p>
-<section id="supported-platform">
-<h3>Supported Platform<a class="headerlink" href="#supported-platform" title="Link to this heading"></a></h3>
-<ul class="simple">
-<li><p><strong>Windows 11</strong>:</p>
-<ul>
-<li><p>Python 3.12.4</p></li>
-<li><p>Miniconda 4.5.0</p></li>
-<li><p>CUDA 12.5 (optional)</p></li>
-</ul>
-</li>
-</ul>
-<p>for installation on other platforms or additional setup instructions, refer to the <a class="reference internal" href="INSTALL.html"><span class="std std-doc">INSTALL.md</span></a> guide.</p>
+<h2>📝 Installation<a class="headerlink" href="#installation" title="Link to this heading"></a></h2>
+<p>See the <a class="reference internal" href="INSTALL.html"><span class="std std-doc">INSTALL</span></a> file.</p>
 </section>
-</section>
-<section id="exemples">
-<h2>Exemples<a class="headerlink" href="#exemples" title="Link to this heading"></a></h2>
-<p>This section provides an overview of examples demonstrating the usage of DynaMapp for tuning the Kinova Gen3 robot parameters to estimate the joint torques. Currently, the documentation lacks detailed and meaningful examples, and these examples do not cover all software functions.</p>
-<section id="create-multiple-robot-model-representations">
-<h3>Create Multiple Robot Model Representations<a class="headerlink" href="#create-multiple-robot-model-representations" title="Link to this heading"></a></h3>
-<p>Use a URDF file along with a configuration file. The configuration file should follow the same layout as the <a class="reference external" href="https://github.com/wissem01chiha/dynamic-identification/blob/main/pyDynaMapp/robot/kinova/config.yml">Kinova config file</a>.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyDynaMapp.dynamics</span> <span class="kn">import</span> <span class="n">Robot</span>
-
-<span class="n">my_robot</span> <span class="o">=</span> <span class="n">Robot</span><span class="p">(</span><span class="n">urdf_file_path</span><span class="p">,</span> <span class="n">configuration_file_path</span><span class="p">)</span>
-
-<span class="c1"># Example: Compute mass and Coriolis matrices for the home position</span>
-<span class="n">C</span> <span class="o">=</span> <span class="n">my_robot</span><span class="o">.</span><span class="n">computeCoriolisMatrix</span><span class="p">()</span>
-<span class="n">M</span> <span class="o">=</span> <span class="n">my_robot</span><span class="o">.</span><span class="n">computeMassMatrix</span><span class="p">()</span>
-
-<span class="c1"># Example: Compute the joint torques vector for the home state</span>
-<span class="n">T</span> <span class="o">=</span> <span class="n">my_robot</span><span class="o">.</span><span class="n">computeGeneralizedTorques</span><span class="p">()</span>
-
-<span class="c1"># Example: Compute the joint torque vector for a given state</span>
-<span class="n">q</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.25</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">1.25</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>          <span class="c1"># Position</span>
-<span class="n">qp</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mf">1.36</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>    <span class="c1"># Velocity  </span>
-<span class="n">qpp</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.05</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">1.25</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">]</span>    <span class="c1"># Acceleration       </span>
-
-<span class="n">T</span> <span class="o">=</span> <span class="n">my_robot</span><span class="o">.</span><span class="n">computeGeneralizedTorques</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">qp</span><span class="p">,</span> <span class="n">qpp</span><span class="p">)</span>
-
-<span class="c1"># Example: Compute joint gravity torques for the home state</span>
-<span class="n">G</span> <span class="o">=</span> <span class="n">my_robot</span><span class="o">.</span><span class="n">computeGravityTorques</span><span class="p">()</span>
+<section id="examples">
+<h2>💻 Examples<a class="headerlink" href="#examples" title="Link to this heading"></a></h2>
+<p>This section provides an overview of examples demonstrating the usage of the package's basic functions and mathematical notations. Currently, the documentation lacks detailed and meaningful examples, and these examples do not cover all software functions.</p>
+<p>All guidelines will be available in the <a class="reference external" href="https://wissem01chiha.github.io/dynamapp/TUTORIAL.html">Tutoriel</a>.</p>
+<!-- omit in toc -->
+<section id="example-1-creating-a-model-instance">
+<h3>Example 1: Creating a Model Instance<a class="headerlink" href="#example-1-creating-a-model-instance" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dynamapp.model</span> <span class="kn">import</span> <span class="n">Model</span>
+<span class="c1"># Define the Inertia matrices (list of 6x6 matrices)</span>
+<span class="n">Imats</span> <span class="o">=</span> <span class="p">[</span><span class="n">jnp</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)]</span>
+<span class="c1"># Define the Denavit-Hartenberg parameters (theta, d, a, alpha)</span>
+<span class="n">dhparams</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">jnp</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">2</span><span class="p">],</span>
+    <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span>
+    <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">jnp</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">2</span><span class="p">]</span>
+<span class="p">]</span>
+<span class="c1"># Define the gravity vector</span>
+<span class="n">gravity</span> <span class="o">=</span> <span class="o">-</span><span class="mf">9.81</span>
+<span class="c1"># Define damping coefficients</span>
+<span class="n">dampings</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">]</span>
+<span class="c1"># Create the model instance</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="n">Imats</span><span class="p">,</span> <span class="n">dhparams</span><span class="p">,</span> <span class="n">gravity</span><span class="p">,</span> <span class="n">dampings</span><span class="p">)</span>
+<span class="c1"># Check the generalized torques at initial joint configurations (q, qp, qpp = 0)</span>
+<span class="n">torques</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">generalized_torques</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>Compute the Robot Regressor Matrix</p>
-<div class="math notranslate nohighlight">
-\[
-\tau = Y_{\chi}(q, \dot{q}, \ddot{q}) \chi + e 
-\]</div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">pyDynaMapp.dynamics</span> <span class="kn">import</span> <span class="n">Regressor</span>
-
-<span class="n">reg</span> <span class="o">=</span> <span class="n">Regressor</span><span class="p">()</span>
-<span class="n">q</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="mi">7</span><span class="p">)</span>
-<span class="n">qp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="mi">7</span><span class="p">)</span>
-<span class="n">qpp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="mi">7</span><span class="p">)</span>
-
-<span class="c1">#Exemple: compute the full regressor matrix </span>
-<span class="n">W</span> <span class="o">=</span> <span class="n">reg</span><span class="o">.</span><span class="n">computeFullRegressor</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">qp</span><span class="p">,</span> <span class="n">qpp</span><span class="p">)</span>
-
-<span class="c1">#Exemple : compute the reduced rgressor matrix</span>
-<span class="n">W_</span> <span class="o">=</span> <span class="n">reg</span><span class="o">.</span><span class="n">computeReducedRegressor</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">qp</span><span class="p">,</span> <span class="n">qpp</span><span class="p">,</span><span class="mf">1e-6</span><span class="p">)</span>
+<!-- omit in toc -->
+</section>
+<section id="example-2-computing-the-generalized-torques-and-inertia-matrix">
+<h3>Example 2: Computing the Generalized Torques and Inertia Matrix<a class="headerlink" href="#example-2-computing-the-generalized-torques-and-inertia-matrix" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dynamapp.model</span> <span class="kn">import</span> <span class="n">Model</span>
+<span class="c1"># Define joint positions, velocities, and accelerations</span>
+<span class="n">q</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">])</span>  <span class="c1"># Joint positions (rad)</span>
+<span class="n">qp</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">])</span> <span class="c1"># Joint velocities (rad/s)</span>
+<span class="n">qpp</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">])</span> <span class="c1"># Joint accelerations (rad/s^2)</span>
+<span class="c1"># Define the Inertia matrices, DH parameters, and damping coefficients</span>
+<span class="n">Imats</span> <span class="o">=</span> <span class="p">[</span><span class="n">jnp</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)]</span>
+<span class="n">dhparams</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">jnp</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">2</span><span class="p">],</span>
+    <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span>
+    <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">jnp</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">2</span><span class="p">]</span>
+<span class="p">]</span>
+<span class="n">gravity</span> <span class="o">=</span> <span class="o">-</span><span class="mf">9.81</span>
+<span class="n">dampings</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">]</span>
+<span class="c1"># Create the model instance</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="n">Imats</span><span class="p">,</span> <span class="n">dhparams</span><span class="p">,</span> <span class="n">gravity</span><span class="p">,</span> <span class="n">dampings</span><span class="p">)</span>
+<span class="c1"># Compute the Generalized Torques at the current joint configuration</span>
+<span class="n">generalized_torques</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">generalized_torques</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">qp</span><span class="p">,</span> <span class="n">qpp</span><span class="p">)</span>
+<span class="c1"># Compute the Inertia Matrix at the current joint configuration</span>
+<span class="n">inertia_matrix</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">inertia_tensor</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Create a State-Space Representation</p>
+<!-- omit in toc -->
+</section>
+<section id="example-3-computing-state-matrices-a-b-c-d">
+<h3>Example 3: Computing State Matrices (A, B, C, D)<a class="headerlink" href="#example-3-computing-state-matrices-a-b-c-d" title="Link to this heading"></a></h3>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{aligned}
@@ -267,132 +215,156 @@ The primary goal of this project is to offer a flexible framework for modeling a
     y &amp;= \mathcal{\hat{C}} x 
 \end{aligned}
 \end{split}\]</div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>  <span class="kn">from</span> <span class="nn">pyDynaMapp.dynamics</span> <span class="kn">import</span> <span class="n">StateSpace</span>
-  <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-
-  <span class="n">robot_ss</span> <span class="o">=</span> <span class="n">StateSpace</span><span class="p">(</span><span class="n">urdf_file_path</span><span class="p">,</span> <span class="n">configuration_file_path</span><span class="p">)</span>
-  
-  <span class="c1"># Example: Compute the state-space matrices at a given configuration using a state vector x</span>
-  <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">14</span><span class="p">)</span>
-  <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">D</span> <span class="o">=</span> <span class="n">robot_ss</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">computeStateMatrices</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-  
-  <span class="c1"># Example: Compute the state-space matrices at a random configuration using position and velocity vectors</span>
-  <span class="n">q</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
-  <span class="n">qp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
-  <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">D</span> <span class="o">=</span> <span class="n">robot_ss</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">computeStateMatrices</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">qp</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dynamapp.model_state</span> <span class="kn">import</span> <span class="n">ModelState</span>
+<span class="c1"># Define system parameters (Inertia matrices, DH parameters, etc.)</span>
+<span class="n">Imats</span> <span class="o">=</span> <span class="p">[</span><span class="n">jnp</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)]</span>  <span class="c1"># Example inertia matrices</span>
+<span class="n">dhparams</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">jnp</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">2</span><span class="p">],</span>
+    <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span>
+    <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">jnp</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">2</span><span class="p">]</span>
+<span class="p">]</span>
+<span class="c1"># Initialize the ModelState object</span>
+<span class="n">model_state</span> <span class="o">=</span> <span class="n">ModelState</span><span class="p">(</span><span class="n">Imats</span><span class="p">,</span> <span class="n">dhparams</span><span class="p">)</span>
+<span class="c1"># Define an example state vector (x)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">2</span> <span class="o">*</span> <span class="n">model_state</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">ndof</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>  <span class="c1"># Example state vector (2 * ndof)</span>
+<span class="c1"># Compute the state-space matrices</span>
+<span class="n">model_state</span><span class="o">.</span><span class="n">_compute_matrices</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="c1"># Access and print the state-space matrices A, B, C, D</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">model_state</span><span class="o">.</span><span class="n">model_state_space</span><span class="o">.</span><span class="n">a</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">model_state</span><span class="o">.</span><span class="n">model_state_space</span><span class="o">.</span><span class="n">b</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">model_state</span><span class="o">.</span><span class="n">model_state_space</span><span class="o">.</span><span class="n">c</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">model_state</span><span class="o">.</span><span class="n">model_state_space</span><span class="o">.</span><span class="n">d</span><span class="p">)</span> 
 </pre></div>
 </div>
 <p>The last model computation serves as a bridge to state-space identification techniques, subspace identification methods, and other fields.</p>
 <blockquote>
 <div><p><strong>Note:</strong>  The stability of the computed matrices is not guaranteed. The intensive computations of derivatives are error-prone, so a new computation method is needed!</p>
 </div></blockquote>
-<section id="analyze-robot-stability-and-control-design-using-common-tools">
-<h4>Analyze Robot Stability and Control Design Using Common Tools<a class="headerlink" href="#analyze-robot-stability-and-control-design-using-common-tools" title="Link to this heading"></a></h4>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">from</span> <span class="nn">pyDynaMapp.dynamics</span> <span class="kn">import</span> <span class="n">StateSpace</span>
-<span class="n">model</span> <span class="o">=</span> <span class="n">StateSpace</span><span class="p">(</span><span class="s2">&quot;urdf/file/path&quot;</span><span class="p">,</span><span class="s2">&quot;configuration/file/path&quot;</span><span class="p">)</span>
-
-<span class="c1">#Example: plotting the system poles state for a given position and velocity configurations</span>
-<span class="n">q</span>     <span class="o">=</span> <span class="p">[</span><span class="mf">1.25</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">125</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>                  
-<span class="n">qp</span>   <span class="o">=</span> <span class="p">[</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mf">1.36</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
-<span class="n">model</span><span class="o">.</span><span class="n">visualizeStatePoles</span><span class="p">(</span><span class="n">q</span><span class="p">,</span><span class="n">qp</span><span class="p">)</span>
-
-<span class="c1">#Exemple: plotting the system root-locus for a given position and velocity configurations</span>
-<span class="n">model</span><span class="o">.</span><span class="n">visualizeRootLocus</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<!-- omit in toc -->
+</section>
+<section id="example-2-advanced-analysis-stability-controllability-and-observability">
+<h3>Example 2: Advanced Analysis — Stability, Controllability, and Observability<a class="headerlink" href="#example-2-advanced-analysis-stability-controllability-and-observability" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dynamapp.model_state</span> <span class="kn">import</span> <span class="n">ModelState</span>
+<span class="n">Imats</span> <span class="o">=</span> <span class="p">[</span><span class="n">jnp</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)]</span>  <span class="c1"># Example inertia matrices</span>
+<span class="n">dhparams</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">jnp</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">2</span><span class="p">],</span>
+    <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span>
+    <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">jnp</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">2</span><span class="p">]</span>
+<span class="p">]</span>
+<span class="c1"># Initialize the ModelState object</span>
+<span class="n">model_state</span> <span class="o">=</span> <span class="n">ModelState</span><span class="p">(</span><span class="n">Imats</span><span class="p">,</span> <span class="n">dhparams</span><span class="p">)</span>
+<span class="c1"># Define an example state vector (x)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">2</span> <span class="o">*</span> <span class="n">model_state</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">ndof</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>  <span class="c1"># Example state vector (2 * ndof)</span>
+<span class="c1"># Check if the system is stable</span>
+<span class="n">is_stable</span> <span class="o">=</span> <span class="n">model_state</span><span class="o">.</span><span class="n">_is_stable</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">eigenvalues</span> <span class="o">=</span> <span class="n">model_state</span><span class="o">.</span><span class="n">compute_eigvals</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">controllability_matrix</span> <span class="o">=</span> <span class="n">model_state</span><span class="o">.</span><span class="n">compute_ctlb_matrix</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="c1"># Compute the observability matrix</span>
+<span class="n">observability_matrix</span> <span class="o">=</span> <span class="n">model_state</span><span class="o">.</span><span class="n">compute_obs_matrix</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>this can optimise the desgin of a state-depend gain function $<span class="math notranslate nohighlight">\(K(q,qp)\)</span>$ to achieve desired varaible-poles location.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dynamapp.model_state</span> <span class="kn">import</span> <span class="n">ModelState</span>
+<span class="c1"># Define system parameters (Inertia matrices, DH parameters, etc.)</span>
+<span class="n">Imats</span> <span class="o">=</span> <span class="p">[</span><span class="n">jnp</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)]</span>  <span class="c1"># Example inertia matrices</span>
+<span class="n">dhparams</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">jnp</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">2</span><span class="p">],</span>
+    <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span>
+    <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">jnp</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">2</span><span class="p">]</span>
+<span class="p">]</span>
+<span class="c1"># Initialize the ModelState object</span>
+<span class="n">model_state</span> <span class="o">=</span> <span class="n">ModelState</span><span class="p">(</span><span class="n">Imats</span><span class="p">,</span> <span class="n">dhparams</span><span class="p">)</span>
+<span class="c1"># Define an example state vector (x)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">2</span> <span class="o">*</span> <span class="n">model_state</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">ndof</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>  <span class="c1"># Example state vector (2 * ndof)</span>
+<span class="c1"># Compute the state-space matrices</span>
+<span class="n">model_state</span><span class="o">.</span><span class="n">_compute_matrices</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="c1"># Access and print the state-space matrices A, B, C, D</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">model_state</span><span class="o">.</span><span class="n">model_state_space</span><span class="o">.</span><span class="n">a</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">model_state</span><span class="o">.</span><span class="n">model_state_space</span><span class="o">.</span><span class="n">b</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">model_state</span><span class="o">.</span><span class="n">model_state_space</span><span class="o">.</span><span class="n">c</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">model_state</span><span class="o">.</span><span class="n">model_state_space</span><span class="o">.</span><span class="n">d</span><span class="p">)</span> 
+</pre></div>
+</div>
+<p>The last model computation serves as a bridge to state-space identification techniques, subspace identification methods, and other fields.</p>
+<!-- omit in toc -->
 </section>
+<section id="example-3-advanced-analysis-stability-controllability-and-observability">
+<h3>Example 3: Advanced Analysis — Stability, Controllability, and Observability<a class="headerlink" href="#example-3-advanced-analysis-stability-controllability-and-observability" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dynamapp.model_state</span> <span class="kn">import</span> <span class="n">ModelState</span>
+<span class="n">Imats</span> <span class="o">=</span> <span class="p">[</span><span class="n">jnp</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)]</span>  <span class="c1"># Example inertia matrices</span>
+<span class="n">dhparams</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">jnp</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">2</span><span class="p">],</span>
+    <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span>
+    <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">jnp</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">2</span><span class="p">]</span>
+<span class="p">]</span>
+<span class="c1"># Initialize the ModelState object</span>
+<span class="n">model_state</span> <span class="o">=</span> <span class="n">ModelState</span><span class="p">(</span><span class="n">Imats</span><span class="p">,</span> <span class="n">dhparams</span><span class="p">)</span>
+<span class="c1"># Define an example state vector (x)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">2</span> <span class="o">*</span> <span class="n">model_state</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">ndof</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>  <span class="c1"># Example state vector (2 * ndof)</span>
+<span class="c1"># Check if the system is stable</span>
+<span class="n">is_stable</span> <span class="o">=</span> <span class="n">model_state</span><span class="o">.</span><span class="n">_is_stable</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">eigenvalues</span> <span class="o">=</span> <span class="n">model_state</span><span class="o">.</span><span class="n">compute_eigvals</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">controllability_matrix</span> <span class="o">=</span> <span class="n">model_state</span><span class="o">.</span><span class="n">compute_ctlb_matrix</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="c1"># Compute the observability matrix</span>
+<span class="n">observability_matrix</span> <span class="o">=</span> <span class="n">model_state</span><span class="o">.</span><span class="n">compute_obs_matrix</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+<!-- omit in toc -->
 </section>
-<section id="model-identification-routines">
-<h3>Model Identification Routines<a class="headerlink" href="#model-identification-routines" title="Link to this heading"></a></h3>
-<p>All DynaMapp models depend on user-defined parameters modeling physical aspects of the manipulators (inertia, friction, stiffness, etc.). These parameters are concatenated to form a one-dimensional vector, and the identification problem is turned into an optimization-based problem:</p>
+<section id="example-4-torques-derivatives-with-respect-to-inertia">
+<h3>Example 4: Torques Derivatives with Respect to Inertia<a class="headerlink" href="#example-4-torques-derivatives-with-respect-to-inertia" title="Link to this heading"></a></h3>
 <div class="math notranslate nohighlight">
-\[
-\begin{equation}
-    \hat{\beta} = argmin_{\beta}\left\| IDM(\beta,q,\dot{q},\ddot{q})-\tau_s \right\|_2
-\end{equation}
-\]</div>
-<p>Where:</p>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(\tau_s \in \mathbb{R}^{N}\)</span>: Torque measured from joint sensors.</p></li>
-<li><p><span class="math notranslate nohighlight">\(IDM(\beta, q, \dot{q}, \ddot{q}) \in \mathbb{R}^{N}\)</span>: The inverse nonlinear flexible joint dynamics model with friction, actuator, and stiffness for a given fixed trajectory.</p></li>
-<li><p><span class="math notranslate nohighlight">\(\beta \in \mathbb{R}^{n \times m}\)</span>: The global parameter vector.</p></li>
-</ul>
-<blockquote>
-<div><p><strong>Warning</strong> Currently, only NLOPT-based optimizers and Kalman<br />
-filter optimizers are supported.</p>
-</div></blockquote>
-<ul class="simple">
-<li><p>Using NLOPT</p></li>
-</ul>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>pyDynaMapp/script
-<span class="w"> </span>python3<span class="w"> </span>nlopt_identification<span class="w"> </span>
+\[J = \frac{\partial \tau}{\partial I}\]</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>  <span class="c1"># A Model object</span>
+<span class="n">q</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.3</span><span class="p">])</span>  <span class="c1"># Generalized positions (q)</span>
+<span class="n">v</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.1</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">])</span>  <span class="c1"># Generalized velocities (v)</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.15</span><span class="p">])</span>  <span class="c1"># Generalized accelerations (a)</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">generalized_torques_wrt_inertia</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>This uses the last computed parameters and starts the optimizer. All problem settings can be adjusted in the <a class="reference internal" href="#pyDynaMapp/script/identification_utils.py"><span class="xref myst">utils</span></a> script.</p>
-<section id="visualizing-different-models">
-<h4>Visualizing Different Models<a class="headerlink" href="#visualizing-different-models" title="Link to this heading"></a></h4>
-<ul class="simple">
-<li><p>Given a data file path:</p></li>
-</ul>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>run_dynamic_simulation<span class="w"> </span>-v<span class="o">=</span><span class="w"> </span>True<span class="w"> </span>-data_file_path<span class="o">=</span><span class="s2">&quot;path/to/example.csv&quot;</span><span class="w"> </span>--show_figures<span class="o">=</span><span class="w"> </span>True<span class="w"> </span>--cutoff_frequency<span class="o">=</span><span class="m">3</span>
-</pre></div>
-</div>
-<ul class="simple">
-<li><p>Using Kalman Filter</p></li>
-</ul>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>run_kalman_identification<span class="w"> </span>-v<span class="o">=</span>True<span class="w"> </span>--cutoff_frequency<span class="o">=</span><span class="m">3</span><span class="w"> </span>--show_figures<span class="o">=</span><span class="w"> </span>True
-</pre></div>
-</div>
+<!-- omit in toc -->
 </section>
+<section id="example-5-torques-derivatives-with-respect-to-dh-parameters">
+<h3>Example 5: Torques Derivatives with Respect to DH Parameters<a class="headerlink" href="#example-5-torques-derivatives-with-respect-to-dh-parameters" title="Link to this heading"></a></h3>
+<div class="math notranslate nohighlight">
+\[J = \frac{\partial \tau}{\partial \theta}
+\]</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Example Usage</span>
+<span class="n">q</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.3</span><span class="p">])</span>  <span class="c1"># Generalized positions (q)</span>
+<span class="n">v</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.1</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">])</span>  <span class="c1"># Generalized velocities (v)</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.15</span><span class="p">])</span>  <span class="c1"># Generalized accelerations (a)</span>
+<span class="c1"># Compute the Jacobian of generalized torques with respect to DH parameters</span>
+<span class="n">torques_wrt_dhparams</span> <span class="o">=</span> <span class="n">generalized_torques_wrt_dhparams</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+</pre></div>
+</div>
+<!-- omit in toc -->
+</section>
+<section id="example-6-torques-derivatives-with-respect-to-damping">
+<h3>Example 6: Torques Derivatives with Respect to Damping<a class="headerlink" href="#example-6-torques-derivatives-with-respect-to-damping" title="Link to this heading"></a></h3>
+<div class="math notranslate nohighlight">
+\[J = \frac{\partial \tau}{\partial c}
+\]</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">q</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.3</span><span class="p">])</span>  <span class="c1"># Generalized positions (q)</span>
+<span class="n">v</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.1</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">])</span>  <span class="c1"># Generalized velocities (v)</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.15</span><span class="p">])</span>  <span class="c1"># Generalized accelerations (a)</span>
+<span class="n">torques_wrt_damping</span> <span class="o">=</span> <span class="n">generalized_torques_wrt_damping</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+</pre></div>
+</div>
 </section>
 </section>
 <section id="documentation">
-<h2>Documentation<a class="headerlink" href="#documentation" title="Link to this heading"></a></h2>
-<section id="build">
-<h3>Build<a class="headerlink" href="#build" title="Link to this heading"></a></h3>
-<p>We use <a class="reference external" href="https://www.sphinx-doc.org/en/master/">Sphinx</a> to generate the software documentation. Assuming that Sphinx is installed, you can generate and build the documentation using the following steps:</p>
-<p>to generate and build the documentation, run from the root of the project:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>sphinx-build<span class="w"> </span>-b<span class="w"> </span>html<span class="w"> </span>docs/source<span class="w"> </span>docs/build/html
-</pre></div>
-</div>
-<p>The official documentation is hosted on this <a class="reference external" href="https://wissem01chiha.github.io/dynamic-identification/">link</a>.</p>
-<p>The source code is hosted on the  <a class="reference external" href="https://anaconda.org/chiha/pydynamapp">pyDynaMapp-Anaconda</a> page,
-for detailed reports and figures visit <a class="reference external" href="https://figshare.com/articles/thesis/Modeling_and_Identification_of_Robotic_Manipulators_Dynamics/27215562">figshare</a></p>
+<h2>📚 Documentation<a class="headerlink" href="#documentation" title="Link to this heading"></a></h2>
+<p>The official documentation is avalible at <a class="reference external" href="https://wissem01chiha.github.io/dynamapp/README.html">link</a></p>
 </section>
-</section>
-<section id="recent-releases">
-<h2>Recent Releases<a class="headerlink" href="#recent-releases" title="Link to this heading"></a></h2>
+<section id="releases">
+<h2>📦 Releases<a class="headerlink" href="#releases" title="Link to this heading"></a></h2>
 <ul class="simple">
-<li><p><strong><a class="reference external" href="https://github.com/wissem01chiha/dynamic-identification/releases/tag/v0.1.0">pyDynaMapp-v0.1.0</a></strong> — August 2024: First release</p></li>
-</ul>
-</section>
-<section id="references">
-<h2>References<a class="headerlink" href="#references" title="Link to this heading"></a></h2>
-<ul class="simple">
-<li><p><strong>A three-loop physical parameter identification method of robot manipulators considering physical feasibility and nonlinear friction mode</strong>, <em>Tangzhong Song, Lijin Fang,Guanghui Liu, Hanyu Pang</em>, 2024</p></li>
-<li><p><strong>Comprehensive modeling and identification of nonlinear joint dynamics for collaborative industrial robot manipulators</strong>, <em>Emil Madsen, Oluf Skov Rosenlund, David Brandt, Xuping Zhang</em>, 2020</p></li>
-<li><p><strong>Robotics Modelling Planning and Control</strong>, <em>Bruno Siciliano, Lorenzo Sciavicco Luigi Villani,Giuseppe Oriolo</em>,</p></li>
-<li><p><strong>Global Identification of Joint Drive Gains and Dynamic Parameters of Robots</strong> , <em>Maxime Gautier</em>, <em>Sebastien Brio</em>, 2014</p></li>
-<li><p><strong>Direct Calculation of Minimum Set of Inertial Parameters of Serial Robots</strong>, <em>Maxime Gautier, Wisama khalil</em>, 1990</p></li>
-<li><p><strong>Efficient Dynamic Computer Simulation of Robotic Mechanisms</strong>, <em>M.W.Walker</em>, <em>D. E. Orin</em>, 1982</p></li>
-<li><p><strong>Inertial Parameter Identification in Robotics: A Survey</strong>, <em>Quentin Leboutet, Julien Roux, Alexandre Janot, Julio Rogelio, Gordon
-Cheng</em>, 2021</p></li>
-<li><p><strong>Practical Modeling and Comprehensive System Identification of a BLDC Motor</strong>, <em>Changle Xiang, Xiaoliang Wang, Yue Ma, and Bin Xu</em>, 2015</p></li>
-<li><p><strong>Identiable Parameters and Optimum Congurations for Robots Calibration</strong>, <em>W. Khalil, M. Gautier and Ch. Enguehard</em>, 2009, <em>Robotica</em></p></li>
-<li><p><strong>Recursive identification of certain structured time varying state-space models</strong>, <em>M.H. Moazzam T. Hesketh, D.J.Clements</em>, 1997</p></li>
-<li><p><strong>Comparison Between the CLOE Method and the DIDIM Method for Robots Identification</strong>, <em>Alexandre Janot, Maxime Gautier, Anthony Jubien, and Pierre Olivier Vandanjon</em>, 2014</p></li>
-<li><p><strong>Robot Joint Modeling and Parameter Identification Using the Clamping Method</strong>, <em>Christian Lehmann ∗ Bjorn Olofsson, Klas Nilsson, Marcel Halbauer, Mathias Haage, Anders Robertsson, Olof Sornmo, Ulrich Berger</em>, 2013</p></li>
-<li><p><strong>Fundamentals of friction modeling</strong>, <em>Farid Al-Bender</em>, 2015</p></li>
-<li><p><strong>Constrained State Estimation - A Review</strong>, <em>Nesrine Amor, Ghualm Rasool, and Nidhal C. Bouaynaya</em>, arXiv, 2022</p></li>
-<li><p><strong>The Pinocchio C++ library</strong>,<em>J.Carpentier, G.Saurel, G.Buondonno, J.Mirabel, F.Lamiraux, O.Stasse, N.Mansard</em>, 2019</p></li>
+<li><p><strong><a class="reference external" href="https://github.com/wissem01chiha/dynamapp/tree/main">v1.0.0</a></strong> - Jan 2025, current release</p></li>
+<li><p><strong><a class="reference external" href="https://github.com/wissem01chiha/dynamapp/tree/dev">v0.1.0</a></strong> — august 2024: first release.</p></li>
 </ul>
 </section>
 <section id="contributing">
-<h2>Contributing<a class="headerlink" href="#contributing" title="Link to this heading"></a></h2>
-<p>Before contributing, please take a moment to review the following:</p>
+<h2>🤝 Contributing<a class="headerlink" href="#contributing" title="Link to this heading"></a></h2>
+<p>please review the following:</p>
 <ul class="simple">
 <li><p>The <a class="reference internal" href="CHANGELOG.html"><span class="std std-doc">CHANGELOG</span></a> for an overview of updates and changes.</p></li>
 <li><p>The <a class="reference internal" href="CONTRIBUTING.html"><span class="std std-doc">CONTRIBUTING</span></a> guide for detailed instructions on how to contribute.</p></li>
@@ -401,9 +373,9 @@ Cheng</em>, 2021</p></li>
 <p>If you have any questions or need assistance, feel free to reach out via <a class="reference external" href="mailto:chihawissem08&#37;&#52;&#48;gmail&#46;com">email</a>.</p>
 </section>
 <section id="license">
-<h2>License<a class="headerlink" href="#license" title="Link to this heading"></a></h2>
-<p>This project is currently licensed under the <strong>CC0 1.0 Universal License</strong>.<br />
-For more details, see the <a class="reference internal" href="#LICENSE.txt"><span class="xref myst">LICENSE</span></a> file.</p>
+<h2>📃 License<a class="headerlink" href="#license" title="Link to this heading"></a></h2>
+<p>See the <a class="reference internal" href="#LICENSE.txt"><span class="xref myst">LICENSE</span></a> file.</p>
+<p><a class="reference internal" href="#top"><span class="xref myst">Back to top</span></a></p>
 </section>
 </section>
 

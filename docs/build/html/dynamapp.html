@@ -83,7 +83,6 @@
 <p class="caption" role="heading"><span class="caption-text">Development</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="CONTRIBUTING.html">Contributing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="TODO.html">Todo list</a></li>
 </ul>
 
         </div>
@@ -179,19 +178,14 @@
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.model.html#dynamapp.model.Model.gravity_torques"><code class="docutils literal notranslate"><span class="pre">Model.gravity_torques()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.model.html#dynamapp.model.Model.generalized_forces"><code class="docutils literal notranslate"><span class="pre">Model.generalized_forces()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.model.html#dynamapp.model.Model.generalized_torques"><code class="docutils literal notranslate"><span class="pre">Model.generalized_torques()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamapp.model.html#dynamapp.model.Model.generalized_torque"><code class="docutils literal notranslate"><span class="pre">Model.generalized_torque()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.model.html#dynamapp.model.Model.full_forces"><code class="docutils literal notranslate"><span class="pre">Model.full_forces()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.model.html#dynamapp.model.Model.full_torques"><code class="docutils literal notranslate"><span class="pre">Model.full_torques()</span></code></a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="dynamapp.visualization.html">visualization module</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="dynamapp.visualization.html#dynamapp.visualization.plot_filtered"><code class="docutils literal notranslate"><span class="pre">plot_filtered()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="dynamapp.visualization.html#dynamapp.visualization.plot_predicted"><code class="docutils literal notranslate"><span class="pre">plot_predicted()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="dynamapp.visualization.html#dynamapp.visualization.plot_eigenvalues"><code class="docutils literal notranslate"><span class="pre">plot_eigenvalues()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="dynamapp.visualization.html#dynamapp.visualization.plot_input_output"><code class="docutils literal notranslate"><span class="pre">plot_input_output()</span></code></a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="dynamapp.visualization.html">visualization module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dynamapp.solvers.html">solvers module</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="dynamapp.solvers.html#dynamapp.solvers.solve_least_square"><code class="docutils literal notranslate"><span class="pre">solve_least_square()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="dynamapp.solvers.html#dynamapp.solvers.solve_riccati_equation"><code class="docutils literal notranslate"><span class="pre">solve_riccati_equation()</span></code></a></li>
@@ -248,21 +242,25 @@
 <li class="toctree-l2"><a class="reference internal" href="dynamapp.trajectory.html#dynamapp.trajectory.SplineTrajectory"><code class="docutils literal notranslate"><span class="pre">SplineTrajectory</span></code></a><ul>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.trajectory.html#dynamapp.trajectory.SplineTrajectory.get_value"><code class="docutils literal notranslate"><span class="pre">SplineTrajectory.get_value()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.trajectory.html#dynamapp.trajectory.SplineTrajectory.compute_full_trajectory"><code class="docutils literal notranslate"><span class="pre">SplineTrajectory.compute_full_trajectory()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamapp.trajectory.html#dynamapp.trajectory.SplineTrajectory.compute_with_constraints"><code class="docutils literal notranslate"><span class="pre">SplineTrajectory.compute_with_constraints()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="dynamapp.trajectory.html#dynamapp.trajectory.TrapezoidalTrajectory"><code class="docutils literal notranslate"><span class="pre">TrapezoidalTrajectory</span></code></a><ul>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.trajectory.html#dynamapp.trajectory.TrapezoidalTrajectory.get_value"><code class="docutils literal notranslate"><span class="pre">TrapezoidalTrajectory.get_value()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.trajectory.html#dynamapp.trajectory.TrapezoidalTrajectory.compute_full_trajectory"><code class="docutils literal notranslate"><span class="pre">TrapezoidalTrajectory.compute_full_trajectory()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamapp.trajectory.html#dynamapp.trajectory.TrapezoidalTrajectory.compute_with_constraints"><code class="docutils literal notranslate"><span class="pre">TrapezoidalTrajectory.compute_with_constraints()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="dynamapp.trajectory.html#dynamapp.trajectory.PeriodicTrajectory"><code class="docutils literal notranslate"><span class="pre">PeriodicTrajectory</span></code></a><ul>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.trajectory.html#dynamapp.trajectory.PeriodicTrajectory.get_value"><code class="docutils literal notranslate"><span class="pre">PeriodicTrajectory.get_value()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.trajectory.html#dynamapp.trajectory.PeriodicTrajectory.compute_full_trajectory"><code class="docutils literal notranslate"><span class="pre">PeriodicTrajectory.compute_full_trajectory()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamapp.trajectory.html#dynamapp.trajectory.PeriodicTrajectory.compute_with_constraints"><code class="docutils literal notranslate"><span class="pre">PeriodicTrajectory.compute_with_constraints()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="dynamapp.trajectory.html#dynamapp.trajectory.StepTrajectory"><code class="docutils literal notranslate"><span class="pre">StepTrajectory</span></code></a><ul>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.trajectory.html#dynamapp.trajectory.StepTrajectory.get_value"><code class="docutils literal notranslate"><span class="pre">StepTrajectory.get_value()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.trajectory.html#dynamapp.trajectory.StepTrajectory.compute_full_trajectory"><code class="docutils literal notranslate"><span class="pre">StepTrajectory.compute_full_trajectory()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamapp.trajectory.html#dynamapp.trajectory.StepTrajectory.compute_with_constraints"><code class="docutils literal notranslate"><span class="pre">StepTrajectory.compute_with_constraints()</span></code></a></li>
 </ul>
 </li>
 </ul>
