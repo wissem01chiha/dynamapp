@@ -51,7 +51,7 @@ All guidelines will be available in the [Tutoriel](https://wissem01chiha.github.
 
 
 <!-- omit in toc -->
-### Example 1: Creating a Model Instance
+#### Example 1: Creating a Model Instance
 
 ```python
 from dynamapp.model import Model
@@ -73,7 +73,7 @@ model = Model(Imats, dhparams, gravity, dampings)
 torques = model.generalized_torques()
 ```
 <!-- omit in toc -->
-### Example 2: Computing the Generalized Torques and Inertia Matrix
+#### Example 2: Computing the Generalized Torques and Inertia Matrix
 
 ```python
 from dynamapp.model import Model
@@ -98,7 +98,7 @@ generalized_torques = model.generalized_torques(q, qp, qpp)
 inertia_matrix = model.inertia_tensor(q)
 ```
 <!-- omit in toc -->
-### Example 3: Computing State Matrices (A, B, C, D)
+#### Example 3: Computing State Matrices (A, B, C, D)
 
 $$
 \begin{aligned}
@@ -133,7 +133,7 @@ The last model computation serves as a bridge to state-space identification tech
 > **Note:**  The stability of the computed matrices is not guaranteed. The intensive computations of derivatives are error-prone, so a new computation method is needed!
 > 
 <!-- omit in toc -->
-### Example 2: Advanced Analysis — Stability, Controllability, and Observability
+#### Example 4: Advanced Analysis — Stability, Controllability, and Observability
   
 ```python
 from dynamapp.model_state import ModelState
@@ -156,29 +156,7 @@ observability_matrix = model_state.compute_obs_matrix(x)
 ```
 
 <!-- omit in toc -->
-### Example 3: Advanced Analysis — Stability, Controllability, and Observability
-  
-```python
-from dynamapp.model_state import ModelState
-Imats = [jnp.eye(6) for _ in range(3)]  # Example inertia matrices
-dhparams = [
-    [0.0, 0.5, 0.5, jnp.pi / 2],
-    [0.0, 0.5, 0.5, 0.0],
-    [0.0, 0.5, 0.5, jnp.pi / 2]
-]
-# Initialize the ModelState object
-model_state = ModelState(Imats, dhparams)
-# Define an example state vector (x)
-x = jnp.zeros((2 * model_state.model.ndof, 1))  # Example state vector (2 * ndof)
-# Check if the system is stable
-is_stable = model_state._is_stable(x)
-eigenvalues = model_state.compute_eigvals(x)
-controllability_matrix = model_state.compute_ctlb_matrix(x)
-# Compute the observability matrix
-observability_matrix = model_state.compute_obs_matrix(x)
-```
-<!-- omit in toc -->
-###  Example 4: Torques Derivatives with Respect to Inertia
+####  Example 4: Torques Derivatives with Respect to Inertia
 
 $$J = \frac{\partial \tau}{\partial I}$$
 
@@ -190,7 +168,7 @@ a = jnp.array([0.05, 0.1, -0.15])  # Generalized accelerations (a)
 t = generalized_torques_wrt_inertia(m, q, v, a)
 ```
 <!-- omit in toc -->
-### Example 5: Torques Derivatives with Respect to DH Parameters
+#### Example 5: Torques Derivatives with Respect to DH Parameters
 $$J = \frac{\partial \tau}{\partial \theta}
 $$
 ```python
@@ -202,7 +180,7 @@ a = jnp.array([0.05, 0.1, -0.15])  # Generalized accelerations (a)
 torques_wrt_dhparams = generalized_torques_wrt_dhparams(m, q, v, a)
 ```
 <!-- omit in toc -->
-### Example 6: Torques Derivatives with Respect to Damping
+#### Example 6: Torques Derivatives with Respect to Damping
 $$J = \frac{\partial \tau}{\partial c}
 $$
 ```python
