@@ -24,6 +24,13 @@ def compute_friction_force(alpha:jnp.array, beta:jnp.array, gamma:jnp.array,
     Computes the frictional force for a joint using a simple 
     generalized friction model.
     
+    .. math::
+        \begin{cases} 
+            f_i = \alpha_{1i} q_i + \alpha_{2i} q_i^2 + \ldots + \alpha_{ni} q_i^n + 
+            \beta_{1i} v_i + \beta_{2i} v_i^2 + \ldots + \beta_{ki} v_i^k + 
+            \gamma_{1i} a_i + \gamma_{2i} a_i^2 + \ldots + \gamma_{pi} a_i^p
+        \end{cases}
+
     Args:
         - alpha (jax-array): Coefficients for the position-related terms.
         - beta (jax-array): Coefficients for the velocity-related terms.

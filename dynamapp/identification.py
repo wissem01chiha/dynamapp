@@ -1,3 +1,6 @@
+import jax 
+import jax.numpy as jnp
+
 from .nfoursid import *
 from .generators import *
 from .regressors import *
@@ -77,10 +80,6 @@ from .math_utils import *
 # # inverse dynamics identification using neural network :
 # # use the xeights saved from ghali training model and simulate them 
 
-
-
-# from utils import  clampArray, plotArray, plot2Arrays
-# from dynamapp.math_utils import RMSE, computeCorrelation
 
 # logging.basicConfig(level=logging.INFO)
 # logger = logging.getLogger(__name__)

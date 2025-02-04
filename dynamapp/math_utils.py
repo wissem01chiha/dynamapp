@@ -52,7 +52,7 @@ def eigenvalue_decomposition(
     """
     u, eigenvalues, vh = jnp.linalg.svd(matrix)
     eigenvalues_mat = jnp.zeros((u.shape[0], vh.shape[0]))
-    jnp.fill_diagonal(eigenvalues_mat, eigenvalues)
+    eigenvalues_mat = eigenvalues_mat.at[jnp.diag_indices(u.shape[0])].set(eigenvalues)
     return Decomposition(u, eigenvalues_mat, vh)
 
 def reduce_decomposition(
@@ -109,7 +109,7 @@ def block_hankel_matrix(
     for block_row_index in range(hankel_cols_dim):
         flattened_block_rows = matrix[block_row_index:block_row_index+num_block_rows,
                                         :].flatten()
-        hankel[:, block_row_index] = flattened_block_rows
+        hankel =  hankel.at[:, block_row_index].set(flattened_block_rows)
     return hankel
 
 def vectorize(

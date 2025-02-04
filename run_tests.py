@@ -1,5 +1,4 @@
 import unittest
-import os
 
 def run_tests():
     test_loader = unittest.TestLoader()

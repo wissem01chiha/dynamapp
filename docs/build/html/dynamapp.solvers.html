@@ -24,7 +24,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="reductions module" href="dynamapp.reductions.html" />
-    <link rel="prev" title="data_utils module" href="dynamapp.data_utils.html" /> 
+    <link rel="prev" title="visualization module" href="dynamapp.visualization.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -66,7 +66,7 @@
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.nfoursid.html">nfoursid module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.regressors.html">regressors module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.model.html">model module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="dynamapp.data_utils.html">data_utils module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamapp.visualization.html">visualization module</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">solvers module</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#dynamapp.solvers.solve_least_square"><code class="docutils literal notranslate"><span class="pre">solve_least_square()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#dynamapp.solvers.solve_riccati_equation"><code class="docutils literal notranslate"><span class="pre">solve_riccati_equation()</span></code></a></li>
@@ -79,6 +79,7 @@
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.trajectory.html">trajectory module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.viscoelastic.html">viscoelastic module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.identification.html">identification module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamapp.generators.html">generators module</a></li>
 </ul>
 </li>
 </ul>
@@ -136,10 +137,10 @@
 
 <dl class="py function">
 <dt class="sig sig-object py" id="dynamapp.solvers.solve_riccati_equation">
-<span class="sig-prename descclassname"><span class="pre">dynamapp.solvers.</span></span><span class="sig-name descname"><span class="pre">solve_riccati_equation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">A</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">B</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Q</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">R</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dynamapp.solvers.solve_riccati_equation" title="Link to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">dynamapp.solvers.</span></span><span class="sig-name descname"><span class="pre">solve_riccati_equation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">A</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">B</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Q</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">R</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dynamapp/solvers.html#solve_riccati_equation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dynamapp.solvers.solve_riccati_equation" title="Link to this definition"></a></dt>
 <dd><p>Solve the discrete-time Algebraic Riccati Equation (ARE):</p>
 <div class="math notranslate nohighlight">
-\[P = A.T &#64; P &#64; A - (A.T &#64; P &#64; B) &#64; jnp.linalg.inv(R + B.T &#64; P &#64; B) &#64; (B.T &#64; P &#64; A) + Q\]</div>
+\[P = A^T . P . A - (A^T . P . B) . (R + B.T .P . B)^{-1}.(B^T . P . A) + Q\]</div>
 <dl class="simple">
 <dt>Args:</dt><dd><ul class="simple">
 <li><p>A: State matrix (n, n)</p></li>
@@ -153,23 +154,33 @@
 </ul>
 </dd>
 </dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This function do not work with &#64;jit decorator</p>
+</div>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="dynamapp.solvers.luenberger_observer">
 <span class="sig-prename descclassname"><span class="pre">dynamapp.solvers.</span></span><span class="sig-name descname"><span class="pre">luenberger_observer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">A</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">B</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">C</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">desired_poles</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dynamapp.solvers.luenberger_observer" title="Link to this definition"></a></dt>
-<dd><p>Computes the Luenberger Observer gain matrix L by placing the poles of the observer at the desired_poles.</p>
+<dd><p>Computes the Luenberger Observer gain matrix L by placing 
+the poles of the observer at the desired_poles.</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>A (ndarray): System matrix.
-B (ndarray): Input matrix.
-C (ndarray): Output matrix.
-desired_poles (list): Desired poles for the observer.</p>
+<dt>Args:</dt><dd><ul class="simple">
+<li><p>A (ndarray): System matrix.</p></li>
+<li><p>B (ndarray): Input matrix.</p></li>
+<li><p>C (ndarray): Output matrix.</p></li>
+<li><p>desired_poles (list): Desired poles for the observer.</p></li>
+</ul>
 </dd>
 <dt>Returns:</dt><dd><p>L (ndarray): Observer gain matrix.</p>
 </dd>
-<dt>TODO :we need to solve the pole placement problem using a custom algorithm </dt><dd><p>the acctual version return a null gain matrix,</p>
-</dd>
 </dl>
+<div class="admonition-todo admonition" id="id1">
+<p class="admonition-title">Todo</p>
+<p>we need to solve the pole placement problem using a custom algorithm 
+the acctual version return a null gain matrix,</p>
+</div>
 </dd></dl>
 
 </section>
@@ -178,7 +189,7 @@ desired_poles (list): Desired poles for the observer.</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="dynamapp.data_utils.html" class="btn btn-neutral float-left" title="data_utils module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="dynamapp.visualization.html" class="btn btn-neutral float-left" title="visualization module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="dynamapp.reductions.html" class="btn btn-neutral float-right" title="reductions module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

@@ -64,7 +64,7 @@
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.nfoursid.html">nfoursid module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.regressors.html">regressors module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.model.html">model module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="dynamapp.data_utils.html">data_utils module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamapp.visualization.html">visualization module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.solvers.html">solvers module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.reductions.html">reductions module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.state_space.html">state_space module</a></li>
@@ -79,6 +79,7 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.viscoelastic.html">viscoelastic module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.identification.html">identification module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamapp.generators.html">generators module</a></li>
 </ul>
 </li>
 </ul>
@@ -178,9 +179,11 @@
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dynamapp.trajectory.</span></span><span class="sig-name descname"><span class="pre">PeriodicTrajectory</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sampling</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ti</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tf</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frequency</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Aij</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Bij</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nb_terms</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dynamapp/trajectory.html#PeriodicTrajectory"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dynamapp.trajectory.PeriodicTrajectory" title="Link to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#dynamapp.trajectory.Trajectory" title="dynamapp.trajectory.Trajectory"><code class="xref py py-class docutils literal notranslate"><span class="pre">Trajectory</span></code></a></p>
 <p>Periodic trajectory based on Fourier series.[1]</p>
-<dl class="simple">
-<dt>Ref:</dt><dd><p>[1] Fourier-based optimal excitation trajectories for the dynamic 
-identification of robots, Kyung.Jo Park - Robotica - 2006.</p>
+<dl>
+<dt>Ref:</dt><dd><ul class="simple">
+<li><p>[1] Fourier-based optimal excitation trajectories for the dynamic</p></li>
+</ul>
+<p>identification of robots, Kyung.Jo Park - Robotica - 2006.</p>
 </dd>
 </dl>
 <dl class="py method">

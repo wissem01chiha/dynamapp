@@ -18,6 +18,8 @@
         <script src="_static/documentation_options.js?v=40be6288"></script>
         <script src="_static/doctools.js?v=9a2dae69"></script>
         <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -64,7 +66,7 @@
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.nfoursid.html">nfoursid module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.regressors.html">regressors module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.model.html">model module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="dynamapp.data_utils.html">data_utils module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamapp.visualization.html">visualization module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.solvers.html">solvers module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.reductions.html">reductions module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.state_space.html">state_space module</a></li>
@@ -76,6 +78,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.identification.html">identification module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamapp.generators.html">generators module</a></li>
 </ul>
 </li>
 </ul>
@@ -137,6 +140,12 @@
 <span class="sig-prename descclassname"><span class="pre">dynamapp.viscoelastic.</span></span><span class="sig-name descname"><span class="pre">compute_friction_force</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">jax.numpy.array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beta</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">jax.numpy.array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gamma</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">jax.numpy.array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">q</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dynamapp.viscoelastic.compute_friction_force" title="Link to this definition"></a></dt>
 <dd><p>Computes the frictional force for a joint using a simple 
 generalized friction model.</p>
+<div class="math notranslate nohighlight">
+\[egin{cases} 
+    f_i = lpha_{1i} q_i + lpha_{2i} q_i^2 + \ldots + lpha_{ni} q_i^n + 
+    eta_{1i} v_i + eta_{2i} v_i^2 + \ldots + eta_{ki} v_i^k + 
+    \gamma_{1i} a_i + \gamma_{2i} a_i^2 + \ldots + \gamma_{pi} a_i^p
+\end{cases}\]</div>
 <dl class="simple">
 <dt>Args:</dt><dd><ul class="simple">
 <li><p>alpha (jax-array): Coefficients for the position-related terms.</p></li>

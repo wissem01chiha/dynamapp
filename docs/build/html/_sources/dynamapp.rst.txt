@@ -12,6 +12,7 @@ Submodules
    dynamapp.nfoursid
    dynamapp.regressors
    dynamapp.model
+   dynamapp.visualization
    dynamapp.solvers
    dynamapp.reductions
    dynamapp.state_space

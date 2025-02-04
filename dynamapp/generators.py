@@ -8,7 +8,7 @@ from .trajectory import *
 
 class ModelDataGenerator:
     """
-    This class generates data based on a model (multibody system) for a given trajectory.
+    This class generates data based on a multibody system for a given trajectory.
     It computes the joint positions, velocities, accelerations, and torques based on
     the defined trajectory and model dynamics.
 
@@ -27,11 +27,12 @@ class ModelDataGenerator:
         
         Returns:
             - dict: A dictionary containing joint positions, velocities, accelerations, and torques
-                  over the trajectory time.
+                over the trajectory time.
         """
         q_data = self.trajectory.compute_full_trajectory()
         q_dot_data = self.compute_velocities(q_data)
         q_ddot_data = self.compute_accelerations(q_data, q_dot_data)
+
         tau_data = self.compute_torques(q_data, q_dot_data, q_ddot_data)
 
         return {
@@ -51,7 +52,7 @@ class ModelDataGenerator:
         Returns:
             - jnp.ndarray: Joint velocities (q_dot).
         """
-        q_dot_data = jnp.gradient(q_data, axis=0) / self.model.sampling_time
+        q_dot_data = jnp.gradient(q_data, axis=0) / self.trajectory.sampling
         return q_dot_data
     
     def compute_accelerations(self, q_data, q_dot_data):
@@ -63,9 +64,9 @@ class ModelDataGenerator:
             - q_dot_data (jnp.ndarray): Joint velocities over the trajectory time.
         
         Returns:
-            - jnp.ndarray: Joint accelerations (q_ddot).
+            - jnp.ndarray: Joint accelerations (npoints * ndof).
         """
-        q_ddot_data = jnp.gradient(q_dot_data, axis=0) / self.model.sampling_time
+        q_ddot_data = jnp.gradient(q_dot_data, axis=0) / self.trajectory.sampling
         return q_ddot_data
     
     def compute_torques(self, q_data, q_dot_data, q_ddot_data):
@@ -80,11 +81,17 @@ class ModelDataGenerator:
         Returns:
             - jnp.ndarray: Joint torques (tau).
         """
-        tau_data = []
-        for q, q_dot, q_ddot in zip(q_data, q_dot_data, q_ddot_data):
-            tau = self.model.generalized_torques(q=q, qp=q_dot, qpp=q_ddot)
-            tau_data.append(tau)
-        return jnp.array(tau_data)
+        assert q_data.shape == q_dot_data.shape == q_ddot_data.shape, \
+        " data arrays do not have the same shape"
+        assert q_data.ndim == 2, "Input arrays should be 2D JAX arrays"
+        tau_data = jnp.zeros(q_data.shape)
+        for i in range(self.model.ndof):
+            tau_up = self.model.generalized_torque(i,q_data[:,i],q_dot_data[:,i],q_ddot_data[:,i])
+            tau_data = tau_data.at[0,i].set(tau_up[0])
+            tau_data = tau_data.at[1,i].set(tau_up[1])
+            tau_data = tau_data.at[2,i].set(tau_up[2])
+            
+        return tau_data
 
 class ModelStateDataGenerator:
     r"""
@@ -149,21 +156,17 @@ class ModelStateDataGenerator:
             x_seq = [self.x_init]
             y_seq = []
             
-            # Generate data for each time step
             for t in range(self.time_steps):
                 u_t = self._get_input_signal(t)
                 e_t = self._get_noise_signal(t)
-                
-                # Step the model to compute the output and update the state
                 y_t = self.model_state.step(u=u_t, e=e_t)
                 
                 u_seq.append(u_t)
                 x_seq.append(self.model_state.xs[-1])
                 y_seq.append(y_t)
             
-            # Store the sequences for this sample
             u_data.append(jnp.array(u_seq))
-            x_data.append(jnp.array(x_seq[1:]))  # remove initial state
+            x_data.append(jnp.array(x_seq[1:])) 
             y_data.append(jnp.array(y_seq))
         
         return jnp.array(x_data), jnp.array(u_data), jnp.array(y_data)
@@ -178,7 +181,6 @@ class ModelStateDataGenerator:
         Returns:
             - u_t : jnp.ndarray - input signal at time step `t`
         """
-        # Example input signal: a sinusoidal input
         u_t = self.u_init * jnp.sin(2 * jnp.pi * t / self.time_steps)
         return u_t
     
@@ -192,7 +194,6 @@ class ModelStateDataGenerator:
         Returns:
             - e_t : jnp.ndarray - noise signal at time step `t`
         """
-        # Example noise signal: random noise
         noise = jax.random.normal(jax.random.PRNGKey(t), shape=(self.model_state.y_dim, 1))
         return self.noise_magnitude * noise
 

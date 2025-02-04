@@ -8,19 +8,29 @@ logger = logging.getLogger(__name__)
 
 class Model():
     """
-    Base class definition for multijoint models.
+    Base class definition for multi-joint models. This class supports  
+    only serial mechanisms. All algorithms are based on [1], and the  
+    Python implementation is inspired by [2].  
 
     Args:
-        - dhparams : model DH parameters.
-        - Imats : links inertia tensors, list of JAX arrys
-        - q (np.ndarray): Joints position vector.
-        - v (np.ndarray): Joints velocity vector.
-        - a (np.ndarray): Joints acceleration vector.
-        - dampings : joints damping coefficents list
-        - gravity : gravity vector applied to the system
-        
-     Examples:
-        >>> model = Model(Imats, dhparams, -9.80, dampings)
+        - dhparams: Model DH parameters.  
+        - Imats: Links' inertia tensors, provided as a list of JAX arrays.  
+        - q (np.ndarray): Joint position vector.  
+        - v (np.ndarray): Joint velocity vector.  
+        - a (np.ndarray): Joint acceleration vector.  
+        - dampings: List of joint damping coefficients.  
+        - gravity: Gravity vector applied to the system.  
+
+    Examples:
+        >>> model = Model(Imats, dhparams, -9.81, dampings)  
+
+    References:
+        - [1] Rigid Body Dynamics Algorithms* - Roy Featherstone (2008).  
+        - [2] [RBDReference](https://github.com/robot-acceleration/RBDReference/blob/main/RBDReference.py).  
+
+    .. note::  
+        This module needs better input validation for data, tensor sizes,  
+        and computation algorithms. It may be refactored in future versions.  
     """
     def __init__(self, Imats:list, 
                 dhparams:list, 
@@ -50,13 +60,14 @@ class Model():
             - q : joints position vector
             - qp : joints velocity vector
             - qpp : joints acceleration vector
+            
         Retruns:
             - c: coriolis terms and other forces potentially be applied to the system. 
             - v: velocity of each joint in world base coordinates.
             - a: acceleration of each joint in world base coordinates.
             - f: forces that joints must apply to produce trajectory
         """
-        n = len(qp)
+        n = self.ndof
         v = jnp.zeros((6,n))
         a = jnp.zeros((6,n))
         f = jnp.zeros((6,n))
@@ -139,7 +150,6 @@ class Model():
         vecXIvec = jnp.zeros(6)
         vecXIvec = vecXIvec.at[:3].set(jnp.cross(vec[:3], temp[:3]) + jnp.cross(vec[3:], temp[3:]))
         vecXIvec = vecXIvec.at[3:].set(jnp.cross(vec[:3], temp[3:]))
-
         return vecXIvec
     
     @staticmethod
@@ -194,6 +204,8 @@ class Model():
     
     def _transform(self, i, qi)->jnp.ndarray:
         """Computes the homogenus transformation matrix X for joint i at configuration q_i"""
+        assert 0 <= i < len(self.dhparams), \
+            f"Index {i} is out of range for dhparams with length {len(self.dhparams)}"
         theta, d, a, alpha = self.dhparams[i]
         theta += qi
         T = jnp.array([
@@ -262,13 +274,18 @@ class Model():
     
     def inertia_tensor(self, q):
         """
-        Computes the mass matrix M(q) using RNEA.
-        
-        Args:
-            q (jnp.ndarray): Joint positions (ndof,)
+        Computes the mass matrix M(q) for the system.
 
         Returns:
-            jnp.ndarray: Mass matrix (ndof, ndof)
+            jnp.ndarray: Mass matrix of shape (ndof, ndof).
+
+        .. note:: 
+            This implementation is based on the RNEA algorithm using the Jacobian tensor.
+            It is not very robust and may change in future versions.
+
+        .. todo:: 
+            Implement the inertia tensor computation using the method described in:
+            https://www.researchgate.net/publication/343098270_Analytical_Inverse_of_the_Joint_Space_Inertia_Matrix
         """
         n = len(q)
         M = jnp.zeros((n, n))  
@@ -292,7 +309,7 @@ class Model():
         Returns:
             jnp.ndarray: Coriolis matrix C(q, qp) of shape (ndof, ndof)
         """
-        n = len(q)
+        n = q.shape[0]
         def rnea_coriolis(qp_var):
             c, _, _, _ = self._rnea(q, qp_var, jnp.zeros(n))  
             return c  
@@ -347,6 +364,11 @@ class Model():
         f = self.generalized_forces(q, qp, qpp)
         return f[-3:,:]
     
+    def generalized_torque(self,i:int, q=None, qp=None, qpp=None)->jnp.ndarray:
+        """Return the genralized torque for a given link i"""
+        f = self.generalized_torques(q,qp,qpp)
+        return  f[-3:,i]
+        
     def full_forces(self, alpha:jnp.array, beta:jnp.array, gamma:jnp.array,
             dampings, q=None, qp=None, qpp=None)->jnp.ndarray:
         """ 

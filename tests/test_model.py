@@ -14,13 +14,13 @@ class TestModel(unittest.TestCase):
         Imats[4] = Imats[5].at[5, 5].set(-0.3)
         Imats[4] = Imats[6].at[3, 1].set(-8.3)
         dhparams = [
-            [1, 5.47, 0.5, np.pi / 3],  
-            [0.5, 1, 0.47, np.pi / 6],
-            [1, 4, 0.0, np.pi / 7],
-            [-2, 5, 0.28, np.pi / 4],
-            [-2, 1, 0.89, np.pi / 6],
-            [1, 1, 0.8, np.pi / 3],
-            [-3, -0.02, 0.5, np.pi / 4]
+            [1, 5.47, 0.5, jnp.pi / 3],  
+            [0.5, 1, 0.47, jnp.pi / 6],
+            [1, 4, 0.0, jnp.pi / 7],
+            [-2, 5, 0.28, jnp.pi / 4],
+            [-2, 1, 0.89, jnp.pi / 6],
+            [1, 1, 0.8, jnp.pi / 3],
+            [-3, -0.02, 0.5, jnp.pi / 4]
         ]
         self.model_ = Model(Imats, dhparams)
 
@@ -57,11 +57,19 @@ class TestModel(unittest.TestCase):
         
     def test_generalized_torques(self):
         
-        q = np.ones(7)
-        qp = np.ones(7)
-        qpp = np.ones(7)
+        q = jnp.ones(7)
+        qp = jnp.ones(7)
+        qpp = jnp.ones(7)
         torques = self.model_.generalized_torques(q, qp, qpp)
         self.assertIsNotNone(torques, "Generalized torques should not be None")
-
+        
+    def test_generalized_torque(self):
+        
+        q = jnp.ones(7)
+        qp = jnp.ones(7)
+        qpp = jnp.ones(7)
+        torques  = self.model_.generalized_torque(7,q,qp,qpp)
+        self.assertIsNotNone(torques, "Generalized torques should not be None")
+        
 if __name__ == "__main__":
     unittest.main()

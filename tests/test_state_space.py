@@ -2,17 +2,20 @@ from setup_tests import *
 from dynamapp.state_space import StateSpace
 
 class TestStateSpace(unittest.TestCase):
+    
     def setUp(self) -> None:
-        self.a = np.array([[2]])
-        self.b = np.array([[3]])
-        self.c = np.array([[5]])
-        self.d = np.array([[7]])
-        self.k = np.array([[11]])
+        
+        self.a = jnp.array([[2]])
+        self.b = jnp.array([[3]])
+        self.c = jnp.array([[5]])
+        self.d = jnp.array([[7]])
+        self.k = jnp.array([[11]])
 
     def test_output(self):
-        state = np.array([[1]])
-        u = np.array([[2]])
-        e = np.array([[3]])
+        
+        state = jnp.array([[1]])
+        u = jnp.array([[2]])
+        e = jnp.array([[3]])
 
         model = StateSpace(
             self.a,
@@ -32,8 +35,9 @@ class TestStateSpace(unittest.TestCase):
         self.assertAlmostEqual(8, result[0, 0])
 
     def test_step(self):
-        u = np.array([[2]])
-        e = np.array([[3]])
+        
+        u = jnp.array([[2]])
+        e = jnp.array([[3]])
 
         model = StateSpace(
             self.a,
@@ -53,8 +57,8 @@ class TestStateSpace(unittest.TestCase):
         self.assertAlmostEqual(93, y[0, 0])
 
         result = model.to_dataframe().to_numpy()
-        self.assertTrue(np.all(np.isclose(
-            np.array([
+        self.assertTrue(jnp.all(jnp.isclose(
+            jnp.array([
                 [0, 0],
                 [2, 14],
                 [2, 44],
@@ -64,17 +68,18 @@ class TestStateSpace(unittest.TestCase):
         )))
 
     def test_autonomous_system(self):
+        
         model = StateSpace(
             self.a,
-            np.zeros((1, 0)),
+            jnp.zeros((1, 0)),
             self.c,
-            np.zeros((1, 0)),
-            k=np.array([[1]])
+            jnp.zeros((1, 0)),
+            k=jnp.array([[1]])
         )
-        e = np.array([[1]])
+        e = jnp.array([[1]])
 
         with self.assertRaises(ValueError):
-            model.step(np.array([[1]]))
+            model.step(jnp.array([[1]]))
         y = model.step()
         self.assertEqual((1, 1), y.shape)
         self.assertAlmostEqual(0, y[0, 0])
@@ -84,3 +89,6 @@ class TestStateSpace(unittest.TestCase):
         self.assertAlmostEqual(6, y[0, 0])
         y = model.step(e=e)
         self.assertAlmostEqual(16, y[0, 0])
+        
+if __name__ == "__main__":
+    unittest.main()

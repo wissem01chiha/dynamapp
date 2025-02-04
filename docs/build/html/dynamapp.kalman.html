@@ -69,7 +69,7 @@
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.nfoursid.html">nfoursid module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.regressors.html">regressors module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.model.html">model module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="dynamapp.data_utils.html">data_utils module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamapp.visualization.html">visualization module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.solvers.html">solvers module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.reductions.html">reductions module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.state_space.html">state_space module</a></li>
@@ -77,6 +77,7 @@
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.trajectory.html">trajectory module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.viscoelastic.html">viscoelastic module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.identification.html">identification module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamapp.generators.html">generators module</a></li>
 </ul>
 </li>
 </ul>
@@ -224,25 +225,6 @@ This column is useful for comparing prediction performance.</p></li>
 </li>
 <li><p>Whether the column is a value or the corresponding expected standard deviation.</p></li>
 </ol>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="dynamapp.kalman.Kalman.plot_filtered">
-<span class="sig-name descname"><span class="pre">plot_filtered</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fig</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">matplotlib.figure.Figure</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dynamapp/kalman.html#Kalman.plot_filtered"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dynamapp.kalman.Kalman.plot_filtered" title="Link to this definition"></a></dt>
-<dd><p>The top graph plots the filtered output states of the Kalman filter and compares with the measured values.
-The error bars correspond to the expected standard deviations.
-The bottom graph zooms in on the errors between the filtered states and the measured values, compared with
-the expected standard deviations.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="dynamapp.kalman.Kalman.plot_predicted">
-<span class="sig-name descname"><span class="pre">plot_predicted</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fig</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">matplotlib.figure.Figure</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">steps_to_extrapolate</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dynamapp/kalman.html#Kalman.plot_predicted"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dynamapp.kalman.Kalman.plot_predicted" title="Link to this definition"></a></dt>
-<dd><p>The top graph plots the predicted output states of the Kalman filter and compares with the measured values.
-The error bars correspond to the expected standard deviations.</p>
-<p>The stars on the top right represent the <code class="docutils literal notranslate"><span class="pre">steps_to_extrapolate</span></code>-steps ahead extrapolation under no further
-inputs. The bottom graph zooms in on the errors between the predicted states and the measured values, compared
-with the expected standard deviations.</p>
 </dd></dl>
 
 </dd></dl>

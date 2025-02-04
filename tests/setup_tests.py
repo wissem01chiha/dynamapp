@@ -6,8 +6,8 @@ import os
 import sys
 import copy
 import unittest
-import numpy as np
 import jax.numpy as jnp
+import jax.random as random
 import matplotlib.pyplot as plt 
 import seaborn as sns
 

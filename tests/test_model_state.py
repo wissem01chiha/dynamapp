@@ -8,15 +8,15 @@ class TestModelState(unittest.TestCase):
         
         Imats = [jnp.full((6, 6), fill_value=5.0) for _ in range(3)]
         dhparams = [
-            [1, 5.47, 0.5, np.pi / 3],  
-            [0.5, 1, 0.47, np.pi / 6],
-            [1, 4, 0.0, np.pi / 7]
+            [1, 5.47, 0.5, jnp.pi / 3],  
+            [0.5, 1, 0.47, jnp.pi / 6],
+            [1, 4, 0.0, jnp.pi / 7]
         ]
         dampings = [1.0, 2, 6]
 
         self.m = Model(Imats, dhparams,dampings=dampings)
-        self.x_init = jnp.zeros((4, 1))  
-        self.model_state = ModelState(Imats, dhparams, gravity=-9.81)
+        self.x_init = jnp.zeros((6, 1))  
+        self.model_state = ModelState(Imats, dhparams, gravity=-9.81,x_init=self.x_init)
 
     def test_compute_matrices(self):
         

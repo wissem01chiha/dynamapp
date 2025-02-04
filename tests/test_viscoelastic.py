@@ -11,7 +11,7 @@ class TestFrictionModels(unittest.TestCase):
         expected_output = fc * jnp.sign(v) + fs * v
 
         result = compute_coulomb_friction_force(v, fc, fs)
-        np.testing.assert_allclose(result, expected_output, atol=1e-6)
+        self.assertAlmostEqual(result.all(), expected_output.all(), 1e-6)
 
     def test_compute_friction_force(self):
          
@@ -23,7 +23,8 @@ class TestFrictionModels(unittest.TestCase):
         a = -0.2   
         expected_output = jnp.polyval(alpha, q) + jnp.polyval(beta, v) + jnp.polyval(gamma, a)
         result = compute_friction_force(alpha, beta, gamma, q, v, a)
-        np.testing.assert_allclose(result, expected_output, atol=1e-6)
+        self.assertAlmostEqual(result.all(), expected_output.all(), 1e-6)
+
 
 if __name__ == '__main__':
     unittest.main()

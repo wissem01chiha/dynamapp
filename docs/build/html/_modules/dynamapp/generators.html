@@ -99,7 +99,7 @@
 <a class="viewcode-back" href="../../dynamapp.generators.html#dynamapp.generators.ModelDataGenerator">[docs]</a>
 <span class="k">class</span> <span class="nc">ModelDataGenerator</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    This class generates data based on a model (multibody system) for a given trajectory.</span>
+<span class="sd">    This class generates data based on a multibody system for a given trajectory.</span>
 <span class="sd">    It computes the joint positions, velocities, accelerations, and torques based on</span>
 <span class="sd">    the defined trajectory and model dynamics.</span>
 
@@ -257,21 +257,17 @@
             <span class="n">x_seq</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">x_init</span><span class="p">]</span>
             <span class="n">y_seq</span> <span class="o">=</span> <span class="p">[]</span>
             
-            <span class="c1"># Generate data for each time step</span>
             <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">time_steps</span><span class="p">):</span>
                 <span class="n">u_t</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_input_signal</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
                 <span class="n">e_t</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_noise_signal</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
-                
-                <span class="c1"># Step the model to compute the output and update the state</span>
                 <span class="n">y_t</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_state</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">u</span><span class="o">=</span><span class="n">u_t</span><span class="p">,</span> <span class="n">e</span><span class="o">=</span><span class="n">e_t</span><span class="p">)</span>
                 
                 <span class="n">u_seq</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">u_t</span><span class="p">)</span>
                 <span class="n">x_seq</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model_state</span><span class="o">.</span><span class="n">xs</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
                 <span class="n">y_seq</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">y_t</span><span class="p">)</span>
             
-            <span class="c1"># Store the sequences for this sample</span>
             <span class="n">u_data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">jnp</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">u_seq</span><span class="p">))</span>
-            <span class="n">x_data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">jnp</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">x_seq</span><span class="p">[</span><span class="mi">1</span><span class="p">:]))</span>  <span class="c1"># remove initial state</span>
+            <span class="n">x_data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">jnp</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">x_seq</span><span class="p">[</span><span class="mi">1</span><span class="p">:]))</span> 
             <span class="n">y_data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">jnp</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">y_seq</span><span class="p">))</span>
         
         <span class="k">return</span> <span class="n">jnp</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">x_data</span><span class="p">),</span> <span class="n">jnp</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">u_data</span><span class="p">),</span> <span class="n">jnp</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">y_data</span><span class="p">)</span></div>
@@ -287,7 +283,6 @@
 <span class="sd">        Returns:</span>
 <span class="sd">            - u_t : jnp.ndarray - input signal at time step `t`</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="c1"># Example input signal: a sinusoidal input</span>
         <span class="n">u_t</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">u_init</span> <span class="o">*</span> <span class="n">jnp</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">jnp</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">t</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">time_steps</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">u_t</span>
     
@@ -301,7 +296,6 @@
 <span class="sd">        Returns:</span>
 <span class="sd">            - e_t : jnp.ndarray - noise signal at time step `t`</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="c1"># Example noise signal: random noise</span>
         <span class="n">noise</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">jax</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">PRNGKey</span><span class="p">(</span><span class="n">t</span><span class="p">),</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model_state</span><span class="o">.</span><span class="n">y_dim</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">noise_magnitude</span> <span class="o">*</span> <span class="n">noise</span>
 

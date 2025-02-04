@@ -21,7 +21,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="data_utils module" href="dynamapp.data_utils.html" />
+    <link rel="next" title="visualization module" href="dynamapp.visualization.html" />
     <link rel="prev" title="regressors module" href="dynamapp.regressors.html" /> 
 </head>
 
@@ -67,7 +67,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#dynamapp.model.Model"><code class="docutils literal notranslate"><span class="pre">Model</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="dynamapp.data_utils.html">data_utils module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamapp.visualization.html">visualization module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.solvers.html">solvers module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.reductions.html">reductions module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.state_space.html">state_space module</a></li>
@@ -75,6 +75,7 @@
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.trajectory.html">trajectory module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.viscoelastic.html">viscoelastic module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.identification.html">identification module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamapp.generators.html">generators module</a></li>
 </ul>
 </li>
 </ul>
@@ -117,27 +118,35 @@
 <dt class="sig sig-object py" id="dynamapp.model.Model">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dynamapp.model.</span></span><span class="sig-name descname"><span class="pre">Model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Imats</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dhparams</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gravity</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-9.81</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dampings</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dynamapp/model.html#Model"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dynamapp.model.Model" title="Link to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Base class definition for multijoint models.</p>
+<p>Base class definition for multi-joint models. This class supports  
+only serial mechanisms. All algorithms are based on [1], and the  
+Python implementation is inspired by [2].</p>
 <dl>
-<dt>Args:</dt><dd><blockquote>
-<div><ul class="simple">
-<li><p>dhparams : model DH parameters.</p></li>
-<li><p>Imats : links inertia tensors, list of JAX arrys</p></li>
-<li><p>q (np.ndarray): Joints position vector.</p></li>
-<li><p>v (np.ndarray): Joints velocity vector.</p></li>
-<li><p>a (np.ndarray): Joints acceleration vector.</p></li>
-<li><p>dampings : joints damping coefficents list</p></li>
-<li><p>gravity : gravity vector applied to the system</p></li>
+<dt>Args:</dt><dd><ul class="simple">
+<li><p>dhparams: Model DH parameters.</p></li>
+<li><p>Imats: Links' inertia tensors, provided as a list of JAX arrays.</p></li>
+<li><p>q (np.ndarray): Joint position vector.</p></li>
+<li><p>v (np.ndarray): Joint velocity vector.</p></li>
+<li><p>a (np.ndarray): Joint acceleration vector.</p></li>
+<li><p>dampings: List of joint damping coefficients.</p></li>
+<li><p>gravity: Gravity vector applied to the system.</p></li>
 </ul>
-</div></blockquote>
-<dl>
-<dt>Examples:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">model</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="n">Imats</span><span class="p">,</span> <span class="n">dhparams</span><span class="p">,</span> <span class="o">-</span><span class="mf">9.80</span><span class="p">,</span> <span class="n">dampings</span><span class="p">)</span>
+</dd>
+<dt>Examples:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">model</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="n">Imats</span><span class="p">,</span> <span class="n">dhparams</span><span class="p">,</span> <span class="o">-</span><span class="mf">9.81</span><span class="p">,</span> <span class="n">dampings</span><span class="p">)</span>  
 </pre></div>
 </div>
 </dd>
-</dl>
+<dt>References:</dt><dd><ul class="simple">
+<li><p>[1] Rigid Body Dynamics Algorithms* - Roy Featherstone (2008).</p></li>
+<li><p>[2] [RBDReference](<a class="reference external" href="https://github.com/robot-acceleration/RBDReference/blob/main/RBDReference.py">https://github.com/robot-acceleration/RBDReference/blob/main/RBDReference.py</a>).</p></li>
+</ul>
 </dd>
 </dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This module needs better input validation for data, tensor sizes,  
+and computation algorithms. It may be refactored in future versions.</p>
+</div>
 <dl class="py method">
 <dt class="sig sig-object py" id="dynamapp.model.Model.damping_tensor">
 <span class="sig-name descname"><span class="pre">damping_tensor</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">jax.numpy.ndarray</span></span></span><a class="reference internal" href="_modules/dynamapp/model.html#Model.damping_tensor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dynamapp.model.Model.damping_tensor" title="Link to this definition"></a></dt>
@@ -154,13 +163,21 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="dynamapp.model.Model.inertia_tensor">
 <span class="sig-name descname"><span class="pre">inertia_tensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">q</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dynamapp/model.html#Model.inertia_tensor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dynamapp.model.Model.inertia_tensor" title="Link to this definition"></a></dt>
-<dd><p>Computes the mass matrix M(q) using RNEA.</p>
+<dd><p>Computes the mass matrix M(q) for the system.</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>q (jnp.ndarray): Joint positions (ndof,)</p>
-</dd>
-<dt>Returns:</dt><dd><p>jnp.ndarray: Mass matrix (ndof, ndof)</p>
+<dt>Returns:</dt><dd><p>jnp.ndarray: Mass matrix of shape (ndof, ndof).</p>
 </dd>
 </dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This implementation is based on the RNEA algorithm using the Jacobian tensor.
+It is not very robust and may change in future versions.</p>
+</div>
+<div class="admonition-todo admonition" id="id1">
+<p class="admonition-title">Todo</p>
+<p>Implement the inertia tensor computation using the method described in:
+<a class="reference external" href="https://www.researchgate.net/publication/343098270_Analytical_Inverse_of_the_Joint_Space_Inertia_Matrix">https://www.researchgate.net/publication/343098270_Analytical_Inverse_of_the_Joint_Space_Inertia_Matrix</a></p>
+</div>
 </dd></dl>
 
 <dl class="py method">
@@ -239,7 +256,7 @@ netwon euler alogrithm.</p>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="dynamapp.regressors.html" class="btn btn-neutral float-left" title="regressors module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="dynamapp.data_utils.html" class="btn btn-neutral float-right" title="data_utils module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="dynamapp.visualization.html" class="btn btn-neutral float-right" title="visualization module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

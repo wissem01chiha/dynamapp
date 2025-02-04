@@ -1,5 +1,5 @@
-_MAJOR = "0"
-_MINOR = "1"
+_MAJOR = "1"
+_MINOR = "0"
 _PATCH = "0"
 _EXTRA = "" 
 

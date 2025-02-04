@@ -1,4 +1,4 @@
-name: pyLint
+name: PyLint
 on: [push, pull_request]
 jobs:
   build:

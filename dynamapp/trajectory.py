@@ -1,4 +1,5 @@
 import jax.numpy as jnp
+import jax
 import abc
 
 class Trajectory(abc.ABC):
@@ -27,6 +28,9 @@ class Trajectory(abc.ABC):
 class SplineTrajectory(Trajectory):
     """
     Spline-based trajectory.
+    
+    .. todo::
+        Implement the compute_with_constraints function
     """
     def __init__(self, ndof, sampling, ti, tf, control_points):
         super().__init__(ndof, sampling, ti, tf)
@@ -36,11 +40,19 @@ class SplineTrajectory(Trajectory):
         return jnp.interp(t, self.time, self.control_points)
 
     def compute_full_trajectory(self):
-        return jnp.interp(self.time, self.time, self.control_points)
+        traj_per_dof = jnp.interp(self.time, self.time, self.control_points)
+        traj = jnp.tile(traj_per_dof, (self.n, 1)).T
+        return traj
+    
+    def compute_with_constraints(self, qmin, qmax, qpmin, qpmax, qppmin, qppmax):
+        return super().compute_with_constraints(qmin, qmax, qpmin, qpmax, qppmin, qppmax)
 
 class TrapezoidalTrajectory(Trajectory):
     """
     Trapezoidal velocity profile trajectory.
+    
+    .. todo::
+        Implment the compute_with_constraints function
     """
     def __init__(self, n, sampling, ti, tf, q0, qf, acc, vel):
         super().__init__(n, sampling, ti, tf)
@@ -54,13 +66,18 @@ class TrapezoidalTrajectory(Trajectory):
 
     def compute_full_trajectory(self):
         return self.get_value(self.time)
+    
+    def compute_with_constraints(self, qmin, qmax, qpmin, qpmax, qppmin, qppmax):
+        return super().compute_with_constraints(qmin, qmax, qpmin, qpmax, qppmin, qppmax)
 
 class PeriodicTrajectory(Trajectory):
     """
     Periodic trajectory based on Fourier series.[1]
     
+    .. todo::
+        Implment the compute_with_constraints function
     Ref:
-        [1] Fourier-based optimal excitation trajectories for the dynamic 
+        - [1] Fourier-based optimal excitation trajectories for the dynamic 
         identification of robots, Kyung.Jo Park - Robotica - 2006. 
     """
     def __init__(self, n, sampling, ti, tf, frequency, Aij, Bij, nb_terms):
@@ -81,10 +98,16 @@ class PeriodicTrajectory(Trajectory):
     
     def compute_full_trajectory(self):
         return jnp.array([self.get_value(t) for t in self.time])
+    
+    def compute_with_constraints(self, qmin, qmax, qpmin, qpmax, qppmin, qppmax):
+        return super().compute_with_constraints(qmin, qmax, qpmin, qpmax, qppmin, qppmax)
 
 class StepTrajectory(Trajectory):
     """
     Step trajectory with fixed small duration epsilon and given amplitude.
+    
+    .. todo::
+        Implment the compute_with_constraints function
     """
     def __init__(self, ndof, sampling, ti, tf, epsilon, amplitude):
         super().__init__(ndof, sampling, ti, tf)
@@ -96,3 +119,6 @@ class StepTrajectory(Trajectory):
 
     def compute_full_trajectory(self)->jnp.array:
         return jnp.array([self.get_value(t) for t in self.time])
+    
+    def compute_with_constraints(self, qmin, qmax, qpmin, qpmax, qppmin, qppmax):
+        return super().compute_with_constraints(qmin, qmax, qpmin, qpmax, qppmin, qppmax)

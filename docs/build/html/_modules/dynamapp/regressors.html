@@ -88,7 +88,6 @@
              
   <h1>Source code for dynamapp.regressors</h1><div class="highlight"><pre>
 <span></span><span class="kn">import</span> <span class="nn">jax</span>
-<span class="kn">from</span> <span class="nn">jax</span> <span class="kn">import</span> <span class="n">jit</span>
 <span class="kn">import</span> <span class="nn">jax.numpy</span> <span class="k">as</span> <span class="nn">jnp</span>
 
 <span class="kn">from</span> <span class="nn">.model</span> <span class="kn">import</span> <span class="n">Model</span>
@@ -96,224 +95,139 @@
 
 <div class="viewcode-block" id="generalized_torques_wrt_inertia">
 <a class="viewcode-back" href="../../dynamapp.regressors.html#dynamapp.regressors.generalized_torques_wrt_inertia">[docs]</a>
-<span class="k">def</span> <span class="nf">generalized_torques_wrt_inertia</span> <span class="p">(</span><span class="n">m</span><span class="p">:</span><span class="n">Model</span><span class="p">,</span> <span class="n">q</span><span class="p">:</span><span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
-                                <span class="n">v</span><span class="p">:</span><span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span><span class="n">a</span><span class="p">:</span><span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Computes the regressor tensor of the generalized torques with respect to</span>
-<span class="sd">    the inertia links vector evaluated at (q, v, a)</span>
-<span class="sd">    </span>
-<span class="sd">    Args:</span>
-<span class="sd">        - m: Model instance containing necessary methods and parameters</span>
-<span class="sd">        - q: Position vector</span>
-<span class="sd">        - v: Velocity vector</span>
-<span class="sd">        - a: Acceleration vector</span>
-<span class="sd">    </span>
-<span class="sd">    Returns:</span>
-<span class="sd">        - W: Regressor tensor (m.ndof, m.ndof, m.ndof, 6, 6)</span>
-<span class="sd">    &quot;&quot;&quot;</span>   
-    <span class="nd">@jit</span>
+<span class="k">def</span> <span class="nf">generalized_torques_wrt_inertia</span><span class="p">(</span><span class="n">m</span><span class="p">:</span> <span class="n">Model</span><span class="p">,</span> <span class="n">q</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> 
+                                <span class="n">v</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">a</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Computes the regressor tensor of generalized torques with respect to inertia.&quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="nf">regressor</span><span class="p">(</span><span class="n">tensor</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
-        <span class="n">m</span><span class="o">.</span><span class="n">Imats</span> <span class="o">=</span> <span class="p">[</span><span class="n">tensor</span><span class="p">[:,</span> <span class="p">:,</span> <span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">tensor</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">])]</span>  
+        <span class="n">m</span><span class="o">.</span><span class="n">Imats</span> <span class="o">=</span> <span class="p">[</span><span class="n">tensor</span><span class="p">[:,</span> <span class="p">:,</span> <span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">tensor</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">])]</span>
         <span class="k">return</span> <span class="n">m</span><span class="o">.</span><span class="n">generalized_torques</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
     
-    <span class="n">regressor_jacobian</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">jacobian</span><span class="p">(</span><span class="n">regressor</span><span class="p">)(</span><span class="n">jnp</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">Imats</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">))</span>
-    <span class="k">return</span> <span class="n">regressor_jacobian</span></div>
+    <span class="k">return</span> <span class="n">jax</span><span class="o">.</span><span class="n">jacobian</span><span class="p">(</span><span class="n">regressor</span><span class="p">)(</span><span class="n">jnp</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">Imats</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">))</span></div>
 
 
 <div class="viewcode-block" id="inertia_tensor_wrt_inertia">
 <a class="viewcode-back" href="../../dynamapp.regressors.html#dynamapp.regressors.inertia_tensor_wrt_inertia">[docs]</a>
-<span class="k">def</span> <span class="nf">inertia_tensor_wrt_inertia</span><span class="p">(</span><span class="n">m</span><span class="p">:</span><span class="n">Model</span><span class="p">,</span> <span class="n">q</span><span class="p">:</span><span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Compute the regressor of the inertia matrix with respect to inertia </span>
-<span class="sd">    tensor values, derive the mass matrix wrt links inertial compennats</span>
-<span class="sd">    </span>
-<span class="sd">    Returns:</span>
-<span class="sd">        - W Jax tensor (m.ndof, m.ndof, 6, 6, m.ndof, 6)</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="nf">regressor</span><span class="p">(</span><span class="n">tensor</span><span class="p">:</span><span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span><span class="o">-&gt;</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
-        <span class="n">m</span><span class="o">.</span><span class="n">Imats</span> <span class="o">=</span> <span class="p">[</span><span class="n">tensor</span><span class="p">[:,</span> <span class="p">:,</span> <span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">tensor</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">])]</span> 
+<span class="k">def</span> <span class="nf">inertia_tensor_wrt_inertia</span><span class="p">(</span><span class="n">m</span><span class="p">:</span> <span class="n">Model</span><span class="p">,</span> <span class="n">q</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Computes the regressor of the inertia matrix with respect to inertia tensor values.&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">regressor</span><span class="p">(</span><span class="n">tensor</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+        <span class="n">m</span><span class="o">.</span><span class="n">Imats</span> <span class="o">=</span> <span class="p">[</span><span class="n">tensor</span><span class="p">[:,</span> <span class="p">:,</span> <span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">tensor</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">])]</span>
         <span class="k">return</span> <span class="n">m</span><span class="o">.</span><span class="n">inertia_tensor</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
-    
-    <span class="n">regressor_jacobian</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">jacobian</span><span class="p">(</span><span class="n">regressor</span><span class="p">)(</span><span class="n">jnp</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">Imats</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">))</span>
-    <span class="k">return</span> <span class="n">regressor_jacobian</span></div>
+
+    <span class="k">return</span> <span class="n">jax</span><span class="o">.</span><span class="n">jacobian</span><span class="p">(</span><span class="n">regressor</span><span class="p">)(</span><span class="n">jnp</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">Imats</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">))</span></div>
 
 
 <div class="viewcode-block" id="generalized_torques_wrt_dhparams">
 <a class="viewcode-back" href="../../dynamapp.regressors.html#dynamapp.regressors.generalized_torques_wrt_dhparams">[docs]</a>
-<span class="k">def</span> <span class="nf">generalized_torques_wrt_dhparams</span><span class="p">(</span><span class="n">m</span><span class="p">:</span><span class="n">Model</span><span class="p">,</span><span class="n">q</span><span class="p">:</span><span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
-                                    <span class="n">v</span><span class="p">:</span><span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span><span class="n">a</span><span class="p">:</span><span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Computes the regressor tensor of the generlized torques with respect to the </span>
-<span class="sd">    dh-params </span>
-<span class="sd">    </span>
-<span class="sd">    Returns:</span>
-<span class="sd">        - W Jax tensor (m.ndof * m.ndof * 4 *  m.ndof)</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="nd">@jit</span>
-    <span class="k">def</span> <span class="nf">regressor</span><span class="p">(</span><span class="n">tensor</span><span class="p">:</span><span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span><span class="o">-&gt;</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="k">def</span> <span class="nf">generalized_torques_wrt_dhparams</span><span class="p">(</span><span class="n">m</span><span class="p">:</span> <span class="n">Model</span><span class="p">,</span> <span class="n">q</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> 
+                                    <span class="n">v</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">a</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Computes the regressor tensor of generalized torques with respect to DH parameters.&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">regressor</span><span class="p">(</span><span class="n">tensor</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
         <span class="n">m</span><span class="o">.</span><span class="n">dhparams</span> <span class="o">=</span> <span class="p">[</span><span class="n">tensor</span><span class="p">[:,</span> <span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">tensor</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])]</span>
-        <span class="k">return</span> <span class="n">m</span><span class="o">.</span><span class="n">generalized_torques</span><span class="p">(</span><span class="n">q</span><span class="p">,</span><span class="n">v</span><span class="p">,</span><span class="n">a</span><span class="p">)</span>
-    
-    <span class="n">jm_dhparams_jax</span> <span class="o">=</span> <span class="p">[</span><span class="n">jnp</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">sublist</span><span class="p">)</span> <span class="k">for</span> <span class="n">sublist</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">dhparams</span><span class="p">]</span>
-    <span class="n">regressor_jacobian</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">jacobian</span><span class="p">(</span><span class="n">regressor</span><span class="p">)(</span><span class="n">jnp</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">jm_dhparams_jax</span><span class="p">,</span><span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">))</span>
-    <span class="k">return</span> <span class="n">regressor_jacobian</span></div>
+        <span class="k">return</span> <span class="n">m</span><span class="o">.</span><span class="n">generalized_torques</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">jax</span><span class="o">.</span><span class="n">jacobian</span><span class="p">(</span><span class="n">regressor</span><span class="p">)(</span><span class="n">jnp</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">jnp</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">sublist</span><span class="p">)</span> <span class="k">for</span> <span class="n">sublist</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">dhparams</span><span class="p">],</span>
+                                            <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">))</span></div>
 
 
 <div class="viewcode-block" id="generalized_torques_wrt_damping">
 <a class="viewcode-back" href="../../dynamapp.regressors.html#dynamapp.regressors.generalized_torques_wrt_damping">[docs]</a>
-<span class="k">def</span> <span class="nf">generalized_torques_wrt_damping</span><span class="p">(</span><span class="n">m</span><span class="p">:</span><span class="n">Model</span><span class="p">,</span><span class="n">q</span><span class="p">:</span><span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
-                                    <span class="n">v</span><span class="p">:</span><span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span><span class="n">a</span><span class="p">:</span><span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Computes the regressor tensor of the genrlized torques with respect to the </span>
-<span class="sd">    joints damping vector.</span>
-<span class="sd">    NOTE: this function require that dampings are not None</span>
-<span class="sd">    </span>
-<span class="sd">    Returns:</span>
-<span class="sd">        - jax tensor (m.ndof * m.ndof * m.nodf)</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="nd">@jit</span>
-    <span class="k">def</span> <span class="nf">regressor</span><span class="p">(</span><span class="n">tensor</span><span class="p">:</span><span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span><span class="o">-&gt;</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
-        <span class="n">m</span><span class="o">.</span><span class="n">dampings</span> <span class="o">=</span> <span class="p">[</span><span class="n">tensor</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">tensor</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])]</span>
-        <span class="k">return</span> <span class="n">m</span><span class="o">.</span><span class="n">generalized_torques</span><span class="p">(</span><span class="n">q</span><span class="p">,</span><span class="n">v</span><span class="p">,</span><span class="n">a</span><span class="p">)</span>
-    
-    <span class="n">regressor_jacobian</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">jacobian</span><span class="p">(</span><span class="n">regressor</span><span class="p">)(</span><span class="n">jnp</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">dampings</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">))</span>
-    <span class="k">return</span> <span class="n">regressor_jacobian</span></div>
+<span class="k">def</span> <span class="nf">generalized_torques_wrt_damping</span><span class="p">(</span><span class="n">m</span><span class="p">:</span> <span class="n">Model</span><span class="p">,</span> <span class="n">q</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+                                <span class="n">v</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">a</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Computes the regressor tensor of generalized torques with respect to joint damping.&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">regressor</span><span class="p">(</span><span class="n">tensor</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+        <span class="n">m</span><span class="o">.</span><span class="n">dampings</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">tensor</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">m</span><span class="o">.</span><span class="n">generalized_torques</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">jax</span><span class="o">.</span><span class="n">jacobian</span><span class="p">(</span><span class="n">regressor</span><span class="p">)(</span><span class="n">jnp</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">dampings</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">))</span></div>
 
 
-<div class="viewcode-block" id="full_torques_wrt_inerial">
-<a class="viewcode-back" href="../../dynamapp.regressors.html#dynamapp.regressors.full_torques_wrt_inerial">[docs]</a>
-<span class="k">def</span> <span class="nf">full_torques_wrt_inerial</span><span class="p">(</span><span class="n">m</span><span class="p">:</span><span class="n">Model</span><span class="p">,</span><span class="n">q</span><span class="p">:</span><span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span><span class="n">v</span><span class="p">:</span><span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span><span class="n">a</span><span class="p">:</span><span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
-                            <span class="n">alpha</span><span class="p">:</span><span class="n">jnp</span><span class="o">.</span><span class="n">array</span><span class="p">,</span> <span class="n">beta</span><span class="p">:</span><span class="n">jnp</span><span class="o">.</span><span class="n">array</span><span class="p">,</span> <span class="n">gamma</span><span class="p">:</span><span class="n">jnp</span><span class="o">.</span><span class="n">array</span><span class="p">,</span>
-                            <span class="n">dampings</span><span class="p">:</span><span class="nb">list</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot; </span>
-<span class="sd">    Compute the regressor tensor of the full torques with respect to the</span>
-<span class="sd">    links inertial paramters</span>
-<span class="sd">    </span>
-<span class="sd">    Returns:</span>
-<span class="sd">        -</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="nd">@jit</span> 
-    <span class="k">def</span> <span class="nf">regressor</span><span class="p">(</span><span class="n">tensor</span><span class="p">:</span><span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span><span class="o">-&gt;</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<div class="viewcode-block" id="full_torques_wrt_inertia">
+<a class="viewcode-back" href="../../dynamapp.regressors.html#dynamapp.regressors.full_torques_wrt_inertia">[docs]</a>
+<span class="k">def</span> <span class="nf">full_torques_wrt_inertia</span><span class="p">(</span><span class="n">m</span><span class="p">:</span> <span class="n">Model</span><span class="p">,</span> <span class="n">q</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">v</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">a</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+                             <span class="n">alpha</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">beta</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">gamma</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+                             <span class="n">dampings</span><span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Computes the regressor tensor of full torques with respect to inertia parameters.&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">regressor</span><span class="p">(</span><span class="n">tensor</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
         <span class="n">m</span><span class="o">.</span><span class="n">Imats</span> <span class="o">=</span> <span class="p">[</span><span class="n">tensor</span><span class="p">[:,</span> <span class="p">:,</span> <span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">tensor</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">])]</span>
-        <span class="k">return</span> <span class="n">m</span><span class="o">.</span><span class="n">full_torques</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span><span class="n">beta</span><span class="p">,</span><span class="n">gamma</span><span class="p">,</span><span class="n">dampings</span><span class="p">,</span><span class="n">q</span><span class="p">,</span><span class="n">v</span><span class="p">,</span><span class="n">a</span><span class="p">)</span>
-    
-    <span class="n">regressor_jacobian</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">jacobian</span><span class="p">(</span><span class="n">regressor</span><span class="p">)(</span><span class="n">jnp</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">Imats</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">))</span>
-    <span class="k">return</span> <span class="n">regressor_jacobian</span> </div>
+        <span class="k">return</span> <span class="n">m</span><span class="o">.</span><span class="n">full_torques</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span> <span class="n">beta</span><span class="p">,</span> <span class="n">gamma</span><span class="p">,</span> <span class="n">dampings</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">jax</span><span class="o">.</span><span class="n">jacobian</span><span class="p">(</span><span class="n">regressor</span><span class="p">)(</span><span class="n">jnp</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">Imats</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">))</span></div>
 
 
 <div class="viewcode-block" id="full_torques_wrt_friction">
 <a class="viewcode-back" href="../../dynamapp.regressors.html#dynamapp.regressors.full_torques_wrt_friction">[docs]</a>
-<span class="k">def</span> <span class="nf">full_torques_wrt_friction</span><span class="p">(</span><span class="n">m</span><span class="p">:</span><span class="n">Model</span><span class="p">,</span><span class="n">q</span><span class="p">:</span><span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span><span class="n">v</span><span class="p">:</span><span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span><span class="n">a</span><span class="p">:</span><span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Compute the rgressor tensor of the full torques with respect to the links </span>
-<span class="sd">    friction coefficents</span>
-<span class="sd">    </span>
-<span class="sd">    Returns:</span>
-<span class="sd">        - jax tensor (m.ndof * )</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="nd">@jit</span>
-    <span class="k">def</span> <span class="nf">regressor</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span> <span class="n">beta</span><span class="p">,</span> <span class="n">gamma</span><span class="p">)</span><span class="o">-&gt;</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">m</span><span class="o">.</span><span class="n">full_torques</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span><span class="n">beta</span><span class="p">,</span><span class="n">gamma</span><span class="p">,</span><span class="n">m</span><span class="o">.</span><span class="n">dampings</span><span class="p">,</span><span class="n">q</span><span class="p">,</span><span class="n">v</span><span class="p">,</span><span class="n">a</span><span class="p">)</span>
-    
-    <span class="n">regressor_jacobian</span>  <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">jacobian</span><span class="p">(</span><span class="n">regressor</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
-    <span class="k">return</span> <span class="n">regressor_jacobian</span> </div>
+<span class="k">def</span> <span class="nf">full_torques_wrt_friction</span><span class="p">(</span><span class="n">m</span><span class="p">:</span> <span class="n">Model</span><span class="p">,</span> <span class="n">q</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> 
+                            <span class="n">v</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">a</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Computes the regressor tensor of full torques with respect to friction coefficients.&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">regressor</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span> <span class="n">beta</span><span class="p">,</span> <span class="n">gamma</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">m</span><span class="o">.</span><span class="n">full_torques</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span> <span class="n">beta</span><span class="p">,</span> <span class="n">gamma</span><span class="p">,</span> <span class="n">m</span><span class="o">.</span><span class="n">dampings</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">jax</span><span class="o">.</span><span class="n">jacobian</span><span class="p">(</span><span class="n">regressor</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span></div>
 
 
 <div class="viewcode-block" id="eigvals_wrt_inertia">
 <a class="viewcode-back" href="../../dynamapp.regressors.html#dynamapp.regressors.eigvals_wrt_inertia">[docs]</a>
-<span class="k">def</span> <span class="nf">eigvals_wrt_inertia</span><span class="p">(</span><span class="n">ms</span><span class="p">:</span><span class="n">ModelState</span><span class="p">,</span><span class="n">q</span><span class="p">:</span><span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span><span class="n">v</span><span class="p">:</span><span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span><span class="n">a</span><span class="p">:</span><span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Compute the eigvalues jacobian with respect to inertial paramters</span>
-<span class="sd">    </span>
-<span class="sd">    Returns:</span>
-<span class="sd">        - jax tensor (m.ndof  * )</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="k">def</span> <span class="nf">eigvals_wrt_inertia</span><span class="p">(</span><span class="n">ms</span><span class="p">:</span> <span class="n">ModelState</span><span class="p">,</span> <span class="n">q</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">v</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Computes the Jacobian of eigenvalues with respect to inertia parameters.&quot;&quot;&quot;</span>
     <span class="n">x</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">q</span><span class="p">,</span> <span class="n">v</span><span class="p">])</span>
-    <span class="nd">@jit</span>
-    <span class="k">def</span> <span class="nf">regressor</span><span class="p">(</span><span class="n">tensor</span><span class="p">:</span><span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span><span class="o">-&gt;</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+    
+    <span class="k">def</span> <span class="nf">regressor</span><span class="p">(</span><span class="n">tensor</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
         <span class="n">ms</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">Imats</span> <span class="o">=</span> <span class="p">[</span><span class="n">tensor</span><span class="p">[:,</span> <span class="p">:,</span> <span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">tensor</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">])]</span>
         <span class="k">return</span> <span class="n">ms</span><span class="o">.</span><span class="n">compute_eigvals</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-    
-    <span class="n">regressor_jacobian</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">jacobian</span><span class="p">(</span><span class="n">regressor</span><span class="p">)(</span><span class="n">jnp</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">ms</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">Imats</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">))</span>
-    <span class="k">return</span> <span class="n">regressor_jacobian</span></div>
+
+    <span class="k">return</span> <span class="n">jax</span><span class="o">.</span><span class="n">jacobian</span><span class="p">(</span><span class="n">regressor</span><span class="p">)(</span><span class="n">jnp</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">ms</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">Imats</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">))</span></div>
 
 
 <div class="viewcode-block" id="eigvals_wrt_dhparams">
 <a class="viewcode-back" href="../../dynamapp.regressors.html#dynamapp.regressors.eigvals_wrt_dhparams">[docs]</a>
-<span class="k">def</span> <span class="nf">eigvals_wrt_dhparams</span><span class="p">(</span><span class="n">ms</span><span class="p">:</span><span class="n">ModelState</span><span class="p">,</span><span class="n">q</span><span class="p">:</span><span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span><span class="n">v</span><span class="p">:</span><span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span><span class="n">a</span><span class="p">:</span><span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Compute the eigvalues jacobian wit respect to dhparams coefficents</span>
-<span class="sd">    </span>
-<span class="sd">    Returns:</span>
-<span class="sd">        - jax tensor (m.ndof * )</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="k">def</span> <span class="nf">eigvals_wrt_dhparams</span><span class="p">(</span><span class="n">ms</span><span class="p">:</span> <span class="n">ModelState</span><span class="p">,</span> <span class="n">q</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">v</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Computes the Jacobian of eigenvalues with respect to DH parameters.&quot;&quot;&quot;</span>
     <span class="n">x</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">q</span><span class="p">,</span> <span class="n">v</span><span class="p">])</span>
-    <span class="nd">@jit</span>
-    <span class="k">def</span> <span class="nf">regressor</span><span class="p">(</span><span class="n">tensor</span><span class="p">:</span><span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span><span class="o">-&gt;</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+    
+    <span class="k">def</span> <span class="nf">regressor</span><span class="p">(</span><span class="n">tensor</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
         <span class="n">ms</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">dhparams</span> <span class="o">=</span> <span class="p">[</span><span class="n">tensor</span><span class="p">[:,</span> <span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">tensor</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])]</span>
         <span class="k">return</span> <span class="n">ms</span><span class="o">.</span><span class="n">compute_eigvals</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-    
-    <span class="n">jm_dhparams_jax</span> <span class="o">=</span> <span class="p">[</span><span class="n">jnp</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">sublist</span><span class="p">)</span> <span class="k">for</span> <span class="n">sublist</span> <span class="ow">in</span> <span class="n">ms</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">dhparams</span><span class="p">]</span>
-    <span class="n">regressor_jacobian</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">jacobian</span><span class="p">(</span><span class="n">regressor</span><span class="p">)(</span><span class="n">jnp</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">jm_dhparams_jax</span><span class="p">,</span><span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">))</span>
-    <span class="k">return</span> <span class="n">regressor_jacobian</span></div>
+
+    <span class="k">return</span> <span class="n">jax</span><span class="o">.</span><span class="n">jacobian</span><span class="p">(</span><span class="n">regressor</span><span class="p">)(</span><span class="n">jnp</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">jnp</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">sublist</span><span class="p">)</span> <span class="k">for</span> <span class="n">sublist</span>
+                                            <span class="ow">in</span> <span class="n">ms</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">dhparams</span><span class="p">],</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">))</span></div>
 
 
 <div class="viewcode-block" id="eigvals_wrt_damping">
 <a class="viewcode-back" href="../../dynamapp.regressors.html#dynamapp.regressors.eigvals_wrt_damping">[docs]</a>
-<span class="k">def</span> <span class="nf">eigvals_wrt_damping</span><span class="p">(</span><span class="n">ms</span><span class="p">:</span><span class="n">ModelState</span><span class="p">,</span><span class="n">q</span><span class="p">:</span><span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span><span class="n">v</span><span class="p">:</span><span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span><span class="n">a</span><span class="p">:</span><span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Compute the eigvalues jacobian with respect to joints damping coefficents</span>
-<span class="sd">    </span>
-<span class="sd">    Returns:</span>
-<span class="sd">        - jax tensor ( m.ndof * )</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="k">def</span> <span class="nf">eigvals_wrt_damping</span><span class="p">(</span><span class="n">ms</span><span class="p">:</span> <span class="n">ModelState</span><span class="p">,</span> <span class="n">q</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">v</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Computes the Jacobian of eigenvalues with respect to damping coefficients.&quot;&quot;&quot;</span>
     <span class="n">x</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">q</span><span class="p">,</span> <span class="n">v</span><span class="p">])</span>
-    <span class="k">def</span> <span class="nf">regressor</span><span class="p">(</span><span class="n">tensor</span><span class="p">:</span><span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span><span class="o">-&gt;</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
-        <span class="n">ms</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">dampings</span> <span class="o">=</span> <span class="p">[</span><span class="n">tensor</span><span class="p">[:,</span> <span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">tensor</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])]</span>
+    
+    <span class="k">def</span> <span class="nf">regressor</span><span class="p">(</span><span class="n">tensor</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+        <span class="n">ms</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">dampings</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">tensor</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">ms</span><span class="o">.</span><span class="n">compute_eigvals</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 
-    <span class="n">regressor_jacobian</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">jacobian</span><span class="p">(</span><span class="n">regressor</span><span class="p">)(</span><span class="n">jnp</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">ms</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">dampings</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">))</span>
-    <span class="k">return</span> <span class="n">regressor_jacobian</span></div>
+    <span class="k">return</span> <span class="n">jax</span><span class="o">.</span><span class="n">jacobian</span><span class="p">(</span><span class="n">regressor</span><span class="p">)(</span><span class="n">jnp</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">ms</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">dampings</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">))</span></div>
 
 
 <div class="viewcode-block" id="state_matrix_a_wrt_inertia">
 <a class="viewcode-back" href="../../dynamapp.regressors.html#dynamapp.regressors.state_matrix_a_wrt_inertia">[docs]</a>
-<span class="k">def</span> <span class="nf">state_matrix_a_wrt_inertia</span><span class="p">(</span><span class="n">ms</span><span class="p">:</span><span class="n">ModelState</span><span class="p">,</span><span class="n">q</span><span class="p">:</span><span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span><span class="n">v</span><span class="p">:</span><span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span><span class="n">a</span><span class="p">:</span><span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Compute the jacobian tensor of the state matrix A with respect to the links</span>
-<span class="sd">    inertial coefficents </span>
-<span class="sd">    </span>
-<span class="sd">    Returns:</span>
-<span class="sd">        - jax tensor (m.ndof * )</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="k">def</span> <span class="nf">state_matrix_a_wrt_inertia</span><span class="p">(</span><span class="n">ms</span><span class="p">:</span> <span class="n">ModelState</span><span class="p">,</span> <span class="n">q</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">v</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Computes the Jacobian of state matrix A with respect to inertia coefficients.&quot;&quot;&quot;</span>
     <span class="n">x</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">q</span><span class="p">,</span> <span class="n">v</span><span class="p">])</span>
-    <span class="nd">@jit</span>
-    <span class="k">def</span> <span class="nf">regressor</span><span class="p">(</span><span class="n">tensor</span><span class="p">:</span><span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span><span class="o">-&gt;</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+
+    <span class="k">def</span> <span class="nf">regressor</span><span class="p">(</span><span class="n">tensor</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
         <span class="n">ms</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">Imats</span> <span class="o">=</span> <span class="p">[</span><span class="n">tensor</span><span class="p">[:,</span> <span class="p">:,</span> <span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">tensor</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">])]</span>
         <span class="k">return</span> <span class="n">ms</span><span class="o">.</span><span class="n">get_state_matrix_a</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-         
-    <span class="n">regressor_jacobian</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">jacobian</span><span class="p">(</span><span class="n">regressor</span><span class="p">)(</span><span class="n">jnp</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">ms</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">Imats</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">))</span>
-    <span class="k">return</span> <span class="n">regressor_jacobian</span></div>
+
+    <span class="k">return</span> <span class="n">jax</span><span class="o">.</span><span class="n">jacobian</span><span class="p">(</span><span class="n">regressor</span><span class="p">)(</span><span class="n">jnp</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">ms</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">Imats</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">))</span></div>
 
 
 <div class="viewcode-block" id="state_matrix_a_wrt_state">
 <a class="viewcode-back" href="../../dynamapp.regressors.html#dynamapp.regressors.state_matrix_a_wrt_state">[docs]</a>
-<span class="k">def</span> <span class="nf">state_matrix_a_wrt_state</span><span class="p">(</span><span class="n">ms</span><span class="p">:</span><span class="n">ModelState</span><span class="p">,</span><span class="n">q</span><span class="p">:</span><span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span><span class="n">v</span><span class="p">:</span><span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span><span class="n">a</span><span class="p">:</span><span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Compute the rgressor tensor of the state matrix A with repect to the state </span>
-<span class="sd">    (position, velocity) of the system.</span>
-<span class="sd">    </span>
-<span class="sd">    Returns:</span>
-<span class="sd">        - Jax tensor (m.ndof * )</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="k">def</span> <span class="nf">state_matrix_a_wrt_state</span><span class="p">(</span><span class="n">ms</span><span class="p">:</span> <span class="n">ModelState</span><span class="p">,</span> <span class="n">q</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">v</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Computes the Jacobian of state matrix A with respect to state variables (q, v).&quot;&quot;&quot;</span>
     <span class="n">x</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">q</span><span class="p">,</span> <span class="n">v</span><span class="p">])</span>
-    
-    <span class="nd">@jit</span> 
+
     <span class="k">def</span> <span class="nf">regressor</span><span class="p">(</span><span class="n">tensor</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">ms</span><span class="o">.</span><span class="n">get_state_matrix_a</span><span class="p">(</span><span class="n">tensor</span><span class="p">)</span>
-    
-    <span class="n">regressor_jacobian</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">jacobian</span><span class="p">(</span><span class="n">regressor</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">regressor_jacobian</span></div>
+
+    <span class="k">return</span> <span class="n">jax</span><span class="o">.</span><span class="n">jacobian</span><span class="p">(</span><span class="n">regressor</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span></div>
 
 </pre></div>
 
