@@ -154,32 +154,7 @@ controllability_matrix = model_state.compute_ctlb_matrix(x)
 # Compute the observability matrix
 observability_matrix = model_state.compute_obs_matrix(x)
 ```
- 
 
-```python
-from dynamapp.model_state import ModelState
-# Define system parameters (Inertia matrices, DH parameters, etc.)
-Imats = [jnp.eye(6) for _ in range(3)]  # Example inertia matrices
-dhparams = [
-    [0.0, 0.5, 0.5, jnp.pi / 2],
-    [0.0, 0.5, 0.5, 0.0],
-    [0.0, 0.5, 0.5, jnp.pi / 2]
-]
-# Initialize the ModelState object
-model_state = ModelState(Imats, dhparams)
-# Define an example state vector (x)
-x = jnp.zeros((2 * model_state.model.ndof, 1))  # Example state vector (2 * ndof)
-# Compute the state-space matrices
-model_state._compute_matrices(x)
-# Access and print the state-space matrices A, B, C, D
-print(model_state.model_state_space.a)
-print(model_state.model_state_space.b)
-print(model_state.model_state_space.c)
-print(model_state.model_state_space.d) 
-```
-The last model computation serves as a bridge to state-space identification techniques, subspace identification methods, and other fields.
-
- 
 <!-- omit in toc -->
 ### Example 3: Advanced Analysis — Stability, Controllability, and Observability
   
