@@ -9,11 +9,54 @@ from .nfoursid import *
 from .model_state import *
 from .model import *
 from .generators import *
+from .jacobians import *
 from .viscoelastic import *
 from .identification import *
+from .jacobians import *
 
+class TrajectoryVisualizer:
+    """
+    A class for visualizing a custom computed trajectory.
 
+    Args:
+        - trajectory (Trajectory): An instance of a Trajectory subclass.
+    """
 
+    def __init__(self, trajectory):
+        """
+        Initializes the visualizer with a given trajectory.
+        
+        Args:
+            trajectory (Trajectory): An instance of a Trajectory subclass.
+        """
+        self.trajectory = trajectory
+
+    def plot(self, title="Trajectory Visualization", xlabel="Time (s)", ylabel="Position"):
+        """
+        Plots the computed trajectory.
+
+        Args:
+            - title (str): Title of the plot.
+            - xlabel (str): Label for the x-axis.
+            - ylabel (str): Label for the y-axis.
+        """
+        time = self.trajectory.time
+        trajectory_values = self.trajectory.compute_full_trajectory()
+
+        plt.figure(figsize=(10, 5))
+        if trajectory_values.ndim == 1:
+            plt.plot(time, trajectory_values, label="Trajectory", color="b")
+        else:
+            for i in range(trajectory_values.shape[1]):
+                plt.plot(time, trajectory_values[:, i], label=f"DoF {i+1}")
+
+        plt.xlabel(xlabel)
+        plt.ylabel(ylabel)
+        plt.title(title)
+        plt.legend()
+        plt.grid(True)
+        plt.show()
+        
 # def plot_filtered(self, fig: matplotlib_figure.Figure): 
 #     """
 #     The top graph plots the filtered output states of the Kalman filter and compares with the measured values.

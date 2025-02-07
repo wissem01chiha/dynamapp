@@ -2,7 +2,7 @@ from jax import jit
 import jax.numpy as jnp
 
 @jit
-def compute_coulomb_friction_force(v: jnp.ndarray, fc: jnp.ndarray, 
+def coulomb_friction_force(v: jnp.ndarray, fc: jnp.ndarray, 
                         fs: jnp.ndarray)->jnp.ndarray:
     """
     Compute the Coulomb  friction model.
@@ -18,7 +18,7 @@ def compute_coulomb_friction_force(v: jnp.ndarray, fc: jnp.ndarray,
     return fc * jnp.sign(v) + fs * v
 
 @jit
-def compute_friction_force(alpha:jnp.array, beta:jnp.array, gamma:jnp.array,
+def friction_force(alpha:jnp.array, beta:jnp.array, gamma:jnp.array,
                         q, v, a):
     """
     Computes the frictional force for a joint using a simple 

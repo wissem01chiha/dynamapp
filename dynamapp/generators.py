@@ -101,12 +101,12 @@ class ModelStateDataGenerator:
     sequence of state, input, and output data.
     
     Args:
-        model_state     - instance of the `ModelState` class
-        num_samples     - number of samples to generate
-        time_steps      - number of time steps per sample
-        noise_magnitude - magnitude of noise to add to the output
-        u_init          - initial input vector
-        x_init          - initial state vector
+        - model_state     - instance of the `ModelState` class
+        - num_samples     - number of samples to generate
+        - time_steps      - number of time steps per sample
+        - noise_magnitude - magnitude of noise to add to the output
+        - u_init          - initial input vector
+        - x_init          - initial state vector
     
     Examples:
         >>> model_state = ModelState(Imats, dhparams)
@@ -114,12 +114,12 @@ class ModelStateDataGenerator:
         >>> x_data, u_data, y_data = data_generator.generate_data()
     
     Attributes:
-        model_state     - instance of the `ModelState` class
-        num_samples     - number of samples to generate
-        time_steps      - number of time steps per sample
-        noise_magnitude - magnitude of noise to add to the output
-        u_init          - initial input vector
-        x_init          - initial state vector
+        - model_state     - instance of the `ModelState` class
+        - num_samples     - number of samples to generate
+        - time_steps      - number of time steps per sample
+        - noise_magnitude - magnitude of noise to add to the output
+        - u_init          - initial input vector
+        - x_init          - initial state vector
     """
     def __init__(self, 
                  model_state: 'ModelState', 
@@ -141,7 +141,7 @@ class ModelStateDataGenerator:
         
         Args:
             None
-        
+            
         Returns:
             - x_data : jnp.ndarray (num_samples, time_steps, 2*ndof) state data
             - u_data : jnp.ndarray (num_samples, time_steps, ndof) input data

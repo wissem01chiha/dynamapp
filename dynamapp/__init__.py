@@ -17,18 +17,8 @@ from .trajectory import (
     PeriodicTrajectory,
     StepTrajectory
 )
-from .regressors import (
-    generalized_torques_wrt_inertia,
-    inertia_tensor_wrt_inertia,
-    generalized_torques_wrt_dhparams,
-    generalized_torques_wrt_damping,
-    full_torques_wrt_inertia,
-    full_torques_wrt_friction,
-    eigvals_wrt_inertia,
-    eigvals_wrt_dhparams,
-    eigvals_wrt_damping,
-    state_matrix_a_wrt_inertia,
-    state_matrix_a_wrt_state
+from .jacobians import (
+    ModelJacobian, ModelStateJacobian
 )
 from .generators import (
     ModelDataGenerator,
@@ -37,42 +27,27 @@ from .generators import (
 from .model import Model
 from .model_state import ModelState
 from .state_space import StateSpace
-from .reductions import PCA, LDA
 from .identification import *
 from .viscoelastic import (
-    compute_coulomb_friction_force,
-    compute_friction_force
+    coulomb_friction_force,
+    friction_force
 )
-from .visualization import *
+from .visualization import (
+    TrajectoryVisualizer
+)
 from .kalman import Kalman
 from .nfoursid import NFourSID
 
 __all__ = [
-    "Model",
-    "ModelState",
+    "Model", "ModelState",
     "Kalman", "NFourSID",
-    "StateSpace",
-    "StateSpace",
-    "PCA","LDA",
-    "SplineTrajectory",
-    "TrapezoidalTrajectory",
-    "PeriodicTrajectory",
-    "StepTrajectory",
-    "ModelDataGenerator",
-    "ModelStateDataGenerator",
-    "generalized_torques_wrt_inertia",
-    "inertia_tensor_wrt_inertia",
-    "generalized_torques_wrt_dhparams",
-    "generalized_torques_wrt_damping",
-    "full_torques_wrt_inertia",
-    "full_torques_wrt_friction",
-    "eigvals_wrt_inertia",
-    "eigvals_wrt_dhparams",
-    "eigvals_wrt_damping",
-    "state_matrix_a_wrt_inertia",
-    "state_matrix_a_wrt_state",
-    "compute_coulomb_friction_force",
-    "compute_friction_force"
+    "StateSpace", "StateSpace",
+    "SplineTrajectory", "TrapezoidalTrajectory",
+    "PeriodicTrajectory", "StepTrajectory",
+    "TrajectoryVisualizer",
+    "ModelDataGenerator","ModelStateDataGenerator",
+    "ModelJacobian","ModelStateJacobian",
+    "coulomb_friction_force","friction_force"
 ]
 
 _internal_modules = {"solvers", "math_utils","version"}

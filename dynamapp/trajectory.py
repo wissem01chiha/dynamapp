@@ -1,5 +1,4 @@
 import jax.numpy as jnp
-import jax
 import abc
 
 class Trajectory(abc.ABC):

@@ -3,8 +3,7 @@ import jax.numpy as jnp
 
 from .nfoursid import *
 from .generators import *
-from .regressors import *
-from .reductions import *
+from .jacobians import *
 from .kalman import *
 from .solvers import *
 from .math_utils import *
@@ -81,8 +80,6 @@ from .math_utils import *
 # # use the xeights saved from ghali training model and simulate them 
 
 
-# logging.basicConfig(level=logging.INFO)
-# logger = logging.getLogger(__name__)
 
 # class IDIMNLS:
 #     """
@@ -241,10 +238,7 @@ from .math_utils import *
 #         plt.xlabel("Norm2 Values")
 #         plt.ylabel("Loss Values")
  
-# import logging 
-# import matplotlib.pyplot as plt  
 
-# import dynamapp.model as model, dynamapp.regressors as regressors
 
 
 # class IDIMOLS:

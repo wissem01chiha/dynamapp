@@ -78,7 +78,6 @@ def luenberger_observer(A, B, C, desired_poles):
     Q = B
     for i in range(1, n):
         Q = jnp.hstack((Q, jnp.linalg.matrix_power(A, i) @ B))
-    
     desired_poles_matrix = jnp.poly(jnp.array(desired_poles))
     L = jnp.zeros((n, n)) 
     return L

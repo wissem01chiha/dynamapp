@@ -376,7 +376,7 @@ class Model():
         """
         self.dampings = dampings
         _, _, _, f= self._rnea(q, qp, qpp)
-        ff = compute_friction_force(alpha, beta, gamma, q, qp, qpp)
+        ff = friction_force(alpha, beta, gamma, q, qp, qpp)
         
         return jnp.add(f, ff)
     
