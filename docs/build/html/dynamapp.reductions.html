@@ -66,11 +66,7 @@
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.model.html">model module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.visualization.html">visualization module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.solvers.html">solvers module</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">reductions module</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#dynamapp.reductions.PCA"><code class="docutils literal notranslate"><span class="pre">PCA</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#dynamapp.reductions.LDA"><code class="docutils literal notranslate"><span class="pre">LDA</span></code></a></li>
-</ul>
-</li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">reductions module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.state_space.html">state_space module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.model_state.html">model_state module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.trajectory.html">trajectory module</a></li>
@@ -112,95 +108,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="module-dynamapp.reductions">
-<span id="reductions-module"></span><h1>reductions module<a class="headerlink" href="#module-dynamapp.reductions" title="Link to this heading"></a></h1>
-<dl class="py class">
-<dt class="sig sig-object py" id="dynamapp.reductions.PCA">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dynamapp.reductions.</span></span><span class="sig-name descname"><span class="pre">PCA</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_components</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dynamapp/reductions.html#PCA"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dynamapp.reductions.PCA" title="Link to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Principal Component Analysis (PCA) for dimensionality reduction.</p>
-<p>PCA projects the data into a lower-dimensional space while retaining as much variance as possible.</p>
-<dl class="py method">
-<dt class="sig sig-object py" id="dynamapp.reductions.PCA.fit">
-<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">jax.numpy.ndarray</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dynamapp/reductions.html#PCA.fit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dynamapp.reductions.PCA.fit" title="Link to this definition"></a></dt>
-<dd><p>Fit the PCA model to the data.</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>X (jnp.ndarray): The input data of shape (n_samples, n_features).</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="dynamapp.reductions.PCA.transform">
-<span class="sig-name descname"><span class="pre">transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">jax.numpy.ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">jax.numpy.ndarray</span></span></span><a class="reference internal" href="_modules/dynamapp/reductions.html#PCA.transform"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dynamapp.reductions.PCA.transform" title="Link to this definition"></a></dt>
-<dd><p>Apply dimensionality reduction to the data using the fitted PCA model.</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>X (jnp.ndarray): The input data of shape (n_samples, n_features).</p>
-</dd>
-<dt>Returns:</dt><dd><p>jnp.ndarray: The transformed data of shape (n_samples, n_components).</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="dynamapp.reductions.PCA.fit_transform">
-<span class="sig-name descname"><span class="pre">fit_transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">jax.numpy.ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">jax.numpy.ndarray</span></span></span><a class="reference internal" href="_modules/dynamapp/reductions.html#PCA.fit_transform"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dynamapp.reductions.PCA.fit_transform" title="Link to this definition"></a></dt>
-<dd><p>Fit the PCA model and apply dimensionality reduction in one step.</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>X (jnp.ndarray): The input data of shape (n_samples, n_features).</p>
-</dd>
-<dt>Returns:</dt><dd><p>jnp.ndarray: The transformed data of shape (n_samples, n_components).</p>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="dynamapp.reductions.LDA">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dynamapp.reductions.</span></span><span class="sig-name descname"><span class="pre">LDA</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_components</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dynamapp/reductions.html#LDA"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dynamapp.reductions.LDA" title="Link to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Linear Discriminant Analysis (LDA) for dimensionality reduction.</p>
-<p>LDA is supervised and finds a linear combination of features that 
-best separates the classes.</p>
-<dl class="py method">
-<dt class="sig sig-object py" id="dynamapp.reductions.LDA.fit">
-<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">jax.numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">jax.numpy.ndarray</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dynamapp/reductions.html#LDA.fit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dynamapp.reductions.LDA.fit" title="Link to this definition"></a></dt>
-<dd><p>Fit the LDA model to the data.</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>X (jnp.ndarray): The input data of shape (n_samples, n_features).
-y (jnp.ndarray): The labels for the data of shape (n_samples,).</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="dynamapp.reductions.LDA.transform">
-<span class="sig-name descname"><span class="pre">transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">jax.numpy.ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">jax.numpy.ndarray</span></span></span><a class="reference internal" href="_modules/dynamapp/reductions.html#LDA.transform"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dynamapp.reductions.LDA.transform" title="Link to this definition"></a></dt>
-<dd><p>Apply dimensionality reduction to the data using the fitted LDA model.</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>X (jnp.ndarray): The input data of shape (n_samples, n_features).</p>
-</dd>
-<dt>Returns:</dt><dd><p>jnp.ndarray: The transformed data of shape (n_samples, n_components).</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="dynamapp.reductions.LDA.fit_transform">
-<span class="sig-name descname"><span class="pre">fit_transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">jax.numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">jax.numpy.ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">jax.numpy.ndarray</span></span></span><a class="reference internal" href="_modules/dynamapp/reductions.html#LDA.fit_transform"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dynamapp.reductions.LDA.fit_transform" title="Link to this definition"></a></dt>
-<dd><p>Fit the LDA model and apply dimensionality reduction in one step.</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>X (jnp.ndarray): The input data of shape (n_samples, n_features).
-y (jnp.ndarray): The labels for the data of shape (n_samples,).</p>
-</dd>
-<dt>Returns:</dt><dd><p>jnp.ndarray: The transformed data of shape (n_samples, n_components).</p>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
+  <section id="reductions-module">
+<h1>reductions module<a class="headerlink" href="#reductions-module" title="Link to this heading"></a></h1>
 </section>
 
 

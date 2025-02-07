@@ -10,11 +10,10 @@ Submodules
    dynamapp.kalman
    dynamapp.math_utils
    dynamapp.nfoursid
-   dynamapp.regressors
+   dynamapp.jacobians
    dynamapp.model
    dynamapp.visualization
    dynamapp.solvers
-   dynamapp.reductions
    dynamapp.state_space
    dynamapp.model_state
    dynamapp.trajectory

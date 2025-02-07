@@ -64,7 +64,10 @@
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.nfoursid.html">nfoursid module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.regressors.html">regressors module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.model.html">model module</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">visualization module</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">visualization module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#dynamapp.visualization.TrajectoryVisualizer"><code class="docutils literal notranslate"><span class="pre">TrajectoryVisualizer</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.solvers.html">solvers module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.reductions.html">reductions module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamapp.state_space.html">state_space module</a></li>
@@ -110,6 +113,33 @@
              
   <section id="module-dynamapp.visualization">
 <span id="visualization-module"></span><h1>visualization module<a class="headerlink" href="#module-dynamapp.visualization" title="Link to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="dynamapp.visualization.TrajectoryVisualizer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dynamapp.visualization.</span></span><span class="sig-name descname"><span class="pre">TrajectoryVisualizer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">trajectory</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dynamapp/visualization.html#TrajectoryVisualizer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dynamapp.visualization.TrajectoryVisualizer" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A class for visualizing a custom computed trajectory.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><ul class="simple">
+<li><p>trajectory (Trajectory): An instance of a Trajectory subclass.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="dynamapp.visualization.TrajectoryVisualizer.plot">
+<span class="sig-name descname"><span class="pre">plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Trajectory</span> <span class="pre">Visualization'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xlabel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Time</span> <span class="pre">(s)'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ylabel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Position'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dynamapp/visualization.html#TrajectoryVisualizer.plot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dynamapp.visualization.TrajectoryVisualizer.plot" title="Link to this definition"></a></dt>
+<dd><p>Plots the computed trajectory.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><ul class="simple">
+<li><p>title (str): Title of the plot.</p></li>
+<li><p>xlabel (str): Label for the x-axis.</p></li>
+<li><p>ylabel (str): Label for the y-axis.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
 </section>
 
 

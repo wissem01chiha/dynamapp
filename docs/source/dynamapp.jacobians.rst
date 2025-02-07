@@ -1,7 +1,7 @@
-regressors module
+jacobians module
 =========================
 
-.. automodule:: dynamapp.regressors
+.. automodule:: dynamapp.jacobians
    :members:
    :undoc-members:
    :show-inheritance:

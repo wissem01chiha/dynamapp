@@ -205,12 +205,14 @@ the defined trajectory and model dynamics.</p>
 <p>This class simulates the <cite>ModelState</cite> class over time and generates a 
 sequence of state, input, and output data.</p>
 <dl>
-<dt>Args:</dt><dd><p>model_state     - instance of the <cite>ModelState</cite> class
-num_samples     - number of samples to generate
-time_steps      - number of time steps per sample
-noise_magnitude - magnitude of noise to add to the output
-u_init          - initial input vector
-x_init          - initial state vector</p>
+<dt>Args:</dt><dd><ul class="simple">
+<li><p>model_state     - instance of the <cite>ModelState</cite> class</p></li>
+<li><p>num_samples     - number of samples to generate</p></li>
+<li><p>time_steps      - number of time steps per sample</p></li>
+<li><p>noise_magnitude - magnitude of noise to add to the output</p></li>
+<li><p>u_init          - initial input vector</p></li>
+<li><p>x_init          - initial state vector</p></li>
+</ul>
 </dd>
 <dt>Examples:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">model_state</span> <span class="o">=</span> <span class="n">ModelState</span><span class="p">(</span><span class="n">Imats</span><span class="p">,</span> <span class="n">dhparams</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">data_generator</span> <span class="o">=</span> <span class="n">ModelStateDataGenerator</span><span class="p">(</span><span class="n">model_state</span><span class="p">,</span> <span class="n">num_samples</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">time_steps</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
@@ -218,12 +220,14 @@ x_init          - initial state vector</p>
 </pre></div>
 </div>
 </dd>
-<dt>Attributes:</dt><dd><p>model_state     - instance of the <cite>ModelState</cite> class
-num_samples     - number of samples to generate
-time_steps      - number of time steps per sample
-noise_magnitude - magnitude of noise to add to the output
-u_init          - initial input vector
-x_init          - initial state vector</p>
+<dt>Attributes:</dt><dd><ul class="simple">
+<li><p>model_state     - instance of the <cite>ModelState</cite> class</p></li>
+<li><p>num_samples     - number of samples to generate</p></li>
+<li><p>time_steps      - number of time steps per sample</p></li>
+<li><p>noise_magnitude - magnitude of noise to add to the output</p></li>
+<li><p>u_init          - initial input vector</p></li>
+<li><p>x_init          - initial state vector</p></li>
+</ul>
 </dd>
 </dl>
 <dl class="py method">

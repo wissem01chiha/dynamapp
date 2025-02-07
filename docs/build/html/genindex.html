@@ -130,15 +130,11 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="dynamapp.generators.html#dynamapp.generators.ModelDataGenerator.compute_accelerations">compute_accelerations() (dynamapp.generators.ModelDataGenerator method)</a>
 </li>
-      <li><a href="dynamapp.viscoelastic.html#dynamapp.viscoelastic.compute_coulomb_friction_force">compute_coulomb_friction_force() (in module dynamapp.viscoelastic)</a>
-</li>
       <li><a href="dynamapp.model_state.html#dynamapp.model_state.ModelState.compute_ctlb_matrix">compute_ctlb_matrix() (dynamapp.model_state.ModelState method)</a>
 </li>
       <li><a href="dynamapp.generators.html#dynamapp.generators.ModelStateDataGenerator.compute_data_statistics">compute_data_statistics() (dynamapp.generators.ModelStateDataGenerator method)</a>
 </li>
       <li><a href="dynamapp.model_state.html#dynamapp.model_state.ModelState.compute_eigvals">compute_eigvals() (dynamapp.model_state.ModelState method)</a>
-</li>
-      <li><a href="dynamapp.viscoelastic.html#dynamapp.viscoelastic.compute_friction_force">compute_friction_force() (in module dynamapp.viscoelastic)</a>
 </li>
       <li><a href="dynamapp.trajectory.html#dynamapp.trajectory.PeriodicTrajectory.compute_full_trajectory">compute_full_trajectory() (dynamapp.trajectory.PeriodicTrajectory method)</a>
 
@@ -152,10 +148,10 @@
         <li><a href="dynamapp.trajectory.html#dynamapp.trajectory.TrapezoidalTrajectory.compute_full_trajectory">(dynamapp.trajectory.TrapezoidalTrajectory method)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="dynamapp.model_state.html#dynamapp.model_state.ModelState.compute_obs_matrix">compute_obs_matrix() (dynamapp.model_state.ModelState method)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="dynamapp.generators.html#dynamapp.generators.ModelDataGenerator.compute_torques">compute_torques() (dynamapp.generators.ModelDataGenerator method)</a>
 </li>
       <li><a href="dynamapp.generators.html#dynamapp.generators.ModelDataGenerator.compute_velocities">compute_velocities() (dynamapp.generators.ModelDataGenerator method)</a>
@@ -175,6 +171,8 @@
       <li><a href="dynamapp.math_utils.html#dynamapp.math_utils.condition_number">condition_number() (in module dynamapp.math_utils)</a>
 </li>
       <li><a href="dynamapp.model.html#dynamapp.model.Model.coriolis_tensor">coriolis_tensor() (dynamapp.model.Model method)</a>
+</li>
+      <li><a href="dynamapp.viscoelastic.html#dynamapp.viscoelastic.coulomb_friction_force">coulomb_friction_force() (in module dynamapp.viscoelastic)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -201,6 +199,13 @@
 </li>
       </ul></li>
       <li>
+    dynamapp.jacobians
+
+      <ul>
+        <li><a href="dynamapp.jacobians.html#module-dynamapp.jacobians">module</a>
+</li>
+      </ul></li>
+      <li>
     dynamapp.kalman
 
       <ul>
@@ -221,6 +226,8 @@
         <li><a href="dynamapp.model.html#module-dynamapp.model">module</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     dynamapp.model_state
 
@@ -233,22 +240,6 @@
 
       <ul>
         <li><a href="dynamapp.nfoursid.html#module-dynamapp.nfoursid">module</a>
-</li>
-      </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li>
-    dynamapp.reductions
-
-      <ul>
-        <li><a href="dynamapp.reductions.html#module-dynamapp.reductions">module</a>
-</li>
-      </ul></li>
-      <li>
-    dynamapp.regressors
-
-      <ul>
-        <li><a href="dynamapp.regressors.html#module-dynamapp.regressors">module</a>
 </li>
       </ul></li>
       <li>
@@ -296,13 +287,13 @@
 </li>
       <li><a href="dynamapp.math_utils.html#dynamapp.math_utils.Decomposition.eigenvalues">eigenvalues (dynamapp.math_utils.Decomposition attribute)</a>
 </li>
-      <li><a href="dynamapp.regressors.html#dynamapp.regressors.eigvals_wrt_damping">eigvals_wrt_damping() (in module dynamapp.regressors)</a>
+      <li><a href="dynamapp.jacobians.html#dynamapp.jacobians.ModelStateJacobian.eigvals_wrt_damping">eigvals_wrt_damping() (dynamapp.jacobians.ModelStateJacobian method)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="dynamapp.regressors.html#dynamapp.regressors.eigvals_wrt_dhparams">eigvals_wrt_dhparams() (in module dynamapp.regressors)</a>
+      <li><a href="dynamapp.jacobians.html#dynamapp.jacobians.ModelStateJacobian.eigvals_wrt_dhparams">eigvals_wrt_dhparams() (dynamapp.jacobians.ModelStateJacobian method)</a>
 </li>
-      <li><a href="dynamapp.regressors.html#dynamapp.regressors.eigvals_wrt_inertia">eigvals_wrt_inertia() (in module dynamapp.regressors)</a>
+      <li><a href="dynamapp.jacobians.html#dynamapp.jacobians.ModelStateJacobian.eigvals_wrt_inertia">eigvals_wrt_inertia() (dynamapp.jacobians.ModelStateJacobian method)</a>
 </li>
       <li><a href="dynamapp.kalman.html#dynamapp.kalman.Kalman.extrapolate">extrapolate() (dynamapp.kalman.Kalman method)</a>
 </li>
@@ -314,27 +305,17 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="dynamapp.kalman.html#dynamapp.kalman.Kalman.filtered_label">filtered_label (dynamapp.kalman.Kalman attribute)</a>
 </li>
-      <li><a href="dynamapp.reductions.html#dynamapp.reductions.LDA.fit">fit() (dynamapp.reductions.LDA method)</a>
-
-      <ul>
-        <li><a href="dynamapp.reductions.html#dynamapp.reductions.PCA.fit">(dynamapp.reductions.PCA method)</a>
+      <li><a href="dynamapp.viscoelastic.html#dynamapp.viscoelastic.friction_force">friction_force() (in module dynamapp.viscoelastic)</a>
 </li>
-      </ul></li>
-      <li><a href="dynamapp.reductions.html#dynamapp.reductions.LDA.fit_transform">fit_transform() (dynamapp.reductions.LDA method)</a>
-
-      <ul>
-        <li><a href="dynamapp.reductions.html#dynamapp.reductions.PCA.fit_transform">(dynamapp.reductions.PCA method)</a>
-</li>
-      </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="dynamapp.model.html#dynamapp.model.Model.full_forces">full_forces() (dynamapp.model.Model method)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="dynamapp.model.html#dynamapp.model.Model.full_torques">full_torques() (dynamapp.model.Model method)</a>
 </li>
-      <li><a href="dynamapp.regressors.html#dynamapp.regressors.full_torques_wrt_friction">full_torques_wrt_friction() (in module dynamapp.regressors)</a>
+      <li><a href="dynamapp.jacobians.html#dynamapp.jacobians.ModelJacobian.full_torques_wrt_friction">full_torques_wrt_friction() (dynamapp.jacobians.ModelJacobian method)</a>
 </li>
-      <li><a href="dynamapp.regressors.html#dynamapp.regressors.full_torques_wrt_inertia">full_torques_wrt_inertia() (in module dynamapp.regressors)</a>
+      <li><a href="dynamapp.jacobians.html#dynamapp.jacobians.ModelJacobian.full_torques_wrt_inertia">full_torques_wrt_inertia() (dynamapp.jacobians.ModelJacobian method)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -348,11 +329,11 @@
 </li>
       <li><a href="dynamapp.model.html#dynamapp.model.Model.generalized_torques">generalized_torques() (dynamapp.model.Model method)</a>
 </li>
-      <li><a href="dynamapp.regressors.html#dynamapp.regressors.generalized_torques_wrt_damping">generalized_torques_wrt_damping() (in module dynamapp.regressors)</a>
+      <li><a href="dynamapp.jacobians.html#dynamapp.jacobians.ModelJacobian.generalized_torques_wrt_damping">generalized_torques_wrt_damping() (dynamapp.jacobians.ModelJacobian method)</a>
 </li>
-      <li><a href="dynamapp.regressors.html#dynamapp.regressors.generalized_torques_wrt_dhparams">generalized_torques_wrt_dhparams() (in module dynamapp.regressors)</a>
+      <li><a href="dynamapp.jacobians.html#dynamapp.jacobians.ModelJacobian.generalized_torques_wrt_dhparams">generalized_torques_wrt_dhparams() (dynamapp.jacobians.ModelJacobian method)</a>
 </li>
-      <li><a href="dynamapp.regressors.html#dynamapp.regressors.generalized_torques_wrt_inertia">generalized_torques_wrt_inertia() (in module dynamapp.regressors)</a>
+      <li><a href="dynamapp.jacobians.html#dynamapp.jacobians.ModelJacobian.generalized_torques_wrt_inertia">generalized_torques_wrt_inertia() (dynamapp.jacobians.ModelJacobian method)</a>
 </li>
       <li><a href="dynamapp.generators.html#dynamapp.generators.ModelStateDataGenerator.generate_data">generate_data() (dynamapp.generators.ModelStateDataGenerator method)</a>
 </li>
@@ -386,7 +367,7 @@
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="dynamapp.regressors.html#dynamapp.regressors.inertia_tensor_wrt_inertia">inertia_tensor_wrt_inertia() (in module dynamapp.regressors)</a>
+      <li><a href="dynamapp.jacobians.html#dynamapp.jacobians.ModelJacobian.inertia_tensor_wrt_inertia">inertia_tensor_wrt_inertia() (dynamapp.jacobians.ModelJacobian method)</a>
 </li>
       <li><a href="dynamapp.math_utils.html#dynamapp.math_utils.is_skew_symmetric">is_skew_symmetric() (in module dynamapp.math_utils)</a>
 </li>
@@ -404,14 +385,12 @@
 <h2 id="L">L</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="dynamapp.reductions.html#dynamapp.reductions.LDA">LDA (class in dynamapp.reductions)</a>
-</li>
       <li><a href="dynamapp.math_utils.html#dynamapp.math_utils.Decomposition.left_orthogonal">left_orthogonal (dynamapp.math_utils.Decomposition attribute)</a>
+</li>
+      <li><a href="dynamapp.math_utils.html#dynamapp.math_utils.logger">logger (in module dynamapp.math_utils)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="dynamapp.math_utils.html#dynamapp.math_utils.logger">logger (in module dynamapp.math_utils)</a>
-</li>
       <li><a href="dynamapp.model_state.html#dynamapp.model_state.ModelState.lsim">lsim() (dynamapp.model_state.ModelState method)</a>
 </li>
       <li><a href="dynamapp.solvers.html#dynamapp.solvers.luenberger_observer">luenberger_observer() (in module dynamapp.solvers)</a>
@@ -426,9 +405,13 @@
 </li>
       <li><a href="dynamapp.generators.html#dynamapp.generators.ModelDataGenerator">ModelDataGenerator (class in dynamapp.generators)</a>
 </li>
+      <li><a href="dynamapp.jacobians.html#dynamapp.jacobians.ModelJacobian">ModelJacobian (class in dynamapp.jacobians)</a>
+</li>
       <li><a href="dynamapp.model_state.html#dynamapp.model_state.ModelState">ModelState (class in dynamapp.model_state)</a>
 </li>
       <li><a href="dynamapp.generators.html#dynamapp.generators.ModelStateDataGenerator">ModelStateDataGenerator (class in dynamapp.generators)</a>
+</li>
+      <li><a href="dynamapp.jacobians.html#dynamapp.jacobians.ModelStateJacobian">ModelStateJacobian (class in dynamapp.jacobians)</a>
 </li>
       <li>
     module
@@ -437,6 +420,8 @@
         <li><a href="dynamapp.generators.html#module-dynamapp.generators">dynamapp.generators</a>
 </li>
         <li><a href="dynamapp.identification.html#module-dynamapp.identification">dynamapp.identification</a>
+</li>
+        <li><a href="dynamapp.jacobians.html#module-dynamapp.jacobians">dynamapp.jacobians</a>
 </li>
         <li><a href="dynamapp.kalman.html#module-dynamapp.kalman">dynamapp.kalman</a>
 </li>
@@ -447,10 +432,6 @@
         <li><a href="dynamapp.model_state.html#module-dynamapp.model_state">dynamapp.model_state</a>
 </li>
         <li><a href="dynamapp.nfoursid.html#module-dynamapp.nfoursid">dynamapp.nfoursid</a>
-</li>
-        <li><a href="dynamapp.reductions.html#module-dynamapp.reductions">dynamapp.reductions</a>
-</li>
-        <li><a href="dynamapp.regressors.html#module-dynamapp.regressors">dynamapp.regressors</a>
 </li>
         <li><a href="dynamapp.solvers.html#module-dynamapp.solvers">dynamapp.solvers</a>
 </li>
@@ -499,11 +480,11 @@
 <h2 id="P">P</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="dynamapp.reductions.html#dynamapp.reductions.PCA">PCA (class in dynamapp.reductions)</a>
+      <li><a href="dynamapp.trajectory.html#dynamapp.trajectory.PeriodicTrajectory">PeriodicTrajectory (class in dynamapp.trajectory)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="dynamapp.trajectory.html#dynamapp.trajectory.PeriodicTrajectory">PeriodicTrajectory (class in dynamapp.trajectory)</a>
+      <li><a href="dynamapp.visualization.html#dynamapp.visualization.TrajectoryVisualizer.plot">plot() (dynamapp.visualization.TrajectoryVisualizer method)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -539,11 +520,11 @@
 </li>
       <li><a href="dynamapp.kalman.html#dynamapp.kalman.Kalman.standard_deviation_label">standard_deviation_label (dynamapp.kalman.Kalman attribute)</a>
 </li>
-      <li><a href="dynamapp.regressors.html#dynamapp.regressors.state_matrix_a_wrt_inertia">state_matrix_a_wrt_inertia() (in module dynamapp.regressors)</a>
+      <li><a href="dynamapp.jacobians.html#dynamapp.jacobians.ModelStateJacobian.state_matrix_a_wrt_inertia">state_matrix_a_wrt_inertia() (dynamapp.jacobians.ModelStateJacobian method)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="dynamapp.regressors.html#dynamapp.regressors.state_matrix_a_wrt_state">state_matrix_a_wrt_state() (in module dynamapp.regressors)</a>
+      <li><a href="dynamapp.jacobians.html#dynamapp.jacobians.ModelStateJacobian.state_matrix_a_wrt_state">state_matrix_a_wrt_state() (dynamapp.jacobians.ModelStateJacobian method)</a>
 </li>
       <li><a href="dynamapp.state_space.html#dynamapp.state_space.StateSpace">StateSpace (class in dynamapp.state_space)</a>
 </li>
@@ -573,16 +554,12 @@
         <li><a href="dynamapp.state_space.html#dynamapp.state_space.StateSpace.to_dataframe">(dynamapp.state_space.StateSpace method)</a>
 </li>
       </ul></li>
-      <li><a href="dynamapp.trajectory.html#dynamapp.trajectory.Trajectory">Trajectory (class in dynamapp.trajectory)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="dynamapp.reductions.html#dynamapp.reductions.LDA.transform">transform() (dynamapp.reductions.LDA method)</a>
-
-      <ul>
-        <li><a href="dynamapp.reductions.html#dynamapp.reductions.PCA.transform">(dynamapp.reductions.PCA method)</a>
+      <li><a href="dynamapp.trajectory.html#dynamapp.trajectory.Trajectory">Trajectory (class in dynamapp.trajectory)</a>
 </li>
-      </ul></li>
+      <li><a href="dynamapp.visualization.html#dynamapp.visualization.TrajectoryVisualizer">TrajectoryVisualizer (class in dynamapp.visualization)</a>
+</li>
       <li><a href="dynamapp.trajectory.html#dynamapp.trajectory.TrapezoidalTrajectory">TrapezoidalTrajectory (class in dynamapp.trajectory)</a>
 </li>
   </ul></td>
