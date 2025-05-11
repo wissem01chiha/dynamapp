@@ -1,6 +1,10 @@
+⚠️ **Note : This repository and all related projects are undergoing extensive refactoring in private development. A revised version will be released in the future.Not recommended for use at this time.**
+
+
 <!-- omit in toc -->
 DynaMapp 
 ======= 
+
 
 [![Tests](https://github.com/wissem01chiha/dynamapp/actions/workflows/tests.yml/badge.svg)](https://github.com/wissem01chiha/dynamapp/actions/workflows/tests.yml)
 [![PyLint](https://github.com/wissem01chiha/dynamapp/actions/workflows/pylint.yml/badge.svg)](https://github.com/wissem01chiha/dynamapp/actions/workflows/pylint.yml)
