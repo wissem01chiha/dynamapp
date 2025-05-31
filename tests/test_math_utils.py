@@ -1,5 +1,5 @@
 from setup_tests import *
-from dynamapp.math_utils  import *
+from dynamapp_old.math_utils  import *
 
 class TestUtils(unittest.TestCase):
     

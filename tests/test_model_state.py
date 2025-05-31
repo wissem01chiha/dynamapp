@@ -1,6 +1,6 @@
 from setup_tests import *
-from dynamapp.model_state import ModelState
-from dynamapp.model import Model
+from dynamapp_old.model_state import ModelState
+from dynamapp_old.model import Model
 
 class TestModelState(unittest.TestCase):
     

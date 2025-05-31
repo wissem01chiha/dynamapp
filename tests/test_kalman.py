@@ -1,6 +1,6 @@
 from setup_tests import *
-from dynamapp.kalman import Kalman
-from dynamapp.state_space import StateSpace
+from dynamapp_old.kalman import Kalman
+from dynamapp_old.state_space import StateSpace
 
 class TestKalman(unittest.TestCase):
     def setUp(self) -> None:

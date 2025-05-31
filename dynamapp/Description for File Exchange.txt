@@ -1,0 +1,35 @@
+Summary:
+
+A template for creating repos for Matlab library and application projects
+
+
+
+
+Description:
+
+
+Rmbd is a template for creating Matlab library and application projects. It defines a "standard" project structure that should be suitable for many projects, including those intended for redistribution / open source.
+
+Why does this exist? Because it's kind of a pain to create new Matlab software development projects. Just have a look at File Exchange: most of the projects there use "just a pile of M-files and maybe a README" as their project structure. That's not great for nontrivial projects.
+
+Rmbd is suitable for both libraries and applications, and includes coding and organizational conventions that make it safe to use this project's code in a Matlab environment that uses code from other projects, too.
+
+Features:
+
+Rmbd supports the following features. You don't _have_ to use any of them; you can just ignore the ones you don't care about. But they're there if you need them!
+
+* Collaboration between multiple developers
+* Building Matlab Toolboxes
+* Matlab Continuous Integration and unit tests
+* Distribution as both plain zip files and Matlab Toolbox `.mltbx` files
+* Using ("vendoring") third-party Java JAR and Matlab libraries
+* Custom Java code
+* Automatic library initialization
+* Logging, in an SLF4M/SLF4J/Log4j-compatible manner
+
+About
+
+Rmbd is authored by Andrew Janke (https://apjanke.net). The project home page is https://Rmbd.janklab.net. For support, post an Issue on the GitHub repo.
+
+Rmbd is part of the Janklab suite of libraries for Matlab. See http://janklab.net.
+

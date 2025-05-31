@@ -1,0 +1,36 @@
+# Configuration for CircleCI
+version: 2.1
+orbs:
+  matlab: mathworks/matlab@0.4.0
+jobs:
+  build:
+    machine:
+      image: 'ubuntu-1604:201903-01'
+    steps:
+      - checkout
+      - run:
+          name: "Switch to Python 3.7"
+          command: |
+            pyenv versions
+            pyenv global 3.7.0
+      - matlab/install
+      - matlab/run-command:
+          command: addpath dev-kit; mypackage_launchtests
+      - matlab/run-tests:
+          test-results-junit: test-results/matlab/results.xml
+          code-coverage-cobertura: coverage
+          source-folder: Mcode
+      - store_test_results:
+          path: test-results
+      - run:
+          command: make test
+      - run:
+          command: make dist
+      - run:
+          command: make clean
+      # start_MPT_targets
+      - run:
+          command: git reset --hard
+      - run:
+          command: ./MatlabProjectTemplate/test_project_initialization
+      # end_MPT_targets

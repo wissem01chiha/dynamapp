@@ -1,0 +1,40 @@
+#/usr/bin/env bash
+#
+# test_project_initialization
+#
+# Tests whether the MPT project initialization code works by initializing this
+# repo, doing some builds, and then trying to roll back.
+#
+# The rollback is not guaranteed to work, so only do this in a repo copy that you
+# can afford to lose or manually clean up!
+
+# Error out on any failure to indicate the test failed
+set -e
+
+# Do not run if there are local changes, because the rollback is destructive
+if [[ $(git status --porcelain) ]]; then
+  echo >&2 "Error: Cannot run $0 when there are uncommitted changes."
+  echo >&2 "Changes:"
+  git status --porcelain >&2
+  exit 1
+fi
+
+./dev-kit/run_matlab "init_project_from_template --dev"
+
+echo ""
+echo "Running tests..."
+make test
+
+echo ""
+echo "Building artifacts..."
+make docs
+make doc
+make dist
+
+echo ""
+echo "Cleaning up..."
+make clean
+./rollback_init
+
+echo ""
+echo "Test passed."

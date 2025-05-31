@@ -13,7 +13,7 @@ sys.path.append(src_folder)
 if not os.path.exists(figureFolderPath):
     os.makedirs(figureFolderPath)
 
-from dynamapp import Robot, Regressor, StateSpace
+from dynamapp_old import Robot, Regressor, StateSpace
 from utils import RobotData, plot3Arrays, plot2Arrays, yaml2dict, RMSE, MAE
 
 mlogger  = logging.getLogger('matplotlib')

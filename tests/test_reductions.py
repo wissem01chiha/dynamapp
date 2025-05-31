@@ -1,5 +1,5 @@
 from setup_tests import *
-from dynamapp.reductions import *
+from dynamapp_old.reductions import *
 
 
 if __name__ == "__main__":

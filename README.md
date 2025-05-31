@@ -263,3 +263,11 @@ License
 ----
 This project is currently licensed under the **CC0 1.0 Universal License**.  
 For more details, see the [LICENSE](LICENSE.txt) file. 
+
+
+https://github.com/TaISLab/simulink_arduino_dynamixel
+https://github.com/geoand-robotdesign/Dynamixel_Library_MATLAB_Simulink
+https://github.com/marciska/vpc-library
+https://github.com/alperunlu/AutoLIB
+https://github.com/odufour-mw/Simulink-Target-support-for-ED247
+https://github.com/SysensoSystems/SimExcelBlocks

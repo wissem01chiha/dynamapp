@@ -1,6 +1,6 @@
 from setup_tests import *
-from dynamapp.nfoursid import NFourSID
-from dynamapp.state_space import StateSpace
+from dynamapp_old.nfoursid import NFourSID
+from dynamapp_old.state_space import StateSpace
 
 class TestNFourSid(unittest.TestCase):
     

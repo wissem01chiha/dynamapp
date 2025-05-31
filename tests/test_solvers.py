@@ -1,5 +1,5 @@
 from setup_tests import *
-from dynamapp.solvers import *
+from dynamapp_old.solvers import *
 
 class TestSolvers(unittest.TestCase):
     

@@ -1,7 +1,7 @@
 from setup_tests import *
-from dynamapp.regressors import *
-from dynamapp.model import Model
-from dynamapp.model_state import ModelState
+from dynamapp_old.regressors import *
+from dynamapp_old.model import Model
+from dynamapp_old.model_state import ModelState
 
 class TestRegressor(unittest.TestCase):
     

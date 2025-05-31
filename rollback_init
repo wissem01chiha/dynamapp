@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+set -e
+
+git reset --hard
+rm -rf M-doc Mcode/+mycoolpackage docs/* doc/* \
+    src/java/MyCoolProject-java \
+    dev-kit/*mycoolpackage* dev-kit/*MyCoolProject* MyCoolProject.mltbx MyCoolProject.prj.in \
+    mypackage* lib/java/MyCoolProject-java mycoolpackage_*
+git reset --hard

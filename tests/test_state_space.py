@@ -1,5 +1,5 @@
 from setup_tests import *
-from dynamapp.state_space import StateSpace
+from dynamapp_old.state_space import StateSpace
 
 class TestStateSpace(unittest.TestCase):
     

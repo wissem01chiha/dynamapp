@@ -1,5 +1,5 @@
 from setup_tests import *
-from dynamapp.generators import *
+from dynamapp_old.generators import *
 
 class TestModelDataGenerator(unittest.TestCase):
 

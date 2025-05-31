@@ -1,0 +1,12 @@
+#!/bin/bash
+#
+# Create the dummy .gitkeep files to keep the template repo structure alive in git
+
+doit () {
+  for i in doc examples \
+      lib/java lib/matlab src/c src/java; do
+    echo "This file just exists to keep the empty directory alive in git." > $i/.gitkeep 
+  done
+}
+
+doit 2>/dev/null

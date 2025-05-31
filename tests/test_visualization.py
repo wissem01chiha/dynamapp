@@ -1,5 +1,5 @@
 from setup_tests import *
-from dynamapp.visualization import *
+from dynamapp_old.visualization import *
 
 
 

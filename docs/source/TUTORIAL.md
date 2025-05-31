@@ -1,3 +1,0 @@
-Tutorial
-======  
-DynaMapp tutorial

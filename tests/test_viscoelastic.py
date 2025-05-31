@@ -1,5 +1,5 @@
 from setup_tests import *
-from dynamapp.viscoelastic import *
+from dynamapp_old.viscoelastic import *
 
 class TestFrictionModels(unittest.TestCase):
 

@@ -1,5 +1,5 @@
 from setup_tests import *
-from dynamapp.trajectory import *
+from dynamapp_old.trajectory import *
 
 class TestFourier(unittest.TestCase):
     
