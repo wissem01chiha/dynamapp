@@ -1,0 +1,144 @@
+{
+  "configuration": {
+    "max_results_interval": 1,
+    "record_mode": "selected",
+    "sample_time": 0.1,
+    "solver": {
+      "absolute_tolerance": 0.000001,
+      "max_minor_steps_per_major_step": 1000,
+      "max_step": 1000000,
+      "method": "RK45",
+      "min_step": 0,
+      "relative_tolerance": 0.001
+    },
+    "start_time": 0,
+    "stop_time": 10,
+    "worker_type": "any",
+    "workspace": {}
+  },
+  "diagram": {
+    "annotations": [],
+    "links": [
+      {
+        "dst": {
+          "node": "1020ec3b-dba2-407e-ab58-35705032772a",
+          "port": 0
+        },
+        "src": {
+          "node": "caa21520-1130-4bdc-9d74-a01fd9c6c04c",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 912,
+            "y": 416
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "26769571-864e-45a8-bb96-5963187f6ea1"
+      }
+    ],
+    "nodes": [
+      {
+        "inputs": [],
+        "name": "Constant_0",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "value": {
+            "value": "8e4"
+          }
+        },
+        "type": "core.Constant",
+        "uiprops": {
+          "port_alignment": "spaced",
+          "x": 720,
+          "y": 400
+        },
+        "uuid": "caa21520-1130-4bdc-9d74-a01fd9c6c04c"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "dynamic",
+            "name": "u"
+          }
+        ],
+        "name": "ModelicaFMU_0",
+        "outputs": [
+          {
+            "kind": "dynamic",
+            "name": "y"
+          }
+        ],
+        "parameters": {
+          "file_name": {
+            "is_string": true,
+            "value": "thermal_1.fmu"
+          },
+          "fixedTemperature_T": {
+            "value": "273.15"
+          },
+          "fmu_guid": {
+            "is_string": true,
+            "value": ""
+          },
+          "heatCapacitor1_C": {
+            "value": "20000"
+          },
+          "heatCapacitor2_C": {
+            "value": "10000"
+          },
+          "heatCapacitor_C": {
+            "value": "5000"
+          },
+          "prescribedHeatFlow1_T_ref": {
+            "value": "293.15"
+          },
+          "prescribedHeatFlow1_alpha": {
+            "value": "0"
+          },
+          "thermalResistor1_R": {
+            "value": "0.001"
+          },
+          "thermalResistor2_R": {
+            "value": "0.001"
+          },
+          "thermalResistor3_R": {
+            "value": "0.001"
+          },
+          "thermalResistor4_R": {
+            "value": "0.0002"
+          },
+          "thermalResistor_R": {
+            "value": "0.005"
+          }
+        },
+        "type": "core.ModelicaFMU",
+        "uiprops": {
+          "port_alignment": "spaced",
+          "x": 864,
+          "y": 376
+        },
+        "uuid": "1020ec3b-dba2-407e-ab58-35705032772a"
+      }
+    ],
+    "uuid": "e0f2fd77-ba0a-446d-afa5-ec1163973e08"
+  },
+  "kind": "Model",
+  "name": "ModelicaFMU",
+  "parameters": {},
+  "schema_version": "3",
+  "subdiagrams": {
+    "diagrams": {},
+    "references": {}
+  },
+  "uuid": "d279c015-7b9b-4d4c-8b81-bdf90bd95c23"
+}

@@ -1,0 +1,17 @@
+-r requirements.in
+-r requirements.docs.txt
+pytest
+pytest-asyncio
+pytest-cov
+pytest-xdist
+pytest-timeout
+pytest-mock
+pytest-timeout
+toml
+
+# Notebook testing
+nbval
+gplearn
+scikit-learn
+lightning
+mediapy

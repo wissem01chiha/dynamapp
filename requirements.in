@@ -1,0 +1,32 @@
+# Pure Python dependencies
+# Marked as compatible to the micro versions
+click ~= 8.1
+dataclasses-json ~= 0.6
+dataclasses-jsonschema ~= 2.16
+networkx ~= 3.1
+numpy ~= 1.26
+scipy ~= 1.11
+sympy ~= 1.11
+ts-type ~= 0.2
+simpleeval ~= 0.9
+
+# Core JAX dependencies
+# These are marked as compatible to the micro version because of some
+# incompatibilities with jax/jaxlib 0.4.27 for instance.
+diffrax ~= 0.5.0; platform_system != "Emscripten"
+equinox ~= 0.11.1; platform_system != "Emscripten"
+fmpy ~= 0.3.19; platform_system != "Emscripten"
+jax ~= 0.4.25, <= 0.4.26; platform_system != "Emscripten"
+jaxlib ~= 0.4.25, <= 0.4.26; platform_system != "Emscripten"
+jaxtyping ~= 0.2.25; platform_system != "Emscripten"
+jaxopt ~= 0.8.3; platform_system != "Emscripten"
+optax ~= 0.2.2; platform_system != "Emscripten"
+
+# Other dependencies not compatible with WASM
+requests ~= 2.32; platform_system != "Emscripten"
+
+# Python 3.10 compatibility
+StrEnum ~= 0.4.15; python_version < "3.11"
+
+# Pyodide/WASM - to be installed separately
+jaxlite; platform_system == "Emscripten"

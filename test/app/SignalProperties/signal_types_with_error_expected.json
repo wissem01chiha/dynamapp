@@ -1,0 +1,43 @@
+{
+    "nodes": [
+        {
+            "namepath": [
+                "Constant_0"
+            ],
+            "uuidpath": [
+                "cfb7390a-0f4f-43f7-aee1-6c903704db98"
+            ],
+            "outports": [
+                {
+                    "index": 0,
+                    "dtype": "float64",
+                    "dimension": [
+                        2,
+                        2
+                    ],
+                    "time_mode": "Constant",
+                    "name": "out_0"
+                }
+            ],
+            "time_mode": "Constant"
+        },
+        {
+            "namepath": [
+                "Integrator_0"
+            ],
+            "uuidpath": [
+                "f89694c6-f5bd-4ad4-8760-db2645ca47a0"
+            ],
+            "outports": [
+                {
+                    "index": 0,
+                    "dtype": "float64",
+                    "dimension": [],
+                    "time_mode": "Continuous",
+                    "name": "out_0"
+                }
+            ],
+            "time_mode": "Continuous"
+        }
+    ]
+}

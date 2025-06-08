@@ -1,0 +1,125 @@
+{
+    "$schema_version": "0.1",
+    "uuid": "b9edeeb4-2a9f-4963-866e-7e732346bc01",
+    "name": "clock",
+    "diagram": {
+      "nodes": [
+        {
+          "uuid": "c053f799-e5d9-40a8-8661-05c228b555ee",
+          "name": "Gain_0",
+          "type": "core.Gain",
+          "inputs": [
+            {
+              "name": "in_0",
+              "kind": "static"
+            }
+          ],
+          "outputs": [
+            {
+              "name": "out_0",
+              "kind": "static"
+            }
+          ],
+          "parameters": {
+            "gain": {
+              "value": "[0.0,a]"
+            }
+          },
+          "uiprops": {
+            "x": -48,
+            "y": 0,
+            "port_alignment": "spaced"
+          }
+        },
+        {
+          "uuid": "044686f3-19a0-4b82-af42-ec0f54614507",
+          "name": "Constant_0",
+          "type": "core.Constant",
+          "inputs": [],
+          "outputs": [
+            {
+              "name": "out_0",
+              "kind": "static"
+            }
+          ],
+          "parameters": {
+            "value": {
+              "value": "0.0"
+            }
+          },
+          "uiprops": {
+            "x": -160,
+            "y": 24,
+            "port_alignment": "spaced"
+          }
+        }
+      ],
+      "links": [
+        {
+          "uuid": "e52d9f00-9409-48db-b104-d648c49dec93",
+          "src": {
+            "node": "044686f3-19a0-4b82-af42-ec0f54614507",
+            "port": 0,
+            "port_side": "outputs"
+          },
+          "dst": {
+            "node": "c053f799-e5d9-40a8-8661-05c228b555ee",
+            "port": 0
+          },
+          "uiprops": {
+            "link_type": {
+              "connection_method": "direct_to_block"
+            },
+            "segments": [],
+            "hang_coord_start": {
+              "x": -144,
+              "y": 48
+            }
+          }
+        }
+      ],
+      "annotations": [],
+      "uuid": "bc348ec1-5e93-4ac7-9d8f-fd1bf3ac126e"
+    },
+    "configuration": {
+      "fixed_results_interval": 0,
+      "numerical_backend": "auto",
+      "record_mode": "all",
+      "sample_time": 0.1,
+      "sim_output_mode": "auto",
+      "solver": {
+        "absolute_tolerance": 0.000001,
+        "max_minor_steps_per_major_step": 1000,
+        "max_step": 1000000,
+        "method": "non-stiff",
+        "min_step": 0,
+        "relative_tolerance": 0.001
+      },
+      "start_time": 0,
+      "stop_time": 10,
+      "worker_type": "any",
+      "workspace": {},
+      "data_points_min": 0,
+      "events_handling": "normal",
+      "continuous_time_result_interval": 0,
+      "__developer_options": {
+        "disable_firejail": false
+      }
+    },
+    "parameters": {
+      "a": {
+        "value": "1"
+      }
+    },
+    "submodels": {
+      "diagrams": {},
+      "references": {}
+    },
+    "state_machines": {},
+    "needs_autolayout": false,
+    "created_at": "2024-02-06T05:13:26Z",
+    "updated_at": "2024-06-06T11:23:58Z",
+    "version": 173,
+    "project_uuid": "6e5ac962-8f6b-4cb5-9d02-0ee0537680ba",
+    "kind": "Model"
+  }

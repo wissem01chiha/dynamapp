@@ -1,0 +1,523 @@
+{
+  "nodes": [
+    {
+      "namepath": [
+        "one"
+      ],
+      "uuidpath": [
+        "6fe05b74-9256-46cb-983f-5f627d6372ba"
+      ],
+      "outports": [
+        {
+          "index": 0,
+          "dtype": "float64",
+          "dimension": [],
+          "time_mode": "Constant",
+          "name": "out_0"
+        }
+      ],
+      "time_mode": "Constant"
+    },
+    {
+      "namepath": [
+        "vec_three_ones"
+      ],
+      "uuidpath": [
+        "79307dd1-c085-428f-a74a-fd626b0bdd80"
+      ],
+      "outports": [
+        {
+          "index": 0,
+          "dtype": "float64",
+          "dimension": [
+            3
+          ],
+          "time_mode": "Constant",
+          "name": "out_0"
+        }
+      ],
+      "time_mode": "Constant"
+    },
+    {
+      "namepath": [
+        "Ramp_0"
+      ],
+      "uuidpath": [
+        "b2949b8a-5bb1-466f-9667-109a4a668d70"
+      ],
+      "outports": [
+        {
+          "index": 0,
+          "dtype": "float64",
+          "dimension": [],
+          "time_mode": "Continuous",
+          "name": "out_0"
+        }
+      ],
+      "time_mode": "Continuous"
+    },
+    {
+      "namepath": [
+        "Comparator_0"
+      ],
+      "uuidpath": [
+        "297260b8-019b-4b0e-823c-692b80e9af0f"
+      ],
+      "outports": [
+        {
+          "index": 0,
+          "dtype": "bool",
+          "dimension": [],
+          "time_mode": "Continuous",
+          "name": "out_0"
+        }
+      ],
+      "time_mode": "Continuous"
+    },
+    {
+      "namepath": [
+        "Constant_0"
+      ],
+      "uuidpath": [
+        "e86a4cc9-94da-49d4-8e5a-51cef18a333e"
+      ],
+      "outports": [
+        {
+          "index": 0,
+          "dtype": "int32",
+          "dimension": [
+            2,
+            2
+          ],
+          "time_mode": "Constant",
+          "name": "out_0"
+        }
+      ],
+      "time_mode": "Constant"
+    },
+    {
+      "namepath": [
+        "Demux_0"
+      ],
+      "uuidpath": [
+        "7929e6a4-08ac-4ff6-a7bd-87292a4d33cf"
+      ],
+      "outports": [
+        {
+          "index": 0,
+          "dtype": "float64",
+          "dimension": [],
+          "time_mode": "Constant",
+          "name": "out_0"
+        },
+        {
+          "index": 1,
+          "dtype": "float64",
+          "dimension": [],
+          "time_mode": "Constant",
+          "name": "out_1"
+        },
+        {
+          "index": 2,
+          "dtype": "float64",
+          "dimension": [],
+          "time_mode": "Constant",
+          "name": "out_2"
+        }
+      ],
+      "time_mode": "Constant"
+    },
+    {
+      "namepath": [
+        "Adder_0"
+      ],
+      "uuidpath": [
+        "53468b17-311c-4bac-8f85-b710680e4297"
+      ],
+      "outports": [
+        {
+          "index": 0,
+          "dtype": "float64",
+          "dimension": [
+            2,
+            2
+          ],
+          "time_mode": "Continuous",
+          "name": "out_0"
+        }
+      ],
+      "time_mode": "Continuous"
+    },
+    {
+      "namepath": [
+        "Group_0",
+        "Inport_0"
+      ],
+      "uuidpath": [
+        "ddafa8e8-3511-4be9-a9de-0371b0c65100",
+        "ac3e2e5f-6925-447d-99fc-9970cb850e70"
+      ],
+      "outports": [
+        {
+          "index": 0,
+          "dtype": "int32",
+          "dimension": [
+            2,
+            2
+          ],
+          "time_mode": "Constant",
+          "name": "out_0"
+        }
+      ],
+      "time_mode": "Constant"
+    },
+    {
+      "namepath": [
+        "Group_0",
+        "Inport_1"
+      ],
+      "uuidpath": [
+        "ddafa8e8-3511-4be9-a9de-0371b0c65100",
+        "d1da9230-bcd1-48f1-ae68-685d0f1cb687"
+      ],
+      "outports": [
+        {
+          "index": 0,
+          "dtype": "float64",
+          "dimension": [],
+          "time_mode": "Constant",
+          "name": "out_0"
+        }
+      ],
+      "time_mode": "Constant"
+    },
+    {
+      "namepath": [
+        "Group_0",
+        "Outport_0"
+      ],
+      "uuidpath": [
+        "ddafa8e8-3511-4be9-a9de-0371b0c65100",
+        "e5e53edd-3e84-47d8-b918-52c85f2210b2"
+      ],
+      "outports": [
+        {
+          "index": 0,
+          "dtype": "float64",
+          "dimension": [
+            2,
+            2
+          ],
+          "time_mode": "Constant",
+          "name": "out_0"
+        }
+      ],
+      "time_mode": "Constant"
+    },
+    {
+      "namepath": [
+        "Group_0",
+        "Outport_1"
+      ],
+      "uuidpath": [
+        "ddafa8e8-3511-4be9-a9de-0371b0c65100",
+        "88bd8f60-9696-4fc1-bf34-dff0c8f82b41"
+      ],
+      "outports": [
+        {
+          "index": 0,
+          "dtype": "float64",
+          "dimension": [],
+          "time_mode": "Continuous",
+          "name": "out_0"
+        }
+      ],
+      "time_mode": "Continuous"
+    },
+    {
+      "namepath": [
+        "Group_0",
+        "Gain_0"
+      ],
+      "uuidpath": [
+        "ddafa8e8-3511-4be9-a9de-0371b0c65100",
+        "9a9f957e-f777-408d-980b-6da29d22761d"
+      ],
+      "outports": [
+        {
+          "index": 0,
+          "dtype": "float64",
+          "dimension": [
+            2,
+            2
+          ],
+          "time_mode": "Constant",
+          "name": "out_0"
+        }
+      ],
+      "time_mode": "Constant"
+    },
+    {
+      "namepath": [
+        "Group_0",
+        "Integrator_0"
+      ],
+      "uuidpath": [
+        "ddafa8e8-3511-4be9-a9de-0371b0c65100",
+        "60d77f6d-d227-4421-85f8-b6e0f7c51f9d"
+      ],
+      "outports": [
+        {
+          "index": 0,
+          "dtype": "float64",
+          "dimension": [],
+          "time_mode": "Continuous",
+          "name": "out_0"
+        }
+      ],
+      "time_mode": "Continuous"
+    },
+    {
+      "namepath": [
+        "Group_0"
+      ],
+      "uuidpath": [
+        "ddafa8e8-3511-4be9-a9de-0371b0c65100"
+      ],
+      "outports": [
+        {
+          "index": 0,
+          "dtype": "float64",
+          "dimension": [
+            2,
+            2
+          ],
+          "time_mode": "Constant",
+          "name": "Outport_0"
+        },
+        {
+          "index": 1,
+          "dtype": "float64",
+          "dimension": [],
+          "time_mode": "Continuous",
+          "name": "Outport_1"
+        }
+      ],
+      "time_mode": "Continuous"
+    },
+    {
+      "namepath": [
+        "Exponent_0"
+      ],
+      "uuidpath": [
+        "2fb6e058-6cbf-4b38-957f-ec00e84b1b93"
+      ],
+      "outports": [
+        {
+          "index": 0,
+          "dtype": "float64",
+          "dimension": [],
+          "time_mode": "Discrete",
+          "name": "out_0"
+        }
+      ],
+      "time_mode": "Discrete"
+    },
+    {
+      "namepath": [
+        "submodel1",
+        "Inport_0"
+      ],
+      "uuidpath": [
+        "df6c6a35-c83d-41ef-b37b-84588ca2628f",
+        "28e0cfb0-053a-41db-b200-ec12788937ea"
+      ],
+      "outports": [
+        {
+          "index": 0,
+          "dtype": "float64",
+          "dimension": [],
+          "time_mode": "Continuous",
+          "name": "out_0"
+        }
+      ],
+      "time_mode": "Continuous"
+    },
+    {
+      "namepath": [
+        "submodel1",
+        "Outport_0"
+      ],
+      "uuidpath": [
+        "df6c6a35-c83d-41ef-b37b-84588ca2628f",
+        "013f759c-da28-467c-a01f-b5d1e8427c31"
+      ],
+      "outports": [
+        {
+          "index": 0,
+          "dtype": "float64",
+          "dimension": [],
+          "time_mode": "Discrete",
+          "name": "out_0"
+        }
+      ],
+      "time_mode": "Discrete"
+    },
+    {
+      "namepath": [
+        "submodel1",
+        "Offset_0"
+      ],
+      "uuidpath": [
+        "df6c6a35-c83d-41ef-b37b-84588ca2628f",
+        "a020fc5b-43d5-483d-8488-63caea6d480a"
+      ],
+      "outports": [
+        {
+          "index": 0,
+          "dtype": "float64",
+          "dimension": [],
+          "time_mode": "Continuous",
+          "name": "out_0"
+        }
+      ],
+      "time_mode": "Continuous"
+    },
+    {
+      "namepath": [
+        "submodel1",
+        "UnitDelay_0"
+      ],
+      "uuidpath": [
+        "df6c6a35-c83d-41ef-b37b-84588ca2628f",
+        "0ea9d7e0-94b8-4bfa-92bf-23e37420144f"
+      ],
+      "outports": [
+        {
+          "index": 0,
+          "dtype": "float64",
+          "dimension": [],
+          "time_mode": "Discrete",
+          "name": "out_0"
+        }
+      ],
+      "time_mode": "Discrete"
+    },
+    {
+      "namepath": [
+        "submodel1"
+      ],
+      "uuidpath": [
+        "df6c6a35-c83d-41ef-b37b-84588ca2628f"
+      ],
+      "outports": [
+        {
+          "index": 0,
+          "dtype": "float64",
+          "dimension": [],
+          "time_mode": "Discrete",
+          "name": "Outport_0"
+        }
+      ],
+      "time_mode": "Hybrid"
+    },
+    {
+      "namepath": [
+        "submodel2",
+        "Inport_0"
+      ],
+      "uuidpath": [
+        "8a6de5a3-d45d-4647-914e-0d3cd44279e7",
+        "28e0cfb0-053a-41db-b200-ec12788937ea"
+      ],
+      "outports": [
+        {
+          "index": 0,
+          "dtype": "float64",
+          "dimension": [],
+          "time_mode": "Continuous",
+          "name": "out_0"
+        }
+      ],
+      "time_mode": "Continuous"
+    },
+    {
+      "namepath": [
+        "submodel2",
+        "Outport_0"
+      ],
+      "uuidpath": [
+        "8a6de5a3-d45d-4647-914e-0d3cd44279e7",
+        "013f759c-da28-467c-a01f-b5d1e8427c31"
+      ],
+      "outports": [
+        {
+          "index": 0,
+          "dtype": "float64",
+          "dimension": [],
+          "time_mode": "Discrete",
+          "name": "out_0"
+        }
+      ],
+      "time_mode": "Discrete"
+    },
+    {
+      "namepath": [
+        "submodel2",
+        "Offset_0"
+      ],
+      "uuidpath": [
+        "8a6de5a3-d45d-4647-914e-0d3cd44279e7",
+        "a020fc5b-43d5-483d-8488-63caea6d480a"
+      ],
+      "outports": [
+        {
+          "index": 0,
+          "dtype": "float64",
+          "dimension": [],
+          "time_mode": "Continuous",
+          "name": "out_0"
+        }
+      ],
+      "time_mode": "Continuous"
+    },
+    {
+      "namepath": [
+        "submodel2",
+        "UnitDelay_0"
+      ],
+      "uuidpath": [
+        "8a6de5a3-d45d-4647-914e-0d3cd44279e7",
+        "0ea9d7e0-94b8-4bfa-92bf-23e37420144f"
+      ],
+      "outports": [
+        {
+          "index": 0,
+          "dtype": "float64",
+          "dimension": [],
+          "time_mode": "Discrete",
+          "name": "out_0"
+        }
+      ],
+      "time_mode": "Discrete"
+    },
+    {
+      "namepath": [
+        "submodel2"
+      ],
+      "uuidpath": [
+        "8a6de5a3-d45d-4647-914e-0d3cd44279e7"
+      ],
+      "outports": [
+        {
+          "index": 0,
+          "dtype": "float64",
+          "dimension": [],
+          "time_mode": "Discrete",
+          "name": "Outport_0"
+        }
+      ],
+      "time_mode": "Hybrid"
+    }
+  ]
+}

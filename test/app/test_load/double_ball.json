@@ -1,0 +1,289 @@
+{
+  "configuration": {
+    "solver": {
+      "method": "non-stiff",
+      "max_step": 1000000,
+      "min_step": 0,
+      "absolute_tolerance": 1e-09,
+      "relative_tolerance": 1e-06,
+      "max_minor_steps_per_major_step": 4096
+    },
+    "stop_time": 1,
+    "workspace": {},
+    "start_time": 0,
+    "record_mode": "all",
+    "sample_time": 0.1,
+    "worker_type": "any",
+    "max_major_steps": 1000,
+    "sim_output_mode": "auto",
+    "numerical_backend": "jax",
+    "fixed_results_interval": 0,
+    "max_results_interval": 0
+  },
+  "diagram": {
+    "nodes": [
+      {
+        "uuid": "6a6f5a0c-dd1e-4a6c-9c9f-f903c6b92132",
+        "name": "Gravity",
+        "type": "core.Constant",
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "out_0",
+            "kind": "static"
+          }
+        ],
+        "parameters": {
+          "value": {
+            "value": "-9.81"
+          }
+        },
+        "uiprops": {
+          "x": 584,
+          "y": 312,
+          "port_alignment": "spaced"
+        }
+      },
+      {
+        "uuid": "96f36c82-5535-4731-b672-09af3c6315fd",
+        "name": "FloorBall1",
+        "type": "core.Step",
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "out_0",
+            "kind": "static"
+          }
+        ],
+        "parameters": {
+          "end_value": {
+            "value": "-0.5"
+          },
+          "step_time": {
+            "value": "3.0"
+          },
+          "start_value": {
+            "value": "0.0"
+          }
+        },
+        "time_mode": "agnostic",
+        "uiprops": {
+          "x": 704,
+          "y": 344,
+          "port_alignment": "spaced"
+        }
+      },
+      {
+        "uuid": "164e64e6-c9d6-465c-9bf3-03e3c86c4cc0",
+        "name": "BouncingBall1",
+        "submodel_reference_uuid": "e027b349-2a57-430d-ab02-06d2c457a496",
+        "type": "core.ReferenceSubmodel",
+        "inputs": [
+          {
+            "name": "Gravity",
+            "kind": "dynamic"
+          },
+          {
+            "name": "Floor",
+            "kind": "dynamic"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Position",
+            "kind": "dynamic",
+            "record": true
+          }
+        ],
+        "parameters": {},
+        "uiprops": {
+          "x": 816,
+          "y": 288,
+          "grid_height": 16,
+          "grid_width": 21,
+          "port_alignment": "spaced",
+          "show_port_name_labels": true
+        }
+      },
+      {
+        "uuid": "06d9cfaf-410f-41de-b31f-28781bf0ebd3",
+        "name": "BouncingBall2",
+        "submodel_reference_uuid": "e027b349-2a57-430d-ab02-06d2c457a496",
+        "type": "core.ReferenceSubmodel",
+        "inputs": [
+          {
+            "name": "Gravity",
+            "kind": "dynamic"
+          },
+          {
+            "name": "Floor",
+            "kind": "dynamic"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Position",
+            "kind": "dynamic",
+            "record": true
+          }
+        ],
+        "parameters": {
+          "InitialPosition": {
+            "order": 0,
+            "value": "3.0"
+          }
+        },
+        "uiprops": {
+          "x": 816,
+          "y": 456,
+          "grid_height": 16,
+          "grid_width": 21,
+          "port_alignment": "spaced",
+          "show_port_name_labels": true
+        }
+      },
+      {
+        "uuid": "e0f86757-1216-4811-ac19-b90974035c91",
+        "name": "FloorBall2",
+        "type": "core.Constant",
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "out_0",
+            "kind": "static"
+          }
+        ],
+        "parameters": {
+          "value": {
+            "value": "0.0"
+          }
+        },
+        "uiprops": {
+          "x": 736,
+          "y": 536,
+          "port_alignment": "spaced"
+        }
+      }
+    ],
+    "links": [
+      {
+        "uuid": "9e3ff93f-5109-4b8d-b544-6ee4b0ff229d",
+        "src": {
+          "node": "6a6f5a0c-dd1e-4a6c-9c9f-f903c6b92132",
+          "port": 0
+        },
+        "dst": {
+          "node": "164e64e6-c9d6-465c-9bf3-03e3c86c4cc0",
+          "port": 0
+        },
+        "uiprops": {
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": [
+            {
+              "segment_direction": "vert",
+              "coordinate": 552
+            },
+            {
+              "segment_direction": "horiz",
+              "coordinate": 320
+            },
+            {
+              "segment_direction": "vert",
+              "coordinate": 808
+            }
+          ],
+          "hang_coord_end": {
+            "x": 760,
+            "y": 312
+          }
+        }
+      },
+      {
+        "uuid": "796ba522-40c2-4edc-8f30-d7fa71146a3b",
+        "src": {
+          "node": "96f36c82-5535-4731-b672-09af3c6315fd",
+          "port": 0
+        },
+        "dst": {
+          "node": "164e64e6-c9d6-465c-9bf3-03e3c86c4cc0",
+          "port": 1
+        },
+        "uiprops": {
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": [],
+          "hang_coord_end": {
+            "x": 1216,
+            "y": 368
+          }
+        }
+      },
+      {
+        "uuid": "4425b98c-cd62-483f-84b9-e1a9ccfce3c1",
+        "src": {
+          "node": "e0f86757-1216-4811-ac19-b90974035c91",
+          "port": 0
+        },
+        "dst": {
+          "node": "06d9cfaf-410f-41de-b31f-28781bf0ebd3",
+          "port": 1
+        },
+        "uiprops": {
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": [],
+          "hang_coord_start": {
+            "x": 784,
+            "y": 544
+          },
+          "hang_coord_end": {
+            "x": 816,
+            "y": 552
+          }
+        }
+      },
+      {
+        "uuid": "1bb27533-e789-4b12-b4b5-c253ca1da64b",
+        "src": {
+          "node": "6a6f5a0c-dd1e-4a6c-9c9f-f903c6b92132",
+          "port": 0
+        },
+        "dst": {
+          "node": "06d9cfaf-410f-41de-b31f-28781bf0ebd3",
+          "port": 0
+        },
+        "uiprops": {
+          "link_type": {
+            "tap_coordinate": 656,
+            "tapped_segment": {
+              "segment_type": "real",
+              "tapped_segment_index": 1,
+              "tapped_segment_direction": "horiz"
+            },
+            "tapped_link_uuid": "9e3ff93f-5109-4b8d-b544-6ee4b0ff229d",
+            "connection_method": "link_tap"
+          },
+          "segments": []
+        }
+      }
+    ],
+    "annotations": [],
+    "uuid": "1ef3fb1c-d6b8-4ce3-ae08-2737daca6d35"
+  },
+  "name": "Double Bouncing Ball_2024-03-28T18:31:32Z",
+  "parameters": {},
+  "state_machines": {},
+  "subdiagrams": {
+    "diagrams": {},
+    "references": {}
+  },
+  "uuid": "a2e5d703-cb91-4003-82d5-25472d170ef9",
+  "sim_model_uuid": "413bf33a-1340-4117-bcfb-acea5e99f8d9",
+  "owner_uuid": "cc073a60-7e27-4ca7-b616-7b3e9a6d139c",
+  "schema_version": "4",
+  "kind": "Model"
+}

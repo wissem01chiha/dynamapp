@@ -1,0 +1,177 @@
+/**
+ * Copyright (C) 2024 Collimator, Inc.
+ * SPDX-License-Identifier: AGPL-3.0-only
+ *
+ * This program is free software: you can redistribute it and/or modify it under
+ * the terms of the GNU Affero General Public License as published by the Free
+ * Software Foundation, version 3. This program is distributed in the hope that it
+ * will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General
+ * Public License for more details.  You should have received a copy of the GNU
+ * Affero General Public License along with this program. If not, see
+ * <https://www.gnu.org/licenses/>.
+ */
+
+[data-md-color-scheme="collimator"] {
+
+    /* Primary color shades */
+    --md-primary-fg-color:              #019B99;
+    --md-primary-fg-color--light:       #019B99;
+    --md-primary-fg-color--dark:        #016E6C;
+    --md-primary-bg-color:              #F9FAFA;
+    --md-primary-bg-color--light:       #F9FAFA;
+    --md-default-bg-color:              #F9FAFA;
+    --md-default-bg-color--light:       #5C6F70;
+    --md-typeset-color:                 #082426;
+    --md-typeset-a-color:               #3A49A7;
+    --md-code-bg-color:                 #F1F3F3;
+    --md-code-fg-color:                 #082426;
+    --md-admonition-bg-color:           #EAECF6;
+    --md-admonition-fg-color:           #343A70;
+    --md-footer-bg-color:               #303990;
+
+    /* Code-related colors */
+    --md-code-hl-keyword-color:         #016E6C;
+
+    .jupyter-wrapper {
+        --jp-mirror-editor-keyword-color:   #016E6C;
+        --jp-mirror-editor-string-color:    #830237;
+        --jp-mirror-editor-atom-color:      #6A1C74;
+        --jp-mirror-editor-number-color:    #6A1C74;
+    }
+
+    .md-typeset summary, .md-typeset .quote>summary{
+        background-color: #C4CBF26A;
+    }
+
+    .md-typeset details {
+        border-color: #C4CBF2;
+    }
+
+    .md-typeset details.quote {
+        border-color: #C4CBF2;
+    }
+
+    .md-typeset summary:before {
+        background-color: #6779D6;
+    }
+
+    /* Accent color shades */
+    --md-accent-fg-color:               #3A49A7;
+    --md-accent-fg-color--transparent:  #3A49A708;
+    --md-accent-bg-color:               #EAECF6;
+    --md-accent-bg-color--light:        #EAECF6;
+}
+
+[data-md-color-scheme="collimator-dark"] {
+
+    /* Primary color shades */
+    --md-primary-fg-color:              #016E6C;
+    --md-primary-fg-color--light:       #E4E7E7;
+    --md-primary-fg-color--dark:        #016E6C0A;
+    --md-primary-bg-color:              #F1F3F3;
+    --md-primary-bg-color--light:       #F1F3F3;
+    --md-default-fg-color--light:       #E4E7E7;
+    --md-default-fg-color--lighter:     #F1F3F3C8;
+    --md-default-bg-color:              #1D3131;
+    --md-footer-bg-color:               #1F2565;
+    --md-typeset-color:                 #F1F3F3;
+    --md-code-bg-color:                 #445757;
+    --md-code-fg-color:                 #E4E7E7;
+    --md-typeset-a-color:               #C4CBF2;
+    --md-admonition-bg-color:           #343A70;
+    --md-admonition-fg-color:           #EAECF6;
+
+    /* Code-related colors */
+    --md-code-hl-number-color:           #EFAEBE;
+    --md-code-hl-special-color:          hsla(340, 83%, 47%, 1);
+    --md-code-hl-function-color:         #DA87E4;
+    --md-code-hl-constant-color:         #EAECF6;
+    --md-code-hl-keyword-color:          #C4CBF2;
+    --md-code-hl-string-color:           #32BCB8;
+    --md-code-hl-name-color:             var(--md-code-fg-color);
+    --md-code-hl-operator-color:         var(--md-default-fg-color--light);
+    --md-code-hl-punctuation-color:      var(--md-default-fg-color--light);
+    --md-code-hl-comment-color:          var(--md-default-fg-color--light);
+    --md-code-hl-generic-color:          var(--md-default-fg-color--light);
+    --md-code-hl-variable-color:         var(--md-default-fg-color--light);
+
+    .jupyter-wrapper {
+        --jp-mirror-editor-number-color:    var(--md-code-hl-number-color);
+        --jp-mirror-editor-special-color:   var(--md-code-hl-special-color);
+        --jp-mirror-editor-function-color:  var(--md-code-hl-function-color);
+        --jp-mirror-editor-atom-color:      var(--md-code-hl-constant-color);
+        --jp-mirror-editor-keyword-color:   var(--md-code-hl-keyword-color);
+        --jp-mirror-editor-string-color:    #8CE5E1;
+        --jp-mirror-editor-name-color:      var(--md-code-hl-name-color);
+        --jp-mirror-editor-operator-color:  var(--md-code-hl-operator-color);
+        --jp-mirror-editor-punctuation-color: var(--md-code-hl-punctuation-color);
+        --jp-mirror-editor-comment-color:   var(--md-code-hl-comment-color);
+        --jp-mirror-editor-generic-color:   var(--md-code-hl-generic-color);
+        --jp-mirror-editor-variable-color:  var(--md-code-hl-variable-color);
+
+        --jp-cell-editor-background:        var(--md-code-bg-color);
+        --jp-cell-editor-color:             var(--md-code-fg-color);
+        --jp-cell-editor-border-color:      var(--md-default-bg-color);
+        --jp-cell-prompt-not-active-font-color: var(--md-default-fg-color--light);
+        --jp-rendermime-error-background:   #2C2F2FS;
+    }
+
+    .jupyter-wrapper .jp-RenderedText pre, .jupyter-wrapper .jp-RenderedJavaScript pre, .jupyter-wrapper .jp-RenderedHTMLCommon-ignore pre{
+        color: var(--md-code-fg-color);
+    }
+
+    .jupyter-wrapper .zeroclipboard-container .clipboard-copy-icon {
+        color: var(--md-code-fg-color);
+    }
+
+    .jupyter-wrapper .highlight pre {
+        background-color: var(--md-code-bg-color);
+}
+    img {
+        -webkit-filter:invert(1) contrast(0.75);
+        filter:invert(1) contrast(0.75);
+    }
+
+    .md-typeset details {
+        border-color: #3A49A7;
+    }
+
+    .md-typeset details.quote {
+        border-color: #3A49A7;
+    }
+
+    .md-typeset summary:before {
+        background-color: #C4CBF2;
+    }
+
+    /* Accent color shades */
+    --md-accent-fg-color:               #C4CBF2;
+    --md-accent-fg-color--transparent:  #3A49A708;
+    --md-accent-bg-color:               #EAECF6;
+    --md-accent-bg-color--light:        #EAECF6;
+}
+
+.md-header__topic:first-child {
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: .1rem;
+    font-size: 85%;
+}
+
+[dir=ltr] .md-header__title {
+    margin-left: 0px;
+}
+
+.col-download-button {
+    /* Aligns notebook download button with H1 titles */
+    margin-top: 1.7em;
+}
+
+.md-nav__item--nested .md-nav__item {
+    margin-left: 0.68em;
+}
+
+.highlight pre {
+    font-size: 0.75em;
+}

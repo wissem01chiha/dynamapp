@@ -1,5 +1,0 @@
-[report]
-exclude_lines =
-    if __name__ == '__main__':
-[run]
-    omit = dynamapp/__version__.py

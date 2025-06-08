@@ -1,0 +1,146 @@
+{
+  "configuration": {
+    "max_major_steps": 1000,
+    "max_results_interval": 1,
+    "record_mode": "all",
+    "sample_time": 0.1,
+    "solver": {
+      "absolute_tolerance": 0.000001,
+      "max_minor_steps_per_major_step": 1000,
+      "max_step": 1000000,
+      "method": "RK45",
+      "min_step": 0,
+      "relative_tolerance": 0.001
+    },
+    "start_time": 0,
+    "stop_time": 10,
+    "worker_type": "any",
+    "workspace": {}
+  },
+  "diagram": {
+    "annotations": [],
+    "links": [
+      {
+        "dst": {
+          "node": "26c7b84b-dbbc-45eb-b565-5e5c1214d45a",
+          "port": 0
+        },
+        "src": {
+          "node": "b1c5e123-9440-456e-a562-154135107d10",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 888,
+            "y": 432
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "7aa672fd-8caf-48a6-a724-649cccf840c1"
+      }
+    ],
+    "nodes": [
+      {
+        "inputs": [
+          {
+            "kind": "static",
+            "name": "in_0"
+          }
+        ],
+        "name": "SINDy_0",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "base_feature_names": {
+            "value": "[\"x0\", \"x1\", \"x2\", \"u0\", \"u1\"]"
+          },
+          "coefficients": {
+            "value": "[[-9.99967242,9.99955548,0.,0.,0.,0.,1.41209009,-0.20985493],[27.99364257,-0.99912063,0.,0.,0.,-0.99980691,0.,0.],[0.,0.,-2.66646155,-0.99859454,0.99989091,0.,0.,0.]]"
+          },
+          "control_input_columns": {
+            "value": "[\"gain.y\"]"
+          },
+          "equations": {
+            "value": "[\"-10.000 x0 + 10.000 x1 + 1.412 sin(1 u0) + -0.210 sin(2 u0)\", \"27.994 x0 + -0.999 x1 + -1.000 x0 x2\", \"-2.666 x2 + -0.999 u1 + 1.000 x0 x1\"]"
+          },
+          "feature_names": {
+            "value": "[\"x0\", \"x1\", \"x2\", \"u1\", \"x0 x1\", \"x0 x2\", \"sin(1 u0)\", \"sin(2 u0)\"]"
+          },
+          "file_name": {
+            "is_string": true,
+            "value": "thermal_sine_res.csv"
+          },
+          "initial_state": {
+            "value": "[293.15,293.15,293.15]"
+          },
+          "poly_order": {
+            "value": "1"
+          },
+          "state_columns": {
+            "value": "[\"heatCapacitor.T\",\"heatCapacitor1.T\",\"heatCapacitor2.T\"]"
+          },
+          "state_derivatives_columns": {
+            "value": "[\"der(heatCapacitor.T)\",\"der(heatCapacitor1.T)\",\"der(heatCapacitor2.T)\"]"
+          },
+          "threshold": {
+            "value": "1e-8"
+          },
+          "time_column": {
+            "is_string": true,
+            "value": "time"
+          }
+        },
+        "type": "core.SINDy",
+        "uiprops": {
+          "is_autotuned": false,
+          "port_alignment": "spaced",
+          "x": 888,
+          "y": 392
+        },
+        "uuid": "26c7b84b-dbbc-45eb-b565-5e5c1214d45a"
+      },
+      {
+        "inputs": [],
+        "name": "Constant_0",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "value": {
+            "value": "[0.0,1.0]"
+          }
+        },
+        "type": "core.Constant",
+        "uiprops": {
+          "is_autotuned": false,
+          "port_alignment": "spaced",
+          "x": 696,
+          "y": 416
+        },
+        "uuid": "b1c5e123-9440-456e-a562-154135107d10"
+      }
+    ],
+    "uuid": "8dccc762-bb22-4d10-8c79-ec0de2f7ecef"
+  },
+  "kind": "Model",
+  "name": "test_sindy_pretrained_2024-01-08T19:58:34Z",
+  "owner_uuid": "cc073a60-7e27-4ca7-b616-7b3e9a6d139c",
+  "parameters": {},
+  "schema_version": "3",
+  "state_machines": {},
+  "subdiagrams": {
+    "diagrams": {},
+    "references": {}
+  },
+  "uuid": "60d64e9e-cb85-4f1e-b8c6-6a90f6e1bdab"
+}

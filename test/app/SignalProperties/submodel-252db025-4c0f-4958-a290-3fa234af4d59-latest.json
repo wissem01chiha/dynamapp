@@ -1,0 +1,519 @@
+{
+  "diagram": {
+    "annotations": [],
+    "links": [
+      {
+        "dst": {
+          "node": "48042ab9-29af-4660-a494-7d385f36fd0a",
+          "port": 0
+        },
+        "src": {
+          "node": "00814aaf-629d-41a1-a100-7561e8b69907",
+          "port": 0
+        },
+        "uiprops": {
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": [
+            {
+              "coordinate": 352,
+              "segment_direction": "vert"
+            }
+          ]
+        },
+        "uuid": "fb23fc07-325e-4475-83c3-b2b572b357f9"
+      },
+      {
+        "dst": {
+          "node": "e8368c57-de05-4559-88c4-be65b36a452f",
+          "port": 0
+        },
+        "src": {
+          "node": "00814aaf-629d-41a1-a100-7561e8b69907",
+          "port": 0
+        },
+        "uiprops": {
+          "link_type": {
+            "connection_method": "link_tap",
+            "tap_coordinate": 176,
+            "tapped_link_uuid": "fb23fc07-325e-4475-83c3-b2b572b357f9",
+            "tapped_segment": {
+              "segment_type": "real",
+              "tapped_segment_direction": "vert",
+              "tapped_segment_index": 0
+            }
+          },
+          "segments": []
+        },
+        "uuid": "74d574e9-ed2c-4baa-962f-1251ffc400c5"
+      },
+      {
+        "dst": {
+          "node": "c428c014-6aff-4e2e-918c-ad3cbfd1b2e7",
+          "port": 0
+        },
+        "src": {
+          "node": "00814aaf-629d-41a1-a100-7561e8b69907",
+          "port": 0
+        },
+        "uiprops": {
+          "link_type": {
+            "connection_method": "link_tap",
+            "tap_coordinate": 176,
+            "tapped_link_uuid": "fb23fc07-325e-4475-83c3-b2b572b357f9",
+            "tapped_segment": {
+              "segment_type": "real",
+              "tapped_segment_direction": "vert",
+              "tapped_segment_index": 0
+            }
+          },
+          "segments": [
+            {
+              "coordinate": 352,
+              "segment_direction": "vert"
+            },
+            {
+              "coordinate": 272,
+              "segment_direction": "horiz"
+            },
+            {
+              "coordinate": 408,
+              "segment_direction": "vert"
+            }
+          ]
+        },
+        "uuid": "49f563c1-b501-4b47-b203-912ea25f1397"
+      },
+      {
+        "dst": {
+          "node": "3dc69ea8-576c-4dda-b3a0-843196a8212f",
+          "port": 0
+        },
+        "src": {
+          "node": "00814aaf-629d-41a1-a100-7561e8b69907",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_start": {
+            "x": 176,
+            "y": 160
+          },
+          "link_type": {
+            "connection_method": "link_tap",
+            "tap_coordinate": 352,
+            "tapped_link_uuid": "49f563c1-b501-4b47-b203-912ea25f1397",
+            "tapped_segment": {
+              "segment_type": "real",
+              "tapped_segment_direction": "horiz",
+              "tapped_segment_index": 1
+            }
+          },
+          "segments": [
+            {
+              "coordinate": 272,
+              "segment_direction": "horiz"
+            },
+            {
+              "coordinate": 352,
+              "segment_direction": "vert"
+            }
+          ]
+        },
+        "uuid": "1158e62d-8aa6-4a22-a8bf-31cd867d9b85"
+      },
+      {
+        "dst": {
+          "node": "673f5925-194a-45cf-ba4c-6053c3516776",
+          "port": 0
+        },
+        "src": {
+          "node": "48042ab9-29af-4660-a494-7d385f36fd0a",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 352,
+            "y": -48
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "45cb2622-81e0-4ebb-9e58-c4475ff824f4"
+      },
+      {
+        "dst": {
+          "node": "41fd4113-b274-4ae3-96d8-c2d651a97606",
+          "port": 0
+        },
+        "src": {
+          "node": "673f5925-194a-45cf-ba4c-6053c3516776",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 480,
+            "y": -48
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "075a7340-e832-464f-afb9-e0fb345c50dd"
+      },
+      {
+        "dst": {
+          "node": "2f16d381-1a4c-4a50-ac62-cfef2c7685b9",
+          "port": 0
+        },
+        "src": {
+          "node": "3dc69ea8-576c-4dda-b3a0-843196a8212f",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 360,
+            "y": 288
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "961ca26b-11e7-4996-ac3d-346fa2dc15b0"
+      },
+      {
+        "dst": {
+          "node": "dfdeee1d-2293-4dea-90f9-036aaf8e7a90",
+          "port": 0
+        },
+        "src": {
+          "node": "2f16d381-1a4c-4a50-ac62-cfef2c7685b9",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 480,
+            "y": 288
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "3bed1cda-4c12-4aaf-b143-5524caf8c851"
+      },
+      {
+        "dst": {
+          "node": "eab7476e-f0d4-4839-95e0-cf6b178f08b3",
+          "port": 0
+        },
+        "src": {
+          "node": "e8368c57-de05-4559-88c4-be65b36a452f",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 480,
+            "y": 64
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "f8b087fa-b380-41d5-b057-86b290c2488b"
+      },
+      {
+        "dst": {
+          "node": "88a67801-3df5-4e06-a513-de3fa456f53b",
+          "port": 0
+        },
+        "src": {
+          "node": "c428c014-6aff-4e2e-918c-ad3cbfd1b2e7",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 480,
+            "y": 168
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "cb03148b-4ecd-4872-a753-1a74225a82fa"
+      }
+    ],
+    "nodes": [
+      {
+        "inputs": [
+          {
+            "kind": "static",
+            "name": "in_0"
+          }
+        ],
+        "name": "g0",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "gain": {
+            "value": "1.0"
+          }
+        },
+        "type": "core.Gain",
+        "uiprops": {
+          "x": 408,
+          "y": 32
+        },
+        "uuid": "48042ab9-29af-4660-a494-7d385f36fd0a"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "static",
+            "name": "in_0"
+          }
+        ],
+        "name": "ZeroOrderHold_0",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {},
+        "type": "core.ZeroOrderHold",
+        "uiprops": {
+          "x": 528,
+          "y": 32
+        },
+        "uuid": "673f5925-194a-45cf-ba4c-6053c3516776"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "static",
+            "name": "in_0"
+          }
+        ],
+        "name": "Outport_0",
+        "outputs": [],
+        "parameters": {
+          "port_id": {
+            "value": "0"
+          }
+        },
+        "type": "core.Outport",
+        "uiprops": {
+          "x": 656,
+          "y": 32
+        },
+        "uuid": "41fd4113-b274-4ae3-96d8-c2d651a97606"
+      },
+      {
+        "inputs": [],
+        "name": "Inport_0",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "port_id": {
+            "value": "0"
+          }
+        },
+        "type": "core.Inport",
+        "uiprops": {
+          "x": 216,
+          "y": 144
+        },
+        "uuid": "00814aaf-629d-41a1-a100-7561e8b69907"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "static",
+            "name": "in_0"
+          }
+        ],
+        "name": "g0_0",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "gain": {
+            "value": "1.0"
+          }
+        },
+        "type": "core.Gain",
+        "uiprops": {
+          "x": 408,
+          "y": 144
+        },
+        "uuid": "e8368c57-de05-4559-88c4-be65b36a452f"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "static",
+            "name": "in_0"
+          }
+        ],
+        "name": "Outport_1",
+        "outputs": [],
+        "parameters": {
+          "port_id": {
+            "value": "1"
+          }
+        },
+        "type": "core.Outport",
+        "uiprops": {
+          "x": 656,
+          "y": 144
+        },
+        "uuid": "eab7476e-f0d4-4839-95e0-cf6b178f08b3"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "static",
+            "name": "in_0"
+          }
+        ],
+        "name": "g0_1",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "gain": {
+            "value": "1.0"
+          }
+        },
+        "type": "core.Gain",
+        "uiprops": {
+          "x": 408,
+          "y": 240
+        },
+        "uuid": "c428c014-6aff-4e2e-918c-ad3cbfd1b2e7"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "static",
+            "name": "in_0"
+          }
+        ],
+        "name": "Outport_2",
+        "outputs": [],
+        "parameters": {
+          "port_id": {
+            "value": "2"
+          }
+        },
+        "type": "core.Outport",
+        "uiprops": {
+          "x": 656,
+          "y": 248
+        },
+        "uuid": "88a67801-3df5-4e06-a513-de3fa456f53b"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "static",
+            "name": "in_0"
+          }
+        ],
+        "name": "g0_2",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "gain": {
+            "value": "1.0"
+          }
+        },
+        "type": "core.Gain",
+        "uiprops": {
+          "x": 408,
+          "y": 360
+        },
+        "uuid": "3dc69ea8-576c-4dda-b3a0-843196a8212f"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "static",
+            "name": "in_0"
+          }
+        ],
+        "name": "ZeroOrderHold_1",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {},
+        "type": "core.ZeroOrderHold",
+        "uiprops": {
+          "x": 528,
+          "y": 368
+        },
+        "uuid": "2f16d381-1a4c-4a50-ac62-cfef2c7685b9"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "static",
+            "name": "in_0"
+          }
+        ],
+        "name": "Outport_3",
+        "outputs": [],
+        "parameters": {
+          "port_id": {
+            "value": "3"
+          }
+        },
+        "type": "core.Outport",
+        "uiprops": {
+          "x": 656,
+          "y": 368
+        },
+        "uuid": "dfdeee1d-2293-4dea-90f9-036aaf8e7a90"
+      }
+    ],
+    "uuid": "3ee6eb89-a638-4ed5-83bf-48f535c11340"
+  },
+  "kind": "Submodel",
+  "name": "_0065_sm_many_ports",
+  "parameter_definitions": [],
+  "schema_version": "3",
+  "state_machines": null,
+  "subdiagrams": {
+    "diagrams": {},
+    "references": {}
+  },
+  "submodel_configuration": null
+}

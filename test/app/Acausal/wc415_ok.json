@@ -1,0 +1,345 @@
+{
+  "configuration": {
+    "solver": {
+      "method": "auto",
+      "max_step": 1000000,
+      "min_step": 0,
+      "absolute_tolerance": 1e-06,
+      "relative_tolerance": 0.001,
+      "max_minor_steps_per_major_step": 4096
+    },
+    "stop_time": 10,
+    "workspace": {},
+    "start_time": 0,
+    "record_mode": "all",
+    "sample_time": 0.1,
+    "worker_type": "any",
+    "sim_output_mode": "auto",
+    "numerical_backend": "auto",
+    "fixed_results_interval": 0,
+    "max_results_interval": 0
+  },
+  "diagram": {
+    "nodes": [
+      {
+        "uuid": "29d9dca2-132f-4dfb-b299-da72f63d91f7",
+        "name": "FixedPosition_0",
+        "type": "acausal.translational.FixedPosition",
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "flange",
+            "kind": "static",
+            "variant": {
+              "variant_kind": "acausal",
+              "acausal_domain": "translational"
+            }
+          }
+        ],
+        "parameters": {},
+        "uiprops": {
+          "x": 608,
+          "y": 432,
+          "port_alignment": "spaced"
+        }
+      },
+      {
+        "uuid": "170ad739-e86d-412c-8ca5-3e6b4ea7ddc7",
+        "name": "Spring_0",
+        "type": "acausal.translational.Spring",
+        "inputs": [
+          {
+            "name": "flange_a",
+            "kind": "static",
+            "variant": {
+              "variant_kind": "acausal",
+              "acausal_domain": "translational"
+            }
+          }
+        ],
+        "outputs": [
+          {
+            "name": "flange_b",
+            "kind": "static",
+            "variant": {
+              "variant_kind": "acausal",
+              "acausal_domain": "translational"
+            }
+          }
+        ],
+        "parameters": {
+          "K": {
+            "value": "1.0"
+          },
+          "initial_position_A_fixed": {
+            "value": "False"
+          },
+          "initial_position_B_fixed": {
+            "value": "False"
+          },
+          "initial_velocity_A_fixed": {
+            "value": "False"
+          },
+          "initial_velocity_B_fixed": {
+            "value": "False"
+          }
+        },
+        "uiprops": {
+          "x": 808,
+          "y": 432,
+          "port_alignment": "spaced"
+        }
+      },
+      {
+        "uuid": "47845cd7-4989-4344-ae11-ff7aa76cbd41",
+        "name": "Damper_0",
+        "type": "acausal.translational.Damper",
+        "inputs": [
+          {
+            "name": "flange_a",
+            "kind": "static",
+            "variant": {
+              "variant_kind": "acausal",
+              "acausal_domain": "translational"
+            }
+          }
+        ],
+        "outputs": [
+          {
+            "name": "flange_b",
+            "kind": "static",
+            "variant": {
+              "variant_kind": "acausal",
+              "acausal_domain": "translational"
+            }
+          }
+        ],
+        "parameters": {
+          "D": {
+            "value": "1.0"
+          },
+          "initial_position_A_fixed": {
+            "value": "False"
+          },
+          "initial_position_B_fixed": {
+            "value": "False"
+          },
+          "initial_velocity_A_fixed": {
+            "value": "False"
+          },
+          "initial_velocity_B_fixed": {
+            "value": "False"
+          }
+        },
+        "uiprops": {
+          "x": 816,
+          "y": 208,
+          "port_alignment": "spaced"
+        }
+      },
+      {
+        "uuid": "MotionSensor_0",
+        "name": "MotionSensor_0",
+        "type": "acausal.translational.MotionSensor",
+        "inputs": [
+          {
+            "name": "flange_a",
+            "kind": "static",
+            "variant": {
+              "variant_kind": "acausal",
+              "acausal_domain": "translational"
+            }
+          }
+        ],
+        "outputs": [
+          {
+            "name": "v_rel",
+            "kind": "conditional"
+          }
+        ],
+        "parameters": {
+          "enable_flange_b": {
+            "value": "false"
+          },
+          "enable_position_port": {
+            "value": "false"
+          },
+          "enable_velocity_port": {
+            "value": "true"
+          },
+          "enable_acceleration_port": {
+            "value": "false"
+          }
+        },
+        "uiprops": {
+          "x": 816,
+          "y": 320,
+          "port_alignment": "spaced"
+        }
+      },
+      {
+        "uuid": "Mass_0",
+        "name": "Mass_0",
+        "type": "acausal.translational.Mass",
+        "inputs": [
+          {
+            "name": "flange",
+            "kind": "static",
+            "variant": {
+              "variant_kind": "acausal",
+              "acausal_domain": "translational"
+            }
+          }
+        ],
+        "outputs": [],
+        "parameters": {
+          "M": {
+            "value": "1.0"
+          },
+          "initial_position_fixed": {
+            "value": "False"
+          },
+          "initial_velocity_fixed": {
+            "value": "False"
+          }
+        },
+        "uiprops": {
+          "x": 1048,
+          "y": 264,
+          "port_alignment": "spaced"
+        }
+      }
+    ],
+    "links": [
+      {
+        "uuid": "c06bbe3f-d817-490f-883c-dcd9f0e77b2e",
+        "src": {
+          "node": "47845cd7-4989-4344-ae11-ff7aa76cbd41",
+          "port": 0,
+          "port_side": "inputs"
+        },
+        "dst": {
+          "node": "29d9dca2-132f-4dfb-b299-da72f63d91f7",
+          "port": 0,
+          "port_side": "outputs"
+        },
+        "uiprops": {
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": [],
+          "hang_coord_start": {
+            "x": 816,
+            "y": 240
+          }
+        }
+      },
+      {
+        "uuid": "fe78744c-6d8f-4bf7-9453-0d635601ab75",
+        "src": {
+          "node": "29d9dca2-132f-4dfb-b299-da72f63d91f7",
+          "port": 0,
+          "port_side": "outputs"
+        },
+        "dst": {
+          "node": "170ad739-e86d-412c-8ca5-3e6b4ea7ddc7",
+          "port": 0,
+          "port_side": "inputs"
+        },
+        "uiprops": {
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": [],
+          "hang_coord_start": {
+            "x": 680,
+            "y": 464
+          }
+        }
+      },
+      {
+        "uuid": "c5fcc2e5-5f4f-4dd4-8967-fcc3c7399715",
+        "src": {
+          "node": "Mass_0",
+          "port": 0,
+          "port_side": "inputs"
+        },
+        "dst": {
+          "node": "MotionSensor_0",
+          "port": 0,
+          "port_side": "inputs"
+        },
+        "uiprops": {
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": [],
+          "hang_coord_start": {
+            "x": 1056,
+            "y": 304
+          }
+        }
+      },
+      {
+        "uuid": "460cd2a8-ae2f-490c-8bb3-17287720d5fd",
+        "src": {
+          "node": "Mass_0",
+          "port": 0,
+          "port_side": "inputs"
+        },
+        "dst": {
+          "node": "47845cd7-4989-4344-ae11-ff7aa76cbd41",
+          "port": 0,
+          "port_side": "outputs"
+        },
+        "uiprops": {
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": [],
+          "hang_coord_start": {
+            "x": 1048,
+            "y": 296
+          }
+        }
+      },
+      {
+        "uuid": "d2f693cb-2845-4899-ac2a-34d85bb45722",
+        "src": {
+          "node": "Mass_0",
+          "port": 0,
+          "port_side": "inputs"
+        },
+        "dst": {
+          "node": "170ad739-e86d-412c-8ca5-3e6b4ea7ddc7",
+          "port": 0,
+          "port_side": "outputs"
+        },
+        "uiprops": {
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": [],
+          "hang_coord_start": {
+            "x": 1048,
+            "y": 296
+          }
+        }
+      }
+    ],
+    "annotations": [],
+    "uuid": "1336d036-7ace-4319-8cec-a6ad9c0d76f0"
+  },
+  "name": "dfxga_2024-06-21T16:39:07Z",
+  "parameters": {},
+  "state_machines": {},
+  "subdiagrams": {
+    "diagrams": {},
+    "references": {}
+  },
+  "uuid": "b47e9eda-e556-427c-ba10-339e9379afb0",
+  "sim_model_uuid": "a797f7aa-6889-41ee-9191-e40d69c44c52",
+  "owner_uuid": "cc073a60-7e27-4ca7-b616-7b3e9a6d139c",
+  "schema_version": "4",
+  "kind": "Model"
+}

@@ -1,0 +1,117 @@
+{
+  "configuration": {
+    "max_results_interval": 1,
+    "record_mode": "all",
+    "sample_time": 0.1,
+    "solver": {
+      "absolute_tolerance": 0.000001,
+      "max_minor_steps_per_major_step": 1000,
+      "max_step": 1000000,
+      "method": "RK45",
+      "min_step": 0,
+      "relative_tolerance": 0.001
+    },
+    "start_time": 0,
+    "stop_time": 10,
+    "worker_type": "any",
+    "workspace": {}
+  },
+  "diagram": {
+    "annotations": [],
+    "links": [
+      {
+        "dst": {
+          "node": "510e66c9-575a-4445-bff4-ac33209e2750",
+          "port": 0
+        },
+        "src": {
+          "node": "6f936dcd-2115-4947-b794-d15c362a83cc",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 880,
+            "y": 376
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "bc33c25f-8506-4475-9097-62a75c1ae4d9"
+      }
+    ],
+    "nodes": [
+      {
+        "inputs": [],
+        "name": "Constant_0",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "value": {
+            "value": "0.0"
+          }
+        },
+        "type": "core.Constant",
+        "uiprops": {
+          "port_alignment": "spaced",
+          "x": 752,
+          "y": 368
+        },
+        "uuid": "6f936dcd-2115-4947-b794-d15c362a83cc"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "dynamic",
+            "name": "Inport_0"
+          }
+        ],
+        "name": "sm_orphan_param_0",
+        "outputs": [
+          {
+            "kind": "dynamic",
+            "name": "Outport_0"
+          }
+        ],
+        "parameters": {
+          "A": {
+            "order": 0,
+            "value": "20.0"
+          },
+          "G": {
+            "order": 1,
+            "value": "4.0"
+          }
+        },
+        "submodel_reference_uuid": "d4c8a4da-70f7-445a-918c-cb8453610ebf",
+        "type": "core.ReferenceSubmodel",
+        "uiprops": {
+          "grid_height": 12,
+          "grid_width": 24,
+          "port_alignment": "spaced",
+          "show_port_name_labels": true,
+          "x": 880,
+          "y": 328
+        },
+        "uuid": "510e66c9-575a-4445-bff4-ac33209e2750"
+      }
+    ],
+    "uuid": "d51af47e-d15c-489a-a1b9-3ae7f877cc5d"
+  },
+  "kind": "Model",
+  "name": "test_orphan_param_2024-01-31T22:06:39Z",
+  "owner_uuid": "cc073a60-7e27-4ca7-b616-7b3e9a6d139c",
+  "parameters": {},
+  "schema_version": "3",
+  "state_machines": {},
+  "subdiagrams": {
+    "diagrams": {},
+    "references": {}
+  },
+  "uuid": "e5668607-21dd-4b00-8d87-2a3699be0176"
+}

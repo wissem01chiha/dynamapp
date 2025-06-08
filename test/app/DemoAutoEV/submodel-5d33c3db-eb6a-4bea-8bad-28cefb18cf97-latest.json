@@ -1,0 +1,697 @@
+{
+  "diagram": {
+    "annotations": [],
+    "links": [
+      {
+        "dst": {
+          "node": "2bfdca01-5aed-4b1e-a237-ec77d1550c75",
+          "port": 0
+        },
+        "src": {
+          "node": "c715601c-d91d-4ea7-a51a-0b6eac75a91d",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 552,
+            "y": 392
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "db703728-1a57-41b1-9405-0500f160b8df"
+      },
+      {
+        "dst": {
+          "node": "3bc15d94-7c30-4d6c-b787-e58bba9ddc8b",
+          "port": 0
+        },
+        "src": {
+          "node": "b6ad3106-8639-4417-a5ec-6cd80ea1efae",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 936,
+            "y": 488
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "48b37d61-402d-481e-b838-b49a0153e940"
+      },
+      {
+        "dst": {
+          "node": "b221fcbb-6ebc-4228-bbf7-573d6f9610b0",
+          "port": 0
+        },
+        "src": {
+          "node": "90332af1-a6b7-4083-8ae6-914a840c59d8",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_start": {
+            "x": -8,
+            "y": 48
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "4f3fb6e1-9222-4d6d-92ba-df32a0135a26"
+      },
+      {
+        "dst": {
+          "node": "2bfdca01-5aed-4b1e-a237-ec77d1550c75",
+          "port": 1
+        },
+        "src": {
+          "node": "6fea2409-c0f5-4ba6-8a85-2d2d32b24e8f",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 1288,
+            "y": 704
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "deb71762-3083-474a-bdee-bbef07b6344d"
+      },
+      {
+        "dst": {
+          "node": "b6ad3106-8639-4417-a5ec-6cd80ea1efae",
+          "port": 0
+        },
+        "src": {
+          "node": "2bfdca01-5aed-4b1e-a237-ec77d1550c75",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 1392,
+            "y": 752
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "2937b9b1-70f9-46e3-94e9-771ec95489d7"
+      },
+      {
+        "dst": {
+          "node": "b6ad3106-8639-4417-a5ec-6cd80ea1efae",
+          "port": 1
+        },
+        "src": {
+          "node": "46636d1e-65e6-43ff-a01b-5db1f5894346",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 1392,
+            "y": 768
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": [
+            {
+              "coordinate": 360,
+              "segment_direction": "vert"
+            }
+          ]
+        },
+        "uuid": "7aa35ac1-a1bb-4830-bbdc-76e18b44f896"
+      },
+      {
+        "dst": {
+          "node": "46636d1e-65e6-43ff-a01b-5db1f5894346",
+          "port": 0
+        },
+        "src": {
+          "node": "be0790e0-15fc-484f-83f7-d82dfbd7f3aa",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 1288,
+            "y": 848
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "5eef6c99-e007-4967-8ec2-0ab6bee80529"
+      },
+      {
+        "dst": {
+          "node": "9647ddc7-1249-41e8-9b7f-8045e91178a5",
+          "port": 1
+        },
+        "src": {
+          "node": "8e2f2721-b398-408c-851a-eda2d5f9e3c3",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 968,
+            "y": 856
+          },
+          "hang_coord_start": {
+            "x": -128,
+            "y": 192
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "d987c1cb-e0ca-47c9-be10-834a42a341e8"
+      },
+      {
+        "dst": {
+          "node": "be0790e0-15fc-484f-83f7-d82dfbd7f3aa",
+          "port": 0
+        },
+        "src": {
+          "node": "9647ddc7-1249-41e8-9b7f-8045e91178a5",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 1064,
+            "y": 848
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "55b5000f-7fe9-4d63-9dc9-27fafcc6b136"
+      },
+      {
+        "dst": {
+          "node": "9647ddc7-1249-41e8-9b7f-8045e91178a5",
+          "port": 0
+        },
+        "src": {
+          "node": "b221fcbb-6ebc-4228-bbf7-573d6f9610b0",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_start": {
+            "x": 888,
+            "y": 784
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": [
+            {
+              "coordinate": -80,
+              "segment_direction": "vert"
+            }
+          ]
+        },
+        "uuid": "8877af84-cb38-4ca9-8409-9a35e83a85d6"
+      },
+      {
+        "dst": {
+          "node": "c715601c-d91d-4ea7-a51a-0b6eac75a91d",
+          "port": 0
+        },
+        "src": {
+          "node": "b221fcbb-6ebc-4228-bbf7-573d6f9610b0",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 1016,
+            "y": 672
+          },
+          "hang_coord_start": {
+            "x": -72,
+            "y": -112
+          },
+          "link_type": {
+            "connection_method": "link_tap",
+            "tap_coordinate": -112,
+            "tapped_link_uuid": "8877af84-cb38-4ca9-8409-9a35e83a85d6",
+            "tapped_segment": {
+              "segment_type": "real",
+              "tapped_segment_direction": "vert",
+              "tapped_segment_index": 0
+            }
+          },
+          "segments": [
+            {
+              "coordinate": -56,
+              "segment_direction": "vert"
+            }
+          ]
+        },
+        "uuid": "4f8aa786-2178-42d0-882b-224f721c542f"
+      },
+      {
+        "dst": {
+          "node": "8e2f2721-b398-408c-851a-eda2d5f9e3c3",
+          "port": 0
+        },
+        "src": {
+          "node": "e821ba72-c392-442e-b9b7-7b87e37cc159",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": -208,
+            "y": 192
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "49073c27-b7b4-4f92-afe9-79a752ee618b"
+      }
+    ],
+    "nodes": [
+      {
+        "inputs": [],
+        "name": "pack_current_A",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "description": {
+            "is_string": true,
+            "value": "Electrical current flowing through the battery in Amps"
+          },
+          "port_id": {
+            "value": "0"
+          }
+        },
+        "type": "core.Inport",
+        "uiprops": {
+          "x": -280,
+          "y": -144
+        },
+        "uuid": "90332af1-a6b7-4083-8ae6-914a840c59d8"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "static",
+            "name": "in_0"
+          }
+        ],
+        "name": "pack_V",
+        "outputs": [],
+        "parameters": {
+          "description": {
+            "is_string": true,
+            "value": "The DC voltage of the battery"
+          },
+          "port_id": {
+            "value": "0"
+          }
+        },
+        "type": "core.Outport",
+        "uiprops": {
+          "x": 488,
+          "y": -64
+        },
+        "uuid": "3bc15d94-7c30-4d6c-b787-e58bba9ddc8b"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "static",
+            "name": "in_0"
+          }
+        ],
+        "name": "soc2ocv",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "input_array": {
+            "value": "soc2ocv_soc_vector"
+          },
+          "interpolation": {
+            "is_string": true,
+            "value": "linear"
+          },
+          "output_array": {
+            "value": "soc2ocv_ocv_vector"
+          }
+        },
+        "type": "core.LookupTable1d",
+        "uiprops": {
+          "x": 272,
+          "y": 24
+        },
+        "uuid": "46636d1e-65e6-43ff-a01b-5db1f5894346"
+      },
+      {
+        "inputs": [],
+        "name": "battery_internal_resistance",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "value": {
+            "value": "battery_internal_resistance"
+          }
+        },
+        "type": "core.Constant",
+        "uiprops": {
+          "x": 8,
+          "y": -64
+        },
+        "uuid": "6fea2409-c0f5-4ba6-8a85-2d2d32b24e8f"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "dynamic",
+            "name": "in_0"
+          },
+          {
+            "kind": "dynamic",
+            "name": "in_1"
+          }
+        ],
+        "name": "batt_resistance_vdrop",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "denominator_limit": {
+            "value": "1e-12"
+          },
+          "divide_by_zero_behavior": {
+            "is_string": true,
+            "value": "inf"
+          },
+          "operators": {
+            "is_string": true,
+            "value": "**"
+          }
+        },
+        "type": "core.Product",
+        "uiprops": {
+          "x": 232,
+          "y": -72
+        },
+        "uuid": "2bfdca01-5aed-4b1e-a237-ec77d1550c75"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "dynamic",
+            "name": "in_0"
+          },
+          {
+            "kind": "dynamic",
+            "name": "in_1"
+          }
+        ],
+        "name": "batt_ccv",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "operators": {
+            "is_string": true,
+            "value": "++"
+          }
+        },
+        "type": "core.Adder",
+        "uiprops": {
+          "x": 376,
+          "y": -64
+        },
+        "uuid": "b6ad3106-8639-4417-a5ec-6cd80ea1efae"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "static",
+            "name": "in_0"
+          }
+        ],
+        "name": "batt_soc",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "enable_external_reset": {
+            "value": "true"
+          },
+          "enable_hold": {
+            "value": "False"
+          },
+          "enable_limits": {
+            "value": "False"
+          },
+          "enable_reset": {
+            "value": "False"
+          },
+          "initial_states": {
+            "value": "battery_initial_SOC"
+          },
+          "lower_limit": {
+            "value": "-1.0"
+          },
+          "upper_limit": {
+            "value": "1.0"
+          }
+        },
+        "type": "core.Integrator",
+        "uiprops": {
+          "x": 48,
+          "y": 24
+        },
+        "uuid": "be0790e0-15fc-484f-83f7-d82dfbd7f3aa"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "dynamic",
+            "name": "in_0"
+          },
+          {
+            "kind": "dynamic",
+            "name": "in_1"
+          }
+        ],
+        "name": "dSoc_dt",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "denominator_limit": {
+            "value": "1e-12"
+          },
+          "divide_by_zero_behavior": {
+            "is_string": true,
+            "value": "inf"
+          },
+          "operators": {
+            "is_string": true,
+            "value": "*/"
+          }
+        },
+        "type": "core.Product",
+        "uiprops": {
+          "x": -48,
+          "y": 24
+        },
+        "uuid": "9647ddc7-1249-41e8-9b7f-8045e91178a5"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "static",
+            "name": "in_0"
+          }
+        ],
+        "name": "invert",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "gain": {
+            "value": "-1.0"
+          }
+        },
+        "type": "core.Gain",
+        "uiprops": {
+          "x": -184,
+          "y": -144
+        },
+        "uuid": "b221fcbb-6ebc-4228-bbf7-573d6f9610b0"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "dynamic",
+            "name": "in_0"
+          }
+        ],
+        "name": "loop_breaker_",
+        "outputs": [
+          {
+            "kind": "dynamic",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "A": {
+            "value": "[-1]"
+          },
+          "B": {
+            "value": "[1.0]"
+          },
+          "C": {
+            "value": "[1]"
+          },
+          "D": {
+            "value": "[0]"
+          }
+        },
+        "type": "core.StateSpace",
+        "uiprops": {
+          "x": 16,
+          "y": -144
+        },
+        "uuid": "c715601c-d91d-4ea7-a51a-0b6eac75a91d"
+      },
+      {
+        "inputs": [],
+        "name": "battery_capacity_kWh",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "value": {
+            "value": "battery_capacity_kWh"
+          }
+        },
+        "type": "core.Constant",
+        "uiprops": {
+          "x": -320,
+          "y": 160
+        },
+        "uuid": "e821ba72-c392-442e-b9b7-7b87e37cc159"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "static",
+            "name": "in_0"
+          }
+        ],
+        "name": "kWh2coulumbs",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "gain": {
+            "value": "3.6e6"
+          }
+        },
+        "type": "core.Gain",
+        "uiprops": {
+          "port_alignment": "spaced",
+          "x": -208,
+          "y": 160
+        },
+        "uuid": "8e2f2721-b398-408c-851a-eda2d5f9e3c3"
+      }
+    ],
+    "uuid": "a5f86a13-db17-4aca-8f43-c46b3d7641a7"
+  },
+  "kind": "Submodel",
+  "name": "High Voltage Battery",
+  "parameter_definitions": [
+    {
+      "default_value": "25",
+      "name": "battery_capacity_kWh",
+      "uiprops": {},
+      "uuid": "2b894889-db04-4c05-a02c-6695fa57a631"
+    },
+    {
+      "default_value": "0.99",
+      "name": "battery_initial_SOC",
+      "uiprops": {},
+      "uuid": "f7d8699e-f405-4211-92d8-6be3fcbf2bcc"
+    },
+    {
+      "default_value": "0.01",
+      "name": "battery_internal_resistance",
+      "uiprops": {},
+      "uuid": "be7fc558-2a35-455a-a691-02ed3f924b1e"
+    },
+    {
+      "default_value": "[300, 450]",
+      "name": "soc2ocv_ocv_vector",
+      "uiprops": {},
+      "uuid": "db329cbd-f21b-4edd-bd3e-d6d1bb553027"
+    },
+    {
+      "default_value": "[0.0, 1.0]",
+      "name": "soc2ocv_soc_vector",
+      "uiprops": {},
+      "uuid": "319d81c8-053d-48c4-b086-abd621b3691d"
+    }
+  ],
+  "schema_version": "3",
+  "subdiagrams": {
+    "diagrams": {},
+    "references": {}
+  },
+  "submodel_configuration": {},
+  "uuid": "5d33c3db-eb6a-4bea-8bad-28cefb18cf97"
+}

@@ -1,0 +1,451 @@
+{
+  "configuration": {
+    "fixed_results_interval": 0,
+    "max_results_interval": 1,
+    "record_mode": "all",
+    "sample_time": 0.1,
+    "sim_output_mode": "auto",
+    "solver": {
+      "absolute_tolerance": 0.000001,
+      "max_minor_steps_per_major_step": 1000,
+      "max_step": 1000000,
+      "method": "non-stiff",
+      "min_step": 0,
+      "relative_tolerance": 0.001
+    },
+    "start_time": 0,
+    "stop_time": 10,
+    "worker_type": "any",
+    "workspace": {}
+  },
+  "diagram": {
+    "annotations": [],
+    "links": [
+      {
+        "dst": {
+          "node": "ec02a0cc-00a6-409d-bbba-63ed6a964078",
+          "port": 0
+        },
+        "src": {
+          "node": "ad3f5dbc-b05d-4abd-a254-806b50b2f137",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_start": {
+            "x": 624,
+            "y": 424
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "a5eacb2a-6be1-4b8c-9f6a-469799e442e6"
+      },
+      {
+        "dst": {
+          "node": "29e9193b-ea5a-4174-a340-4944e5aef660",
+          "port": 0
+        },
+        "src": {
+          "node": "26cb655c-5204-49b4-b9ca-687b67c2c598",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 968,
+            "y": 328
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": [
+            {
+              "coordinate": 976,
+              "segment_direction": "vert"
+            },
+            {
+              "coordinate": 424,
+              "segment_direction": "horiz"
+            },
+            {
+              "coordinate": 1072,
+              "segment_direction": "vert"
+            }
+          ]
+        },
+        "uuid": "5277e333-5118-43aa-a3ef-bdd25b64d93e"
+      },
+      {
+        "dst": {
+          "node": "4ed7892d-dbe2-4444-ba1c-26607e19e805",
+          "port": 0
+        },
+        "src": {
+          "node": "26cb655c-5204-49b4-b9ca-687b67c2c598",
+          "port": 0
+        },
+        "uiprops": {
+          "link_type": {
+            "connection_method": "link_tap",
+            "tap_coordinate": 415,
+            "tapped_link_uuid": "5277e333-5118-43aa-a3ef-bdd25b64d93e",
+            "tapped_segment": {
+              "segment_type": "real",
+              "tapped_segment_direction": "vert",
+              "tapped_segment_index": 2
+            }
+          },
+          "segments": [
+            {
+              "coordinate": 1072,
+              "segment_direction": "vert"
+            },
+            {
+              "coordinate": 424,
+              "segment_direction": "horiz"
+            },
+            {
+              "coordinate": 1168,
+              "segment_direction": "vert"
+            }
+          ]
+        },
+        "uuid": "16c9e871-65dd-4373-b769-f432a81f18e6"
+      },
+      {
+        "dst": {
+          "node": "b0da623a-49b1-4a3d-81e5-46bf6d2b8354",
+          "port": 0
+        },
+        "src": {
+          "node": "26cb655c-5204-49b4-b9ca-687b67c2c598",
+          "port": 0
+        },
+        "uiprops": {
+          "link_type": {
+            "connection_method": "link_tap",
+            "tap_coordinate": 903,
+            "tapped_link_uuid": "16c9e871-65dd-4373-b769-f432a81f18e6",
+            "tapped_segment": {
+              "segment_type": "real",
+              "tapped_segment_direction": "horiz",
+              "tapped_segment_index": 1
+            }
+          },
+          "segments": [
+            {
+              "coordinate": 432,
+              "segment_direction": "horiz"
+            },
+            {
+              "coordinate": 1104,
+              "segment_direction": "vert"
+            },
+            {
+              "coordinate": 512,
+              "segment_direction": "horiz"
+            },
+            {
+              "coordinate": 1168,
+              "segment_direction": "vert"
+            }
+          ]
+        },
+        "uuid": "6d7b0921-2438-4fe4-9b8f-1062b8b5962f"
+      },
+      {
+        "dst": {
+          "node": "1500ca4a-8b76-4018-a740-369fe1483a08",
+          "port": 0
+        },
+        "src": {
+          "node": "26cb655c-5204-49b4-b9ca-687b67c2c598",
+          "port": 0
+        },
+        "uiprops": {
+          "link_type": {
+            "connection_method": "link_tap",
+            "tap_coordinate": 903,
+            "tapped_link_uuid": "6d7b0921-2438-4fe4-9b8f-1062b8b5962f",
+            "tapped_segment": {
+              "segment_type": "real",
+              "tapped_segment_direction": "horiz",
+              "tapped_segment_index": 2
+            }
+          },
+          "segments": []
+        },
+        "uuid": "6c85a138-7701-4a53-8b20-0879549f5a03"
+      }
+    ],
+    "nodes": [
+      {
+        "inputs": [
+          {
+            "kind": "dynamic",
+            "name": "in_0"
+          }
+        ],
+        "name": "PythonScript_0",
+        "outputs": [
+          {
+            "kind": "dynamic",
+            "name": "out_0",
+            "parameters": {
+              "dtype": {
+                "is_string": true,
+                "value": "float64"
+              },
+              "shape": {
+                "value": "()"
+              }
+            }
+          }
+        ],
+        "parameters": {
+          "accelerate_with_jax": {
+            "value": "false"
+          },
+          "finalize_script": {
+            "is_string": true,
+            "value": ""
+          },
+          "init_script": {
+            "is_string": true,
+            "value": "out_0 = 0"
+          },
+          "user_statements": {
+            "is_string": true,
+            "value": "out_0 = in_0"
+          }
+        },
+        "type": "core.PythonScript",
+        "uiprops": {
+          "is_autotuned": false,
+          "port_alignment": "spaced",
+          "x": 816,
+          "y": 568
+        },
+        "uuid": "ec02a0cc-00a6-409d-bbba-63ed6a964078"
+      },
+      {
+        "inputs": [],
+        "name": "Constant_0",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "value": {
+            "value": "0.0"
+          }
+        },
+        "type": "core.Constant",
+        "uiprops": {
+          "is_autotuned": false,
+          "port_alignment": "spaced",
+          "x": 568,
+          "y": 408
+        },
+        "uuid": "ad3f5dbc-b05d-4abd-a254-806b50b2f137"
+      },
+      {
+        "feedthrough": true,
+        "inputs": [
+          {
+            "kind": "static",
+            "name": "in_0"
+          }
+        ],
+        "name": "DerivativeDiscrete_1",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {},
+        "type": "core.DerivativeDiscrete",
+        "uiprops": {
+          "is_autotuned": false,
+          "port_alignment": "spaced",
+          "x": 1168,
+          "y": 304
+        },
+        "uuid": "29e9193b-ea5a-4174-a340-4944e5aef660"
+      },
+      {
+        "feedthrough": true,
+        "inputs": [
+          {
+            "kind": "static",
+            "name": "in_0"
+          }
+        ],
+        "name": "FilterDiscrete_1",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "a_coefficients": {
+            "value": "[0.5, 0.5]"
+          },
+          "b_coefficients": {
+            "value": "[0.5, 0.5]"
+          },
+          "filter_type": {
+            "is_string": true,
+            "value": "FIR"
+          }
+        },
+        "type": "core.FilterDiscrete",
+        "uiprops": {
+          "is_autotuned": false,
+          "port_alignment": "spaced",
+          "x": 1168,
+          "y": 392
+        },
+        "uuid": "4ed7892d-dbe2-4444-ba1c-26607e19e805"
+      },
+      {
+        "feedthrough": true,
+        "inputs": [
+          {
+            "kind": "static",
+            "name": "in_0"
+          }
+        ],
+        "name": "PID_Discrete_1",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "Kd": {
+            "value": "1.0"
+          },
+          "Ki": {
+            "value": "1.0"
+          },
+          "Kp": {
+            "value": "1.0"
+          },
+          "enable_external_initial_state": {
+            "value": "false"
+          },
+          "filter_coefficient": {
+            "value": "1.0"
+          },
+          "filter_type": {
+            "is_string": true,
+            "value": "none"
+          },
+          "initial_state": {
+            "value": "0.0"
+          }
+        },
+        "type": "core.PID_Discrete",
+        "uiprops": {
+          "is_autotuned": false,
+          "port_alignment": "spaced",
+          "x": 1168,
+          "y": 480
+        },
+        "uuid": "b0da623a-49b1-4a3d-81e5-46bf6d2b8354"
+      },
+      {
+        "feedthrough": true,
+        "inputs": [
+          {
+            "kind": "dynamic",
+            "name": "in_0"
+          }
+        ],
+        "name": "PythonScript_1",
+        "outputs": [
+          {
+            "kind": "dynamic",
+            "name": "out_0",
+            "parameters": {
+              "dtype": {
+                "is_string": true,
+                "value": "float64"
+              },
+              "shape": {
+                "value": "()"
+              }
+            }
+          }
+        ],
+        "parameters": {
+          "accelerate_with_jax": {
+            "value": "false"
+          },
+          "finalize_script": {
+            "is_string": true,
+            "value": ""
+          },
+          "init_script": {
+            "is_string": true,
+            "value": "out_0 = 0"
+          },
+          "user_statements": {
+            "is_string": true,
+            "value": "out_0 = in_0"
+          }
+        },
+        "type": "core.PythonScript",
+        "uiprops": {
+          "is_autotuned": false,
+          "port_alignment": "spaced",
+          "x": 1168,
+          "y": 576
+        },
+        "uuid": "1500ca4a-8b76-4018-a740-369fe1483a08"
+      },
+      {
+        "inputs": [],
+        "name": "Constant_1",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "value": {
+            "value": "0.0"
+          }
+        },
+        "type": "core.Constant",
+        "uiprops": {
+          "is_autotuned": false,
+          "port_alignment": "spaced",
+          "x": 920,
+          "y": 416
+        },
+        "uuid": "26cb655c-5204-49b4-b9ca-687b67c2c598"
+      }
+    ],
+    "uuid": "63e20436-ecdb-4877-8086-2a3c4fd965bd"
+  },
+  "kind": "Model",
+  "name": "test_load_feedthru_bool",
+  "parameters": {},
+  "project_uuid": "25191bd5-2cdc-401a-be7f-2bd317a535bd",
+  "schema_version": "4",
+  "state_machines": {},
+  "subdiagrams": {
+    "diagrams": {},
+    "references": {}
+  },
+  "uuid": "ed539c49-b39e-4f35-a2a6-e7a15b79bcac"
+}

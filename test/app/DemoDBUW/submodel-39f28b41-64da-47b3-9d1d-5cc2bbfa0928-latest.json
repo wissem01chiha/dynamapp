@@ -1,0 +1,226 @@
+{
+  "diagram": {
+    "annotations": [],
+    "links": [
+      {
+        "dst": {
+          "node": "3bff87ba-ebbd-4591-834b-ab98f700fef1",
+          "port": 1
+        },
+        "src": {
+          "node": "23048c65-bf8b-4a53-897f-9f94f4ac5aac",
+          "port": 0
+        },
+        "uiprops": {
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "8b252d23-ea74-4ba0-ac47-aa7f4ff1622f"
+      },
+      {
+        "dst": {
+          "node": "813252f7-a45f-48d8-9f36-2df27b058e3a",
+          "port": 0
+        },
+        "src": {
+          "node": "9d23e8da-c879-4def-843c-6a1a068d9b16",
+          "port": 0
+        },
+        "uiprops": {
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "e99e74da-dfd4-4f0b-93d0-cb7ac3c4aef3"
+      },
+      {
+        "dst": {
+          "node": "3bff87ba-ebbd-4591-834b-ab98f700fef1",
+          "port": 0
+        },
+        "src": {
+          "node": "56cabe46-1b43-4427-a9ad-e79e56352c74",
+          "port": 0
+        },
+        "uiprops": {
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "e7d64dd6-32fe-4342-a401-f516ae0dc58c"
+      },
+      {
+        "dst": {
+          "node": "9d23e8da-c879-4def-843c-6a1a068d9b16",
+          "port": 0
+        },
+        "src": {
+          "node": "3bff87ba-ebbd-4591-834b-ab98f700fef1",
+          "port": 0
+        },
+        "uiprops": {
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "3c9ff216-da54-4195-8ea8-e222ec5fb675"
+      }
+    ],
+    "nodes": [
+      {
+        "inputs": [],
+        "name": "x",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "description": {
+            "is_string": true,
+            "value": ""
+          },
+          "port_id": {
+            "value": "0"
+          }
+        },
+        "type": "core.Inport",
+        "uiprops": {
+          "x": 216,
+          "y": 64
+        },
+        "uuid": "23048c65-bf8b-4a53-897f-9f94f4ac5aac"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "static",
+            "name": "in_0"
+          }
+        ],
+        "name": "u",
+        "outputs": [],
+        "parameters": {
+          "description": {
+            "is_string": true,
+            "value": ""
+          },
+          "port_id": {
+            "value": "0"
+          }
+        },
+        "type": "core.Outport",
+        "uiprops": {
+          "x": 576,
+          "y": 40
+        },
+        "uuid": "813252f7-a45f-48d8-9f36-2df27b058e3a"
+      },
+      {
+        "inputs": [],
+        "name": "LQRGain",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0",
+            "parameters": {
+              "shape": {
+                "value": "()"
+              }
+            }
+          }
+        ],
+        "parameters": {
+          "value": {
+            "value": "K"
+          }
+        },
+        "type": "core.Constant",
+        "uiprops": {
+          "port_alignment": "spaced",
+          "x": 216,
+          "y": 32
+        },
+        "uuid": "56cabe46-1b43-4427-a9ad-e79e56352c74"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "static",
+            "name": "in_0"
+          },
+          {
+            "kind": "static",
+            "name": "in_1"
+          }
+        ],
+        "name": "Kx",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {},
+        "type": "core.MatrixMultiplication",
+        "uiprops": {
+          "port_alignment": "spaced",
+          "x": 320,
+          "y": 40
+        },
+        "uuid": "3bff87ba-ebbd-4591-834b-ab98f700fef1"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "static",
+            "name": "in_0"
+          }
+        ],
+        "name": "NegKx",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "gain": {
+            "value": "-1.0"
+          }
+        },
+        "type": "core.Gain",
+        "uiprops": {
+          "port_alignment": "spaced",
+          "x": 456,
+          "y": 40
+        },
+        "uuid": "9d23e8da-c879-4def-843c-6a1a068d9b16"
+      }
+    ],
+    "uuid": "69bdd123-7b32-47d0-9330-35eae1f06a2f"
+  },
+  "kind": "Submodel",
+  "name": "LQRController",
+  "parameter_definitions": [
+    {
+      "default_value": "[]",
+      "name": "K",
+      "uiprops": {},
+      "uuid": "35f81420-938e-441b-8c4a-240f1bbc75d6"
+    }
+  ],
+  "schema_version": "4",
+  "subdiagrams": {
+    "diagrams": {},
+    "references": {}
+  },
+  "submodel_configuration": {},
+  "uuid": "39f28b41-64da-47b3-9d1d-5cc2bbfa0928"
+}

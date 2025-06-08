@@ -1,0 +1,147 @@
+# Copyright (C) 2024 Collimator, Inc.
+# SPDX-License-Identifier: AGPL-3.0-only
+#
+# This program is free software: you can redistribute it and/or modify it under
+# the terms of the GNU Affero General Public License as published by the Free
+# Software Foundation, version 3. This program is distributed in the hope that it
+# will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General
+# Public License for more details.  You should have received a copy of the GNU
+# Affero General Public License along with this program. If not, see
+# <https://www.gnu.org/licenses/>.
+
+site_name: collimator
+
+theme:
+  name: material
+  palette:
+    # Palette toggle for automatic mode
+    - media: "(prefers-color-scheme)"
+      toggle:
+        icon: material/brightness-auto
+        name: Switch to light mode
+
+    # Palette toggle for light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: collimator
+      toggle:
+        icon: material/lightbulb
+        name: Switch to dark mode
+
+    # Palette toggle for dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: collimator-dark
+      toggle:
+        icon: material/lightbulb-outline
+        name: Switch to light mode
+
+  logo: img/logo_white.svg
+  favicon: img/favicon.ico
+  custom_dir: docs/overrides
+
+  features:
+    - navigation.sections
+    - navigation.indexes
+    - navigation.expand
+
+  font:
+    text: Barlow
+    code: Roboto Mono
+
+# To use LaTeX in the docs:
+# https://mrkeo.github.io/reference/mathjax/
+
+# Somehow MathJax didn't work immediately, so using KaTeX instead
+# markdown_extensions:
+#   - pymdownx.arithmatex:
+#       generic: true
+# extra_javascript:
+#   - javascripts/mathjax.js
+#   - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
+
+markdown_extensions:
+  - pymdownx.arithmatex:
+      generic: true
+
+extra_javascript:
+  - javascripts/katex.js
+  - https://unpkg.com/katex@0/dist/katex.min.js
+  - https://unpkg.com/katex@0/dist/contrib/auto-render.min.js
+
+extra_css:
+  - stylesheets/extra.css
+  - https://unpkg.com/katex@0/dist/katex.min.css
+
+plugins:
+  - search
+  - mkdocstrings:
+      handlers:
+        python:
+          # https://mkdocstrings.github.io/python/usage/configuration/general/
+          options:
+            show_source: true
+            show_root_heading: true
+            show_root_toc_entry: true
+            show_root_full_path: true
+  - mkdocs-jupyter:
+      ignore_h1_titles: true
+      execute: false
+      include_source: true
+
+nav:
+  - index.md
+  - installation.md
+  - API Reference:
+      - framework.md
+      - library.md
+      - simulation.md
+      - optimization.md
+      - api.md
+  - Tutorials:
+      - tutorials/index.md
+      - Getting started: tutorials/01-getting-started.ipynb
+      - Custom blocks: tutorials/02-creating-custom-blocks.ipynb
+      - Wrappers: tutorials/03-wrappers.ipynb
+      - Optimization: tutorials/04-automatic-differentiation-optimization.ipynb
+  - Examples:
+      - examples/index.md
+      - Introductory:
+          - Primitive blocks: examples/primitives.ipynb
+          - Bouncing ball: examples/bouncing_ball.ipynb
+          - LQR control: examples/lqr.ipynb
+          - Energy shaping: examples/energy_shaping_and_lqr.ipynb
+          - Linear MPC: examples/linear_mpc.ipynb
+          - Multi-layer perceptron: examples/MLP_training.ipynb
+          - Using the API: examples/interacting_with_the_dashboard.ipynb
+      - Advanced:
+          - Trajectory optimization: examples/trajectory_optimization_and_stabilization.ipynb
+          - Robotic Arm Control: examples/mujoco/pick_and_place.ipynb
+          - PID tuning: examples/pid_tuning.ipynb
+          - Limit cycles: examples/limit_cycles.ipynb
+          - Kalman Filters: examples/state_estimation_with_Kalman_filters.ipynb
+          - UDEs and SR: examples/ude_and_sr_lotka_volterra.ipynb
+          - Submodels: examples/dashboard_submodel.ipynb
+      - Battery series:
+          - 01 - Battery ECM: examples/part_1_battery_ecm_model.ipynb
+          - 02 - Using synthetic data: examples/part_2_parameter_estimation_synthetic_data.ipynb
+          - 03 - Using experimental data: examples/part_3_parameter_estimation_real_data.ipynb
+          - 04 - Dynamic mode decomposition: examples/part_4_data_driven_battery_models_DMDc.ipynb
+          - 05 - Extended DMD: examples/part_5_data_driven_battery_models_eDMDc.ipynb
+          - 06 - SINDy with control: examples/part_6_data_driven_battery_models_SINDyc.ipynb
+          - 07 - Neural networks: examples/part_7_data_driven_battery_models_Neural_Networks.ipynb
+      - Quadcopter series:
+          - 01 - Quadcopter model: examples/01_quadcopter_modelling.ipynb
+          - 02 - Trajectory generation: examples/02_quadcopter_trajectory_generation.ipynb
+          - 03 - Nonlinear MPC: examples/03_quadcopter_nonlinear_mpc.ipynb
+      - Quanser Qube Servo hardware control:
+          - 01 - Qube Servo modeling: examples/quanser/01-plant-model.ipynb
+          - 02 - Linear control: examples/quanser/02-lqg.ipynb
+          - 03 - Nonlinear swing-up control: examples/quanser/03-energy-shaping.ipynb
+          - 04 - Trajectory optimization: examples/quanser/04-trajopt.ipynb
+          - 05 - Neural network control: examples/quanser/05-nn-control.ipynb
+  - about.md
+
+extra:
+  analytics:
+    provider: google
+    property: G-J2NHW0K0C8

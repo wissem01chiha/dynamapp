@@ -1,0 +1,364 @@
+{
+  "configuration": {
+    "solver": {
+      "method": "non-stiff",
+      "max_step": 1000000,
+      "min_step": 0,
+      "absolute_tolerance": 0.000001,
+      "relative_tolerance": 0.001,
+      "max_minor_steps_per_major_step": 4096
+    },
+    "stop_time": 10,
+    "workspace": {},
+    "start_time": 0,
+    "record_mode": "all",
+    "sample_time": 0.1,
+    "worker_type": "any",
+    "sim_output_mode": "auto",
+    "numerical_backend": "auto",
+    "fixed_results_interval": 0,
+    "max_results_interval": 0
+  },
+  "diagram": {
+    "nodes": [
+      {
+        "uuid": "658972aa-23b1-4da7-9032-cdfcb4bcf899",
+        "name": "Chirp_0",
+        "type": "core.Chirp",
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "out_0",
+            "kind": "static"
+          }
+        ],
+        "parameters": {
+          "f0": {
+            "value": "0.0"
+          },
+          "f1": {
+            "value": "10.0"
+          },
+          "phi": {
+            "value": "0.0"
+          },
+          "stop_time": {
+            "value": "10.0"
+          }
+        },
+        "time_mode": "agnostic",
+        "uiprops": {
+          "x": 696,
+          "y": 264,
+          "port_alignment": "spaced"
+        }
+      },
+      {
+        "uuid": "00d39c27-6aa4-43ef-88e6-811cdd7ec72d",
+        "name": "Clock_0",
+        "type": "core.Clock",
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "out_0",
+            "kind": "static"
+          }
+        ],
+        "parameters": {},
+        "time_mode": "agnostic",
+        "uiprops": {
+          "x": 696,
+          "y": 352,
+          "port_alignment": "spaced"
+        }
+      },
+      {
+        "uuid": "3b933119-8ee6-470f-96f6-ef09442ffc1d",
+        "name": "Constant_0",
+        "type": "core.Constant",
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "out_0",
+            "kind": "static"
+          }
+        ],
+        "parameters": {
+          "value": {
+            "value": "0.0"
+          }
+        },
+        "uiprops": {
+          "x": 712,
+          "y": 448,
+          "port_alignment": "spaced"
+        }
+      },
+      {
+        "uuid": "6c27cf3b-5cad-4dd0-ae56-a9f7e7b3c2e6",
+        "name": "Pulse_0",
+        "type": "core.Pulse",
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "out_0",
+            "kind": "static"
+          }
+        ],
+        "parameters": {
+          "period": {
+            "value": "1.0"
+          },
+          "amplitude": {
+            "value": "1.0"
+          },
+          "pulse_width": {
+            "value": "0.5"
+          }
+        },
+        "uiprops": {
+          "x": 696,
+          "y": 488,
+          "port_alignment": "spaced"
+        }
+      },
+      {
+        "uuid": "d04c02fe-098a-4401-a91b-ddf503584680",
+        "name": "Ramp_0",
+        "type": "core.Ramp",
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "out_0",
+            "kind": "static"
+          }
+        ],
+        "parameters": {
+          "slope": {
+            "value": "1.0"
+          },
+          "start_time": {
+            "value": "1.0"
+          },
+          "start_value": {
+            "value": "0.0"
+          }
+        },
+        "time_mode": "agnostic",
+        "uiprops": {
+          "x": 696,
+          "y": 664,
+          "port_alignment": "spaced"
+        }
+      },
+      {
+        "uuid": "a39fbf5b-faf6-4393-af64-6baecb6f6aab",
+        "name": "Sawtooth_0",
+        "type": "core.Sawtooth",
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "out_0",
+            "kind": "static"
+          }
+        ],
+        "parameters": {
+          "amplitude": {
+            "value": "1.0"
+          },
+          "frequency": {
+            "value": "0.5"
+          },
+          "phase_delay": {
+            "value": "1.0"
+          }
+        },
+        "time_mode": "agnostic",
+        "uiprops": {
+          "x": 696,
+          "y": 752,
+          "port_alignment": "spaced"
+        }
+      },
+      {
+        "uuid": "b7c3e0a1-d2fc-4b91-b55a-660af96fdd50",
+        "name": "SineWave_0",
+        "type": "core.SineWave",
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "out_0",
+            "kind": "static"
+          }
+        ],
+        "parameters": {
+          "bias": {
+            "value": "0.0"
+          },
+          "phase": {
+            "value": "0.0"
+          },
+          "amplitude": {
+            "value": "1.0"
+          },
+          "frequency": {
+            "value": "1.0"
+          }
+        },
+        "time_mode": "agnostic",
+        "uiprops": {
+          "x": 696,
+          "y": 840,
+          "port_alignment": "spaced"
+        }
+      },
+      {
+        "uuid": "a3e7c421-1555-4738-8595-33687714c8d7",
+        "name": "CosineWave_0",
+        "type": "core.CosineWave",
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "out_0",
+            "kind": "static"
+          }
+        ],
+        "parameters": {
+          "bias": {
+            "value": "0.0"
+          },
+          "phase": {
+            "value": "0.0"
+          },
+          "amplitude": {
+            "value": "1.0"
+          },
+          "frequency": {
+            "value": "1.0"
+          }
+        },
+        "time_mode": "agnostic",
+        "uiprops": {
+          "x": 696,
+          "y": 928,
+          "port_alignment": "spaced"
+        }
+      },
+      {
+        "uuid": "e475f26f-de81-4070-b0b0-96597b31f76b",
+        "name": "Step_0",
+        "type": "core.Step",
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "out_0",
+            "kind": "static"
+          }
+        ],
+        "parameters": {
+          "end_value": {
+            "value": "1.0"
+          },
+          "step_time": {
+            "value": "1.0"
+          },
+          "start_value": {
+            "value": "0.0"
+          }
+        },
+        "time_mode": "agnostic",
+        "uiprops": {
+          "x": 696,
+          "y": 1016,
+          "port_alignment": "spaced"
+        }
+      },
+      {
+        "uuid": "63876e45-c76f-43cc-8f93-180897b1bdbf",
+        "name": "RandomNumber_0",
+        "type": "core.RandomNumber",
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "out_0",
+            "kind": "static"
+          }
+        ],
+        "parameters": {
+          "seed": {
+            "value": ""
+          },
+          "dtype": {
+            "value": "float64",
+            "is_string": true
+          },
+          "shape": {
+            "value": "()"
+          },
+          "distribution": {
+            "value": "normal",
+            "is_string": true
+          }
+        },
+        "uiprops": {
+          "x": 696,
+          "y": 576,
+          "port_alignment": "spaced"
+        }
+      },
+      {
+        "uuid": "0a5bd46e-69ae-4fb0-a49d-2b8181a265c0",
+        "name": "WhiteNoise_0",
+        "type": "core.WhiteNoise",
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "out_0",
+            "kind": "static"
+          }
+        ],
+        "parameters": {
+          "seed": {
+            "value": ""
+          },
+          "dtype": {
+            "value": "float64",
+            "is_string": true
+          },
+          "shape": {
+            "value": "()"
+          },
+          "noise_power": {
+            "value": "1.0"
+          },
+          "num_samples": {
+            "value": "10"
+          },
+          "correlation_time": {
+            "value": ""
+          }
+        },
+        "uiprops": {
+          "x": 696,
+          "y": 1120,
+          "port_alignment": "spaced"
+        }
+      }
+    ],
+    "links": [],
+    "annotations": [],
+    "uuid": "3d1ca82b-b441-4f36-b827-340f0280f992"
+  },
+  "name": "test_source_2024-02-29T14:40:52Z",
+  "parameters": {},
+  "state_machines": {},
+  "subdiagrams": {
+    "diagrams": {},
+    "references": {}
+  },
+  "uuid": "e17b6506-d946-4b03-a62c-e8375e1f7fd4",
+  "sim_model_uuid": "4557cb22-5935-4ebc-ac3f-de671c309012",
+  "owner_uuid": "09161e50-1c3b-4b71-9d89-9c93272da1a3",
+  "schema_version": "4",
+  "kind": "Model"
+}

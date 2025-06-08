@@ -1,0 +1,195 @@
+{
+  "diagram": {
+    "annotations": [],
+    "links": [
+      {
+        "dst": {
+          "node": "c26f04ab-87bf-41bb-9d4b-5df34198319c",
+          "port": 0
+        },
+        "src": {
+          "node": "8c137c16-935e-4c7f-90ad-3e13401176f6",
+          "port": 0
+        },
+        "uiprops": {
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "424e6270-15f7-440d-8313-782ed5c20c80"
+      },
+      {
+        "dst": {
+          "node": "391a8c1e-276f-4859-a33f-c64b5c3d1d7b",
+          "port": 0
+        },
+        "src": {
+          "node": "d8565ddb-2677-4395-8d7e-0c6234718f64",
+          "port": 0
+        },
+        "uiprops": {
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "e76015f4-7859-477a-ad56-2b158368bf00"
+      },
+      {
+        "dst": {
+          "node": "d8565ddb-2677-4395-8d7e-0c6234718f64",
+          "port": 0
+        },
+        "src": {
+          "node": "c26f04ab-87bf-41bb-9d4b-5df34198319c",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": -848,
+            "y": -808
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "84efd3ac-37af-44f1-ae1a-0abf1075bebc"
+      }
+    ],
+    "nodes": [
+      {
+        "inputs": [],
+        "name": "Inport_0",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "description": {
+            "is_string": true,
+            "value": ""
+          },
+          "port_id": {
+            "value": "0"
+          }
+        },
+        "type": "core.Inport",
+        "uiprops": {
+          "x": 152,
+          "y": 32
+        },
+        "uuid": "8c137c16-935e-4c7f-90ad-3e13401176f6"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "static",
+            "name": "in_0"
+          }
+        ],
+        "name": "Outport_0",
+        "outputs": [],
+        "parameters": {
+          "description": {
+            "is_string": true,
+            "value": ""
+          },
+          "port_id": {
+            "value": "0"
+          }
+        },
+        "type": "core.Outport",
+        "uiprops": {
+          "x": 464,
+          "y": 32
+        },
+        "uuid": "391a8c1e-276f-4859-a33f-c64b5c3d1d7b"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "static",
+            "name": "in_0"
+          }
+        ],
+        "name": "Integrator_0",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "enable_external_reset": {
+            "value": "true"
+          },
+          "enable_hold": {
+            "value": "false"
+          },
+          "enable_limits": {
+            "value": "false"
+          },
+          "enable_reset": {
+            "value": "false"
+          },
+          "initial_states": {
+            "value": "0.0"
+          },
+          "lower_limit": {
+            "value": "-1.0"
+          },
+          "upper_limit": {
+            "value": "1.0"
+          }
+        },
+        "type": "core.Integrator",
+        "uiprops": {
+          "x": 216,
+          "y": 32
+        },
+        "uuid": "c26f04ab-87bf-41bb-9d4b-5df34198319c"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "static",
+            "name": "in_0"
+          }
+        ],
+        "name": "Gain_0",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "gain": {
+            "value": "1.0"
+          }
+        },
+        "type": "core.Gain",
+        "uiprops": {
+          "x": 368,
+          "y": 32
+        },
+        "uuid": "d8565ddb-2677-4395-8d7e-0c6234718f64"
+      }
+    ],
+    "uuid": "3edd393c-4a2e-4695-bd37-4083765efdad"
+  },
+  "kind": "Submodel",
+  "name": "_0065_sm_cont",
+  "parameter_definitions": [],
+  "schema_version": "3",
+  "state_machines": null,
+  "subdiagrams": {
+    "diagrams": {},
+    "references": {}
+  },
+  "submodel_configuration": null
+}

@@ -1,0 +1,860 @@
+{
+    "$schema_version": "0.1",
+    "uuid": "2db4a6ef-0206-4c5e-b0a9-bdaadf6dd39e",
+    "name": "qa",
+    "diagram": {
+        "nodes": [
+            {
+                "uuid": "d4bf851c-1911-4b9b-9740-b986aefa8629",
+                "name": "VoltageSource_0",
+                "type": "acausal.electrical.VoltageSource",
+                "inputs": [
+                    {
+                        "name": "p",
+                        "kind": "static",
+                        "variant": {
+                            "acausal_domain": "electrical",
+                            "variant_kind": "acausal"
+                        }
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "n",
+                        "kind": "static",
+                        "variant": {
+                            "acausal_domain": "electrical",
+                            "variant_kind": "acausal"
+                        }
+                    }
+                ],
+                "parameters": {
+                    "enable_voltage_port": {
+                        "value": "false"
+                    },
+                    "v": {
+                        "value": "500"
+                    }
+                },
+                "uiprops": {
+                    "x": 688,
+                    "y": 352,
+                    "port_alignment": "spaced",
+                    "show_port_name_labels": true
+                }
+            },
+            {
+                "uuid": "51742fdb-83ff-40fe-874e-7f3cca1fdb2a",
+                "name": "CurrentSensor_0",
+                "type": "acausal.electrical.CurrentSensor",
+                "inputs": [
+                    {
+                        "name": "p",
+                        "kind": "static",
+                        "variant": {
+                            "acausal_domain": "electrical",
+                            "variant_kind": "acausal"
+                        }
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "n",
+                        "kind": "static",
+                        "variant": {
+                            "acausal_domain": "electrical",
+                            "variant_kind": "acausal"
+                        }
+                    },
+                    {
+                        "name": "i",
+                        "kind": "static"
+                    }
+                ],
+                "parameters": {},
+                "uiprops": {
+                    "x": 696,
+                    "y": 248,
+                    "port_alignment": "spaced"
+                }
+            },
+            {
+                "uuid": "0032b748-5e8c-413c-b5e8-544c52e210b9",
+                "name": "BLDC_0",
+                "type": "acausal.electrical.BLDC",
+                "inputs": [
+                    {
+                        "name": "trq_req_norm",
+                        "kind": "static"
+                    },
+                    {
+                        "name": "pos",
+                        "kind": "static",
+                        "variant": {
+                            "acausal_domain": "electrical",
+                            "variant_kind": "acausal"
+                        }
+                    },
+                    {
+                        "name": "neg",
+                        "kind": "static",
+                        "variant": {
+                            "acausal_domain": "electrical",
+                            "variant_kind": "acausal"
+                        }
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "shaft",
+                        "kind": "static",
+                        "variant": {
+                            "acausal_domain": "rotational",
+                            "variant_kind": "acausal"
+                        }
+                    },
+                    {
+                        "name": "heat",
+                        "kind": "conditional",
+                        "variant": {
+                            "acausal_domain": "thermal",
+                            "variant_kind": "acausal"
+                        }
+                    }
+                ],
+                "parameters": {
+                    "J": {
+                        "value": "0.1"
+                    },
+                    "enable_heat_port": {
+                        "value": "true"
+                    }
+                },
+                "uiprops": {
+                    "x": 864,
+                    "y": 184,
+                    "grid_height": 18,
+                    "grid_width": 13,
+                    "port_alignment": "spaced"
+                }
+            },
+            {
+                "uuid": "2e3d6cd5-6e4a-4cf4-981e-f4c81f4b3752",
+                "name": "Step_0",
+                "type": "core.Step",
+                "inputs": [],
+                "outputs": [
+                    {
+                        "name": "out_0",
+                        "kind": "static"
+                    }
+                ],
+                "parameters": {
+                    "end_value": {
+                        "value": "-0.2"
+                    },
+                    "start_value": {
+                        "value": "0.5"
+                    },
+                    "step_time": {
+                        "value": "2.0"
+                    }
+                },
+                "time_mode": "agnostic",
+                "uiprops": {
+                    "x": 688,
+                    "y": 160,
+                    "port_alignment": "spaced"
+                }
+            },
+            {
+                "uuid": "c28ebc55-d25d-473f-bb3a-dfcb8afc4f5a",
+                "name": "TorqueSensor_0",
+                "type": "acausal.rotational.TorqueSensor",
+                "inputs": [
+                    {
+                        "name": "flange_a",
+                        "kind": "static",
+                        "variant": {
+                            "acausal_domain": "rotational",
+                            "variant_kind": "acausal"
+                        }
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "flange_b",
+                        "kind": "static",
+                        "variant": {
+                            "acausal_domain": "rotational",
+                            "variant_kind": "acausal"
+                        }
+                    },
+                    {
+                        "name": "tau",
+                        "kind": "static"
+                    }
+                ],
+                "parameters": {},
+                "uiprops": {
+                    "x": 1072,
+                    "y": 192,
+                    "port_alignment": "spaced"
+                }
+            },
+            {
+                "uuid": "035e8bee-b054-4c96-8459-8648613709f3",
+                "name": "MotionSensor_0",
+                "type": "acausal.rotational.MotionSensor",
+                "inputs": [
+                    {
+                        "name": "flange_a",
+                        "kind": "static",
+                        "variant": {
+                            "acausal_domain": "rotational",
+                            "variant_kind": "acausal"
+                        }
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "w_rel",
+                        "kind": "conditional"
+                    }
+                ],
+                "parameters": {
+                    "enable_acceleration_port": {
+                        "value": "false"
+                    },
+                    "enable_angle_port": {
+                        "value": "false"
+                    },
+                    "enable_flange_b": {
+                        "value": "false"
+                    },
+                    "enable_velocity_port": {
+                        "value": "true"
+                    }
+                },
+                "uiprops": {
+                    "x": 1072,
+                    "y": 96,
+                    "port_alignment": "spaced"
+                }
+            },
+            {
+                "uuid": "5c0cd2a3-b4db-4751-875b-5aeeabebfc37",
+                "name": "HeatCapacitor_0",
+                "type": "acausal.thermal.HeatCapacitor",
+                "inputs": [
+                    {
+                        "name": "port",
+                        "kind": "static",
+                        "variant": {
+                            "acausal_domain": "thermal",
+                            "variant_kind": "acausal"
+                        }
+                    }
+                ],
+                "outputs": [],
+                "parameters": {
+                    "C": {
+                        "value": "1.0"
+                    },
+                    "initial_temperature": {
+                        "value": "300.0"
+                    },
+                    "initial_temperature_fixed": {
+                        "value": "true"
+                    }
+                },
+                "uiprops": {
+                    "x": 1072,
+                    "y": 296,
+                    "port_alignment": "spaced"
+                }
+            },
+            {
+                "uuid": "6a7f82b2-6090-42d7-85cd-f21c82e573c5",
+                "name": "Inertia_0",
+                "type": "acausal.rotational.Inertia",
+                "inputs": [
+                    {
+                        "name": "flange",
+                        "kind": "static",
+                        "variant": {
+                            "acausal_domain": "rotational",
+                            "variant_kind": "acausal"
+                        }
+                    }
+                ],
+                "outputs": [],
+                "parameters": {
+                    "I": {
+                        "value": "1.0"
+                    },
+                    "initial_angle": {
+                        "value": "0.0"
+                    },
+                    "initial_angle_fixed": {
+                        "value": "true"
+                    },
+                    "initial_velocity": {
+                        "value": "0.0"
+                    },
+                    "initial_velocity_fixed": {
+                        "value": "true"
+                    }
+                },
+                "uiprops": {
+                    "x": 1248,
+                    "y": 176,
+                    "port_alignment": "spaced"
+                }
+            },
+            {
+                "uuid": "81e630db-7a49-4fb4-b485-1fa523c61bb2",
+                "name": "TemperatureSensor_0",
+                "type": "acausal.thermal.TemperatureSensor",
+                "inputs": [
+                    {
+                        "name": "port_a",
+                        "kind": "static",
+                        "variant": {
+                            "acausal_domain": "thermal",
+                            "variant_kind": "acausal"
+                        }
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "T_rel",
+                        "kind": "static"
+                    }
+                ],
+                "parameters": {
+                    "enable_port_b": {
+                        "value": "false"
+                    }
+                },
+                "uiprops": {
+                    "x": 1072,
+                    "y": 400,
+                    "port_alignment": "spaced"
+                }
+            },
+            {
+                "uuid": "fde006e0-5054-4d26-a942-c967921f2ead",
+                "name": "Damper_0",
+                "type": "acausal.rotational.Damper",
+                "inputs": [
+                    {
+                        "name": "flange_a",
+                        "kind": "static",
+                        "variant": {
+                            "acausal_domain": "rotational",
+                            "variant_kind": "acausal"
+                        }
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "flange_b",
+                        "kind": "static",
+                        "variant": {
+                            "acausal_domain": "rotational",
+                            "variant_kind": "acausal"
+                        }
+                    }
+                ],
+                "parameters": {
+                    "D": {
+                        "value": "1.0"
+                    },
+                    "initial_angle_A": {
+                        "value": "0.0"
+                    },
+                    "initial_angle_A_fixed": {
+                        "value": "False"
+                    },
+                    "initial_angle_B": {
+                        "value": "0.0"
+                    },
+                    "initial_angle_B_fixed": {
+                        "value": "False"
+                    },
+                    "initial_velocity_A": {
+                        "value": "0.0"
+                    },
+                    "initial_velocity_A_fixed": {
+                        "value": "False"
+                    },
+                    "initial_velocity_B": {
+                        "value": "0.0"
+                    },
+                    "initial_velocity_B_fixed": {
+                        "value": "False"
+                    }
+                },
+                "uiprops": {
+                    "x": 1240,
+                    "y": 272,
+                    "port_alignment": "spaced"
+                }
+            },
+            {
+                "uuid": "9d749148-1a46-44c3-9bcd-897be5d9c030",
+                "name": "FixedAngle_0",
+                "type": "acausal.rotational.FixedAngle",
+                "inputs": [],
+                "outputs": [
+                    {
+                        "name": "flange",
+                        "kind": "static",
+                        "variant": {
+                            "acausal_domain": "rotational",
+                            "variant_kind": "acausal"
+                        }
+                    }
+                ],
+                "parameters": {
+                    "initial_angle": {
+                        "value": "0.0"
+                    }
+                },
+                "uiprops": {
+                    "x": 1240,
+                    "y": 360,
+                    "port_alignment": "spaced"
+                }
+            },
+            {
+                "uuid": "fd769fd1-3489-4343-a14b-0f8b1a057888",
+                "name": "Ground_0",
+                "type": "acausal.electrical.Ground",
+                "inputs": [
+                    {
+                        "name": "p",
+                        "kind": "static",
+                        "variant": {
+                            "acausal_domain": "electrical",
+                            "variant_kind": "acausal"
+                        }
+                    }
+                ],
+                "outputs": [],
+                "parameters": {},
+                "uiprops": {
+                    "x": 864,
+                    "y": 392,
+                    "port_alignment": "spaced"
+                }
+            }
+        ],
+        "links": [
+            {
+                "uuid": "b9b2d81a-7c14-4a0f-b7e4-8892afbc6c27",
+                "src": {
+                    "node": "d4bf851c-1911-4b9b-9740-b986aefa8629",
+                    "port": 0,
+                    "port_side": "inputs"
+                },
+                "dst": {
+                    "node": "51742fdb-83ff-40fe-874e-7f3cca1fdb2a",
+                    "port": 0,
+                    "port_side": "inputs"
+                },
+                "uiprops": {
+                    "link_type": {
+                        "connection_method": "direct_to_block"
+                    },
+                    "segments": [],
+                    "hang_coord_start": {
+                        "x": 688,
+                        "y": 384
+                    }
+                }
+            },
+            {
+                "uuid": "f1ae9051-545e-4ddd-9092-39e335ecc950",
+                "src": {
+                    "node": "0032b748-5e8c-413c-b5e8-544c52e210b9",
+                    "port": 1,
+                    "port_side": "inputs"
+                },
+                "dst": {
+                    "node": "51742fdb-83ff-40fe-874e-7f3cca1fdb2a",
+                    "port": 0,
+                    "port_side": "outputs"
+                },
+                "uiprops": {
+                    "link_type": {
+                        "connection_method": "direct_to_block"
+                    },
+                    "segments": [],
+                    "hang_coord_start": {
+                        "x": 864,
+                        "y": 256
+                    }
+                }
+            },
+            {
+                "uuid": "d3d08233-220b-4dcc-9451-35012c1af235",
+                "src": {
+                    "node": "0032b748-5e8c-413c-b5e8-544c52e210b9",
+                    "port": 2,
+                    "port_side": "inputs"
+                },
+                "dst": {
+                    "node": "d4bf851c-1911-4b9b-9740-b986aefa8629",
+                    "port": 0,
+                    "port_side": "outputs"
+                },
+                "uiprops": {
+                    "link_type": {
+                        "connection_method": "direct_to_block"
+                    },
+                    "segments": [
+                        {
+                            "segment_direction": "vert",
+                            "coordinate": 856
+                        },
+                        {
+                            "segment_direction": "horiz",
+                            "coordinate": 296
+                        },
+                        {
+                            "segment_direction": "vert",
+                            "coordinate": 812
+                        },
+                        {
+                            "segment_direction": "horiz",
+                            "coordinate": 384
+                        },
+                        {
+                            "segment_direction": "vert",
+                            "coordinate": 768
+                        }
+                    ],
+                    "hang_coord_start": {
+                        "x": 864,
+                        "y": 296
+                    }
+                }
+            },
+            {
+                "uuid": "f4bf821c-b024-4cb1-9482-096ac38b4eda",
+                "src": {
+                    "node": "2e3d6cd5-6e4a-4cf4-981e-f4c81f4b3752",
+                    "port": 0,
+                    "port_side": "outputs"
+                },
+                "dst": {
+                    "node": "0032b748-5e8c-413c-b5e8-544c52e210b9",
+                    "port": 0,
+                    "port_side": "inputs"
+                },
+                "uiprops": {
+                    "link_type": {
+                        "connection_method": "direct_to_block"
+                    },
+                    "segments": [],
+                    "hang_coord_end": {
+                        "x": 864,
+                        "y": 216
+                    }
+                }
+            },
+            {
+                "uuid": "e65de964-c0ae-482a-a621-c37f7816b506",
+                "src": {
+                    "node": "c28ebc55-d25d-473f-bb3a-dfcb8afc4f5a",
+                    "port": 0,
+                    "port_side": "inputs"
+                },
+                "dst": {
+                    "node": "0032b748-5e8c-413c-b5e8-544c52e210b9",
+                    "port": 0,
+                    "port_side": "outputs"
+                },
+                "uiprops": {
+                    "link_type": {
+                        "connection_method": "direct_to_block"
+                    },
+                    "segments": [
+                        {
+                            "segment_direction": "vert",
+                            "coordinate": 1064
+                        },
+                        {
+                            "segment_direction": "horiz",
+                            "coordinate": 224
+                        },
+                        {
+                            "segment_direction": "vert",
+                            "coordinate": 1020
+                        },
+                        {
+                            "segment_direction": "horiz",
+                            "coordinate": 224
+                        },
+                        {
+                            "segment_direction": "vert",
+                            "coordinate": 976
+                        }
+                    ],
+                    "hang_coord_start": {
+                        "x": 1064,
+                        "y": 216
+                    }
+                }
+            },
+            {
+                "uuid": "ed8fb7b3-957b-4a97-ac9d-27694e80c36e",
+                "src": {
+                    "node": "c28ebc55-d25d-473f-bb3a-dfcb8afc4f5a",
+                    "port": 0,
+                    "port_side": "inputs"
+                },
+                "dst": {
+                    "node": "035e8bee-b054-4c96-8459-8648613709f3",
+                    "port": 0,
+                    "port_side": "inputs"
+                },
+                "uiprops": {
+                    "link_type": {
+                        "connection_method": "link_tap",
+                        "tap_coordinate": 1000,
+                        "tapped_link_uuid": "e65de964-c0ae-482a-a621-c37f7816b506",
+                        "tapped_segment": {
+                            "segment_type": "real",
+                            "tapped_segment_direction": "horiz",
+                            "tapped_segment_index": 3
+                        }
+                    },
+                    "segments": []
+                }
+            },
+            {
+                "uuid": "40c48c67-f917-4617-99e6-40246c6ac466",
+                "src": {
+                    "node": "6a7f82b2-6090-42d7-85cd-f21c82e573c5",
+                    "port": 0,
+                    "port_side": "inputs"
+                },
+                "dst": {
+                    "node": "c28ebc55-d25d-473f-bb3a-dfcb8afc4f5a",
+                    "port": 0,
+                    "port_side": "outputs"
+                },
+                "uiprops": {
+                    "link_type": {
+                        "connection_method": "direct_to_block"
+                    },
+                    "segments": [
+                        {
+                            "segment_direction": "vert",
+                            "coordinate": 1248
+                        },
+                        {
+                            "segment_direction": "horiz",
+                            "coordinate": 208
+                        },
+                        {
+                            "segment_direction": "vert",
+                            "coordinate": 1152
+                        }
+                    ],
+                    "hang_coord_start": {
+                        "x": 1248,
+                        "y": 216
+                    }
+                }
+            },
+            {
+                "uuid": "6c7482f7-05ff-452f-8a89-acbb5ea0eac4",
+                "src": {
+                    "node": "0032b748-5e8c-413c-b5e8-544c52e210b9",
+                    "port": 1,
+                    "port_side": "outputs"
+                },
+                "dst": {
+                    "node": "5c0cd2a3-b4db-4751-875b-5aeeabebfc37",
+                    "port": 0,
+                    "port_side": "inputs"
+                },
+                "uiprops": {
+                    "link_type": {
+                        "connection_method": "direct_to_block"
+                    },
+                    "segments": [
+                        {
+                            "segment_direction": "vert",
+                            "coordinate": 976
+                        },
+                        {
+                            "segment_direction": "horiz",
+                            "coordinate": 288
+                        },
+                        {
+                            "segment_direction": "vert",
+                            "coordinate": 1020
+                        },
+                        {
+                            "segment_direction": "horiz",
+                            "coordinate": 328
+                        },
+                        {
+                            "segment_direction": "vert",
+                            "coordinate": 1064
+                        }
+                    ],
+                    "hang_coord_start": {
+                        "x": 968,
+                        "y": 288
+                    }
+                }
+            },
+            {
+                "uuid": "c233ced8-77db-451d-a4b8-1bf655c5648d",
+                "src": {
+                    "node": "0032b748-5e8c-413c-b5e8-544c52e210b9",
+                    "port": 1,
+                    "port_side": "outputs"
+                },
+                "dst": {
+                    "node": "81e630db-7a49-4fb4-b485-1fa523c61bb2",
+                    "port": 0,
+                    "port_side": "inputs"
+                },
+                "uiprops": {
+                    "link_type": {
+                        "connection_method": "link_tap",
+                        "tap_coordinate": 1024,
+                        "tapped_link_uuid": "6c7482f7-05ff-452f-8a89-acbb5ea0eac4",
+                        "tapped_segment": {
+                            "segment_type": "real",
+                            "tapped_segment_direction": "horiz",
+                            "tapped_segment_index": 3
+                        }
+                    },
+                    "segments": []
+                }
+            },
+            {
+                "uuid": "8402dd00-e324-48c5-b3b2-73dd4399b514",
+                "src": {
+                    "node": "fde006e0-5054-4d26-a942-c967921f2ead",
+                    "port": 0,
+                    "port_side": "outputs"
+                },
+                "dst": {
+                    "node": "9d749148-1a46-44c3-9bcd-897be5d9c030",
+                    "port": 0,
+                    "port_side": "outputs"
+                },
+                "uiprops": {
+                    "link_type": {
+                        "connection_method": "direct_to_block"
+                    },
+                    "segments": [],
+                    "hang_coord_start": {
+                        "x": 1312,
+                        "y": 304
+                    }
+                }
+            },
+            {
+                "uuid": "259c660b-7adb-47d8-86fd-4c98832e6bba",
+                "src": {
+                    "node": "6a7f82b2-6090-42d7-85cd-f21c82e573c5",
+                    "port": 0,
+                    "port_side": "inputs"
+                },
+                "dst": {
+                    "node": "fde006e0-5054-4d26-a942-c967921f2ead",
+                    "port": 0,
+                    "port_side": "inputs"
+                },
+                "uiprops": {
+                    "link_type": {
+                        "connection_method": "link_tap",
+                        "tap_coordinate": 1168,
+                        "tapped_link_uuid": "40c48c67-f917-4617-99e6-40246c6ac466",
+                        "tapped_segment": {
+                            "segment_type": "real",
+                            "tapped_segment_direction": "horiz",
+                            "tapped_segment_index": 1
+                        }
+                    },
+                    "segments": []
+                }
+            },
+            {
+                "uuid": "0a1a8a95-05f3-4dae-bcee-099e8dc74452",
+                "src": {
+                    "node": "0032b748-5e8c-413c-b5e8-544c52e210b9",
+                    "port": 2,
+                    "port_side": "inputs"
+                },
+                "dst": {
+                    "node": "fd769fd1-3489-4343-a14b-0f8b1a057888",
+                    "port": 0,
+                    "port_side": "inputs"
+                },
+                "uiprops": {
+                    "link_type": {
+                        "connection_method": "link_tap",
+                        "tap_coordinate": 808,
+                        "tapped_link_uuid": "d3d08233-220b-4dcc-9451-35012c1af235",
+                        "tapped_segment": {
+                            "segment_type": "real",
+                            "tapped_segment_direction": "horiz",
+                            "tapped_segment_index": 3
+                        }
+                    },
+                    "segments": []
+                }
+            }
+        ],
+        "annotations": [],
+        "uuid": "b3dad9a8-adf2-44bf-ba27-d187af3852df"
+    },
+    "configuration": {
+        "fixed_results_interval": 0,
+        "numerical_backend": "auto",
+        "record_mode": "all",
+        "sample_time": 0.1,
+        "sim_output_mode": "auto",
+        "solver": {
+            "absolute_tolerance": 0.000001,
+            "max_minor_steps_per_major_step": 4096,
+            "max_step": 1000000,
+            "method": "auto",
+            "min_step": 0,
+            "relative_tolerance": 0.001
+        },
+        "start_time": 0,
+        "stop_time": 4,
+        "worker_type": "any",
+        "workspace": {},
+        "data_points_min": 0,
+        "events_handling": "normal",
+        "continuous_time_result_interval": 0,
+        "__developer_options": {
+            "disable_firejail": false
+        }
+    },
+    "parameters": {},
+    "submodels": {
+        "diagrams": {},
+        "references": {}
+    },
+    "state_machines": {},
+    "needs_autolayout": false,
+    "created_at": "2024-07-08T14:17:48Z",
+    "updated_at": "2024-07-08T14:27:20Z",
+    "version": 86,
+    "project_uuid": "e88527f4-6aac-4259-af53-fbaad5cf699b",
+    "kind": "Model"
+}

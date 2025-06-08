@@ -1,0 +1,423 @@
+{
+  "configuration": {
+    "solver": {
+      "method": "non-stiff",
+      "max_step": 1000000,
+      "min_step": 0,
+      "absolute_tolerance": 0.000001,
+      "relative_tolerance": 0.001,
+      "max_minor_steps_per_major_step": 4096
+    },
+    "stop_time": 10,
+    "workspace": {},
+    "start_time": 0,
+    "record_mode": "all",
+    "sample_time": 0.1,
+    "worker_type": "any",
+    "sim_output_mode": "auto",
+    "numerical_backend": "numpy",
+    "fixed_results_interval": 0,
+    "max_results_interval": 0
+  },
+  "diagram": {
+    "nodes": [
+      {
+        "uuid": "60ce7c95-8a36-4212-859e-bd776bba2f30",
+        "name": "WT_Dynamics",
+        "submodel_reference_uuid": "303a4b81-108d-428a-a567-e1734a30a1e3",
+        "type": "core.ReferenceSubmodel",
+        "inputs": [
+          {
+            "name": "wind_speed",
+            "kind": "dynamic"
+          },
+          {
+            "name": "pitch_angle_ref",
+            "kind": "dynamic"
+          },
+          {
+            "name": "gen_torque_ref",
+            "kind": "dynamic"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "generated_power",
+            "kind": "dynamic",
+            "record": true
+          },
+          {
+            "name": "gen_speed",
+            "kind": "dynamic",
+            "record": true
+          },
+          {
+            "name": "rotor_speed",
+            "kind": "dynamic",
+            "record": true
+          },
+          {
+            "name": "shaft_moment",
+            "kind": "dynamic",
+            "record": true
+          },
+          {
+            "name": "blade_moment",
+            "kind": "dynamic",
+            "record": true
+          },
+          {
+            "name": "tower_moment",
+            "kind": "dynamic",
+            "record": true
+          }
+        ],
+        "parameters": {
+          "rho": {
+            "order": 5,
+            "value": "rho"
+          },
+          "gen_N": {
+            "order": 0,
+            "value": "gen_N"
+          },
+          "rotor_damp": {
+            "order": 6,
+            "value": "rotor_damp"
+          },
+          "gen_inertia": {
+            "order": 2,
+            "value": "gen_inertia"
+          },
+          "rotor_radius": {
+            "order": 8,
+            "value": "rotor_radius"
+          },
+          "rotor_spring": {
+            "order": 9,
+            "value": "rotor_spring"
+          },
+          "rotor_inertia": {
+            "order": 7,
+            "value": "rotor_inertia"
+          },
+          "gen_efficiency": {
+            "order": 1,
+            "value": "gen_efficiency"
+          },
+          "pitch_servo_gain": {
+            "order": 4,
+            "value": "pitch_servo_gain"
+          },
+          "gen_time_constant": {
+            "order": 3,
+            "value": "gen_time_constant"
+          }
+        },
+        "uiprops": {
+          "x": 824,
+          "y": -104,
+          "grid_height": 14,
+          "grid_width": 36,
+          "show_port_name_labels": true
+        }
+      },
+      {
+        "uuid": "00ccde17-d93f-469b-98ba-06f8d9f27d69",
+        "name": "WT_Controller",
+        "submodel_reference_uuid": "68e78302-3609-42db-ab2c-285e2a2c544a",
+        "type": "core.ReferenceSubmodel",
+        "inputs": [
+          {
+            "name": "gen_speed",
+            "kind": "dynamic"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "beta_command",
+            "kind": "dynamic",
+            "record": true
+          },
+          {
+            "name": "gen_command",
+            "kind": "dynamic",
+            "record": true
+          }
+        ],
+        "parameters": {
+          "pitch_ctrl_ki": {
+            "order": 1,
+            "value": "pitch_ctrl_ki"
+          },
+          "pitch_ctrl_kp": {
+            "order": 2,
+            "value": "pitch_ctrl_kp"
+          },
+          "gen_rated_speed": {
+            "order": 0,
+            "value": "gen_rated_speed"
+          }
+        },
+        "uiprops": {
+          "x": 424,
+          "y": -72,
+          "grid_height": 7,
+          "grid_width": 26,
+          "show_port_name_labels": true
+        }
+      },
+      {
+        "uuid": "6a129659-80de-41a4-97d7-e50c510ae338",
+        "name": "DataSource_0",
+        "type": "core.DataSource",
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "out_0",
+            "kind": "static"
+          }
+        ],
+        "parameters": {
+          "file_name": {
+            "value": "full_load_windfield.csv",
+            "is_string": true
+          },
+          "time_column": {
+            "value": "0",
+            "is_string": true
+          },
+          "data_columns": {
+            "value": "1",
+            "is_string": true
+          },
+          "extrapolation": {
+            "value": "hold",
+            "is_string": true
+          },
+          "interpolation": {
+            "value": "linear",
+            "is_string": true
+          },
+          "sampling_interval": {
+            "value": "0.1"
+          },
+          "data_integration_id": {
+            "value": "",
+            "is_string": true
+          },
+          "header_as_first_row": {
+            "value": "true"
+          },
+          "time_samples_as_column": {
+            "value": "true"
+          }
+        },
+        "time_mode": "agnostic",
+        "uiprops": {
+          "x": 688,
+          "y": -160,
+          "port_alignment": "spaced"
+        }
+      }
+    ],
+    "links": [
+      {
+        "uuid": "bd7fff18-d148-4e64-af3a-8a4c0dce320c",
+        "src": {
+          "node": "6a129659-80de-41a4-97d7-e50c510ae338",
+          "port": 0
+        },
+        "dst": {
+          "node": "60ce7c95-8a36-4212-859e-bd776bba2f30",
+          "port": 0
+        },
+        "uiprops": {
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": [],
+          "hang_coord_start": {
+            "x": 760,
+            "y": -136
+          },
+          "hang_coord_end": {
+            "x": 824,
+            "y": -72
+          }
+        }
+      },
+      {
+        "uuid": "fd1fd2ca-3a89-43bf-ae02-49075839d887",
+        "src": {
+          "node": "00ccde17-d93f-469b-98ba-06f8d9f27d69",
+          "port": 0
+        },
+        "dst": {
+          "node": "60ce7c95-8a36-4212-859e-bd776bba2f30",
+          "port": 1
+        },
+        "uiprops": {
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": [],
+          "hang_coord_end": {
+            "x": 824,
+            "y": -48
+          }
+        }
+      },
+      {
+        "uuid": "c1840128-23e1-49a1-8f6b-4ca533890375",
+        "src": {
+          "node": "00ccde17-d93f-469b-98ba-06f8d9f27d69",
+          "port": 1
+        },
+        "dst": {
+          "node": "60ce7c95-8a36-4212-859e-bd776bba2f30",
+          "port": 2
+        },
+        "uiprops": {
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": [],
+          "hang_coord_end": {
+            "x": 824,
+            "y": -32
+          }
+        }
+      },
+      {
+        "uuid": "8ed49832-0cdd-48ee-94f5-faa0dc0eeeac",
+        "src": {
+          "node": "60ce7c95-8a36-4212-859e-bd776bba2f30",
+          "port": 1
+        },
+        "dst": {
+          "node": "00ccde17-d93f-469b-98ba-06f8d9f27d69",
+          "port": 0
+        },
+        "uiprops": {
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": [],
+          "hang_coord_start": {
+            "x": 1104,
+            "y": -72
+          }
+        }
+      }
+    ],
+    "annotations": [],
+    "uuid": "f5006136-13be-4387-83ca-d980212128b7"
+  },
+  "name": "WindTurbine_model_2024-03-12T13:44:24Z",
+  "parameters": {
+    "rho": {
+      "value": "1.2231"
+    },
+    "gen_N": {
+      "value": "97"
+    },
+    "omega": {
+      "value": "1.2566"
+    },
+    "hub_mass": {
+      "value": "56780"
+    },
+    "nac_mass": {
+      "value": "240000"
+    },
+    "blade_mass": {
+      "value": "17740"
+    },
+    "hub_height": {
+      "value": "90"
+    },
+    "hub_radius": {
+      "value": "1.5"
+    },
+    "rotor_damp": {
+      "value": "6215000"
+    },
+    "rotor_mass": {
+      "value": "110000"
+    },
+    "tower_damp": {
+      "value": "0.08"
+    },
+    "tower_freq": {
+      "value": "0.3210"
+    },
+    "tower_mass": {
+      "value": "347462"
+    },
+    "gen_inertia": {
+      "value": "534.116"
+    },
+    "hub_inertia": {
+      "value": "115926"
+    },
+    "pitch_delay": {
+      "value": "0.05"
+    },
+    "blade_length": {
+      "value": "61.4"
+    },
+    "rotor_radius": {
+      "value": "63"
+    },
+    "rotor_spring": {
+      "value": "867637000"
+    },
+    "tower_height": {
+      "value": "87.6"
+    },
+    "blade_inertia": {
+      "value": "11776047"
+    },
+    "pitch_ctrl_ki": {
+      "value": "0.084210515710766"
+    },
+    "pitch_ctrl_kp": {
+      "value": "0.196491203325120"
+    },
+    "rotor_inertia": {
+      "value": "35444067"
+    },
+    "gen_efficiency": {
+      "value": "0.944"
+    },
+    "gen_rated_speed": {
+      "value": "122.9096"
+    },
+    "gen_rated_torque": {
+      "value": "4.0680e+04"
+    },
+    "pitch_servo_gain": {
+      "value": "10"
+    },
+    "gen_time_constant": {
+      "value": "0.1"
+    },
+    "rotor_rated_speed": {
+      "value": "1.2671"
+    },
+    "pitch_time_constant": {
+      "value": "0.05"
+    }
+  },
+  "state_machines": null,
+  "subdiagrams": {
+    "diagrams": {},
+    "references": {}
+  },
+  "uuid": "ac380422-7f81-4be2-b8a0-29ee69f0eda9",
+  "sim_model_uuid": "26a61507-2f3e-4f57-bdb7-a8e6bd76197a",
+  "owner_uuid": "45508c95-0f62-4f70-a5b2-f573641f4dc6",
+  "schema_version": "4",
+  "kind": "Model"
+}

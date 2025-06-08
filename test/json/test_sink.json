@@ -1,0 +1,103 @@
+{
+  "configuration": {
+    "fixed_results_interval": 0,
+    "max_results_interval": 0,
+    "numerical_backend": "auto",
+    "record_mode": "all",
+    "sample_time": 0.1,
+    "sim_output_mode": "auto",
+    "solver": {
+      "absolute_tolerance": 0.000001,
+      "max_minor_steps_per_major_step": 4096,
+      "max_step": 1000000,
+      "method": "non-stiff",
+      "min_step": 0,
+      "relative_tolerance": 0.001
+    },
+    "start_time": 0,
+    "stop_time": 10,
+    "worker_type": "any",
+    "workspace": {}
+  },
+  "diagram": {
+    "annotations": [],
+    "links": [
+      {
+        "dst": {
+          "node": "0e01fce5-c61f-4383-a16f-6d89c8bb9cca",
+          "port": 0
+        },
+        "src": {
+          "node": "ab692fee-fdfd-468d-ab40-4cb3dd16c9b4",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 776,
+            "y": 416
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "55cb60c1-2655-41b3-944f-96109338a04f"
+      }
+    ],
+    "nodes": [
+      {
+        "inputs": [],
+        "name": "DiscreteInitializer_0",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "initial_state": {
+            "value": "true"
+          }
+        },
+        "type": "core.DiscreteInitializer",
+        "uiprops": {
+          "port_alignment": "spaced",
+          "x": 632,
+          "y": 384
+        },
+        "uuid": "ab692fee-fdfd-468d-ab40-4cb3dd16c9b4"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "static",
+            "name": "in_0"
+          }
+        ],
+        "name": "Stop_0",
+        "outputs": [],
+        "parameters": {},
+        "time_mode": "agnostic",
+        "type": "core.Stop",
+        "uiprops": {
+          "port_alignment": "spaced",
+          "x": 776,
+          "y": 384
+        },
+        "uuid": "0e01fce5-c61f-4383-a16f-6d89c8bb9cca"
+      }
+    ],
+    "uuid": "852d623e-4b06-4150-8264-682c5abc35c3"
+  },
+  "kind": "Model",
+  "name": "test_sink",
+  "parameters": {},
+  "project_uuid": "fae0f10e-7b4a-45d3-8c4a-d31638a7451e",
+  "schema_version": "3",
+  "state_machines": {},
+  "subdiagrams": {
+    "diagrams": {},
+    "references": {}
+  },
+  "uuid": "9d0f9490-8422-4e81-8ec3-67997384bbb5"
+}

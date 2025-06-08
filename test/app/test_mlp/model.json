@@ -1,0 +1,153 @@
+{
+  "$schema_version": "0.1",
+  "uuid": "9c1bf419-cfef-462f-994a-92caf28de1ca",
+  "name": "mlp",
+  "diagram": {
+    "nodes": [
+      {
+        "uuid": "ec3a1171-bde5-41c6-babf-96e8cd7c1659",
+        "name": "MLP_0",
+        "type": "core.MLP",
+        "inputs": [
+          {
+            "name": "in_0",
+            "kind": "static"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out_0",
+            "kind": "static",
+            "record": true
+          }
+        ],
+        "parameters": {
+          "activation_str": {
+            "value": "relu",
+            "is_string": true
+          },
+          "depth": {
+            "value": "2"
+          },
+          "file_name": {
+            "value": "pretrained.eqx",
+            "is_string": true
+          },
+          "final_activation_str": {
+            "value": "identity",
+            "is_string": true
+          },
+          "in_size": {
+            "value": "2"
+          },
+          "out_size": {
+            "value": "2"
+          },
+          "seed": {
+            "value": "42"
+          },
+          "use_bias": {
+            "value": "true"
+          },
+          "use_final_bias": {
+            "value": "true"
+          },
+          "width_size": {
+            "value": "2"
+          }
+        },
+        "uiprops": {
+          "x": 720,
+          "y": 272,
+          "port_alignment": "spaced"
+        }
+      },
+      {
+        "uuid": "51bce7b3-eaf7-4acb-b232-c2654c38dbe4",
+        "name": "Constant_0",
+        "type": "core.Constant",
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "out_0",
+            "kind": "static"
+          }
+        ],
+        "parameters": {
+          "value": {
+            "value": "[100.0,200.0]"
+          }
+        },
+        "uiprops": {
+          "x": 600,
+          "y": 296,
+          "grid_height": 2,
+          "grid_width": 10,
+          "port_alignment": "spaced"
+        }
+      }
+    ],
+    "links": [
+      {
+        "uuid": "abe0f2f6-2fb1-40f7-b025-d1face7e1811",
+        "src": {
+          "node": "51bce7b3-eaf7-4acb-b232-c2654c38dbe4",
+          "port": 0
+        },
+        "dst": {
+          "node": "ec3a1171-bde5-41c6-babf-96e8cd7c1659",
+          "port": 0
+        },
+        "uiprops": {
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": [],
+          "hang_coord_end": {
+            "x": 712,
+            "y": 304
+          }
+        }
+      }
+    ],
+    "annotations": [],
+    "uuid": "c7adc61f-f29e-4a32-99e1-b9438bdb9872"
+  },
+  "configuration": {
+    "fixed_results_interval": 0,
+    "numerical_backend": "auto",
+    "record_mode": "all",
+    "sample_time": 0.1,
+    "sim_output_mode": "auto",
+    "solver": {
+      "absolute_tolerance": 0.000001,
+      "max_minor_steps_per_major_step": 4096,
+      "max_step": 1000000,
+      "method": "non-stiff",
+      "min_step": 0,
+      "relative_tolerance": 0.001
+    },
+    "start_time": 0,
+    "stop_time": 1,
+    "worker_type": "any",
+    "workspace": {},
+    "data_points_min": 0,
+    "events_handling": "normal",
+    "continuous_time_result_interval": 0,
+    "__developer_options": {
+      "disable_firejail": false
+    }
+  },
+  "parameters": {},
+  "submodels": {
+    "diagrams": {},
+    "references": {}
+  },
+  "state_machines": {},
+  "needs_autolayout": false,
+  "created_at": "2024-03-29T21:58:00Z",
+  "updated_at": "2024-03-29T22:27:22Z",
+  "version": 27,
+  "project_uuid": "eab233b4-8fef-4f05-94bf-f293e17b47d1",
+  "kind": "Model"
+}

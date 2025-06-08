@@ -1,0 +1,616 @@
+{
+  "configuration": {
+    "max_results_interval": 1,
+    "record_mode": "selected",
+    "sample_time": 0.01,
+    "solver": {
+      "absolute_tolerance": 0.000001,
+      "max_minor_steps_per_major_step": 1000,
+      "max_step": 1000000,
+      "method": "RK45",
+      "min_step": 0,
+      "relative_tolerance": 0.001
+    },
+    "start_time": 0,
+    "stop_time": 50,
+    "worker_type": "any",
+    "workspace": {}
+  },
+  "diagram": {
+    "annotations": [
+      {
+        "color_id": "green",
+        "grid_height": 22,
+        "grid_width": 52,
+        "label_position": "top",
+        "text": "Cost Function",
+        "uuid": "f9c323b7-85fc-400e-86b5-fc44fc6130a7",
+        "x": 408,
+        "y": 232
+      },
+      {
+        "color_id": "yellow",
+        "grid_height": 34,
+        "grid_width": 63,
+        "label_position": "top",
+        "text": "Extremum-seeking controller",
+        "uuid": "3ac47d8c-684d-4d52-9c86-df475fa03737",
+        "x": 376,
+        "y": 504
+      }
+    ],
+    "links": [
+      {
+        "dst": {
+          "node": "638c529f-ff11-4e44-9e01-51e3b1439b9a",
+          "port": 1
+        },
+        "src": {
+          "node": "4405129f-e752-4c87-89b5-5c5f867d7813",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 240,
+            "y": -8
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "656c3033-b45c-4697-84f6-7095046068ce"
+      },
+      {
+        "dst": {
+          "node": "638c529f-ff11-4e44-9e01-51e3b1439b9a",
+          "port": 0
+        },
+        "src": {
+          "node": "ffbcbc71-4178-49a5-ba9b-57bfeba7e336",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 296,
+            "y": -24
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "8c4b3d29-4fbb-4f2d-a01a-c245f32e4cba"
+      },
+      {
+        "dst": {
+          "node": "ffbcbc71-4178-49a5-ba9b-57bfeba7e336",
+          "port": 0
+        },
+        "src": {
+          "node": "3e4f2431-e78e-4a34-ae7c-980012fbe0c0",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 112,
+            "y": -32
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "62e5c054-69e1-4072-92b4-75c7f80dcbe5"
+      },
+      {
+        "dst": {
+          "node": "c25ea3b2-1744-4d50-9cd6-5c56d5321baa",
+          "port": 1
+        },
+        "src": {
+          "node": "f56d3018-1bcf-444a-a5f7-72884c66317a",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 464,
+            "y": 72
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "59c445b0-6cf5-415e-9966-98c42ddce2dc"
+      },
+      {
+        "dst": {
+          "node": "c25ea3b2-1744-4d50-9cd6-5c56d5321baa",
+          "port": 0
+        },
+        "src": {
+          "node": "4b05454d-bc26-4cff-ac41-488aaf46772b",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 464,
+            "y": 48
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "563fefd5-8d77-47b0-aa9b-e447656a0275"
+      },
+      {
+        "dst": {
+          "node": "4b05454d-bc26-4cff-ac41-488aaf46772b",
+          "port": 0
+        },
+        "src": {
+          "node": "eb947750-6b36-40d0-bc5e-282509c48bb4",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 416,
+            "y": -32
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "c7506cda-510f-4362-a091-1ba5f516bad1"
+      },
+      {
+        "dst": {
+          "node": "eb947750-6b36-40d0-bc5e-282509c48bb4",
+          "port": 1
+        },
+        "src": {
+          "node": "13c888e4-91ee-4365-a434-10715d1db866",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 240,
+            "y": 64
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "0c6835c3-8a89-4d24-8fd5-7c327098b691"
+      },
+      {
+        "dst": {
+          "node": "eb947750-6b36-40d0-bc5e-282509c48bb4",
+          "port": 0
+        },
+        "src": {
+          "node": "f5f1dde1-cb7e-47c5-8c67-4d43b0fef997",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 224,
+            "y": -8
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "a6d2acc0-796f-43c0-ad15-af851cf3b831"
+      },
+      {
+        "dst": {
+          "node": "f5f1dde1-cb7e-47c5-8c67-4d43b0fef997",
+          "port": 0
+        },
+        "src": {
+          "node": "638c529f-ff11-4e44-9e01-51e3b1439b9a",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 408,
+            "y": 560
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": [
+            {
+              "coordinate": 888,
+              "segment_direction": "vert"
+            },
+            {
+              "coordinate": 448,
+              "segment_direction": "horiz"
+            },
+            {
+              "coordinate": 320,
+              "segment_direction": "vert"
+            }
+          ]
+        },
+        "uuid": "23625353-2919-4309-9ac2-17e75384793c"
+      },
+      {
+        "dst": {
+          "node": "3e4f2431-e78e-4a34-ae7c-980012fbe0c0",
+          "port": 0
+        },
+        "src": {
+          "node": "c25ea3b2-1744-4d50-9cd6-5c56d5321baa",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 424,
+            "y": 288
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": [
+            {
+              "coordinate": 936,
+              "segment_direction": "vert"
+            },
+            {
+              "coordinate": 832,
+              "segment_direction": "horiz"
+            },
+            {
+              "coordinate": 280,
+              "segment_direction": "vert"
+            }
+          ]
+        },
+        "uuid": "4ff03901-1646-4348-ae8c-7dd198b692a9"
+      }
+    ],
+    "nodes": [
+      {
+        "inputs": [
+          {
+            "kind": "static",
+            "name": "in_0"
+          }
+        ],
+        "name": "Offset_0",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "offset": {
+            "value": "-5"
+          }
+        },
+        "type": "core.Offset",
+        "uiprops": {
+          "port_alignment": "spaced",
+          "x": 424,
+          "y": 256
+        },
+        "uuid": "3e4f2431-e78e-4a34-ae7c-980012fbe0c0"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "static",
+            "name": "in_0"
+          }
+        ],
+        "name": "Power_0",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "exponent": {
+            "value": "2.0"
+          }
+        },
+        "type": "core.Power",
+        "uiprops": {
+          "port_alignment": "spaced",
+          "x": 560,
+          "y": 256
+        },
+        "uuid": "ffbcbc71-4178-49a5-ba9b-57bfeba7e336"
+      },
+      {
+        "inputs": [],
+        "name": "Constant_0",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "value": {
+            "value": "25.0"
+          }
+        },
+        "type": "core.Constant",
+        "uiprops": {
+          "grid_height": 2,
+          "grid_width": 6,
+          "port_alignment": "spaced",
+          "x": 568,
+          "y": 368
+        },
+        "uuid": "4405129f-e752-4c87-89b5-5c5f867d7813"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "dynamic",
+            "name": "in_0"
+          },
+          {
+            "kind": "dynamic",
+            "name": "in_1"
+          }
+        ],
+        "name": "J",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0",
+            "record": true
+          }
+        ],
+        "parameters": {
+          "operators": {
+            "is_string": true,
+            "value": "-+"
+          }
+        },
+        "type": "core.Adder",
+        "uiprops": {
+          "port_alignment": "spaced",
+          "x": 720,
+          "y": 288
+        },
+        "uuid": "638c529f-ff11-4e44-9e01-51e3b1439b9a"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "static",
+            "name": "in_0"
+          }
+        ],
+        "name": "HighPassFilter",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "denominator_coefficients": {
+            "value": "[1, 1]"
+          },
+          "numerator_coefficients": {
+            "value": "[1, 0]"
+          }
+        },
+        "type": "core.TransferFunction",
+        "uiprops": {
+          "port_alignment": "spaced",
+          "x": 400,
+          "y": 528
+        },
+        "uuid": "f5f1dde1-cb7e-47c5-8c67-4d43b0fef997"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "dynamic",
+            "name": "in_0"
+          },
+          {
+            "kind": "dynamic",
+            "name": "in_1"
+          }
+        ],
+        "name": "Demodulated",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "denominator_limit": {
+            "value": "1e-12"
+          },
+          "divide_by_zero_behavior": {
+            "is_string": true,
+            "value": "inf"
+          },
+          "operators": {
+            "is_string": true,
+            "value": "**"
+          }
+        },
+        "type": "core.Product",
+        "uiprops": {
+          "port_alignment": "spaced",
+          "x": 560,
+          "y": 608
+        },
+        "uuid": "eb947750-6b36-40d0-bc5e-282509c48bb4"
+      },
+      {
+        "inputs": [],
+        "name": "SineWave_0",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "amplitude": {
+            "value": "A"
+          },
+          "bias": {
+            "value": "0.0"
+          },
+          "frequency": {
+            "value": "w"
+          },
+          "phase": {
+            "value": "phi"
+          }
+        },
+        "time_mode": "agnostic",
+        "type": "core.SineWave",
+        "uiprops": {
+          "port_alignment": "spaced",
+          "x": 400,
+          "y": 656
+        },
+        "uuid": "13c888e4-91ee-4365-a434-10715d1db866"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "static",
+            "name": "in_0"
+          }
+        ],
+        "name": "u_hat",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0",
+            "record": true
+          }
+        ],
+        "parameters": {
+          "denominator_coefficients": {
+            "value": "[1, 0]"
+          },
+          "numerator_coefficients": {
+            "value": "[k]"
+          }
+        },
+        "type": "core.TransferFunction",
+        "uiprops": {
+          "port_alignment": "spaced",
+          "x": 672,
+          "y": 528
+        },
+        "uuid": "4b05454d-bc26-4cff-ac41-488aaf46772b"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "dynamic",
+            "name": "in_0"
+          },
+          {
+            "kind": "dynamic",
+            "name": "in_1"
+          }
+        ],
+        "name": "u",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "operators": {
+            "is_string": true,
+            "value": "++"
+          }
+        },
+        "type": "core.Adder",
+        "uiprops": {
+          "port_alignment": "spaced",
+          "x": 784,
+          "y": 616
+        },
+        "uuid": "c25ea3b2-1744-4d50-9cd6-5c56d5321baa"
+      },
+      {
+        "inputs": [],
+        "name": "SineWave_1",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "amplitude": {
+            "value": "A"
+          },
+          "bias": {
+            "value": "0.0"
+          },
+          "frequency": {
+            "value": "w"
+          },
+          "phase": {
+            "value": "0.0"
+          }
+        },
+        "time_mode": "agnostic",
+        "type": "core.SineWave",
+        "uiprops": {
+          "port_alignment": "spaced",
+          "x": 672,
+          "y": 656
+        },
+        "uuid": "f56d3018-1bcf-444a-a5f7-72884c66317a"
+      }
+    ],
+    "uuid": "b905736c-f98a-474f-8cba-4c25c436afca"
+  },
+  "kind": "Model",
+  "name": "SimpleESC",
+  "parameters": {
+    "A": {
+      "value": "0.2"
+    },
+    "k": {
+      "value": "10"
+    },
+    "phi": {
+      "value": "0.0"
+    },
+    "w": {
+      "value": "10"
+    },
+    "wh": {
+      "value": "1"
+    }
+  },
+  "schema_version": "3",
+  "subdiagrams": {
+    "diagrams": {},
+    "references": {}
+  },
+  "uuid": "b417642f-0c1f-4fd8-86dd-f730d42eaaef"
+}

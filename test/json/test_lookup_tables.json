@@ -1,0 +1,252 @@
+{
+  "configuration": {
+    "fixed_results_interval": 0,
+    "max_results_interval": 0,
+    "numerical_backend": "auto",
+    "record_mode": "all",
+    "sample_time": 0.1,
+    "sim_output_mode": "auto",
+    "solver": {
+      "absolute_tolerance": 0.000001,
+      "max_minor_steps_per_major_step": 4096,
+      "max_step": 1000000,
+      "method": "non-stiff",
+      "min_step": 0,
+      "relative_tolerance": 0.001
+    },
+    "start_time": 0,
+    "stop_time": 10,
+    "worker_type": "any",
+    "workspace": {}
+  },
+  "diagram": {
+    "annotations": [],
+    "links": [
+      {
+        "dst": {
+          "node": "24a28b12-36ca-4265-9f7e-9b674eaba6b6",
+          "port": 0
+        },
+        "src": {
+          "node": "c520ef6a-3231-4d26-bd13-320daa348a00",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 848,
+            "y": 376
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": [
+            {
+              "coordinate": 704,
+              "segment_direction": "vert"
+            },
+            {
+              "coordinate": 376,
+              "segment_direction": "horiz"
+            },
+            {
+              "coordinate": 772,
+              "segment_direction": "vert"
+            },
+            {
+              "coordinate": 376,
+              "segment_direction": "horiz"
+            },
+            {
+              "coordinate": 840,
+              "segment_direction": "vert"
+            }
+          ]
+        },
+        "uuid": "de8ff4e5-8781-4bb4-b3c3-370b85c82192"
+      },
+      {
+        "dst": {
+          "node": "cdb2f04e-09b2-4440-8853-b69c3f635ae9",
+          "port": 0
+        },
+        "src": {
+          "node": "c520ef6a-3231-4d26-bd13-320daa348a00",
+          "port": 0
+        },
+        "uiprops": {
+          "link_type": {
+            "connection_method": "link_tap",
+            "tap_coordinate": 800,
+            "tapped_link_uuid": "de8ff4e5-8781-4bb4-b3c3-370b85c82192",
+            "tapped_segment": {
+              "segment_type": "real",
+              "tapped_segment_direction": "horiz",
+              "tapped_segment_index": 3
+            }
+          },
+          "segments": [
+            {
+              "coordinate": 384,
+              "segment_direction": "horiz"
+            },
+            {
+              "coordinate": 800,
+              "segment_direction": "vert"
+            },
+            {
+              "coordinate": 456,
+              "segment_direction": "horiz"
+            },
+            {
+              "coordinate": 848,
+              "segment_direction": "vert"
+            }
+          ]
+        },
+        "uuid": "546d458a-619d-452d-9b35-b2a9291b5ac6"
+      },
+      {
+        "dst": {
+          "node": "cdb2f04e-09b2-4440-8853-b69c3f635ae9",
+          "port": 1
+        },
+        "src": {
+          "node": "c520ef6a-3231-4d26-bd13-320daa348a00",
+          "port": 0
+        },
+        "uiprops": {
+          "link_type": {
+            "connection_method": "link_tap",
+            "tap_coordinate": 800,
+            "tapped_link_uuid": "546d458a-619d-452d-9b35-b2a9291b5ac6",
+            "tapped_segment": {
+              "segment_type": "real",
+              "tapped_segment_direction": "horiz",
+              "tapped_segment_index": 2
+            }
+          },
+          "segments": []
+        },
+        "uuid": "69a92cd1-42d3-40c2-86f7-fcc3355086af"
+      }
+    ],
+    "nodes": [
+      {
+        "inputs": [],
+        "name": "Ramp_0",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "slope": {
+            "value": "1.0"
+          },
+          "start_time": {
+            "value": "1.0"
+          },
+          "start_value": {
+            "value": "0.0"
+          }
+        },
+        "time_mode": "agnostic",
+        "type": "core.Ramp",
+        "uiprops": {
+          "port_alignment": "spaced",
+          "x": 624,
+          "y": 344
+        },
+        "uuid": "c520ef6a-3231-4d26-bd13-320daa348a00"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "static",
+            "name": "in_0"
+          }
+        ],
+        "name": "LookupTable1d_0",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "input_array": {
+            "value": "[0.0, 1.0]"
+          },
+          "interpolation": {
+            "is_string": true,
+            "value": "linear"
+          },
+          "output_array": {
+            "value": "[0.0, 1.0]"
+          }
+        },
+        "type": "core.LookupTable1d",
+        "uiprops": {
+          "port_alignment": "spaced",
+          "x": 848,
+          "y": 344
+        },
+        "uuid": "24a28b12-36ca-4265-9f7e-9b674eaba6b6"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "static",
+            "name": "in_0"
+          },
+          {
+            "kind": "static",
+            "name": "in_1"
+          }
+        ],
+        "name": "LookupTable2d_0",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "input_x_array": {
+            "value": "[0.0, 1.0]"
+          },
+          "input_y_array": {
+            "value": "[0.0, 1.0]"
+          },
+          "interpolation": {
+            "is_string": true,
+            "value": "linear"
+          },
+          "output_table_array": {
+            "value": "[ [0.0, 1.0], [2.0, 3.0] ]"
+          }
+        },
+        "type": "core.LookupTable2d",
+        "uiprops": {
+          "port_alignment": "spaced",
+          "x": 848,
+          "y": 440
+        },
+        "uuid": "cdb2f04e-09b2-4440-8853-b69c3f635ae9"
+      }
+    ],
+    "uuid": "d50b8ec3-99c2-4bdf-bcfe-f4f670b14222"
+  },
+  "kind": "Model",
+  "name": "test_lookup_tables",
+  "parameters": {},
+  "project_uuid": "fae0f10e-7b4a-45d3-8c4a-d31638a7451e",
+  "schema_version": "3",
+  "state_machines": {},
+  "subdiagrams": {
+    "diagrams": {},
+    "references": {}
+  },
+  "uuid": "3f3bbbff-e4b6-4580-81cd-d83d4969d909"
+}

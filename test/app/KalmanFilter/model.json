@@ -1,0 +1,348 @@
+{
+  "configuration": {
+    "solver": {
+      "method": "non-stiff",
+      "max_step": 1000000,
+      "min_step": 0,
+      "absolute_tolerance": 1e-06,
+      "relative_tolerance": 0.001,
+      "max_minor_steps_per_major_step": 4096
+    },
+    "stop_time": 10,
+    "workspace": {
+      "init_scripts": [
+        {
+          "file_name": "kf_init.py"
+        }
+      ]
+    },
+    "start_time": 0,
+    "record_mode": "all",
+    "sample_time": 0.1,
+    "worker_type": "any",
+    "sim_output_mode": "auto",
+    "numerical_backend": "auto",
+    "fixed_results_interval": 0,
+    "max_results_interval": 0
+  },
+  "diagram": {
+    "nodes": [
+      {
+        "uuid": "7799be93-1ba8-4b30-b4db-8d0636fcbf58",
+        "name": "KalmanFilter_0",
+        "type": "core.KalmanFilter",
+        "inputs": [
+          {
+            "name": "u",
+            "kind": "static"
+          },
+          {
+            "name": "y",
+            "kind": "static"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "x_hat",
+            "kind": "static"
+          }
+        ],
+        "parameters": {
+          "A": {
+            "value": "[[1,0],[0,1]]"
+          },
+          "B": {
+            "value": "[[0],[0]]"
+          },
+          "C": {
+            "value": ""
+          },
+          "D": {
+            "value": ""
+          },
+          "G": {
+            "value": ""
+          },
+          "Q": {
+            "value": "Q"
+          },
+          "R": {
+            "value": "R"
+          },
+          "dt": {
+            "value": "dt"
+          },
+          "u_eq": {
+            "value": "[0]"
+          },
+          "x_eq": {
+            "value": "[0, 0]"
+          },
+          "P_hat_0": {
+            "value": "P_hat_bar_0"
+          },
+          "x_hat_0": {
+            "value": "x_hat_bar_0"
+          },
+          "use_ihkf": {
+            "value": "false"
+          },
+          "matrices_provided": {
+            "value": "false"
+          },
+          "plant_submodel_uuid": {
+            "value": "17bb5da3-84f6-4584-94cd-3ec8b53badd9",
+            "is_string": true
+          },
+          "discretization_method": {
+            "value": "zoh",
+            "is_string": true
+          }
+        },
+        "uiprops": {
+          "x": 928,
+          "y": 384,
+          "grid_height": 7,
+          "grid_width": 6,
+          "port_alignment": "spaced"
+        }
+      },
+      {
+        "uuid": "0a9b5987-a42d-4f01-ae72-ddbbe183afd7",
+        "name": "Pendulum_with_torque_0",
+        "submodel_reference_uuid": "17bb5da3-84f6-4584-94cd-3ec8b53badd9",
+        "type": "core.ReferenceSubmodel",
+        "inputs": [
+          {
+            "name": "tau",
+            "kind": "dynamic"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "theta",
+            "kind": "dynamic"
+          }
+        ],
+        "parameters": {},
+        "uiprops": {
+          "x": 568,
+          "y": 448,
+          "grid_height": 12,
+          "grid_width": 24,
+          "port_alignment": "spaced",
+          "show_port_name_labels": true
+        }
+      },
+      {
+        "uuid": "af8496fd-8c35-4da8-acf8-100df4d00357",
+        "name": "control",
+        "type": "core.Constant",
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "out_0",
+            "kind": "static"
+          }
+        ],
+        "parameters": {
+          "value": {
+            "value": "[0]"
+          }
+        },
+        "uiprops": {
+          "x": 384,
+          "y": 488,
+          "port_alignment": "spaced"
+        }
+      },
+      {
+        "uuid": "9c0a2519-8e0b-4425-885a-26f5b4f8a3fd",
+        "name": "zoh_u",
+        "type": "core.ZeroOrderHold",
+        "inputs": [
+          {
+            "name": "in_0",
+            "kind": "static"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out_0",
+            "kind": "static"
+          }
+        ],
+        "parameters": {},
+        "uiprops": {
+          "x": 632,
+          "y": 368,
+          "port_alignment": "spaced"
+        }
+      },
+      {
+        "uuid": "ce68aeab-4cb1-4e88-b4c9-748d88da72ad",
+        "name": "zoh_y",
+        "type": "core.ZeroOrderHold",
+        "inputs": [
+          {
+            "name": "in_0",
+            "kind": "static"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out_0",
+            "kind": "static"
+          }
+        ],
+        "parameters": {},
+        "uiprops": {
+          "x": 816,
+          "y": 464,
+          "port_alignment": "spaced"
+        }
+      }
+    ],
+    "links": [
+      {
+        "uuid": "a26e298e-9a08-493d-a687-4c16480af1e5",
+        "src": {
+          "node": "af8496fd-8c35-4da8-acf8-100df4d00357",
+          "port": 0
+        },
+        "dst": {
+          "node": "0a9b5987-a42d-4f01-ae72-ddbbe183afd7",
+          "port": 0,
+          "port_side": "inputs"
+        },
+        "uiprops": {
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": [
+            {
+              "segment_direction": "vert",
+              "coordinate": 440
+            },
+            {
+              "segment_direction": "horiz",
+              "coordinate": 496
+            },
+            {
+              "segment_direction": "vert",
+              "coordinate": 592
+            }
+          ],
+          "hang_coord_end": {
+            "x": 600,
+            "y": 504
+          }
+        }
+      },
+      {
+        "uuid": "645a7654-fc3d-4c19-9ef9-fbaee89d6347",
+        "src": {
+          "node": "af8496fd-8c35-4da8-acf8-100df4d00357",
+          "port": 0
+        },
+        "dst": {
+          "node": "9c0a2519-8e0b-4425-885a-26f5b4f8a3fd",
+          "port": 0
+        },
+        "uiprops": {
+          "link_type": {
+            "tap_coordinate": 457.6540755467197,
+            "tapped_segment": {
+              "segment_type": "real",
+              "tapped_segment_index": 1,
+              "tapped_segment_direction": "horiz"
+            },
+            "tapped_link_uuid": "a26e298e-9a08-493d-a687-4c16480af1e5",
+            "connection_method": "link_tap"
+          },
+          "segments": []
+        }
+      },
+      {
+        "uuid": "614f222f-d79a-4e6a-826f-df30b35e24d0",
+        "src": {
+          "node": "0a9b5987-a42d-4f01-ae72-ddbbe183afd7",
+          "port": 0
+        },
+        "dst": {
+          "node": "ce68aeab-4cb1-4e88-b4c9-748d88da72ad",
+          "port": 0,
+          "port_side": "inputs"
+        },
+        "uiprops": {
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": [],
+          "hang_coord_end": {
+            "x": 816,
+            "y": 496
+          }
+        }
+      },
+      {
+        "uuid": "6ca999bc-c717-44cd-be4b-3d162e71e170",
+        "src": {
+          "node": "9c0a2519-8e0b-4425-885a-26f5b4f8a3fd",
+          "port": 0
+        },
+        "dst": {
+          "node": "7799be93-1ba8-4b30-b4db-8d0636fcbf58",
+          "port": 0,
+          "port_side": "inputs"
+        },
+        "uiprops": {
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": [],
+          "hang_coord_end": {
+            "x": 632,
+            "y": 472
+          }
+        }
+      },
+      {
+        "uuid": "447ca939-0fb0-43a1-ad98-e13ecba3279b",
+        "src": {
+          "node": "ce68aeab-4cb1-4e88-b4c9-748d88da72ad",
+          "port": 0,
+          "port_side": "outputs"
+        },
+        "dst": {
+          "node": "7799be93-1ba8-4b30-b4db-8d0636fcbf58",
+          "port": 1
+        },
+        "uiprops": {
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": [],
+          "hang_coord_start": {
+            "x": 888,
+            "y": 632
+          }
+        }
+      }
+    ],
+    "annotations": [],
+    "uuid": "617be385-fcd4-429e-9e35-1fe94444776d"
+  },
+  "name": "KF with Pendulum_2024-05-07T08:23:37Z",
+  "parameters": {},
+  "state_machines": {},
+  "subdiagrams": {
+    "diagrams": {},
+    "references": {}
+  },
+  "uuid": "aa738946-b66e-475e-92b3-95e274718386",
+  "sim_model_uuid": "fb5f0ca8-140e-4114-8159-0f45d1356c1a",
+  "owner_uuid": "00000000-0000-0000-0000-000000000000",
+  "schema_version": "4",
+  "kind": "Model"
+}

@@ -1,0 +1,214 @@
+{
+  "diagram": {
+    "annotations": [],
+    "links": [
+      {
+        "dst": {
+          "node": "a0b41358-34a4-42c9-b9d7-a38f5273df43",
+          "port": 0
+        },
+        "src": {
+          "node": "e48f80eb-a5bb-4653-93c8-3b3cbaf6f55d",
+          "port": 0
+        },
+        "uiprops": {
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "83c14a54-9d8c-4917-b772-0a4627224bc6"
+      },
+      {
+        "dst": {
+          "node": "e48f80eb-a5bb-4653-93c8-3b3cbaf6f55d",
+          "port": 0
+        },
+        "src": {
+          "node": "a428a399-822a-499a-bc89-785ac62cfba0",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 624,
+            "y": 432
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "1859ddaa-8b91-41ed-8e28-4dadfaee265e"
+      },
+      {
+        "dst": {
+          "node": "e48f80eb-a5bb-4653-93c8-3b3cbaf6f55d",
+          "port": 1
+        },
+        "src": {
+          "node": "c4e7149a-82ea-4413-839e-45ae8f8d0bad",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 624,
+            "y": 456
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "53cea479-4201-43c7-924a-77a75514b245"
+      }
+    ],
+    "nodes": [
+      {
+        "inputs": [
+          {
+            "kind": "static",
+            "name": "in_0"
+          }
+        ],
+        "name": "u",
+        "outputs": [],
+        "parameters": {
+          "description": {
+            "is_string": true,
+            "value": ""
+          },
+          "port_id": {
+            "value": "0"
+          }
+        },
+        "type": "core.Outport",
+        "uiprops": {
+          "x": 464,
+          "y": 72
+        },
+        "uuid": "a0b41358-34a4-42c9-b9d7-a38f5273df43"
+      },
+      {
+        "inputs": [],
+        "name": "Step_0",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "end_value": {
+            "value": "A"
+          },
+          "start_value": {
+            "value": "0.0"
+          },
+          "step_time": {
+            "value": "t0"
+          }
+        },
+        "time_mode": "agnostic",
+        "type": "core.Step",
+        "uiprops": {
+          "port_alignment": "spaced",
+          "x": 216,
+          "y": 32
+        },
+        "uuid": "a428a399-822a-499a-bc89-785ac62cfba0"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "dynamic",
+            "name": "in_0"
+          },
+          {
+            "kind": "dynamic",
+            "name": "in_1"
+          }
+        ],
+        "name": "Adder_0",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0",
+            "record": true
+          }
+        ],
+        "parameters": {
+          "operators": {
+            "is_string": true,
+            "value": "+-"
+          }
+        },
+        "type": "core.Adder",
+        "uiprops": {
+          "port_alignment": "spaced",
+          "x": 368,
+          "y": 72
+        },
+        "uuid": "e48f80eb-a5bb-4653-93c8-3b3cbaf6f55d"
+      },
+      {
+        "inputs": [],
+        "name": "Step_1",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "end_value": {
+            "value": "A"
+          },
+          "start_value": {
+            "value": "0.0"
+          },
+          "step_time": {
+            "value": "t0+dt"
+          }
+        },
+        "time_mode": "agnostic",
+        "type": "core.Step",
+        "uiprops": {
+          "port_alignment": "spaced",
+          "x": 216,
+          "y": 136
+        },
+        "uuid": "c4e7149a-82ea-4413-839e-45ae8f8d0bad"
+      }
+    ],
+    "uuid": "0d1a5f20-85d0-488b-a213-3ab0cc9551a8"
+  },
+  "kind": "Submodel",
+  "name": "Impulse",
+  "parameter_definitions": [
+    {
+      "default_value": "1.0",
+      "name": "A",
+      "uiprops": {},
+      "uuid": "5a1801ca-a0c0-42a9-9ce0-3033ba3af542"
+    },
+    {
+      "default_value": "0.1",
+      "name": "dt",
+      "uiprops": {},
+      "uuid": "b3879195-5fc5-40c7-b85a-369bd75fd20e"
+    },
+    {
+      "default_value": "1.0",
+      "name": "t0",
+      "uiprops": {},
+      "uuid": "d295079d-3c16-4069-addf-3bb5c2bf4f1b"
+    }
+  ],
+  "schema_version": "3",
+  "subdiagrams": {
+    "diagrams": {},
+    "references": {}
+  },
+  "submodel_configuration": {},
+  "uuid": "2f40e9f3-1618-4ebe-8444-2a42cf01fe91"
+}

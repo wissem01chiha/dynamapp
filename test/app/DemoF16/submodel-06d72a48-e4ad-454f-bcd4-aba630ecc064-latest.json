@@ -1,0 +1,201 @@
+{
+  "diagram": {
+    "annotations": [],
+    "links": [
+      {
+        "dst": {
+          "node": "c9864c47-eb12-414b-8ee0-5169bac57781",
+          "port": 0
+        },
+        "src": {
+          "node": "99afa0a3-0daf-4b63-a3b8-7f396ed9d65f",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 200,
+            "y": 32
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "768ac071-bc5d-4c45-83eb-364f7be6b8bb"
+      },
+      {
+        "dst": {
+          "node": "99afa0a3-0daf-4b63-a3b8-7f396ed9d65f",
+          "port": 0
+        },
+        "src": {
+          "node": "9deabcc4-81b3-4d88-9eea-ea2b8508fbce",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 96,
+            "y": 16
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "9d4d4a39-d070-426b-ad2a-85e4e8033158"
+      },
+      {
+        "dst": {
+          "node": "99afa0a3-0daf-4b63-a3b8-7f396ed9d65f",
+          "port": 1
+        },
+        "src": {
+          "node": "118066f3-832b-490f-b8b3-65b5240a2b1d",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 96,
+            "y": 40
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "1ffc5e90-ebdf-41ca-b9ea-6549e30e7269"
+      }
+    ],
+    "nodes": [
+      {
+        "inputs": [],
+        "name": "Inport_0",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "description": {
+            "is_string": true,
+            "value": ""
+          },
+          "port_id": {
+            "value": "0"
+          }
+        },
+        "type": "core.Inport",
+        "uiprops": {
+          "x": -112,
+          "y": -16
+        },
+        "uuid": "9deabcc4-81b3-4d88-9eea-ea2b8508fbce"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "static",
+            "name": "in_0"
+          }
+        ],
+        "name": "Outport_0",
+        "outputs": [],
+        "parameters": {
+          "description": {
+            "is_string": true,
+            "value": ""
+          },
+          "port_id": {
+            "value": "0"
+          }
+        },
+        "type": "core.Outport",
+        "uiprops": {
+          "x": 200,
+          "y": 0
+        },
+        "uuid": "c9864c47-eb12-414b-8ee0-5169bac57781"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "dynamic",
+            "name": "in_0"
+          },
+          {
+            "kind": "dynamic",
+            "name": "in_1"
+          }
+        ],
+        "name": "Product_0",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "denominator_limit": {
+            "value": "1e-12"
+          },
+          "divide_by_zero_behavior": {
+            "is_string": true,
+            "value": "inf"
+          },
+          "operators": {
+            "is_string": true,
+            "value": "*/"
+          }
+        },
+        "type": "core.Product",
+        "uiprops": {
+          "port_alignment": "spaced",
+          "x": 96,
+          "y": 0
+        },
+        "uuid": "99afa0a3-0daf-4b63-a3b8-7f396ed9d65f"
+      },
+      {
+        "inputs": [],
+        "name": "Constant_0",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "value": {
+            "value": "gain"
+          }
+        },
+        "type": "core.Constant",
+        "uiprops": {
+          "port_alignment": "spaced",
+          "x": -24,
+          "y": 64
+        },
+        "uuid": "118066f3-832b-490f-b8b3-65b5240a2b1d"
+      }
+    ],
+    "uuid": "93b4f1c5-c76d-46fe-a739-d1c23586e317"
+  },
+  "kind": "Submodel",
+  "name": "InverseGain",
+  "parameter_definitions": [
+    {
+      "default_value": "1",
+      "name": "gain",
+      "uiprops": {},
+      "uuid": "d484d729-6c28-42f9-9bd4-1ec6c2a19e39"
+    }
+  ],
+  "schema_version": "3",
+  "subdiagrams": {
+    "diagrams": {},
+    "references": {}
+  },
+  "submodel_configuration": {},
+  "uuid": "06d72a48-e4ad-454f-bcd4-aba630ecc064"
+}

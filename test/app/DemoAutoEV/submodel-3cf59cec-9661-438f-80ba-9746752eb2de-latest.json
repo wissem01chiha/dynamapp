@@ -1,0 +1,235 @@
+{
+  "diagram": {
+    "annotations": [],
+    "links": [
+      {
+        "dst": {
+          "node": "3e1928cd-ce0d-4ce4-b286-c05e6f7b33b7",
+          "port": 0
+        },
+        "src": {
+          "node": "61e2f6dd-c661-4155-aa1d-b518c4d6a7bf",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 8,
+            "y": 32
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "645cf4b9-6db8-4845-94da-6bae66b5b93f"
+      },
+      {
+        "dst": {
+          "node": "d9ae27fb-7ac0-4d55-bf30-09f4dcb28ab7",
+          "port": 0
+        },
+        "src": {
+          "node": "3e1928cd-ce0d-4ce4-b286-c05e6f7b33b7",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 168,
+            "y": 32
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "93272710-5e43-4aff-95ed-4579d9d95730"
+      },
+      {
+        "dst": {
+          "node": "4d0d85a9-c84b-45d9-8956-780fdbc0032f",
+          "port": 0
+        },
+        "src": {
+          "node": "d9ae27fb-7ac0-4d55-bf30-09f4dcb28ab7",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 360,
+            "y": 32
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "a89581aa-5bd7-4cbd-90b6-adfb2e7c1fc8"
+      },
+      {
+        "dst": {
+          "node": "335bf12a-5e69-427a-a4ec-0d9f01b50517",
+          "port": 0
+        },
+        "src": {
+          "node": "4d0d85a9-c84b-45d9-8956-780fdbc0032f",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 360,
+            "y": 32
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "9b0cf3ac-3bd1-40a9-8169-7a6555b35915"
+      }
+    ],
+    "nodes": [
+      {
+        "inputs": [],
+        "name": "rot_spd_radps",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "description": {
+            "is_string": true,
+            "value": "Angular velocity of rotation mass in radians per second"
+          },
+          "port_id": {
+            "value": "0"
+          }
+        },
+        "type": "core.Inport",
+        "uiprops": {
+          "x": -72,
+          "y": 0
+        },
+        "uuid": "61e2f6dd-c661-4155-aa1d-b518c4d6a7bf"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "static",
+            "name": "in_0"
+          }
+        ],
+        "name": "inertia_trq_Nm",
+        "outputs": [],
+        "parameters": {
+          "description": {
+            "is_string": true,
+            "value": "torque delta resulting from accelerating rotating mass in Newton meters"
+          },
+          "port_id": {
+            "value": "0"
+          }
+        },
+        "type": "core.Outport",
+        "uiprops": {
+          "x": 360,
+          "y": 0
+        },
+        "uuid": "335bf12a-5e69-427a-a4ec-0d9f01b50517"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "static",
+            "name": "in_0"
+          }
+        ],
+        "name": "Derivative_0",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {},
+        "type": "core.Derivative",
+        "uiprops": {
+          "x": 8,
+          "y": 0
+        },
+        "uuid": "3e1928cd-ce0d-4ce4-b286-c05e6f7b33b7"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "static",
+            "name": "in_0"
+          }
+        ],
+        "name": "inertia_kgm2",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "gain": {
+            "value": "inertia_kgm2"
+          }
+        },
+        "type": "core.Gain",
+        "uiprops": {
+          "x": 136,
+          "y": 0
+        },
+        "uuid": "d9ae27fb-7ac0-4d55-bf30-09f4dcb28ab7"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "static",
+            "name": "in_0"
+          }
+        ],
+        "name": "invert",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "gain": {
+            "value": "-1.0"
+          }
+        },
+        "type": "core.Gain",
+        "uiprops": {
+          "x": 248,
+          "y": 0
+        },
+        "uuid": "4d0d85a9-c84b-45d9-8956-780fdbc0032f"
+      }
+    ],
+    "uuid": "53508077-000c-4e14-85c2-39fd956ec820"
+  },
+  "kind": "Submodel",
+  "name": "Mechanical - Rotational Inertia",
+  "parameter_definitions": [
+    {
+      "default_value": "0.01",
+      "name": "inertia_kgm2",
+      "uiprops": {},
+      "uuid": "c3fccb13-c07c-4a1f-9e2f-bc2c7882df7d"
+    }
+  ],
+  "schema_version": "3",
+  "subdiagrams": {
+    "diagrams": {},
+    "references": {}
+  },
+  "submodel_configuration": {},
+  "uuid": "3cf59cec-9661-438f-80ba-9746752eb2de"
+}

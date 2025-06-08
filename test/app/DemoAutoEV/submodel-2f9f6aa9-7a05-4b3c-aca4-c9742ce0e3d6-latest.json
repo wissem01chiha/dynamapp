@@ -1,0 +1,277 @@
+{
+  "diagram": {
+    "annotations": [
+      {
+        "color_id": "gray",
+        "grid_height": 29,
+        "grid_width": 80,
+        "label_position": "top",
+        "text": "The design is intended to fit in the concept that torque information flows in one direction, and speed information flows in the other direction. Inertia is neglected.",
+        "uuid": "9a3cfdab-388d-43c4-933f-71cf51078757",
+        "x": -48,
+        "y": -48
+      }
+    ],
+    "links": [
+      {
+        "dst": {
+          "node": "6c0dbecc-d260-47b0-944e-3fda4f1da654",
+          "port": 0
+        },
+        "src": {
+          "node": "20d0a17a-2a53-4a5d-9d0d-f8d765cadff3",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 96,
+            "y": 32
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "b78eb308-d6af-4f34-8c55-415d7fc3b058"
+      },
+      {
+        "dst": {
+          "node": "121a9623-9bd2-420b-93fb-7f2a1ac71c4b",
+          "port": 0
+        },
+        "src": {
+          "node": "6c0dbecc-d260-47b0-944e-3fda4f1da654",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 200,
+            "y": 32
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "6b520337-947e-4d7f-85eb-c512cd9bf7cf"
+      },
+      {
+        "dst": {
+          "node": "7be7651b-69d0-4b34-8a84-219c4103a4e4",
+          "port": 0
+        },
+        "src": {
+          "node": "c3dbf5b4-3ce4-448c-abff-e4381cd1aa99",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_start": {
+            "x": 200,
+            "y": 136
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "a0d6e6a4-fcbf-483a-bda3-8b0109b4ac79"
+      },
+      {
+        "dst": {
+          "node": "89c485ed-952d-4fb4-8675-e85ac5e495b1",
+          "port": 0
+        },
+        "src": {
+          "node": "7be7651b-69d0-4b34-8a84-219c4103a4e4",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_start": {
+            "x": 88,
+            "y": 136
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "0f004d7a-dc85-4490-a2c5-7ab11cf48f18"
+      }
+    ],
+    "nodes": [
+      {
+        "inputs": [],
+        "name": "trq_in",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "description": {
+            "is_string": true,
+            "value": "Input or upstream torque"
+          },
+          "port_id": {
+            "value": "0"
+          }
+        },
+        "type": "core.Inport",
+        "uiprops": {
+          "x": 0,
+          "y": 0
+        },
+        "uuid": "20d0a17a-2a53-4a5d-9d0d-f8d765cadff3"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "static",
+            "name": "in_0"
+          }
+        ],
+        "name": "trq_out",
+        "outputs": [],
+        "parameters": {
+          "description": {
+            "is_string": true,
+            "value": "Output or downstream torque"
+          },
+          "port_id": {
+            "value": "0"
+          }
+        },
+        "type": "core.Outport",
+        "uiprops": {
+          "x": 504,
+          "y": 0
+        },
+        "uuid": "121a9623-9bd2-420b-93fb-7f2a1ac71c4b"
+      },
+      {
+        "inputs": [],
+        "name": "spd_in",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "description": {
+            "is_string": true,
+            "value": "Input or upstream speed"
+          },
+          "port_id": {
+            "value": "1"
+          }
+        },
+        "type": "core.Inport",
+        "uiprops": {
+          "directionality": "right",
+          "x": 0,
+          "y": 88
+        },
+        "uuid": "c3dbf5b4-3ce4-448c-abff-e4381cd1aa99"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "static",
+            "name": "in_0"
+          }
+        ],
+        "name": "spd_out",
+        "outputs": [],
+        "parameters": {
+          "description": {
+            "is_string": true,
+            "value": "Output or downstream speed"
+          },
+          "port_id": {
+            "value": "1"
+          }
+        },
+        "type": "core.Outport",
+        "uiprops": {
+          "directionality": "right",
+          "x": 504,
+          "y": 88
+        },
+        "uuid": "89c485ed-952d-4fb4-8675-e85ac5e495b1"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "static",
+            "name": "in_0"
+          }
+        ],
+        "name": "trq_gain",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "gain": {
+            "value": "ratio"
+          }
+        },
+        "type": "core.Gain",
+        "uiprops": {
+          "x": 240,
+          "y": 0
+        },
+        "uuid": "6c0dbecc-d260-47b0-944e-3fda4f1da654"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "static",
+            "name": "in_0"
+          }
+        ],
+        "name": "spd_gain",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "gain": {
+            "value": "ratio"
+          }
+        },
+        "type": "core.Gain",
+        "uiprops": {
+          "directionality": "right",
+          "x": 240,
+          "y": 88
+        },
+        "uuid": "7be7651b-69d0-4b34-8a84-219c4103a4e4"
+      }
+    ],
+    "uuid": "ab85b852-9629-4e4b-a961-0173df8ddf10"
+  },
+  "kind": "Submodel",
+  "name": "Gearbox",
+  "parameter_definitions": [
+    {
+      "default_value": "1.0",
+      "name": "ratio",
+      "uiprops": {},
+      "uuid": "f4e6b5c9-5214-4eb0-9594-f656db9ecc25"
+    }
+  ],
+  "schema_version": "3",
+  "subdiagrams": {
+    "diagrams": {},
+    "references": {}
+  },
+  "submodel_configuration": {},
+  "uuid": "2f9f6aa9-7a05-4b3c-aca4-c9742ce0e3d6"
+}

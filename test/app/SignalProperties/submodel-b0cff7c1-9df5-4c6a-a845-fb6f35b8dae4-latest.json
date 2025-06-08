@@ -1,0 +1,79 @@
+{
+  "diagram": {
+    "annotations": [],
+    "links": [
+      {
+        "dst": {
+          "node": "78e956f8-5383-4c5e-a7aa-fdffa9af49e3",
+          "port": 0
+        },
+        "src": {
+          "node": "ddc76806-7259-4fae-ab53-d54b3fdbfcc3",
+          "port": 0
+        },
+        "uiprops": {
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "62709643-c195-4154-8924-d7e5b786e1d2"
+      }
+    ],
+    "nodes": [
+      {
+        "inputs": [],
+        "name": "Constant_1",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "value": {
+            "value": "1.0"
+          }
+        },
+        "type": "core.Constant",
+        "uiprops": {
+          "x": 216,
+          "y": 32
+        },
+        "uuid": "ddc76806-7259-4fae-ab53-d54b3fdbfcc3"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "static",
+            "name": "in_0"
+          }
+        ],
+        "name": "Outport_0",
+        "outputs": [],
+        "parameters": {
+          "port_id": {
+            "value": "0"
+          }
+        },
+        "type": "core.Outport",
+        "uiprops": {
+          "x": 400,
+          "y": 32
+        },
+        "uuid": "78e956f8-5383-4c5e-a7aa-fdffa9af49e3"
+      }
+    ],
+    "uuid": "cb97f4c0-5007-4507-b51b-aa949b590ecb"
+  },
+  "kind": "Submodel",
+  "name": "_0065_sm_const",
+  "parameter_definitions": [],
+  "schema_version": "3",
+  "state_machines": null,
+  "subdiagrams": {
+    "diagrams": {},
+    "references": {}
+  },
+  "submodel_configuration": null
+}

@@ -1,0 +1,1202 @@
+{
+  "configuration": {
+    "max_results_interval": 1,
+    "record_mode": "selected",
+    "sample_time": 0.1,
+    "solver": {
+      "absolute_tolerance": 0.000001,
+      "max_minor_steps_per_major_step": 1000,
+      "max_step": 1000000,
+      "method": "RK45",
+      "min_step": 0,
+      "relative_tolerance": 0.001
+    },
+    "start_time": 0,
+    "stop_time": 10,
+    "workspace": {}
+  },
+  "diagram": {
+    "annotations": [],
+    "links": [
+      {
+        "dst": {
+          "node": "a488952c-aab1-4bf3-b2bc-c85008508921",
+          "port": 0
+        },
+        "src": {
+          "node": "64bbf7d1-5baf-4f8f-9fb3-bd2eb83f2ce4",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 808,
+            "y": 720
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "4aba4d6e-bdc4-4afa-b454-0454aa504374"
+      }
+    ],
+    "nodes": [
+      {
+        "inputs": [],
+        "name": "t1_0",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "data_columns": {
+            "is_string": true,
+            "value": "1"
+          },
+          "extrapolation": {
+            "is_string": true,
+            "value": "hold"
+          },
+          "file_name": {
+            "is_string": true,
+            "value": "t1.csv"
+          },
+          "header_as_first_row": {
+            "value": "false"
+          },
+          "interpolation": {
+            "is_string": true,
+            "value": "zero_order_hold"
+          },
+          "sampling_interval": {
+            "value": "1.0"
+          },
+          "time_column": {
+            "is_string": true,
+            "value": "0"
+          },
+          "time_samples_as_column": {
+            "value": "false"
+          }
+        },
+        "time_mode": "agnostic",
+        "type": "core.DataSource",
+        "uiprops": {
+          "x": 496,
+          "y": 120
+        },
+        "uuid": "078ecb0d-404a-482f-a496-8315ee09d426"
+      },
+      {
+        "inputs": [],
+        "name": "t1_1",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0",
+            "record": true
+          }
+        ],
+        "parameters": {
+          "data_columns": {
+            "is_string": true,
+            "value": "1"
+          },
+          "extrapolation": {
+            "is_string": true,
+            "value": "hold"
+          },
+          "file_name": {
+            "is_string": true,
+            "value": "t1.csv"
+          },
+          "header_as_first_row": {
+            "value": "false"
+          },
+          "interpolation": {
+            "is_string": true,
+            "value": "linear"
+          },
+          "sampling_interval": {
+            "value": "1.0"
+          },
+          "time_column": {
+            "is_string": true,
+            "value": "0"
+          },
+          "time_samples_as_column": {
+            "value": "false"
+          }
+        },
+        "time_mode": "agnostic",
+        "type": "core.DataSource",
+        "uiprops": {
+          "x": 600,
+          "y": 120
+        },
+        "uuid": "cc94a6c8-b103-49f6-91c7-2b970367e5a4"
+      },
+      {
+        "inputs": [],
+        "name": "t1_2",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "data_columns": {
+            "is_string": true,
+            "value": "1"
+          },
+          "extrapolation": {
+            "is_string": true,
+            "value": "zero"
+          },
+          "file_name": {
+            "is_string": true,
+            "value": "t1.csv"
+          },
+          "header_as_first_row": {
+            "value": "false"
+          },
+          "interpolation": {
+            "is_string": true,
+            "value": "linear"
+          },
+          "sampling_interval": {
+            "value": "1.0"
+          },
+          "time_column": {
+            "is_string": true,
+            "value": "0"
+          },
+          "time_samples_as_column": {
+            "value": "false"
+          }
+        },
+        "time_mode": "agnostic",
+        "type": "core.DataSource",
+        "uiprops": {
+          "x": 704,
+          "y": 120
+        },
+        "uuid": "47659d4d-0768-4e3f-8779-27be8406f67d"
+      },
+      {
+        "inputs": [],
+        "name": "t1_3",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "data_columns": {
+            "is_string": true,
+            "value": "1"
+          },
+          "extrapolation": {
+            "is_string": true,
+            "value": "zero"
+          },
+          "file_name": {
+            "is_string": true,
+            "value": "t1.csv"
+          },
+          "header_as_first_row": {
+            "value": "false"
+          },
+          "interpolation": {
+            "is_string": true,
+            "value": "zero_order_hold"
+          },
+          "sampling_interval": {
+            "value": "1.0"
+          },
+          "time_column": {
+            "is_string": true,
+            "value": "0"
+          },
+          "time_samples_as_column": {
+            "value": "false"
+          }
+        },
+        "time_mode": "agnostic",
+        "type": "core.DataSource",
+        "uiprops": {
+          "x": 808,
+          "y": 120
+        },
+        "uuid": "808399fd-ab41-483a-a8ee-924fc415272d"
+      },
+      {
+        "inputs": [],
+        "name": "t2_0",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "data_columns": {
+            "is_string": true,
+            "value": "2"
+          },
+          "extrapolation": {
+            "is_string": true,
+            "value": "hold"
+          },
+          "file_name": {
+            "is_string": true,
+            "value": "t2.csv"
+          },
+          "header_as_first_row": {
+            "value": "false"
+          },
+          "interpolation": {
+            "is_string": true,
+            "value": "zero_order_hold"
+          },
+          "sampling_interval": {
+            "value": "1.0"
+          },
+          "time_column": {
+            "is_string": true,
+            "value": "0"
+          },
+          "time_samples_as_column": {
+            "value": "true"
+          }
+        },
+        "time_mode": "agnostic",
+        "type": "core.DataSource",
+        "uiprops": {
+          "x": 496,
+          "y": 216
+        },
+        "uuid": "a6d6f668-1d7b-48f2-9ea2-b5c032887731"
+      },
+      {
+        "inputs": [],
+        "name": "t2_1",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "data_columns": {
+            "is_string": true,
+            "value": "2"
+          },
+          "extrapolation": {
+            "is_string": true,
+            "value": "hold"
+          },
+          "file_name": {
+            "is_string": true,
+            "value": "t2.csv"
+          },
+          "header_as_first_row": {
+            "value": "false"
+          },
+          "interpolation": {
+            "is_string": true,
+            "value": "linear"
+          },
+          "sampling_interval": {
+            "value": "1.0"
+          },
+          "time_column": {
+            "is_string": true,
+            "value": "0"
+          },
+          "time_samples_as_column": {
+            "value": "true"
+          }
+        },
+        "time_mode": "agnostic",
+        "type": "core.DataSource",
+        "uiprops": {
+          "x": 600,
+          "y": 216
+        },
+        "uuid": "b937fdc7-7ed8-4496-ad5e-fb423a3e1b27"
+      },
+      {
+        "inputs": [],
+        "name": "t2_2",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "data_columns": {
+            "is_string": true,
+            "value": "2"
+          },
+          "extrapolation": {
+            "is_string": true,
+            "value": "zero"
+          },
+          "file_name": {
+            "is_string": true,
+            "value": "t2.csv"
+          },
+          "header_as_first_row": {
+            "value": "false"
+          },
+          "interpolation": {
+            "is_string": true,
+            "value": "linear"
+          },
+          "sampling_interval": {
+            "value": "1.0"
+          },
+          "time_column": {
+            "is_string": true,
+            "value": "0"
+          },
+          "time_samples_as_column": {
+            "value": "true"
+          }
+        },
+        "time_mode": "agnostic",
+        "type": "core.DataSource",
+        "uiprops": {
+          "x": 704,
+          "y": 216
+        },
+        "uuid": "5b6c831d-2694-40cc-be43-1dfeaf5fd6dc"
+      },
+      {
+        "inputs": [],
+        "name": "t2_3",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "data_columns": {
+            "is_string": true,
+            "value": "2"
+          },
+          "extrapolation": {
+            "is_string": true,
+            "value": "zero"
+          },
+          "file_name": {
+            "is_string": true,
+            "value": "t2.csv"
+          },
+          "header_as_first_row": {
+            "value": "false"
+          },
+          "interpolation": {
+            "is_string": true,
+            "value": "zero_order_hold"
+          },
+          "sampling_interval": {
+            "value": "1.0"
+          },
+          "time_column": {
+            "is_string": true,
+            "value": "0"
+          },
+          "time_samples_as_column": {
+            "value": "true"
+          }
+        },
+        "time_mode": "agnostic",
+        "type": "core.DataSource",
+        "uiprops": {
+          "x": 808,
+          "y": 216
+        },
+        "uuid": "89429541-393d-4fd8-bc20-8379b299c13e"
+      },
+      {
+        "inputs": [],
+        "name": "t3_0",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "data_columns": {
+            "is_string": true,
+            "value": "1"
+          },
+          "extrapolation": {
+            "is_string": true,
+            "value": "hold"
+          },
+          "file_name": {
+            "is_string": true,
+            "value": "t3.csv"
+          },
+          "header_as_first_row": {
+            "value": "true"
+          },
+          "interpolation": {
+            "is_string": true,
+            "value": "linear"
+          },
+          "sampling_interval": {
+            "value": "1.0"
+          },
+          "time_column": {
+            "is_string": true,
+            "value": "0"
+          },
+          "time_samples_as_column": {
+            "value": "false"
+          }
+        },
+        "time_mode": "agnostic",
+        "type": "core.DataSource",
+        "uiprops": {
+          "x": 496,
+          "y": 312
+        },
+        "uuid": "00eaf708-e4db-4c9e-9680-a45b09c02228"
+      },
+      {
+        "inputs": [],
+        "name": "t3_1",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "data_columns": {
+            "is_string": true,
+            "value": "c1"
+          },
+          "extrapolation": {
+            "is_string": true,
+            "value": "hold"
+          },
+          "file_name": {
+            "is_string": true,
+            "value": "t3.csv"
+          },
+          "header_as_first_row": {
+            "value": "true"
+          },
+          "interpolation": {
+            "is_string": true,
+            "value": "linear"
+          },
+          "sampling_interval": {
+            "value": "1.0"
+          },
+          "time_column": {
+            "is_string": true,
+            "value": "0"
+          },
+          "time_samples_as_column": {
+            "value": "false"
+          }
+        },
+        "time_mode": "agnostic",
+        "type": "core.DataSource",
+        "uiprops": {
+          "x": 600,
+          "y": 312
+        },
+        "uuid": "9153a959-ac48-4017-98c1-88fcbf122f12"
+      },
+      {
+        "inputs": [],
+        "name": "t4_0",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "data_columns": {
+            "is_string": true,
+            "value": "2"
+          },
+          "extrapolation": {
+            "is_string": true,
+            "value": "hold"
+          },
+          "file_name": {
+            "is_string": true,
+            "value": "t4.csv"
+          },
+          "header_as_first_row": {
+            "value": "true"
+          },
+          "interpolation": {
+            "is_string": true,
+            "value": "linear"
+          },
+          "sampling_interval": {
+            "value": "1.0"
+          },
+          "time_column": {
+            "is_string": true,
+            "value": "0"
+          },
+          "time_samples_as_column": {
+            "value": "true"
+          }
+        },
+        "time_mode": "agnostic",
+        "type": "core.DataSource",
+        "uiprops": {
+          "x": 496,
+          "y": 408
+        },
+        "uuid": "e74ba470-10c6-494a-8475-ac53d7ac6632"
+      },
+      {
+        "inputs": [],
+        "name": "t4_1",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "data_columns": {
+            "is_string": true,
+            "value": "c1"
+          },
+          "extrapolation": {
+            "is_string": true,
+            "value": "hold"
+          },
+          "file_name": {
+            "is_string": true,
+            "value": "t4.csv"
+          },
+          "header_as_first_row": {
+            "value": "true"
+          },
+          "interpolation": {
+            "is_string": true,
+            "value": "linear"
+          },
+          "sampling_interval": {
+            "value": "1.0"
+          },
+          "time_column": {
+            "is_string": true,
+            "value": "0"
+          },
+          "time_samples_as_column": {
+            "value": "true"
+          }
+        },
+        "time_mode": "agnostic",
+        "type": "core.DataSource",
+        "uiprops": {
+          "x": 600,
+          "y": 408
+        },
+        "uuid": "60ef3e75-8670-4d96-9965-a0b5156a5a9a"
+      },
+      {
+        "inputs": [],
+        "name": "t5_0",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "data_columns": {
+            "is_string": true,
+            "value": "3"
+          },
+          "extrapolation": {
+            "is_string": true,
+            "value": "hold"
+          },
+          "file_name": {
+            "is_string": true,
+            "value": "t5p0.csv"
+          },
+          "header_as_first_row": {
+            "value": "false"
+          },
+          "interpolation": {
+            "is_string": true,
+            "value": "linear"
+          },
+          "sampling_interval": {
+            "value": "1.0"
+          },
+          "time_column": {
+            "is_string": true,
+            "value": "1"
+          },
+          "time_samples_as_column": {
+            "value": "true"
+          }
+        },
+        "time_mode": "agnostic",
+        "type": "core.DataSource",
+        "uiprops": {
+          "x": 496,
+          "y": 504
+        },
+        "uuid": "5198b94a-86f3-49be-a15f-d9aa5828073e"
+      },
+      {
+        "inputs": [],
+        "name": "t5_1",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "data_columns": {
+            "is_string": true,
+            "value": "c2"
+          },
+          "extrapolation": {
+            "is_string": true,
+            "value": "hold"
+          },
+          "file_name": {
+            "is_string": true,
+            "value": "t5p1.csv"
+          },
+          "header_as_first_row": {
+            "value": "true"
+          },
+          "interpolation": {
+            "is_string": true,
+            "value": "linear"
+          },
+          "sampling_interval": {
+            "value": "1.0"
+          },
+          "time_column": {
+            "is_string": true,
+            "value": "1"
+          },
+          "time_samples_as_column": {
+            "value": "true"
+          }
+        },
+        "time_mode": "agnostic",
+        "type": "core.DataSource",
+        "uiprops": {
+          "x": 600,
+          "y": 504
+        },
+        "uuid": "d7921c2c-f8bb-4bc0-9da6-d45fb5dbc48e"
+      },
+      {
+        "inputs": [],
+        "name": "t6_0",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0",
+            "record": true
+          }
+        ],
+        "parameters": {
+          "data_columns": {
+            "is_string": true,
+            "value": "1"
+          },
+          "extrapolation": {
+            "is_string": true,
+            "value": "hold"
+          },
+          "file_name": {
+            "is_string": true,
+            "value": "t6.csv"
+          },
+          "header_as_first_row": {
+            "value": "false"
+          },
+          "interpolation": {
+            "is_string": true,
+            "value": "zero_order_hold"
+          },
+          "sampling_interval": {
+            "value": "1.0"
+          },
+          "time_column": {
+            "is_string": true,
+            "value": "0"
+          },
+          "time_samples_as_column": {
+            "value": "true"
+          }
+        },
+        "time_mode": "agnostic",
+        "type": "core.DataSource",
+        "uiprops": {
+          "x": 496,
+          "y": 600
+        },
+        "uuid": "c14d0c24-a2a8-45d2-876a-a57477f405a2"
+      },
+      {
+        "inputs": [],
+        "name": "t6_1",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0",
+            "record": true
+          }
+        ],
+        "parameters": {
+          "data_columns": {
+            "is_string": true,
+            "value": "1"
+          },
+          "extrapolation": {
+            "is_string": true,
+            "value": "hold"
+          },
+          "file_name": {
+            "is_string": true,
+            "value": "t6.csv"
+          },
+          "header_as_first_row": {
+            "value": "false"
+          },
+          "interpolation": {
+            "is_string": true,
+            "value": "linear"
+          },
+          "sampling_interval": {
+            "value": "1.0"
+          },
+          "time_column": {
+            "is_string": true,
+            "value": "0"
+          },
+          "time_samples_as_column": {
+            "value": "true"
+          }
+        },
+        "time_mode": "agnostic",
+        "type": "core.DataSource",
+        "uiprops": {
+          "x": 600,
+          "y": 600
+        },
+        "uuid": "39cbf3b7-2852-4a71-95c4-3a0e7df8586c"
+      },
+      {
+        "inputs": [],
+        "name": "t6_2",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0",
+            "record": true
+          }
+        ],
+        "parameters": {
+          "data_columns": {
+            "is_string": true,
+            "value": "1"
+          },
+          "extrapolation": {
+            "is_string": true,
+            "value": "zero"
+          },
+          "file_name": {
+            "is_string": true,
+            "value": "t6.csv"
+          },
+          "header_as_first_row": {
+            "value": "false"
+          },
+          "interpolation": {
+            "is_string": true,
+            "value": "linear"
+          },
+          "sampling_interval": {
+            "value": "1.0"
+          },
+          "time_column": {
+            "is_string": true,
+            "value": "0"
+          },
+          "time_samples_as_column": {
+            "value": "true"
+          }
+        },
+        "time_mode": "agnostic",
+        "type": "core.DataSource",
+        "uiprops": {
+          "x": 704,
+          "y": 600
+        },
+        "uuid": "4356b866-38ba-4b88-8ee1-334ef0bd564d"
+      },
+      {
+        "inputs": [],
+        "name": "t6_3",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0",
+            "record": true
+          }
+        ],
+        "parameters": {
+          "data_columns": {
+            "is_string": true,
+            "value": "1"
+          },
+          "extrapolation": {
+            "is_string": true,
+            "value": "zero"
+          },
+          "file_name": {
+            "is_string": true,
+            "value": "t6.csv"
+          },
+          "header_as_first_row": {
+            "value": "false"
+          },
+          "interpolation": {
+            "is_string": true,
+            "value": "zero_order_hold"
+          },
+          "sampling_interval": {
+            "value": "1.0"
+          },
+          "time_column": {
+            "is_string": true,
+            "value": "0"
+          },
+          "time_samples_as_column": {
+            "value": "true"
+          }
+        },
+        "time_mode": "agnostic",
+        "type": "core.DataSource",
+        "uiprops": {
+          "x": 808,
+          "y": 600
+        },
+        "uuid": "6ddcc1f7-8a1c-4ffa-a2d5-27b79e395bb6"
+      },
+      {
+        "inputs": [],
+        "name": "t7_0",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0",
+            "record": true
+          }
+        ],
+        "parameters": {
+          "data_columns": {
+            "is_string": true,
+            "value": "2"
+          },
+          "extrapolation": {
+            "is_string": true,
+            "value": "hold"
+          },
+          "file_name": {
+            "is_string": true,
+            "value": "t4.csv"
+          },
+          "header_as_first_row": {
+            "value": "true"
+          },
+          "interpolation": {
+            "is_string": true,
+            "value": "zero_order_hold"
+          },
+          "sampling_interval": {
+            "value": "1.0"
+          },
+          "time_column": {
+            "is_string": true,
+            "value": "0"
+          },
+          "time_samples_as_column": {
+            "value": "true"
+          }
+        },
+        "time_mode": "agnostic",
+        "type": "core.DataSource",
+        "uiprops": {
+          "x": 496,
+          "y": 688
+        },
+        "uuid": "fb092261-ae1a-4584-9ec7-298f68aae5c1"
+      },
+      {
+        "inputs": [],
+        "name": "t7_1",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0",
+            "record": true
+          }
+        ],
+        "parameters": {
+          "data_columns": {
+            "is_string": true,
+            "value": "c1"
+          },
+          "extrapolation": {
+            "is_string": true,
+            "value": "hold"
+          },
+          "file_name": {
+            "is_string": true,
+            "value": "t4.csv"
+          },
+          "header_as_first_row": {
+            "value": "true"
+          },
+          "interpolation": {
+            "is_string": true,
+            "value": "zero_order_hold"
+          },
+          "sampling_interval": {
+            "value": "1.0"
+          },
+          "time_column": {
+            "is_string": true,
+            "value": "0"
+          },
+          "time_samples_as_column": {
+            "value": "true"
+          }
+        },
+        "time_mode": "agnostic",
+        "type": "core.DataSource",
+        "uiprops": {
+          "x": 600,
+          "y": 688
+        },
+        "uuid": "f2c1149e-e8ef-4587-a79e-ab7c51df19de"
+      },
+      {
+        "inputs": [],
+        "name": "t7_2",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0",
+            "record": true
+          }
+        ],
+        "parameters": {
+          "data_columns": {
+            "is_string": true,
+            "value": "1:4"
+          },
+          "extrapolation": {
+            "is_string": true,
+            "value": "hold"
+          },
+          "file_name": {
+            "is_string": true,
+            "value": "t4.csv"
+          },
+          "header_as_first_row": {
+            "value": "true"
+          },
+          "interpolation": {
+            "is_string": true,
+            "value": "zero_order_hold"
+          },
+          "sampling_interval": {
+            "value": "1.0"
+          },
+          "time_column": {
+            "is_string": true,
+            "value": "0"
+          },
+          "time_samples_as_column": {
+            "value": "true"
+          }
+        },
+        "time_mode": "agnostic",
+        "type": "core.DataSource",
+        "uiprops": {
+          "x": 704,
+          "y": 688
+        },
+        "uuid": "64bbf7d1-5baf-4f8f-9fb3-bd2eb83f2ce4"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "static",
+            "name": "in_0"
+          }
+        ],
+        "name": "t7_2_",
+        "outputs": [
+          {
+            "kind": "dynamic",
+            "name": "out_0",
+            "record": true
+          },
+          {
+            "kind": "dynamic",
+            "name": "out_1",
+            "record": true
+          },
+          {
+            "kind": "dynamic",
+            "name": "out_2",
+            "record": true
+          }
+        ],
+        "parameters": {},
+        "type": "core.Demux",
+        "uiprops": {
+          "x": 808,
+          "y": 688
+        },
+        "uuid": "a488952c-aab1-4bf3-b2bc-c85008508921"
+      },
+      {
+        "inputs": [],
+        "name": "t8_0",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "data_columns": {
+            "is_string": true,
+            "value": "2"
+          },
+          "extrapolation": {
+            "is_string": true,
+            "value": "hold"
+          },
+          "file_name": {
+            "is_string": true,
+            "value": "mydata_time_head_xy.csv"
+          },
+          "header_as_first_row": {
+            "value": "true"
+          },
+          "interpolation": {
+            "is_string": true,
+            "value": "zero_order_hold"
+          },
+          "sampling_interval": {
+            "value": "1.0"
+          },
+          "time_column": {
+            "is_string": true,
+            "value": "0"
+          },
+          "time_samples_as_column": {
+            "value": "true"
+          }
+        },
+        "time_mode": "agnostic",
+        "type": "core.DataSource",
+        "uiprops": {
+          "x": 496,
+          "y": 776
+        },
+        "uuid": "e75b9f6b-dfea-42fa-a078-6b8543d6f152"
+      },
+      {
+        "inputs": [],
+        "name": "t9_0",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0",
+            "record": true
+          }
+        ],
+        "parameters": {
+          "data_columns": {
+            "is_string": true,
+            "value": "c0"
+          },
+          "extrapolation": {
+            "is_string": true,
+            "value": "hold"
+          },
+          "file_name": {
+            "is_string": true,
+            "value": "t9.csv"
+          },
+          "header_as_first_row": {
+            "value": "true"
+          },
+          "interpolation": {
+            "is_string": true,
+            "value": "zero_order_hold"
+          },
+          "sampling_interval": {
+            "value": "1.0"
+          },
+          "time_column": {
+            "is_string": true,
+            "value": "0"
+          },
+          "time_samples_as_column": {
+            "value": "false"
+          }
+        },
+        "time_mode": "agnostic",
+        "type": "core.DataSource",
+        "uiprops": {
+          "x": 496,
+          "y": 864
+        },
+        "uuid": "e5c0758a-6920-4e8b-bf9d-2b190eb22779"
+      }
+    ],
+    "uuid": "234a2c38-1a89-4197-a1f3-81a6a81d0a9a"
+  },
+  "kind": "Model",
+  "name": "test_data_source_dev_2022-08-21T11:12:23Z",
+  "parameters": {},
+  "schema_version": "3",
+  "subdiagrams": {
+    "diagrams": {},
+    "references": {}
+  },
+  "uuid": "fd2b522e-5c73-44fc-8d37-0f3dca86ea7a"
+}

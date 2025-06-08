@@ -1,0 +1,187 @@
+{
+  "diagram": {
+    "annotations": [],
+    "links": [
+      {
+        "dst": {
+          "node": "0b2bdee9-bb77-4733-930f-4cd1f6432b4f",
+          "port": 0
+        },
+        "src": {
+          "node": "d906ae88-ba0e-4137-b53e-3d5020c38998",
+          "port": 0
+        },
+        "uiprops": {
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "b34ae903-4e73-457a-aa7e-2be4ea10e2df"
+      },
+      {
+        "dst": {
+          "node": "ae1ec444-c38f-409f-8aa5-c771d2404f00",
+          "port": 0
+        },
+        "src": {
+          "node": "41aafd5b-c493-4a0a-9618-38a3d5a8d01d",
+          "port": 0
+        },
+        "uiprops": {
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "4ff3a14e-65d6-446f-9a4e-fde953948ad4"
+      },
+      {
+        "dst": {
+          "node": "41aafd5b-c493-4a0a-9618-38a3d5a8d01d",
+          "port": 0
+        },
+        "src": {
+          "node": "0b2bdee9-bb77-4733-930f-4cd1f6432b4f",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": -848,
+            "y": -808
+          },
+          "hang_coord_start": {
+            "x": 288,
+            "y": 64
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "fb823b63-7575-490a-b4de-bd6151dc213d"
+      }
+    ],
+    "nodes": [
+      {
+        "inputs": [],
+        "name": "Inport_0",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "description": {
+            "is_string": true,
+            "value": ""
+          },
+          "port_id": {
+            "value": "0"
+          }
+        },
+        "type": "core.Inport",
+        "uiprops": {
+          "x": 152,
+          "y": 32
+        },
+        "uuid": "d906ae88-ba0e-4137-b53e-3d5020c38998"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "static",
+            "name": "in_0"
+          }
+        ],
+        "name": "Outport_0",
+        "outputs": [],
+        "parameters": {
+          "description": {
+            "is_string": true,
+            "value": ""
+          },
+          "port_id": {
+            "value": "0"
+          }
+        },
+        "type": "core.Outport",
+        "uiprops": {
+          "x": 464,
+          "y": 32
+        },
+        "uuid": "ae1ec444-c38f-409f-8aa5-c771d2404f00"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "static",
+            "name": "in_0"
+          }
+        ],
+        "name": "IntegratorDiscrete_0",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "enable_external_reset": {
+            "value": "true"
+          },
+          "enable_reset": {
+            "value": "false"
+          },
+          "initial_states": {
+            "value": "0.0"
+          }
+        },
+        "type": "core.IntegratorDiscrete",
+        "uiprops": {
+          "x": 216,
+          "y": 32
+        },
+        "uuid": "0b2bdee9-bb77-4733-930f-4cd1f6432b4f"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "static",
+            "name": "in_0"
+          }
+        ],
+        "name": "Gain_0",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "gain": {
+            "value": "1.0"
+          }
+        },
+        "type": "core.Gain",
+        "uiprops": {
+          "x": 368,
+          "y": 32
+        },
+        "uuid": "41aafd5b-c493-4a0a-9618-38a3d5a8d01d"
+      }
+    ],
+    "uuid": "6c3038f8-3b92-4a2f-9e77-cabdae22e2ac"
+  },
+  "kind": "Submodel",
+  "name": "_0065_sm_d",
+  "parameter_definitions": [],
+  "schema_version": "3",
+  "state_machines": null,
+  "subdiagrams": {
+    "diagrams": {},
+    "references": {}
+  },
+  "submodel_configuration": null
+}

@@ -1,0 +1,280 @@
+{
+  "diagram": {
+    "annotations": [],
+    "links": [
+      {
+        "dst": {
+          "node": "c6edea26-b208-4ece-a554-a52c8866256f",
+          "port": 0
+        },
+        "src": {
+          "node": "ec60eb31-957b-4555-91d8-e29532b9f75f",
+          "port": 0
+        },
+        "uiprops": {
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "c0be0216-f627-47ad-ac89-fcc6166b05e9"
+      },
+      {
+        "dst": {
+          "node": "ec60eb31-957b-4555-91d8-e29532b9f75f",
+          "port": 1
+        },
+        "src": {
+          "node": "57958b4e-9aec-40f9-8f74-76b9a363a2a3",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 464,
+            "y": 128
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "872ec2c7-d47b-4974-821e-dfde46b54cc2"
+      },
+      {
+        "dst": {
+          "node": "ec60eb31-957b-4555-91d8-e29532b9f75f",
+          "port": 0
+        },
+        "src": {
+          "node": "ba41c3b8-fe23-48eb-9986-a48f8fd6d045",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 464,
+            "y": 112
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "b03517f5-8bd8-40d4-8cbb-0a0941082436"
+      },
+      {
+        "dst": {
+          "node": "ba41c3b8-fe23-48eb-9986-a48f8fd6d045",
+          "port": 0
+        },
+        "src": {
+          "node": "1c80b41f-a4e4-4ea9-9c7f-63e94013e618",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 168,
+            "y": 64
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": [
+            {
+              "coordinate": 64,
+              "segment_direction": "vert"
+            },
+            {
+              "coordinate": 64,
+              "segment_direction": "horiz"
+            },
+            {
+              "coordinate": 112,
+              "segment_direction": "vert"
+            },
+            {
+              "coordinate": 64,
+              "segment_direction": "horiz"
+            },
+            {
+              "coordinate": 160,
+              "segment_direction": "vert"
+            }
+          ]
+        },
+        "uuid": "00c0a1ff-730f-43b1-a75c-3cc8f64504de"
+      },
+      {
+        "dst": {
+          "node": "57958b4e-9aec-40f9-8f74-76b9a363a2a3",
+          "port": 0
+        },
+        "src": {
+          "node": "1c80b41f-a4e4-4ea9-9c7f-63e94013e618",
+          "port": 0
+        },
+        "uiprops": {
+          "link_type": {
+            "connection_method": "link_tap",
+            "tap_coordinate": 64,
+            "tapped_link_uuid": "00c0a1ff-730f-43b1-a75c-3cc8f64504de",
+            "tapped_segment": {
+              "segment_type": "real",
+              "tapped_segment_direction": "vert",
+              "tapped_segment_index": 2
+            }
+          },
+          "segments": []
+        },
+        "uuid": "b72832d4-dcc5-4c8e-a56e-637ff2b5a8f2"
+      }
+    ],
+    "nodes": [
+      {
+        "inputs": [],
+        "name": "Inport_0",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "description": {
+            "is_string": true,
+            "value": ""
+          },
+          "port_id": {
+            "value": "0"
+          }
+        },
+        "type": "core.Inport",
+        "uiprops": {
+          "x": 8,
+          "y": 32
+        },
+        "uuid": "1c80b41f-a4e4-4ea9-9c7f-63e94013e618"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "static",
+            "name": "in_0"
+          }
+        ],
+        "name": "Outport_0",
+        "outputs": [],
+        "parameters": {
+          "description": {
+            "is_string": true,
+            "value": ""
+          },
+          "port_id": {
+            "value": "0"
+          }
+        },
+        "type": "core.Outport",
+        "uiprops": {
+          "x": 560,
+          "y": 88
+        },
+        "uuid": "c6edea26-b208-4ece-a554-a52c8866256f"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "dynamic",
+            "name": "in_0"
+          },
+          {
+            "kind": "dynamic",
+            "name": "in_1"
+          }
+        ],
+        "name": "Adder_0",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "operators": {
+            "is_string": true,
+            "value": "++"
+          }
+        },
+        "type": "core.Adder",
+        "uiprops": {
+          "x": 464,
+          "y": 88
+        },
+        "uuid": "ec60eb31-957b-4555-91d8-e29532b9f75f"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "dynamic",
+            "name": "Inport_0"
+          }
+        ],
+        "name": "sm_nested_d",
+        "outputs": [
+          {
+            "kind": "dynamic",
+            "name": "Outport_0"
+          }
+        ],
+        "parameters": {},
+        "submodel_reference_uuid": "be56bd64-8e26-408e-ad3e-2458b02db6dd",
+        "type": "core.ReferenceSubmodel",
+        "uiprops": {
+          "grid_height": 12,
+          "grid_width": 24,
+          "port_alignment": "spaced",
+          "show_port_name_labels": true,
+          "x": 168,
+          "y": 16
+        },
+        "uuid": "ba41c3b8-fe23-48eb-9986-a48f8fd6d045"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "dynamic",
+            "name": "Inport_0"
+          }
+        ],
+        "name": "sm_nested_c",
+        "outputs": [
+          {
+            "kind": "dynamic",
+            "name": "Outport_0"
+          }
+        ],
+        "parameters": {},
+        "submodel_reference_uuid": "8eb8e37c-f983-4de5-9ce7-a1e1342eac49",
+        "type": "core.ReferenceSubmodel",
+        "uiprops": {
+          "grid_height": 12,
+          "grid_width": 24,
+          "port_alignment": "spaced",
+          "show_port_name_labels": true,
+          "x": 176,
+          "y": 144
+        },
+        "uuid": "57958b4e-9aec-40f9-8f74-76b9a363a2a3"
+      }
+    ],
+    "uuid": "6874df6d-8839-44e2-868a-8f7b42acf6e2"
+  },
+  "kind": "Submodel",
+  "name": "_0065_sm_nested",
+  "parameter_definitions": [],
+  "schema_version": "3",
+  "state_machines": null,
+  "subdiagrams": {
+    "diagrams": {},
+    "references": {}
+  },
+  "submodel_configuration": {}
+}

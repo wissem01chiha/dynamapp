@@ -1,0 +1,215 @@
+{
+  "diagram": {
+    "annotations": [],
+    "links": [
+      {
+        "dst": {
+          "node": "fd12bf24-5c16-4ec8-b590-4b0fe2dfd0b4",
+          "port": 0
+        },
+        "src": {
+          "node": "ef672091-a272-42bc-8277-a63fbc15b0ab",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 880,
+            "y": 368
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "23d7da7c-2290-4c77-a486-9310c6d4c5df"
+      },
+      {
+        "dst": {
+          "node": "834bbfdf-d85f-4510-acc4-adc31cc4fbeb",
+          "port": 0
+        },
+        "src": {
+          "node": "fd12bf24-5c16-4ec8-b590-4b0fe2dfd0b4",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 24,
+            "y": -88
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "61c64f4b-6161-47e1-bae6-f709b1e12572"
+      },
+      {
+        "dst": {
+          "node": "ef672091-a272-42bc-8277-a63fbc15b0ab",
+          "port": 0
+        },
+        "src": {
+          "node": "0e838635-20d3-4502-b437-cc2b7c40b599",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": -248,
+            "y": -88
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "51460371-0e43-45a6-b1e7-b38954b4b48d"
+      }
+    ],
+    "nodes": [
+      {
+        "inputs": [],
+        "name": "Inport_0",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "description": {
+            "is_string": true,
+            "value": ""
+          },
+          "port_id": {
+            "value": "0"
+          }
+        },
+        "type": "core.Inport",
+        "uiprops": {
+          "x": -336,
+          "y": -120
+        },
+        "uuid": "0e838635-20d3-4502-b437-cc2b7c40b599"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "static",
+            "name": "in_0"
+          }
+        ],
+        "name": "Outport_0",
+        "outputs": [],
+        "parameters": {
+          "description": {
+            "is_string": true,
+            "value": ""
+          },
+          "port_id": {
+            "value": "0"
+          }
+        },
+        "type": "core.Outport",
+        "uiprops": {
+          "x": 64,
+          "y": -120
+        },
+        "uuid": "834bbfdf-d85f-4510-acc4-adc31cc4fbeb"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "static",
+            "name": "in_0"
+          }
+        ],
+        "name": "g",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "gain": {
+            "value": "global_gain"
+          }
+        },
+        "type": "core.Gain",
+        "uiprops": {
+          "port_alignment": "spaced",
+          "x": -248,
+          "y": -120
+        },
+        "uuid": "ef672091-a272-42bc-8277-a63fbc15b0ab"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "static",
+            "name": "in_0"
+          }
+        ],
+        "name": "int_",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "enable_external_reset": {
+            "value": "true"
+          },
+          "enable_hold": {
+            "value": "false"
+          },
+          "enable_limits": {
+            "value": "false"
+          },
+          "enable_reset": {
+            "value": "false"
+          },
+          "initial_states": {
+            "value": "int_init_state"
+          },
+          "lower_limit": {
+            "value": "-1.0"
+          },
+          "upper_limit": {
+            "value": "1.0"
+          }
+        },
+        "type": "core.Integrator",
+        "uiprops": {
+          "port_alignment": "spaced",
+          "x": -88,
+          "y": -120
+        },
+        "uuid": "fd12bf24-5c16-4ec8-b590-4b0fe2dfd0b4"
+      }
+    ],
+    "uuid": "0ec2d081-c134-4daa-8934-46a46ffd4259"
+  },
+  "kind": "Submodel",
+  "name": "_0081_sm_v2_clean_namespace_fail_sm",
+  "parameter_definitions": [
+    {
+      "default_value": "2.0",
+      "name": "int_init_state",
+      "uiprops": {
+        "default_value_height": "24px",
+        "description_height": "24px"
+      },
+      "uuid": "18348e34-5730-4c26-a326-8c008f47d74b"
+    }
+  ],
+  "schema_version": "3",
+  "state_machines": null,
+  "subdiagrams": {
+    "diagrams": {},
+    "references": {}
+  },
+  "submodel_configuration": {}
+}

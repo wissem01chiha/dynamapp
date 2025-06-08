@@ -1,0 +1,421 @@
+{
+  "diagram": {
+    "annotations": [],
+    "links": [
+      {
+        "dst": {
+          "node": "c0590dee-defe-41dd-b48e-fe785f4b7c70",
+          "port": 0
+        },
+        "src": {
+          "node": "02d1866d-0a01-40bb-aeb6-c0c827e53bf6",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 136,
+            "y": -40
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "aaee2ee4-5280-4618-ad5b-d0ff2dd7637b"
+      },
+      {
+        "dst": {
+          "node": "c0590dee-defe-41dd-b48e-fe785f4b7c70",
+          "port": 1
+        },
+        "src": {
+          "node": "fe0fc3a2-8143-4df4-802f-654262b22acf",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 136,
+            "y": -24
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "65ddd02d-666a-4dde-8b4a-964f8627aaab"
+      },
+      {
+        "dst": {
+          "node": "c0590dee-defe-41dd-b48e-fe785f4b7c70",
+          "port": 2
+        },
+        "src": {
+          "node": "b43819fa-fbb5-43c0-9ceb-f08ccb3803b5",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 136,
+            "y": -8
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": [
+            {
+              "coordinate": 120,
+              "segment_direction": "vert"
+            }
+          ]
+        },
+        "uuid": "aaeb5ea0-bad5-47b1-8443-7ef193caeb70"
+      },
+      {
+        "dst": {
+          "node": "702421d5-767d-477f-a17a-60e56d0f9c07",
+          "port": 0
+        },
+        "src": {
+          "node": "c0590dee-defe-41dd-b48e-fe785f4b7c70",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 264,
+            "y": -24
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": [
+            {
+              "coordinate": 216,
+              "segment_direction": "vert"
+            },
+            {
+              "coordinate": -24,
+              "segment_direction": "horiz"
+            },
+            {
+              "coordinate": 256,
+              "segment_direction": "vert"
+            }
+          ]
+        },
+        "uuid": "213ae93e-2e5a-449d-b13a-9b70afcd7d50"
+      },
+      {
+        "dst": {
+          "node": "cdd621cf-2118-4db8-b4ba-1b65d1f175b7",
+          "port": 0
+        },
+        "src": {
+          "node": "702421d5-767d-477f-a17a-60e56d0f9c07",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 400,
+            "y": -24
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": [
+            {
+              "coordinate": 344,
+              "segment_direction": "vert"
+            },
+            {
+              "coordinate": -24,
+              "segment_direction": "horiz"
+            },
+            {
+              "coordinate": 392,
+              "segment_direction": "vert"
+            }
+          ]
+        },
+        "uuid": "c472fc78-c89a-419c-8f74-778557c1598b"
+      },
+      {
+        "dst": {
+          "node": "54c85715-3258-411f-8355-448c9b39fe2a",
+          "port": 0
+        },
+        "src": {
+          "node": "ece5146b-752e-4b14-87fb-1f32a63305f1",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 600,
+            "y": 96
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "0488ed4f-3ef6-4661-bb48-63a14fffcb99"
+      },
+      {
+        "dst": {
+          "node": "ece5146b-752e-4b14-87fb-1f32a63305f1",
+          "port": 0
+        },
+        "src": {
+          "node": "c0590dee-defe-41dd-b48e-fe785f4b7c70",
+          "port": 0
+        },
+        "uiprops": {
+          "link_type": {
+            "connection_method": "link_tap",
+            "tap_coordinate": 232,
+            "tapped_link_uuid": "213ae93e-2e5a-449d-b13a-9b70afcd7d50",
+            "tapped_segment": {
+              "segment_type": "real",
+              "tapped_segment_direction": "horiz",
+              "tapped_segment_index": 1
+            }
+          },
+          "segments": []
+        },
+        "uuid": "8b54feeb-30cd-48b8-a5f5-34acc67898f3"
+      }
+    ],
+    "nodes": [
+      {
+        "inputs": [],
+        "name": "mot_spd_radps",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "description": {
+            "is_string": true,
+            "value": "Angular velocity of the motor in radians per second"
+          },
+          "port_id": {
+            "value": "0"
+          }
+        },
+        "type": "core.Inport",
+        "uiprops": {
+          "x": 0,
+          "y": -72
+        },
+        "uuid": "02d1866d-0a01-40bb-aeb6-c0c827e53bf6"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "static",
+            "name": "in_0"
+          }
+        ],
+        "name": "veh_spd_kph",
+        "outputs": [],
+        "parameters": {
+          "description": {
+            "is_string": true,
+            "value": "Vehicle speed in kilometers per hour"
+          },
+          "port_id": {
+            "value": "0"
+          }
+        },
+        "type": "core.Outport",
+        "uiprops": {
+          "x": 400,
+          "y": -56
+        },
+        "uuid": "cdd621cf-2118-4db8-b4ba-1b65d1f175b7"
+      },
+      {
+        "inputs": [],
+        "name": "overall_gear_ratio",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "value": {
+            "value": "overall_gear_ratio"
+          }
+        },
+        "type": "core.Constant",
+        "uiprops": {
+          "x": -16,
+          "y": 16
+        },
+        "uuid": "fe0fc3a2-8143-4df4-802f-654262b22acf"
+      },
+      {
+        "inputs": [],
+        "name": "driven_whl_radius",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "value": {
+            "value": "driven_whl_radius"
+          }
+        },
+        "type": "core.Constant",
+        "uiprops": {
+          "x": -16,
+          "y": 104
+        },
+        "uuid": "b43819fa-fbb5-43c0-9ceb-f08ccb3803b5"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "dynamic",
+            "name": "in_0"
+          },
+          {
+            "kind": "dynamic",
+            "name": "in_1"
+          },
+          {
+            "kind": "dynamic",
+            "name": "in_2"
+          }
+        ],
+        "name": "Product_0",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "denominator_limit": {
+            "value": "1e-12"
+          },
+          "divide_by_zero_behavior": {
+            "is_string": true,
+            "value": "inf"
+          },
+          "operators": {
+            "is_string": true,
+            "value": "*/*"
+          }
+        },
+        "type": "core.Product",
+        "uiprops": {
+          "x": 136,
+          "y": -56
+        },
+        "uuid": "c0590dee-defe-41dd-b48e-fe785f4b7c70"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "static",
+            "name": "in_0"
+          }
+        ],
+        "name": "mps2kph",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "gain": {
+            "value": "3.6"
+          }
+        },
+        "type": "core.Gain",
+        "uiprops": {
+          "x": 264,
+          "y": -56
+        },
+        "uuid": "702421d5-767d-477f-a17a-60e56d0f9c07"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "static",
+            "name": "in_0"
+          }
+        ],
+        "name": "accel",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {},
+        "type": "core.DerivativeDiscrete",
+        "uiprops": {
+          "x": 416,
+          "y": 64
+        },
+        "uuid": "ece5146b-752e-4b14-87fb-1f32a63305f1"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "static",
+            "name": "in_0"
+          }
+        ],
+        "name": "veh_accel_mps2",
+        "outputs": [],
+        "parameters": {
+          "description": {
+            "is_string": true,
+            "value": "Vehicle acceleration in meters per second**2"
+          },
+          "port_id": {
+            "value": "1"
+          }
+        },
+        "type": "core.Outport",
+        "uiprops": {
+          "x": 600,
+          "y": 64
+        },
+        "uuid": "54c85715-3258-411f-8355-448c9b39fe2a"
+      }
+    ],
+    "uuid": "e2995f22-48a1-443a-aea3-0d91cd49f386"
+  },
+  "kind": "Submodel",
+  "name": "Controller Sensor - Vehicle Speed",
+  "parameter_definitions": [
+    {
+      "default_value": "1.0",
+      "name": "driven_whl_radius",
+      "uiprops": {},
+      "uuid": "19e108fe-21c2-42a5-a895-1c91e566e602"
+    },
+    {
+      "default_value": "1.0",
+      "name": "overall_gear_ratio",
+      "uiprops": {},
+      "uuid": "e081e0a1-e812-4afa-afe6-60863d64671c"
+    }
+  ],
+  "schema_version": "3",
+  "subdiagrams": {
+    "diagrams": {},
+    "references": {}
+  },
+  "submodel_configuration": {},
+  "uuid": "b0b59498-3f2b-4f06-a51e-de184e6a24f7"
+}

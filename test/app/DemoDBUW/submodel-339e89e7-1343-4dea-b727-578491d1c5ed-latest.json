@@ -1,0 +1,220 @@
+{
+  "diagram": {
+    "annotations": [],
+    "links": [
+      {
+        "dst": {
+          "node": "e99ce59a-9fb8-4419-8d81-8975b16a62ec",
+          "port": 0
+        },
+        "src": {
+          "node": "b0b3e631-5292-4094-b14f-528affaf382a",
+          "port": 0
+        },
+        "uiprops": {
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "ec3ddd44-ec60-4594-a9b5-761981f279ce"
+      },
+      {
+        "dst": {
+          "node": "b0b3e631-5292-4094-b14f-528affaf382a",
+          "port": 1
+        },
+        "src": {
+          "node": "7573a4fd-e613-4d77-bb7f-0c3f1b48f658",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": -952,
+            "y": 48
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "f1b6eed0-3c14-4bfd-a755-9d67e377dbf3"
+      },
+      {
+        "dst": {
+          "node": "b0b3e631-5292-4094-b14f-528affaf382a",
+          "port": 0
+        },
+        "src": {
+          "node": "ae0306ea-edb6-44cd-a4d6-5d7d50530cc6",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": -936,
+            "y": 32
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "b6facb2b-505e-40fd-b9a7-3868a51d6756"
+      }
+    ],
+    "nodes": [
+      {
+        "inputs": [
+          {
+            "kind": "static",
+            "name": "in_0"
+          }
+        ],
+        "name": "W",
+        "outputs": [],
+        "parameters": {
+          "description": {
+            "is_string": true,
+            "value": ""
+          },
+          "port_id": {
+            "value": "0"
+          }
+        },
+        "type": "core.Outport",
+        "uiprops": {
+          "x": 464,
+          "y": 96
+        },
+        "uuid": "e99ce59a-9fb8-4419-8d81-8975b16a62ec"
+      },
+      {
+        "inputs": [],
+        "name": "Covariance",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "value": {
+            "value": "np.linalg.cholesky(V)"
+          }
+        },
+        "type": "core.Constant",
+        "uiprops": {
+          "port_alignment": "spaced",
+          "x": 232,
+          "y": 32
+        },
+        "uuid": "ae0306ea-edb6-44cd-a4d6-5d7d50530cc6"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "static",
+            "name": "in_0"
+          },
+          {
+            "kind": "static",
+            "name": "in_1"
+          }
+        ],
+        "name": "MatrixMultiplication_0",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {},
+        "type": "core.MatrixMultiplication",
+        "uiprops": {
+          "port_alignment": "spaced",
+          "x": 368,
+          "y": 96
+        },
+        "uuid": "b0b3e631-5292-4094-b14f-528affaf382a"
+      },
+      {
+        "inputs": [],
+        "name": "GenerateNoise",
+        "outputs": [
+          {
+            "kind": "dynamic",
+            "name": "w",
+            "parameters": {
+              "dtype": {
+                "is_string": true,
+                "value": "double"
+              },
+              "shape": {
+                "value": "(n,)"
+              }
+            },
+            "record": true
+          }
+        ],
+        "parameters": {
+          "finalize_script": {
+            "is_string": true,
+            "value": ""
+          },
+          "init_script": {
+            "is_string": true,
+            "value": "import numpy as np\nfrom scipy import signal\nfrom scipy.interpolate import interp1d\n\nseed = 0  # RNG seed for e2e testing reproducibility\nrng = np.random.default_rng(seed=seed)\n\ndef gen_white_noise(n, T_max=1000.0, fs=1000.0, fc=100.0):\n    n_steps = int(T_max * fs)\n\n    # Generate white noise with mean 0 and standard deviation 1\n    noise = rng.standard_normal(size=(n, n_steps))\n\n    # Design a low-pass Butterworth filter with cutoff frequency fc\n    order = 4\n    sos = signal.butter(order, fc, 'lp', fs=fs, output='sos')\n\n    # Filter the white noise to obtain band-limited white noise\n    w = signal.sosfilt(sos=sos, x=noise)\n    t = (1/fs) * np.arange(n_steps)\n\n    return t, w\n\nt, w_samples = gen_white_noise(int(n))\nw_interp = interp1d(t, w_samples)"
+          },
+          "n": {
+            "value": "n"
+          },
+          "seed": {
+            "value": "seed"
+          },
+          "user_statements": {
+            "is_string": true,
+            "value": "w = w_interp(time)"
+          }
+        },
+        "time_mode": "agnostic",
+        "type": "core.PythonScript",
+        "uiprops": {
+          "port_alignment": "spaced",
+          "x": 216,
+          "y": 104
+        },
+        "uuid": "7573a4fd-e613-4d77-bb7f-0c3f1b48f658"
+      }
+    ],
+    "uuid": "f109404e-49c3-4241-acb8-830f1f73d733"
+  },
+  "kind": "Submodel",
+  "name": "BandLimitedWhiteNoise",
+  "parameter_definitions": [
+    {
+      "default_value": "np.array([[1.]])",
+      "name": "V",
+      "uiprops": {},
+      "uuid": "ba4b9682-c7b5-4395-a627-f091e9f493a1"
+    },
+    {
+      "default_value": "1",
+      "name": "n",
+      "uiprops": {},
+      "uuid": "674c943d-1506-4d0a-9913-0fff27bd91ae"
+    },
+    {
+      "default_value": "0",
+      "name": "seed",
+      "uiprops": {},
+      "uuid": "fecdd066-7d58-4c9d-a948-1ee74a28c385"
+    }
+  ],
+  "schema_version": "4",
+  "subdiagrams": {
+    "diagrams": {},
+    "references": {}
+  },
+  "submodel_configuration": {},
+  "uuid": "339e89e7-1343-4dea-b727-578491d1c5ed"
+}

@@ -1,0 +1,1667 @@
+{
+  "diagram": {
+    "annotations": [],
+    "links": [
+      {
+        "dst": {
+          "node": "902f1dc4-d75b-4c8d-be64-7d469815aed8",
+          "port": 1
+        },
+        "src": {
+          "node": "6dc140b9-4ab7-48ad-b81d-7b943a2f960a",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": -288,
+            "y": -72
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "418ee842-15b0-45d7-a705-8888d8e7769c"
+      },
+      {
+        "dst": {
+          "node": "902f1dc4-d75b-4c8d-be64-7d469815aed8",
+          "port": 0
+        },
+        "src": {
+          "node": "65635dac-40d4-4b13-98bc-34d13b7f7b8d",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": -280,
+            "y": -88
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "f3c199ec-de36-420c-944a-44f1cbb458ba"
+      },
+      {
+        "dst": {
+          "node": "677b10d3-09df-4a18-9573-ba200e64d187",
+          "port": 1
+        },
+        "src": {
+          "node": "3a6db548-afba-4737-94d3-7c6bebb661be",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 192,
+            "y": -160
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "2bf3aaa8-8001-4eab-a4be-699f36fc0e58"
+      },
+      {
+        "dst": {
+          "node": "677b10d3-09df-4a18-9573-ba200e64d187",
+          "port": 0
+        },
+        "src": {
+          "node": "30649564-2fcd-4d52-9759-28d83794e1a7",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 184,
+            "y": -184
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "7a3a15eb-e787-40b4-9270-be2850388dfc"
+      },
+      {
+        "dst": {
+          "node": "3a6db548-afba-4737-94d3-7c6bebb661be",
+          "port": 0
+        },
+        "src": {
+          "node": "daf1822b-c0fa-4e3c-a417-4d72da1ae33f",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 88,
+            "y": -160
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "1effa4b6-082a-43e9-86d6-cc6cbddff20c"
+      },
+      {
+        "dst": {
+          "node": "daf1822b-c0fa-4e3c-a417-4d72da1ae33f",
+          "port": 1
+        },
+        "src": {
+          "node": "d09f166f-b030-4783-8ac3-c3f0bb753376",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": -32,
+            "y": -168
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": [
+            {
+              "coordinate": -200,
+              "segment_direction": "vert"
+            },
+            {
+              "coordinate": -168,
+              "segment_direction": "horiz"
+            },
+            {
+              "coordinate": -32,
+              "segment_direction": "vert"
+            }
+          ]
+        },
+        "uuid": "49889b26-caa6-4b6a-8afe-3e172e12a93a"
+      },
+      {
+        "dst": {
+          "node": "daf1822b-c0fa-4e3c-a417-4d72da1ae33f",
+          "port": 0
+        },
+        "src": {
+          "node": "30c4bd52-59ec-4da4-b248-28980709a880",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_start": {
+            "x": -656,
+            "y": -288
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": [
+            {
+              "coordinate": -664,
+              "segment_direction": "vert"
+            },
+            {
+              "coordinate": -288,
+              "segment_direction": "horiz"
+            },
+            {
+              "coordinate": -184,
+              "segment_direction": "vert"
+            }
+          ]
+        },
+        "uuid": "6df5c84e-d741-4ecd-bd71-b0ad2d140ae9"
+      },
+      {
+        "dst": {
+          "node": "3ce9a307-2716-4b8a-a0d5-dd0992c9b4f7",
+          "port": 0
+        },
+        "src": {
+          "node": "deda1404-45ce-4f54-8f36-0784ff37091c",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_start": {
+            "x": -200,
+            "y": 8
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": [
+            {
+              "coordinate": -200,
+              "segment_direction": "vert"
+            },
+            {
+              "coordinate": 8,
+              "segment_direction": "horiz"
+            },
+            {
+              "coordinate": -168,
+              "segment_direction": "vert"
+            }
+          ]
+        },
+        "uuid": "b57c6136-5643-48c8-9baa-8283ee260b85"
+      },
+      {
+        "dst": {
+          "node": "daf1822b-c0fa-4e3c-a417-4d72da1ae33f",
+          "port": 3
+        },
+        "src": {
+          "node": "3ce9a307-2716-4b8a-a0d5-dd0992c9b4f7",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": -24,
+            "y": -136
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": [
+            {
+              "coordinate": -72,
+              "segment_direction": "vert"
+            }
+          ]
+        },
+        "uuid": "54ce5687-434f-492b-b5e1-a0f73325c0b1"
+      },
+      {
+        "dst": {
+          "node": "62a52d10-764e-401d-b18c-cb99a3ddd5c9",
+          "port": 0
+        },
+        "src": {
+          "node": "dd173733-672c-4637-9208-a13076cab738",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 440,
+            "y": -168
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "c8a81054-8248-40c4-8692-a78819886946"
+      },
+      {
+        "dst": {
+          "node": "dd173733-672c-4637-9208-a13076cab738",
+          "port": 0
+        },
+        "src": {
+          "node": "d62d1953-0f98-4430-bcf8-24092b48123c",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 416,
+            "y": -152
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "61f91e93-3a3d-4862-933a-b62c02760066"
+      },
+      {
+        "dst": {
+          "node": "dd173733-672c-4637-9208-a13076cab738",
+          "port": 1
+        },
+        "src": {
+          "node": "677b10d3-09df-4a18-9573-ba200e64d187",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 320,
+            "y": -176
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "35140b39-bbda-4ff4-9b11-3713da735434"
+      },
+      {
+        "dst": {
+          "node": "dd173733-672c-4637-9208-a13076cab738",
+          "port": 2
+        },
+        "src": {
+          "node": "53b85b9e-f507-49c2-9446-66d11b36c78b",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 336,
+            "y": -152
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "211e28fd-ed47-4740-94c5-0b18a593f6c0"
+      },
+      {
+        "dst": {
+          "node": "158f1af7-a38b-418a-a6c3-9372788951bf",
+          "port": 0
+        },
+        "src": {
+          "node": "c81d4b24-e1bc-4cdc-8cdf-9f34094d21ab",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": -24,
+            "y": 216
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": [
+            {
+              "coordinate": -32,
+              "segment_direction": "vert"
+            }
+          ]
+        },
+        "uuid": "45570d6f-aade-4383-a4d9-63c1fd348195"
+      },
+      {
+        "dst": {
+          "node": "b2e1fd8a-bcc7-4ece-b4db-51752ce25bc0",
+          "port": 0
+        },
+        "src": {
+          "node": "158f1af7-a38b-418a-a6c3-9372788951bf",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 88,
+            "y": 224
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "d03b55d9-e85a-4739-88cd-206f700e47dd"
+      },
+      {
+        "dst": {
+          "node": "e00709e5-aa4b-4007-a308-914969bc2323",
+          "port": 0
+        },
+        "src": {
+          "node": "c81d4b24-e1bc-4cdc-8cdf-9f34094d21ab",
+          "port": 0
+        },
+        "uiprops": {
+          "link_type": {
+            "connection_method": "link_tap",
+            "tap_coordinate": 119.01244610070478,
+            "tapped_link_uuid": "45570d6f-aade-4383-a4d9-63c1fd348195",
+            "tapped_segment": {
+              "segment_type": "real",
+              "tapped_segment_direction": "vert",
+              "tapped_segment_index": 0
+            }
+          },
+          "segments": []
+        },
+        "uuid": "c3c58275-840e-4ac4-bd80-fcb8393013a8"
+      },
+      {
+        "dst": {
+          "node": "638fcc35-5f73-44ba-88da-25d518e17ecf",
+          "port": 1
+        },
+        "src": {
+          "node": "e00709e5-aa4b-4007-a308-914969bc2323",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 208,
+            "y": 112
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "33407f78-51c5-485c-b9ef-584fdc308db8"
+      },
+      {
+        "dst": {
+          "node": "638fcc35-5f73-44ba-88da-25d518e17ecf",
+          "port": 2
+        },
+        "src": {
+          "node": "b2e1fd8a-bcc7-4ece-b4db-51752ce25bc0",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 208,
+            "y": 136
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": [
+            {
+              "coordinate": 184,
+              "segment_direction": "vert"
+            }
+          ]
+        },
+        "uuid": "bb45973f-658b-4dc1-ad95-0d7dd71ed90c"
+      },
+      {
+        "dst": {
+          "node": "638fcc35-5f73-44ba-88da-25d518e17ecf",
+          "port": 0
+        },
+        "src": {
+          "node": "deda1404-45ce-4f54-8f36-0784ff37091c",
+          "port": 0
+        },
+        "uiprops": {
+          "link_type": {
+            "connection_method": "link_tap",
+            "tap_coordinate": 124.705078125,
+            "tapped_link_uuid": "b57c6136-5643-48c8-9baa-8283ee260b85",
+            "tapped_segment": {
+              "segment_type": "real",
+              "tapped_segment_direction": "horiz",
+              "tapped_segment_index": 1
+            }
+          },
+          "segments": [
+            {
+              "coordinate": 72,
+              "segment_direction": "horiz"
+            },
+            {
+              "coordinate": 176,
+              "segment_direction": "vert"
+            }
+          ]
+        },
+        "uuid": "54dc82aa-ae88-4dc7-94af-aa33db154a81"
+      },
+      {
+        "dst": {
+          "node": "ace8bdb9-bbfb-481a-9b8f-df0b5a7abe64",
+          "port": 0
+        },
+        "src": {
+          "node": "638fcc35-5f73-44ba-88da-25d518e17ecf",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 520,
+            "y": 104
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "f2fc1f42-ea25-4472-b5bb-92d042f2cf86"
+      },
+      {
+        "dst": {
+          "node": "6ca2fea6-88ea-4899-acbf-4e2b72e92395",
+          "port": 0
+        },
+        "src": {
+          "node": "02b268b4-0410-4144-a0fd-145aece02ec7",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": -8,
+            "y": -464
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "778d5454-02db-47af-ae9c-166fafaeca25"
+      },
+      {
+        "dst": {
+          "node": "6ca2fea6-88ea-4899-acbf-4e2b72e92395",
+          "port": 1
+        },
+        "src": {
+          "node": "d09f166f-b030-4783-8ac3-c3f0bb753376",
+          "port": 0
+        },
+        "uiprops": {
+          "link_type": {
+            "connection_method": "link_tap",
+            "tap_coordinate": -55.6075524938567,
+            "tapped_link_uuid": "49889b26-caa6-4b6a-8afe-3e172e12a93a",
+            "tapped_segment": {
+              "segment_type": "real",
+              "tapped_segment_direction": "horiz",
+              "tapped_segment_index": 1
+            }
+          },
+          "segments": []
+        },
+        "uuid": "e095cfcb-426d-4f87-a988-713e356f8528"
+      },
+      {
+        "dst": {
+          "node": "0467709c-2974-468b-b9aa-b979124fe652",
+          "port": 0
+        },
+        "src": {
+          "node": "6ca2fea6-88ea-4899-acbf-4e2b72e92395",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 88,
+            "y": -448
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "c808a464-8015-4d75-ac17-1cdacaff7364"
+      },
+      {
+        "dst": {
+          "node": "e2597502-a8d0-4d06-be9a-1621cc4564ad",
+          "port": 0
+        },
+        "src": {
+          "node": "53918402-a327-4cb7-b8c2-d7b3fa9de7ec",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 392,
+            "y": -432
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "a699c91b-892c-40ee-b52f-150b1021fb82"
+      },
+      {
+        "dst": {
+          "node": "53918402-a327-4cb7-b8c2-d7b3fa9de7ec",
+          "port": 0
+        },
+        "src": {
+          "node": "0467709c-2974-468b-b9aa-b979124fe652",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 208,
+            "y": -440
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "52620dcc-d7f6-4c14-b0c5-07d0ed97981d"
+      },
+      {
+        "dst": {
+          "node": "d62d1953-0f98-4430-bcf8-24092b48123c",
+          "port": 0
+        },
+        "src": {
+          "node": "a313c676-f8fb-495b-bf56-962050af5916",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 216,
+            "y": -312
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": [
+            {
+              "coordinate": 112,
+              "segment_direction": "vert"
+            },
+            {
+              "coordinate": -312,
+              "segment_direction": "horiz"
+            },
+            {
+              "coordinate": 208,
+              "segment_direction": "vert"
+            }
+          ]
+        },
+        "uuid": "f1bf79f2-157c-4759-857d-e7ea33ebfc2d"
+      },
+      {
+        "dst": {
+          "node": "53918402-a327-4cb7-b8c2-d7b3fa9de7ec",
+          "port": 1
+        },
+        "src": {
+          "node": "a313c676-f8fb-495b-bf56-962050af5916",
+          "port": 0
+        },
+        "uiprops": {
+          "link_type": {
+            "connection_method": "link_tap",
+            "tap_coordinate": 184,
+            "tapped_link_uuid": "f1bf79f2-157c-4759-857d-e7ea33ebfc2d",
+            "tapped_segment": {
+              "segment_type": "real",
+              "tapped_segment_direction": "horiz",
+              "tapped_segment_index": 1
+            }
+          },
+          "segments": [
+            {
+              "coordinate": 184,
+              "segment_direction": "vert"
+            }
+          ]
+        },
+        "uuid": "d7fa36bb-9b11-4506-8274-6145290afb6a"
+      },
+      {
+        "dst": {
+          "node": "65635dac-40d4-4b13-98bc-34d13b7f7b8d",
+          "port": 0
+        },
+        "src": {
+          "node": "1733778f-e20b-406b-b805-e23c4fc06a77",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": -400,
+            "y": -120
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "1ee69d6f-94a2-4cb2-87c2-8145aac35549"
+      },
+      {
+        "dst": {
+          "node": "1733778f-e20b-406b-b805-e23c4fc06a77",
+          "port": 0
+        },
+        "src": {
+          "node": "30c4bd52-59ec-4da4-b248-28980709a880",
+          "port": 0
+        },
+        "uiprops": {
+          "link_type": {
+            "connection_method": "link_tap",
+            "tap_coordinate": -632,
+            "tapped_link_uuid": "6df5c84e-d741-4ecd-bd71-b0ad2d140ae9",
+            "tapped_segment": {
+              "segment_type": "real",
+              "tapped_segment_direction": "horiz",
+              "tapped_segment_index": 1
+            }
+          },
+          "segments": [
+            {
+              "coordinate": -120,
+              "segment_direction": "horiz"
+            },
+            {
+              "coordinate": -544,
+              "segment_direction": "vert"
+            }
+          ]
+        },
+        "uuid": "88db24b5-ebff-4d47-8df6-049e5c0007f9"
+      },
+      {
+        "dst": {
+          "node": "158f1af7-a38b-418a-a6c3-9372788951bf",
+          "port": 1
+        },
+        "src": {
+          "node": "30c4bd52-59ec-4da4-b248-28980709a880",
+          "port": 0
+        },
+        "uiprops": {
+          "link_type": {
+            "connection_method": "link_tap",
+            "tap_coordinate": -632,
+            "tapped_link_uuid": "88db24b5-ebff-4d47-8df6-049e5c0007f9",
+            "tapped_segment": {
+              "segment_type": "real",
+              "tapped_segment_direction": "horiz",
+              "tapped_segment_index": 0
+            }
+          },
+          "segments": [
+            {
+              "coordinate": 232,
+              "segment_direction": "horiz"
+            },
+            {
+              "coordinate": -328,
+              "segment_direction": "vert"
+            }
+          ]
+        },
+        "uuid": "c7bdff66-55cb-45ea-9ec3-71b5dbfe35ee"
+      },
+      {
+        "dst": {
+          "node": "daf1822b-c0fa-4e3c-a417-4d72da1ae33f",
+          "port": 2
+        },
+        "src": {
+          "node": "902f1dc4-d75b-4c8d-be64-7d469815aed8",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": -24,
+            "y": -152
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": [
+            {
+              "coordinate": -104,
+              "segment_direction": "vert"
+            },
+            {
+              "coordinate": -152,
+              "segment_direction": "horiz"
+            },
+            {
+              "coordinate": -24,
+              "segment_direction": "vert"
+            }
+          ]
+        },
+        "uuid": "635f4937-78e3-4200-972e-e6021cfbc811"
+      },
+      {
+        "dst": {
+          "node": "6ca2fea6-88ea-4899-acbf-4e2b72e92395",
+          "port": 2
+        },
+        "src": {
+          "node": "902f1dc4-d75b-4c8d-be64-7d469815aed8",
+          "port": 0
+        },
+        "uiprops": {
+          "link_type": {
+            "connection_method": "link_tap",
+            "tap_coordinate": -40,
+            "tapped_link_uuid": "635f4937-78e3-4200-972e-e6021cfbc811",
+            "tapped_segment": {
+              "segment_type": "real",
+              "tapped_segment_direction": "horiz",
+              "tapped_segment_index": 1
+            }
+          },
+          "segments": [
+            {
+              "coordinate": -432,
+              "segment_direction": "horiz"
+            },
+            {
+              "coordinate": -24,
+              "segment_direction": "vert"
+            }
+          ]
+        },
+        "uuid": "8dc0595e-442e-496b-bbb0-020bead1518d"
+      }
+    ],
+    "nodes": [
+      {
+        "inputs": [],
+        "name": "alt",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "description": {
+            "is_string": true,
+            "value": ""
+          },
+          "port_id": {
+            "value": "0"
+          }
+        },
+        "type": "core.Inport",
+        "uiprops": {
+          "x": -704,
+          "y": -320
+        },
+        "uuid": "30c4bd52-59ec-4da4-b248-28980709a880"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "static",
+            "name": "in_0"
+          }
+        ],
+        "name": "g",
+        "outputs": [],
+        "parameters": {
+          "description": {
+            "is_string": true,
+            "value": ""
+          },
+          "port_id": {
+            "value": "0"
+          }
+        },
+        "type": "core.Outport",
+        "uiprops": {
+          "x": 440,
+          "y": 88
+        },
+        "uuid": "ace8bdb9-bbfb-481a-9b8f-df0b5a7abe64"
+      },
+      {
+        "inputs": [],
+        "name": "vt",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "description": {
+            "is_string": true,
+            "value": ""
+          },
+          "port_id": {
+            "value": "1"
+          }
+        },
+        "type": "core.Inport",
+        "uiprops": {
+          "x": 64,
+          "y": -344
+        },
+        "uuid": "a313c676-f8fb-495b-bf56-962050af5916"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "static",
+            "name": "in_0"
+          }
+        ],
+        "name": "qbar",
+        "outputs": [],
+        "parameters": {
+          "description": {
+            "is_string": true,
+            "value": ""
+          },
+          "port_id": {
+            "value": "1"
+          }
+        },
+        "type": "core.Outport",
+        "uiprops": {
+          "x": 440,
+          "y": -200
+        },
+        "uuid": "62a52d10-764e-401d-b18c-cb99a3ddd5c9"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "static",
+            "name": "in_0"
+          }
+        ],
+        "name": "mach",
+        "outputs": [],
+        "parameters": {
+          "description": {
+            "is_string": true,
+            "value": ""
+          },
+          "port_id": {
+            "value": "2"
+          }
+        },
+        "type": "core.Outport",
+        "uiprops": {
+          "x": 392,
+          "y": -472
+        },
+        "uuid": "e2597502-a8d0-4d06-be9a-1621cc4564ad"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "dynamic",
+            "name": "in_0"
+          },
+          {
+            "kind": "dynamic",
+            "name": "in_1"
+          }
+        ],
+        "name": "Temperature",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "operators": {
+            "is_string": true,
+            "value": "-+"
+          }
+        },
+        "type": "core.Adder",
+        "uiprops": {
+          "x": -280,
+          "y": -112
+        },
+        "uuid": "902f1dc4-d75b-4c8d-be64-7d469815aed8"
+      },
+      {
+        "inputs": [],
+        "name": "T0",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "value": {
+            "value": "T0"
+          }
+        },
+        "type": "core.Constant",
+        "uiprops": {
+          "x": -400,
+          "y": -48
+        },
+        "uuid": "6dc140b9-4ab7-48ad-b81d-7b943a2f960a"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "static",
+            "name": "in_0"
+          }
+        ],
+        "name": "Gain_T_alt",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "gain": {
+            "value": "0.0065"
+          }
+        },
+        "type": "core.Gain",
+        "uiprops": {
+          "x": -400,
+          "y": -152
+        },
+        "uuid": "65635dac-40d4-4b13-98bc-34d13b7f7b8d"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "dynamic",
+            "name": "in_0"
+          },
+          {
+            "kind": "dynamic",
+            "name": "in_1"
+          }
+        ],
+        "name": "rho",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "denominator_limit": {
+            "value": "1e-12"
+          },
+          "divide_by_zero_behavior": {
+            "is_string": true,
+            "value": "inf"
+          },
+          "operators": {
+            "is_string": true,
+            "value": "**"
+          }
+        },
+        "type": "core.Product",
+        "uiprops": {
+          "x": 192,
+          "y": -200
+        },
+        "uuid": "677b10d3-09df-4a18-9573-ba200e64d187"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "static",
+            "name": "in_0"
+          }
+        ],
+        "name": "Exponent_e",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "base": {
+            "is_string": true,
+            "value": "exp"
+          }
+        },
+        "type": "core.Exponent",
+        "uiprops": {
+          "x": 88,
+          "y": -192
+        },
+        "uuid": "3a6db548-afba-4737-94d3-7c6bebb661be"
+      },
+      {
+        "inputs": [],
+        "name": "rho0",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "value": {
+            "value": "rho0"
+          }
+        },
+        "type": "core.Constant",
+        "uiprops": {
+          "x": 88,
+          "y": -280
+        },
+        "uuid": "30649564-2fcd-4d52-9759-28d83794e1a7"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "dynamic",
+            "name": "in_0"
+          },
+          {
+            "kind": "dynamic",
+            "name": "in_2"
+          },
+          {
+            "kind": "dynamic",
+            "name": "in_3"
+          },
+          {
+            "kind": "dynamic",
+            "name": "in_4"
+          }
+        ],
+        "name": "product_exp",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "denominator_limit": {
+            "value": "1e-12"
+          },
+          "divide_by_zero_behavior": {
+            "is_string": true,
+            "value": "inf"
+          },
+          "operators": {
+            "is_string": true,
+            "value": "*//*"
+          }
+        },
+        "type": "core.Product",
+        "uiprops": {
+          "x": -24,
+          "y": -200
+        },
+        "uuid": "daf1822b-c0fa-4e3c-a417-4d72da1ae33f"
+      },
+      {
+        "inputs": [],
+        "name": "R",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "value": {
+            "value": "R"
+          }
+        },
+        "type": "core.Constant",
+        "uiprops": {
+          "x": -280,
+          "y": -200
+        },
+        "uuid": "d09f166f-b030-4783-8ac3-c3f0bb753376"
+      },
+      {
+        "inputs": [],
+        "name": "g0",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "value": {
+            "value": "g0"
+          }
+        },
+        "type": "core.Constant",
+        "uiprops": {
+          "x": -272,
+          "y": -24
+        },
+        "uuid": "deda1404-45ce-4f54-8f36-0784ff37091c"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "static",
+            "name": "in_0"
+          }
+        ],
+        "name": "minus_one",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "gain": {
+            "value": "-1"
+          }
+        },
+        "type": "core.Gain",
+        "uiprops": {
+          "x": -160,
+          "y": -24
+        },
+        "uuid": "3ce9a307-2716-4b8a-a0d5-dd0992c9b4f7"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "static",
+            "name": "in_0"
+          }
+        ],
+        "name": "Power_2",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "exponent": {
+            "value": "2"
+          }
+        },
+        "type": "core.Power",
+        "uiprops": {
+          "x": 216,
+          "y": -344
+        },
+        "uuid": "d62d1953-0f98-4430-bcf8-24092b48123c"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "dynamic",
+            "name": "in_0"
+          },
+          {
+            "kind": "dynamic",
+            "name": "in_1"
+          },
+          {
+            "kind": "dynamic",
+            "name": "in_2"
+          }
+        ],
+        "name": "Product_0",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "denominator_limit": {
+            "value": "1e-12"
+          },
+          "divide_by_zero_behavior": {
+            "is_string": true,
+            "value": "inf"
+          },
+          "operators": {
+            "is_string": true,
+            "value": "***"
+          }
+        },
+        "type": "core.Product",
+        "uiprops": {
+          "x": 344,
+          "y": -200
+        },
+        "uuid": "dd173733-672c-4637-9208-a13076cab738"
+      },
+      {
+        "inputs": [],
+        "name": "half",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "value": {
+            "value": "0.5"
+          }
+        },
+        "type": "core.Constant",
+        "uiprops": {
+          "x": 192,
+          "y": -104
+        },
+        "uuid": "53b85b9e-f507-49c2-9446-66d11b36c78b"
+      },
+      {
+        "inputs": [],
+        "name": "Re",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "value": {
+            "value": "Re"
+          }
+        },
+        "type": "core.Constant",
+        "uiprops": {
+          "x": -120,
+          "y": 88
+        },
+        "uuid": "c81d4b24-e1bc-4cdc-8cdf-9f34094d21ab"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "dynamic",
+            "name": "in_0"
+          },
+          {
+            "kind": "dynamic",
+            "name": "in_1"
+          },
+          {
+            "kind": "dynamic",
+            "name": "in_2"
+          }
+        ],
+        "name": "Product_g",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "denominator_limit": {
+            "value": "1e-12"
+          },
+          "divide_by_zero_behavior": {
+            "is_string": true,
+            "value": "inf"
+          },
+          "operators": {
+            "is_string": true,
+            "value": "**/"
+          }
+        },
+        "type": "core.Product",
+        "uiprops": {
+          "x": 208,
+          "y": 88
+        },
+        "uuid": "638fcc35-5f73-44ba-88da-25d518e17ecf"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "dynamic",
+            "name": "in_0"
+          },
+          {
+            "kind": "dynamic",
+            "name": "in_1"
+          }
+        ],
+        "name": "Adder_1",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "operators": {
+            "is_string": true,
+            "value": "++"
+          }
+        },
+        "type": "core.Adder",
+        "uiprops": {
+          "x": -16,
+          "y": 192
+        },
+        "uuid": "158f1af7-a38b-418a-a6c3-9372788951bf"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "static",
+            "name": "in_0"
+          }
+        ],
+        "name": "Power_2_",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "exponent": {
+            "value": "2"
+          }
+        },
+        "type": "core.Power",
+        "uiprops": {
+          "x": 80,
+          "y": 88
+        },
+        "uuid": "e00709e5-aa4b-4007-a308-914969bc2323"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "static",
+            "name": "in_0"
+          }
+        ],
+        "name": "Power_2__",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "exponent": {
+            "value": "2"
+          }
+        },
+        "type": "core.Power",
+        "uiprops": {
+          "x": 80,
+          "y": 192
+        },
+        "uuid": "b2e1fd8a-bcc7-4ece-b4db-51752ce25bc0"
+      },
+      {
+        "inputs": [],
+        "name": "gamma_air",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "value": {
+            "value": "gamma_air"
+          }
+        },
+        "type": "core.Constant",
+        "uiprops": {
+          "x": -152,
+          "y": -496
+        },
+        "uuid": "02b268b4-0410-4144-a0fd-145aece02ec7"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "dynamic",
+            "name": "in_0"
+          },
+          {
+            "kind": "dynamic",
+            "name": "in_1"
+          },
+          {
+            "kind": "dynamic",
+            "name": "in_2"
+          }
+        ],
+        "name": "Product",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "denominator_limit": {
+            "value": "1e-12"
+          },
+          "divide_by_zero_behavior": {
+            "is_string": true,
+            "value": "inf"
+          },
+          "operators": {
+            "is_string": true,
+            "value": "***"
+          }
+        },
+        "type": "core.Product",
+        "uiprops": {
+          "x": -8,
+          "y": -480
+        },
+        "uuid": "6ca2fea6-88ea-4899-acbf-4e2b72e92395"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "static",
+            "name": "in_0"
+          }
+        ],
+        "name": "SquareRoot_0",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {},
+        "type": "core.SquareRoot",
+        "uiprops": {
+          "x": 88,
+          "y": -480
+        },
+        "uuid": "0467709c-2974-468b-b9aa-b979124fe652"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "dynamic",
+            "name": "in_0"
+          },
+          {
+            "kind": "dynamic",
+            "name": "in_1"
+          }
+        ],
+        "name": "Product_mach",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "denominator_limit": {
+            "value": "1e-12"
+          },
+          "divide_by_zero_behavior": {
+            "is_string": true,
+            "value": "inf"
+          },
+          "operators": {
+            "is_string": true,
+            "value": "/*"
+          }
+        },
+        "type": "core.Product",
+        "uiprops": {
+          "x": 216,
+          "y": -472
+        },
+        "uuid": "53918402-a327-4cb7-b8c2-d7b3fa9de7ec"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "static",
+            "name": "in_0"
+          }
+        ],
+        "name": "Altitude_Limit",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "enable_dynamic_lower_limit": {
+            "value": "false"
+          },
+          "enable_dynamic_upper_limit": {
+            "value": "false"
+          },
+          "lower_limit": {
+            "value": "0"
+          },
+          "upper_limit": {
+            "value": "11000"
+          }
+        },
+        "type": "core.Saturate",
+        "uiprops": {
+          "x": -544,
+          "y": -152
+        },
+        "uuid": "1733778f-e20b-406b-b805-e23c4fc06a77"
+      }
+    ],
+    "uuid": "b8e4e886-fc8c-4f22-8673-0bfe4d290885"
+  },
+  "kind": "Submodel",
+  "name": "AtmosphereBlock",
+  "parameter_definitions": [
+    {
+      "default_value": "287.05",
+      "name": "R",
+      "uiprops": {},
+      "uuid": "44359b5f-d432-4c00-8beb-fc0c83ba4aaa"
+    },
+    {
+      "default_value": "6371000",
+      "name": "Re",
+      "uiprops": {},
+      "uuid": "6b8dda3c-c192-4430-956b-937a9d98e333"
+    },
+    {
+      "default_value": "288.15",
+      "name": "T0",
+      "uiprops": {},
+      "uuid": "fc3daa50-eb0f-4919-8fda-88eba2529200"
+    },
+    {
+      "default_value": "9.80665",
+      "name": "g0",
+      "uiprops": {},
+      "uuid": "27fb28b9-8935-47fd-bc7f-071735979616"
+    },
+    {
+      "default_value": "1.4",
+      "name": "gamma_air",
+      "uiprops": {},
+      "uuid": "433e30e5-df2f-4852-88ab-d51ad756888a"
+    },
+    {
+      "default_value": "1.225",
+      "name": "rho0",
+      "uiprops": {},
+      "uuid": "3dd2ec3b-d11a-4c7e-995a-86297e28e77f"
+    }
+  ],
+  "schema_version": "3",
+  "subdiagrams": {
+    "diagrams": {},
+    "references": {}
+  },
+  "submodel_configuration": {},
+  "uuid": "04574770-4853-43c7-bd92-89b401128f39"
+}

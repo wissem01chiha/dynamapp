@@ -1,0 +1,1056 @@
+{
+  "configuration": {
+    "max_results_interval": 1,
+    "record_mode": "selected",
+    "sample_time": 0.1,
+    "solver": {
+      "absolute_tolerance": 0.000001,
+      "max_minor_steps_per_major_step": 1000,
+      "max_step": 1000000,
+      "method": "RK45",
+      "min_step": 0,
+      "relative_tolerance": 0.001
+    },
+    "start_time": 0,
+    "stop_time": 99,
+    "worker_type": "any",
+    "workspace": {}
+  },
+  "diagram": {
+    "annotations": [
+      {
+        "color_id": "green",
+        "grid_height": 19,
+        "grid_width": 59,
+        "label_position": "top",
+        "text": "Plant",
+        "uuid": "10abcffd-deac-4521-9645-aabd6336bff7",
+        "x": 344,
+        "y": 264
+      },
+      {
+        "color_id": "yellow",
+        "grid_height": 33,
+        "grid_width": 64,
+        "label_position": "top",
+        "text": "Extremum-seeking controller",
+        "uuid": "3edefc36-1c39-43f3-80a7-f16b7c3b7342",
+        "x": 336,
+        "y": 512
+      }
+    ],
+    "links": [
+      {
+        "dst": {
+          "node": "a09f75ed-643c-4f9a-8e18-a4a711a223e1",
+          "port": 0
+        },
+        "src": {
+          "node": "c180ab68-4491-4e2e-a035-bf5796e61dd2",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 408,
+            "y": 560
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": [
+            {
+              "coordinate": 648,
+              "segment_direction": "vert"
+            },
+            {
+              "coordinate": 336,
+              "segment_direction": "horiz"
+            },
+            {
+              "coordinate": 680,
+              "segment_direction": "vert"
+            },
+            {
+              "coordinate": 336,
+              "segment_direction": "horiz"
+            },
+            {
+              "coordinate": 712,
+              "segment_direction": "vert"
+            },
+            {
+              "coordinate": 336,
+              "segment_direction": "horiz"
+            },
+            {
+              "coordinate": 720,
+              "segment_direction": "vert"
+            }
+          ]
+        },
+        "uuid": "23625353-2919-4309-9ac2-17e75384793c"
+      },
+      {
+        "dst": {
+          "node": "c180ab68-4491-4e2e-a035-bf5796e61dd2",
+          "port": 0
+        },
+        "src": {
+          "node": "da66ccb8-d634-4085-b43d-1555a43b8066",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 424,
+            "y": 288
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "2778afca-747a-4c63-aeac-2e18631e0d92"
+      },
+      {
+        "dst": {
+          "node": "07c08c59-fb91-480e-87a1-39275e99934f",
+          "port": 0
+        },
+        "src": {
+          "node": "6a52f626-853e-4bf1-bb61-8670645c8bd6",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 88,
+            "y": 176
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "5ce26538-c6c4-4767-aba3-077da566340d"
+      },
+      {
+        "dst": {
+          "node": "07c08c59-fb91-480e-87a1-39275e99934f",
+          "port": 1
+        },
+        "src": {
+          "node": "c732716a-d616-4859-ac53-4bd29832bede",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 104,
+            "y": 248
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "489a9ac5-4066-45df-bb09-9ae656fc2619"
+      },
+      {
+        "dst": {
+          "node": "c647ccfa-c2a6-4375-ae97-1191bcccabd2",
+          "port": 0
+        },
+        "src": {
+          "node": "07c08c59-fb91-480e-87a1-39275e99934f",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 280,
+            "y": 152
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "ad4673f4-f02f-499e-84f5-aee2f1249190"
+      },
+      {
+        "dst": {
+          "node": "458f5acf-a6c6-4f74-a5bf-a9092a60f85c",
+          "port": 0
+        },
+        "src": {
+          "node": "c647ccfa-c2a6-4375-ae97-1191bcccabd2",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 328,
+            "y": 232
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "27c25a40-5927-402f-bdc4-18af5db1bd27"
+      },
+      {
+        "dst": {
+          "node": "458f5acf-a6c6-4f74-a5bf-a9092a60f85c",
+          "port": 1
+        },
+        "src": {
+          "node": "a5ba16d3-95d8-4cda-9a17-0ccac465f289",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 328,
+            "y": 256
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "dac45d2b-b199-4053-aafa-9e09205f16c9"
+      },
+      {
+        "dst": {
+          "node": "6a52f626-853e-4bf1-bb61-8670645c8bd6",
+          "port": 0
+        },
+        "src": {
+          "node": "a09f75ed-643c-4f9a-8e18-a4a711a223e1",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 368,
+            "y": 576
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": [
+            {
+              "coordinate": 816,
+              "segment_direction": "vert"
+            },
+            {
+              "coordinate": 456,
+              "segment_direction": "horiz"
+            },
+            {
+              "coordinate": 312,
+              "segment_direction": "vert"
+            }
+          ]
+        },
+        "uuid": "7e298eec-b5a1-490a-ad55-d0ee715473e9"
+      },
+      {
+        "dst": {
+          "node": "da66ccb8-d634-4085-b43d-1555a43b8066",
+          "port": 0
+        },
+        "src": {
+          "node": "458f5acf-a6c6-4f74-a5bf-a9092a60f85c",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 344,
+            "y": 248
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": [
+            {
+              "coordinate": 880,
+              "segment_direction": "vert"
+            },
+            {
+              "coordinate": 840,
+              "segment_direction": "horiz"
+            },
+            {
+              "coordinate": 288,
+              "segment_direction": "vert"
+            }
+          ]
+        },
+        "uuid": "fad0c075-6a17-4c03-bb68-434523acd857"
+      }
+    ],
+    "nodes": [
+      {
+        "inputs": [
+          {
+            "kind": "dynamic",
+            "name": "Theta"
+          }
+        ],
+        "name": "NonlinearFunc",
+        "outputs": [
+          {
+            "kind": "dynamic",
+            "name": "FTheta"
+          }
+        ],
+        "parameters": {},
+        "type": "core.Group",
+        "uiprops": {
+          "grid_height": 12,
+          "grid_width": 14,
+          "x": 528,
+          "y": 288
+        },
+        "uuid": "c180ab68-4491-4e2e-a035-bf5796e61dd2"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "static",
+            "name": "in_0"
+          }
+        ],
+        "name": "F_in",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0",
+            "record": true
+          }
+        ],
+        "parameters": {
+          "denominator_coefficients": {
+            "value": "[1, 3, 2]"
+          },
+          "numerator_coefficients": {
+            "value": "[1, -1]"
+          }
+        },
+        "type": "core.TransferFunction",
+        "uiprops": {
+          "port_alignment": "spaced",
+          "x": 360,
+          "y": 304
+        },
+        "uuid": "da66ccb8-d634-4085-b43d-1555a43b8066"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "static",
+            "name": "in_0"
+          }
+        ],
+        "name": "F_out",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0",
+            "record": true
+          }
+        ],
+        "parameters": {
+          "denominator_coefficients": {
+            "value": "[1, 1]"
+          },
+          "numerator_coefficients": {
+            "value": "[1]"
+          }
+        },
+        "type": "core.TransferFunction",
+        "uiprops": {
+          "port_alignment": "spaced",
+          "x": 720,
+          "y": 304
+        },
+        "uuid": "a09f75ed-643c-4f9a-8e18-a4a711a223e1"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "static",
+            "name": "in_0"
+          }
+        ],
+        "name": "HighPassFilter",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0",
+            "record": true
+          }
+        ],
+        "parameters": {
+          "denominator_coefficients": {
+            "value": "[1, 5]"
+          },
+          "numerator_coefficients": {
+            "value": "[1, 0]"
+          }
+        },
+        "type": "core.TransferFunction",
+        "uiprops": {
+          "port_alignment": "spaced",
+          "x": 368,
+          "y": 544
+        },
+        "uuid": "6a52f626-853e-4bf1-bb61-8670645c8bd6"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "static",
+            "name": "in_0"
+          }
+        ],
+        "name": "Integrator",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0",
+            "record": true
+          }
+        ],
+        "parameters": {
+          "denominator_coefficients": {
+            "value": "[1, -0.01]"
+          },
+          "numerator_coefficients": {
+            "value": "[50, -200]"
+          }
+        },
+        "type": "core.TransferFunction",
+        "uiprops": {
+          "port_alignment": "spaced",
+          "x": 640,
+          "y": 544
+        },
+        "uuid": "c647ccfa-c2a6-4375-ae97-1191bcccabd2"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "dynamic",
+            "name": "in_0"
+          },
+          {
+            "kind": "dynamic",
+            "name": "in_1"
+          }
+        ],
+        "name": "Demodulated",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0",
+            "record": true
+          }
+        ],
+        "parameters": {
+          "denominator_limit": {
+            "value": "1e-12"
+          },
+          "divide_by_zero_behavior": {
+            "is_string": true,
+            "value": "inf"
+          },
+          "operators": {
+            "is_string": true,
+            "value": "**"
+          }
+        },
+        "type": "core.Product",
+        "uiprops": {
+          "port_alignment": "spaced",
+          "x": 528,
+          "y": 624
+        },
+        "uuid": "07c08c59-fb91-480e-87a1-39275e99934f"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "dynamic",
+            "name": "in_0"
+          },
+          {
+            "kind": "dynamic",
+            "name": "in_1"
+          }
+        ],
+        "name": "u",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "operators": {
+            "is_string": true,
+            "value": "++"
+          }
+        },
+        "type": "core.Adder",
+        "uiprops": {
+          "port_alignment": "spaced",
+          "x": 752,
+          "y": 632
+        },
+        "uuid": "458f5acf-a6c6-4f74-a5bf-a9092a60f85c"
+      },
+      {
+        "inputs": [],
+        "name": "SineWave_0",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "amplitude": {
+            "value": "1.0"
+          },
+          "bias": {
+            "value": "0.0"
+          },
+          "frequency": {
+            "value": "w"
+          },
+          "phase": {
+            "value": "phi"
+          }
+        },
+        "time_mode": "agnostic",
+        "type": "core.SineWave",
+        "uiprops": {
+          "port_alignment": "spaced",
+          "x": 368,
+          "y": 672
+        },
+        "uuid": "c732716a-d616-4859-ac53-4bd29832bede"
+      },
+      {
+        "inputs": [],
+        "name": "SineWave_1",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "amplitude": {
+            "value": "A"
+          },
+          "bias": {
+            "value": "0.0"
+          },
+          "frequency": {
+            "value": "w"
+          },
+          "phase": {
+            "value": "0.0"
+          }
+        },
+        "time_mode": "agnostic",
+        "type": "core.SineWave",
+        "uiprops": {
+          "port_alignment": "spaced",
+          "x": 640,
+          "y": 672
+        },
+        "uuid": "a5ba16d3-95d8-4cda-9a17-0ccac465f289"
+      }
+    ],
+    "uuid": "b905736c-f98a-474f-8cba-4c25c436afca"
+  },
+  "kind": "Model",
+  "name": "KrsticESC",
+  "parameters": {
+    "A": {
+      "value": "0.05"
+    },
+    "phi": {
+      "value": "0.7955"
+    },
+    "w": {
+      "value": "5"
+    }
+  },
+  "schema_version": "3",
+  "subdiagrams": {
+    "diagrams": {
+      "3a1c5285-e57c-4f34-9b65-3133e43bfe5d": {
+        "annotations": [],
+        "links": [
+          {
+            "dst": {
+              "node": "c814409c-c5a6-4b1a-952b-8036a66a4536",
+              "port": 0
+            },
+            "src": {
+              "node": "155257a0-05e4-47f2-a40d-d50c52cca4e0",
+              "port": 0
+            },
+            "uiprops": {
+              "hang_coord_end": {
+                "x": 96,
+                "y": 376
+              },
+              "link_type": {
+                "connection_method": "direct_to_block"
+              },
+              "segments": [
+                {
+                  "coordinate": 64,
+                  "segment_direction": "vert"
+                }
+              ]
+            },
+            "uuid": "69a2175a-0fdc-4b2a-9ad0-a1537bdcb754"
+          },
+          {
+            "dst": {
+              "node": "d8f18b91-7b6c-45d2-b013-ee81dd90170c",
+              "port": 0
+            },
+            "src": {
+              "node": "3b89d39d-29c0-499c-aef7-c5b53d3011a6",
+              "port": 0
+            },
+            "uiprops": {
+              "hang_coord_start": {
+                "x": 456,
+                "y": 320
+              },
+              "link_type": {
+                "connection_method": "direct_to_block"
+              },
+              "segments": []
+            },
+            "uuid": "ec332222-8d1e-4ea1-9ce9-0267cfdeed90"
+          },
+          {
+            "dst": {
+              "node": "bac80d11-9561-4c41-9e7a-e820fa812445",
+              "port": 0
+            },
+            "src": {
+              "node": "ca1dc0bd-138e-4a70-b18c-26e510cb96d4",
+              "port": 0
+            },
+            "uiprops": {
+              "hang_coord_end": {
+                "x": -144,
+                "y": 424
+              },
+              "link_type": {
+                "connection_method": "direct_to_block"
+              },
+              "segments": []
+            },
+            "uuid": "fa157f6a-5bd0-49f9-afe6-98472b9b6176"
+          },
+          {
+            "dst": {
+              "node": "3e1bd0d3-e337-4ca5-9362-60532f46e72d",
+              "port": 0
+            },
+            "src": {
+              "node": "c814409c-c5a6-4b1a-952b-8036a66a4536",
+              "port": 0
+            },
+            "uiprops": {
+              "hang_coord_end": {
+                "x": 192,
+                "y": 384
+              },
+              "link_type": {
+                "connection_method": "direct_to_block"
+              },
+              "segments": []
+            },
+            "uuid": "465d8893-c46b-4bc5-bdc6-75eb4f1a2059"
+          },
+          {
+            "dst": {
+              "node": "3b89d39d-29c0-499c-aef7-c5b53d3011a6",
+              "port": 1
+            },
+            "src": {
+              "node": "3e1bd0d3-e337-4ca5-9362-60532f46e72d",
+              "port": 0
+            },
+            "uiprops": {
+              "hang_coord_end": {
+                "x": 384,
+                "y": 328
+              },
+              "link_type": {
+                "connection_method": "direct_to_block"
+              },
+              "segments": []
+            },
+            "uuid": "ed4016ad-1f8c-4ad1-97f0-3aea57afbc3c"
+          },
+          {
+            "dst": {
+              "node": "c814409c-c5a6-4b1a-952b-8036a66a4536",
+              "port": 1
+            },
+            "src": {
+              "node": "c1421abd-8ca1-4dc1-a348-b96939cefc4b",
+              "port": 0
+            },
+            "uiprops": {
+              "hang_coord_end": {
+                "x": 88,
+                "y": 392
+              },
+              "hang_coord_start": {
+                "x": 32,
+                "y": 424
+              },
+              "link_type": {
+                "connection_method": "direct_to_block"
+              },
+              "segments": [
+                {
+                  "coordinate": 72,
+                  "segment_direction": "vert"
+                }
+              ]
+            },
+            "uuid": "b7e15547-2aa8-44db-9d07-4ec253a97441"
+          },
+          {
+            "dst": {
+              "node": "3b89d39d-29c0-499c-aef7-c5b53d3011a6",
+              "port": 0
+            },
+            "src": {
+              "node": "08ab9079-9742-498f-976c-c90cace7d942",
+              "port": 0
+            },
+            "uiprops": {
+              "hang_coord_end": {
+                "x": 376,
+                "y": 312
+              },
+              "hang_coord_start": {
+                "x": 144,
+                "y": 216
+              },
+              "link_type": {
+                "connection_method": "direct_to_block"
+              },
+              "segments": [
+                {
+                  "coordinate": 328,
+                  "segment_direction": "vert"
+                }
+              ]
+            },
+            "uuid": "7b568f3f-24fe-41bc-8f03-e18bf31dcb55"
+          },
+          {
+            "dst": {
+              "node": "c1421abd-8ca1-4dc1-a348-b96939cefc4b",
+              "port": 0
+            },
+            "src": {
+              "node": "bac80d11-9561-4c41-9e7a-e820fa812445",
+              "port": 0
+            },
+            "uiprops": {
+              "hang_coord_end": {
+                "x": -32,
+                "y": 432
+              },
+              "link_type": {
+                "connection_method": "direct_to_block"
+              },
+              "segments": []
+            },
+            "uuid": "189c1ca5-17fc-4283-bb77-7b988c8aa164"
+          }
+        ],
+        "nodes": [
+          {
+            "inputs": [],
+            "name": "Theta",
+            "outputs": [
+              {
+                "kind": "static",
+                "name": "out_0"
+              }
+            ],
+            "parameters": {
+              "description": {
+                "is_string": true,
+                "value": ""
+              },
+              "port_id": {
+                "value": "0"
+              }
+            },
+            "type": "core.Inport",
+            "uiprops": {
+              "x": -216,
+              "y": 304
+            },
+            "uuid": "155257a0-05e4-47f2-a40d-d50c52cca4e0"
+          },
+          {
+            "inputs": [
+              {
+                "kind": "static",
+                "name": "in_0"
+              }
+            ],
+            "name": "FTheta",
+            "outputs": [],
+            "parameters": {
+              "description": {
+                "is_string": true,
+                "value": ""
+              },
+              "port_id": {
+                "value": "0"
+              }
+            },
+            "type": "core.Outport",
+            "uiprops": {
+              "x": 544,
+              "y": 288
+            },
+            "uuid": "d8f18b91-7b6c-45d2-b013-ee81dd90170c"
+          },
+          {
+            "inputs": [],
+            "name": "FStar",
+            "outputs": [
+              {
+                "kind": "static",
+                "name": "out_0",
+                "record": true
+              }
+            ],
+            "parameters": {
+              "end_value": {
+                "value": "0.01"
+              },
+              "start_value": {
+                "value": "0.0"
+              },
+              "step_time": {
+                "value": "10.0"
+              }
+            },
+            "time_mode": "agnostic",
+            "type": "core.Step",
+            "uiprops": {
+              "port_alignment": "spaced",
+              "x": 192,
+              "y": 184
+            },
+            "uuid": "08ab9079-9742-498f-976c-c90cace7d942"
+          },
+          {
+            "inputs": [],
+            "name": "Ramp_0",
+            "outputs": [
+              {
+                "kind": "static",
+                "name": "out_0"
+              }
+            ],
+            "parameters": {
+              "slope": {
+                "value": "0.01"
+              },
+              "start_time": {
+                "value": "0.0"
+              },
+              "start_value": {
+                "value": "0.0"
+              }
+            },
+            "time_mode": "agnostic",
+            "type": "core.Ramp",
+            "uiprops": {
+              "port_alignment": "spaced",
+              "x": -272,
+              "y": 392
+            },
+            "uuid": "ca1dc0bd-138e-4a70-b18c-26e510cb96d4"
+          },
+          {
+            "inputs": [
+              {
+                "kind": "dynamic",
+                "name": "in_0"
+              },
+              {
+                "kind": "dynamic",
+                "name": "in_1"
+              }
+            ],
+            "name": "Adder_0",
+            "outputs": [
+              {
+                "kind": "static",
+                "name": "out_0"
+              }
+            ],
+            "parameters": {
+              "operators": {
+                "is_string": true,
+                "value": "++"
+              }
+            },
+            "type": "core.Adder",
+            "uiprops": {
+              "port_alignment": "spaced",
+              "x": 384,
+              "y": 288
+            },
+            "uuid": "3b89d39d-29c0-499c-aef7-c5b53d3011a6"
+          },
+          {
+            "inputs": [
+              {
+                "kind": "dynamic",
+                "name": "in_0"
+              },
+              {
+                "kind": "dynamic",
+                "name": "in_1"
+              }
+            ],
+            "name": "Adder_1",
+            "outputs": [
+              {
+                "kind": "static",
+                "name": "out_0",
+                "record": true
+              }
+            ],
+            "parameters": {
+              "operators": {
+                "is_string": true,
+                "value": "+-"
+              }
+            },
+            "type": "core.Adder",
+            "uiprops": {
+              "port_alignment": "spaced",
+              "x": 96,
+              "y": 352
+            },
+            "uuid": "c814409c-c5a6-4b1a-952b-8036a66a4536"
+          },
+          {
+            "inputs": [
+              {
+                "kind": "static",
+                "name": "in_0"
+              }
+            ],
+            "name": "Power_1",
+            "outputs": [
+              {
+                "kind": "static",
+                "name": "out_0",
+                "record": true
+              }
+            ],
+            "parameters": {
+              "exponent": {
+                "value": "2.0"
+              }
+            },
+            "type": "core.Power",
+            "uiprops": {
+              "port_alignment": "spaced",
+              "x": 200,
+              "y": 352
+            },
+            "uuid": "3e1bd0d3-e337-4ca5-9362-60532f46e72d"
+          },
+          {
+            "inputs": [
+              {
+                "kind": "static",
+                "name": "in_0"
+              }
+            ],
+            "name": "Exponent_0",
+            "outputs": [
+              {
+                "kind": "static",
+                "name": "out_0"
+              }
+            ],
+            "parameters": {
+              "base": {
+                "is_string": true,
+                "value": "exp"
+              }
+            },
+            "type": "core.Exponent",
+            "uiprops": {
+              "port_alignment": "spaced",
+              "x": -144,
+              "y": 392
+            },
+            "uuid": "bac80d11-9561-4c41-9e7a-e820fa812445"
+          },
+          {
+            "inputs": [
+              {
+                "kind": "static",
+                "name": "in_0"
+              }
+            ],
+            "name": "ThetaStar",
+            "outputs": [
+              {
+                "kind": "static",
+                "name": "out_0"
+              }
+            ],
+            "parameters": {
+              "gain": {
+                "value": "0.01"
+              }
+            },
+            "type": "core.Gain",
+            "uiprops": {
+              "port_alignment": "spaced",
+              "x": -24,
+              "y": 392
+            },
+            "uuid": "c1421abd-8ca1-4dc1-a348-b96939cefc4b"
+          }
+        ],
+        "uuid": "3a1c5285-e57c-4f34-9b65-3133e43bfe5d"
+      }
+    },
+    "references": {
+      "c180ab68-4491-4e2e-a035-bf5796e61dd2": {
+        "diagram_uuid": "3a1c5285-e57c-4f34-9b65-3133e43bfe5d"
+      }
+    }
+  },
+  "uuid": "31e57454-5680-4506-ad75-74b75215e156"
+}

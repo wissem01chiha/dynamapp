@@ -1,0 +1,153 @@
+{
+  "configuration": {
+    "max_results_interval": 1,
+    "record_mode": "selected",
+    "sample_time": 0.1,
+    "solver": {
+      "absolute_tolerance": 0.000001,
+      "max_minor_steps_per_major_step": 1000,
+      "max_step": 1000000,
+      "method": "RK45",
+      "min_step": 0,
+      "relative_tolerance": 0.001
+    },
+    "start_time": 0,
+    "stop_time": 10,
+    "worker_type": "any",
+    "workspace": {}
+  },
+  "diagram": {
+    "annotations": [],
+    "links": [
+      {
+        "dst": {
+          "node": "d0c1d6f4-9e39-4637-b1c1-ce2fbf8bb681",
+          "port": 0
+        },
+        "src": {
+          "node": "0f87fb1a-0745-4217-97e6-90acd59b6ae1",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 224,
+            "y": 336
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "dbe9884c-9479-4258-831c-5acd36ef59df"
+      },
+      {
+        "dst": {
+          "node": "4056f554-1a22-430b-affc-d6e2fd9050d7",
+          "port": 0
+        },
+        "src": {
+          "node": "d0c1d6f4-9e39-4637-b1c1-ce2fbf8bb681",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_start": {
+            "x": 421.5628437246703,
+            "y": 330.9353678914646
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "f5d2dc37-b15c-4263-aa35-ff119dee9d4f"
+      }
+    ],
+    "nodes": [
+      {
+        "inputs": [],
+        "name": "one",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "value": {
+            "value": "1"
+          }
+        },
+        "type": "core.Constant",
+        "uiprops": {
+          "x": 120,
+          "y": 328
+        },
+        "uuid": "0f87fb1a-0745-4217-97e6-90acd59b6ae1"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "static",
+            "name": "in_0"
+          }
+        ],
+        "name": "Abs_0",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {},
+        "type": "core.Abs",
+        "uiprops": {
+          "x": 496,
+          "y": 304
+        },
+        "uuid": "4056f554-1a22-430b-affc-d6e2fd9050d7"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "dynamic",
+            "name": "Inport_0"
+          }
+        ],
+        "name": "_0081_sm_v2_clean_namespace_fail_sm_0",
+        "outputs": [
+          {
+            "kind": "dynamic",
+            "name": "Outport_0"
+          }
+        ],
+        "parameters": {},
+        "submodel_reference_uuid": "6430c623-deb7-493b-9a46-83d7475a0b39",
+        "type": "core.ReferenceSubmodel",
+        "uiprops": {
+          "grid_height": 12,
+          "grid_width": 24,
+          "port_alignment": "spaced",
+          "show_port_name_labels": true,
+          "x": 232,
+          "y": 288
+        },
+        "uuid": "d0c1d6f4-9e39-4637-b1c1-ce2fbf8bb681"
+      }
+    ],
+    "uuid": "eb50517d-dd6d-4757-82b9-966f0c46c753"
+  },
+  "kind": "Model",
+  "name": "_0081_sm_v2_clean_namespace_fail_2023-11-15T03:29:17Z",
+  "parameters": {
+    "global_gain": {
+      "value": "2"
+    }
+  },
+  "schema_version": "3",
+  "state_machines": null,
+  "subdiagrams": {
+    "diagrams": {},
+    "references": {}
+  },
+  "uuid": "3807f2c1-7afc-4468-bd2f-1998a2dd4678"
+}

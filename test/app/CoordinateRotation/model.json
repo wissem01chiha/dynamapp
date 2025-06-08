@@ -1,0 +1,716 @@
+{
+  "configuration": {
+    "fixed_results_interval": 0,
+    "max_results_interval": 0,
+    "numerical_backend": "auto",
+    "record_mode": "all",
+    "sample_time": 0.1,
+    "sim_output_mode": "auto",
+    "solver": {
+      "absolute_tolerance": 0.000001,
+      "max_minor_steps_per_major_step": 4096,
+      "max_step": 1000000,
+      "method": "non-stiff",
+      "min_step": 0,
+      "relative_tolerance": 0.001
+    },
+    "start_time": 0,
+    "stop_time": 10,
+    "worker_type": "any",
+    "workspace": {}
+  },
+  "diagram": {
+    "annotations": [],
+    "links": [
+      {
+        "dst": {
+          "node": "6c4d26f3-f558-4526-ac92-ad02b1343d04",
+          "port": 1
+        },
+        "src": {
+          "node": "0f592785-2350-4713-b493-091bab5ed147",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 664,
+            "y": 784
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "7b4d668c-3655-41ac-bca2-6fa0da22a910"
+      },
+      {
+        "dst": {
+          "node": "0505d5b0-af88-419b-9ed9-dc31c1c876d3",
+          "port": 1
+        },
+        "src": {
+          "node": "c00ce554-ab6d-4528-a630-54455f04563c",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 672,
+            "y": 664
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "976b5cee-19b6-450e-93b2-4acdbd63d823"
+      },
+      {
+        "dst": {
+          "node": "5ecab146-f43c-4097-bc3d-f5b8ad2135bd",
+          "port": 1
+        },
+        "src": {
+          "node": "60dafb4c-4382-4593-9fc3-108a50aabb01",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 672,
+            "y": 920
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "6424fed6-5558-46e6-82dc-bf778c22eb0a"
+      },
+      {
+        "dst": {
+          "node": "d9107714-196d-437f-8e73-397ba7d16b57",
+          "port": 0
+        },
+        "src": {
+          "node": "370b4cfe-8735-4802-9fb2-f0485d87f452",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 672,
+            "y": 288
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": [
+            {
+              "coordinate": 440,
+              "segment_direction": "vert"
+            },
+            {
+              "coordinate": 280,
+              "segment_direction": "horiz"
+            },
+            {
+              "coordinate": 552,
+              "segment_direction": "vert"
+            },
+            {
+              "coordinate": 280,
+              "segment_direction": "horiz"
+            },
+            {
+              "coordinate": 664,
+              "segment_direction": "vert"
+            }
+          ]
+        },
+        "uuid": "88ea4766-8596-4fe9-9283-3c65e16b7f9a"
+      },
+      {
+        "dst": {
+          "node": "50490eae-d72f-42a9-8205-affead76face",
+          "port": 0
+        },
+        "src": {
+          "node": "370b4cfe-8735-4802-9fb2-f0485d87f452",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 672,
+            "y": 416
+          },
+          "link_type": {
+            "connection_method": "link_tap",
+            "tap_coordinate": 528,
+            "tapped_link_uuid": "88ea4766-8596-4fe9-9283-3c65e16b7f9a",
+            "tapped_segment": {
+              "segment_type": "real",
+              "tapped_segment_direction": "horiz",
+              "tapped_segment_index": 1
+            }
+          },
+          "segments": [
+            {
+              "coordinate": 288,
+              "segment_direction": "horiz"
+            },
+            {
+              "coordinate": 528,
+              "segment_direction": "vert"
+            },
+            {
+              "coordinate": 408,
+              "segment_direction": "horiz"
+            },
+            {
+              "coordinate": 672,
+              "segment_direction": "vert"
+            }
+          ]
+        },
+        "uuid": "993a396a-91a6-4eb9-a6ab-98d9db4e612c"
+      },
+      {
+        "dst": {
+          "node": "d7f9b635-6ec9-490f-883d-e4e094ee0b21",
+          "port": 0
+        },
+        "src": {
+          "node": "370b4cfe-8735-4802-9fb2-f0485d87f452",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 672,
+            "y": 560
+          },
+          "link_type": {
+            "connection_method": "link_tap",
+            "tap_coordinate": 552,
+            "tapped_link_uuid": "993a396a-91a6-4eb9-a6ab-98d9db4e612c",
+            "tapped_segment": {
+              "segment_type": "real",
+              "tapped_segment_direction": "horiz",
+              "tapped_segment_index": 2
+            }
+          },
+          "segments": [
+            {
+              "coordinate": 416,
+              "segment_direction": "horiz"
+            },
+            {
+              "coordinate": 552,
+              "segment_direction": "vert"
+            },
+            {
+              "coordinate": 552,
+              "segment_direction": "horiz"
+            },
+            {
+              "coordinate": 672,
+              "segment_direction": "vert"
+            }
+          ]
+        },
+        "uuid": "b36e43a3-390a-4506-9251-07e74e55a1c0"
+      },
+      {
+        "dst": {
+          "node": "0505d5b0-af88-419b-9ed9-dc31c1c876d3",
+          "port": 0
+        },
+        "src": {
+          "node": "370b4cfe-8735-4802-9fb2-f0485d87f452",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 672,
+            "y": 640
+          },
+          "link_type": {
+            "connection_method": "link_tap",
+            "tap_coordinate": 576,
+            "tapped_link_uuid": "b36e43a3-390a-4506-9251-07e74e55a1c0",
+            "tapped_segment": {
+              "segment_type": "real",
+              "tapped_segment_direction": "horiz",
+              "tapped_segment_index": 2
+            }
+          },
+          "segments": [
+            {
+              "coordinate": 560,
+              "segment_direction": "horiz"
+            },
+            {
+              "coordinate": 576,
+              "segment_direction": "vert"
+            },
+            {
+              "coordinate": 640,
+              "segment_direction": "horiz"
+            },
+            {
+              "coordinate": 672,
+              "segment_direction": "vert"
+            }
+          ]
+        },
+        "uuid": "bdddbeee-d4e4-42d4-9c30-00ff0ff32301"
+      },
+      {
+        "dst": {
+          "node": "6c4d26f3-f558-4526-ac92-ad02b1343d04",
+          "port": 0
+        },
+        "src": {
+          "node": "370b4cfe-8735-4802-9fb2-f0485d87f452",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 664,
+            "y": 752
+          },
+          "link_type": {
+            "connection_method": "link_tap",
+            "tap_coordinate": 592,
+            "tapped_link_uuid": "bdddbeee-d4e4-42d4-9c30-00ff0ff32301",
+            "tapped_segment": {
+              "segment_type": "real",
+              "tapped_segment_direction": "horiz",
+              "tapped_segment_index": 2
+            }
+          },
+          "segments": [
+            {
+              "coordinate": 648,
+              "segment_direction": "horiz"
+            },
+            {
+              "coordinate": 592,
+              "segment_direction": "vert"
+            },
+            {
+              "coordinate": 752,
+              "segment_direction": "horiz"
+            },
+            {
+              "coordinate": 672,
+              "segment_direction": "vert"
+            }
+          ]
+        },
+        "uuid": "267cc5a6-93b0-4165-83d1-4b820362b92b"
+      },
+      {
+        "dst": {
+          "node": "5ecab146-f43c-4097-bc3d-f5b8ad2135bd",
+          "port": 0
+        },
+        "src": {
+          "node": "370b4cfe-8735-4802-9fb2-f0485d87f452",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 664,
+            "y": 896
+          },
+          "link_type": {
+            "connection_method": "link_tap",
+            "tap_coordinate": 616,
+            "tapped_link_uuid": "267cc5a6-93b0-4165-83d1-4b820362b92b",
+            "tapped_segment": {
+              "segment_type": "real",
+              "tapped_segment_direction": "horiz",
+              "tapped_segment_index": 2
+            }
+          },
+          "segments": []
+        },
+        "uuid": "1f3d2bd9-bb6b-452d-82d4-7bb5a7bf4692"
+      }
+    ],
+    "nodes": [
+      {
+        "inputs": [
+          {
+            "kind": "static",
+            "name": "vector_in"
+          }
+        ],
+        "name": "CoordinateRotation_quat",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "vector_out"
+          }
+        ],
+        "parameters": {
+          "direction_cosine_matrix": {
+            "value": "[[1.0,0.0,0.0],\n[0.0,1.0,0.0],\n[0.0,0.0,1.0]]\n"
+          },
+          "enable_external_rotation_definition": {
+            "value": "false"
+          },
+          "inverse": {
+            "value": "false"
+          },
+          "quaternion": {
+            "value": "[1.0, 0.0, 0.0, 0.0]"
+          },
+          "roll_pitch_yaw": {
+            "value": "[0.0, 0.0, 0.0]"
+          },
+          "rotation_type": {
+            "is_string": true,
+            "value": "quaternion"
+          }
+        },
+        "type": "core.CoordinateRotation",
+        "uiprops": {
+          "port_alignment": "spaced",
+          "x": 672,
+          "y": 248
+        },
+        "uuid": "d9107714-196d-437f-8e73-397ba7d16b57"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "static",
+            "name": "vector_in"
+          }
+        ],
+        "name": "CoordinateRotation_rpy",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "vector_out"
+          }
+        ],
+        "parameters": {
+          "direction_cosine_matrix": {
+            "value": "[[1.0,0.0,0.0],\n[0.0,1.0,0.0],\n[0.0,0.0,1.0]]\n"
+          },
+          "enable_external_rotation_definition": {
+            "value": "false"
+          },
+          "inverse": {
+            "value": "false"
+          },
+          "quaternion": {
+            "value": "[1.0, 0.0, 0.0, 0.0]"
+          },
+          "roll_pitch_yaw": {
+            "value": "[0.0, 0.0, 0.0]"
+          },
+          "rotation_type": {
+            "is_string": true,
+            "value": "roll_pitch_yaw"
+          }
+        },
+        "type": "core.CoordinateRotation",
+        "uiprops": {
+          "port_alignment": "spaced",
+          "x": 672,
+          "y": 376
+        },
+        "uuid": "50490eae-d72f-42a9-8205-affead76face"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "static",
+            "name": "vector_in"
+          }
+        ],
+        "name": "CoordinateRotation_dcm",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "vector_out"
+          }
+        ],
+        "parameters": {
+          "direction_cosine_matrix": {
+            "value": "[[1.0,0.0,0.0],\n[0.0,1.0,0.0],\n[0.0,0.0,1.0]]"
+          },
+          "enable_external_rotation_definition": {
+            "value": "false"
+          },
+          "inverse": {
+            "value": "false"
+          },
+          "quaternion": {
+            "value": "[1.0, 0.0, 0.0, 0.0]"
+          },
+          "roll_pitch_yaw": {
+            "value": "[0.0, 0.0, 0.0]"
+          },
+          "rotation_type": {
+            "is_string": true,
+            "value": "DCM"
+          }
+        },
+        "type": "core.CoordinateRotation",
+        "uiprops": {
+          "port_alignment": "spaced",
+          "x": 672,
+          "y": 520
+        },
+        "uuid": "d7f9b635-6ec9-490f-883d-e4e094ee0b21"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "static",
+            "name": "vector_in"
+          },
+          {
+            "kind": "conditional",
+            "name": "rotation"
+          }
+        ],
+        "name": "CoordinateRotation_rpy_ext",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "vector_out"
+          }
+        ],
+        "parameters": {
+          "direction_cosine_matrix": {
+            "value": "[[1.0,0.0,0.0],\n[0.0,1.0,0.0],\n[0.0,0.0,1.0]]\n"
+          },
+          "enable_external_rotation_definition": {
+            "value": "true"
+          },
+          "inverse": {
+            "value": "false"
+          },
+          "quaternion": {
+            "value": "[1.0, 0.0, 0.0, 0.0]"
+          },
+          "roll_pitch_yaw": {
+            "value": "[0.0, 0.0, 0.0]"
+          },
+          "rotation_type": {
+            "is_string": true,
+            "value": "roll_pitch_yaw"
+          }
+        },
+        "type": "core.CoordinateRotation",
+        "uiprops": {
+          "grid_height": 8,
+          "grid_width": 9,
+          "port_alignment": "spaced",
+          "x": 672,
+          "y": 736
+        },
+        "uuid": "6c4d26f3-f558-4526-ac92-ad02b1343d04"
+      },
+      {
+        "inputs": [],
+        "name": "rpy",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "value": {
+            "value": "[0.0, 0.0, 0.0]"
+          }
+        },
+        "type": "core.Constant",
+        "uiprops": {
+          "port_alignment": "spaced",
+          "x": 344,
+          "y": 768
+        },
+        "uuid": "0f592785-2350-4713-b493-091bab5ed147"
+      },
+      {
+        "inputs": [],
+        "name": "vec",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "value": {
+            "value": "[1.0, 0.0, 0.0]"
+          }
+        },
+        "type": "core.Constant",
+        "uiprops": {
+          "port_alignment": "spaced",
+          "x": 384,
+          "y": 272
+        },
+        "uuid": "370b4cfe-8735-4802-9fb2-f0485d87f452"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "static",
+            "name": "vector_in"
+          },
+          {
+            "kind": "conditional",
+            "name": "rotation"
+          }
+        ],
+        "name": "CoordinateRotation_quat_ext",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "vector_out"
+          }
+        ],
+        "parameters": {
+          "direction_cosine_matrix": {
+            "value": "[[1.0,0.0,0.0],\n[0.0,1.0,0.0],\n[0.0,0.0,1.0]]\n"
+          },
+          "enable_external_rotation_definition": {
+            "value": "true"
+          },
+          "inverse": {
+            "value": "false"
+          },
+          "quaternion": {
+            "value": "[1.0, 0.0, 0.0, 0.0]"
+          },
+          "roll_pitch_yaw": {
+            "value": "[0.0, 0.0, 0.0]"
+          },
+          "rotation_type": {
+            "is_string": true,
+            "value": "quaternion"
+          }
+        },
+        "type": "core.CoordinateRotation",
+        "uiprops": {
+          "port_alignment": "spaced",
+          "x": 672,
+          "y": 624
+        },
+        "uuid": "0505d5b0-af88-419b-9ed9-dc31c1c876d3"
+      },
+      {
+        "inputs": [],
+        "name": "q",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "value": {
+            "value": "[1.0, 0.0, 0.0, 0.0]"
+          }
+        },
+        "type": "core.Constant",
+        "uiprops": {
+          "port_alignment": "spaced",
+          "x": 344,
+          "y": 656
+        },
+        "uuid": "c00ce554-ab6d-4528-a630-54455f04563c"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "static",
+            "name": "vector_in"
+          },
+          {
+            "kind": "conditional",
+            "name": "rotation"
+          }
+        ],
+        "name": "CoordinateRotation_dcm_ext",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "vector_out"
+          }
+        ],
+        "parameters": {
+          "direction_cosine_matrix": {
+            "value": "[[1.0,0.0,0.0],\n[0.0,1.0,0.0],\n[0.0,0.0,1.0]]\n"
+          },
+          "enable_external_rotation_definition": {
+            "value": "true"
+          },
+          "inverse": {
+            "value": "false"
+          },
+          "quaternion": {
+            "value": "[1.0, 0.0, 0.0, 0.0]"
+          },
+          "roll_pitch_yaw": {
+            "value": "[0.0, 0.0, 0.0]"
+          },
+          "rotation_type": {
+            "is_string": true,
+            "value": "DCM"
+          }
+        },
+        "type": "core.CoordinateRotation",
+        "uiprops": {
+          "grid_height": 8,
+          "grid_width": 9,
+          "port_alignment": "spaced",
+          "x": 672,
+          "y": 880
+        },
+        "uuid": "5ecab146-f43c-4097-bc3d-f5b8ad2135bd"
+      },
+      {
+        "inputs": [],
+        "name": "dcm",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "value": {
+            "value": "np.eye(3)"
+          }
+        },
+        "type": "core.Constant",
+        "uiprops": {
+          "port_alignment": "spaced",
+          "x": 352,
+          "y": 912
+        },
+        "uuid": "60dafb4c-4382-4593-9fc3-108a50aabb01"
+      }
+    ],
+    "uuid": "0b45c9ff-5b3f-4f31-8a8b-eb5c9e4c5380"
+  },
+  "kind": "Model",
+  "name": "Test_RigidBody",
+  "parameters": {},
+  "project_uuid": "96f9997f-591e-4370-bb72-1ccafdd03f55",
+  "schema_version": "3",
+  "state_machines": {},
+  "subdiagrams": {
+    "diagrams": {},
+    "references": {}
+  },
+  "uuid": "b1660a15-9a57-43f9-a700-28375e26a9f0"
+}

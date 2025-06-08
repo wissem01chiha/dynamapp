@@ -1,0 +1,453 @@
+{
+    "configuration": {
+        "solver": {
+            "method": "auto",
+            "max_step": 1000000,
+            "min_step": 0,
+            "absolute_tolerance": 1e-06,
+            "relative_tolerance": 0.001,
+            "max_minor_steps_per_major_step": 4096
+        },
+        "stop_time": 10,
+        "workspace": {},
+        "start_time": 0,
+        "record_mode": "all",
+        "sample_time": 0.1,
+        "worker_type": "any",
+        "sim_output_mode": "auto",
+        "numerical_backend": "auto",
+        "fixed_results_interval": 0,
+        "max_results_interval": 0
+    },
+    "diagram": {
+        "nodes": [
+            {
+                "uuid": "9588b856-d0af-45d0-b9b5-89c248fd52c0",
+                "name": "Battery_0",
+                "type": "acausal.electrical.Battery",
+                "inputs": [
+                    {
+                        "name": "p",
+                        "kind": "static",
+                        "variant": {
+                            "variant_kind": "acausal",
+                            "acausal_domain": "electrical"
+                        }
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "n",
+                        "kind": "static",
+                        "variant": {
+                            "variant_kind": "acausal",
+                            "acausal_domain": "electrical"
+                        }
+                    },
+                    {
+                        "name": "soc",
+                        "kind": "conditional"
+                    },
+                    {
+                        "name": "Up",
+                        "kind": "conditional"
+                    },
+                    {
+                        "name": "ocv",
+                        "kind": "conditional"
+                    }
+                ],
+                "parameters": {
+                    "R": {
+                        "value": "0.01"
+                    },
+                    "AH": {
+                        "value": "1.0"
+                    },
+                    "Cp": {
+                        "value": "1e-6"
+                    },
+                    "Rp": {
+                        "value": "1e-6"
+                    },
+                    "SOC_v": {
+                        "value": "0.01"
+                    },
+                    "OCV_soc": {
+                        "value": "[0.0, 1.0]"
+                    },
+                    "OCV_volts": {
+                        "value": "[10.0, 15.0]"
+                    },
+                    "initial_soc": {
+                        "value": "0.5"
+                    },
+                    "enable_Up_port": {
+                        "value": "true"
+                    },
+                    "enable_ocv_port": {
+                        "value": "true"
+                    },
+                    "enable_soc_port": {
+                        "value": "true"
+                    },
+                    "initial_soc_fixed": {
+                        "value": "true"
+                    }
+                },
+                "uiprops": {
+                    "x": 704,
+                    "y": 184,
+                    "port_alignment": "spaced"
+                }
+            },
+            {
+                "uuid": "d4160423-14a7-48af-a588-2acc8e2344f5",
+                "name": "Resistor_0",
+                "type": "acausal.electrical.Resistor",
+                "inputs": [
+                    {
+                        "name": "p",
+                        "kind": "static",
+                        "variant": {
+                            "variant_kind": "acausal",
+                            "acausal_domain": "electrical"
+                        }
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "n",
+                        "kind": "static",
+                        "variant": {
+                            "variant_kind": "acausal",
+                            "acausal_domain": "electrical"
+                        }
+                    }
+                ],
+                "parameters": {
+                    "R": {
+                        "value": "1.0"
+                    },
+                    "enable_heat_port": {
+                        "value": "false"
+                    }
+                },
+                "uiprops": {
+                    "x": 888,
+                    "y": 160,
+                    "port_alignment": "spaced"
+                }
+            },
+            {
+                "uuid": "c18dd226-2e7f-4614-bf00-53de48a9747f",
+                "name": "CurrentSensor_0",
+                "type": "acausal.electrical.CurrentSensor",
+                "inputs": [
+                    {
+                        "name": "p",
+                        "kind": "static",
+                        "variant": {
+                            "variant_kind": "acausal",
+                            "acausal_domain": "electrical"
+                        }
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "n",
+                        "kind": "static",
+                        "variant": {
+                            "variant_kind": "acausal",
+                            "acausal_domain": "electrical"
+                        }
+                    },
+                    {
+                        "name": "i",
+                        "kind": "static"
+                    }
+                ],
+                "parameters": {},
+                "uiprops": {
+                    "x": 1056,
+                    "y": 192,
+                    "port_alignment": "spaced"
+                }
+            },
+            {
+                "uuid": "f3a3c2b9-40af-4913-8ae1-bd53012212de",
+                "name": "Inductor_0",
+                "type": "acausal.electrical.Inductor",
+                "inputs": [
+                    {
+                        "name": "p",
+                        "kind": "static",
+                        "variant": {
+                            "variant_kind": "acausal",
+                            "acausal_domain": "electrical"
+                        }
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "n",
+                        "kind": "static",
+                        "variant": {
+                            "variant_kind": "acausal",
+                            "acausal_domain": "electrical"
+                        }
+                    }
+                ],
+                "parameters": {
+                    "L": {
+                        "value": "1.0"
+                    },
+                    "initial_current": {
+                        "value": "0.0"
+                    },
+                    "initial_current_fixed": {
+                        "value": "True"
+                    }
+                },
+                "uiprops": {
+                    "x": 1216,
+                    "y": 192,
+                    "port_alignment": "spaced"
+                }
+            },
+            {
+                "uuid": "c3fa198e-939e-49a1-86d0-59bdeaba8fc1",
+                "name": "Capacitor_0",
+                "type": "acausal.electrical.Capacitor",
+                "inputs": [
+                    {
+                        "name": "p",
+                        "kind": "static",
+                        "variant": {
+                            "variant_kind": "acausal",
+                            "acausal_domain": "electrical"
+                        }
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "n",
+                        "kind": "static",
+                        "variant": {
+                            "variant_kind": "acausal",
+                            "acausal_domain": "electrical"
+                        }
+                    }
+                ],
+                "parameters": {
+                    "C": {
+                        "value": "1.0"
+                    },
+                    "initial_voltage": {
+                        "value": "0.0"
+                    },
+                    "initial_voltage_fixed": {
+                        "value": "true"
+                    }
+                },
+                "uiprops": {
+                    "x": 1416,
+                    "y": 192,
+                    "port_alignment": "spaced"
+                }
+            },
+            {
+                "uuid": "657ba935-9069-4323-9089-427b6b65d7fd",
+                "name": "Ground_0",
+                "type": "acausal.electrical.Ground",
+                "inputs": [
+                    {
+                        "name": "p",
+                        "kind": "static",
+                        "variant": {
+                            "variant_kind": "acausal",
+                            "acausal_domain": "electrical"
+                        }
+                    }
+                ],
+                "outputs": [],
+                "parameters": {},
+                "uiprops": {
+                    "x": 1232,
+                    "y": 384,
+                    "port_alignment": "spaced"
+                }
+            }
+        ],
+        "links": [
+            {
+                "uuid": "d51a4a2a-d7c1-48bd-833b-78f2fbbe8250",
+                "src": {
+                    "node": "d4160423-14a7-48af-a588-2acc8e2344f5",
+                    "port": 0,
+                    "port_side": "inputs"
+                },
+                "dst": {
+                    "node": "9588b856-d0af-45d0-b9b5-89c248fd52c0",
+                    "port": 0,
+                    "port_side": "outputs"
+                },
+                "uiprops": {
+                    "link_type": {
+                        "connection_method": "direct_to_block"
+                    },
+                    "segments": [],
+                    "hang_coord_start": {
+                        "x": 880,
+                        "y": 224
+                    }
+                }
+            },
+            {
+                "uuid": "4a3d2027-f42c-4664-a13d-00f3dc279e74",
+                "src": {
+                    "node": "d4160423-14a7-48af-a588-2acc8e2344f5",
+                    "port": 0,
+                    "port_side": "outputs"
+                },
+                "dst": {
+                    "node": "c18dd226-2e7f-4614-bf00-53de48a9747f",
+                    "port": 0,
+                    "port_side": "inputs"
+                },
+                "uiprops": {
+                    "link_type": {
+                        "connection_method": "direct_to_block"
+                    },
+                    "segments": [],
+                    "hang_coord_start": {
+                        "x": 960,
+                        "y": 224
+                    }
+                }
+            },
+            {
+                "uuid": "aa238695-2304-40ad-b8c8-2bbecb562609",
+                "src": {
+                    "node": "c18dd226-2e7f-4614-bf00-53de48a9747f",
+                    "port": 0,
+                    "port_side": "outputs"
+                },
+                "dst": {
+                    "node": "f3a3c2b9-40af-4913-8ae1-bd53012212de",
+                    "port": 0,
+                    "port_side": "inputs"
+                },
+                "uiprops": {
+                    "link_type": {
+                        "connection_method": "direct_to_block"
+                    },
+                    "segments": [],
+                    "hang_coord_start": {
+                        "x": 1128,
+                        "y": 208
+                    }
+                }
+            },
+            {
+                "uuid": "dc6c38af-b5ea-4d9e-8ae2-6d1ad6393bb1",
+                "src": {
+                    "node": "f3a3c2b9-40af-4913-8ae1-bd53012212de",
+                    "port": 0,
+                    "port_side": "outputs"
+                },
+                "dst": {
+                    "node": "c3fa198e-939e-49a1-86d0-59bdeaba8fc1",
+                    "port": 0,
+                    "port_side": "inputs"
+                },
+                "uiprops": {
+                    "link_type": {
+                        "connection_method": "direct_to_block"
+                    },
+                    "segments": [],
+                    "hang_coord_start": {
+                        "x": 1288,
+                        "y": 224
+                    }
+                }
+            },
+            {
+                "uuid": "87211e40-9cc3-4b8d-b947-6d03168100e4",
+                "src": {
+                    "node": "9588b856-d0af-45d0-b9b5-89c248fd52c0",
+                    "port": 0,
+                    "port_side": "inputs"
+                },
+                "dst": {
+                    "node": "c3fa198e-939e-49a1-86d0-59bdeaba8fc1",
+                    "port": 0,
+                    "port_side": "outputs"
+                },
+                "uiprops": {
+                    "link_type": {
+                        "connection_method": "direct_to_block"
+                    },
+                    "segments": [
+                        {
+                            "segment_direction": "vert",
+                            "coordinate": 696
+                        },
+                        {
+                            "segment_direction": "horiz",
+                            "coordinate": 280
+                        },
+                        {
+                            "segment_direction": "vert",
+                            "coordinate": 1496
+                        }
+                    ],
+                    "hang_coord_start": {
+                        "x": 696,
+                        "y": 216
+                    }
+                }
+            },
+            {
+                "uuid": "182bbb94-d8ee-4093-a715-6436018a961c",
+                "src": {
+                    "node": "9588b856-d0af-45d0-b9b5-89c248fd52c0",
+                    "port": 0,
+                    "port_side": "inputs"
+                },
+                "dst": {
+                    "node": "657ba935-9069-4323-9089-427b6b65d7fd",
+                    "port": 0,
+                    "port_side": "inputs"
+                },
+                "uiprops": {
+                    "link_type": {
+                        "tap_coordinate": 1144,
+                        "tapped_segment": {
+                            "segment_type": "real",
+                            "tapped_segment_index": 1,
+                            "tapped_segment_direction": "horiz"
+                        },
+                        "tapped_link_uuid": "87211e40-9cc3-4b8d-b947-6d03168100e4",
+                        "connection_method": "link_tap"
+                    },
+                    "segments": []
+                }
+            }
+        ],
+        "annotations": [],
+        "uuid": "8db9e320-d050-47d8-b60b-561cc2857663"
+    },
+    "name": "qa_2024-07-05T20:18:15Z",
+    "parameters": {},
+    "state_machines": {},
+    "subdiagrams": {
+        "diagrams": {},
+        "references": {}
+    },
+    "uuid": "40d63e57-ded2-4ae8-958d-a2998602b4d9",
+    "sim_model_uuid": "19285ec4-7a6c-4e5c-9706-1ff6ba0d2366",
+    "owner_uuid": "cc073a60-7e27-4ca7-b616-7b3e9a6d139c",
+    "schema_version": "4",
+    "kind": "Model"
+}

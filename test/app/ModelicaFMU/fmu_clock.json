@@ -1,0 +1,164 @@
+{
+  "configuration": {
+    "fixed_results_interval": 0,
+    "max_results_interval": 0,
+    "record_mode": "all",
+    "sample_time": 0.1,
+    "sim_output_mode": "auto",
+    "solver": {
+      "absolute_tolerance": 0.000001,
+      "max_minor_steps_per_major_step": 4096,
+      "max_step": 1000000,
+      "method": "non-stiff",
+      "min_step": 0,
+      "relative_tolerance": 0.001
+    },
+    "start_time": 5,
+    "stop_time": 10,
+    "worker_type": "any",
+    "workspace": {}
+  },
+  "diagram": {
+    "annotations": [],
+    "links": [
+      {
+        "dst": {
+          "node": "0ae0b342-36b9-46a0-8f15-252196a140e2",
+          "port": 0
+        },
+        "src": {
+          "node": "152e711c-a3c3-42c5-8bfc-1ab7c820dfbc",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 1016,
+            "y": 432
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "547d60d6-7ef1-4ce5-971c-11a9bc1bf264"
+      }
+    ],
+    "nodes": [
+      {
+        "inputs": [],
+        "name": "Constant_0",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "value": {
+            "value": "2.0"
+          }
+        },
+        "type": "core.Constant",
+        "uiprops": {
+          "port_alignment": "spaced",
+          "x": 880,
+          "y": 408
+        },
+        "uuid": "152e711c-a3c3-42c5-8bfc-1ab7c820dfbc"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "dynamic",
+            "name": "u"
+          }
+        ],
+        "name": "ModelicaFMU_0",
+        "outputs": [
+          {
+            "kind": "dynamic",
+            "name": "add"
+          },
+          {
+            "kind": "dynamic",
+            "name": "clock"
+          },
+          {
+            "kind": "dynamic",
+            "name": "in_mult_ramp"
+          },
+          {
+            "kind": "dynamic",
+            "name": "ramp_o"
+          }
+        ],
+        "parameters": {
+          "add3_k1": {
+            "value": "1"
+          },
+          "add3_k2": {
+            "value": "1"
+          },
+          "add3_k3": {
+            "value": "1"
+          },
+          "const_k": {
+            "value": "1"
+          },
+          "continuousClock_offset": {
+            "value": "0"
+          },
+          "continuousClock_startTime": {
+            "value": "0"
+          },
+          "file_name": {
+            "is_string": true,
+            "value": "fmu_clock.fmu"
+          },
+          "fmu_guid": {
+            "is_string": true,
+            "value": ""
+          },
+          "integrator_k": {
+            "value": "1"
+          },
+          "integrator_y_start": {
+            "value": "0"
+          },
+          "ramp_duration": {
+            "value": "100"
+          },
+          "ramp_height": {
+            "value": "100"
+          },
+          "ramp_offset": {
+            "value": "0"
+          },
+          "ramp_startTime": {
+            "value": "0"
+          }
+        },
+        "type": "core.ModelicaFMU",
+        "uiprops": {
+          "port_alignment": "spaced",
+          "x": 984,
+          "y": 376
+        },
+        "uuid": "0ae0b342-36b9-46a0-8f15-252196a140e2"
+      }
+    ],
+    "uuid": "4d3b4e24-218c-4f7f-b1c9-32014a081e01"
+  },
+  "kind": "Model",
+  "name": "FMU_clock_2024-02-15T19:02:46Z",
+  "owner_uuid": "cc073a60-7e27-4ca7-b616-7b3e9a6d139c",
+  "parameters": {},
+  "schema_version": "3",
+  "sim_model_uuid": "b5807c44-0694-46b6-a6ce-7401f6530c12",
+  "state_machines": {},
+  "subdiagrams": {
+    "diagrams": {},
+    "references": {}
+  },
+  "uuid": "1bb69f9e-3ad0-4588-b027-537f4503264c"
+}

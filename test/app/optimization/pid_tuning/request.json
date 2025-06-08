@@ -1,0 +1,1 @@
+{"optimization_request": {"type": "pid", "options": {"beta1": "0.9", "beta2": "0.999", "epsilon": "1e-08", "batch_size": "10", "num_epochs": "1000", "num_batches": "10", "epsilon_root": "0.0", "learning_rate": "0.003"}, "algorithm": "adam", "objective": "AccError.out_0", "pid_blocks": ["PID_0"], "stochastic_parameters": []}}

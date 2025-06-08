@@ -1,0 +1,908 @@
+{
+  "diagram": {
+    "annotations": [
+      {
+        "color_id": "gray",
+        "grid_height": 33,
+        "grid_width": 66,
+        "label_position": "bottom",
+        "text": "Reduce friction torque to zero as velocity approaches zero to ensure friction torque can only cause angular velocity to decrease towards zero.",
+        "uuid": "5dc3fbbb-6a1b-4779-8359-ed2eb3dc877d",
+        "x": -120,
+        "y": -40
+      },
+      {
+        "color_id": "gray",
+        "grid_height": 27,
+        "grid_width": 89,
+        "label_position": "top",
+        "text": "Ensure that the torque from the friction brake system always opposed the direction of rotation.",
+        "uuid": "a5b89806-30ad-42f2-a40a-64c049fdaf24",
+        "x": -200,
+        "y": -280
+      }
+    ],
+    "links": [
+      {
+        "dst": {
+          "node": "9e4670ab-dd6a-4339-90c3-e84868c0cfdf",
+          "port": 1
+        },
+        "src": {
+          "node": "19ae4008-3ba8-4a04-a7b1-277b33dbfd3c",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 2064,
+            "y": 432
+          },
+          "hang_coord_start": {
+            "x": 1800,
+            "y": 520
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": [
+            {
+              "coordinate": 592,
+              "segment_direction": "vert"
+            }
+          ]
+        },
+        "uuid": "3f37011d-24e9-45b4-9c4f-8e9a9d459b4f"
+      },
+      {
+        "dst": {
+          "node": "9e4670ab-dd6a-4339-90c3-e84868c0cfdf",
+          "port": 0
+        },
+        "src": {
+          "node": "82896e14-78b9-400c-ba70-a5dfa8419305",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 1944,
+            "y": 208
+          },
+          "hang_coord_start": {
+            "x": 480,
+            "y": -192
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": [
+            {
+              "coordinate": 608,
+              "segment_direction": "vert"
+            }
+          ]
+        },
+        "uuid": "519bfa5c-9509-4f33-b8b2-d6fbbbc0f4ab"
+      },
+      {
+        "dst": {
+          "node": "19ae4008-3ba8-4a04-a7b1-277b33dbfd3c",
+          "port": 0
+        },
+        "src": {
+          "node": "714aca29-67ef-497f-8946-0297f6b266c1",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 1808,
+            "y": 480
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "8fd00116-a83b-410f-9576-0c33f3b206d7"
+      },
+      {
+        "dst": {
+          "node": "714aca29-67ef-497f-8946-0297f6b266c1",
+          "port": 1
+        },
+        "src": {
+          "node": "e66f4719-2c5e-4f10-8190-53ca79090d11",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 1056,
+            "y": 304
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "3074dc46-9310-4aa1-b0fd-7aa92d192dde"
+      },
+      {
+        "dst": {
+          "node": "714aca29-67ef-497f-8946-0297f6b266c1",
+          "port": 0
+        },
+        "src": {
+          "node": "1cdc704d-133f-4d58-b9d8-ccde786856bd",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 1048,
+            "y": 288
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "077e2765-982b-48d2-a25d-dac03a87191e"
+      },
+      {
+        "dst": {
+          "node": "e66f4719-2c5e-4f10-8190-53ca79090d11",
+          "port": 1
+        },
+        "src": {
+          "node": "593f6b5a-dca0-4261-8584-78f9d74d7fff",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 960,
+            "y": 368
+          },
+          "hang_coord_start": {
+            "x": 1272,
+            "y": 592
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "c708102f-c4d4-4470-a5f0-90da2063eac5"
+      },
+      {
+        "dst": {
+          "node": "1cdc704d-133f-4d58-b9d8-ccde786856bd",
+          "port": 1
+        },
+        "src": {
+          "node": "a065f77d-9245-43bd-8442-f6d42cee90fb",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 952,
+            "y": 248
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": [
+            {
+              "coordinate": 64,
+              "segment_direction": "vert"
+            }
+          ]
+        },
+        "uuid": "cf23d7db-fb3b-4546-8e82-8aab553007ac"
+      },
+      {
+        "dst": {
+          "node": "e66f4719-2c5e-4f10-8190-53ca79090d11",
+          "port": 0
+        },
+        "src": {
+          "node": "a065f77d-9245-43bd-8442-f6d42cee90fb",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 960,
+            "y": 352
+          },
+          "link_type": {
+            "connection_method": "link_tap",
+            "tap_coordinate": 305.1428571428571,
+            "tapped_link_uuid": "cf23d7db-fb3b-4546-8e82-8aab553007ac",
+            "tapped_segment": {
+              "segment_type": "real",
+              "tapped_segment_direction": "vert",
+              "tapped_segment_index": 0
+            }
+          },
+          "segments": [
+            {
+              "coordinate": 64,
+              "segment_direction": "vert"
+            }
+          ]
+        },
+        "uuid": "8f982dad-a8d1-4717-92d6-e87917521105"
+      },
+      {
+        "dst": {
+          "node": "778e7b74-2f40-416f-9f8e-3ac126cf3017",
+          "port": 0
+        },
+        "src": {
+          "node": "c20cac85-607f-458b-82d0-3da0359d2ffc",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 184,
+            "y": -120
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "c01406ea-9ec0-495f-989e-291a02d9ffad"
+      },
+      {
+        "dst": {
+          "node": "865d381a-0e0b-4702-923f-585fd31ee908",
+          "port": 0
+        },
+        "src": {
+          "node": "9e4670ab-dd6a-4339-90c3-e84868c0cfdf",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 744,
+            "y": -40
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "60c04b69-d7c4-45b6-a904-163c8e3ca30e"
+      },
+      {
+        "dst": {
+          "node": "1cdc704d-133f-4d58-b9d8-ccde786856bd",
+          "port": 0
+        },
+        "src": {
+          "node": "03bc7194-2df8-4494-aac5-65a7b6d65702",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 88,
+            "y": 0
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": [
+            {
+              "coordinate": -208,
+              "segment_direction": "vert"
+            },
+            {
+              "coordinate": 0,
+              "segment_direction": "horiz"
+            },
+            {
+              "coordinate": 80,
+              "segment_direction": "vert"
+            }
+          ]
+        },
+        "uuid": "9e1e547c-bb1f-4b95-86d7-d381ea4d5649"
+      },
+      {
+        "dst": {
+          "node": "3abdebb3-9171-4703-b5c6-62c990ec7e09",
+          "port": 1
+        },
+        "src": {
+          "node": "51313347-2d32-47d1-a39b-368e12bec1bf",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": -40,
+            "y": -200
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "e32f7500-ccfa-46da-bc37-0c94f47bc825"
+      },
+      {
+        "dst": {
+          "node": "3abdebb3-9171-4703-b5c6-62c990ec7e09",
+          "port": 0
+        },
+        "src": {
+          "node": "03bc7194-2df8-4494-aac5-65a7b6d65702",
+          "port": 0
+        },
+        "uiprops": {
+          "link_type": {
+            "connection_method": "link_tap",
+            "tap_coordinate": -168,
+            "tapped_link_uuid": "9e1e547c-bb1f-4b95-86d7-d381ea4d5649",
+            "tapped_segment": {
+              "segment_type": "real",
+              "tapped_segment_direction": "horiz",
+              "tapped_segment_index": 1
+            }
+          },
+          "segments": []
+        },
+        "uuid": "2e4c12a6-3d87-440e-96f0-bac394b9f70b"
+      },
+      {
+        "dst": {
+          "node": "82896e14-78b9-400c-ba70-a5dfa8419305",
+          "port": 0
+        },
+        "src": {
+          "node": "3abdebb3-9171-4703-b5c6-62c990ec7e09",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 304,
+            "y": -200
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "8190a6cb-947a-4831-9dc1-2e963c2867b8"
+      },
+      {
+        "dst": {
+          "node": "82896e14-78b9-400c-ba70-a5dfa8419305",
+          "port": 2
+        },
+        "src": {
+          "node": "778e7b74-2f40-416f-9f8e-3ac126cf3017",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 400,
+            "y": -176
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": [
+            {
+              "coordinate": 256,
+              "segment_direction": "vert"
+            },
+            {
+              "coordinate": -120,
+              "segment_direction": "horiz"
+            },
+            {
+              "coordinate": 384,
+              "segment_direction": "vert"
+            }
+          ]
+        },
+        "uuid": "460b522c-1185-4e43-8116-a5e5001027c4"
+      },
+      {
+        "dst": {
+          "node": "82896e14-78b9-400c-ba70-a5dfa8419305",
+          "port": 1
+        },
+        "src": {
+          "node": "28858fb9-0d23-4176-b94a-f518bd9ed38f",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 400,
+            "y": -192
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "8c909955-cf91-454f-a003-915b6e729e20"
+      },
+      {
+        "dst": {
+          "node": "28858fb9-0d23-4176-b94a-f518bd9ed38f",
+          "port": 0
+        },
+        "src": {
+          "node": "778e7b74-2f40-416f-9f8e-3ac126cf3017",
+          "port": 0
+        },
+        "uiprops": {
+          "link_type": {
+            "connection_method": "link_tap",
+            "tap_coordinate": 272,
+            "tapped_link_uuid": "460b522c-1185-4e43-8116-a5e5001027c4",
+            "tapped_segment": {
+              "segment_type": "real",
+              "tapped_segment_direction": "horiz",
+              "tapped_segment_index": 1
+            }
+          },
+          "segments": []
+        },
+        "uuid": "3af1d648-0c7b-43f1-ba7f-79e5c98a6f18"
+      }
+    ],
+    "nodes": [
+      {
+        "inputs": [],
+        "name": "normalized_brake_request",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "description": {
+            "is_string": true,
+            "value": "Brake request between 0 and 1"
+          },
+          "port_id": {
+            "value": "0"
+          }
+        },
+        "type": "core.Inport",
+        "uiprops": {
+          "x": 88,
+          "y": -152
+        },
+        "uuid": "c20cac85-607f-458b-82d0-3da0359d2ffc"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "static",
+            "name": "in_0"
+          }
+        ],
+        "name": "brake_torque_Nm",
+        "outputs": [],
+        "parameters": {
+          "description": {
+            "is_string": true,
+            "value": "Brake system torque in Newton meters"
+          },
+          "port_id": {
+            "value": "0"
+          }
+        },
+        "type": "core.Outport",
+        "uiprops": {
+          "x": 752,
+          "y": -72
+        },
+        "uuid": "865d381a-0e0b-4702-923f-585fd31ee908"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "static",
+            "name": "in_0"
+          }
+        ],
+        "name": "friction_brake_max_torque_Nm",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "gain": {
+            "value": "friction_brake_max_torque_Nm"
+          }
+        },
+        "type": "core.Gain",
+        "uiprops": {
+          "x": 184,
+          "y": -152
+        },
+        "uuid": "778e7b74-2f40-416f-9f8e-3ac126cf3017"
+      },
+      {
+        "inputs": [],
+        "name": "brk_dyn2stat_w0_radps",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "value": {
+            "value": "0.01"
+          }
+        },
+        "type": "core.Constant",
+        "uiprops": {
+          "x": -80,
+          "y": 16
+        },
+        "uuid": "a065f77d-9245-43bd-8442-f6d42cee90fb"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "dynamic",
+            "name": "in_0"
+          },
+          {
+            "kind": "dynamic",
+            "name": "in_1"
+          }
+        ],
+        "name": "Adder_0",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "operators": {
+            "is_string": true,
+            "value": "+-"
+          }
+        },
+        "type": "core.Adder",
+        "uiprops": {
+          "x": 88,
+          "y": -24
+        },
+        "uuid": "1cdc704d-133f-4d58-b9d8-ccde786856bd"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "dynamic",
+            "name": "in_0"
+          },
+          {
+            "kind": "dynamic",
+            "name": "in_1"
+          }
+        ],
+        "name": "Adder_1",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "operators": {
+            "is_string": true,
+            "value": "-+"
+          }
+        },
+        "type": "core.Adder",
+        "uiprops": {
+          "x": 88,
+          "y": 72
+        },
+        "uuid": "e66f4719-2c5e-4f10-8190-53ca79090d11"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "dynamic",
+            "name": "in_0"
+          },
+          {
+            "kind": "dynamic",
+            "name": "in_1"
+          }
+        ],
+        "name": "Product_0",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "denominator_limit": {
+            "value": "1e-12"
+          },
+          "divide_by_zero_behavior": {
+            "is_string": true,
+            "value": "inf"
+          },
+          "operators": {
+            "is_string": true,
+            "value": "*/"
+          }
+        },
+        "type": "core.Product",
+        "uiprops": {
+          "x": 200,
+          "y": 32
+        },
+        "uuid": "714aca29-67ef-497f-8946-0297f6b266c1"
+      },
+      {
+        "inputs": [],
+        "name": "brk_dyn2stat_w1_radps",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "value": {
+            "value": "0.1"
+          }
+        },
+        "type": "core.Constant",
+        "uiprops": {
+          "x": -80,
+          "y": 104
+        },
+        "uuid": "593f6b5a-dca0-4261-8584-78f9d74d7fff"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "dynamic",
+            "name": "in_0"
+          },
+          {
+            "kind": "dynamic",
+            "name": "in_1"
+          }
+        ],
+        "name": "brake_torque_",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "denominator_limit": {
+            "value": "1e-12"
+          },
+          "divide_by_zero_behavior": {
+            "is_string": true,
+            "value": "inf"
+          },
+          "operators": {
+            "is_string": true,
+            "value": "**"
+          }
+        },
+        "type": "core.Product",
+        "uiprops": {
+          "x": 632,
+          "y": -72
+        },
+        "uuid": "9e4670ab-dd6a-4339-90c3-e84868c0cfdf"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "static",
+            "name": "in_0"
+          }
+        ],
+        "name": "Saturate_1",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "enable_dynamic_lower_limit": {
+            "value": "False"
+          },
+          "enable_dynamic_upper_limit": {
+            "value": "False"
+          },
+          "lower_limit": {
+            "value": "0.0"
+          },
+          "upper_limit": {
+            "value": "1.0"
+          }
+        },
+        "type": "core.Saturate",
+        "uiprops": {
+          "x": 320,
+          "y": 32
+        },
+        "uuid": "19ae4008-3ba8-4a04-a7b1-277b33dbfd3c"
+      },
+      {
+        "inputs": [],
+        "name": "brake_angular_velocity_raps",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "description": {
+            "is_string": true,
+            "value": "Brake system angular velocity in radians per second"
+          },
+          "port_id": {
+            "value": "1"
+          }
+        },
+        "type": "core.Inport",
+        "uiprops": {
+          "x": -248,
+          "y": -32
+        },
+        "uuid": "03bc7194-2df8-4494-aac5-65a7b6d65702"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "static",
+            "name": "in_0"
+          },
+          {
+            "kind": "static",
+            "name": "in_1"
+          }
+        ],
+        "name": "Comparator_0",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "atol": {
+            "value": "1e-6"
+          },
+          "operator": {
+            "is_string": true,
+            "value": ">="
+          },
+          "rtol": {
+            "value": "1e-9"
+          }
+        },
+        "type": "core.Comparator",
+        "uiprops": {
+          "port_alignment": "spaced",
+          "x": -40,
+          "y": -240
+        },
+        "uuid": "3abdebb3-9171-4703-b5c6-62c990ec7e09"
+      },
+      {
+        "inputs": [],
+        "name": "zero",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "value": {
+            "value": "0.0"
+          }
+        },
+        "type": "core.Constant",
+        "uiprops": {
+          "x": -144,
+          "y": -192
+        },
+        "uuid": "51313347-2d32-47d1-a39b-368e12bec1bf"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "static",
+            "name": "test"
+          },
+          {
+            "kind": "static",
+            "name": "if_true"
+          },
+          {
+            "kind": "static",
+            "name": "if_false"
+          }
+        ],
+        "name": "IfThenElse_0",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {},
+        "type": "core.IfThenElse",
+        "uiprops": {
+          "port_alignment": "spaced",
+          "x": 400,
+          "y": -224
+        },
+        "uuid": "82896e14-78b9-400c-ba70-a5dfa8419305"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "static",
+            "name": "in_0"
+          }
+        ],
+        "name": "invert",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "gain": {
+            "value": "-1.0"
+          }
+        },
+        "type": "core.Gain",
+        "uiprops": {
+          "x": 288,
+          "y": -200
+        },
+        "uuid": "28858fb9-0d23-4176-b94a-f518bd9ed38f"
+      }
+    ],
+    "uuid": "a194cd03-89a3-4814-a8bd-c2155a5c5df5"
+  },
+  "kind": "Submodel",
+  "name": "Chassis - Brake By Wire System",
+  "parameter_definitions": [
+    {
+      "default_value": "2e3",
+      "name": "friction_brake_max_torque_Nm",
+      "uiprops": {},
+      "uuid": "199887ef-6c0c-4dfe-9951-76f44f90eb51"
+    }
+  ],
+  "schema_version": "3",
+  "subdiagrams": {
+    "diagrams": {},
+    "references": {}
+  },
+  "submodel_configuration": {},
+  "uuid": "2d674bf0-e6f1-4005-99ef-cd4c2d36c016"
+}

@@ -1,0 +1,306 @@
+{
+  "nodes": [
+    {
+      "namepath": [
+        "CurrentSensor_0"
+      ],
+      "uuidpath": [
+        "f306c304-8493-4ce4-a20d-5b2f37817d32"
+      ],
+      "outports": [
+        {
+          "index": 1,
+          "dtype": "float64",
+          "dimension": [],
+          "time_mode": "Continuous",
+          "name": "i"
+        }
+      ],
+      "time_mode": "Acausal"
+    },
+    {
+      "namepath": [
+        "VoltageSensor_0"
+      ],
+      "uuidpath": [
+        "64fb9f23-62cf-411e-b3f8-6be0956b44fb"
+      ],
+      "outports": [
+        {
+          "index": 1,
+          "dtype": "float64",
+          "dimension": [],
+          "time_mode": "Continuous",
+          "name": "v"
+        }
+      ],
+      "time_mode": "Acausal"
+    },
+    {
+      "namepath": [
+        "SineWave_0"
+      ],
+      "uuidpath": [
+        "61acb434-1233-49a7-bde9-b2e6807eceae"
+      ],
+      "outports": [
+        {
+          "index": 0,
+          "dtype": "float64",
+          "dimension": [],
+          "time_mode": "Continuous",
+          "name": "out_0"
+        }
+      ],
+      "time_mode": "Continuous"
+    },
+    {
+      "namepath": [
+        "Gain_0"
+      ],
+      "uuidpath": [
+        "32e14c1d-5223-4fb7-b0f5-1d945b2dc633"
+      ],
+      "outports": [
+        {
+          "index": 0,
+          "dtype": "float64",
+          "dimension": [],
+          "time_mode": "Continuous",
+          "name": "out_0"
+        }
+      ],
+      "time_mode": "Continuous"
+    },
+    {
+      "namepath": [
+        "Integrator_0"
+      ],
+      "uuidpath": [
+        "1a4dbafb-04e1-47c4-aa7c-3513e9caabf1"
+      ],
+      "outports": [
+        {
+          "index": 0,
+          "dtype": "float64",
+          "dimension": [],
+          "time_mode": "Continuous",
+          "name": "out_0"
+        }
+      ],
+      "time_mode": "Continuous"
+    },
+    {
+      "namepath": [
+        "Offset_0"
+      ],
+      "uuidpath": [
+        "2a9b0d53-59d9-4d40-9f5e-84e2785a6ff6"
+      ],
+      "outports": [
+        {
+          "index": 0,
+          "dtype": "float64",
+          "dimension": [],
+          "time_mode": "Continuous",
+          "name": "out_0"
+        }
+      ],
+      "time_mode": "Continuous"
+    },
+    {
+      "namepath": [
+        "UnitDelay_0"
+      ],
+      "uuidpath": [
+        "9a5ed511-d02d-4bc3-b331-573c5b75b963"
+      ],
+      "outports": [
+        {
+          "index": 0,
+          "dtype": "float64",
+          "dimension": [],
+          "time_mode": "Discrete",
+          "name": "out_0"
+        }
+      ],
+      "time_mode": "Discrete"
+    },
+    {
+      "namepath": [
+        "Adder_0"
+      ],
+      "uuidpath": [
+        "62c0eef2-fb8f-4a74-b9a7-f289ff8a919a"
+      ],
+      "outports": [
+        {
+          "index": 0,
+          "dtype": "float64",
+          "dimension": [],
+          "time_mode": "Continuous",
+          "name": "out_0"
+        }
+      ],
+      "time_mode": "Continuous"
+    },
+    {
+      "namepath": [
+        "AcausalSignalTypes_grp",
+        "SpeedSensor_0"
+      ],
+      "uuidpath": [
+        "53dc8ddf-4366-4aca-97a3-6ebeb3d16b1e",
+        "bb056da9-e1bf-4bd5-9da6-97df27591324"
+      ],
+      "outports": [
+        {
+          "index": 0,
+          "dtype": "float64",
+          "dimension": [],
+          "time_mode": "Continuous",
+          "name": "w_rel"
+        }
+      ],
+      "time_mode": "Acausal"
+    },
+    {
+      "namepath": [
+        "AcausalSignalTypes_grp",
+        "TorqueSensor_0"
+      ],
+      "uuidpath": [
+        "53dc8ddf-4366-4aca-97a3-6ebeb3d16b1e",
+        "f3c0e0d7-d445-46b2-9153-8e03260f9bd5"
+      ],
+      "outports": [
+        {
+          "index": 1,
+          "dtype": "float64",
+          "dimension": [],
+          "time_mode": "Continuous",
+          "name": "tau"
+        }
+      ],
+      "time_mode": "Acausal"
+    },
+    {
+      "namepath": [
+        "AcausalSignalTypes_grp",
+        "Outport_0"
+      ],
+      "uuidpath": [
+        "53dc8ddf-4366-4aca-97a3-6ebeb3d16b1e",
+        "96ba28fd-31be-4ce8-837d-34f271ee6ff8"
+      ],
+      "outports": [
+        {
+          "index": 0,
+          "dtype": "float64",
+          "dimension": [],
+          "time_mode": "Continuous",
+          "name": "out_0"
+        }
+      ],
+      "time_mode": "Continuous"
+    },
+    {
+      "namepath": [
+        "AcausalSignalTypes_grp",
+        "Constant_0"
+      ],
+      "uuidpath": [
+        "53dc8ddf-4366-4aca-97a3-6ebeb3d16b1e",
+        "f5089f59-3dfe-47ae-be39-3c20b3859970"
+      ],
+      "outports": [
+        {
+          "index": 0,
+          "dtype": "float64",
+          "dimension": [],
+          "time_mode": "Constant",
+          "name": "out_0"
+        }
+      ],
+      "time_mode": "Constant"
+    },
+    {
+      "namepath": [
+        "AcausalSignalTypes_grp",
+        "Integrator_1"
+      ],
+      "uuidpath": [
+        "53dc8ddf-4366-4aca-97a3-6ebeb3d16b1e",
+        "bc6a5002-01de-40ed-baad-966be84192c4"
+      ],
+      "outports": [
+        {
+          "index": 0,
+          "dtype": "float64",
+          "dimension": [],
+          "time_mode": "Continuous",
+          "name": "out_0"
+        }
+      ],
+      "time_mode": "Continuous"
+    },
+    {
+      "namepath": [
+        "AcausalSignalTypes_grp",
+        "Adder_1"
+      ],
+      "uuidpath": [
+        "53dc8ddf-4366-4aca-97a3-6ebeb3d16b1e",
+        "d1a1d2ff-a8d9-4e1e-a48b-c135243e6a13"
+      ],
+      "outports": [
+        {
+          "index": 0,
+          "dtype": "float64",
+          "dimension": [],
+          "time_mode": "Continuous",
+          "name": "out_0"
+        }
+      ],
+      "time_mode": "Continuous"
+    },
+    {
+      "namepath": [
+        "AcausalSignalTypes_grp",
+        "IntegratorDiscrete_0"
+      ],
+      "uuidpath": [
+        "53dc8ddf-4366-4aca-97a3-6ebeb3d16b1e",
+        "8e52970e-0d1a-45b8-a0bf-6017c16fe3ff"
+      ],
+      "outports": [
+        {
+          "index": 0,
+          "dtype": "float64",
+          "dimension": [],
+          "time_mode": "Discrete",
+          "name": "out_0"
+        }
+      ],
+      "time_mode": "Discrete"
+    },
+    {
+      "namepath": [
+        "AcausalSignalTypes_grp"
+      ],
+      "uuidpath": [
+        "53dc8ddf-4366-4aca-97a3-6ebeb3d16b1e"
+      ],
+      "outports": [
+        {
+          "index": 0,
+          "dtype": "float64",
+          "dimension": [],
+          "time_mode": "Continuous",
+          "name": "Outport_0"
+        }
+      ],
+      "time_mode": "Hybrid"
+    }
+  ]
+}

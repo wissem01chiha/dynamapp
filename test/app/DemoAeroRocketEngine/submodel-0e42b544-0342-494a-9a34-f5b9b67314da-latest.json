@@ -1,0 +1,732 @@
+{
+  "diagram": {
+    "annotations": [],
+    "links": [
+      {
+        "dst": {
+          "node": "2491f84f-aebc-4552-a890-92cb615b95ca",
+          "port": 0
+        },
+        "src": {
+          "node": "d6e7e427-cca6-4b89-921c-acbd8ea57ef9",
+          "port": 0
+        },
+        "uiprops": {
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": [
+            {
+              "coordinate": 128,
+              "segment_direction": "vert"
+            },
+            {
+              "coordinate": 72,
+              "segment_direction": "horiz"
+            },
+            {
+              "coordinate": 168,
+              "segment_direction": "vert"
+            },
+            {
+              "coordinate": 96,
+              "segment_direction": "horiz"
+            },
+            {
+              "coordinate": 208,
+              "segment_direction": "vert"
+            }
+          ]
+        },
+        "uuid": "bf282702-493f-48bf-9555-088b221ec10a"
+      },
+      {
+        "dst": {
+          "node": "2491f84f-aebc-4552-a890-92cb615b95ca",
+          "port": 1
+        },
+        "src": {
+          "node": "2c74ba45-8b0f-4ec5-bc67-120df10c43ec",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_start": {
+            "x": 160,
+            "y": 280
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": [
+            {
+              "coordinate": 128,
+              "segment_direction": "vert"
+            },
+            {
+              "coordinate": 152,
+              "segment_direction": "horiz"
+            },
+            {
+              "coordinate": 168,
+              "segment_direction": "vert"
+            }
+          ]
+        },
+        "uuid": "15f7c3fd-11d4-4389-891e-f87ec1f987f3"
+      },
+      {
+        "dst": {
+          "node": "88ccdc96-086f-49ff-be73-8c39276a2149",
+          "port": 0
+        },
+        "src": {
+          "node": "465dc270-7d0a-4105-b70c-067318ee3a6a",
+          "port": 0
+        },
+        "uiprops": {
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "918ceab0-5e1c-4e34-8ac1-dc2a41aa9467"
+      },
+      {
+        "dst": {
+          "node": "81afd4d8-a65c-42a9-8aba-1318813cc133",
+          "port": 1
+        },
+        "src": {
+          "node": "2491f84f-aebc-4552-a890-92cb615b95ca",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 360,
+            "y": 448
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": [
+            {
+              "coordinate": 296,
+              "segment_direction": "vert"
+            },
+            {
+              "coordinate": 112,
+              "segment_direction": "horiz"
+            },
+            {
+              "coordinate": 320,
+              "segment_direction": "vert"
+            },
+            {
+              "coordinate": 72,
+              "segment_direction": "horiz"
+            },
+            {
+              "coordinate": 344,
+              "segment_direction": "vert"
+            }
+          ]
+        },
+        "uuid": "d0a7f2bf-4e9e-4712-83b6-a63b89d1de0c"
+      },
+      {
+        "dst": {
+          "node": "af6ee962-bc2c-4b51-a783-f53e76628cfe",
+          "port": 0
+        },
+        "src": {
+          "node": "2491f84f-aebc-4552-a890-92cb615b95ca",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 360,
+            "y": 536
+          },
+          "link_type": {
+            "connection_method": "link_tap",
+            "tap_coordinate": 312,
+            "tapped_link_uuid": "d0a7f2bf-4e9e-4712-83b6-a63b89d1de0c",
+            "tapped_segment": {
+              "segment_type": "real",
+              "tapped_segment_direction": "horiz",
+              "tapped_segment_index": 1
+            }
+          },
+          "segments": []
+        },
+        "uuid": "6d63c5e6-64e2-4c2a-9d37-5c2a8330b599"
+      },
+      {
+        "dst": {
+          "node": "3b87cb82-06e5-486c-ba4c-e64aca0c5f0f",
+          "port": 1
+        },
+        "src": {
+          "node": "81afd4d8-a65c-42a9-8aba-1318813cc133",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 464,
+            "y": 64
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "e19c054f-e8fa-4ce9-8ad1-a790c26da0fe"
+      },
+      {
+        "dst": {
+          "node": "6b4b9a59-0a54-42fa-802c-4b9df198740c",
+          "port": 0
+        },
+        "src": {
+          "node": "af6ee962-bc2c-4b51-a783-f53e76628cfe",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 464,
+            "y": 208
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "84061e27-adf0-4d8b-b828-42e8a370b97e"
+      },
+      {
+        "dst": {
+          "node": "465dc270-7d0a-4105-b70c-067318ee3a6a",
+          "port": 0
+        },
+        "src": {
+          "node": "3b87cb82-06e5-486c-ba4c-e64aca0c5f0f",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 592,
+            "y": 512
+          },
+          "hang_coord_start": {
+            "x": 536,
+            "y": 64
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "840d4c61-d6a8-4e6a-a3d6-57cbe6c4b68b"
+      },
+      {
+        "dst": {
+          "node": "465dc270-7d0a-4105-b70c-067318ee3a6a",
+          "port": 1
+        },
+        "src": {
+          "node": "6b4b9a59-0a54-42fa-802c-4b9df198740c",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 600,
+            "y": 536
+          },
+          "hang_coord_start": {
+            "x": 536,
+            "y": 208
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "c77f9cc5-88b2-4146-a44d-90d16c7cfbf4"
+      },
+      {
+        "dst": {
+          "node": "af6ee962-bc2c-4b51-a783-f53e76628cfe",
+          "port": 1
+        },
+        "src": {
+          "node": "2c74ba45-8b0f-4ec5-bc67-120df10c43ec",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 360,
+            "y": 216
+          },
+          "link_type": {
+            "connection_method": "link_tap",
+            "tap_coordinate": 152,
+            "tapped_link_uuid": "15f7c3fd-11d4-4389-891e-f87ec1f987f3",
+            "tapped_segment": {
+              "segment_type": "real",
+              "tapped_segment_direction": "vert",
+              "tapped_segment_index": 2
+            }
+          },
+          "segments": [
+            {
+              "coordinate": 192,
+              "segment_direction": "vert"
+            }
+          ]
+        },
+        "uuid": "acb98bbd-2ece-488a-94c3-9308d00d32de"
+      },
+      {
+        "dst": {
+          "node": "81afd4d8-a65c-42a9-8aba-1318813cc133",
+          "port": 0
+        },
+        "src": {
+          "node": "d6e7e427-cca6-4b89-921c-acbd8ea57ef9",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 344,
+            "y": 48
+          },
+          "link_type": {
+            "connection_method": "link_tap",
+            "tap_coordinate": 72,
+            "tapped_link_uuid": "bf282702-493f-48bf-9555-088b221ec10a",
+            "tapped_segment": {
+              "segment_type": "real",
+              "tapped_segment_direction": "vert",
+              "tapped_segment_index": 2
+            }
+          },
+          "segments": [
+            {
+              "coordinate": 192,
+              "segment_direction": "vert"
+            }
+          ]
+        },
+        "uuid": "1b368eb5-c071-490f-b502-1e6a7f7c9785"
+      },
+      {
+        "dst": {
+          "node": "6b4b9a59-0a54-42fa-802c-4b9df198740c",
+          "port": 1
+        },
+        "src": {
+          "node": "f11d0dab-87be-4700-84b1-50a48c0a0ba4",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 472,
+            "y": 232
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": [
+            {
+              "coordinate": 440,
+              "segment_direction": "vert"
+            }
+          ]
+        },
+        "uuid": "4314b188-34ff-428d-bfde-83d41061de78"
+      },
+      {
+        "dst": {
+          "node": "3b87cb82-06e5-486c-ba4c-e64aca0c5f0f",
+          "port": 0
+        },
+        "src": {
+          "node": "2e564f87-eed9-4577-857b-5e0c1deae80d",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 456,
+            "y": 40
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "1180c37c-33e4-426f-999b-dc2a02b8973b"
+      }
+    ],
+    "nodes": [
+      {
+        "inputs": [],
+        "name": "m_dot_A",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "description": {
+            "is_string": true,
+            "value": ""
+          },
+          "port_id": {
+            "value": "0"
+          }
+        },
+        "type": "core.Inport",
+        "uiprops": {
+          "x": 72,
+          "y": 40
+        },
+        "uuid": "d6e7e427-cca6-4b89-921c-acbd8ea57ef9"
+      },
+      {
+        "inputs": [],
+        "name": "q_A",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "description": {
+            "is_string": true,
+            "value": ""
+          },
+          "port_id": {
+            "value": "1"
+          }
+        },
+        "type": "core.Inport",
+        "uiprops": {
+          "x": 368,
+          "y": -48
+        },
+        "uuid": "2e564f87-eed9-4577-857b-5e0c1deae80d"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "static",
+            "name": "in_0"
+          }
+        ],
+        "name": "q_mix",
+        "outputs": [],
+        "parameters": {
+          "description": {
+            "is_string": true,
+            "value": ""
+          },
+          "port_id": {
+            "value": "0"
+          }
+        },
+        "type": "core.Outport",
+        "uiprops": {
+          "x": 696,
+          "y": 104
+        },
+        "uuid": "88ccdc96-086f-49ff-be73-8c39276a2149"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "dynamic",
+            "name": "in_0"
+          },
+          {
+            "kind": "dynamic",
+            "name": "in_1"
+          }
+        ],
+        "name": "Product_0",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "denominator_limit": {
+            "value": "1e-12"
+          },
+          "divide_by_zero_behavior": {
+            "is_string": true,
+            "value": "inf"
+          },
+          "operators": {
+            "is_string": true,
+            "value": "*/"
+          }
+        },
+        "type": "core.Product",
+        "uiprops": {
+          "port_alignment": "spaced",
+          "x": 352,
+          "y": 32
+        },
+        "uuid": "81afd4d8-a65c-42a9-8aba-1318813cc133"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "dynamic",
+            "name": "in_0"
+          },
+          {
+            "kind": "dynamic",
+            "name": "in_1"
+          }
+        ],
+        "name": "m_dot_total",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "operators": {
+            "is_string": true,
+            "value": "++"
+          }
+        },
+        "type": "core.Adder",
+        "uiprops": {
+          "port_alignment": "spaced",
+          "x": 216,
+          "y": 80
+        },
+        "uuid": "2491f84f-aebc-4552-a890-92cb615b95ca"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "dynamic",
+            "name": "in_0"
+          },
+          {
+            "kind": "dynamic",
+            "name": "in_1"
+          }
+        ],
+        "name": "Adder_0",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "operators": {
+            "is_string": true,
+            "value": "++"
+          }
+        },
+        "type": "core.Adder",
+        "uiprops": {
+          "port_alignment": "spaced",
+          "x": 600,
+          "y": 104
+        },
+        "uuid": "465dc270-7d0a-4105-b70c-067318ee3a6a"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "dynamic",
+            "name": "in_0"
+          },
+          {
+            "kind": "dynamic",
+            "name": "in_1"
+          }
+        ],
+        "name": "Product_1",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "denominator_limit": {
+            "value": "1e-12"
+          },
+          "divide_by_zero_behavior": {
+            "is_string": true,
+            "value": "inf"
+          },
+          "operators": {
+            "is_string": true,
+            "value": "/*"
+          }
+        },
+        "type": "core.Product",
+        "uiprops": {
+          "grid_height": 8,
+          "grid_width": 9,
+          "port_alignment": "spaced",
+          "x": 360,
+          "y": 176
+        },
+        "uuid": "af6ee962-bc2c-4b51-a783-f53e76628cfe"
+      },
+      {
+        "inputs": [],
+        "name": "m_dot_B",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "description": {
+            "is_string": true,
+            "value": ""
+          },
+          "port_id": {
+            "value": "2"
+          }
+        },
+        "type": "core.Inport",
+        "uiprops": {
+          "port_alignment": "spaced",
+          "x": 72,
+          "y": 120
+        },
+        "uuid": "2c74ba45-8b0f-4ec5-bc67-120df10c43ec"
+      },
+      {
+        "inputs": [],
+        "name": "q_B",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "description": {
+            "is_string": true,
+            "value": ""
+          },
+          "port_id": {
+            "value": "3"
+          }
+        },
+        "type": "core.Inport",
+        "uiprops": {
+          "x": 376,
+          "y": 256
+        },
+        "uuid": "f11d0dab-87be-4700-84b1-50a48c0a0ba4"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "dynamic",
+            "name": "in_0"
+          },
+          {
+            "kind": "dynamic",
+            "name": "in_1"
+          }
+        ],
+        "name": "Product_2",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "denominator_limit": {
+            "value": "1e-12"
+          },
+          "divide_by_zero_behavior": {
+            "is_string": true,
+            "value": "inf"
+          },
+          "operators": {
+            "is_string": true,
+            "value": "**"
+          }
+        },
+        "type": "core.Product",
+        "uiprops": {
+          "port_alignment": "spaced",
+          "x": 472,
+          "y": 192
+        },
+        "uuid": "6b4b9a59-0a54-42fa-802c-4b9df198740c"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "dynamic",
+            "name": "in_0"
+          },
+          {
+            "kind": "dynamic",
+            "name": "in_1"
+          }
+        ],
+        "name": "Product_3",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "denominator_limit": {
+            "value": "1e-12"
+          },
+          "divide_by_zero_behavior": {
+            "is_string": true,
+            "value": "inf"
+          },
+          "operators": {
+            "is_string": true,
+            "value": "**"
+          }
+        },
+        "type": "core.Product",
+        "uiprops": {
+          "port_alignment": "spaced",
+          "x": 464,
+          "y": 24
+        },
+        "uuid": "3b87cb82-06e5-486c-ba4c-e64aca0c5f0f"
+      }
+    ],
+    "uuid": "56b606b8-c4c1-4c75-8958-6a40f306b685"
+  },
+  "kind": "Submodel",
+  "name": "TwoComponentMixture",
+  "parameter_definitions": [],
+  "schema_version": "3",
+  "subdiagrams": {
+    "diagrams": {},
+    "references": {}
+  },
+  "submodel_configuration": {},
+  "uuid": "0e42b544-0342-494a-9a34-f5b9b67314da"
+}

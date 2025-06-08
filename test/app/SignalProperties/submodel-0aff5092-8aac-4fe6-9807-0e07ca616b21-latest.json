@@ -1,0 +1,179 @@
+{
+  "diagram": {
+    "annotations": [],
+    "links": [
+      {
+        "dst": {
+          "node": "a020fc5b-43d5-483d-8488-63caea6d480a",
+          "port": 0
+        },
+        "src": {
+          "node": "28e0cfb0-053a-41db-b200-ec12788937ea",
+          "port": 0
+        },
+        "uiprops": {
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "71648aa8-ed3e-40a1-b94d-ec0da504cd48"
+      },
+      {
+        "dst": {
+          "node": "013f759c-da28-467c-a01f-b5d1e8427c31",
+          "port": 0
+        },
+        "src": {
+          "node": "0ea9d7e0-94b8-4bfa-92bf-23e37420144f",
+          "port": 0
+        },
+        "uiprops": {
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "f099d48f-2a5c-4eaa-beb6-dd07f5621633"
+      },
+      {
+        "dst": {
+          "node": "0ea9d7e0-94b8-4bfa-92bf-23e37420144f",
+          "port": 0
+        },
+        "src": {
+          "node": "a020fc5b-43d5-483d-8488-63caea6d480a",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 896,
+            "y": 480
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "8a18e919-1411-41c0-98a8-67008768b803"
+      }
+    ],
+    "nodes": [
+      {
+        "inputs": [],
+        "name": "Inport_0",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "description": {
+            "is_string": true,
+            "value": ""
+          },
+          "port_id": {
+            "value": "0"
+          }
+        },
+        "type": "core.Inport",
+        "uiprops": {
+          "x": 152,
+          "y": 32
+        },
+        "uuid": "28e0cfb0-053a-41db-b200-ec12788937ea"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "static",
+            "name": "in_0"
+          }
+        ],
+        "name": "Outport_0",
+        "outputs": [],
+        "parameters": {
+          "description": {
+            "is_string": true,
+            "value": ""
+          },
+          "port_id": {
+            "value": "0"
+          }
+        },
+        "type": "core.Outport",
+        "uiprops": {
+          "x": 464,
+          "y": 32
+        },
+        "uuid": "013f759c-da28-467c-a01f-b5d1e8427c31"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "static",
+            "name": "in_0"
+          }
+        ],
+        "name": "Offset_0",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "offset": {
+            "value": "1.0"
+          }
+        },
+        "type": "core.Offset",
+        "uiprops": {
+          "port_alignment": "spaced",
+          "x": 216,
+          "y": 32
+        },
+        "uuid": "a020fc5b-43d5-483d-8488-63caea6d480a"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "static",
+            "name": "in_0"
+          }
+        ],
+        "name": "UnitDelay_0",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "initial_state": {
+            "value": "0.0"
+          }
+        },
+        "type": "core.UnitDelay",
+        "uiprops": {
+          "port_alignment": "spaced",
+          "x": 368,
+          "y": 32
+        },
+        "uuid": "0ea9d7e0-94b8-4bfa-92bf-23e37420144f"
+      }
+    ],
+    "uuid": "8427df21-59ec-4151-b843-a3db227e86ab"
+  },
+  "kind": "Submodel",
+  "name": "_0039_sm",
+  "parameter_definitions": [],
+  "schema_version": "3",
+  "state_machines": {},
+  "subdiagrams": {
+    "diagrams": {},
+    "references": {}
+  },
+  "submodel_configuration": null
+}

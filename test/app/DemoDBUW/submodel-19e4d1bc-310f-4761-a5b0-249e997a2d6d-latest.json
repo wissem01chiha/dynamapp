@@ -1,0 +1,851 @@
+{
+  "diagram": {
+    "annotations": [],
+    "links": [
+      {
+        "dst": {
+          "node": "0c9db980-78fb-4fa7-8b5c-7ad3a70c2c0e",
+          "port": 0
+        },
+        "src": {
+          "node": "0433f8bf-9db8-4876-ba49-df724070ba1a",
+          "port": 0
+        },
+        "uiprops": {
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "bcdaa3e9-0184-4d17-8b95-17ca4cff2d0f"
+      },
+      {
+        "dst": {
+          "node": "47a4280b-f53b-456c-b0f9-2a7ffecb6310",
+          "port": 0
+        },
+        "src": {
+          "node": "ffa14e98-ee24-4667-8dcc-aaadfbfddb72",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 144,
+            "y": -104
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "481b5690-5535-4b4d-98d1-d202f203cc10"
+      },
+      {
+        "dst": {
+          "node": "47a4280b-f53b-456c-b0f9-2a7ffecb6310",
+          "port": 1
+        },
+        "src": {
+          "node": "866a5cbe-9a48-4332-888f-15eb1f1bc2c4",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 152,
+            "y": -88
+          },
+          "hang_coord_start": {
+            "x": 264,
+            "y": 184
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "73c1b99c-cf03-4549-9dad-d1ccae4822b2"
+      },
+      {
+        "dst": {
+          "node": "0c9db980-78fb-4fa7-8b5c-7ad3a70c2c0e",
+          "port": 1
+        },
+        "src": {
+          "node": "47a4280b-f53b-456c-b0f9-2a7ffecb6310",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 288,
+            "y": -120
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "88670807-4eeb-4866-a778-0e2dad56fa79"
+      },
+      {
+        "dst": {
+          "node": "c731ec13-9558-42b3-a265-3f9bc697b17f",
+          "port": 1
+        },
+        "src": {
+          "node": "0c9db980-78fb-4fa7-8b5c-7ad3a70c2c0e",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 440,
+            "y": -152
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "a05c7143-c9e2-4c44-a1b8-841413c41ee1"
+      },
+      {
+        "dst": {
+          "node": "c731ec13-9558-42b3-a265-3f9bc697b17f",
+          "port": 0
+        },
+        "src": {
+          "node": "a8f78bfa-2b74-4308-bda1-1378c63401c9",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 448,
+            "y": -176
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": [
+            {
+              "coordinate": 592,
+              "segment_direction": "vert"
+            }
+          ]
+        },
+        "uuid": "a0f0496c-7c3f-4177-9045-e240c521f4b6"
+      },
+      {
+        "dst": {
+          "node": "fdd84650-0838-4c7b-b09a-e25db5d156cc",
+          "port": 0
+        },
+        "src": {
+          "node": "382b48de-a207-4c3b-a00c-5739da837cd4",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 632,
+            "y": 240
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "0f8c2d8e-8b54-49ce-944b-ed3b57582ef6"
+      },
+      {
+        "dst": {
+          "node": "fdd84650-0838-4c7b-b09a-e25db5d156cc",
+          "port": 1
+        },
+        "src": {
+          "node": "61f7a6cd-ee38-44c7-bac6-dc08677b12e2",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 632,
+            "y": 272
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "d1bc3f38-315e-4389-b6d9-8548a2195d8c"
+      },
+      {
+        "dst": {
+          "node": "4fb2d52f-ffd0-4bf1-9d78-e1cb8adc97ed",
+          "port": 0
+        },
+        "src": {
+          "node": "1b3b930b-d706-468e-9a0e-eaba7ea95b3b",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 632,
+            "y": 376
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "cb69619f-e928-4930-bb26-d11f5a461876"
+      },
+      {
+        "dst": {
+          "node": "d712af57-24ce-445d-abf8-b5106c69ca90",
+          "port": 0
+        },
+        "src": {
+          "node": "c731ec13-9558-42b3-a265-3f9bc697b17f",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 840,
+            "y": 240
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "4647ff02-17ac-4424-ba90-09909d0528ae"
+      },
+      {
+        "dst": {
+          "node": "d712af57-24ce-445d-abf8-b5106c69ca90",
+          "port": 1
+        },
+        "src": {
+          "node": "fdd84650-0838-4c7b-b09a-e25db5d156cc",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 840,
+            "y": 256
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "c43d54c7-a83a-45a5-8084-e4466ac67830"
+      },
+      {
+        "dst": {
+          "node": "d712af57-24ce-445d-abf8-b5106c69ca90",
+          "port": 2
+        },
+        "src": {
+          "node": "4fb2d52f-ffd0-4bf1-9d78-e1cb8adc97ed",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 840,
+            "y": 272
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "64703d11-6ffb-4118-8d3c-71c0a9cfa5ab"
+      },
+      {
+        "dst": {
+          "node": "80fd16e3-d051-497a-b666-ca5fe893e22b",
+          "port": 0
+        },
+        "src": {
+          "node": "1983958e-68a3-4507-bf8c-c0808bc5a40e",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 1128,
+            "y": 256
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": [
+            {
+              "coordinate": 1048,
+              "segment_direction": "vert"
+            },
+            {
+              "coordinate": 256,
+              "segment_direction": "horiz"
+            },
+            {
+              "coordinate": 1084,
+              "segment_direction": "vert"
+            },
+            {
+              "coordinate": 256,
+              "segment_direction": "horiz"
+            },
+            {
+              "coordinate": 1120,
+              "segment_direction": "vert"
+            }
+          ]
+        },
+        "uuid": "db5d9731-9dcc-47e2-bdbb-0f551434b0f8"
+      },
+      {
+        "dst": {
+          "node": "1983958e-68a3-4507-bf8c-c0808bc5a40e",
+          "port": 0
+        },
+        "src": {
+          "node": "d712af57-24ce-445d-abf8-b5106c69ca90",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 968,
+            "y": 256
+          },
+          "hang_coord_start": {
+            "x": 736,
+            "y": 256
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "270d2bcf-fc09-44da-9cda-99cffaed5044"
+      },
+      {
+        "dst": {
+          "node": "4fb2d52f-ffd0-4bf1-9d78-e1cb8adc97ed",
+          "port": 1
+        },
+        "src": {
+          "node": "1983958e-68a3-4507-bf8c-c0808bc5a40e",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 632,
+            "y": 400
+          },
+          "link_type": {
+            "connection_method": "link_tap",
+            "tap_coordinate": 1072,
+            "tapped_link_uuid": "db5d9731-9dcc-47e2-bdbb-0f551434b0f8",
+            "tapped_segment": {
+              "segment_type": "real",
+              "tapped_segment_direction": "horiz",
+              "tapped_segment_index": 1
+            }
+          },
+          "segments": [
+            {
+              "coordinate": 504,
+              "segment_direction": "horiz"
+            },
+            {
+              "coordinate": 568,
+              "segment_direction": "vert"
+            }
+          ]
+        },
+        "uuid": "daf0a046-7c15-468c-ab8c-4f3167ab8104"
+      }
+    ],
+    "nodes": [
+      {
+        "inputs": [],
+        "name": "y_raw",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "description": {
+            "is_string": true,
+            "value": ""
+          },
+          "port_id": {
+            "value": "0"
+          }
+        },
+        "type": "core.Inport",
+        "uiprops": {
+          "x": 312,
+          "y": -24
+        },
+        "uuid": "0433f8bf-9db8-4876-ba49-df724070ba1a"
+      },
+      {
+        "inputs": [],
+        "name": "KalmanGain",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0",
+            "parameters": {
+              "shape": {
+                "value": "()"
+              }
+            }
+          }
+        ],
+        "parameters": {
+          "value": {
+            "value": "Kf"
+          }
+        },
+        "type": "core.Constant",
+        "uiprops": {
+          "port_alignment": "spaced",
+          "x": 520,
+          "y": 32
+        },
+        "uuid": "a8f78bfa-2b74-4308-bda1-1378c63401c9"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "static",
+            "name": "in_0"
+          },
+          {
+            "kind": "static",
+            "name": "in_1"
+          }
+        ],
+        "name": "Ky",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {},
+        "type": "core.MatrixMultiplication",
+        "uiprops": {
+          "port_alignment": "spaced",
+          "x": 632,
+          "y": 56
+        },
+        "uuid": "c731ec13-9558-42b3-a265-3f9bc697b17f"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "dynamic",
+            "name": "in_0"
+          },
+          {
+            "kind": "dynamic",
+            "name": "in_1"
+          }
+        ],
+        "name": "y",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "operators": {
+            "is_string": true,
+            "value": "+-"
+          }
+        },
+        "type": "core.Adder",
+        "uiprops": {
+          "port_alignment": "spaced",
+          "x": 480,
+          "y": 112
+        },
+        "uuid": "0c9db980-78fb-4fa7-8b5c-7ad3a70c2c0e"
+      },
+      {
+        "inputs": [],
+        "name": "MeasurementMatrix",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0",
+            "parameters": {
+              "shape": {
+                "value": "()"
+              }
+            }
+          }
+        ],
+        "parameters": {
+          "value": {
+            "value": "C"
+          }
+        },
+        "type": "core.Constant",
+        "uiprops": {
+          "port_alignment": "spaced",
+          "x": 216,
+          "y": 112
+        },
+        "uuid": "ffa14e98-ee24-4667-8dcc-aaadfbfddb72"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "static",
+            "name": "in_0"
+          },
+          {
+            "kind": "static",
+            "name": "in_1"
+          }
+        ],
+        "name": "LinearizationOffset",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {},
+        "type": "core.MatrixMultiplication",
+        "uiprops": {
+          "port_alignment": "spaced",
+          "x": 336,
+          "y": 120
+        },
+        "uuid": "47a4280b-f53b-456c-b0f9-2a7ffecb6310"
+      },
+      {
+        "inputs": [],
+        "name": "ControlMatrix",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0",
+            "parameters": {
+              "shape": {
+                "value": "()"
+              }
+            }
+          }
+        ],
+        "parameters": {
+          "value": {
+            "value": "B"
+          }
+        },
+        "type": "core.Constant",
+        "uiprops": {
+          "port_alignment": "spaced",
+          "x": 480,
+          "y": 232
+        },
+        "uuid": "382b48de-a207-4c3b-a00c-5739da837cd4"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "static",
+            "name": "in_0"
+          },
+          {
+            "kind": "static",
+            "name": "in_1"
+          }
+        ],
+        "name": "Bu",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {},
+        "type": "core.MatrixMultiplication",
+        "uiprops": {
+          "port_alignment": "spaced",
+          "x": 632,
+          "y": 224
+        },
+        "uuid": "fdd84650-0838-4c7b-b09a-e25db5d156cc"
+      },
+      {
+        "inputs": [],
+        "name": "u",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "description": {
+            "is_string": true,
+            "value": ""
+          },
+          "port_id": {
+            "value": "1"
+          }
+        },
+        "type": "core.Inport",
+        "uiprops": {
+          "port_alignment": "spaced",
+          "x": 536,
+          "y": 248
+        },
+        "uuid": "61f7a6cd-ee38-44c7-bac6-dc08677b12e2"
+      },
+      {
+        "inputs": [],
+        "name": "DynamicsMatrix",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0",
+            "parameters": {
+              "shape": {
+                "value": "()"
+              }
+            }
+          }
+        ],
+        "parameters": {
+          "value": {
+            "value": "A - Kf @ C"
+          }
+        },
+        "type": "core.Constant",
+        "uiprops": {
+          "port_alignment": "spaced",
+          "x": 488,
+          "y": 344
+        },
+        "uuid": "1b3b930b-d706-468e-9a0e-eaba7ea95b3b"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "static",
+            "name": "in_0"
+          },
+          {
+            "kind": "static",
+            "name": "in_1"
+          }
+        ],
+        "name": "DynamicsPrediction",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {},
+        "type": "core.MatrixMultiplication",
+        "uiprops": {
+          "port_alignment": "spaced",
+          "x": 632,
+          "y": 360
+        },
+        "uuid": "4fb2d52f-ffd0-4bf1-9d78-e1cb8adc97ed"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "dynamic",
+            "name": "in_0"
+          },
+          {
+            "kind": "dynamic",
+            "name": "in_1"
+          },
+          {
+            "kind": "dynamic",
+            "name": "in_2"
+          }
+        ],
+        "name": "dx_hat",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "operators": {
+            "is_string": true,
+            "value": "+++"
+          }
+        },
+        "type": "core.Adder",
+        "uiprops": {
+          "port_alignment": "spaced",
+          "x": 840,
+          "y": 224
+        },
+        "uuid": "d712af57-24ce-445d-abf8-b5106c69ca90"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "static",
+            "name": "in_0"
+          }
+        ],
+        "name": "StateEstimate",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "enable_external_reset": {
+            "value": "true"
+          },
+          "enable_hold": {
+            "value": "false"
+          },
+          "enable_limits": {
+            "value": "false"
+          },
+          "enable_reset": {
+            "value": "false"
+          },
+          "initial_states": {
+            "value": "x_hat0"
+          },
+          "lower_limit": {
+            "value": "-1.0"
+          },
+          "upper_limit": {
+            "value": "1.0"
+          }
+        },
+        "type": "core.Integrator",
+        "uiprops": {
+          "port_alignment": "spaced",
+          "x": 968,
+          "y": 224
+        },
+        "uuid": "1983958e-68a3-4507-bf8c-c0808bc5a40e"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "static",
+            "name": "in_0"
+          }
+        ],
+        "name": "x_hat",
+        "outputs": [],
+        "parameters": {
+          "description": {
+            "is_string": true,
+            "value": ""
+          },
+          "port_id": {
+            "value": "0"
+          }
+        },
+        "type": "core.Outport",
+        "uiprops": {
+          "port_alignment": "spaced",
+          "x": 1128,
+          "y": 224
+        },
+        "uuid": "80fd16e3-d051-497a-b666-ca5fe893e22b"
+      },
+      {
+        "inputs": [],
+        "name": "x_ref",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0",
+            "parameters": {
+              "shape": {
+                "value": "()"
+              }
+            }
+          }
+        ],
+        "parameters": {
+          "value": {
+            "value": "x_ref"
+          }
+        },
+        "type": "core.Constant",
+        "uiprops": {
+          "port_alignment": "spaced",
+          "x": 216,
+          "y": 176
+        },
+        "uuid": "866a5cbe-9a48-4332-888f-15eb1f1bc2c4"
+      }
+    ],
+    "uuid": "e57545ee-ab5b-4937-87b2-fff361fffb1f"
+  },
+  "kind": "Submodel",
+  "name": "KalmanFilter",
+  "parameter_definitions": [
+    {
+      "default_value": "np.zeros((1, 1))",
+      "name": "A",
+      "uiprops": {},
+      "uuid": "924e938d-cadc-4998-8a31-2212f8588496"
+    },
+    {
+      "default_value": "np.zeros((1, 1))",
+      "name": "B",
+      "uiprops": {},
+      "uuid": "3944b7a4-2c22-47ad-bb4c-91a047216b63"
+    },
+    {
+      "default_value": "np.zeros((1, 1))",
+      "name": "C",
+      "uiprops": {},
+      "uuid": "e2ed90ae-6ee0-4971-8a57-69a3320f84b7"
+    },
+    {
+      "default_value": "np.zeros((1, 1))",
+      "name": "Kf",
+      "uiprops": {},
+      "uuid": "d6b6e48f-3270-4791-be80-608064d14df0"
+    },
+    {
+      "default_value": "np.zeros(1)",
+      "name": "x_hat0",
+      "uiprops": {},
+      "uuid": "8613ccb5-06e6-4ab6-b5bc-be68b9113038"
+    },
+    {
+      "default_value": "np.zeros(1)",
+      "name": "x_ref",
+      "uiprops": {},
+      "uuid": "3f006f69-09fa-4342-9018-59975b60a0d2"
+    }
+  ],
+  "schema_version": "4",
+  "subdiagrams": {
+    "diagrams": {},
+    "references": {}
+  },
+  "submodel_configuration": {},
+  "uuid": "19e4d1bc-310f-4761-a5b0-249e997a2d6d"
+}

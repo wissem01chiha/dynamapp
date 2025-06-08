@@ -1,0 +1,234 @@
+{
+  "configuration": {
+    "max_results_interval": 1,
+    "record_mode": "selected",
+    "sample_time": 0.1,
+    "solver": {
+      "absolute_tolerance": 0.000001,
+      "max_minor_steps_per_major_step": 1000,
+      "max_step": 1000000,
+      "method": "RK45",
+      "min_step": 0,
+      "relative_tolerance": 0.001
+    },
+    "start_time": 0,
+    "stop_time": 10,
+    "worker_type": "any",
+    "workspace": {}
+  },
+  "diagram": {
+    "annotations": [],
+    "links": [
+      {
+        "dst": {
+          "node": "d3686e44-a4b6-4f23-8c1f-178238426f44",
+          "port": 0
+        },
+        "src": {
+          "node": "8685a747-b35a-4845-8e08-e70b49b6b843",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 984,
+            "y": 240
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "81a88ff3-9b46-4a9b-8c71-9a2d60d86188"
+      },
+      {
+        "dst": {
+          "node": "8685a747-b35a-4845-8e08-e70b49b6b843",
+          "port": 0
+        },
+        "src": {
+          "node": "d3686e44-a4b6-4f23-8c1f-178238426f44",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 936,
+            "y": 248
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": [
+            {
+              "coordinate": 1200,
+              "segment_direction": "vert"
+            },
+            {
+              "coordinate": 160,
+              "segment_direction": "horiz"
+            },
+            {
+              "coordinate": 832,
+              "segment_direction": "vert"
+            }
+          ]
+        },
+        "uuid": "e6328df4-b50c-41d3-b999-e3367a39b85f"
+      },
+      {
+        "dst": {
+          "node": "8685a747-b35a-4845-8e08-e70b49b6b843",
+          "port": 1
+        },
+        "src": {
+          "node": "be3054be-3402-4ef9-a7bf-3eee2697e123",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 888,
+            "y": 248
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "68f44f38-2d03-44ed-9a22-9fffdbb176dd"
+      }
+    ],
+    "nodes": [
+      {
+        "inputs": [
+          {
+            "kind": "static",
+            "name": "in_0"
+          }
+        ],
+        "name": "Integrator_0",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0",
+            "record": true
+          }
+        ],
+        "parameters": {
+          "enable_external_reset": {
+            "value": "true"
+          },
+          "enable_hold": {
+            "value": "false"
+          },
+          "enable_limits": {
+            "value": "false"
+          },
+          "enable_reset": {
+            "value": "false"
+          },
+          "initial_states": {
+            "value": "[0.0, 0.0]"
+          },
+          "lower_limit": {
+            "value": "-1.0"
+          },
+          "upper_limit": {
+            "value": "1.0"
+          }
+        },
+        "type": "core.Integrator",
+        "uiprops": {
+          "port_alignment": "spaced",
+          "x": 1096,
+          "y": 208
+        },
+        "uuid": "d3686e44-a4b6-4f23-8c1f-178238426f44"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "dynamic",
+            "name": "x"
+          },
+          {
+            "kind": "dynamic",
+            "name": "u"
+          }
+        ],
+        "name": "PendulumDynamics",
+        "outputs": [
+          {
+            "kind": "dynamic",
+            "name": "dx"
+          }
+        ],
+        "parameters": {
+          "L": {
+            "order": 0,
+            "value": "L"
+          },
+          "g": {
+            "order": 1,
+            "value": "g"
+          }
+        },
+        "submodel_reference_uuid": "9964fd8d-af07-4e2d-be32-bc9cf597c71a",
+        "type": "core.ReferenceSubmodel",
+        "uiprops": {
+          "grid_height": 12,
+          "grid_width": 14,
+          "show_port_name_labels": true,
+          "x": 896,
+          "y": 192
+        },
+        "uuid": "8685a747-b35a-4845-8e08-e70b49b6b843"
+      },
+      {
+        "inputs": [],
+        "name": "Step_0",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0",
+            "record": true
+          }
+        ],
+        "parameters": {
+          "end_value": {
+            "value": "1.0"
+          },
+          "start_value": {
+            "value": "0.0"
+          },
+          "step_time": {
+            "value": "1.0"
+          }
+        },
+        "time_mode": "agnostic",
+        "type": "core.Step",
+        "uiprops": {
+          "port_alignment": "spaced",
+          "x": 736,
+          "y": 216
+        },
+        "uuid": "be3054be-3402-4ef9-a7bf-3eee2697e123"
+      }
+    ],
+    "uuid": "b3b95956-1395-4067-b692-5bd63af3698a"
+  },
+  "kind": "Model",
+  "name": "PendulumStepInput",
+  "parameters": {
+    "L": {
+      "value": "1.0"
+    },
+    "g": {
+      "value": "9.8"
+    }
+  },
+  "schema_version": "3",
+  "subdiagrams": {
+    "diagrams": {},
+    "references": {}
+  },
+  "uuid": "7d0d8425-fe57-4002-abae-46f7c145ee8b"
+}

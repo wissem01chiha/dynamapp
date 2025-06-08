@@ -1,0 +1,10 @@
+mkdocs
+mkdocs-jupyter
+mkdocs-material
+mkdocstrings[python]
+
+# Snyk pinning
+ipython>=8.10.0
+requests>=2.32.0
+setuptools>=65.5.1
+tornado>=6.4.1

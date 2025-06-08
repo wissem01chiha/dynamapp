@@ -1,0 +1,178 @@
+{
+  "diagram": {
+    "annotations": [],
+    "links": [
+      {
+        "dst": {
+          "node": "d0846b27-d3f7-43af-b592-f858d65f1993",
+          "port": 0
+        },
+        "src": {
+          "node": "51c25933-2c62-443f-844a-bc1040b0d74a",
+          "port": 0
+        },
+        "uiprops": {
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "ac4a0064-3a5f-459b-a993-2fc814639c40"
+      },
+      {
+        "dst": {
+          "node": "94e49812-9cd8-4e31-bcb1-2c0b398b483d",
+          "port": 0
+        },
+        "src": {
+          "node": "a81d9bd0-bff3-428b-8682-5babc0d1d973",
+          "port": 0
+        },
+        "uiprops": {
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "f95e0a80-1a1c-4266-9560-8474867d9dd2"
+      },
+      {
+        "dst": {
+          "node": "a81d9bd0-bff3-428b-8682-5babc0d1d973",
+          "port": 0
+        },
+        "src": {
+          "node": "d0846b27-d3f7-43af-b592-f858d65f1993",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 1200,
+            "y": 472
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "b316054c-b3d6-49ab-b868-539d3a914cfb"
+      }
+    ],
+    "nodes": [
+      {
+        "inputs": [],
+        "name": "inp_sm",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "description": {
+            "is_string": true,
+            "value": ""
+          },
+          "port_id": {
+            "value": "0"
+          }
+        },
+        "type": "core.Inport",
+        "uiprops": {
+          "x": 152,
+          "y": 32
+        },
+        "uuid": "51c25933-2c62-443f-844a-bc1040b0d74a"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "static",
+            "name": "in_0"
+          }
+        ],
+        "name": "outp_sm",
+        "outputs": [],
+        "parameters": {
+          "description": {
+            "is_string": true,
+            "value": ""
+          },
+          "port_id": {
+            "value": "0"
+          }
+        },
+        "type": "core.Outport",
+        "uiprops": {
+          "x": 480,
+          "y": 32
+        },
+        "uuid": "94e49812-9cd8-4e31-bcb1-2c0b398b483d"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "static",
+            "name": "in_0"
+          }
+        ],
+        "name": "gain",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "gain": {
+            "value": "1.0"
+          }
+        },
+        "type": "core.Gain",
+        "uiprops": {
+          "port_alignment": "spaced",
+          "x": 216,
+          "y": 32
+        },
+        "uuid": "d0846b27-d3f7-43af-b592-f858d65f1993"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "static",
+            "name": "in_0"
+          }
+        ],
+        "name": "offset",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "offset": {
+            "value": "1.0"
+          }
+        },
+        "type": "core.Offset",
+        "uiprops": {
+          "port_alignment": "spaced",
+          "x": 384,
+          "y": 32
+        },
+        "uuid": "a81d9bd0-bff3-428b-8682-5babc0d1d973"
+      }
+    ],
+    "uuid": "db933519-b318-4b14-8976-b8694339d938"
+  },
+  "kind": "Submodel",
+  "name": "test_load_sm",
+  "parameter_definitions": [],
+  "schema_version": "3",
+  "state_machines": {},
+  "subdiagrams": {
+    "diagrams": {},
+    "references": {}
+  }
+}

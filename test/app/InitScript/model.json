@@ -1,0 +1,66 @@
+{
+  "configuration": {
+    "max_results_interval": 1,
+    "record_mode": "selected",
+    "sample_time": 0.1,
+    "solver": {
+      "absolute_tolerance": 0.000001,
+      "max_minor_steps_per_major_step": 1000,
+      "max_step": 1000000,
+      "method": "RK45",
+      "min_step": 0,
+      "relative_tolerance": 0.001
+    },
+    "start_time": 0,
+    "stop_time": 10,
+    "worker_type": "any",
+    "workspace": {
+      "init_scripts": [
+        {
+          "file_name": "init_script.py"
+        }
+      ]
+    }
+  },
+  "diagram": {
+    "annotations": [],
+    "links": [],
+    "nodes": [
+      {
+        "inputs": [],
+        "name": "Constant_0",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "value": {
+            "value": "a"
+          }
+        },
+        "type": "core.Constant",
+        "uiprops": {
+          "x": 339.16674813867365,
+          "y": 477.1242272524491
+        },
+        "uuid": "1c8ecc82-a2dd-455b-936f-854a977190bc"
+      }
+    ],
+    "uuid": "0184eddf-e5bd-453d-9d9b-72ac9a92dd73"
+  },
+  "kind": "Model",
+  "name": "_0091_py_eval_err_msg",
+  "parameters": {
+    "b": {
+      "value": "2"
+    }
+  },
+  "schema_version": "3",
+  "subdiagrams": {
+    "diagrams": {},
+    "references": {}
+  },
+  "uuid": "26fef4e3-5bbe-456d-bffe-ecd33b66b1d7"
+}

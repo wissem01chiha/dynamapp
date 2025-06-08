@@ -1,0 +1,345 @@
+{
+  "configuration": {
+    "fixed_results_interval": 0,
+    "max_results_interval": 0,
+    "numerical_backend": "auto",
+    "record_mode": "all",
+    "sample_time": 0.1,
+    "sim_output_mode": "auto",
+    "solver": {
+      "absolute_tolerance": 0.000001,
+      "max_minor_steps_per_major_step": 4096,
+      "max_step": 1000000,
+      "method": "non-stiff",
+      "min_step": 0,
+      "relative_tolerance": 0.001
+    },
+    "start_time": 0,
+    "stop_time": 10,
+    "worker_type": "any",
+    "workspace": {}
+  },
+  "diagram": {
+    "annotations": [],
+    "links": [
+      {
+        "dst": {
+          "node": "b2f7cfb4-34a1-4ac3-a394-586bb060691b",
+          "port": 0
+        },
+        "src": {
+          "node": "4b7054cd-1b3a-41f2-a5a9-af2142978d9a",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 856,
+            "y": 304
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": [
+            {
+              "coordinate": 680,
+              "segment_direction": "vert"
+            },
+            {
+              "coordinate": 288,
+              "segment_direction": "horiz"
+            },
+            {
+              "coordinate": 760,
+              "segment_direction": "vert"
+            },
+            {
+              "coordinate": 288,
+              "segment_direction": "horiz"
+            },
+            {
+              "coordinate": 840,
+              "segment_direction": "vert"
+            }
+          ]
+        },
+        "uuid": "5e7df88c-1604-4de4-9075-28a6da1cc11a"
+      },
+      {
+        "dst": {
+          "node": "9e6e2e37-3246-4bca-a7d9-0ca13c89de69",
+          "port": 0
+        },
+        "src": {
+          "node": "4b7054cd-1b3a-41f2-a5a9-af2142978d9a",
+          "port": 0
+        },
+        "uiprops": {
+          "link_type": {
+            "connection_method": "link_tap",
+            "tap_coordinate": 704,
+            "tapped_link_uuid": "5e7df88c-1604-4de4-9075-28a6da1cc11a",
+            "tapped_segment": {
+              "segment_type": "real",
+              "tapped_segment_direction": "horiz",
+              "tapped_segment_index": 1
+            }
+          },
+          "segments": [
+            {
+              "coordinate": 296,
+              "segment_direction": "horiz"
+            },
+            {
+              "coordinate": 704,
+              "segment_direction": "vert"
+            },
+            {
+              "coordinate": 456,
+              "segment_direction": "horiz"
+            },
+            {
+              "coordinate": 728,
+              "segment_direction": "vert"
+            }
+          ]
+        },
+        "uuid": "f0f97f0f-b7e7-4562-805c-f8b02628cd9a"
+      },
+      {
+        "dst": {
+          "node": "9e6e2e37-3246-4bca-a7d9-0ca13c89de69",
+          "port": 1
+        },
+        "src": {
+          "node": "4b7054cd-1b3a-41f2-a5a9-af2142978d9a",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_start": {
+            "x": 688,
+            "y": 472
+          },
+          "link_type": {
+            "connection_method": "link_tap",
+            "tap_coordinate": 704,
+            "tapped_link_uuid": "f0f97f0f-b7e7-4562-805c-f8b02628cd9a",
+            "tapped_segment": {
+              "segment_type": "real",
+              "tapped_segment_direction": "horiz",
+              "tapped_segment_index": 2
+            }
+          },
+          "segments": []
+        },
+        "uuid": "7dca56b1-e323-449d-abca-9ad5bf66a09b"
+      },
+      {
+        "dst": {
+          "node": "b2f7cfb4-34a1-4ac3-a394-586bb060691b",
+          "port": 1
+        },
+        "src": {
+          "node": "4b7054cd-1b3a-41f2-a5a9-af2142978d9a",
+          "port": 0
+        },
+        "uiprops": {
+          "link_type": {
+            "connection_method": "link_tap",
+            "tap_coordinate": 792,
+            "tapped_link_uuid": "5e7df88c-1604-4de4-9075-28a6da1cc11a",
+            "tapped_segment": {
+              "segment_type": "real",
+              "tapped_segment_direction": "horiz",
+              "tapped_segment_index": 3
+            }
+          },
+          "segments": [
+            {
+              "coordinate": 296,
+              "segment_direction": "horiz"
+            },
+            {
+              "coordinate": 792,
+              "segment_direction": "vert"
+            },
+            {
+              "coordinate": 304,
+              "segment_direction": "horiz"
+            },
+            {
+              "coordinate": 848,
+              "segment_direction": "vert"
+            }
+          ]
+        },
+        "uuid": "b13fb736-6734-4af2-a4be-4ae6dad1e386"
+      },
+      {
+        "dst": {
+          "node": "b2f7cfb4-34a1-4ac3-a394-586bb060691b",
+          "port": 2
+        },
+        "src": {
+          "node": "4b7054cd-1b3a-41f2-a5a9-af2142978d9a",
+          "port": 0
+        },
+        "uiprops": {
+          "link_type": {
+            "connection_method": "link_tap",
+            "tap_coordinate": 792,
+            "tapped_link_uuid": "b13fb736-6734-4af2-a4be-4ae6dad1e386",
+            "tapped_segment": {
+              "segment_type": "real",
+              "tapped_segment_direction": "horiz",
+              "tapped_segment_index": 2
+            }
+          },
+          "segments": []
+        },
+        "uuid": "c1ed402f-1960-4ee8-ad45-2cbbf67d13ed"
+      },
+      {
+        "dst": {
+          "node": "d17b252e-0a68-4b31-bf14-404e9c1997f0",
+          "port": 0
+        },
+        "src": {
+          "node": "9e6e2e37-3246-4bca-a7d9-0ca13c89de69",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 848,
+            "y": 472
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "2548f504-0641-4543-b5da-5039f2a5543b"
+      }
+    ],
+    "nodes": [
+      {
+        "inputs": [],
+        "name": "Constant_0",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "value": {
+            "value": "True"
+          }
+        },
+        "type": "core.Constant",
+        "uiprops": {
+          "port_alignment": "spaced",
+          "x": 624,
+          "y": 280
+        },
+        "uuid": "4b7054cd-1b3a-41f2-a5a9-af2142978d9a"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "static",
+            "name": "test"
+          },
+          {
+            "kind": "static",
+            "name": "if_true"
+          },
+          {
+            "kind": "static",
+            "name": "if_false"
+          }
+        ],
+        "name": "IfThenElse_0",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {},
+        "type": "core.IfThenElse",
+        "uiprops": {
+          "port_alignment": "spaced",
+          "x": 848,
+          "y": 272
+        },
+        "uuid": "b2f7cfb4-34a1-4ac3-a394-586bb060691b"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "dynamic",
+            "name": "in_0"
+          },
+          {
+            "kind": "dynamic",
+            "name": "in_1"
+          }
+        ],
+        "name": "Mux_0",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {},
+        "type": "core.Mux",
+        "uiprops": {
+          "port_alignment": "spaced",
+          "x": 728,
+          "y": 440
+        },
+        "uuid": "9e6e2e37-3246-4bca-a7d9-0ca13c89de69"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "static",
+            "name": "in_0"
+          }
+        ],
+        "name": "Demux_0",
+        "outputs": [
+          {
+            "kind": "dynamic",
+            "name": "out_0"
+          },
+          {
+            "kind": "dynamic",
+            "name": "out_1"
+          }
+        ],
+        "parameters": {},
+        "type": "core.Demux",
+        "uiprops": {
+          "port_alignment": "spaced",
+          "x": 848,
+          "y": 440
+        },
+        "uuid": "d17b252e-0a68-4b31-bf14-404e9c1997f0"
+      }
+    ],
+    "uuid": "e4cebea0-e87d-4215-a81f-bda5168b8492"
+  },
+  "kind": "Model",
+  "name": "test_signal_routing",
+  "parameters": {},
+  "project_uuid": "fae0f10e-7b4a-45d3-8c4a-d31638a7451e",
+  "schema_version": "3",
+  "state_machines": {},
+  "subdiagrams": {
+    "diagrams": {},
+    "references": {}
+  },
+  "uuid": "cd0c1448-eb0e-4a9b-b3b8-be5e03788e5e"
+}

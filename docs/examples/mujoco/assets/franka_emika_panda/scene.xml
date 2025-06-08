@@ -1,0 +1,44 @@
+<!--
+ Copyright (C) 2024 Collimator, Inc.
+ SPDX-License-Identifier: AGPL-3.0-only
+
+ This program is free software: you can redistribute it and/or modify it under
+ the terms of the GNU Affero General Public License as published by the Free
+ Software Foundation, version 3. This program is distributed in the hope that it
+ will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General
+ Public License for more details.  You should have received a copy of the GNU
+ Affero General Public License along with this program. If not, see
+ <https://www.gnu.org/licenses/>.
+-->
+
+<mujoco model="panda scene">
+  <include file="panda.xml"/>
+
+  <statistic center="0.3 0 0.35" extent="0.8" meansize="0.05"/>
+
+  <visual>
+    <headlight diffuse="0.6 0.6 0.6" ambient="0.1 0.1 0.1" specular="0 0 0"/>
+    <global azimuth="120" elevation="-20"/>
+  </visual>
+
+  <asset>
+    <texture name="grid" type="2d" builtin="checker" rgb1=".2 .3 .4" rgb2=".1 0.15 0.2" width="256" height="256"
+      mark="cross" markrgb=".8 .8 .8"/>
+    <material name="grid" texture="grid" texrepeat="4 4" texuniform="true"/>
+  </asset>
+
+  <worldbody>
+    <light pos="0 0 1.5" dir="0 0 -1" directional="true"/>
+    <geom name="floor" size="1 1 0.01" type="plane" material="grid"/>
+    <body name="work_space" pos="0.65 0.3 0.0" euler="0 0 0">
+      <geom name="work_space" size="0.2 0.2 .1" pos="0. 0. 0.1" type="box" rgba="0.5 0.5 0.5 1.0" />
+      <inertial pos="0 0 0" mass="1000" diaginertia="0 0 0" />
+    </body>
+    <body name="obj">
+      <joint type="free"/>
+      <geom type="box" size="0.03 0.03 0.05" solimp="0.998 0.998 0.001" solref="0.001 1" density="500" rgba="1 0.56 0.43 1"/>
+      <site name="target" pos="0 0 0.05" size="0.01"/>
+    </body>
+  </worldbody>
+</mujoco>

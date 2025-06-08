@@ -1,0 +1,27 @@
+{
+  "optimization_request": {
+    "type": "estimation",
+    "options": {
+      "beta1": "0.9",
+      "beta2": "0.999",
+      "epsilon": "1e-08",
+      "batch_size": "10",
+      "num_epochs": "1000",
+      "num_batches": "10",
+      "epsilon_root": "0.0",
+      "learning_rate": "0.003"
+    },
+    "algorithm": "adam",
+    "data_file": "recorded-results.csv",
+    "time_column": "time",
+    "input_columns": { "Inport_0": "Adder_0.out_0" },
+    "submodel_path": "pid_plant_submodel",
+    "output_columns": { "Outport_0": "PID_Discrete_0.out_0" },
+    "design_parameters": [
+      { "initial": "1.", "param_name": "Kd" },
+      { "initial": "1.", "param_name": "Ki" },
+      { "initial": "1.", "param_name": "Kp" }
+    ],
+    "constraint_port_names": []
+  }
+}

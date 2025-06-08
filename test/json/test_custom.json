@@ -1,0 +1,131 @@
+{
+  "configuration": {
+    "fixed_results_interval": 0,
+    "max_results_interval": 0,
+    "numerical_backend": "auto",
+    "record_mode": "all",
+    "sample_time": 0.1,
+    "sim_output_mode": "auto",
+    "solver": {
+      "absolute_tolerance": 0.000001,
+      "max_minor_steps_per_major_step": 4096,
+      "max_step": 1000000,
+      "method": "non-stiff",
+      "min_step": 0,
+      "relative_tolerance": 0.001
+    },
+    "start_time": 0,
+    "stop_time": 10,
+    "worker_type": "any",
+    "workspace": {}
+  },
+  "diagram": {
+    "annotations": [],
+    "links": [
+      {
+        "dst": {
+          "node": "7d7f377c-951e-462c-a780-a0d6cbfe8ad6",
+          "port": 0
+        },
+        "src": {
+          "node": "d0ebe0d3-14ca-4942-b191-e718203b2b64",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 816,
+            "y": 376
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "e8059161-58d8-4bbf-8ab5-2418f953f23e"
+      }
+    ],
+    "nodes": [
+      {
+        "inputs": [],
+        "name": "Ramp_0",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "slope": {
+            "value": "1.0"
+          },
+          "start_time": {
+            "value": "1.0"
+          },
+          "start_value": {
+            "value": "0.0"
+          }
+        },
+        "time_mode": "agnostic",
+        "type": "core.Ramp",
+        "uiprops": {
+          "port_alignment": "spaced",
+          "x": 672,
+          "y": 352
+        },
+        "uuid": "d0ebe0d3-14ca-4942-b191-e718203b2b64"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "dynamic",
+            "name": "in_0"
+          }
+        ],
+        "name": "PythonScript_0",
+        "outputs": [
+          {
+            "kind": "dynamic",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "accelerate_with_jax": {
+            "value": "false"
+          },
+          "finalize_script": {
+            "is_string": true,
+            "value": ""
+          },
+          "init_script": {
+            "is_string": true,
+            "value": "out_0 = 0"
+          },
+          "user_statements": {
+            "is_string": true,
+            "value": "out_0 = in_0"
+          }
+        },
+        "time_mode": "agnostic",
+        "type": "core.PythonScript",
+        "uiprops": {
+          "port_alignment": "spaced",
+          "x": 816,
+          "y": 352
+        },
+        "uuid": "7d7f377c-951e-462c-a780-a0d6cbfe8ad6"
+      }
+    ],
+    "uuid": "99459e31-7f49-465b-a0de-c710fe1565bc"
+  },
+  "kind": "Model",
+  "name": "test_custom",
+  "parameters": {},
+  "project_uuid": "fae0f10e-7b4a-45d3-8c4a-d31638a7451e",
+  "schema_version": "3",
+  "state_machines": {},
+  "subdiagrams": {
+    "diagrams": {},
+    "references": {}
+  },
+  "uuid": "71885211-abd3-4f39-8281-7ff1800ba67f"
+}

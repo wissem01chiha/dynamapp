@@ -1,0 +1,30 @@
+{
+  "optimization_request": {
+    "type": "design",
+    "options": {
+      "beta1": "0.9",
+      "beta2": "0.999",
+      "epsilon": "1e-08",
+      "epsilon_root": "0.0",
+      "num_epochs": "2",
+      "batch_size": "2",
+      "num_batches": "2"
+    },
+    "algorithm": "adam",
+    "objective": "objective.out_0",
+    "design_parameters": [
+      {
+        "initial": "0.5",
+        "param_name": "c"
+      }
+    ],
+    "stochastic_parameters": [
+      {
+        "param_name": "k",
+        "distribution": "uniform",
+        "min": "0.5",
+        "max": "1.5"
+      }
+    ]
+  }
+}

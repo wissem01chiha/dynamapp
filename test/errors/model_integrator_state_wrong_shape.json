@@ -1,0 +1,350 @@
+{
+  "configuration": {
+    "max_results_interval": 1,
+    "record_mode": "selected",
+    "sample_time": 0.1,
+    "solver": {
+      "absolute_tolerance": 0.000001,
+      "max_minor_steps_per_major_step": 1000,
+      "max_step": 1000000,
+      "method": "RK45",
+      "min_step": 0,
+      "relative_tolerance": 0.001
+    },
+    "start_time": 0,
+    "stop_time": 10,
+    "worker_type": "any",
+    "workspace": {}
+  },
+  "diagram": {
+    "annotations": [],
+    "links": [
+      {
+        "dst": {
+          "node": "e3d0f556-5b3e-4047-bd4c-2743ff84e7ca",
+          "port": 0
+        },
+        "src": {
+          "node": "72d1f873-dcd2-4ed0-a986-f7f75565103a",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 472,
+            "y": 424
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "2b0660d5-6026-407d-a7e1-df69c9c47449"
+      },
+      {
+        "dst": {
+          "node": "e03572a7-ad78-453f-947c-d889e984789c",
+          "port": 0
+        },
+        "src": {
+          "node": "1c360b22-80d4-4c77-b1f4-957660ce1b5e",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 464,
+            "y": 448
+          },
+          "hang_coord_start": {
+            "x": 368,
+            "y": 536
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": [
+            {
+              "coordinate": 376,
+              "segment_direction": "vert"
+            },
+            {
+              "coordinate": 536,
+              "segment_direction": "horiz"
+            },
+            {
+              "coordinate": 404,
+              "segment_direction": "vert"
+            },
+            {
+              "coordinate": 536,
+              "segment_direction": "horiz"
+            },
+            {
+              "coordinate": 432,
+              "segment_direction": "vert"
+            },
+            {
+              "coordinate": 536,
+              "segment_direction": "horiz"
+            },
+            {
+              "coordinate": 440,
+              "segment_direction": "vert"
+            }
+          ]
+        },
+        "uuid": "c351b3b5-a96b-41de-afc4-7217cd9cd60d"
+      },
+      {
+        "dst": {
+          "node": "027d10a7-9188-466e-9de5-59f50484ebe9",
+          "port": 0
+        },
+        "src": {
+          "node": "e3d0f556-5b3e-4047-bd4c-2743ff84e7ca",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_start": {
+            "x": 552,
+            "y": 448
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "8ebd0c1b-4929-4ff7-8965-ff300854ae0a"
+      },
+      {
+        "dst": {
+          "node": "e3d0f556-5b3e-4047-bd4c-2743ff84e7ca",
+          "port": 1
+        },
+        "src": {
+          "node": "e03572a7-ad78-453f-947c-d889e984789c",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 464,
+            "y": 448
+          },
+          "hang_coord_start": {
+            "x": 368,
+            "y": 536
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": [
+            {
+              "coordinate": 512,
+              "segment_direction": "vert"
+            },
+            {
+              "coordinate": 536,
+              "segment_direction": "horiz"
+            },
+            {
+              "coordinate": 552,
+              "segment_direction": "vert"
+            },
+            {
+              "coordinate": 440,
+              "segment_direction": "horiz"
+            },
+            {
+              "coordinate": 616,
+              "segment_direction": "vert"
+            }
+          ]
+        },
+        "uuid": "473ad3b5-5339-4a8b-a08f-ce110df4a5e7"
+      }
+    ],
+    "nodes": [
+      {
+        "inputs": [],
+        "name": "CosineWave_1",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "amplitude": {
+            "value": "1.0"
+          },
+          "bias": {
+            "value": "0.0"
+          },
+          "frequency": {
+            "value": "1.0"
+          },
+          "phase": {
+            "value": "0.0"
+          }
+        },
+        "time_mode": "agnostic",
+        "type": "core.CosineWave",
+        "uiprops": {
+          "port_alignment": "spaced",
+          "x": 296,
+          "y": 328
+        },
+        "uuid": "72d1f873-dcd2-4ed0-a986-f7f75565103a"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "dynamic",
+            "name": "in_0"
+          },
+          {
+            "kind": "dynamic",
+            "name": "in_1"
+          }
+        ],
+        "name": "Adder_0",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0",
+            "record": true
+          }
+        ],
+        "parameters": {
+          "operators": {
+            "is_string": true,
+            "value": "+-"
+          }
+        },
+        "type": "core.Adder",
+        "uiprops": {
+          "port_alignment": "spaced",
+          "x": 616,
+          "y": 400
+        },
+        "uuid": "e3d0f556-5b3e-4047-bd4c-2743ff84e7ca"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "static",
+            "name": "in_0"
+          }
+        ],
+        "name": "Integrator_0",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0",
+            "record": true
+          }
+        ],
+        "parameters": {
+          "enable_external_reset": {
+            "value": "true"
+          },
+          "enable_hold": {
+            "value": "false"
+          },
+          "enable_limits": {
+            "value": "false"
+          },
+          "enable_reset": {
+            "value": "false"
+          },
+          "initial_states": {
+            "value": "0.0"
+          },
+          "lower_limit": {
+            "value": "-1.0"
+          },
+          "upper_limit": {
+            "value": "1.0"
+          }
+        },
+        "type": "core.Integrator",
+        "uiprops": {
+          "port_alignment": "spaced",
+          "x": 728,
+          "y": 400
+        },
+        "uuid": "027d10a7-9188-466e-9de5-59f50484ebe9"
+      },
+      {
+        "inputs": [],
+        "name": "SineWave_0",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "amplitude": {
+            "value": "1.0"
+          },
+          "bias": {
+            "value": "0.0"
+          },
+          "frequency": {
+            "value": "1.0"
+          },
+          "phase": {
+            "value": "0.0"
+          }
+        },
+        "time_mode": "agnostic",
+        "type": "core.SineWave",
+        "uiprops": {
+          "port_alignment": "spaced",
+          "x": 296,
+          "y": 504
+        },
+        "uuid": "1c360b22-80d4-4c77-b1f4-957660ce1b5e"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "static",
+            "name": "in_0"
+          }
+        ],
+        "name": "Gain_0",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "gain": {
+            "value": "np.array([2,3])"
+          }
+        },
+        "type": "core.Gain",
+        "uiprops": {
+          "port_alignment": "spaced",
+          "x": 440,
+          "y": 504
+        },
+        "uuid": "e03572a7-ad78-453f-947c-d889e984789c"
+      }
+    ],
+    "uuid": "ad4dc732-721d-4385-8ff0-5d1daa43e90b"
+  },
+  "kind": "Model",
+  "name": "t3",
+  "parameters": {},
+  "project_uuid": "dbd805ad-7abe-4a27-8011-ba0fad32c368",
+  "schema_version": "3",
+  "state_machines": {},
+  "subdiagrams": {
+    "diagrams": {},
+    "references": {}
+  },
+  "uuid": "b3229bf3-8188-46f0-83d2-e0f1c7c02c3e"
+}

@@ -1,0 +1,16 @@
+{
+  "optimization_request": {
+    "type": "design",
+    "options": {
+    },
+    "algorithm": "particle_swarm_optimization",
+    "objective": "objective.out_0",
+    "design_parameters": [
+      {
+        "initial": "0.5",
+        "param_name": "c"
+      }
+    ],
+    "stochastic_parameters": []
+  }
+}

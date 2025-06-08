@@ -1,0 +1,491 @@
+{
+  "diagram": {
+    "annotations": [],
+    "links": [
+      {
+        "dst": {
+          "node": "1ce5f428-f1bf-43e5-bf61-e76678b34045",
+          "port": 0
+        },
+        "src": {
+          "node": "9789ecb1-9e69-4a81-88b9-6af81e4963b3",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 104,
+            "y": 32
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "912ff9ba-f123-4f7b-9110-7ed6ab5d9d41"
+      },
+      {
+        "dst": {
+          "node": "1ce5f428-f1bf-43e5-bf61-e76678b34045",
+          "port": 1
+        },
+        "src": {
+          "node": "32926983-9817-4aa9-be56-652c4d3d4d1c",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 104,
+            "y": 56
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "342964c6-a9c4-4d6a-85ac-e5b5c26897d3"
+      },
+      {
+        "dst": {
+          "node": "6a998223-6999-4725-b113-f63792dc1484",
+          "port": 0
+        },
+        "src": {
+          "node": "1ce5f428-f1bf-43e5-bf61-e76678b34045",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 216,
+            "y": 48
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "8f907ab1-f729-4338-a6af-86224dc5c1c2"
+      },
+      {
+        "dst": {
+          "node": "d0ec5fed-d28f-45b4-b57e-5d519efe17e1",
+          "port": 0
+        },
+        "src": {
+          "node": "6a998223-6999-4725-b113-f63792dc1484",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 360,
+            "y": 48
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": [
+            {
+              "coordinate": 296,
+              "segment_direction": "vert"
+            },
+            {
+              "coordinate": 48,
+              "segment_direction": "horiz"
+            },
+            {
+              "coordinate": 424,
+              "segment_direction": "vert"
+            }
+          ]
+        },
+        "uuid": "10434c99-a9ca-4028-b624-02baeb62329c"
+      },
+      {
+        "dst": {
+          "node": "06c358df-e1b6-43b2-96f0-c05df135e46f",
+          "port": 0
+        },
+        "src": {
+          "node": "d0ec5fed-d28f-45b4-b57e-5d519efe17e1",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 552,
+            "y": 56
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "478d0a5a-57c6-47bb-bd94-565473cafff4"
+      },
+      {
+        "dst": {
+          "node": "c972b6d0-7127-4c44-96f7-3af8f594d471",
+          "port": 0
+        },
+        "src": {
+          "node": "6a998223-6999-4725-b113-f63792dc1484",
+          "port": 0
+        },
+        "uiprops": {
+          "link_type": {
+            "connection_method": "link_tap",
+            "tap_coordinate": 304,
+            "tapped_link_uuid": "10434c99-a9ca-4028-b624-02baeb62329c",
+            "tapped_segment": {
+              "segment_type": "real",
+              "tapped_segment_direction": "horiz",
+              "tapped_segment_index": 1
+            }
+          },
+          "segments": []
+        },
+        "uuid": "4386ec02-f1e0-40e1-9d9f-d112d45a4b43"
+      },
+      {
+        "dst": {
+          "node": "c5b240c5-7e4a-4390-8df6-35d370656e37",
+          "port": 0
+        },
+        "src": {
+          "node": "c972b6d0-7127-4c44-96f7-3af8f594d471",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 440,
+            "y": 160
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "6b28074f-2c49-4409-b3a0-c7e9808e2739"
+      },
+      {
+        "dst": {
+          "node": "0800211f-d38d-4f65-815f-c6173cbd49f0",
+          "port": 0
+        },
+        "src": {
+          "node": "c5b240c5-7e4a-4390-8df6-35d370656e37",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 552,
+            "y": 168
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "ee489beb-aa42-45fb-9fbe-2fed846669a8"
+      }
+    ],
+    "nodes": [
+      {
+        "inputs": [],
+        "name": "drive_cycle_spd",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "description": {
+            "is_string": true,
+            "value": "Drive cycle speed"
+          },
+          "port_id": {
+            "value": "0"
+          }
+        },
+        "type": "core.Inport",
+        "uiprops": {
+          "x": 0,
+          "y": 0
+        },
+        "uuid": "9789ecb1-9e69-4a81-88b9-6af81e4963b3"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "static",
+            "name": "in_0"
+          }
+        ],
+        "name": "app_norm",
+        "outputs": [],
+        "parameters": {
+          "description": {
+            "is_string": true,
+            "value": "Accelerator Pedal Position"
+          },
+          "port_id": {
+            "value": "0"
+          }
+        },
+        "type": "core.Outport",
+        "uiprops": {
+          "x": 552,
+          "y": 16
+        },
+        "uuid": "06c358df-e1b6-43b2-96f0-c05df135e46f"
+      },
+      {
+        "inputs": [],
+        "name": "vehicle_spd",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "description": {
+            "is_string": true,
+            "value": "Measured vehicle speed"
+          },
+          "port_id": {
+            "value": "1"
+          }
+        },
+        "type": "core.Inport",
+        "uiprops": {
+          "x": 0,
+          "y": 104
+        },
+        "uuid": "32926983-9817-4aa9-be56-652c4d3d4d1c"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "static",
+            "name": "in_0"
+          }
+        ],
+        "name": "bpp_norm",
+        "outputs": [],
+        "parameters": {
+          "description": {
+            "is_string": true,
+            "value": "Brake Pedal Position"
+          },
+          "port_id": {
+            "value": "1"
+          }
+        },
+        "type": "core.Outport",
+        "uiprops": {
+          "x": 552,
+          "y": 128
+        },
+        "uuid": "0800211f-d38d-4f65-815f-c6173cbd49f0"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "dynamic",
+            "name": "in_0"
+          },
+          {
+            "kind": "dynamic",
+            "name": "in_1"
+          }
+        ],
+        "name": "spd_err",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "operators": {
+            "is_string": true,
+            "value": "+-"
+          }
+        },
+        "type": "core.Adder",
+        "uiprops": {
+          "x": 104,
+          "y": 16
+        },
+        "uuid": "1ce5f428-f1bf-43e5-bf61-e76678b34045"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "static",
+            "name": "in_0"
+          }
+        ],
+        "name": "driver_pid",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "Kd": {
+            "value": "Kd"
+          },
+          "Ki": {
+            "value": "Ki"
+          },
+          "Kp": {
+            "value": "Kp"
+          },
+          "N": {
+            "value": "100"
+          },
+          "enable_external_initial_state": {
+            "value": "False"
+          },
+          "initial_state": {
+            "value": "0.0"
+          }
+        },
+        "type": "core.PID",
+        "uiprops": {
+          "x": 216,
+          "y": 16
+        },
+        "uuid": "6a998223-6999-4725-b113-f63792dc1484"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "static",
+            "name": "in_0"
+          }
+        ],
+        "name": "app_range_limit",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "enable_dynamic_lower_limit": {
+            "value": "False"
+          },
+          "enable_dynamic_upper_limit": {
+            "value": "False"
+          },
+          "lower_limit": {
+            "value": "0.0"
+          },
+          "upper_limit": {
+            "value": "1.0"
+          }
+        },
+        "type": "core.Saturate",
+        "uiprops": {
+          "x": 432,
+          "y": 16
+        },
+        "uuid": "d0ec5fed-d28f-45b4-b57e-5d519efe17e1"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "static",
+            "name": "in_0"
+          }
+        ],
+        "name": "bpp_range_limit",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "enable_dynamic_lower_limit": {
+            "value": "False"
+          },
+          "enable_dynamic_upper_limit": {
+            "value": "False"
+          },
+          "lower_limit": {
+            "value": "0.0"
+          },
+          "upper_limit": {
+            "value": "1.0"
+          }
+        },
+        "type": "core.Saturate",
+        "uiprops": {
+          "x": 440,
+          "y": 128
+        },
+        "uuid": "c5b240c5-7e4a-4390-8df6-35d370656e37"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "static",
+            "name": "in_0"
+          }
+        ],
+        "name": "invert",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "gain": {
+            "value": "-1"
+          }
+        },
+        "type": "core.Gain",
+        "uiprops": {
+          "x": 336,
+          "y": 128
+        },
+        "uuid": "c972b6d0-7127-4c44-96f7-3af8f594d471"
+      }
+    ],
+    "uuid": "0c08ca00-52d7-4038-b4ea-0a4b0c9b0547"
+  },
+  "kind": "Submodel",
+  "name": "Test Case - Drive Cycle Pedal Controls",
+  "parameter_definitions": [
+    {
+      "default_value": "0.0",
+      "name": "Kd",
+      "uiprops": {},
+      "uuid": "6a46c3d0-11f8-489c-a6e5-8300bfa01243"
+    },
+    {
+      "default_value": "0.0",
+      "name": "Ki",
+      "uiprops": {},
+      "uuid": "61597edd-2fd6-4be2-8a53-37e072108f0c"
+    },
+    {
+      "default_value": "1.0",
+      "name": "Kp",
+      "uiprops": {},
+      "uuid": "c6a6d3e5-18d6-40f0-910a-a81b97efc885"
+    }
+  ],
+  "schema_version": "3",
+  "subdiagrams": {
+    "diagrams": {},
+    "references": {}
+  },
+  "submodel_configuration": {},
+  "uuid": "0a2c9526-7b22-4469-a1c2-272e58ee3856"
+}

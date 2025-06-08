@@ -1,0 +1,224 @@
+{
+  "diagram": {
+    "annotations": [],
+    "links": [
+      {
+        "dst": {
+          "node": "d7967db6-426c-4ee3-a169-6d1869c3cab1",
+          "port": 0
+        },
+        "src": {
+          "node": "ee8d61c0-fcae-4bae-8ea9-2c19ac1f4b84",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_start": {
+            "x": 312,
+            "y": 8
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "7bf11211-2569-495f-85bd-fc85668556ce"
+      },
+      {
+        "dst": {
+          "node": "ee8d61c0-fcae-4bae-8ea9-2c19ac1f4b84",
+          "port": 0
+        },
+        "src": {
+          "node": "bbbf4f57-c365-46a7-b628-d40b77ba16f7",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 208,
+            "y": 8
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": [
+            {
+              "coordinate": 32,
+              "segment_direction": "vert"
+            },
+            {
+              "coordinate": 8,
+              "segment_direction": "horiz"
+            },
+            {
+              "coordinate": 72,
+              "segment_direction": "vert"
+            },
+            {
+              "coordinate": 8,
+              "segment_direction": "horiz"
+            },
+            {
+              "coordinate": 112,
+              "segment_direction": "vert"
+            }
+          ]
+        },
+        "uuid": "c4b6501d-e2d3-4fc9-a799-cb81be7f7de0"
+      },
+      {
+        "dst": {
+          "node": "229ecba6-8437-4304-96a8-66776f171f98",
+          "port": 0
+        },
+        "src": {
+          "node": "bbbf4f57-c365-46a7-b628-d40b77ba16f7",
+          "port": 0
+        },
+        "uiprops": {
+          "link_type": {
+            "connection_method": "link_tap",
+            "tap_coordinate": 8,
+            "tapped_link_uuid": "c4b6501d-e2d3-4fc9-a799-cb81be7f7de0",
+            "tapped_segment": {
+              "segment_type": "real",
+              "tapped_segment_direction": "vert",
+              "tapped_segment_index": 2
+            }
+          },
+          "segments": []
+        },
+        "uuid": "6d1823e1-7d35-493c-a668-4ac9896bad6e"
+      }
+    ],
+    "nodes": [
+      {
+        "inputs": [],
+        "name": "Inport_0",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "description": {
+            "is_string": true,
+            "value": ""
+          },
+          "port_id": {
+            "value": "0"
+          }
+        },
+        "type": "core.Inport",
+        "uiprops": {
+          "x": -24,
+          "y": -24
+        },
+        "uuid": "bbbf4f57-c365-46a7-b628-d40b77ba16f7"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "static",
+            "name": "in_0"
+          }
+        ],
+        "name": "Outport_0",
+        "outputs": [],
+        "parameters": {
+          "description": {
+            "is_string": true,
+            "value": ""
+          },
+          "port_id": {
+            "value": "0"
+          }
+        },
+        "type": "core.Outport",
+        "uiprops": {
+          "x": 480,
+          "y": -24
+        },
+        "uuid": "d7967db6-426c-4ee3-a169-6d1869c3cab1"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "dynamic",
+            "name": "Inport_0"
+          }
+        ],
+        "name": "sm_params_as_numbers",
+        "outputs": [
+          {
+            "kind": "dynamic",
+            "name": "Outport_0"
+          }
+        ],
+        "parameters": {},
+        "submodel_reference_uuid": "01449de5-aa05-4bdb-950b-a616fb8189c8",
+        "type": "core.ReferenceSubmodel",
+        "uiprops": {
+          "grid_height": 12,
+          "grid_width": 24,
+          "port_alignment": "spaced",
+          "show_port_name_labels": true,
+          "x": 120,
+          "y": -40
+        },
+        "uuid": "ee8d61c0-fcae-4bae-8ea9-2c19ac1f4b84"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "dynamic",
+            "name": "Inport_0"
+          }
+        ],
+        "name": "sm_params_from_nester",
+        "outputs": [
+          {
+            "kind": "dynamic",
+            "name": "Outport_0",
+            "record": true
+          }
+        ],
+        "parameters": {
+          "local_gain": {
+            "order": 0,
+            "value": "sm_local_gain"
+          }
+        },
+        "submodel_reference_uuid": "01449de5-aa05-4bdb-950b-a616fb8189c8",
+        "type": "core.ReferenceSubmodel",
+        "uiprops": {
+          "grid_height": 12,
+          "grid_width": 24,
+          "port_alignment": "spaced",
+          "show_port_name_labels": true,
+          "x": 120,
+          "y": 88
+        },
+        "uuid": "229ecba6-8437-4304-96a8-66776f171f98"
+      }
+    ],
+    "uuid": "85366b56-8b43-47b7-8538-cf144696c7c3"
+  },
+  "kind": "Submodel",
+  "name": "sm_nester",
+  "parameter_definitions": [
+    {
+      "default_value": "10",
+      "name": "sm_local_gain",
+      "uiprops": {},
+      "uuid": "256c5c58-aa98-458c-806d-5079bbe87e3a"
+    }
+  ],
+  "schema_version": "3",
+  "subdiagrams": {
+    "diagrams": {},
+    "references": {}
+  },
+  "submodel_configuration": {},
+  "uuid": "e388e915-cca9-466a-a4b6-53d7f2e8d2ed"
+}

@@ -1,0 +1,547 @@
+{
+    "$schema_version": "0.1",
+    "uuid": "0b1fc08a-5bd9-4ca7-8c28-444b88f2776b",
+    "name": "time_mode_user_def",
+    "diagram": {
+        "nodes": [
+            {
+                "uuid": "a7ae01b4-936a-4000-a01a-657503128379",
+                "name": "SineWave_0",
+                "type": "core.SineWave",
+                "inputs": [],
+                "outputs": [
+                    {
+                        "name": "out_0",
+                        "kind": "static"
+                    }
+                ],
+                "parameters": {
+                    "amplitude": {
+                        "value": "1.0"
+                    },
+                    "bias": {
+                        "value": "0.0"
+                    },
+                    "frequency": {
+                        "value": "1.0"
+                    },
+                    "phase": {
+                        "value": "0.0"
+                    }
+                },
+                "time_mode": "agnostic",
+                "uiprops": {
+                    "x": 712,
+                    "y": 312,
+                    "port_alignment": "spaced"
+                }
+            },
+            {
+                "uuid": "47674c3a-6c8b-403c-bc60-d033ca169093",
+                "name": "psb_d",
+                "type": "core.PythonScript",
+                "inputs": [
+                    {
+                        "name": "in_0",
+                        "kind": "dynamic"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "out_0",
+                        "kind": "dynamic"
+                    }
+                ],
+                "parameters": {
+                    "accelerate_with_jax": {
+                        "value": "false"
+                    },
+                    "finalize_script": {
+                        "value": "",
+                        "is_string": true
+                    },
+                    "init_script": {
+                        "value": "# import numpy as np\n# import jax.numpy as jnp\nout_0 = 0.0  # out_0 will be of type float64. Use out_0 = 0 for int",
+                        "is_string": true
+                    },
+                    "user_statements": {
+                        "value": "out_0 = in_0",
+                        "is_string": true
+                    }
+                },
+                "time_mode": "discrete",
+                "uiprops": {
+                    "x": 976,
+                    "y": 312,
+                    "port_alignment": "spaced"
+                }
+            },
+            {
+                "uuid": "1055201e-6396-448c-b15d-3fc734cba8f0",
+                "name": "psb_c",
+                "type": "core.PythonScript",
+                "inputs": [
+                    {
+                        "name": "in_0",
+                        "kind": "dynamic"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "out_0",
+                        "kind": "dynamic"
+                    }
+                ],
+                "parameters": {
+                    "accelerate_with_jax": {
+                        "value": "false"
+                    },
+                    "finalize_script": {
+                        "value": "",
+                        "is_string": true
+                    },
+                    "init_script": {
+                        "value": "# import numpy as np\n# import jax.numpy as jnp\nout_0 = 0.0  # out_0 will be of type float64. Use out_0 = 0 for int",
+                        "is_string": true
+                    },
+                    "user_statements": {
+                        "value": "out_0 = in_0",
+                        "is_string": true
+                    }
+                },
+                "time_mode": "agnostic",
+                "uiprops": {
+                    "x": 976,
+                    "y": 424,
+                    "port_alignment": "spaced"
+                }
+            },
+            {
+                "uuid": "849fec0a-6d35-4759-bb35-a2d3115a50c1",
+                "name": "Integrator_0",
+                "type": "core.Integrator",
+                "inputs": [
+                    {
+                        "name": "in_0",
+                        "kind": "static"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "out_0",
+                        "kind": "static"
+                    }
+                ],
+                "parameters": {
+                    "enable_external_reset": {
+                        "value": "true"
+                    },
+                    "enable_hold": {
+                        "value": "false"
+                    },
+                    "enable_limits": {
+                        "value": "false"
+                    },
+                    "enable_reset": {
+                        "value": "false"
+                    },
+                    "initial_states": {
+                        "value": "0.0"
+                    },
+                    "lower_limit": {
+                        "value": "-1.0"
+                    },
+                    "upper_limit": {
+                        "value": "1.0"
+                    }
+                },
+                "uiprops": {
+                    "x": 1312,
+                    "y": 528,
+                    "port_alignment": "spaced"
+                }
+            },
+            {
+                "uuid": "125f9919-73c4-4fc1-9a50-0d8d426adb16",
+                "name": "smach_d",
+                "type": "core.StateMachine",
+                "inputs": [
+                    {
+                        "name": "in_0",
+                        "kind": "dynamic"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "out_0",
+                        "kind": "dynamic"
+                    }
+                ],
+                "parameters": {},
+                "time_mode": "discrete",
+                "uiprops": {
+                    "x": 976,
+                    "y": 536,
+                    "port_alignment": "spaced"
+                },
+                "state_machine_diagram_id": "8f7ace7d-280e-4b3c-a3e7-37f48c178d4f"
+            },
+            {
+                "uuid": "9ae65d55-c134-4c96-8937-3803d24e5e87",
+                "name": "smach_c",
+                "type": "core.StateMachine",
+                "inputs": [
+                    {
+                        "name": "in_0",
+                        "kind": "dynamic"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "out_0",
+                        "kind": "dynamic"
+                    }
+                ],
+                "parameters": {},
+                "time_mode": "agnostic",
+                "uiprops": {
+                    "x": 976,
+                    "y": 632,
+                    "port_alignment": "spaced"
+                },
+                "state_machine_diagram_id": "c5f36a7a-f9ef-4007-aa3b-b4b1b6e6c86a"
+            },
+            {
+                "uuid": "faf12a4a-17b1-4997-80cc-0b3cc1e95cdb",
+                "name": "Adder_0",
+                "type": "core.Adder",
+                "inputs": [
+                    {
+                        "name": "in_0",
+                        "kind": "dynamic"
+                    },
+                    {
+                        "name": "in_1",
+                        "kind": "dynamic"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "out_0",
+                        "kind": "static"
+                    }
+                ],
+                "parameters": {
+                    "operators": {
+                        "value": "++",
+                        "is_string": true
+                    }
+                },
+                "uiprops": {
+                    "x": 1192,
+                    "y": 528,
+                    "port_alignment": "spaced"
+                }
+            }
+        ],
+        "links": [
+            {
+                "uuid": "c4c3d75d-437c-470c-8041-91ea36816b3e",
+                "src": {
+                    "node": "a7ae01b4-936a-4000-a01a-657503128379",
+                    "port": 0
+                },
+                "dst": {
+                    "node": "47674c3a-6c8b-403c-bc60-d033ca169093",
+                    "port": 0
+                },
+                "uiprops": {
+                    "link_type": {
+                        "connection_method": "direct_to_block"
+                    },
+                    "segments": [
+                        {
+                            "segment_direction": "vert",
+                            "coordinate": 792
+                        },
+                        {
+                            "segment_direction": "horiz",
+                            "coordinate": 344
+                        },
+                        {
+                            "segment_direction": "vert",
+                            "coordinate": 880
+                        },
+                        {
+                            "segment_direction": "horiz",
+                            "coordinate": 344
+                        },
+                        {
+                            "segment_direction": "vert",
+                            "coordinate": 968
+                        }
+                    ],
+                    "hang_coord_end": {
+                        "x": 976,
+                        "y": 344
+                    }
+                }
+            },
+            {
+                "uuid": "e41bf804-ecb8-427a-9233-67c25e84dbb1",
+                "src": {
+                    "node": "a7ae01b4-936a-4000-a01a-657503128379",
+                    "port": 0
+                },
+                "dst": {
+                    "node": "1055201e-6396-448c-b15d-3fc734cba8f0",
+                    "port": 0
+                },
+                "uiprops": {
+                    "link_type": {
+                        "connection_method": "link_tap",
+                        "tap_coordinate": 888,
+                        "tapped_link_uuid": "c4c3d75d-437c-470c-8041-91ea36816b3e",
+                        "tapped_segment": {
+                            "segment_type": "real",
+                            "tapped_segment_direction": "horiz",
+                            "tapped_segment_index": 3
+                        }
+                    },
+                    "segments": [
+                        {
+                            "segment_direction": "horiz",
+                            "coordinate": 352
+                        },
+                        {
+                            "segment_direction": "vert",
+                            "coordinate": 888
+                        },
+                        {
+                            "segment_direction": "horiz",
+                            "coordinate": 456
+                        },
+                        {
+                            "segment_direction": "vert",
+                            "coordinate": 976
+                        }
+                    ]
+                }
+            },
+            {
+                "uuid": "1aead482-e08d-4bd7-a12f-d81b29b0b5c0",
+                "src": {
+                    "node": "a7ae01b4-936a-4000-a01a-657503128379",
+                    "port": 0
+                },
+                "dst": {
+                    "node": "125f9919-73c4-4fc1-9a50-0d8d426adb16",
+                    "port": 0
+                },
+                "uiprops": {
+                    "link_type": {
+                        "connection_method": "link_tap",
+                        "tap_coordinate": 888,
+                        "tapped_link_uuid": "e41bf804-ecb8-427a-9233-67c25e84dbb1",
+                        "tapped_segment": {
+                            "segment_type": "real",
+                            "tapped_segment_direction": "horiz",
+                            "tapped_segment_index": 2
+                        }
+                    },
+                    "segments": [
+                        {
+                            "segment_direction": "horiz",
+                            "coordinate": 464
+                        },
+                        {
+                            "segment_direction": "vert",
+                            "coordinate": 888
+                        },
+                        {
+                            "segment_direction": "horiz",
+                            "coordinate": 568
+                        },
+                        {
+                            "segment_direction": "vert",
+                            "coordinate": 976
+                        }
+                    ]
+                }
+            },
+            {
+                "uuid": "17c6c612-9bc7-4240-ba0f-a205c41a69ab",
+                "src": {
+                    "node": "a7ae01b4-936a-4000-a01a-657503128379",
+                    "port": 0
+                },
+                "dst": {
+                    "node": "9ae65d55-c134-4c96-8937-3803d24e5e87",
+                    "port": 0
+                },
+                "uiprops": {
+                    "link_type": {
+                        "connection_method": "link_tap",
+                        "tap_coordinate": 888,
+                        "tapped_link_uuid": "1aead482-e08d-4bd7-a12f-d81b29b0b5c0",
+                        "tapped_segment": {
+                            "segment_type": "real",
+                            "tapped_segment_direction": "horiz",
+                            "tapped_segment_index": 2
+                        }
+                    },
+                    "segments": []
+                }
+            },
+            {
+                "uuid": "6e8cc49e-b7f0-4ff7-a813-82b42dec4f6a",
+                "src": {
+                    "node": "faf12a4a-17b1-4997-80cc-0b3cc1e95cdb",
+                    "port": 0
+                },
+                "dst": {
+                    "node": "849fec0a-6d35-4759-bb35-a2d3115a50c1",
+                    "port": 0
+                },
+                "uiprops": {
+                    "link_type": {
+                        "connection_method": "direct_to_block"
+                    },
+                    "segments": [],
+                    "hang_coord_end": {
+                        "x": 1312,
+                        "y": 560
+                    }
+                }
+            },
+            {
+                "uuid": "91c5d6c3-8ae1-4594-9983-77b83961ff55",
+                "src": {
+                    "node": "1055201e-6396-448c-b15d-3fc734cba8f0",
+                    "port": 0
+                },
+                "dst": {
+                    "node": "faf12a4a-17b1-4997-80cc-0b3cc1e95cdb",
+                    "port": 0
+                },
+                "uiprops": {
+                    "link_type": {
+                        "connection_method": "direct_to_block"
+                    },
+                    "segments": [],
+                    "hang_coord_start": {
+                        "x": 1048,
+                        "y": 456
+                    }
+                }
+            },
+            {
+                "uuid": "b05248af-676c-4180-b819-73e75b6dea60",
+                "src": {
+                    "node": "9ae65d55-c134-4c96-8937-3803d24e5e87",
+                    "port": 0
+                },
+                "dst": {
+                    "node": "faf12a4a-17b1-4997-80cc-0b3cc1e95cdb",
+                    "port": 1
+                },
+                "uiprops": {
+                    "link_type": {
+                        "connection_method": "direct_to_block"
+                    },
+                    "segments": [],
+                    "hang_coord_start": {
+                        "x": 1048,
+                        "y": 664
+                    }
+                }
+            }
+        ],
+        "annotations": [],
+        "uuid": "8bb3881d-1e3b-48a1-b844-71f8015d4ac6"
+    },
+    "configuration": {
+        "fixed_results_interval": 0,
+        "numerical_backend": "auto",
+        "record_mode": "all",
+        "sample_time": 0.1,
+        "sim_output_mode": "auto",
+        "solver": {
+            "absolute_tolerance": 0.000001,
+            "max_minor_steps_per_major_step": 4096,
+            "max_step": 1000000,
+            "method": "non-stiff",
+            "min_step": 0,
+            "relative_tolerance": 0.001
+        },
+        "start_time": 0,
+        "stop_time": 10,
+        "worker_type": "any",
+        "workspace": {},
+        "data_points_min": 0,
+        "events_handling": "normal",
+        "continuous_time_result_interval": 0,
+        "__developer_options": {
+            "disable_firejail": false
+        }
+    },
+    "parameters": {},
+    "submodels": {
+        "diagrams": {},
+        "references": {}
+    },
+    "state_machines": {
+        "8f7ace7d-280e-4b3c-a3e7-37f48c178d4f": {
+            "entry_point": {
+                "actions": [
+                    "out_0=0.0"
+                ],
+                "dest_coord": 24,
+                "dest_id": "0e7f3d7a-7bb5-4ef6-b69d-5cd7bbb25598",
+                "dest_side": "top"
+            },
+            "links": [],
+            "nodes": [
+                {
+                    "exit_priority_list": [],
+                    "name": "state",
+                    "uiprops": {
+                        "x": 88,
+                        "y": 112
+                    },
+                    "uuid": "0e7f3d7a-7bb5-4ef6-b69d-5cd7bbb25598"
+                }
+            ],
+            "uuid": "8f7ace7d-280e-4b3c-a3e7-37f48c178d4f"
+        },
+        "c5f36a7a-f9ef-4007-aa3b-b4b1b6e6c86a": {
+            "entry_point": {
+                "actions": [
+                    "out_0=0.0"
+                ],
+                "dest_coord": 24,
+                "dest_id": "0e7f3d7a-7bb5-4ef6-b69d-5cd7bbb25598",
+                "dest_side": "top"
+            },
+            "links": [],
+            "nodes": [
+                {
+                    "exit_priority_list": [],
+                    "name": "state",
+                    "uiprops": {
+                        "x": 88,
+                        "y": 112
+                    },
+                    "uuid": "0e7f3d7a-7bb5-4ef6-b69d-5cd7bbb25598"
+                }
+            ],
+            "uuid": "c5f36a7a-f9ef-4007-aa3b-b4b1b6e6c86a"
+        }
+    },
+    "needs_autolayout": false,
+    "created_at": "2024-03-13T18:29:11Z",
+    "updated_at": "2024-03-13T18:32:13Z",
+    "version": 67,
+    "project_uuid": "25191bd5-2cdc-401a-be7f-2bd317a535bd",
+    "kind": "Model"
+}

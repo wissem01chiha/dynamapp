@@ -1,0 +1,1322 @@
+{
+  "configuration": {
+    "solver": {
+      "method": "auto",
+      "max_step": 1000000,
+      "min_step": 0,
+      "absolute_tolerance": 1e-06,
+      "relative_tolerance": 0.001,
+      "max_minor_steps_per_major_step": 4096
+    },
+    "stop_time": 10,
+    "workspace": {},
+    "start_time": 0,
+    "record_mode": "all",
+    "sample_time": 0.1,
+    "worker_type": "any",
+    "sim_output_mode": "auto",
+    "numerical_backend": "auto",
+    "fixed_results_interval": 0,
+    "max_results_interval": 0
+  },
+  "diagram": {
+    "nodes": [
+      {
+        "uuid": "12791f39-7935-49fb-ad87-535bbefd4f20",
+        "name": "electrical",
+        "type": "core.Group",
+        "inputs": [],
+        "outputs": [],
+        "parameters": {},
+        "uiprops": {
+          "x": 832,
+          "y": 184,
+          "grid_height": 12,
+          "grid_width": 14
+        }
+      },
+      {
+        "uuid": "4b721769-0972-4905-9be1-22b2d8515088",
+        "name": "rotational",
+        "type": "core.Group",
+        "inputs": [],
+        "outputs": [],
+        "parameters": {},
+        "uiprops": {
+          "x": 832,
+          "y": 312,
+          "grid_height": 12,
+          "grid_width": 14
+        }
+      },
+      {
+        "uuid": "d1c18649-3e4c-4074-848e-f66a5470ff70",
+        "name": "translational",
+        "type": "core.Group",
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "Outport_0",
+            "kind": "dynamic"
+          }
+        ],
+        "parameters": {},
+        "uiprops": {
+          "x": 832,
+          "y": 432,
+          "grid_height": 12,
+          "grid_width": 14
+        }
+      },
+      {
+        "uuid": "63738724-1586-4160-af41-cc2ea3e01234",
+        "name": "thermal",
+        "type": "core.Group",
+        "inputs": [],
+        "outputs": [],
+        "parameters": {},
+        "uiprops": {
+          "x": 832,
+          "y": 552,
+          "grid_height": 12,
+          "grid_width": 14
+        }
+      }
+    ],
+    "links": [],
+    "annotations": [],
+    "uuid": "1ee84442-81b7-4645-8906-edaec1fd4fc0"
+  },
+  "name": "AllDomains_2024-05-23T16:17:16Z",
+  "parameters": {},
+  "state_machines": {},
+  "subdiagrams": {
+    "diagrams": {
+      "5289a1ba-dea1-4e7f-8827-7caee96b61de": {
+        "nodes": [
+          {
+            "uuid": "c9dc77a6-75de-4202-b503-c12c0b7895b4",
+            "name": "VoltageSensor_0",
+            "type": "acausal.electrical.VoltageSensor",
+            "inputs": [
+              {
+                "name": "p",
+                "kind": "static",
+                "variant": {
+                  "variant_kind": "acausal",
+                  "acausal_domain": "electrical"
+                }
+              }
+            ],
+            "outputs": [
+              {
+                "name": "n",
+                "kind": "static",
+                "variant": {
+                  "variant_kind": "acausal",
+                  "acausal_domain": "electrical"
+                }
+              },
+              {
+                "name": "v",
+                "kind": "static"
+              }
+            ],
+            "parameters": {},
+            "uiprops": {
+              "x": 384,
+              "y": 32,
+              "port_alignment": "spaced"
+            }
+          },
+          {
+            "uuid": "ebb9146a-7819-457d-83ee-0041bb257c66",
+            "name": "Resistor_0",
+            "type": "acausal.electrical.Resistor",
+            "inputs": [
+              {
+                "name": "p",
+                "kind": "static",
+                "variant": {
+                  "variant_kind": "acausal",
+                  "acausal_domain": "electrical"
+                }
+              }
+            ],
+            "outputs": [
+              {
+                "name": "n",
+                "kind": "static",
+                "variant": {
+                  "variant_kind": "acausal",
+                  "acausal_domain": "electrical"
+                }
+              }
+            ],
+            "parameters": {
+              "R": {
+                "value": "1.0"
+              }
+            },
+            "uiprops": {
+              "x": 216,
+              "y": 136,
+              "port_alignment": "spaced"
+            }
+          },
+          {
+            "uuid": "d059df32-e8bd-4405-a65d-e6dafdb6759f",
+            "name": "Capacitor_0",
+            "type": "acausal.electrical.Capacitor",
+            "inputs": [
+              {
+                "name": "p",
+                "kind": "static",
+                "variant": {
+                  "variant_kind": "acausal",
+                  "acausal_domain": "electrical"
+                }
+              }
+            ],
+            "outputs": [
+              {
+                "name": "n",
+                "kind": "static",
+                "variant": {
+                  "variant_kind": "acausal",
+                  "acausal_domain": "electrical"
+                }
+              }
+            ],
+            "parameters": {
+              "C": {
+                "value": "1.0"
+              },
+              "initial_voltage": {
+                "value": "0.0"
+              }
+            },
+            "uiprops": {
+              "x": 384,
+              "y": 136,
+              "port_alignment": "spaced"
+            }
+          },
+          {
+            "uuid": "2ae36e90-a754-48a7-a750-21e46697050a",
+            "name": "VoltageSource_0",
+            "type": "acausal.electrical.VoltageSource",
+            "inputs": [
+              {
+                "name": "p",
+                "kind": "static",
+                "variant": {
+                  "variant_kind": "acausal",
+                  "acausal_domain": "electrical"
+                }
+              }
+            ],
+            "outputs": [
+              {
+                "name": "n",
+                "kind": "static",
+                "variant": {
+                  "variant_kind": "acausal",
+                  "acausal_domain": "electrical"
+                }
+              }
+            ],
+            "parameters": {
+              "v": {
+                "value": "1.0"
+              },
+              "enable_voltage_port": {
+                "value": "false"
+              }
+            },
+            "uiprops": {
+              "x": 216,
+              "y": 256,
+              "port_alignment": "spaced"
+            }
+          },
+          {
+            "uuid": "2b9e4b30-4d53-47c5-9d97-8a1b58d99a4e",
+            "name": "Ground_0",
+            "type": "acausal.electrical.Ground",
+            "inputs": [
+              {
+                "name": "p",
+                "kind": "static",
+                "variant": {
+                  "variant_kind": "acausal",
+                  "acausal_domain": "electrical"
+                }
+              }
+            ],
+            "outputs": [],
+            "parameters": {},
+            "uiprops": {
+              "x": 536,
+              "y": 256,
+              "port_alignment": "spaced"
+            }
+          }
+        ],
+        "links": [
+          {
+            "uuid": "d8dafdcd-aa6b-49d4-9a3f-c61153cd4d8b",
+            "src": {
+              "node": "ebb9146a-7819-457d-83ee-0041bb257c66",
+              "port": 0
+            },
+            "dst": {
+              "node": "d059df32-e8bd-4405-a65d-e6dafdb6759f",
+              "port": 0,
+              "port_side": "inputs"
+            },
+            "uiprops": {
+              "link_type": {
+                "connection_method": "direct_to_block"
+              },
+              "segments": [],
+              "hang_coord_end": {
+                "x": 1000,
+                "y": 280
+              }
+            }
+          },
+          {
+            "uuid": "042f7c2e-20a3-4f03-aece-d759e073ca0c",
+            "src": {
+              "node": "ebb9146a-7819-457d-83ee-0041bb257c66",
+              "port": 0,
+              "port_side": "inputs"
+            },
+            "dst": {
+              "node": "2ae36e90-a754-48a7-a750-21e46697050a",
+              "port": 0
+            },
+            "uiprops": {
+              "link_type": {
+                "connection_method": "direct_to_block"
+              },
+              "segments": [],
+              "hang_coord_start": {
+                "x": 832,
+                "y": 280
+              }
+            }
+          },
+          {
+            "uuid": "a2a2615a-7688-489d-9d2f-57d10432235e",
+            "src": {
+              "node": "2ae36e90-a754-48a7-a750-21e46697050a",
+              "port": 0
+            },
+            "dst": {
+              "node": "2b9e4b30-4d53-47c5-9d97-8a1b58d99a4e",
+              "port": 0,
+              "port_side": "inputs"
+            },
+            "uiprops": {
+              "link_type": {
+                "connection_method": "direct_to_block"
+              },
+              "segments": [],
+              "hang_coord_end": {
+                "x": 1160,
+                "y": 392
+              }
+            }
+          },
+          {
+            "uuid": "ae84d00f-ff3a-4bf5-99b4-228bd187b6dc",
+            "src": {
+              "node": "d059df32-e8bd-4405-a65d-e6dafdb6759f",
+              "port": 0
+            },
+            "dst": {
+              "node": "2b9e4b30-4d53-47c5-9d97-8a1b58d99a4e",
+              "port": 0,
+              "port_side": "inputs"
+            },
+            "uiprops": {
+              "link_type": {
+                "connection_method": "direct_to_block"
+              },
+              "segments": [],
+              "hang_coord_end": {
+                "x": 1160,
+                "y": 400
+              }
+            }
+          },
+          {
+            "uuid": "b324cfc0-6263-4715-8029-72256ced9005",
+            "src": {
+              "node": "d059df32-e8bd-4405-a65d-e6dafdb6759f",
+              "port": 0,
+              "port_side": "inputs"
+            },
+            "dst": {
+              "node": "c9dc77a6-75de-4202-b503-c12c0b7895b4",
+              "port": 0
+            },
+            "uiprops": {
+              "link_type": {
+                "connection_method": "direct_to_block"
+              },
+              "segments": [],
+              "hang_coord_start": {
+                "x": 1008,
+                "y": 288
+              }
+            }
+          },
+          {
+            "uuid": "13ff4e5b-aacf-40e5-8f5c-b52dc82160ea",
+            "src": {
+              "node": "c9dc77a6-75de-4202-b503-c12c0b7895b4",
+              "port": 0
+            },
+            "dst": {
+              "node": "d059df32-e8bd-4405-a65d-e6dafdb6759f",
+              "port": 0,
+              "port_side": "outputs"
+            },
+            "uiprops": {
+              "link_type": {
+                "connection_method": "direct_to_block"
+              },
+              "segments": [],
+              "hang_coord_end": {
+                "x": 1072,
+                "y": 280
+              }
+            }
+          }
+        ],
+        "annotations": [],
+        "uuid": "5289a1ba-dea1-4e7f-8827-7caee96b61de"
+      },
+      "75d8deee-ecae-420e-82e7-143d2b9b8a95": {
+        "nodes": [
+          {
+            "uuid": "354184b6-649a-46fc-9dd9-a63b26edc21e",
+            "name": "SpeedSensor_0",
+            "type": "acausal.rotational.MotionSensor",
+            "inputs": [
+              {
+                "name": "flange_a",
+                "kind": "static",
+                "variant": {
+                  "variant_kind": "acausal",
+                  "acausal_domain": "rotational"
+                }
+              }
+            ],
+            "outputs": [
+              {
+                "name": "flange_b",
+                "kind": "conditional",
+                "variant": {
+                  "variant_kind": "acausal",
+                  "acausal_domain": "rotational"
+                }
+              },
+              {
+                "name": "w_rel",
+                "kind": "static"
+              }
+            ],
+            "parameters": {
+              "enable_flange_b": {
+                "value": "true"
+              }
+            },
+            "uiprops": {
+              "x": 384,
+              "y": 32,
+              "port_alignment": "spaced"
+            }
+          },
+          {
+            "uuid": "37bdef67-48b1-4fc4-84fd-fc1fe5e97156",
+            "name": "Spring_0",
+            "type": "acausal.rotational.Spring",
+            "inputs": [
+              {
+                "name": "flange_a",
+                "kind": "static",
+                "variant": {
+                  "variant_kind": "acausal",
+                  "acausal_domain": "rotational"
+                }
+              }
+            ],
+            "outputs": [
+              {
+                "name": "flange_b",
+                "kind": "static",
+                "variant": {
+                  "variant_kind": "acausal",
+                  "acausal_domain": "rotational"
+                }
+              }
+            ],
+            "parameters": {
+              "K": {
+                "value": "1.0"
+              },
+              "initial_angle_A": {
+                "value": "0.0"
+              },
+              "initial_angle_B": {
+                "value": "0.0"
+              },
+              "initial_velocity_A": {
+                "value": "0.0"
+              },
+              "initial_velocity_B": {
+                "value": "0.0"
+              }
+            },
+            "uiprops": {
+              "x": 384,
+              "y": 120,
+              "port_alignment": "spaced"
+            }
+          },
+          {
+            "uuid": "47fde7df-ddff-42b3-9e40-63411ccb7067",
+            "name": "FixedAngle_0",
+            "type": "acausal.rotational.FixedAngle",
+            "inputs": [],
+            "outputs": [
+              {
+                "name": "flange",
+                "kind": "static",
+                "variant": {
+                  "variant_kind": "acausal",
+                  "acausal_domain": "rotational"
+                }
+              }
+            ],
+            "parameters": {},
+            "uiprops": {
+              "x": 216,
+              "y": 184,
+              "port_alignment": "spaced"
+            }
+          },
+          {
+            "uuid": "6e6e69f1-677b-4b45-babf-366cedd94acf",
+            "name": "Inertia_0",
+            "type": "acausal.rotational.Inertia",
+            "inputs": [
+              {
+                "name": "flange",
+                "kind": "static",
+                "variant": {
+                  "variant_kind": "acausal",
+                  "acausal_domain": "rotational"
+                }
+              }
+            ],
+            "outputs": [],
+            "parameters": {
+              "I": {
+                "value": "1.0"
+              },
+              "initial_angle": {
+                "value": "0.0"
+              },
+              "initial_velocity": {
+                "value": "0.0"
+              }
+            },
+            "uiprops": {
+              "x": 552,
+              "y": 184,
+              "port_alignment": "spaced"
+            }
+          },
+          {
+            "uuid": "51ba4944-5db9-4c7c-8f4b-e02187b187a6",
+            "name": "Damper_0",
+            "type": "acausal.rotational.Damper",
+            "inputs": [
+              {
+                "name": "flange_a",
+                "kind": "static",
+                "variant": {
+                  "variant_kind": "acausal",
+                  "acausal_domain": "rotational"
+                }
+              }
+            ],
+            "outputs": [
+              {
+                "name": "flange_b",
+                "kind": "static",
+                "variant": {
+                  "variant_kind": "acausal",
+                  "acausal_domain": "rotational"
+                }
+              }
+            ],
+            "parameters": {
+              "D": {
+                "value": "1.0"
+              },
+              "initial_angle_A": {
+                "value": "0.0"
+              },
+              "initial_angle_B": {
+                "value": "0.0"
+              },
+              "initial_velocity_A": {
+                "value": "0.0"
+              },
+              "initial_velocity_B": {
+                "value": "0.0"
+              }
+            },
+            "uiprops": {
+              "x": 384,
+              "y": 256,
+              "port_alignment": "spaced"
+            }
+          }
+        ],
+        "links": [
+          {
+            "uuid": "957f1628-5d30-4dad-95bc-17a249f8a4b3",
+            "src": {
+              "node": "47fde7df-ddff-42b3-9e40-63411ccb7067",
+              "port": 0
+            },
+            "dst": {
+              "node": "37bdef67-48b1-4fc4-84fd-fc1fe5e97156",
+              "port": 0,
+              "port_side": "inputs"
+            },
+            "uiprops": {
+              "link_type": {
+                "connection_method": "direct_to_block"
+              },
+              "segments": [],
+              "hang_coord_end": {
+                "x": 848,
+                "y": 544
+              }
+            }
+          },
+          {
+            "uuid": "8baeab59-a1c6-4760-a3e5-050dc5965c14",
+            "src": {
+              "node": "47fde7df-ddff-42b3-9e40-63411ccb7067",
+              "port": 0,
+              "port_side": "outputs"
+            },
+            "dst": {
+              "node": "51ba4944-5db9-4c7c-8f4b-e02187b187a6",
+              "port": 0
+            },
+            "uiprops": {
+              "link_type": {
+                "connection_method": "direct_to_block"
+              },
+              "segments": [],
+              "hang_coord_start": {
+                "x": 752,
+                "y": 608
+              }
+            }
+          },
+          {
+            "uuid": "747c915c-250a-48e4-954f-6d452c79d29b",
+            "src": {
+              "node": "51ba4944-5db9-4c7c-8f4b-e02187b187a6",
+              "port": 0
+            },
+            "dst": {
+              "node": "6e6e69f1-677b-4b45-babf-366cedd94acf",
+              "port": 0,
+              "port_side": "inputs"
+            },
+            "uiprops": {
+              "link_type": {
+                "connection_method": "direct_to_block"
+              },
+              "segments": [],
+              "hang_coord_end": {
+                "x": 1016,
+                "y": 616
+              }
+            }
+          },
+          {
+            "uuid": "ed43706b-5aff-4650-839e-cccf48c2a0af",
+            "src": {
+              "node": "37bdef67-48b1-4fc4-84fd-fc1fe5e97156",
+              "port": 0
+            },
+            "dst": {
+              "node": "6e6e69f1-677b-4b45-babf-366cedd94acf",
+              "port": 0,
+              "port_side": "inputs"
+            },
+            "uiprops": {
+              "link_type": {
+                "connection_method": "direct_to_block"
+              },
+              "segments": [],
+              "hang_coord_end": {
+                "x": 1016,
+                "y": 608
+              }
+            }
+          },
+          {
+            "uuid": "c7f8057f-4a5d-4574-b8df-bfb82981f521",
+            "src": {
+              "node": "47fde7df-ddff-42b3-9e40-63411ccb7067",
+              "port": 0,
+              "port_side": "outputs"
+            },
+            "dst": {
+              "node": "354184b6-649a-46fc-9dd9-a63b26edc21e",
+              "port": 0
+            },
+            "uiprops": {
+              "link_type": {
+                "connection_method": "direct_to_block"
+              },
+              "segments": [],
+              "hang_coord_start": {
+                "x": 752,
+                "y": 608
+              }
+            }
+          },
+          {
+            "uuid": "d2bc998e-8d9f-4312-8ecd-9ae5fc29e9da",
+            "src": {
+              "node": "354184b6-649a-46fc-9dd9-a63b26edc21e",
+              "port": 0
+            },
+            "dst": {
+              "node": "6e6e69f1-677b-4b45-babf-366cedd94acf",
+              "port": 0,
+              "port_side": "inputs"
+            },
+            "uiprops": {
+              "link_type": {
+                "connection_method": "direct_to_block"
+              },
+              "segments": [],
+              "hang_coord_end": {
+                "x": 1024,
+                "y": 608
+              }
+            }
+          }
+        ],
+        "annotations": [],
+        "uuid": "75d8deee-ecae-420e-82e7-143d2b9b8a95"
+      },
+      "7be42d8a-50d8-4a92-aae4-a8dd22832c64": {
+        "nodes": [
+          {
+            "uuid": "4d227f5a-0f55-4d2f-b7d4-b785e8087b7a",
+            "name": "Outport_0",
+            "type": "core.Outport",
+            "inputs": [
+              {
+                "name": "in_0",
+                "kind": "static"
+              }
+            ],
+            "outputs": [],
+            "parameters": {
+              "port_id": {
+                "value": "0"
+              },
+              "description": {
+                "value": "",
+                "is_string": true
+              }
+            },
+            "uiprops": {
+              "x": 488,
+              "y": 40
+            }
+          },
+          {
+            "uuid": "c758b35c-887d-43b2-b6f9-8c8967570b72",
+            "name": "SpeedSensor_0",
+            "type": "acausal.translational.MotionSensor",
+            "inputs": [
+              {
+                "name": "flange_a",
+                "kind": "static",
+                "variant": {
+                  "variant_kind": "acausal",
+                  "acausal_domain": "translational"
+                }
+              }
+            ],
+            "outputs": [
+              {
+                "name": "flange_b",
+                "kind": "conditional",
+                "variant": {
+                  "variant_kind": "acausal",
+                  "acausal_domain": "translational"
+                }
+              },
+              {
+                "name": "v_rel",
+                "kind": "static"
+              }
+            ],
+            "parameters": {
+              "enable_flange_b": {
+                "value": "true"
+              }
+            },
+            "uiprops": {
+              "x": 392,
+              "y": 32,
+              "port_alignment": "spaced"
+            }
+          },
+          {
+            "uuid": "50495afb-dc05-425e-b41b-ac11cc9f4633",
+            "name": "Spring_0",
+            "type": "acausal.translational.Spring",
+            "inputs": [
+              {
+                "name": "flange_a",
+                "kind": "static",
+                "variant": {
+                  "variant_kind": "acausal",
+                  "acausal_domain": "translational"
+                }
+              }
+            ],
+            "outputs": [
+              {
+                "name": "flange_b",
+                "kind": "static",
+                "variant": {
+                  "variant_kind": "acausal",
+                  "acausal_domain": "translational"
+                }
+              }
+            ],
+            "parameters": {
+              "K": {
+                "value": "1.0"
+              },
+              "initial_position_A": {
+                "value": "0.0"
+              },
+              "initial_position_B": {
+                "value": "0.0"
+              },
+              "initial_velocity_A": {
+                "value": "0.0"
+              },
+              "initial_velocity_B": {
+                "value": "0.0"
+              }
+            },
+            "uiprops": {
+              "x": 392,
+              "y": 120,
+              "port_alignment": "spaced"
+            }
+          },
+          {
+            "uuid": "6414264f-fd97-4a11-9957-db8246efb3f8",
+            "name": "FixedPosition_0",
+            "type": "acausal.translational.FixedPosition",
+            "inputs": [],
+            "outputs": [
+              {
+                "name": "flange",
+                "kind": "static",
+                "variant": {
+                  "variant_kind": "acausal",
+                  "acausal_domain": "translational"
+                }
+              }
+            ],
+            "parameters": {},
+            "uiprops": {
+              "x": 216,
+              "y": 168,
+              "port_alignment": "spaced"
+            }
+          },
+          {
+            "uuid": "49695442-d7fb-415b-a27a-f68422c271b5",
+            "name": "Mass_0",
+            "type": "acausal.translational.Mass",
+            "inputs": [
+              {
+                "name": "flange",
+                "kind": "static",
+                "variant": {
+                  "variant_kind": "acausal",
+                  "acausal_domain": "translational"
+                }
+              }
+            ],
+            "outputs": [],
+            "parameters": {
+              "M": {
+                "value": "1.0"
+              },
+              "initial_position": {
+                "value": "0.0"
+              },
+              "initial_velocity": {
+                "value": "0.0"
+              }
+            },
+            "uiprops": {
+              "x": 544,
+              "y": 176,
+              "port_alignment": "spaced"
+            }
+          },
+          {
+            "uuid": "7323a2ce-7d02-4876-8ede-843cb8acc7c2",
+            "name": "Damper_0",
+            "type": "acausal.translational.Damper",
+            "inputs": [
+              {
+                "name": "flange_a",
+                "kind": "static",
+                "variant": {
+                  "variant_kind": "acausal",
+                  "acausal_domain": "translational"
+                }
+              }
+            ],
+            "outputs": [
+              {
+                "name": "flange_b",
+                "kind": "static",
+                "variant": {
+                  "variant_kind": "acausal",
+                  "acausal_domain": "translational"
+                }
+              }
+            ],
+            "parameters": {
+              "D": {
+                "value": "1.0"
+              },
+              "initial_position_A": {
+                "value": "0.0"
+              },
+              "initial_position_B": {
+                "value": "0.0"
+              },
+              "initial_velocity_A": {
+                "value": "0.0"
+              },
+              "initial_velocity_B": {
+                "value": "0.0"
+              }
+            },
+            "uiprops": {
+              "x": 392,
+              "y": 232,
+              "port_alignment": "spaced"
+            }
+          }
+        ],
+        "links": [
+          {
+            "uuid": "6429e0b5-c888-4f7e-b0fb-468979cea563",
+            "src": {
+              "node": "c758b35c-887d-43b2-b6f9-8c8967570b72",
+              "port": 1
+            },
+            "dst": {
+              "node": "4d227f5a-0f55-4d2f-b7d4-b785e8087b7a",
+              "port": 0
+            },
+            "uiprops": {
+              "link_type": {
+                "connection_method": "direct_to_block"
+              },
+              "segments": []
+            }
+          },
+          {
+            "uuid": "63a1c315-fb3c-45cc-9e6f-92b864f0ee58",
+            "src": {
+              "node": "6414264f-fd97-4a11-9957-db8246efb3f8",
+              "port": 0
+            },
+            "dst": {
+              "node": "50495afb-dc05-425e-b41b-ac11cc9f4633",
+              "port": 0,
+              "port_side": "inputs"
+            },
+            "uiprops": {
+              "link_type": {
+                "connection_method": "direct_to_block"
+              },
+              "segments": [],
+              "hang_coord_end": {
+                "x": 856,
+                "y": 576
+              }
+            }
+          },
+          {
+            "uuid": "bead5e84-44b0-410c-bcc6-f6d7432bb7e4",
+            "src": {
+              "node": "6414264f-fd97-4a11-9957-db8246efb3f8",
+              "port": 0,
+              "port_side": "outputs"
+            },
+            "dst": {
+              "node": "7323a2ce-7d02-4876-8ede-843cb8acc7c2",
+              "port": 0
+            },
+            "uiprops": {
+              "link_type": {
+                "connection_method": "direct_to_block"
+              },
+              "segments": [],
+              "hang_coord_start": {
+                "x": 744,
+                "y": 624
+              }
+            }
+          },
+          {
+            "uuid": "414cbeab-d02e-46fb-8f31-a3dfcdb5cc24",
+            "src": {
+              "node": "50495afb-dc05-425e-b41b-ac11cc9f4633",
+              "port": 0
+            },
+            "dst": {
+              "node": "49695442-d7fb-415b-a27a-f68422c271b5",
+              "port": 0,
+              "port_side": "inputs"
+            },
+            "uiprops": {
+              "link_type": {
+                "connection_method": "direct_to_block"
+              },
+              "segments": [],
+              "hang_coord_end": {
+                "x": 1000,
+                "y": 632
+              }
+            }
+          },
+          {
+            "uuid": "b5f870f7-4d19-4018-8b81-54438454fa07",
+            "src": {
+              "node": "7323a2ce-7d02-4876-8ede-843cb8acc7c2",
+              "port": 0
+            },
+            "dst": {
+              "node": "49695442-d7fb-415b-a27a-f68422c271b5",
+              "port": 0,
+              "port_side": "inputs"
+            },
+            "uiprops": {
+              "link_type": {
+                "connection_method": "direct_to_block"
+              },
+              "segments": [],
+              "hang_coord_end": {
+                "x": 1000,
+                "y": 640
+              }
+            }
+          },
+          {
+            "uuid": "763d748f-86f2-497a-888f-1213eb519b47",
+            "src": {
+              "node": "6414264f-fd97-4a11-9957-db8246efb3f8",
+              "port": 0,
+              "port_side": "outputs"
+            },
+            "dst": {
+              "node": "c758b35c-887d-43b2-b6f9-8c8967570b72",
+              "port": 0
+            },
+            "uiprops": {
+              "link_type": {
+                "connection_method": "direct_to_block"
+              },
+              "segments": [],
+              "hang_coord_start": {
+                "x": 744,
+                "y": 624
+              }
+            }
+          },
+          {
+            "uuid": "d064a913-7325-43de-86be-fec80c0db585",
+            "src": {
+              "node": "c758b35c-887d-43b2-b6f9-8c8967570b72",
+              "port": 0
+            },
+            "dst": {
+              "node": "49695442-d7fb-415b-a27a-f68422c271b5",
+              "port": 0,
+              "port_side": "inputs"
+            },
+            "uiprops": {
+              "link_type": {
+                "connection_method": "direct_to_block"
+              },
+              "segments": [],
+              "hang_coord_end": {
+                "x": 1000,
+                "y": 632
+              }
+            }
+          }
+        ],
+        "annotations": [],
+        "uuid": "7be42d8a-50d8-4a92-aae4-a8dd22832c64"
+      },
+      "b835fc4e-6476-462b-98d9-4526341dfe23": {
+        "nodes": [
+          {
+            "uuid": "a8d815c5-6c2a-4699-9da0-ea4c44cfafb1",
+            "name": "TemperatureSource_0",
+            "type": "acausal.thermal.TemperatureSource",
+            "inputs": [
+              {
+                "name": "port",
+                "kind": "static",
+                "variant": {
+                  "variant_kind": "acausal",
+                  "acausal_domain": "thermal"
+                }
+              }
+            ],
+            "outputs": [],
+            "parameters": {
+              "T": {
+                "value": "300.0"
+              },
+              "enable_port_b": {
+                "value": "false"
+              },
+              "enable_temperature_port": {
+                "value": "false"
+              }
+            },
+            "uiprops": {
+              "x": 216,
+              "y": 32,
+              "directionality": "left",
+              "port_alignment": "spaced"
+            }
+          },
+          {
+            "uuid": "68fddf9a-541f-42c9-b2cd-0d43d2d98f4a",
+            "name": "ThermalResistor_0",
+            "type": "acausal.thermal.ThermalInsulator",
+            "inputs": [
+              {
+                "name": "port_a",
+                "kind": "static",
+                "variant": {
+                  "variant_kind": "acausal",
+                  "acausal_domain": "thermal"
+                }
+              }
+            ],
+            "outputs": [
+              {
+                "name": "port_b",
+                "kind": "static",
+                "variant": {
+                  "variant_kind": "acausal",
+                  "acausal_domain": "thermal"
+                }
+              }
+            ],
+            "parameters": {
+              "R": {
+                "value": "1.0"
+              }
+            },
+            "uiprops": {
+              "x": 392,
+              "y": 32,
+              "port_alignment": "spaced"
+            }
+          },
+          {
+            "uuid": "a5f18e97-463b-4aeb-ba1a-71bb89ba565b",
+            "name": "HeatCapacitor_0",
+            "type": "acausal.thermal.HeatCapacitor",
+            "inputs": [
+              {
+                "name": "port",
+                "kind": "static",
+                "variant": {
+                  "variant_kind": "acausal",
+                  "acausal_domain": "thermal"
+                }
+              }
+            ],
+            "outputs": [],
+            "parameters": {
+              "C": {
+                "value": "1.0"
+              },
+              "initial_temperature": {
+                "value": "300.0"
+              }
+            },
+            "uiprops": {
+              "x": 600,
+              "y": 32,
+              "port_alignment": "spaced"
+            }
+          },
+          {
+            "uuid": "66751583-4657-426c-98ee-731b0e90e82e",
+            "name": "TemperatureSensor_0",
+            "type": "acausal.thermal.TemperatureSensor",
+            "inputs": [
+              {
+                "name": "port_a",
+                "kind": "static",
+                "variant": {
+                  "variant_kind": "acausal",
+                  "acausal_domain": "thermal"
+                }
+              }
+            ],
+            "outputs": [
+              {
+                "name": "T_rel",
+                "kind": "static"
+              }
+            ],
+            "parameters": {
+              "enable_port_b": {
+                "value": "false"
+              }
+            },
+            "uiprops": {
+              "x": 600,
+              "y": -104,
+              "port_alignment": "spaced"
+            }
+          }
+        ],
+        "links": [
+          {
+            "uuid": "6b2712b3-2327-4cd3-b879-7aa8a22b411e",
+            "src": {
+              "node": "68fddf9a-541f-42c9-b2cd-0d43d2d98f4a",
+              "port": 0,
+              "port_side": "inputs"
+            },
+            "dst": {
+              "node": "a8d815c5-6c2a-4699-9da0-ea4c44cfafb1",
+              "port": 0
+            },
+            "uiprops": {
+              "link_type": {
+                "connection_method": "direct_to_block"
+              },
+              "segments": [],
+              "hang_coord_start": {
+                "x": 848,
+                "y": 624
+              }
+            }
+          },
+          {
+            "uuid": "5ae02762-c2eb-4043-a012-77647bda92a6",
+            "src": {
+              "node": "68fddf9a-541f-42c9-b2cd-0d43d2d98f4a",
+              "port": 0
+            },
+            "dst": {
+              "node": "a5f18e97-463b-4aeb-ba1a-71bb89ba565b",
+              "port": 0,
+              "port_side": "inputs"
+            },
+            "uiprops": {
+              "link_type": {
+                "connection_method": "direct_to_block"
+              },
+              "segments": [],
+              "hang_coord_end": {
+                "x": 1064,
+                "y": 624
+              }
+            }
+          },
+          {
+            "uuid": "4d31ba14-632b-4bd7-8878-543958892268",
+            "src": {
+              "node": "a5f18e97-463b-4aeb-ba1a-71bb89ba565b",
+              "port": 0,
+              "port_side": "inputs"
+            },
+            "dst": {
+              "node": "66751583-4657-426c-98ee-731b0e90e82e",
+              "port": 0
+            },
+            "uiprops": {
+              "link_type": {
+                "connection_method": "direct_to_block"
+              },
+              "segments": [],
+              "hang_coord_start": {
+                "x": 600,
+                "y": 64
+              }
+            }
+          }
+        ],
+        "annotations": [],
+        "uuid": "b835fc4e-6476-462b-98d9-4526341dfe23"
+      }
+    },
+    "references": {
+      "12791f39-7935-49fb-ad87-535bbefd4f20": {
+        "diagram_uuid": "5289a1ba-dea1-4e7f-8827-7caee96b61de"
+      },
+      "4b721769-0972-4905-9be1-22b2d8515088": {
+        "diagram_uuid": "75d8deee-ecae-420e-82e7-143d2b9b8a95"
+      },
+      "63738724-1586-4160-af41-cc2ea3e01234": {
+        "diagram_uuid": "b835fc4e-6476-462b-98d9-4526341dfe23"
+      },
+      "d1c18649-3e4c-4074-848e-f66a5470ff70": {
+        "diagram_uuid": "7be42d8a-50d8-4a92-aae4-a8dd22832c64"
+      }
+    }
+  },
+  "uuid": "ec67015e-4cc1-44f2-aff4-182e00c58e08",
+  "sim_model_uuid": "fbf62ac1-3388-44d4-9251-6a76bd61b238",
+  "owner_uuid": "cc073a60-7e27-4ca7-b616-7b3e9a6d139c",
+  "schema_version": "4",
+  "kind": "Model"
+}

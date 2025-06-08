@@ -1,0 +1,122 @@
+{
+  "configuration": {
+    "max_results_interval": 1,
+    "record_mode": "selected",
+    "sample_time": 0.1,
+    "solver": {
+      "absolute_tolerance": 0.000001,
+      "max_minor_steps_per_major_step": 1000,
+      "max_step": 1000000,
+      "method": "RK45",
+      "min_step": 0,
+      "relative_tolerance": 0.001
+    },
+    "start_time": 0,
+    "stop_time": 10,
+    "worker_type": "any",
+    "workspace": {
+      "init_scripts": [
+        {
+          "file_name": "cartpole_init_lqg.py"
+        }
+      ]
+    }
+  },
+  "diagram": {
+    "annotations": [],
+    "links": [
+      {
+        "dst": {
+          "node": "ba914358-26c9-43c3-8e22-72cc72ecbafa",
+          "port": 0
+        },
+        "src": {
+          "node": "c721e119-5340-46fb-a9d5-a63148a60367",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 984,
+            "y": 376
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "f65e5bd4-12ad-4a56-8ab0-5677e2b458af"
+      }
+    ],
+    "nodes": [
+      {
+        "inputs": [],
+        "name": "Clock_0",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {},
+        "time_mode": "agnostic",
+        "type": "core.Clock",
+        "uiprops": {
+          "port_alignment": "spaced",
+          "x": 776,
+          "y": 344
+        },
+        "uuid": "c721e119-5340-46fb-a9d5-a63148a60367"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "dynamic",
+            "name": "in_0"
+          }
+        ],
+        "name": "StateSpace_0",
+        "outputs": [
+          {
+            "kind": "dynamic",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "A": {
+            "value": "sys.A"
+          },
+          "B": {
+            "value": "sys.B"
+          },
+          "C": {
+            "value": "sys.C"
+          },
+          "D": {
+            "value": "sys.D"
+          },
+          "initial_states": {
+            "value": "np.zeros(sys.A.shape[0])"
+          }
+        },
+        "type": "core.StateSpace",
+        "uiprops": {
+          "port_alignment": "spaced",
+          "x": 984,
+          "y": 344
+        },
+        "uuid": "ba914358-26c9-43c3-8e22-72cc72ecbafa"
+      }
+    ],
+    "uuid": "038ec2dd-2335-4954-bdd4-c98165460025"
+  },
+  "kind": "Model",
+  "name": "InItScript_2023-11-20T14:31:40Z",
+  "parameters": {},
+  "schema_version": "3",
+  "state_machines": {},
+  "subdiagrams": {
+    "diagrams": {},
+    "references": {}
+  },
+  "uuid": "e00b0e51-877e-4120-ae34-d2104320dbc7"
+}

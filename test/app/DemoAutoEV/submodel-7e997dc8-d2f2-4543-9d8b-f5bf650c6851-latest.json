@@ -1,0 +1,1529 @@
+{
+  "diagram": {
+    "annotations": [
+      {
+        "color_id": "gray",
+        "grid_height": 28,
+        "grid_width": 40,
+        "label_position": "bottom",
+        "text": "For one pedal driving, the full brake torque should never be applied by lifting of accelerator pedal.",
+        "uuid": "bd6b7caf-029d-47dc-a519-9ceb7ed26265",
+        "x": -656,
+        "y": -176
+      },
+      {
+        "color_id": "gray",
+        "grid_height": 61,
+        "grid_width": 119,
+        "label_position": "top",
+        "text": "Adjust the front/rear brake bias dynamically based on front/rear weight distribution and deceleration.",
+        "uuid": "c94092ba-4d9a-4c30-8e7e-9ee117d4fe4a",
+        "x": -1112,
+        "y": -664
+      }
+    ],
+    "links": [
+      {
+        "dst": {
+          "node": "13844c79-6bfa-484f-b308-c21d766b2b07",
+          "port": 0
+        },
+        "src": {
+          "node": "ad3a215a-5b17-4848-a99f-95da2278751c",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 0,
+            "y": -800
+          },
+          "hang_coord_start": {
+            "x": -240,
+            "y": -560
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": [
+            {
+              "coordinate": -112,
+              "segment_direction": "vert"
+            },
+            {
+              "coordinate": -24,
+              "segment_direction": "horiz"
+            },
+            {
+              "coordinate": 32,
+              "segment_direction": "vert"
+            }
+          ]
+        },
+        "uuid": "d26cb525-5716-48d9-a3f8-9db4a545e629"
+      },
+      {
+        "dst": {
+          "node": "3d9474ae-7a9b-4c03-ab80-a410ccaf185f",
+          "port": 0
+        },
+        "src": {
+          "node": "13844c79-6bfa-484f-b308-c21d766b2b07",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 232,
+            "y": 0
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "c182ddf6-cc61-4ff5-b52f-ad255aa3dc44"
+      },
+      {
+        "dst": {
+          "node": "6a3a52a3-1648-4138-acbc-e32be1c518b2",
+          "port": 1
+        },
+        "src": {
+          "node": "88c3d996-c9c9-4a9f-9553-5ddf6466c7b6",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": -104,
+            "y": 104
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "903eb7f3-8316-4cdd-b751-56cbb251932a"
+      },
+      {
+        "dst": {
+          "node": "34170e3f-96cc-4884-b4ad-25ab97691a9e",
+          "port": 1
+        },
+        "src": {
+          "node": "6a3a52a3-1648-4138-acbc-e32be1c518b2",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 32,
+            "y": 104
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "bba78caa-d3bd-4d93-b7d1-50a7e9c1c2b8"
+      },
+      {
+        "dst": {
+          "node": "ab408cf4-cba1-463d-9617-f4d21451bdc0",
+          "port": 0
+        },
+        "src": {
+          "node": "34170e3f-96cc-4884-b4ad-25ab97691a9e",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 176,
+            "y": 96
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "aac628ec-4d69-4e9b-aa7d-833e026925de"
+      },
+      {
+        "dst": {
+          "node": "cb212f8c-f81d-4ca3-a07e-606c7dc2ca2e",
+          "port": 0
+        },
+        "src": {
+          "node": "8ea8bfb4-a70a-4b66-92d7-4ae3a78ec40b",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": -320,
+            "y": -32
+          },
+          "hang_coord_start": {
+            "x": -464,
+            "y": -16
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": [
+            {
+              "coordinate": -240,
+              "segment_direction": "vert"
+            }
+          ]
+        },
+        "uuid": "88b2857e-da96-4ba5-ad84-d2a3ac6032ca"
+      },
+      {
+        "dst": {
+          "node": "cb212f8c-f81d-4ca3-a07e-606c7dc2ca2e",
+          "port": 1
+        },
+        "src": {
+          "node": "7ea5f733-6749-4339-8e47-c5284e74e408",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": -216,
+            "y": 0
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "56e0cc31-43a8-4b3a-82a0-19531070b1b5"
+      },
+      {
+        "dst": {
+          "node": "8ea8bfb4-a70a-4b66-92d7-4ae3a78ec40b",
+          "port": 0
+        },
+        "src": {
+          "node": "89bcacc7-e6dc-4f70-a38d-1797e3f26700",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": -456,
+            "y": -104
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "c5ab8d0a-2f61-4c9b-9c54-5cf6e3a4d3b0"
+      },
+      {
+        "dst": {
+          "node": "8ea8bfb4-a70a-4b66-92d7-4ae3a78ec40b",
+          "port": 1
+        },
+        "src": {
+          "node": "69e65599-b4a6-4bea-a936-a1275513d239",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": -456,
+            "y": -88
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "53f41fcd-e1b5-46dd-96a1-202b819dd9a9"
+      },
+      {
+        "dst": {
+          "node": "3b57a0d1-120b-41d4-99f1-c99d85f7d63e",
+          "port": 0
+        },
+        "src": {
+          "node": "61b546f5-f523-44b1-bf4d-31c52877d1e6",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": -656,
+            "y": -560
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": [
+            {
+              "coordinate": -856,
+              "segment_direction": "vert"
+            },
+            {
+              "coordinate": -568,
+              "segment_direction": "horiz"
+            },
+            {
+              "coordinate": -816,
+              "segment_direction": "vert"
+            }
+          ]
+        },
+        "uuid": "e5993464-5ff2-4335-9e12-0788e403db5f"
+      },
+      {
+        "dst": {
+          "node": "3b57a0d1-120b-41d4-99f1-c99d85f7d63e",
+          "port": 1
+        },
+        "src": {
+          "node": "304c040a-a5cc-4990-b026-29ee0abd2105",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": -800,
+            "y": -552
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "dd74a364-5b38-4cd8-ad78-3506124f7005"
+      },
+      {
+        "dst": {
+          "node": "61b546f5-f523-44b1-bf4d-31c52877d1e6",
+          "port": 0
+        },
+        "src": {
+          "node": "30be4b34-7933-4a2f-98bb-7d79491ec39e",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": -928,
+            "y": -584
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "d516138a-1332-42b8-8229-f0e51c5b897e"
+      },
+      {
+        "dst": {
+          "node": "61b546f5-f523-44b1-bf4d-31c52877d1e6",
+          "port": 1
+        },
+        "src": {
+          "node": "045cb8cf-a170-4864-a23f-aa9636f78665",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": -936,
+            "y": -560
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": [
+            {
+              "coordinate": -952,
+              "segment_direction": "vert"
+            }
+          ]
+        },
+        "uuid": "b5c75c5f-fc64-4597-b62a-35943041c91b"
+      },
+      {
+        "dst": {
+          "node": "925f5873-8ee4-4287-bf20-fd6b2f6f6529",
+          "port": 0
+        },
+        "src": {
+          "node": "045cb8cf-a170-4864-a23f-aa9636f78665",
+          "port": 0
+        },
+        "uiprops": {
+          "link_type": {
+            "connection_method": "link_tap",
+            "tap_coordinate": -498.22448979591866,
+            "tapped_link_uuid": "b5c75c5f-fc64-4597-b62a-35943041c91b",
+            "tapped_segment": {
+              "segment_type": "real",
+              "tapped_segment_direction": "vert",
+              "tapped_segment_index": 0
+            }
+          },
+          "segments": [
+            {
+              "coordinate": -952,
+              "segment_direction": "vert"
+            }
+          ]
+        },
+        "uuid": "b124bad0-1927-49fd-8eef-17857497a707"
+      },
+      {
+        "dst": {
+          "node": "925f5873-8ee4-4287-bf20-fd6b2f6f6529",
+          "port": 1
+        },
+        "src": {
+          "node": "fbd45894-c851-404a-a8ac-c603137f8b6f",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": -800,
+            "y": -328
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": [
+            {
+              "coordinate": -840,
+              "segment_direction": "vert"
+            }
+          ]
+        },
+        "uuid": "cd284d6b-bc6c-411c-9c5b-39b65e3238d0"
+      },
+      {
+        "dst": {
+          "node": "925f5873-8ee4-4287-bf20-fd6b2f6f6529",
+          "port": 2
+        },
+        "src": {
+          "node": "6c39f1d3-567a-460a-9ecd-45e8417d416e",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": -800,
+            "y": -304
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "d08f44ab-4ba2-4fd7-9f8a-e37305daed5e"
+      },
+      {
+        "dst": {
+          "node": "925f5873-8ee4-4287-bf20-fd6b2f6f6529",
+          "port": 3
+        },
+        "src": {
+          "node": "f2222965-a003-4ac5-b4eb-1dbc927cd670",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": -800,
+            "y": -280
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": [
+            {
+              "coordinate": -832,
+              "segment_direction": "vert"
+            }
+          ]
+        },
+        "uuid": "cee7282c-2a39-443c-9195-0ac955c77df0"
+      },
+      {
+        "dst": {
+          "node": "7a111ce4-e597-4cb2-b83b-7dc6794f9b27",
+          "port": 0
+        },
+        "src": {
+          "node": "3b57a0d1-120b-41d4-99f1-c99d85f7d63e",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": -664,
+            "y": -520
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "de662cc5-ab0d-4a43-9dfa-38a60b6f56ca"
+      },
+      {
+        "dst": {
+          "node": "7a111ce4-e597-4cb2-b83b-7dc6794f9b27",
+          "port": 1
+        },
+        "src": {
+          "node": "925f5873-8ee4-4287-bf20-fd6b2f6f6529",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": -664,
+            "y": -504
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "ccfb00fd-fed5-4c67-a3d4-70d54284255f"
+      },
+      {
+        "dst": {
+          "node": "89734134-8821-4ba4-a267-7c2d4757176a",
+          "port": 1
+        },
+        "src": {
+          "node": "7a111ce4-e597-4cb2-b83b-7dc6794f9b27",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": -552,
+            "y": -552
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": [
+            {
+              "coordinate": -568,
+              "segment_direction": "vert"
+            }
+          ]
+        },
+        "uuid": "de0b8244-17b7-410c-87bb-fa3a78a87550"
+      },
+      {
+        "dst": {
+          "node": "89734134-8821-4ba4-a267-7c2d4757176a",
+          "port": 0
+        },
+        "src": {
+          "node": "61b546f5-f523-44b1-bf4d-31c52877d1e6",
+          "port": 0
+        },
+        "uiprops": {
+          "link_type": {
+            "connection_method": "link_tap",
+            "tap_coordinate": -842.5714285714287,
+            "tapped_link_uuid": "e5993464-5ff2-4335-9e12-0788e403db5f",
+            "tapped_segment": {
+              "segment_type": "real",
+              "tapped_segment_direction": "horiz",
+              "tapped_segment_index": 1
+            }
+          },
+          "segments": [
+            {
+              "coordinate": -624,
+              "segment_direction": "horiz"
+            },
+            {
+              "coordinate": -672,
+              "segment_direction": "vert"
+            }
+          ]
+        },
+        "uuid": "8248dc7c-1ebe-43ee-a527-f6df828e3aee"
+      },
+      {
+        "dst": {
+          "node": "6f5b0078-4af8-43cc-82e0-b84ab2d03a9c",
+          "port": 0
+        },
+        "src": {
+          "node": "61b546f5-f523-44b1-bf4d-31c52877d1e6",
+          "port": 0
+        },
+        "uiprops": {
+          "link_type": {
+            "connection_method": "link_tap",
+            "tap_coordinate": -624,
+            "tapped_link_uuid": "8248dc7c-1ebe-43ee-a527-f6df828e3aee",
+            "tapped_segment": {
+              "segment_type": "real",
+              "tapped_segment_direction": "vert",
+              "tapped_segment_index": 1
+            }
+          },
+          "segments": []
+        },
+        "uuid": "d83304e6-4104-4985-b201-cd002a4e2689"
+      },
+      {
+        "dst": {
+          "node": "6999a7a6-c018-4f7c-ab0c-1e086523bc15",
+          "port": 1
+        },
+        "src": {
+          "node": "89734134-8821-4ba4-a267-7c2d4757176a",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": -432,
+            "y": -568
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "b69e3ba7-16f8-45f1-a133-3436c9fd4bcf"
+      },
+      {
+        "dst": {
+          "node": "6999a7a6-c018-4f7c-ab0c-1e086523bc15",
+          "port": 2
+        },
+        "src": {
+          "node": "bc7f7db1-a2c1-40aa-8228-2e0b18c2339d",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": -432,
+            "y": -544
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "a496794d-2f35-4745-9356-b75dbe2c24ad"
+      },
+      {
+        "dst": {
+          "node": "ad3a215a-5b17-4848-a99f-95da2278751c",
+          "port": 0
+        },
+        "src": {
+          "node": "6999a7a6-c018-4f7c-ab0c-1e086523bc15",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": -312,
+            "y": -560
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "662bd139-f8a8-4e0a-927b-93f22e2980f3"
+      },
+      {
+        "dst": {
+          "node": "6a3a52a3-1648-4138-acbc-e32be1c518b2",
+          "port": 0
+        },
+        "src": {
+          "node": "ad3a215a-5b17-4848-a99f-95da2278751c",
+          "port": 0
+        },
+        "uiprops": {
+          "link_type": {
+            "connection_method": "link_tap",
+            "tap_coordinate": -112,
+            "tapped_link_uuid": "d26cb525-5716-48d9-a3f8-9db4a545e629",
+            "tapped_segment": {
+              "segment_type": "real",
+              "tapped_segment_direction": "horiz",
+              "tapped_segment_index": 1
+            }
+          },
+          "segments": []
+        },
+        "uuid": "8e2aa3e6-dbd1-420d-b7c1-14d9e6d43520"
+      },
+      {
+        "dst": {
+          "node": "13844c79-6bfa-484f-b308-c21d766b2b07",
+          "port": 1
+        },
+        "src": {
+          "node": "cb212f8c-f81d-4ca3-a07e-606c7dc2ca2e",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 32,
+            "y": -8
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": [
+            {
+              "coordinate": -256,
+              "segment_direction": "vert"
+            },
+            {
+              "coordinate": -8,
+              "segment_direction": "horiz"
+            },
+            {
+              "coordinate": 24,
+              "segment_direction": "vert"
+            }
+          ]
+        },
+        "uuid": "f106eabf-3da5-4ad9-ae6c-1f372a2d260a"
+      },
+      {
+        "dst": {
+          "node": "34170e3f-96cc-4884-b4ad-25ab97691a9e",
+          "port": 0
+        },
+        "src": {
+          "node": "cb212f8c-f81d-4ca3-a07e-606c7dc2ca2e",
+          "port": 0
+        },
+        "uiprops": {
+          "link_type": {
+            "connection_method": "link_tap",
+            "tap_coordinate": 0,
+            "tapped_link_uuid": "f106eabf-3da5-4ad9-ae6c-1f372a2d260a",
+            "tapped_segment": {
+              "segment_type": "real",
+              "tapped_segment_direction": "horiz",
+              "tapped_segment_index": 1
+            }
+          },
+          "segments": []
+        },
+        "uuid": "08ca728f-ed0c-436d-8efb-f63dd439f751"
+      },
+      {
+        "dst": {
+          "node": "6999a7a6-c018-4f7c-ab0c-1e086523bc15",
+          "port": 0
+        },
+        "src": {
+          "node": "6f5b0078-4af8-43cc-82e0-b84ab2d03a9c",
+          "port": 0
+        },
+        "uiprops": {
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": [
+            {
+              "coordinate": -456,
+              "segment_direction": "vert"
+            }
+          ]
+        },
+        "uuid": "2ff8e1cb-ea92-4d57-bf2a-282ccd20db3c"
+      }
+    ],
+    "nodes": [
+      {
+        "inputs": [],
+        "name": "app_brake_req_norm",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "port_id": {
+            "value": "0"
+          }
+        },
+        "type": "core.Inport",
+        "uiprops": {
+          "x": -560,
+          "y": -136
+        },
+        "uuid": "89bcacc7-e6dc-4f70-a38d-1797e3f26700"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "static",
+            "name": "in_0"
+          }
+        ],
+        "name": "brake_req_front_norm",
+        "outputs": [],
+        "parameters": {
+          "port_id": {
+            "value": "0"
+          }
+        },
+        "type": "core.Outport",
+        "uiprops": {
+          "x": 192,
+          "y": -48
+        },
+        "uuid": "3d9474ae-7a9b-4c03-ab80-a410ccaf185f"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "static",
+            "name": "in_0"
+          }
+        ],
+        "name": "brake_req_rear_norm",
+        "outputs": [],
+        "parameters": {
+          "port_id": {
+            "value": "1"
+          }
+        },
+        "type": "core.Outport",
+        "uiprops": {
+          "x": 192,
+          "y": 56
+        },
+        "uuid": "ab408cf4-cba1-463d-9617-f4d21451bdc0"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "dynamic",
+            "name": "in_0"
+          },
+          {
+            "kind": "dynamic",
+            "name": "in_1"
+          }
+        ],
+        "name": "front_brake_req",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "denominator_limit": {
+            "value": "1e-12"
+          },
+          "divide_by_zero_behavior": {
+            "is_string": true,
+            "value": "inf"
+          },
+          "operators": {
+            "is_string": true,
+            "value": "**"
+          }
+        },
+        "type": "core.Product",
+        "uiprops": {
+          "x": 32,
+          "y": -48
+        },
+        "uuid": "13844c79-6bfa-484f-b308-c21d766b2b07"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "dynamic",
+            "name": "in_0"
+          },
+          {
+            "kind": "dynamic",
+            "name": "in_1"
+          }
+        ],
+        "name": "rear_bias",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "operators": {
+            "is_string": true,
+            "value": "-+"
+          }
+        },
+        "type": "core.Adder",
+        "uiprops": {
+          "x": -80,
+          "y": 64
+        },
+        "uuid": "6a3a52a3-1648-4138-acbc-e32be1c518b2"
+      },
+      {
+        "inputs": [],
+        "name": "one",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "value": {
+            "value": "1.0"
+          }
+        },
+        "type": "core.Constant",
+        "uiprops": {
+          "x": -200,
+          "y": 72
+        },
+        "uuid": "88c3d996-c9c9-4a9f-9553-5ddf6466c7b6"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "dynamic",
+            "name": "in_0"
+          },
+          {
+            "kind": "dynamic",
+            "name": "in_1"
+          }
+        ],
+        "name": "rear_brake_req",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "denominator_limit": {
+            "value": "1e-12"
+          },
+          "divide_by_zero_behavior": {
+            "is_string": true,
+            "value": "inf"
+          },
+          "operators": {
+            "is_string": true,
+            "value": "**"
+          }
+        },
+        "type": "core.Product",
+        "uiprops": {
+          "x": 32,
+          "y": 56
+        },
+        "uuid": "34170e3f-96cc-4884-b4ad-25ab97691a9e"
+      },
+      {
+        "inputs": [],
+        "name": "bpp_brake_req_norm",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "port_id": {
+            "value": "1"
+          }
+        },
+        "type": "core.Inport",
+        "uiprops": {
+          "x": -288,
+          "y": -32
+        },
+        "uuid": "7ea5f733-6749-4339-8e47-c5284e74e408"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "dynamic",
+            "name": "in_0"
+          },
+          {
+            "kind": "dynamic",
+            "name": "in_1"
+          }
+        ],
+        "name": "max_",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "operator": {
+            "is_string": true,
+            "value": "max"
+          }
+        },
+        "type": "core.MinMax",
+        "uiprops": {
+          "x": -208,
+          "y": -40
+        },
+        "uuid": "cb212f8c-f81d-4ca3-a07e-606c7dc2ca2e"
+      },
+      {
+        "inputs": [],
+        "name": "app_brake_max",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "value": {
+            "value": "app_brake_max"
+          }
+        },
+        "type": "core.Constant",
+        "uiprops": {
+          "x": -576,
+          "y": -64
+        },
+        "uuid": "69e65599-b4a6-4bea-a936-a1275513d239"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "dynamic",
+            "name": "in_0"
+          },
+          {
+            "kind": "dynamic",
+            "name": "in_1"
+          }
+        ],
+        "name": "rear_brake_req_0",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "denominator_limit": {
+            "value": "1e-12"
+          },
+          "divide_by_zero_behavior": {
+            "is_string": true,
+            "value": "inf"
+          },
+          "operators": {
+            "is_string": true,
+            "value": "**"
+          }
+        },
+        "type": "core.Product",
+        "uiprops": {
+          "x": -456,
+          "y": -128
+        },
+        "uuid": "8ea8bfb4-a70a-4b66-92d7-4ae3a78ec40b"
+      },
+      {
+        "inputs": [],
+        "name": "veh_accel_mps2",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "port_id": {
+            "value": "2"
+          }
+        },
+        "type": "core.Inport",
+        "uiprops": {
+          "x": -1048,
+          "y": -352
+        },
+        "uuid": "fbd45894-c851-404a-a8ac-c603137f8b6f"
+      },
+      {
+        "inputs": [],
+        "name": "veh_mass",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "value": {
+            "value": "veh_mass"
+          }
+        },
+        "type": "core.Constant",
+        "uiprops": {
+          "x": -1048,
+          "y": -536
+        },
+        "uuid": "045cb8cf-a170-4864-a23f-aa9636f78665"
+      },
+      {
+        "inputs": [],
+        "name": "veh_cg_height",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "value": {
+            "value": "veh_cg_height"
+          }
+        },
+        "type": "core.Constant",
+        "uiprops": {
+          "x": -960,
+          "y": -312
+        },
+        "uuid": "6c39f1d3-567a-460a-9ecd-45e8417d416e"
+      },
+      {
+        "inputs": [],
+        "name": "veh_cg_rear_ratio",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "value": {
+            "value": "veh_cg_rear_ratio"
+          }
+        },
+        "type": "core.Constant",
+        "uiprops": {
+          "x": -928,
+          "y": -512
+        },
+        "uuid": "304c040a-a5cc-4990-b026-29ee0abd2105"
+      },
+      {
+        "inputs": [],
+        "name": "veh_whl_base",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "value": {
+            "value": "veh_whl_base"
+          }
+        },
+        "type": "core.Constant",
+        "uiprops": {
+          "x": -1056,
+          "y": -264
+        },
+        "uuid": "f2222965-a003-4ac5-b4eb-1dbc927cd670"
+      },
+      {
+        "inputs": [],
+        "name": "accel_gravity",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "value": {
+            "value": "-9.81"
+          }
+        },
+        "type": "core.Constant",
+        "uiprops": {
+          "x": -1048,
+          "y": -640
+        },
+        "uuid": "30be4b34-7933-4a2f-98bb-7d79491ec39e"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "dynamic",
+            "name": "in_0"
+          },
+          {
+            "kind": "dynamic",
+            "name": "in_1"
+          }
+        ],
+        "name": "Fg",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "denominator_limit": {
+            "value": "1e-12"
+          },
+          "divide_by_zero_behavior": {
+            "is_string": true,
+            "value": "inf"
+          },
+          "operators": {
+            "is_string": true,
+            "value": "**"
+          }
+        },
+        "type": "core.Product",
+        "uiprops": {
+          "grid_height": 7,
+          "grid_width": 9,
+          "x": -928,
+          "y": -600
+        },
+        "uuid": "61b546f5-f523-44b1-bf4d-31c52877d1e6"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "dynamic",
+            "name": "in_0"
+          },
+          {
+            "kind": "dynamic",
+            "name": "in_1"
+          }
+        ],
+        "name": "Fnr_term1",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "denominator_limit": {
+            "value": "1e-12"
+          },
+          "divide_by_zero_behavior": {
+            "is_string": true,
+            "value": "inf"
+          },
+          "operators": {
+            "is_string": true,
+            "value": "**"
+          }
+        },
+        "type": "core.Product",
+        "uiprops": {
+          "grid_height": 23,
+          "grid_width": 9,
+          "x": -808,
+          "y": -616
+        },
+        "uuid": "3b57a0d1-120b-41d4-99f1-c99d85f7d63e"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "dynamic",
+            "name": "in_0"
+          },
+          {
+            "kind": "dynamic",
+            "name": "in_1"
+          }
+        ],
+        "name": "Fnf",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "operators": {
+            "is_string": true,
+            "value": "--"
+          }
+        },
+        "type": "core.Adder",
+        "uiprops": {
+          "x": -552,
+          "y": -592
+        },
+        "uuid": "89734134-8821-4ba4-a267-7c2d4757176a"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "dynamic",
+            "name": "in_0"
+          },
+          {
+            "kind": "dynamic",
+            "name": "in_1"
+          }
+        ],
+        "name": "Fnr",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "operators": {
+            "is_string": true,
+            "value": "--"
+          }
+        },
+        "type": "core.Adder",
+        "uiprops": {
+          "x": -664,
+          "y": -544
+        },
+        "uuid": "7a111ce4-e597-4cb2-b83b-7dc6794f9b27"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "dynamic",
+            "name": "in_0"
+          },
+          {
+            "kind": "dynamic",
+            "name": "in_1"
+          },
+          {
+            "kind": "dynamic",
+            "name": "in_2"
+          },
+          {
+            "kind": "dynamic",
+            "name": "in_3"
+          }
+        ],
+        "name": "Fnr_term2",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "denominator_limit": {
+            "value": "1e-12"
+          },
+          "divide_by_zero_behavior": {
+            "is_string": true,
+            "value": "inf"
+          },
+          "operators": {
+            "is_string": true,
+            "value": "***/"
+          }
+        },
+        "type": "core.Product",
+        "uiprops": {
+          "grid_height": 23,
+          "grid_width": 9,
+          "x": -800,
+          "y": -400
+        },
+        "uuid": "925f5873-8ee4-4287-bf20-fd6b2f6f6529"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "dynamic",
+            "name": "in_0"
+          },
+          {
+            "kind": "dynamic",
+            "name": "in_1"
+          },
+          {
+            "kind": "dynamic",
+            "name": "in_2"
+          }
+        ],
+        "name": "front_bias_dynamic",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "denominator_limit": {
+            "value": "1e-12"
+          },
+          "divide_by_zero_behavior": {
+            "is_string": true,
+            "value": "inf"
+          },
+          "operators": {
+            "is_string": true,
+            "value": "/**"
+          }
+        },
+        "type": "core.Product",
+        "uiprops": {
+          "x": -432,
+          "y": -592
+        },
+        "uuid": "6999a7a6-c018-4f7c-ab0c-1e086523bc15"
+      },
+      {
+        "inputs": [],
+        "name": "front_bais_safety_factor",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "value": {
+            "value": "front_bais_safety_factor"
+          }
+        },
+        "type": "core.Constant",
+        "uiprops": {
+          "x": -552,
+          "y": -496
+        },
+        "uuid": "bc7f7db1-a2c1-40aa-8228-2e0b18c2339d"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "static",
+            "name": "in_0"
+          }
+        ],
+        "name": "front_bias_dynamic_sat",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "enable_dynamic_lower_limit": {
+            "value": "False"
+          },
+          "enable_dynamic_upper_limit": {
+            "value": "False"
+          },
+          "lower_limit": {
+            "value": "0.4"
+          },
+          "upper_limit": {
+            "value": "0.9"
+          }
+        },
+        "type": "core.Saturate",
+        "uiprops": {
+          "grid_height": -17,
+          "grid_width": 9,
+          "x": -272,
+          "y": -592
+        },
+        "uuid": "ad3a215a-5b17-4848-a99f-95da2278751c"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "static",
+            "name": "in_0"
+          }
+        ],
+        "name": "Abs_0",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {},
+        "type": "core.Abs",
+        "uiprops": {
+          "x": -632,
+          "y": -656
+        },
+        "uuid": "6f5b0078-4af8-43cc-82e0-b84ab2d03a9c"
+      }
+    ],
+    "uuid": "608541e1-affe-4d8a-ba38-27e0f075ba8a"
+  },
+  "kind": "Submodel",
+  "name": "Controller App - Brake By Wire",
+  "parameter_definitions": [
+    {
+      "default_value": "0.2",
+      "name": "app_brake_max",
+      "uiprops": {},
+      "uuid": "735993eb-b7f7-43d2-812f-d2d8fd3479dd"
+    },
+    {
+      "default_value": "1.05",
+      "name": "front_bais_safety_factor",
+      "uiprops": {},
+      "uuid": "56c78b92-84c5-48ce-95f1-54ff6bc8fad3"
+    },
+    {
+      "default_value": "1.0",
+      "name": "veh_cg_height",
+      "uiprops": {},
+      "uuid": "6d1c8a1e-d7e3-4dab-b985-b89511d46b8e"
+    },
+    {
+      "default_value": "0.4",
+      "name": "veh_cg_rear_ratio",
+      "uiprops": {},
+      "uuid": "0834970b-a5a5-4084-bf3d-a2fc74545c6d"
+    },
+    {
+      "default_value": "1e3",
+      "name": "veh_mass",
+      "uiprops": {},
+      "uuid": "8cb9fdb6-8c10-4d29-9609-a422b0905cde"
+    },
+    {
+      "default_value": "2.0",
+      "name": "veh_whl_base",
+      "uiprops": {},
+      "uuid": "ff12329b-94f4-4543-bb14-09da49e175b6"
+    }
+  ],
+  "schema_version": "3",
+  "subdiagrams": {
+    "diagrams": {},
+    "references": {}
+  },
+  "submodel_configuration": {},
+  "uuid": "7e997dc8-d2f2-4543-9d8b-f5bf650c6851"
+}

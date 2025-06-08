@@ -1,0 +1,192 @@
+{
+  "diagram": {
+    "annotations": [],
+    "links": [
+      {
+        "dst": {
+          "node": "61d8eca5-a55b-4c6b-8f7b-91b223980a85",
+          "port": 0
+        },
+        "src": {
+          "node": "2503391d-410b-4b35-9ce7-daab7e6c9ccb",
+          "port": 0
+        },
+        "uiprops": {
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "c29e5dd9-19af-477c-a5bc-9fd8e6dcd99c"
+      },
+      {
+        "dst": {
+          "node": "d7924f6a-83a4-4d76-98d4-fc451a691457",
+          "port": 0
+        },
+        "src": {
+          "node": "61d8eca5-a55b-4c6b-8f7b-91b223980a85",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 352,
+            "y": 64
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "4d48cec4-2555-4027-96e6-22e6952afcc6"
+      },
+      {
+        "dst": {
+          "node": "7505112d-c99b-4a09-9894-838954e52969",
+          "port": 0
+        },
+        "src": {
+          "node": "d7924f6a-83a4-4d76-98d4-fc451a691457",
+          "port": 0
+        },
+        "uiprops": {
+          "hang_coord_end": {
+            "x": 512,
+            "y": 64
+          },
+          "link_type": {
+            "connection_method": "direct_to_block"
+          },
+          "segments": []
+        },
+        "uuid": "2ca55992-2af4-4a22-87ba-3388f757e26d"
+      }
+    ],
+    "nodes": [
+      {
+        "inputs": [],
+        "name": "Inport_0",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "description": {
+            "is_string": true,
+            "value": ""
+          },
+          "port_id": {
+            "value": "0"
+          }
+        },
+        "type": "core.Inport",
+        "uiprops": {
+          "x": 152,
+          "y": 32
+        },
+        "uuid": "2503391d-410b-4b35-9ce7-daab7e6c9ccb"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "static",
+            "name": "in_0"
+          }
+        ],
+        "name": "Outport_0",
+        "outputs": [],
+        "parameters": {
+          "description": {
+            "is_string": true,
+            "value": ""
+          },
+          "port_id": {
+            "value": "0"
+          }
+        },
+        "type": "core.Outport",
+        "uiprops": {
+          "x": 512,
+          "y": 32
+        },
+        "uuid": "7505112d-c99b-4a09-9894-838954e52969"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "static",
+            "name": "in_0"
+          }
+        ],
+        "name": "Gain_0",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "gain": {
+            "value": "G"
+          }
+        },
+        "type": "core.Gain",
+        "uiprops": {
+          "port_alignment": "spaced",
+          "x": 216,
+          "y": 32
+        },
+        "uuid": "61d8eca5-a55b-4c6b-8f7b-91b223980a85"
+      },
+      {
+        "inputs": [
+          {
+            "kind": "static",
+            "name": "in_0"
+          }
+        ],
+        "name": "Offset_0",
+        "outputs": [
+          {
+            "kind": "static",
+            "name": "out_0"
+          }
+        ],
+        "parameters": {
+          "offset": {
+            "value": "A"
+          }
+        },
+        "type": "core.Offset",
+        "uiprops": {
+          "port_alignment": "spaced",
+          "x": 352,
+          "y": 32
+        },
+        "uuid": "d7924f6a-83a4-4d76-98d4-fc451a691457"
+      }
+    ],
+    "uuid": "c5e349ff-656c-4675-8d09-e71fdc44b273"
+  },
+  "kind": "Submodel",
+  "name": "sm_orphan_param",
+  "parameter_definitions": [
+    {
+      "default_value": "10.0",
+      "name": "A",
+      "uiprops": {
+        "default_value_height": "22px"
+      },
+      "uuid": "c4f90c0f-8b01-4f01-ad35-8af03d624a31"
+    }
+  ],
+  "schema_version": "3",
+  "state_machines": {},
+  "subdiagrams": {
+    "diagrams": {},
+    "references": {}
+  },
+  "submodel_configuration": {}
+}
